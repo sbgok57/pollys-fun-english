@@ -1,0 +1,10 @@
+{
+  "name": "pollys-fun-english",
+  "version": "2.0.0",
+  "description": "Polly's Fun English - Primary School ESL Educational Games",
+  "private": true,
+  "scripts": {
+    "build": "python3 build.py",
+    "test": "node smoke-test.js && node test-all-screens.js"
+  }
+}

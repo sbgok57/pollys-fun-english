@@ -1,0 +1,6678 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Polly’s Fun English — Cambridge Global English 1 & 2</title>
+  <meta name="description" content="İlkokul 1 ve 2. Sınıf İngilizce Eğitsel Oyun ve Şarkı Platformu">
+  <meta name="theme-color" content="#4f46e5">
+  <style>
+/* ============================================================
+   🎨 POLLY'S FUN ENGLISH — CSS TASARIM SİSTEMİ (v2)
+   Çocuk dostu, yüksek kontrastlı, akıllı tahta ve dokunmatik uyumlu
+   ============================================================ */
+
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --accent: #f59e0b;
+  --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #fdf2f8 100%);
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-float: 0 14px 28px rgba(0, 0, 0, 0.12);
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Comic Sans MS', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.4;
+}
+
+body.s1 {
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #e0f2fe 100%);
+}
+
+body.s2 {
+  background: linear-gradient(135deg, #eff6ff 0%, #ede9fe 50%, #fdf2f8 100%);
+}
+
+#floaties {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#floaties span {
+  position: absolute;
+  bottom: -60px;
+  animation: floatUp linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+
+#fxlayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  z-index: 10;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 12px 16px 40px;
+}
+
+/* ═══ TOPBAR ═══ */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  border: 2px solid #e2e8f0;
+}
+
+.brand {
+  font-weight: 900;
+  color: #1e1b4b;
+  font-size: 1.15em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.88em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.badge.gold { background: #fef3c7; color: #b45309; }
+.badge.blue { background: #dbeafe; color: #1d4ed8; }
+.badge.purple { background: #f3e8ff; color: #6b21a8; }
+.badge.red { background: #fee2e2; color: #dc2626; }
+
+/* ═══ BUTONLAR ═══ */
+.btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 900;
+  border-radius: var(--radius-full);
+  padding: 12px 22px;
+  font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+  min-height: 44px;
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(0,0,0,0.12); }
+.btn:hover { transform: translateY(-2px); }
+.btn.small { padding: 6px 14px; font-size: 0.9em; min-height: 38px; }
+.btn.white { background: #ffffff; color: #1e293b; border: 2px solid #cbd5e1; }
+.btn.blue { background: #3b82f6; color: #ffffff; }
+.btn.green { background: #10b981; color: #ffffff; }
+.btn.purple { background: #8b5cf6; color: #ffffff; }
+.btn.red { background: #ef4444; color: #ffffff; }
+
+/* ═══ HERO & ANA SAYFA ═══ */
+.hero {
+  text-align: center;
+  padding: 16px 10px 10px;
+}
+.mascot {
+  font-size: clamp(64px, 12vw, 92px);
+  cursor: pointer;
+  display: inline-block;
+  animation: mascotHop 3.5s infinite ease-in-out;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+}
+@keyframes mascotHop {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  45% { transform: translateY(-14px) rotate(4deg); }
+  55% { transform: translateY(-14px) rotate(-4deg); }
+}
+.tag {
+  color: #4338ca;
+  font-weight: 800;
+  font-size: clamp(0.95em, 2vw, 1.2em);
+  margin-top: 6px;
+}
+
+.stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0;
+}
+.stat {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  border: 2px solid #e2e8f0;
+  font-size: 0.92em;
+  font-weight: 800;
+  color: #334155;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.stat b { color: #4f46e5; font-size: 1.15em; }
+
+.stage-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+.stage-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+.stage-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-float);
+}
+.stage-card.s1 { border-color: #86efac; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%); }
+.stage-card.s2 { border-color: #93c5fd; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); }
+.stage-card.songs { border-color: #f472b6; background: linear-gradient(180deg, #fdf2f8 0%, #ffffff 100%); }
+.sc-emoji { font-size: 46px; display: block; margin-bottom: 8px; }
+.stage-card h2 { font-size: 1.45em; color: #0f172a; margin-bottom: 6px; font-weight: 900; }
+.stage-card p { color: #64748b; font-size: 0.92em; font-weight: 700; }
+
+.quick-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+/* ═══ ÜNİTE VE OYUN KARTLARI ═══ */
+.unit-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 3px solid #e2e8f0;
+  margin-bottom: 18px;
+}
+.unit-head .ue { font-size: 48px; }
+.unit-head h2 { font-size: 1.4em; font-weight: 900; color: #1e1b4b; }
+.unit-head .sub { color: #64748b; font-size: 0.92em; font-weight: 700; }
+
+.unit-grid, .game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  border: 3px solid #f1f5f9;
+  text-align: center;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #818cf8;
+  box-shadow: var(--shadow-md);
+}
+.card .big { font-size: 44px; display: block; margin-bottom: 6px; }
+.card h3 { font-size: 1.05em; font-weight: 900; color: #1e293b; margin-bottom: 4px; }
+.card .sub { font-size: 0.84em; color: #64748b; font-weight: 700; }
+.ribbon {
+  position: absolute;
+  top: 10px;
+  right: -24px;
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 0.65em;
+  font-weight: 900;
+  padding: 3px 26px;
+  transform: rotate(45deg);
+}
+
+/* ═══ KELİME DUVARI ═══ */
+.word-wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.word-pill {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-size: 0.92em;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.15s, background 0.15s;
+}
+.word-pill:hover {
+  background: #fef08a;
+  transform: scale(1.06);
+}
+
+/* ═══ OYUN EKRANI ═══ */
+.game-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid #e2e8f0;
+  margin-bottom: 12px;
+}
+.gscore { font-weight: 900; font-size: 1.05em; color: #1e293b; }
+.timerbar {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#gtbi {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  transition: width 0.3s;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.prompt-box {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+  border: 3px solid #e0e7ff;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 18px;
+  width: 100%;
+  max-width: 600px;
+}
+.prompt-box .pe { font-size: 48px; display: block; margin-bottom: 6px; }
+.prompt-box .pw { font-size: 1.45em; font-weight: 900; color: #1e1b4b; }
+
+.opt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 640px;
+}
+.opt {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  border: 3px solid #cbd5e1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+  transition: transform 0.15s, border-color 0.15s;
+  min-height: 80px;
+}
+.opt:hover { transform: translateY(-3px); border-color: #6366f1; }
+.opt .oe { font-size: 34px; line-height: 1.1; }
+.opt .ow { font-size: 1.05em; font-weight: 900; color: #1e293b; margin-top: 4px; }
+.opt.ok { background: #dcfce7; border-color: #22c55e; color: #15803d; }
+.opt.no { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+.opt.sel { border-color: #3b82f6; background: #eff6ff; }
+
+.match-grid {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 620px;
+  justify-content: center;
+}
+.match-grid .col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ═══ ŞARKI & CHANT ═══ */
+.song-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.song-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.song-item {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s;
+}
+.song-item:hover { transform: translateY(-3px); border-color: #ec4899; }
+.song-item .se { font-size: 32px; display: block; margin-bottom: 4px; }
+.song-item h4 { font-size: 1em; font-weight: 900; color: #1e293b; }
+.song-item .tune { font-size: 0.82em; color: #64748b; font-weight: 700; }
+
+.player {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  border: 3px solid #fbcfe8;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.lyrics {
+  background: #fafafa;
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin: 18px 0;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 2px solid #e2e8f0;
+}
+.lyrics .line {
+  padding: 8px 12px;
+  font-size: 1.15em;
+  font-weight: 800;
+  color: #475569;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.lyrics .line.active {
+  background: #fdf2f8;
+  color: #db2777;
+  transform: scale(1.04);
+}
+.player .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ═══ MODAL & OVERLAY ═══ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+.modal {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-float);
+  border: 4px solid #818cf8;
+  text-align: center;
+}
+.lvl-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.lvl-pill {
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  font-weight: 800;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lvl-pill:hover, .lvl-pill.active {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+/* ═══ SKORLAR & SONUÇLAR ═══ */
+.result-stars {
+  font-size: 48px;
+  margin-bottom: 8px;
+  color: #f59e0b;
+}
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: 14px;
+}
+.score-table th, .score-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.92em;
+}
+.score-table th { background: #f8fafc; font-weight: 900; color: #475569; }
+
+/* ═══ DİNAMİK PARÇACIKLAR & ANİMASYONLAR ═══ */
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  top: -20px;
+  border-radius: 3px;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall {
+  to { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+.pop-star {
+  position: absolute;
+  font-size: 24px;
+  animation: starPop 0.75s ease-out forwards;
+}
+@keyframes starPop {
+  0% { transform: scale(0.3) translateY(0); opacity: 1; }
+  100% { transform: scale(1.4) translateY(-40px); opacity: 0; }
+}
+
+.shake-anim { animation: shake 0.45s ease-in-out; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.fb-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  animation: fbFade 0.3s forwards;
+}
+.fb-flash.ok { background: rgba(34, 197, 94, 0.25); }
+.fb-flash.no { background: rgba(239, 68, 68, 0.25); }
+@keyframes fbFade { to { opacity: 0; } }
+
+.mascot-bubble {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #ffffff;
+  border: 3px solid #f59e0b;
+  border-radius: 20px;
+  padding: 12px 22px;
+  font-size: 1.1em;
+  font-weight: 900;
+  color: #1e1b4b;
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 150;
+}
+.mascot-bubble.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.app-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: #1e293b;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s;
+  z-index: 160;
+}
+.app-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- v2 YENİ ANİMASYONLAR & OYUNLAR ---------- */
+.ripple {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 4px solid #fde047;
+  background: rgba(253, 224, 71, 0.35);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 90;
+  animation: rippleOut 0.65s ease-out forwards;
+}
+@keyframes rippleOut { to { width: 95px; height: 95px; opacity: 0; } }
+
+.flyby {
+  position: absolute;
+  left: -130px;
+  font-size: 46px;
+  animation: flyAcross linear forwards;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.15));
+  pointer-events: none;
+}
+@keyframes flyAcross {
+  to { transform: translateX(var(--fly, 110vw)) translateY(-40px) rotate(10deg); }
+}
+
+.raindrop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 8px 13px;
+  border: 4px solid #93c5fd;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.1s;
+  animation: bsway 2.2s ease-in-out infinite;
+}
+.raindrop:hover { transform: scale(1.1); }
+.raindrop .re { font-size: 34px; line-height: 1.1; }
+.raindrop .rw { font-weight: 900; font-size: 0.82em; }
+@keyframes bsway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.popflash { animation: popIn 0.4s; }
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.opt:nth-child(1) { animation-delay: 0.03s; }
+.opt:nth-child(2) { animation-delay: 0.09s; }
+.opt:nth-child(3) { animation-delay: 0.15s; }
+.opt:nth-child(4) { animation-delay: 0.21s; }
+
+.gscore .v.bump { display: inline-block; animation: okBounce 0.45s; }
+@keyframes okBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); color: #f59e0b; }
+  100% { transform: scale(1); }
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 6px 0;
+  width: 100%;
+}
+.lane {
+  position: relative;
+  height: 66px;
+  border-radius: 18px;
+  border: 4px solid #ffffff;
+  overflow: hidden;
+  background: repeating-linear-gradient(90deg, #bbf7d0 0 42px, #a3e635 42px 84px);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
+}
+.lane.sky {
+  background: repeating-linear-gradient(90deg, #bfdbfe 0 42px, #93c5fd 42px 84px);
+}
+.runner {
+  position: absolute;
+  top: 7px;
+  font-size: 42px;
+  transition: left 0.45s cubic-bezier(0.34, 1.3, 0.5, 1);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+.lane .fin {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  font-size: 46px;
+  animation: pulse 1.4s infinite;
+}
+.lane-label {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  font-weight: 900;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 3px 10px;
+  font-size: 0.82em;
+  z-index: 2;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* ═══ ANTİ-CRASH KURTARMA KUTUSU ═══ */
+#crash-banner {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: #ffffff;
+  border: 4px solid #f43f5e;
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-float);
+  z-index: 9999;
+  max-width: 380px;
+  text-align: left;
+}
+#crash-banner.show { display: block; animation: popIn 0.3s; }
+
+  </style>
+</head>
+<body>
+  <!-- Gökyüzü Dekoratif Parçacıkları -->
+  <div id="floaties" aria-hidden="true"></div>
+
+  <!-- Görsel Efekt Katmanı (Konfeti, Yıldız, Balon) -->
+  <div id="fxlayer" aria-hidden="true"></div>
+
+  <!-- Anti-Crash Kurtarma Paneli (P0 Dayanıklılık) -->
+  <div id="crash-banner" role="alert">
+    <div style="font-weight:900;font-size:1.1em;color:#991b1b;margin-bottom:4px">⚠️ Bir aksilik oldu!</div>
+    <div style="font-size:0.88em;color:#475569;margin-bottom:12px">Endişelenmeyin, puanlarınız ve seviyeniz güvende. Kaldığınız yerden devam edebilirsiniz.</div>
+    <div style="display:flex;gap:8px">
+      <button class="btn small green" id="crash-resume">🔄 Devam Et</button>
+      <button class="btn small white" id="crash-home">🏠 Ana Sayfa</button>
+    </div>
+  </div>
+
+  <!-- Ana Uygulama Kapsayıcısı -->
+  <main id="app"></main>
+
+  <script>
+/* ============================================================
+   📚 VERİ BANKASI — Cambridge Global English 1 & 2 (25 Ünite)
+   ============================================================ */
+
+const STAGES = [
+  {
+    "id": "s1",
+    "name": "1. Sınıf",
+    "book": "Cambridge Global English 1",
+    "emoji": "🟢",
+    "cls": "s1",
+    "desc": "Starter + 9 ünite · Renkler, aile, okul, çiftlik"
+  },
+  {
+    "id": "s2",
+    "name": "2. Sınıf",
+    "book": "Cambridge Global English 2",
+    "emoji": "🔵",
+    "cls": "s2",
+    "desc": "9 ünite · Meslekler, hava, doğa, şehir, ölçüm"
+  }
+];
+
+const ALLSETS = [
+  {
+    "id": "s1u0",
+    "stage": "s1",
+    "no": "0",
+    "title": "Welcome & Hello",
+    "tr": "Tanışma ve Selamlaşma",
+    "emoji": "👋",
+    "cats": [
+      "Greetings",
+      "Colors",
+      "Numbers"
+    ],
+    "w": [
+      [
+        "hello",
+        "👋",
+        "merhaba",
+        0
+      ],
+      [
+        "goodbye",
+        "🙋",
+        "hoşça kal",
+        0
+      ],
+      [
+        "friend",
+        "🤝",
+        "arkadaş",
+        0
+      ],
+      [
+        "name",
+        "🏷️",
+        "isim / ad",
+        0
+      ],
+      [
+        "red",
+        "🔴",
+        "kırmızı",
+        1
+      ],
+      [
+        "blue",
+        "🔵",
+        "mavi",
+        1
+      ],
+      [
+        "yellow",
+        "🟡",
+        "sarı",
+        1
+      ],
+      [
+        "green",
+        "🟢",
+        "yeşil",
+        1
+      ],
+      [
+        "one",
+        "1️⃣",
+        "bir",
+        2
+      ],
+      [
+        "two",
+        "2️⃣",
+        "iki",
+        2
+      ],
+      [
+        "three",
+        "3️⃣",
+        "üç",
+        2
+      ],
+      [
+        "four",
+        "4️⃣",
+        "dört",
+        2
+      ],
+      [
+        "five",
+        "5️⃣",
+        "beş",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Hello, what is your name?",
+        "👋",
+        "Merhaba, senin adın ne?"
+      ],
+      [
+        "My name is Polly and you are my friend.",
+        "🤝",
+        "Benim adım Polly ve sen benim arkadaşımsın."
+      ],
+      [
+        "I like the color red and blue.",
+        "🎨",
+        "Kırmızı ve mavi rengi severim."
+      ],
+      [
+        "Can you see the green tree?",
+        "🟢",
+        "Yeşil ağacı görebiliyor musun?"
+      ],
+      [
+        "I have one yellow pencil.",
+        "✏️",
+        "Bir tane sarı kurşun kalemim var."
+      ],
+      [
+        "Count from one to five with me!",
+        "🔢",
+        "Benimle birden beşe kadar say!"
+      ]
+    ]
+  },
+  {
+    "id": "s1u1",
+    "stage": "s1",
+    "no": "1",
+    "title": "Welcome to School",
+    "tr": "Okula Hoş Geldiniz",
+    "emoji": "🎒",
+    "cats": [
+      "School Items",
+      "Actions",
+      "Classroom"
+    ],
+    "w": [
+      [
+        "pencil",
+        "✏️",
+        "kurşun kalem",
+        0
+      ],
+      [
+        "book",
+        "📖",
+        "kitap",
+        0
+      ],
+      [
+        "bag",
+        "🎒",
+        "çanta",
+        0
+      ],
+      [
+        "ruler",
+        "📏",
+        "cetvel",
+        0
+      ],
+      [
+        "eraser",
+        "🧼",
+        "silgi",
+        0
+      ],
+      [
+        "desk",
+        "🪑",
+        "öğrenci sırası",
+        0
+      ],
+      [
+        "chair",
+        "💺",
+        "sandalye",
+        0
+      ],
+      [
+        "open",
+        "📂",
+        "açmak",
+        1
+      ],
+      [
+        "close",
+        "📁",
+        "kapatmak",
+        1
+      ],
+      [
+        "listen",
+        "👂",
+        "dinlemek",
+        1
+      ],
+      [
+        "point",
+        "👉",
+        "işaret etmek",
+        1
+      ],
+      [
+        "teacher",
+        "👩‍🏫",
+        "öğretmen",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Open your book, please.",
+        "📖",
+        "Lütfen kitabını aç."
+      ],
+      [
+        "Put your pencil in the bag.",
+        "🎒",
+        "Kalemini çantaya koy."
+      ],
+      [
+        "Listen to the teacher carefully.",
+        "👩‍🏫",
+        "Öğretmeni dikkatle dinle."
+      ],
+      [
+        "Point to the ruler on the desk.",
+        "📏",
+        "Sıradaki cetveli işaret et."
+      ],
+      [
+        "Sit down on your chair.",
+        "💺",
+        "Sandalyene otur."
+      ],
+      [
+        "Use your eraser to clean it.",
+        "🧼",
+        "Temizlemek için silgini kullan."
+      ]
+    ]
+  },
+  {
+    "id": "s1u2",
+    "stage": "s1",
+    "no": "2",
+    "title": "Family Time",
+    "tr": "Aile Zamanı",
+    "emoji": "👨‍👩‍👧‍👦",
+    "cats": [
+      "Family",
+      "Home",
+      "Feelings"
+    ],
+    "w": [
+      [
+        "mother",
+        "👩",
+        "anne",
+        0
+      ],
+      [
+        "father",
+        "👨",
+        "baba",
+        0
+      ],
+      [
+        "sister",
+        "👧",
+        "kız kardeş",
+        0
+      ],
+      [
+        "brother",
+        "👦",
+        "erkek kardeş",
+        0
+      ],
+      [
+        "baby",
+        "👶",
+        "bebek",
+        0
+      ],
+      [
+        "grandma",
+        "👵",
+        "büyükanne",
+        0
+      ],
+      [
+        "grandpa",
+        "👴",
+        "büyükbaba",
+        0
+      ],
+      [
+        "house",
+        "🏠",
+        "ev",
+        1
+      ],
+      [
+        "kitchen",
+        "🍳",
+        "mutfak",
+        1
+      ],
+      [
+        "bedroom",
+        "🛏️",
+        "yatak odası",
+        1
+      ],
+      [
+        "happy",
+        "😊",
+        "mutlu",
+        2
+      ],
+      [
+        "kind",
+        "💖",
+        "nazik / sevecen",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "This is my mother and father.",
+        "👨‍👩‍👦",
+        "Bu benim annem ve babam."
+      ],
+      [
+        "My sister is playing in the bedroom.",
+        "🛏️",
+        "Kız kardeşim yatak odasında oynuyor."
+      ],
+      [
+        "Grandma is making soup in the kitchen.",
+        "🍳",
+        "Büyükanne mutfakta çorba yapıyor."
+      ],
+      [
+        "We are a very happy family.",
+        "😊",
+        "Biz çok mutlu bir aileyiz."
+      ],
+      [
+        "The baby is sleeping in the house.",
+        "🏠",
+        "Bebek evde uyuyor."
+      ],
+      [
+        "My brother is very kind to me.",
+        "💖",
+        "Erkek kardeşim bana karşı çok naziktir."
+      ]
+    ]
+  },
+  {
+    "id": "s1u3",
+    "stage": "s1",
+    "no": "3",
+    "title": "Fun and Games",
+    "tr": "Eğlence ve Oyunlar",
+    "emoji": "🎲",
+    "cats": [
+      "Toys",
+      "Play Actions",
+      "Adjectives"
+    ],
+    "w": [
+      [
+        "ball",
+        "⚽",
+        "top",
+        0
+      ],
+      [
+        "doll",
+        "🪆",
+        "oyuncak bebek",
+        0
+      ],
+      [
+        "teddy",
+        "🧸",
+        "oyuncak ayı",
+        0
+      ],
+      [
+        "car",
+        "🚗",
+        "oyuncak araba",
+        0
+      ],
+      [
+        "puzzle",
+        "🧩",
+        "yapboz",
+        0
+      ],
+      [
+        "kite",
+        "🪁",
+        "uçurtma",
+        0
+      ],
+      [
+        "jump",
+        "🦘",
+        "zıplamak",
+        1
+      ],
+      [
+        "dance",
+        "💃",
+        "dans etmek",
+        1
+      ],
+      [
+        "run",
+        "🏃",
+        "koşmak",
+        1
+      ],
+      [
+        "big",
+        "🐘",
+        "büyük",
+        2
+      ],
+      [
+        "small",
+        "🐭",
+        "küçük",
+        2
+      ],
+      [
+        "fast",
+        "⚡",
+        "hızlı",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Kick the big ball into the goal!",
+        "⚽",
+        "Büyük topu kaleye at!"
+      ],
+      [
+        "The teddy is soft and brown.",
+        "🧸",
+        "Oyuncak ayı yumuşak ve kahverengidir."
+      ],
+      [
+        "I can fly my colorful kite.",
+        "🪁",
+        "Renkli uçurtmamı uçurabilirim."
+      ],
+      [
+        "Jump and dance with all your friends.",
+        "💃",
+        "Bütün arkadaşlarınla zıpla ve dans et."
+      ],
+      [
+        "The red car is very fast.",
+        "🚗",
+        "Kırmızı araba çok hızlıdır."
+      ],
+      [
+        "This is a small and fun puzzle.",
+        "🧩",
+        "Bu küçük ve eğlenceli bir yapbozdur."
+      ]
+    ]
+  },
+  {
+    "id": "s1u4",
+    "stage": "s1",
+    "no": "4",
+    "title": "Making Things",
+    "tr": "Bir Şeyler Yapmak",
+    "emoji": "🎨",
+    "cats": [
+      "Art Supplies",
+      "Shapes",
+      "Craft Verbs"
+    ],
+    "w": [
+      [
+        "paper",
+        "📄",
+        "kâğıt",
+        0
+      ],
+      [
+        "glue",
+        "🧴",
+        "yapıştırıcı",
+        0
+      ],
+      [
+        "scissors",
+        "✂️",
+        "makas",
+        0
+      ],
+      [
+        "paint",
+        "🎨",
+        "boya",
+        0
+      ],
+      [
+        "brush",
+        "🖌️",
+        "fırça",
+        0
+      ],
+      [
+        "circle",
+        "⭕",
+        "daire / çember",
+        1
+      ],
+      [
+        "square",
+        "⬛",
+        "kare",
+        1
+      ],
+      [
+        "triangle",
+        "🔺",
+        "üçgen",
+        1
+      ],
+      [
+        "cut",
+        "✄",
+        "kesmek",
+        2
+      ],
+      [
+        "stick",
+        "📎",
+        "yapıştırmak",
+        2
+      ],
+      [
+        "draw",
+        "✏️",
+        "çizmek",
+        2
+      ],
+      [
+        "fold",
+        "📑",
+        "katlamak",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Cut the paper with scissors.",
+        "✂️",
+        "Kâğıdı makasla kes."
+      ],
+      [
+        "Draw a yellow circle on the page.",
+        "⭕",
+        "Sayfaya sarı bir daire çiz."
+      ],
+      [
+        "Use the glue to stick the triangle.",
+        "🔺",
+        "Üçgeni yapıştırmak için yapıştırıcı kullan."
+      ],
+      [
+        "Paint the square with a big brush.",
+        "🖌️",
+        "Kareyi büyük bir fırçayla boya."
+      ],
+      [
+        "Fold the paper to make a hat.",
+        "📑",
+        "Şapka yapmak için kâğıdı katla."
+      ],
+      [
+        "I love to draw and paint pictures.",
+        "🎨",
+        "Resim çizmeyi ve boyamayı çok severim."
+      ]
+    ]
+  },
+  {
+    "id": "s1u5",
+    "stage": "s1",
+    "no": "5",
+    "title": "On the Farm",
+    "tr": "Çiftlikte",
+    "emoji": "🚜",
+    "cats": [
+      "Farm Animals",
+      "Animal Products",
+      "Farm Words"
+    ],
+    "w": [
+      [
+        "cow",
+        "🐄",
+        "inek",
+        0
+      ],
+      [
+        "sheep",
+        "🐑",
+        "koyun",
+        0
+      ],
+      [
+        "horse",
+        "🐎",
+        "at",
+        0
+      ],
+      [
+        "duck",
+        "🦆",
+        "ördek",
+        0
+      ],
+      [
+        "chicken",
+        "🐔",
+        "tavuk",
+        0
+      ],
+      [
+        "goat",
+        "🐐",
+        "keçi",
+        0
+      ],
+      [
+        "milk",
+        "🥛",
+        "süt",
+        1
+      ],
+      [
+        "egg",
+        "🥚",
+        "yumurta",
+        1
+      ],
+      [
+        "wool",
+        "🧶",
+        "yün",
+        1
+      ],
+      [
+        "barn",
+        "🏚️",
+        "ahır / samanlık",
+        2
+      ],
+      [
+        "farmer",
+        "👨‍🌾",
+        "çiftçi",
+        2
+      ],
+      [
+        "grass",
+        "🌱",
+        "çimen / ot",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The cow gives fresh milk every day.",
+        "🐄",
+        "İnek her gün taze süt verir."
+      ],
+      [
+        "The white sheep eats green grass.",
+        "🐑",
+        "Beyaz koyun yeşil çimen yer."
+      ],
+      [
+        "The duck swims happily in the pond.",
+        "🦆",
+        "Ördek gölette neşeyle yüzer."
+      ],
+      [
+        "The chicken lays a brown egg.",
+        "🥚",
+        "Tavuk kahverengi bir yumurta yumurtlar."
+      ],
+      [
+        "The horse is running near the barn.",
+        "🐎",
+        "At ahırın yanında koşuyor."
+      ],
+      [
+        "The farmer feeds the playful goat.",
+        "👨‍🌾",
+        "Çiftçi oyuncu keçiyi besliyor."
+      ]
+    ]
+  },
+  {
+    "id": "s1u6",
+    "stage": "s1",
+    "no": "6",
+    "title": "My Body",
+    "tr": "Vücudum",
+    "emoji": "👀",
+    "cats": [
+      "Body Parts",
+      "Face",
+      "Actions"
+    ],
+    "w": [
+      [
+        "head",
+        "🗣️",
+        "baş / kafa",
+        0
+      ],
+      [
+        "arm",
+        "💪",
+        "kol",
+        0
+      ],
+      [
+        "hand",
+        "✋",
+        "el",
+        0
+      ],
+      [
+        "leg",
+        "🦵",
+        "bacak",
+        0
+      ],
+      [
+        "foot",
+        "🦶",
+        "ayak",
+        0
+      ],
+      [
+        "eye",
+        "👁️",
+        "göz",
+        1
+      ],
+      [
+        "ear",
+        "👂",
+        "kulak",
+        1
+      ],
+      [
+        "nose",
+        "👃",
+        "burun",
+        1
+      ],
+      [
+        "mouth",
+        "👄",
+        "ağız",
+        1
+      ],
+      [
+        "clap",
+        "👏",
+        "alkışlamak",
+        2
+      ],
+      [
+        "stomp",
+        "👣",
+        "ayak vurmak",
+        2
+      ],
+      [
+        "touch",
+        "👉",
+        "dokunmak",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Touch your head with your hand.",
+        "✋",
+        "Elinle başına dokun."
+      ],
+      [
+        "Clap your hands and stomp your feet.",
+        "👏",
+        "Ellerini çırp ve ayaklarını yere vur."
+      ],
+      [
+        "I can see with my two eyes.",
+        "👁️",
+        "İki gözümle görebilirim."
+      ],
+      [
+        "Listen with your ear to the sound.",
+        "👂",
+        "Kulağınla sesi dinle."
+      ],
+      [
+        "Open your mouth and smile happily.",
+        "👄",
+        "Ağzını aç ve mutlulukla gülümse."
+      ],
+      [
+        "He has a strong arm and long leg.",
+        "💪",
+        "Onun güçlü bir kolu ve uzun bir bacağı var."
+      ]
+    ]
+  },
+  {
+    "id": "s1u7",
+    "stage": "s1",
+    "no": "7",
+    "title": "Travel and Transport",
+    "tr": "Ulaşım ve Taşıtlar",
+    "emoji": "🚗",
+    "cats": [
+      "Land Transport",
+      "Air & Water",
+      "Travel Verbs"
+    ],
+    "w": [
+      [
+        "bus",
+        "🚌",
+        "otobüs",
+        0
+      ],
+      [
+        "car",
+        "🚗",
+        "araba",
+        0
+      ],
+      [
+        "train",
+        "🚆",
+        "tren",
+        0
+      ],
+      [
+        "bicycle",
+        "🚲",
+        "bisiklet",
+        0
+      ],
+      [
+        "plane",
+        "✈️",
+        "uçak",
+        1
+      ],
+      [
+        "boat",
+        "⛵",
+        "tekne",
+        1
+      ],
+      [
+        "helicopter",
+        "🚁",
+        "helikopter",
+        1
+      ],
+      [
+        "drive",
+        "🚘",
+        "sürmek",
+        2
+      ],
+      [
+        "fly",
+        "🕊️",
+        "uçmak",
+        2
+      ],
+      [
+        "ride",
+        "🚴",
+        "binmek",
+        2
+      ],
+      [
+        "stop",
+        "🛑",
+        "durmak",
+        2
+      ],
+      [
+        "ticket",
+        "🎟️",
+        "bilet",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The yellow bus takes us to school.",
+        "🚌",
+        "Sarı otobüs bizi okula götürür."
+      ],
+      [
+        "I can ride my small bicycle.",
+        "🚲",
+        "Küçük bisikletime binebilirim."
+      ],
+      [
+        "The train is moving fast on the track.",
+        "🚆",
+        "Tren raylarda hızlı ilerliyor."
+      ],
+      [
+        "A plane can fly high in the sky.",
+        "✈️",
+        "Bir uçak gökyüzünde yükseklere uçabilir."
+      ],
+      [
+        "We ride a boat across the river.",
+        "⛵",
+        "Nehir boyunca bir tekneye biniyoruz."
+      ],
+      [
+        "Please show your ticket to the driver.",
+        "🎟️",
+        "Lütfen biletinizi şoföre gösterin."
+      ]
+    ]
+  },
+  {
+    "id": "s1u8",
+    "stage": "s1",
+    "no": "8",
+    "title": "Animals Around Us",
+    "tr": "Çevremizdeki Hayvanlar",
+    "emoji": "🐾",
+    "cats": [
+      "Wild Animals",
+      "Habitats",
+      "Animal Traits"
+    ],
+    "w": [
+      [
+        "lion",
+        "🦁",
+        "aslan",
+        0
+      ],
+      [
+        "elephant",
+        "🐘",
+        "fil",
+        0
+      ],
+      [
+        "monkey",
+        "🐒",
+        "maymun",
+        0
+      ],
+      [
+        "tiger",
+        "🐅",
+        "kaplan",
+        0
+      ],
+      [
+        "rabbit",
+        "🐇",
+        "tavşan",
+        0
+      ],
+      [
+        "bird",
+        "🐦",
+        "kuş",
+        0
+      ],
+      [
+        "jungle",
+        "🌴",
+        "orman / cangıl",
+        1
+      ],
+      [
+        "river",
+        "🏞️",
+        "nehir",
+        1
+      ],
+      [
+        "tree",
+        "🌳",
+        "ağaç",
+        1
+      ],
+      [
+        "climb",
+        "🧗",
+        "tırmanmak",
+        2
+      ],
+      [
+        "swim",
+        "🏊",
+        "yüzmek",
+        2
+      ],
+      [
+        "tail",
+        "🐕",
+        "kuyruk",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The lion roars loudly in the jungle.",
+        "🦁",
+        "Aslan ormanda yüksek sesle kükrer."
+      ],
+      [
+        "The big elephant drinks water from the river.",
+        "🐘",
+        "Büyük fil nehirden su içer."
+      ],
+      [
+        "The playful monkey can climb the tall tree.",
+        "🐒",
+        "Oyuncu maymun uzun ağaca tırmanabilir."
+      ],
+      [
+        "A bird can fly and sing a sweet song.",
+        "🐦",
+        "Bir kuş uçabilir ve tatlı bir şarkı söyleyebilir."
+      ],
+      [
+        "The rabbit has long ears and a short tail.",
+        "🐇",
+        "Tavşanın uzun kulakları ve kısa bir kuyruğu vardır."
+      ],
+      [
+        "Fish love to swim in the cool river.",
+        "🏊",
+        "Balıklar serin nehirde yüzmeyi sever."
+      ]
+    ]
+  },
+  {
+    "id": "s1u9",
+    "stage": "s1",
+    "no": "9",
+    "title": "Wonderful Water",
+    "tr": "Harika Su",
+    "emoji": "💧",
+    "cats": [
+      "Water in Nature",
+      "Sea Animals",
+      "Water Fun"
+    ],
+    "w": [
+      [
+        "water",
+        "💧",
+        "su",
+        0
+      ],
+      [
+        "rain",
+        "🌧️",
+        "yağmur",
+        0
+      ],
+      [
+        "sea",
+        "🌊",
+        "deniz",
+        0
+      ],
+      [
+        "river",
+        "🏞️",
+        "nehir",
+        0
+      ],
+      [
+        "puddle",
+        "💦",
+        "su birikintisi",
+        0
+      ],
+      [
+        "fish",
+        "🐟",
+        "balık",
+        1
+      ],
+      [
+        "crab",
+        "🦀",
+        "yengeç",
+        1
+      ],
+      [
+        "dolphin",
+        "🐬",
+        "yunus",
+        1
+      ],
+      [
+        "splash",
+        "🫧",
+        "sıçratmak",
+        2
+      ],
+      [
+        "drink",
+        "🥤",
+        "içmek",
+        2
+      ],
+      [
+        "wash",
+        "🧼",
+        "yıkamak",
+        2
+      ],
+      [
+        "clean",
+        "✨",
+        "temiz",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Plants and animals need fresh water to live.",
+        "💧",
+        "Bitkiler ve hayvanlar yaşamak için tatlı suya ihtiyaç duyar."
+      ],
+      [
+        "I put on boots to jump in the puddle.",
+        "💦",
+        "Su birikintisinde zıplamak için botlarımı giyiyorum."
+      ],
+      [
+        "The blue dolphin leaps out of the sea.",
+        "🐬",
+        "Mavi yunus denizden yukarı sıçrar."
+      ],
+      [
+        "Always drink clean water every day.",
+        "🥤",
+        "Her gün mutlaka temiz su için."
+      ],
+      [
+        "Wash your hands with soap and water.",
+        "🧼",
+        "Ellerinizi sabun ve suyla yıkayın."
+      ],
+      [
+        "Rain makes the flowers grow tall.",
+        "🌧️",
+        "Yağmur çiçeklerin uzamasını sağlar."
+      ]
+    ]
+  },
+  {
+    "id": "s1rev1",
+    "stage": "s1",
+    "no": "⭐",
+    "title": "Term 1 Review",
+    "tr": "1. Dönem Tekrarı",
+    "emoji": "⭐",
+    "mix": true,
+    "cats": [
+      "School & Colors",
+      "Family & Home",
+      "Toys & Fun"
+    ],
+    "w": [
+      [
+        "pencil",
+        "✏️",
+        "kalem",
+        0
+      ],
+      [
+        "bag",
+        "🎒",
+        "çanta",
+        0
+      ],
+      [
+        "red",
+        "🔴",
+        "kırmızı",
+        0
+      ],
+      [
+        "blue",
+        "🔵",
+        "mavi",
+        0
+      ],
+      [
+        "mother",
+        "👩",
+        "anne",
+        1
+      ],
+      [
+        "father",
+        "👨",
+        "baba",
+        1
+      ],
+      [
+        "house",
+        "🏠",
+        "ev",
+        1
+      ],
+      [
+        "ball",
+        "⚽",
+        "top",
+        2
+      ],
+      [
+        "kite",
+        "🪁",
+        "uçurtma",
+        2
+      ],
+      [
+        "happy",
+        "😊",
+        "mutlu",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "My red pencil is inside the school bag.",
+        "🎒",
+        "Kırmızı kalemim okul çantamın içinde."
+      ],
+      [
+        "Mother and father are at home.",
+        "👨‍👩‍👦",
+        "Anne ve baba evdedir."
+      ],
+      [
+        "Let us fly a colorful kite today.",
+        "🪁",
+        "Bugün rengârenk bir uçurtma uçuralım."
+      ],
+      [
+        "The blue ball bounces high in the house.",
+        "⚽",
+        "Mavi top evin içinde yükseğe zıplar."
+      ],
+      [
+        "We are all happy to learn English together.",
+        "😊",
+        "Birlikte İngilizce öğrendiğimiz için hepimiz mutluyuz."
+      ]
+    ]
+  },
+  {
+    "id": "s1rev2",
+    "stage": "s1",
+    "no": "🌟",
+    "title": "Term 2 Review",
+    "tr": "2. Dönem Tekrarı",
+    "emoji": "🌟",
+    "mix": true,
+    "cats": [
+      "Farm & Animals",
+      "Body & Motion",
+      "Travel & Water"
+    ],
+    "w": [
+      [
+        "cow",
+        "🐄",
+        "inek",
+        0
+      ],
+      [
+        "duck",
+        "🦆",
+        "ördek",
+        0
+      ],
+      [
+        "lion",
+        "🦁",
+        "aslan",
+        0
+      ],
+      [
+        "hand",
+        "✋",
+        "el",
+        1
+      ],
+      [
+        "foot",
+        "🦶",
+        "ayak",
+        1
+      ],
+      [
+        "clap",
+        "👏",
+        "alkışlamak",
+        1
+      ],
+      [
+        "bus",
+        "🚌",
+        "otobüs",
+        2
+      ],
+      [
+        "train",
+        "🚆",
+        "tren",
+        2
+      ],
+      [
+        "water",
+        "💧",
+        "su",
+        2
+      ],
+      [
+        "swim",
+        "🏊",
+        "yüzmek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The cow drinks cool water on the farm.",
+        "🐄",
+        "İnek çiftlikte serin su içer."
+      ],
+      [
+        "Clap your hand when the train arrives.",
+        "🚆",
+        "Tren geldiğinde ellerini çırp."
+      ],
+      [
+        "The yellow bus stops for the children.",
+        "🚌",
+        "Sarı otobüs çocuklar için durur."
+      ],
+      [
+        "The duck can swim across the river.",
+        "🦆",
+        "Ördek nehrin karşısına yüzebilir."
+      ],
+      [
+        "The brave lion walks on four feet.",
+        "🦁",
+        "Cesur aslan dört ayağı üzerinde yürür."
+      ]
+    ]
+  },
+  {
+    "id": "s1rev3",
+    "stage": "s1",
+    "no": "🔁",
+    "title": "Grade 1 Master Review",
+    "tr": "1. Sınıf Genel Tekrar",
+    "emoji": "🏆",
+    "mix": true,
+    "cats": [
+      "Everyday Words",
+      "Creatures & Nature",
+      "Actions & Play"
+    ],
+    "w": [
+      [
+        "hello",
+        "👋",
+        "merhaba",
+        0
+      ],
+      [
+        "friend",
+        "🤝",
+        "arkadaş",
+        0
+      ],
+      [
+        "book",
+        "📖",
+        "kitap",
+        0
+      ],
+      [
+        "sheep",
+        "🐑",
+        "koyun",
+        1
+      ],
+      [
+        "elephant",
+        "🐘",
+        "fil",
+        1
+      ],
+      [
+        "rain",
+        "🌧️",
+        "yağmur",
+        1
+      ],
+      [
+        "dance",
+        "💃",
+        "dans etmek",
+        2
+      ],
+      [
+        "draw",
+        "✏️",
+        "çizmek",
+        2
+      ],
+      [
+        "ride",
+        "🚴",
+        "binmek",
+        2
+      ],
+      [
+        "clean",
+        "✨",
+        "temiz",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Say hello to your best friend.",
+        "👋",
+        "En iyi arkadaşına merhaba de."
+      ],
+      [
+        "Open your book and draw a happy sheep.",
+        "📖",
+        "Kitabını aç ve mutlu bir koyun çiz."
+      ],
+      [
+        "The elephant walks under the gentle rain.",
+        "🐘",
+        "Fil hafif yağmurun altında yürür."
+      ],
+      [
+        "We ride bicycles and dance in the sun.",
+        "💃",
+        "Bisiklete biniyoruz ve güneşte dans ediyoruz."
+      ],
+      [
+        "Keep your classroom clean and tidy.",
+        "✨",
+        "Sınıfınızı temiz ve düzenli tutun."
+      ]
+    ]
+  },
+  {
+    "id": "s2u1",
+    "stage": "s2",
+    "no": "1",
+    "title": "Look in a Book",
+    "tr": "Kitaba Bak",
+    "emoji": "📚",
+    "cats": [
+      "Books & Reading",
+      "Story Elements",
+      "Classroom Life"
+    ],
+    "w": [
+      [
+        "book",
+        "📖",
+        "kitap",
+        0
+      ],
+      [
+        "story",
+        "📜",
+        "hikâye",
+        0
+      ],
+      [
+        "cover",
+        "📔",
+        "kitap kapağı",
+        0
+      ],
+      [
+        "page",
+        "📄",
+        "sayfa",
+        0
+      ],
+      [
+        "author",
+        "✍️",
+        "yazar",
+        1
+      ],
+      [
+        "illustrator",
+        "🎨",
+        "çizer",
+        1
+      ],
+      [
+        "character",
+        "🦸",
+        "karakter",
+        1
+      ],
+      [
+        "title",
+        "🏷️",
+        "başlık",
+        1
+      ],
+      [
+        "read",
+        "👓",
+        "okumak",
+        2
+      ],
+      [
+        "turn",
+        "🔄",
+        "çevirmek",
+        2
+      ],
+      [
+        "look",
+        "👀",
+        "bakmak",
+        2
+      ],
+      [
+        "library",
+        "🏛️",
+        "kütüphane",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Look at the colorful cover of this story book.",
+        "📖",
+        "Bu hikâye kitabının renkli kapağına bak."
+      ],
+      [
+        "Turn the page to read what happens next.",
+        "📄",
+        "Sırada ne olacağını okumak için sayfayı çevir."
+      ],
+      [
+        "The author wrote an exciting tale for us.",
+        "✍️",
+        "Yazar bizim için heyecan verici bir hikâye yazdı."
+      ],
+      [
+        "My favorite character is a clever little fox.",
+        "🦸",
+        "En sevdiğim karakter akıllı küçük bir tilkidir."
+      ],
+      [
+        "We visit the quiet library every Friday.",
+        "🏛️",
+        "Her Cuma sessiz kütüphaneyi ziyaret ederiz."
+      ],
+      [
+        "Read the title at the top of the page.",
+        "🏷️",
+        "Sayfanın başındaki başlığı oku."
+      ]
+    ]
+  },
+  {
+    "id": "s2u2",
+    "stage": "s2",
+    "no": "2",
+    "title": "Good Neighbours",
+    "tr": "İyi Komşular",
+    "emoji": "🏘️",
+    "cats": [
+      "Community People",
+      "Places",
+      "Helping Verbs"
+    ],
+    "w": [
+      [
+        "neighbour",
+        "🏡",
+        "komşu",
+        0
+      ],
+      [
+        "doctor",
+        "🩺",
+        "doktor",
+        0
+      ],
+      [
+        "police",
+        "👮",
+        "polis",
+        0
+      ],
+      [
+        "baker",
+        "🥖",
+        "fırıncı",
+        0
+      ],
+      [
+        "firefighter",
+        "🚒",
+        "itfaiyeci",
+        0
+      ],
+      [
+        "hospital",
+        "🏥",
+        "hastane",
+        1
+      ],
+      [
+        "bakery",
+        "🥐",
+        "fırın",
+        1
+      ],
+      [
+        "park",
+        "🌳",
+        "park",
+        1
+      ],
+      [
+        "shop",
+        "🏪",
+        "dükkân",
+        1
+      ],
+      [
+        "help",
+        "🤝",
+        "yardım etmek",
+        2
+      ],
+      [
+        "share",
+        "🤲",
+        "paylaşmak",
+        2
+      ],
+      [
+        "smile",
+        "😊",
+        "gülümsemek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "A good neighbour is always ready to help.",
+        "🏡",
+        "İyi bir komşu her zaman yardıma hazırdır."
+      ],
+      [
+        "The doctor cares for sick people at the hospital.",
+        "🩺",
+        "Doktor hastanedeki hasta insanlarla ilgilenir."
+      ],
+      [
+        "The friendly baker makes warm bread at the bakery.",
+        "🥖",
+        "Dost canlısı fırıncı fırında sıcak ekmek yapar."
+      ],
+      [
+        "The brave firefighter rides in a big red truck.",
+        "🚒",
+        "Cesur itfaiyeci büyük kırmızı bir kamyonda gider."
+      ],
+      [
+        "Children play together happily in the green park.",
+        "🌳",
+        "Çocuklar yeşil parkta neşeyle birlikte oynarlar."
+      ],
+      [
+        "Always share your toys and smile with kindness.",
+        "😊",
+        "Oyuncaklarını her zaman paylaş ve nezaketle gülümse."
+      ]
+    ]
+  },
+  {
+    "id": "s2u3",
+    "stage": "s2",
+    "no": "3",
+    "title": "Ready, Steady, Go!",
+    "tr": "Hazır, Başla!",
+    "emoji": "🏃",
+    "cats": [
+      "Sports",
+      "Movement Verbs",
+      "Health & Energy"
+    ],
+    "w": [
+      [
+        "run",
+        "🏃",
+        "koşmak",
+        0
+      ],
+      [
+        "jump",
+        "🦘",
+        "zıplamak",
+        0
+      ],
+      [
+        "skip",
+        "🤸",
+        "ip atlamak",
+        0
+      ],
+      [
+        "hop",
+        "🐰",
+        "seksek oynamak / sekmek",
+        0
+      ],
+      [
+        "catch",
+        "🧤",
+        "yakalamak",
+        1
+      ],
+      [
+        "throw",
+        "⚾",
+        "fırlatmak / atmak",
+        1
+      ],
+      [
+        "kick",
+        "⚽",
+        "tekmelemek",
+        1
+      ],
+      [
+        "score",
+        "🥅",
+        "sayı yapmak / gol atmak",
+        1
+      ],
+      [
+        "strong",
+        "💪",
+        "güçlü",
+        2
+      ],
+      [
+        "healthy",
+        "🥗",
+        "sağlıklı",
+        2
+      ],
+      [
+        "water",
+        "💧",
+        "su",
+        2
+      ],
+      [
+        "rest",
+        "🛋️",
+        "dinlenmek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Ready, steady, go! Run as fast as you can.",
+        "🏃",
+        "Hazır, dikkat, başla! Koşabildiğin kadar hızlı koş."
+      ],
+      [
+        "Throw the ball to me and I will catch it.",
+        "🧤",
+        "Topu bana at, ben yakalayacağım."
+      ],
+      [
+        "Kick the soccer ball to score a winning goal!",
+        "⚽",
+        "Kazanan golü atmak için futbol topuna vur!"
+      ],
+      [
+        "Eating fruits helps you stay strong and healthy.",
+        "🥗",
+        "Meyve yemek güçlü ve sağlıklı kalmanıza yardımcı olur."
+      ],
+      [
+        "Drink fresh water after playing outside.",
+        "💧",
+        "Dışarıda oynadıktan sonra temiz su için."
+      ],
+      [
+        "Sit on the bench to take a well-deserved rest.",
+        "🛋️",
+        "Hak edilmiş bir mola vermek için bankta oturun."
+      ]
+    ]
+  },
+  {
+    "id": "s2u4",
+    "stage": "s2",
+    "no": "4",
+    "title": "The Big Sky",
+    "tr": "Büyük Gökyüzü",
+    "emoji": "☀️",
+    "cats": [
+      "Sky Objects",
+      "Weather",
+      "Time of Day"
+    ],
+    "w": [
+      [
+        "sun",
+        "☀️",
+        "güneş",
+        0
+      ],
+      [
+        "moon",
+        "🌙",
+        "ay",
+        0
+      ],
+      [
+        "star",
+        "⭐",
+        "yıldız",
+        0
+      ],
+      [
+        "cloud",
+        "☁️",
+        "bulut",
+        0
+      ],
+      [
+        "rainbow",
+        "🌈",
+        "gökkuşağı",
+        0
+      ],
+      [
+        "wind",
+        "💨",
+        "rüzgâr",
+        1
+      ],
+      [
+        "rain",
+        "🌧️",
+        "yağmur",
+        1
+      ],
+      [
+        "storm",
+        "⛈️",
+        "fırtına",
+        1
+      ],
+      [
+        "morning",
+        "🌅",
+        "sabah",
+        2
+      ],
+      [
+        "night",
+        "🌃",
+        "gece",
+        2
+      ],
+      [
+        "shine",
+        "✨",
+        "parlamak",
+        2
+      ],
+      [
+        "blow",
+        "🌬️",
+        "esmek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The warm sun rises brightly in the morning.",
+        "☀️",
+        "Ilık güneş sabahleyin parlak bir şekilde doğar."
+      ],
+      [
+        "Look at that stunning rainbow across the big sky.",
+        "🌈",
+        "Büyük gökyüzündeki şu büyüleyici gökkuşağına bak."
+      ],
+      [
+        "The cool wind begins to blow through the trees.",
+        "💨",
+        "Ağaçların arasından serin rüzgâr esmeye başlar."
+      ],
+      [
+        "Millions of stars shine like diamonds at night.",
+        "⭐",
+        "Geceleri milyonlarca yıldız elmas gibi parıldar."
+      ],
+      [
+        "A fluffy white cloud drifts slowly overhead.",
+        "☁️",
+        "Tombul beyaz bir bulut yavaşça başımızın üzerinden süzülür."
+      ],
+      [
+        "The silver moon lights up the quiet garden.",
+        "🌙",
+        "Gümüş ay sessiz bahçeyi aydınlatır."
+      ]
+    ]
+  },
+  {
+    "id": "s2u5",
+    "stage": "s2",
+    "no": "5",
+    "title": "Let’s Measure",
+    "tr": "Ölçelim",
+    "emoji": "📏",
+    "cats": [
+      "Measurement Tools",
+      "Comparisons",
+      "Shapes & Math"
+    ],
+    "w": [
+      [
+        "ruler",
+        "📏",
+        "cetvel",
+        0
+      ],
+      [
+        "scale",
+        "⚖️",
+        "terazi / tartı",
+        0
+      ],
+      [
+        "tape",
+        "📐",
+        "mezura / şerit metre",
+        0
+      ],
+      [
+        "clock",
+        "🕐",
+        "saat",
+        0
+      ],
+      [
+        "long",
+        "🐍",
+        "uzun",
+        1
+      ],
+      [
+        "short",
+        "🐛",
+        "kısa",
+        1
+      ],
+      [
+        "heavy",
+        "🪨",
+        "ağır",
+        1
+      ],
+      [
+        "light",
+        "🪶",
+        "hafif",
+        1
+      ],
+      [
+        "tall",
+        "🦒",
+        "uzun boylu",
+        1
+      ],
+      [
+        "weight",
+        "🏋️",
+        "ağırlık",
+        2
+      ],
+      [
+        "size",
+        "📦",
+        "boyut / ebat",
+        2
+      ],
+      [
+        "count",
+        "🔢",
+        "saymak",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Use the wooden ruler to measure the paper.",
+        "📏",
+        "Kâğıdı ölçmek için tahta cetveli kullan."
+      ],
+      [
+        "The giraffe is very tall and the insect is short.",
+        "🦒",
+        "Zürafa çok uzun boyludur, böcek ise kısadır."
+      ],
+      [
+        "A heavy rock will tilt the balancing scale.",
+        "⚖️",
+        "Ağır bir taş denge terazisini eğer."
+      ],
+      [
+        "A bird feather is remarkably light.",
+        "🪶",
+        "Bir kuş tüyü son derece hafiftir."
+      ],
+      [
+        "Look at the clock to know the exact time.",
+        "🕐",
+        "Tam zamanı bilmek için saate bak."
+      ],
+      [
+        "Let us count all the objects by their size.",
+        "🔢",
+        "Tüm nesneleri boyutlarına göre sayalım."
+      ]
+    ]
+  },
+  {
+    "id": "s2u6",
+    "stage": "s2",
+    "no": "6",
+    "title": "Bugs and Critters",
+    "tr": "Böcekler ve Minik Canlılar",
+    "emoji": "🐞",
+    "cats": [
+      "Insects",
+      "Body Features",
+      "Garden Nature"
+    ],
+    "w": [
+      [
+        "ant",
+        "🐜",
+        "karınca",
+        0
+      ],
+      [
+        "bee",
+        "🐝",
+        "arı",
+        0
+      ],
+      [
+        "butterfly",
+        "🦋",
+        "kelebek",
+        0
+      ],
+      [
+        "ladybird",
+        "🐞",
+        "uğur böceği",
+        0
+      ],
+      [
+        "spider",
+        "🕷️",
+        "örümcek",
+        0
+      ],
+      [
+        "caterpillar",
+        "🐛",
+        "tırtıl",
+        0
+      ],
+      [
+        "wing",
+        "🪽",
+        "kanat",
+        1
+      ],
+      [
+        "leg",
+        "🦵",
+        "bacak",
+        1
+      ],
+      [
+        "spot",
+        "⚪",
+        "benek / leke",
+        1
+      ],
+      [
+        "flower",
+        "🌸",
+        "çiçek",
+        2
+      ],
+      [
+        "web",
+        "🕸️",
+        "ağ",
+        2
+      ],
+      [
+        "crawl",
+        "🪱",
+        "sürünmek / emeklemek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The busy bee visits each sweet flower.",
+        "🐝",
+        "Çalışkan arı her tatlı çiçeği ziyaret eder."
+      ],
+      [
+        "A tiny ladybird has red wings and black spots.",
+        "🐞",
+        "Minik bir uğur böceğinin kırmızı kanatları ve siyah benekleri vardır."
+      ],
+      [
+        "The caterpillar will change into a colorful butterfly.",
+        "🦋",
+        "Tırtıl renkli bir kelebeğe dönüşecek."
+      ],
+      [
+        "A spider spins a sticky web between the branches.",
+        "🕷️",
+        "Bir örümcek dalların arasına yapışkan bir ağ örer."
+      ],
+      [
+        "Hardworking ants crawl together in a straight line.",
+        "🐜",
+        "Çalışkan karıncalar düz bir çizgide birlikte sürünürler."
+      ],
+      [
+        "Count how many legs the bug has.",
+        "🦵",
+        "Böceğin kaç bacağı olduğunu say."
+      ]
+    ]
+  },
+  {
+    "id": "s2u7",
+    "stage": "s2",
+    "no": "7",
+    "title": "Long Ago and Today",
+    "tr": "Geçmişte ve Bugün",
+    "emoji": "⏳",
+    "cats": [
+      "Time Concepts",
+      "Old & Modern Things",
+      "History Verbs"
+    ],
+    "w": [
+      [
+        "past",
+        "📜",
+        "geçmiş",
+        0
+      ],
+      [
+        "present",
+        "📱",
+        "günümüz / şimdiki zaman",
+        0
+      ],
+      [
+        "castle",
+        "🏰",
+        "kale / şato",
+        0
+      ],
+      [
+        "museum",
+        "🏛️",
+        "müze",
+        0
+      ],
+      [
+        "candle",
+        "🕯️",
+        "mum",
+        1
+      ],
+      [
+        "lamp",
+        "💡",
+        "lamba",
+        1
+      ],
+      [
+        "quill",
+        "🪶",
+        "tüy kalem",
+        1
+      ],
+      [
+        "pen",
+        "🖊️",
+        "tükenmez kalem",
+        1
+      ],
+      [
+        "travel",
+        "🧳",
+        "seyahat etmek",
+        2
+      ],
+      [
+        "live",
+        "🏡",
+        "yaşamak",
+        2
+      ],
+      [
+        "old",
+        "👴",
+        "eski / yaşlı",
+        2
+      ],
+      [
+        "new",
+        "✨",
+        "yeni",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "People used a flickering candle long ago in the past.",
+        "🕯️",
+        "İnsanlar geçmişte uzun zaman önce titreyen bir mum kullanırdı."
+      ],
+      [
+        "Today we turn on an electric lamp with a click.",
+        "💡",
+        "Bugün ise tek bir tıkla elektrikli lambayı açıyoruz."
+      ],
+      [
+        "Kings and queens lived inside a stone castle.",
+        "🏰",
+        "Krallar ve kraliçeler taştan bir kalede yaşarlardı."
+      ],
+      [
+        "We can see ancient treasures at the museum.",
+        "🏛️",
+        "Eski hazineleri müzede görebiliriz."
+      ],
+      [
+        "Long ago children wrote with a bird quill.",
+        "🪶",
+        "Uzun zaman önce çocuklar kuş tüyü kalemle yazarlardı."
+      ],
+      [
+        "Modern trains travel much faster than old wagons.",
+        "🧳",
+        "Modern trenler eski vagonlardan çok daha hızlı seyahat eder."
+      ]
+    ]
+  },
+  {
+    "id": "s2u8",
+    "stage": "s2",
+    "no": "8",
+    "title": "In the City",
+    "tr": "Şehirde",
+    "emoji": "🏙️",
+    "cats": [
+      "City Places",
+      "Street Objects",
+      "City Directions"
+    ],
+    "w": [
+      [
+        "city",
+        "🏙️",
+        "şehir",
+        0
+      ],
+      [
+        "street",
+        "🛣️",
+        "cadde / sokak",
+        0
+      ],
+      [
+        "building",
+        "🏢",
+        "bina",
+        0
+      ],
+      [
+        "cinema",
+        "🎬",
+        "sinema",
+        0
+      ],
+      [
+        "station",
+        "🚉",
+        "istasyon",
+        0
+      ],
+      [
+        "traffic",
+        "🚦",
+        "trafik ışığı",
+        1
+      ],
+      [
+        "bridge",
+        "🌉",
+        "köprü",
+        1
+      ],
+      [
+        "crosswalk",
+        "🦓",
+        "yaya geçidi",
+        1
+      ],
+      [
+        "walk",
+        "🚶",
+        "yürümek",
+        2
+      ],
+      [
+        "cross",
+        "🚸",
+        "karşıya geçmek",
+        2
+      ],
+      [
+        "left",
+        "⬅️",
+        "sol",
+        2
+      ],
+      [
+        "right",
+        "➡️",
+        "sağ",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "There are tall buildings all over the big city.",
+        "🏢",
+        "Büyük şehrin her yerinde yüksek binalar var."
+      ],
+      [
+        "Always wait for the traffic light to turn green.",
+        "🚦",
+        "Trafik ışığının yeşile dönmesini mutlaka bekleyin."
+      ],
+      [
+        "Use the safe crosswalk to cross the busy street.",
+        "🦓",
+        "Kalabalık caddeden karşıya geçmek için güvenli yaya geçidini kullanın."
+      ],
+      [
+        "We catch an electric train at the central station.",
+        "🚉",
+        "Merkez istasyonundan elektrikli bir trene biniyoruz."
+      ],
+      [
+        "Turn left at the corner to find the modern cinema.",
+        "🎬",
+        "Modern sinemayı bulmak için köşeden sola dönün."
+      ],
+      [
+        "A long suspension bridge spans across the wide river.",
+        "🌉",
+        "Geniş nehrin üzerinde uzun bir asma köprü uzanır."
+      ]
+    ]
+  },
+  {
+    "id": "s2u9",
+    "stage": "s2",
+    "no": "9",
+    "title": "Wonderful World",
+    "tr": "Harika Dünya",
+    "emoji": "🌍",
+    "cats": [
+      "World Landscapes",
+      "Earth Care",
+      "Nature Wonders"
+    ],
+    "w": [
+      [
+        "world",
+        "🌍",
+        "dünya",
+        0
+      ],
+      [
+        "mountain",
+        "🏔️",
+        "dağ",
+        0
+      ],
+      [
+        "ocean",
+        "🌊",
+        "okyanus",
+        0
+      ],
+      [
+        "forest",
+        "🌲",
+        "orman",
+        0
+      ],
+      [
+        "island",
+        "🏝️",
+        "ada",
+        0
+      ],
+      [
+        "desert",
+        "🏜️",
+        "çöl",
+        0
+      ],
+      [
+        "plant",
+        "🌱",
+        "bitki / dikmek",
+        1
+      ],
+      [
+        "protect",
+        "🛡️",
+        "korumak",
+        1
+      ],
+      [
+        "recycle",
+        "♻️",
+        "geri dönüştürmek",
+        1
+      ],
+      [
+        "clean",
+        "✨",
+        "temiz",
+        2
+      ],
+      [
+        "love",
+        "❤️",
+        "sevmek",
+        2
+      ],
+      [
+        "share",
+        "🤲",
+        "paylaşmak",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Our world is filled with breathtaking wonders.",
+        "🌍",
+        "Dünyamız nefes kesici harikalarla doludur."
+      ],
+      [
+        "The snow-capped mountain reaches into the clouds.",
+        "🏔️",
+        "Karlarla kaplı dağ bulutlara kadar uzanır."
+      ],
+      [
+        "Vast blue oceans are home to playful whales.",
+        "🌊",
+        "Uçsuz bucaksız mavi okyanuslar oyuncu balinalara ev sahipliği yapar."
+      ],
+      [
+        "Plant a green tree to keep our air fresh and clean.",
+        "🌱",
+        "Havamızı temiz ve taze tutmak için yeşil bir ağaç dikin."
+      ],
+      [
+        "We must protect every endangered animal and forest.",
+        "🛡️",
+        "Tehlike altındaki her hayvanı ve ormanı korumalıyız."
+      ],
+      [
+        "Always recycle paper and plastic bottles.",
+        "♻️",
+        "Kâğıt ve plastik şişeleri her zaman geri dönüştürün."
+      ]
+    ]
+  },
+  {
+    "id": "s2rev1",
+    "stage": "s2",
+    "no": "⭐",
+    "title": "Stage 2 Mid Review",
+    "tr": "2. Sınıf Yarıyıl Tekrarı",
+    "emoji": "⭐",
+    "mix": true,
+    "cats": [
+      "Stories & Community",
+      "Sports & Energy",
+      "Sky & Measuring"
+    ],
+    "w": [
+      [
+        "story",
+        "📜",
+        "hikâye",
+        0
+      ],
+      [
+        "doctor",
+        "🩺",
+        "doktor",
+        0
+      ],
+      [
+        "park",
+        "🌳",
+        "park",
+        0
+      ],
+      [
+        "run",
+        "🏃",
+        "koşmak",
+        1
+      ],
+      [
+        "catch",
+        "🧤",
+        "yakalamak",
+        1
+      ],
+      [
+        "healthy",
+        "🥗",
+        "sağlıklı",
+        1
+      ],
+      [
+        "sun",
+        "☀️",
+        "güneş",
+        2
+      ],
+      [
+        "star",
+        "⭐",
+        "yıldız",
+        2
+      ],
+      [
+        "ruler",
+        "📏",
+        "cetvel",
+        2
+      ],
+      [
+        "clock",
+        "🕐",
+        "saat",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Read a wonderful story in the quiet park.",
+        "🌳",
+        "Sessiz parkta harika bir hikâye oku."
+      ],
+      [
+        "The kind doctor keeps us strong and healthy.",
+        "🩺",
+        "İyi kalpli doktor bizi güçlü ve sağlıklı tutar."
+      ],
+      [
+        "The sun warms our playground during the day.",
+        "☀️",
+        "Güneş gün boyunca oyun alanımızı ısıtır."
+      ],
+      [
+        "Run and catch the bouncing ball with your friend.",
+        "🏃",
+        "Arkadaşınla birlikte zıplayan topun peşinden koş ve yakala."
+      ],
+      [
+        "Use your ruler to measure and check the clock.",
+        "📏",
+        "Ölçüm yapmak için cetvelini kullan ve saati kontrol et."
+      ]
+    ]
+  },
+  {
+    "id": "s2rev2",
+    "stage": "s2",
+    "no": "🌟",
+    "title": "Nature & City Review",
+    "tr": "Doğa ve Şehir Tekrarı",
+    "emoji": "🌟",
+    "mix": true,
+    "cats": [
+      "Bugs & Nature",
+      "Time & City",
+      "Earth & Caring"
+    ],
+    "w": [
+      [
+        "bee",
+        "🐝",
+        "arı",
+        0
+      ],
+      [
+        "butterfly",
+        "🦋",
+        "kelebek",
+        0
+      ],
+      [
+        "castle",
+        "🏰",
+        "kale",
+        1
+      ],
+      [
+        "city",
+        "🏙️",
+        "şehir",
+        1
+      ],
+      [
+        "street",
+        "🛣️",
+        "cadde",
+        1
+      ],
+      [
+        "bridge",
+        "🌉",
+        "köprü",
+        1
+      ],
+      [
+        "world",
+        "🌍",
+        "dünya",
+        2
+      ],
+      [
+        "ocean",
+        "🌊",
+        "okyanus",
+        2
+      ],
+      [
+        "forest",
+        "🌲",
+        "orman",
+        2
+      ],
+      [
+        "protect",
+        "🛡️",
+        "korumak",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "The colorful butterfly flutters near the ancient castle.",
+        "🏰",
+        "Renkli kelebek antik kalenin yanında kanat çırpar."
+      ],
+      [
+        "The busy city has a wide bridge over the river.",
+        "🌉",
+        "Hareketli şehrin nehri üzerinde geniş bir köprü vardır."
+      ],
+      [
+        "A gentle bee gathers honey in the green forest.",
+        "🐝",
+        "Uysal arı yeşil ormanda bal toplar."
+      ],
+      [
+        "We cross the safe city street together.",
+        "🛣️",
+        "Güvenli şehir caddesini birlikte geçiyoruz."
+      ],
+      [
+        "Together we can protect our beautiful blue world.",
+        "🌍",
+        "Güzel mavi dünyamızı birlikte koruyabiliriz."
+      ]
+    ]
+  },
+  {
+    "id": "s2rev3",
+    "stage": "s2",
+    "no": "👑",
+    "title": "Grade 2 Grand Champion",
+    "tr": "2. Sınıf Şampiyon Tekrar",
+    "emoji": "👑",
+    "mix": true,
+    "cats": [
+      "Master Words",
+      "Daily Life & City",
+      "Discovery & Action"
+    ],
+    "w": [
+      [
+        "read",
+        "👓",
+        "okumak",
+        0
+      ],
+      [
+        "help",
+        "🤝",
+        "yardım etmek",
+        0
+      ],
+      [
+        "strong",
+        "💪",
+        "güçlü",
+        0
+      ],
+      [
+        "rainbow",
+        "🌈",
+        "gökkuşağı",
+        1
+      ],
+      [
+        "flower",
+        "🌸",
+        "çiçek",
+        1
+      ],
+      [
+        "museum",
+        "🏛️",
+        "müze",
+        1
+      ],
+      [
+        "crosswalk",
+        "🦓",
+        "yaya geçidi",
+        2
+      ],
+      [
+        "mountain",
+        "🏔️",
+        "dağ",
+        2
+      ],
+      [
+        "plant",
+        "🌱",
+        "bitki dikmek",
+        2
+      ],
+      [
+        "smile",
+        "😊",
+        "gülümsemek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Read every day to become smart and strong.",
+        "👓",
+        "Akıllı ve güçlü olmak için her gün kitap oku."
+      ],
+      [
+        "Always smile and help people whenever you can.",
+        "🤝",
+        "Her zaman gülümse ve elinden geldiğince insanlara yardım et."
+      ],
+      [
+        "A bright rainbow appeared above the snowy mountain.",
+        "🌈",
+        "Karlı dağın üzerinde parlak bir gökkuşağı belirdi."
+      ],
+      [
+        "Plant a lovely flower in front of the local museum.",
+        "🏛️",
+        "Yerel müzenin önüne sevimli bir çiçek dikin."
+      ],
+      [
+        "Use the marked crosswalk to safely cross the avenue.",
+        "🦓",
+        "Caddeden güvenle geçmek için işaretli yaya geçidini kullanın."
+      ]
+    ]
+  }
+];
+
+
+/* Toplam kelime sayısı */
+const totalWords = ALLSETS.reduce((acc, u) => acc + u.w.length, 0);
+
+/* Yardımcı Fonksiyonlar */
+function esc(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function el(html) {
+  const t = document.createElement('template');
+  t.innerHTML = html.trim();
+  return t.content.firstElementChild;
+}
+
+function pick(arr) {
+  if (!arr || !arr.length) return null;
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function sample(arr, n) {
+  if (!arr || !arr.length) return [];
+  const sh = shuffle([...arr]);
+  return sh.slice(0, Math.min(n, sh.length));
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function rnd(n) {
+  return Math.floor(Math.random() * n);
+}
+
+function cap(s) {
+  if (!s) return '';
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function EWORDS(u) {
+  if (!u || !u.w) return [];
+  return u.w.filter(w => w[1] && w[1].trim() !== '');
+}
+
+function unitById(id) {
+  return ALLSETS.find(u => u.id === id) || null;
+}
+
+function unitsOfStage(stageId) {
+  return ALLSETS.filter(u => u.stage === stageId);
+}
+
+/* Kalıcı Hafıza (P0 Dayanıklılık / Anti-Crash) */
+const store = {
+  _mem: {},
+  get(key) {
+    try {
+      const val = window.localStorage ? localStorage.getItem('polly_' + key) : null;
+      return val ? JSON.parse(val) : (this._mem[key] || null);
+    } catch (err) {
+      return this._mem[key] || null;
+    }
+  },
+  set(key, val) {
+    this._mem[key] = val;
+    try {
+      if (window.localStorage) {
+        localStorage.setItem('polly_' + key, JSON.stringify(val));
+      }
+    } catch (err) {
+      // Quota exceeded or private browsing safeguard
+    }
+  },
+  remove(key) {
+    delete this._mem[key];
+    try {
+      if (window.localStorage) {
+        localStorage.removeItem('polly_' + key);
+      }
+    } catch (err) {}
+  }
+};
+
+/* ============================================================
+   🎵 ŞARKI & CHANT KÖŞESİ — Başlangıç Koleksiyonu
+   ============================================================ */
+
+const SONGS = [
+  {
+    t: 'Twinkle, Twinkle, Little Star',
+    e: '⭐',
+    tune: 'Geleneksel',
+    u: 's1u0',
+    a: 'Ellerle yıldız hareketi',
+    l: [
+      'Twinkle, twinkle, little star,',
+      'How I wonder what you are!',
+      'Up above the world so high,',
+      'Like a diamond in the sky!'
+    ]
+  },
+  {
+    t: 'The Alphabet Song',
+    e: '🔤',
+    tune: 'Twinkle Twinkle',
+    u: 's1u1',
+    a: 'Harfleri göstererek',
+    l: [
+      'A, B, C, D, E, F, G,',
+      'H, I, J, K, L, M, N, O, P,',
+      'Q, R, S, T, U and V,',
+      'W, X, Y and Z!',
+      'Now I know my ABCs,',
+      'Next time won’t you sing with me?'
+    ]
+  },
+  {
+    t: 'Head, Shoulders, Knees and Toes',
+    e: '👀',
+    tune: 'Geleneksel',
+    u: 's1u6',
+    a: 'Vücut organlarına dokunarak',
+    l: [
+      'Head, shoulders, knees and toes, knees and toes!',
+      'Head, shoulders, knees and toes, knees and toes!',
+      'And eyes and ears and mouth and nose,',
+      'Head, shoulders, knees and toes, knees and toes!'
+    ]
+  },
+  {
+    t: 'Old MacDonald Had a Farm',
+    e: '🚜',
+    tune: 'Geleneksel',
+    u: 's1u5',
+    a: 'Hayvan sesleri taklidiyle',
+    l: [
+      'Old MacDonald had a farm, E-I-E-I-O!',
+      'And on his farm he had a cow, E-I-E-I-O!',
+      'With a moo-moo here, and a moo-moo there,',
+      'Here a moo, there a moo, everywhere a moo-moo!'
+    ]
+  },
+  {
+    t: 'The Wheels on the Bus',
+    e: '🚌',
+    tune: 'Geleneksel',
+    u: 's1u7',
+    a: 'Direksiyon çevirme hareketiyle',
+    l: [
+      'The wheels on the bus go round and round,',
+      'Round and round, round and round!',
+      'The wheels on the bus go round and round,',
+      'All through the town!'
+    ]
+  },
+  {
+    t: 'If You’re Happy and You Know It',
+    e: '😊',
+    tune: 'Geleneksel',
+    u: 's1u2',
+    a: 'Elleri çırparak',
+    l: [
+      'If you’re happy and you know it, clap your hands! (Clap, clap!)',
+      'If you’re happy and you know it, clap your hands! (Clap, clap!)',
+      'If you’re happy and you know it, and you really want to show it,',
+      'If you’re happy and you know it, clap your hands!'
+    ]
+  },
+  {
+    t: 'Row, Row, Row Your Boat',
+    e: '⛵',
+    tune: 'Geleneksel',
+    u: 's1u9',
+    a: 'Kürek çekme hareketiyle',
+    l: [
+      'Row, row, row your boat, gently down the stream,',
+      'Merrily, merrily, merrily, merrily, life is but a dream!'
+    ]
+  },
+  {
+    t: 'Five Little Monkeys',
+    e: '🐒',
+    tune: 'Geleneksel',
+    u: 's1u8',
+    a: 'Yatakta zıplama hareketiyle',
+    l: [
+      'Five little monkeys jumping on the bed,',
+      'One fell off and bumped his head!',
+      'Mama called the doctor and the doctor said:',
+      'No more monkeys jumping on the bed!'
+    ]
+  },
+  {
+    t: 'Incy Wincy Spider',
+    e: '🕷️',
+    tune: 'Geleneksel',
+    u: 's2u6',
+    a: 'Parmaklarla tırmanma hareketiyle',
+    l: [
+      'Incy Wincy spider climbed up the water spout,',
+      'Down came the rain and washed the spider out!',
+      'Out came the sunshine and dried up all the rain,',
+      'And Incy Wincy spider climbed up the spout again!'
+    ]
+  },
+  {
+    t: 'London Bridge Is Falling Down',
+    e: '🌉',
+    tune: 'Geleneksel',
+    u: 's2u8',
+    a: 'Köprü oyunu yaparak',
+    l: [
+      'London Bridge is falling down, falling down, falling down,',
+      'London Bridge is falling down, my fair lady!'
+    ]
+  }
+];
+
+/* ---------- Chant Şablonları ---------- */
+const CHANT_TPL = [
+  {
+    n: 'Echo Chant',
+    e: '🗣️',
+    mk: (u, W) => {
+      const a = W(0), b = W(1), c = W(2);
+      return [
+        `Listen and say: ${a}! (Say ${a}!)`,
+        `Look and say: ${b}! (Say ${b}!)`,
+        `One, two, three: ${c}!`,
+        `We love learning ${u.title}!`
+      ];
+    }
+  },
+  {
+    n: 'Clap and Stomp',
+    e: '👏',
+    mk: (u, W) => {
+      const a = W(0), b = W(1);
+      return [
+        `Clap your hands for ${a}! (Clap, clap!)`,
+        `Stomp your feet for ${b}! (Stomp, stomp!)`,
+        `Turn around and touch the ground!`,
+        `Hip, hip, hooray for ${a} and ${b}!`
+      ];
+    }
+  },
+  {
+    n: 'Rhythm Jump',
+    e: '🦘',
+    mk: (u, W) => {
+      const a = W(0), b = W(1);
+      return [
+        `Jump for ${a}! One, two, jump!`,
+        `Jump for ${b}! One, two, jump!`,
+        `Fast, fast, fast! Slow, slow, slow!`,
+        `Now we stop and off we go!`
+      ];
+    }
+  },
+  {
+    n: 'Question Chant',
+    e: '❓',
+    mk: (u, W) => {
+      const a = W(0), b = W(1);
+      return [
+        `Can you see the ${a}? Yes, I can!`,
+        `Can you point to ${b}? Yes, I can!`,
+        `Where is the ${a}? Here it is!`,
+        `Great job everyone, give a cheer!`
+      ];
+    }
+  }
+];
+
+/* Ünite bazlı dinamik chant üretici */
+function chantsForUnit(uid) {
+  const u = unitById(uid);
+  if (!u || !u.w || !u.w.length) return [];
+  const W = (i) => u.w[i % u.w.length][0];
+  return CHANT_TPL.map((tpl) => ({
+    t: `${tpl.n} — ${u.title}`,
+    e: tpl.e,
+    tune: 'Ritmik Chant',
+    u: u.id,
+    a: '',
+    l: tpl.mk(u, W)
+  }));
+}
+
+/* Tüm üniteler için chant listesi */
+const ALLCHANTS = ALLSETS.flatMap((u) => chantsForUnit(u.id));
+
+/* Toplam Şarkı ve Chant Sayısı (let olarak tanımlanır, songs-extra.js günceller) */
+let TOTALSONGS = SONGS.length + ALLCHANTS.length;
+
+/* ============================================================
+   🎵 ŞARKI & CHANT KÖŞESİ — v2 EK PAKET
+   20 yeni klasik şarkı + 8 yeni chant kalıbı
+   ============================================================ */
+SONGS.push(
+ {t:'Ten Green Bottles',e:'🥤',tune:'Geleneksel',u:'s2u5',a:'Parmakla say',l:['Ten green bottles hanging on the wall,','Ten green bottles hanging on the wall,','And if one green bottle should accidentally fall,','There\u2019ll be nine green bottles hanging on the wall!']},
+ {t:'The Farmer in the Dell',e:'🚜',tune:'Geleneksel',u:'s1u5',a:'El ele halka',l:['The farmer in the dell, the farmer in the dell,','Hi-ho, the derry-o, the farmer in the dell!','The farmer takes a wife, the farmer takes a wife,','Hi-ho, the derry-o, the farmer takes a wife!']},
+ {t:'Skip to My Lou',e:'💃',tune:'Geleneksel',u:'s1u3',a:'Eş değiştirerek dans',l:['Skip, skip, skip to my Lou!','Skip, skip, skip to my Lou!','Skip, skip, skip to my Lou,','Skip to my Lou, my darling!']},
+ {t:'She\u2019ll Be Coming Round the Mountain',e:'🚂',tune:'Geleneksel',u:'s1u7',a:'Tren hareketleriyle',l:['She\u2019ll be coming round the mountain when she comes! (Toot toot!)','She\u2019ll be coming round the mountain when she comes! (Toot toot!)','She\u2019ll be coming round the mountain, she\u2019ll be coming round the mountain,','She\u2019ll be coming round the mountain when she comes! (Toot toot!)']},
+ {t:'Yankee Doodle',e:'🎺',tune:'Geleneksel',u:'s1u7',a:'Marş tempoyla',l:['Yankee Doodle went to town, riding on a pony!','Stuck a feather in his hat and called it macaroni!','Yankee Doodle, keep it up, Yankee Doodle dandy!','Mind the music and the step, and with the girls be handy!']},
+ {t:'Pop Goes the Weasel',e:'🧺',tune:'Geleneksel',u:'s2u6',a:'POP\u2019da zıpla!',l:['All around the mulberry bush, the monkey chased the weasel!','The monkey thought \u2019twas all in fun — POP goes the weasel!','A penny for a spool of thread, a penny for a needle,','That\u2019s the way the money goes — POP goes the weasel!']},
+ {t:'Little Bo Peep',e:'🐑',tune:'Geleneksel',u:'s1u5',a:'',l:['Little Bo Peep has lost her sheep,','And doesn\u2019t know where to find them!','Leave them alone, and they\u2019ll come home,','Wagging their tails behind them!']},
+ {t:'Old King Cole',e:'👑',tune:'Geleneksel',u:'s1u3',a:'',l:['Old King Cole was a merry old soul,','And a merry old soul was he!','He called for his pipe, and he called for his bowl,','And he called for his fiddlers three!']},
+ {t:'Simple Simon',e:'🥧',tune:'Geleneksel',u:'s2u2',a:'',l:['Simple Simon met a pieman going to the fair,','Said Simple Simon to the pieman: Let me taste your ware!','Said the pieman unto Simon: Show me first your penny,','Said Simple Simon to the pieman: Indeed I have not any!']},
+ {t:'To Market, To Market',e:'🏪',tune:'Geleneksel',u:'s2u7',a:'Alışveriş hareketiyle',l:['To market, to market, to buy a fat pig,','Home again, home again, jiggety-jig!','To market, to market, to buy a fat hog,','Home again, home again, jiggety-jog!']},
+ {t:'Pussy Cat, Pussy Cat',e:'🐈',tune:'Geleneksel',u:'s1u8',a:'',l:['Pussy cat, pussy cat, where have you been?','I\u2019ve been up to London to visit the Queen!','Pussy cat, pussy cat, what did you there?','I frightened a little mouse under her chair!']},
+ {t:'Three Blind Mice',e:'🐭',tune:'Geleneksel',u:'s2u6',a:'',l:['Three blind mice, three blind mice,','See how they run, see how they run!','They all ran after the farmer\u2019s wife,','Who cut off their tails with a carving knife!','Did you ever see such a sight in your life,','As three blind mice?']},
+ {t:'Hush Little Baby',e:'🧸',tune:'Geleneksel',u:'s1u2',a:'Sallanarak',l:['Hush, little baby, don\u2019t say a word,','Mama\u2019s gonna buy you a mockingbird!','And if that mockingbird don\u2019t sing,','Mama\u2019s gonna buy you a diamond ring!']},
+ {t:'Rock-a-bye Baby',e:'👶',tune:'Geleneksel',u:'s1u2',a:'Sallanarak',l:['Rock-a-bye baby, on the treetop,','When the wind blows, the cradle will rock!','When the bough breaks, the cradle will fall,','And down will come baby, cradle and all!']},
+ {t:'Ring a Ring o\u2019 Roses',e:'🌹',tune:'Geleneksel',u:'s1u3',a:'Halka olup düşme oyunu',l:['Ring a ring o\u2019 roses, a pocket full of posies,','A-tishoo! A-tishoo! We all fall down!','Fishies in the water, fishies in the sea,','We all jump up with a one, two, three!']},
+ {t:'Oranges and Lemons',e:'🔔',tune:'Geleneksel',u:'s2u9',a:'Çan sesleriyle',l:['Oranges and lemons, say the bells of St. Clement\u2019s!','You owe me five farthings, say the bells of St. Martin\u2019s!','When will you pay me? say the bells of Old Bailey!','When I grow rich, say the bells of Shoreditch!']},
+ {t:'Polly Put the Kettle On',e:'🫖',tune:'Geleneksel',u:'s1u2',a:'Polly\u2019nin şarkısı!',l:['Polly put the kettle on, Polly put the kettle on,','Polly put the kettle on, we\u2019ll all have tea!','Sukey take it off again, Sukey take it off again,','Sukey take it off again, they\u2019ve all gone away!']},
+ {t:'Sing a Song of Sixpence',e:'🐦',tune:'Geleneksel',u:'s2u6',a:'',l:['Sing a song of sixpence, a pocket full of rye,','Four and twenty blackbirds baked in a pie!','When the pie was opened, the birds began to sing,','Wasn\u2019t that a dainty dish to set before the King?']},
+ {t:'The Grand Old Duke of York',e:'🥁',tune:'Geleneksel',u:'s2u3',a:'Ayağa kalk–otur hareketiyle',l:['Oh, the grand old Duke of York,','He had ten thousand men!','He marched them up to the top of the hill,','And he marched them down again!','And when they were up, they were up!','And when they were down, they were down!','And when they were only halfway up,','They were neither up nor down!']},
+ {t:'Hickory Dickory Dock',e:'🕐',tune:'Geleneksel',u:'s2u1',a:'Saati göstererek',l:['Hickory dickory dock, the mouse ran up the clock!','The clock struck one, the mouse ran down,','Hickory dickory dock!']}
+);
+
+/* ---------- 8 yeni chant kalıbı ---------- */
+CHANT_TPL.push(
+ {n:'Superhero Chant',e:'💪',mk:(u,W)=>{const a=W(0),b=W(1);return [`I am strong like ${a}! I am brave like ${a}!`,`I am fast like ${b}! I am brave like ${b}!`,`Super me! Super you! Super ${a} too!`]}},
+ {n:'Rocket Countdown',e:'🚀',mk:(u,W)=>{const a=W(0);return [`Five, four, three, two, one...`,`Blast off to ${a}! Whooosh! 🚀`,`Five, four, three, two, one...`,`Blast off! Here we come!`]}},
+ {n:'Magic Spell',e:'✨',mk:(u,W)=>{const a=W(0),b=W(1);return [`Abracadabra, alakazam!`,`Turn me into ${a}!`,`Hocus pocus, bibbidi boo!`,`Now turn me into ${b}!`]}},
+ {n:'Zoo Walk',e:'🦁',mk:(u,W)=>{const a=W(0),b=W(1);return [`Stomp like ${a}! Stomp, stomp, stomp!`,`Roar like ${b}! Roar, roar, roar!`,`Now tiptoe... shhh... like ${a}!`]}},
+ {n:'Birthday Chant',e:'🎂',mk:(u,W)=>{const a=W(0);return [`Happy birthday dear ${a}, happy birthday to you!`,`Clap, clap! Stomp, stomp! Hip hip hooray!`,`Happy birthday dear ${a}, have a wonderful day!`]}},
+ {n:'Bubble Pop',e:'🫧',mk:(u,W)=>{const a=W(0),b=W(1);return [`Big bubble ${a}! Pop! POP!`,`Little bubble ${b}! pop... pop...`,`Millions of bubbles everywhere — POP, POP, POP!`]}},
+ {n:'Telephone Chant',e:'☎️',mk:(u,W)=>{const a=W(0),b=W(1);return [`Ring, ring! Ring, ring! Hello, hello?`,`${cap(a)} is calling — hello, ${a}!`,`Ring, ring! Ring, ring! Hello, hello?`,`${cap(b)} is calling — goodbye, ${b}!`]}},
+ {n:'Wiggle Freeze',e:'🕺',mk:(u,W)=>{const a=W(0),b=W(1);return [`Wiggle like ${a}, wiggle like ${a}, wiggle like ${a}... FREEZE!`,`Wiggle like ${b}, wiggle like ${b}, wiggle like ${b}... FREEZE!`,`Everybody wiggle... and... FREEZE!`]}}
+);
+
+/* Chant listesini yeni kalıplarla yeniden üret */
+ALLCHANTS.length=0;
+ALLCHANTS.push(...ALLSETS.flatMap(u=>chantsForUnit(u.id)));
+TOTALSONGS=SONGS.length+ALLCHANTS.length;
+
+/* ============================================================
+   🔊 SES & GÖRSEL EFEKT MOTORU (Web Audio API + TTS + FX)
+   Offline çalışır, harici dosya/CDN gerektirmez.
+   ============================================================ */
+
+const MEDIA = {
+  ctx: null,
+  voice: null,
+  muted: false,
+
+  init() {
+    if (this.ctx) {
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
+      return;
+    }
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (AudioCtx) {
+      try {
+        this.ctx = new AudioCtx();
+      } catch (e) {
+        // AudioContext fallback for restricted environments
+      }
+    }
+    this.muted = !!store.get('muted');
+  },
+
+  toggleMute() {
+    this.muted = !this.muted;
+    store.set('muted', this.muted);
+    if (this.muted) {
+      this.stopSpeak();
+    }
+    return this.muted;
+  },
+
+  tone(freq, delay, dur, type = 'sine', gain = 0.1) {
+    if (this.muted || !this.ctx) return;
+    try {
+      const t0 = this.ctx.currentTime + (delay || 0);
+      const osc = this.ctx.createOscillator();
+      const g = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, t0);
+      g.gain.setValueAtTime(gain, t0);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      osc.connect(g);
+      g.connect(this.ctx.destination);
+      osc.start(t0);
+      osc.stop(t0 + dur);
+    } catch (e) {}
+  },
+
+  slide(startFreq, endFreq, dur, type = 'sine', gain = 0.1) {
+    if (this.muted || !this.ctx) return;
+    try {
+      const t0 = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const g = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(startFreq, t0);
+      osc.frequency.exponentialRampToValueAtTime(Math.max(10, endFreq), t0 + dur);
+      g.gain.setValueAtTime(gain, t0);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      osc.connect(g);
+      g.connect(this.ctx.destination);
+      osc.start(t0);
+      osc.stop(t0 + dur);
+    } catch (e) {}
+  },
+
+  noise(dur, gain = 0.08) {
+    if (this.muted || !this.ctx) return;
+    try {
+      const bufferSize = Math.floor(this.ctx.sampleRate * dur);
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+      const g = this.ctx.createGain();
+      g.gain.setValueAtTime(gain, this.ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + dur);
+      noise.connect(g);
+      g.connect(this.ctx.destination);
+      noise.start();
+    } catch (e) {}
+  },
+
+  fx(name) {
+    if (this.muted) return;
+    this.init();
+    const T = (f, d, l, tp = 'sine', gn = 0.1) => this.tone(f, d, l, tp, gn);
+
+    switch (name) {
+      case 'click':
+        T(800, 0, 0.03, 'triangle', 0.08);
+        break;
+      case 'pop':
+        this.slide(400, 1100, 0.08, 'sine', 0.15);
+        break;
+      case 'correct':
+        T(523.25, 0, 0.1, 'triangle', 0.12);
+        T(659.25, 0.08, 0.1, 'triangle', 0.12);
+        T(783.99, 0.16, 0.22, 'triangle', 0.14);
+        break;
+      case 'wrong':
+        T(220, 0, 0.12, 'sawtooth', 0.1);
+        T(185, 0.12, 0.25, 'sawtooth', 0.1);
+        break;
+      case 'hop':
+        this.slide(300, 700, 0.08, 'sine', 0.12);
+        break;
+      case 'whoosh':
+        this.noise(0.12, 0.07);
+        break;
+      case 'win':
+        [523, 659, 784, 1047, 1319].forEach((f, i) => T(f, i * 0.09, 0.22, 'triangle', 0.12));
+        break;
+      case 'levelup':
+        [440, 554, 659, 880].forEach((f, i) => T(f, i * 0.08, 0.2, 'sine', 0.12));
+        break;
+      case 'team':
+        T(440, 0, 0.1, 'square', 0.1);
+        T(554, 0.1, 0.1, 'square', 0.1);
+        T(659, 0.2, 0.1, 'square', 0.1);
+        break;
+      case 'catch':
+        this.slide(500, 1200, 0.14, 'triangle');
+        T(1500, 0.1, 0.08);
+        break;
+      case 'race':
+        this.slide(150, 900, 0.5, 'sawtooth', 0.09);
+        this.slide(200, 1100, 0.5, 'sawtooth', 0.07);
+        break;
+      case 'magic':
+        [1047, 1319, 1568, 2093].forEach((f, i) => T(f, i * 0.07, 0.18, 'sine', 0.14));
+        break;
+      case 'cheer':
+        [523, 659, 784, 1047].forEach((f) => T(f, 0, 0.5, 'triangle', 0.09));
+        break;
+      case 'boing':
+        this.slide(500, 150, 0.35, 'sine', 0.2);
+        this.slide(300, 90, 0.3, 'sine', 0.12);
+        break;
+      case 'drip':
+        T(1200, 0, 0.06, 'sine', 0.15);
+        T(800, 0.05, 0.08, 'sine', 0.12);
+        break;
+      case 'zoom':
+        this.slide(200, 2000, 0.4, 'sawtooth', 0.08);
+        break;
+      case 'tada':
+        [392, 523, 659, 784, 1047].forEach((f, i) => T(f, i * 0.08, 0.25, 'square', 0.1));
+        break;
+    }
+  },
+
+  getVoice() {
+    if (!window.speechSynthesis) return null;
+    if (this.voice) return this.voice;
+    const voices = speechSynthesis.getVoices();
+    if (!voices || !voices.length) return null;
+    // Prefer English voices: Google, Samantha, Daniel, or en-US/en-GB
+    const en = voices.filter((v) => /^en/i.test(v.lang));
+    const preferred =
+      en.find((v) => /natural|samantha|karen|daniel|google/i.test(v.name)) ||
+      en[0] ||
+      voices[0];
+    this.voice = preferred;
+    return preferred;
+  },
+
+  speak(text, rate = 0.88, onEnd = null) {
+    if (this.muted || !window.speechSynthesis) {
+      if (onEnd) setTimeout(onEnd, 300);
+      return;
+    }
+    try {
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      const v = this.getVoice();
+      if (v) u.voice = v;
+      u.rate = rate;
+      u.pitch = 1.05;
+      u.lang = 'en-US';
+      if (onEnd) {
+        u.onend = () => onEnd();
+        u.onerror = () => onEnd();
+      }
+      speechSynthesis.speak(u);
+    } catch (e) {
+      if (onEnd) setTimeout(onEnd, 300);
+    }
+  },
+
+  stopSpeak() {
+    if (window.speechSynthesis) {
+      try {
+        speechSynthesis.cancel();
+      } catch (e) {}
+    }
+  }
+};
+
+/* ============================================================
+   ✨ GÖRSEL EFEKT SİSTEMİ (Parçacık, Rozet, Bildirimler)
+   P1: Sınırlı bellek ve CPU tüketimi (maks 35 parçacık)
+   ============================================================ */
+
+const FX = {
+  confetti(count = 45) {
+    const L = document.getElementById('fxlayer');
+    if (!L) return;
+    const colors = ['#f43f5e', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
+    const total = Math.min(60, count); // Bounded particle count
+    for (let i = 0; i < total; i++) {
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = rnd(100) + 'vw';
+      p.style.backgroundColor = pick(colors);
+      p.style.animationDuration = 1.2 + Math.random() * 1.5 + 's';
+      p.style.animationDelay = Math.random() * 0.2 + 's';
+      L.appendChild(p);
+      setTimeout(() => p.remove(), 3000);
+    }
+  },
+
+  stars(x, y) {
+    const L = document.getElementById('fxlayer');
+    if (!L) return;
+    for (let i = 0; i < 6; i++) {
+      const s = document.createElement('span');
+      s.className = 'pop-star';
+      s.textContent = pick(['⭐', '✨', '🌟', '💫']);
+      s.style.left = (x || innerWidth / 2) + (rnd(50) - 25) + 'px';
+      s.style.top = (y || innerHeight / 2) + (rnd(50) - 25) + 'px';
+      L.appendChild(s);
+      setTimeout(() => s.remove(), 750);
+    }
+  },
+
+  notes(x, y) {
+    const L = document.getElementById('fxlayer');
+    if (!L) return;
+    for (let i = 0; i < 4; i++) {
+      const n = document.createElement('span');
+      n.className = 'pop-star';
+      n.textContent = pick(['🎵', '🎶', '🎼']);
+      n.style.left = (x || innerWidth / 2) + (rnd(60) - 30) + 'px';
+      n.style.top = (y || innerHeight / 2) + (rnd(40) - 20) + 'px';
+      L.appendChild(n);
+      setTimeout(() => n.remove(), 800);
+    }
+  },
+
+  shake(el) {
+    if (!el) return;
+    el.classList.add('shake-anim');
+    setTimeout(() => el.classList.remove('shake-anim'), 450);
+  },
+
+  fb(ok) {
+    const flash = document.createElement('div');
+    flash.className = ok ? 'fb-flash ok' : 'fb-flash no';
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 300);
+  },
+
+  mascotSay(msg, dur = 3200) {
+    const m = document.getElementById('mas');
+    let b = document.getElementById('mas-bubble');
+    if (!b) {
+      b = document.createElement('div');
+      b.id = 'mas-bubble';
+      b.className = 'mascot-bubble';
+      document.body.appendChild(b);
+    }
+    b.textContent = msg;
+    b.classList.add('show');
+    if (this._mt) clearTimeout(this._mt);
+    this._mt = setTimeout(() => {
+      b.classList.remove('show');
+    }, dur);
+  },
+
+  toast(msg, dur = 2200) {
+    let t = document.getElementById('app-toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'app-toast';
+      t.className = 'app-toast';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    if (this._tt) clearTimeout(this._tt);
+    this._tt = setTimeout(() => {
+      t.classList.remove('show');
+    }, dur);
+  }
+};
+
+/* ============================================================
+   🎮 OYUN MOTORLARI — BÖLÜM A (1-9)
+   ============================================================ */
+
+const ENGINES_A = [
+  /* ---------------- 1) 📇 FLAŞ KARTLAR ---------------- */
+  {
+    id: 'flash',
+    e: '📇',
+    t: 'Flaş Kartlar',
+    d: 'Kelimeleri gör, dinle ve tekrar et!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Tüm Kelimeler', c: { flip: true } },
+      { n: 'Hızlı Kartlar', c: { flip: false } }
+    ],
+    init(api) {
+      const u = api.unit;
+      const pool = shuffle(EWORDS(u));
+      let idx = 0;
+      const total = pool.length;
+
+      const renderCard = () => {
+        if (idx >= total) {
+          api.end({ score: total * 10, max: total * 10, note: 'Tüm kartları tamamladın! 🌟' });
+          return;
+        }
+        api.progress(idx + 1, total);
+        const w = pool[idx];
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="card flash-card" id="fc">
+              <div class="big-emoji popflash">${w[1] || '🔤'}</div>
+              <div class="pw" style="font-size:1.8em">${esc(w[0])}</div>
+              <div class="muted tr-hint" style="display:none;font-size:1.2em;color:#1e293b;font-weight:700">${esc(w[2])}</div>
+              <div class="muted" style="margin-top:6px">👆 Dokun: Türkçe anlamını gör!</div>
+            </div>
+            <div class="row" style="margin-top:16px">
+              <button class="btn blue" id="spk">🔊 Telaffuz</button>
+              <button class="btn green" id="nxt">Sonraki ➡️</button>
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+        const fc = api.root.querySelector('#fc');
+        const tr = api.root.querySelector('.tr-hint');
+        fc.onclick = () => {
+          if (tr.style.display === 'none') {
+            tr.style.display = 'block';
+            MEDIA.fx('pop');
+          } else {
+            tr.style.display = 'none';
+          }
+        };
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
+        api.root.querySelector('#nxt').onclick = () => {
+          api.add(10);
+          MEDIA.fx('whoosh');
+          idx++;
+          renderCard();
+        };
+      };
+      renderCard();
+    }
+  },
+
+  /* ---------------- 2) 🧩 KELİME EŞLEŞTİRME ---------------- */
+  {
+    id: 'match',
+    e: '🧩',
+    t: 'Kelime Eşleştirme',
+    d: 'Kelimeyi doğru görsel veya anlamla eşleştir!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay (4 Çift)', c: { pairs: 4 } },
+      { n: 'Orta (6 Çift)', c: { pairs: 6 } },
+      { n: 'Zor (8 Çift)', c: { pairs: 8 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      const pool = sample(EWORDS(u), Math.min(cfg.pairs, EWORDS(u).length));
+      let selWord = null, selEmoji = null, matched = 0;
+
+      const words = shuffle(pool);
+      const emojis = shuffle(pool);
+
+      api.root.innerHTML = `
+        <div class="center">
+          <div class="prompt-box"><div class="pw">Kelimeleri eşleriyle birleştir! 🧩</div></div>
+          <div class="match-grid">
+            <div class="col" id="mw">
+              ${words.map(w => `<div class="opt txt" data-w="${esc(w[0])}"><span class="ow">${esc(w[0])}</span></div>`).join('')}
+            </div>
+            <div class="col" id="me">
+              ${emojis.map(w => `<div class="opt" data-w="${esc(w[0])}"><span class="oe">${w[1]}</span><span class="muted">${esc(w[2])}</span></div>`).join('')}
+            </div>
+          </div>
+        </div>`;
+
+      const checkMatch = () => {
+        if (!selWord || !selEmoji) return;
+        if (selWord.dataset.w === selEmoji.dataset.w) {
+          selWord.classList.add('ok');
+          selEmoji.classList.add('ok');
+          selWord.style.pointerEvents = 'none';
+          selEmoji.style.pointerEvents = 'none';
+          MEDIA.fx('correct');
+          FX.stars();
+          api.add(15);
+          matched++;
+          api.progress(matched, pool.length);
+          selWord = null;
+          selEmoji = null;
+          if (matched >= pool.length) {
+            setTimeout(() => {
+              api.end({ score: api.score, max: pool.length * 15, note: 'Mükemmel eşleştirme! 🧩' });
+            }, 600);
+          }
+        } else {
+          selWord.classList.add('no');
+          selEmoji.classList.add('no');
+          MEDIA.fx('wrong');
+          const w1 = selWord, e1 = selEmoji;
+          setTimeout(() => {
+            w1.classList.remove('no', 'sel');
+            e1.classList.remove('no', 'sel');
+          }, 600);
+          selWord = null;
+          selEmoji = null;
+        }
+      };
+
+      api.root.querySelector('#mw').onclick = (e) => {
+        const o = e.target.closest('.opt');
+        if (!o || o.classList.contains('ok')) return;
+        api.root.querySelectorAll('#mw .opt').forEach(x => x.classList.remove('sel'));
+        o.classList.add('sel');
+        selWord = o;
+        MEDIA.speak(o.dataset.w);
+        checkMatch();
+      };
+
+      api.root.querySelector('#me').onclick = (e) => {
+        const o = e.target.closest('.opt');
+        if (!o || o.classList.contains('ok')) return;
+        api.root.querySelectorAll('#me .opt').forEach(x => x.classList.remove('sel'));
+        o.classList.add('sel');
+        selEmoji = o;
+        MEDIA.fx('click');
+        checkMatch();
+      };
+    }
+  },
+
+  /* ---------------- 3) 🎈 BALON PATLATMA ---------------- */
+  {
+    id: 'pop',
+    e: '🎈',
+    t: 'Balon Patlatma',
+    d: 'Doğru balonları patlat, puanları topla!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Sakin (8 Soru)', c: { total: 8, speed: 1 } },
+      { n: 'Hızlı (12 Soru)', c: { total: 12, speed: 1.5 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let step = 0;
+
+      const round = () => {
+        if (step >= cfg.total) {
+          api.end({ score: api.score, max: cfg.total * 10, note: 'Balon ustası! 🎈' });
+          return;
+        }
+        api.progress(step + 1, cfg.total);
+        const target = pick(pool);
+        const others = sample(pool.filter(x => x !== target), 3);
+        const opts = shuffle([target, ...others]);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <span class="pe">${target[1]}</span>
+              <div class="pw">Patlat: <b style="color:#2563eb">${esc(target[0])}</b></div>
+              <button class="btn small blue" id="sp">🔊 Dinle</button>
+            </div>
+            <div class="balloon-field" id="bf" style="display:flex;flex-wrap:wrap;justify-content:center;gap:18px;min-height:260px;align-items:center">
+              ${opts.map(o => `
+                <div class="balloon popflash" data-ok="${o === target ? 1 : 0}" style="cursor:pointer;background:#fff;border:4px solid #f43f5e;border-radius:50% 50% 50% 12px;padding:24px 28px;text-align:center;box-shadow:0 8px 12px rgba(0,0,0,0.1);transition:transform 0.15s">
+                  <div style="font-size:38px">${o[1]}</div>
+                  <div style="font-weight:900;font-size:1.1em;color:#1e293b">${esc(o[0])}</div>
+                </div>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(target[0]);
+        api.root.querySelector('#sp').onclick = () => MEDIA.speak(target[0]);
+
+        api.root.querySelectorAll('.balloon').forEach(b => {
+          b.onclick = (e) => {
+            if (b.dataset.ok === '1') {
+              b.style.transform = 'scale(1.3) rotate(15deg)';
+              b.style.opacity = '0';
+              MEDIA.fx('pop');
+              FX.stars(e.clientX, e.clientY);
+              api.add(10);
+              step++;
+              setTimeout(round, 600);
+            } else {
+              MEDIA.fx('wrong');
+              FX.shake(b);
+            }
+          };
+        });
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 4) 🧠 HAFIZA KARTLARI ---------------- */
+  {
+    id: 'mem',
+    e: '🧠',
+    t: 'Hafıza Kartları',
+    d: 'Kartları çevir, gizli eşleri bul!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay (6 Kart)', c: { pairs: 3 } },
+      { n: 'Orta (8 Kart)', c: { pairs: 4 } },
+      { n: 'Zor (12 Kart)', c: { pairs: 6 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      const selected = sample(EWORDS(u), Math.min(cfg.pairs, EWORDS(u).length));
+      const deck = [];
+      selected.forEach(w => {
+        deck.push({ id: w[0], t: 'word', content: w[0], w });
+        deck.push({ id: w[0], t: 'emoji', content: w[1], w });
+      });
+      const cards = shuffle(deck);
+      let f1 = null, f2 = null, lock = false, pairsFound = 0;
+
+      api.root.innerHTML = `
+        <div class="center">
+          <div class="prompt-box"><div class="pw">Hafıza Kartları: Eşleri bul! 🧠</div></div>
+          <div class="opt-grid" id="mg" style="grid-template-columns:repeat(auto-fit,minmax(90px,1fr));max-width:540px;margin:0 auto">
+            ${cards.map((c, i) => `
+              <div class="opt memory-card" data-idx="${i}" style="height:100px;font-size:2em;display:flex;align-items:center;justify-content:center;background:#e0e7ff;border:4px solid #818cf8;border-radius:16px;cursor:pointer">
+                <span class="card-back">❓</span>
+                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : c.content}</span>
+              </div>`).join('')}
+          </div>
+        </div>`;
+
+      api.root.querySelector('#mg').onclick = (e) => {
+        const elCard = e.target.closest('.memory-card');
+        if (!elCard || lock || elCard.classList.contains('matched') || elCard === f1) return;
+
+        const idx = +elCard.dataset.idx;
+        const item = cards[idx];
+        elCard.querySelector('.card-back').style.display = 'none';
+        elCard.querySelector('.card-front').style.display = 'block';
+        elCard.style.background = '#ffffff';
+        MEDIA.fx('pop');
+        if (item.t === 'word') MEDIA.speak(item.content);
+
+        if (!f1) {
+          f1 = elCard;
+        } else {
+          f2 = elCard;
+          lock = true;
+          const i1 = cards[+f1.dataset.idx];
+          const i2 = cards[+f2.dataset.idx];
+
+          if (i1.id === i2.id) {
+            f1.classList.add('matched', 'ok');
+            f2.classList.add('matched', 'ok');
+            MEDIA.fx('correct');
+            api.add(15);
+            pairsFound++;
+            api.progress(pairsFound, cfg.pairs);
+            f1 = null;
+            f2 = null;
+            lock = false;
+            if (pairsFound >= cfg.pairs) {
+              setTimeout(() => {
+                api.end({ score: api.score, max: cfg.pairs * 15, note: 'Hafıza şampiyonu! 🏆' });
+              }, 700);
+            }
+          } else {
+            MEDIA.fx('wrong');
+            setTimeout(() => {
+              f1.querySelector('.card-back').style.display = 'block';
+              f1.querySelector('.card-front').style.display = 'none';
+              f1.style.background = '#e0e7ff';
+              f2.querySelector('.card-back').style.display = 'none';
+              f2.querySelector('.card-front').style.display = 'none';
+              f2.querySelector('.card-back').style.display = 'block';
+              f2.style.background = '#e0e7ff';
+              f1 = null;
+              f2 = null;
+              lock = false;
+            }, 900);
+          }
+        }
+      };
+    }
+  },
+
+  /* ---------------- 5) 🎧 DİNLE VE BUL ---------------- */
+  {
+    id: 'listen',
+    e: '🎧',
+    t: 'Dinle ve Bul',
+    d: 'Polly söylesin, sen doğru kelimeyi seç!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay (3 Şık)', c: { choices: 3, rounds: 8 } },
+      { n: 'Zor (4 Şık)', c: { choices: 4, rounds: 10 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let i = 0;
+
+      const round = () => {
+        if (i >= cfg.rounds) {
+          api.end({ score: api.score, max: cfg.rounds * 10, note: 'Harika kulaklar! 🎧' });
+          return;
+        }
+        api.progress(i + 1, cfg.rounds);
+        const correct = pick(pool);
+        const others = sample(pool.filter(x => x !== correct), cfg.choices - 1);
+        const opts = shuffle([correct, ...others]);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <div class="big-emoji popflash">🎧</div>
+              <div class="pw">Dinle ve doğru kelimeyi seç!</div>
+              <button class="btn blue" id="spk" style="margin-top:8px">🔊 Tekrar Dinle</button>
+            </div>
+            <div class="opt-grid">
+              ${opts.map(o => `
+                <div class="opt" data-ok="${o === correct ? 1 : 0}">
+                  <span class="oe">${o[1]}</span>
+                  <span class="ow">${esc(o[0])}</span>
+                </div>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(correct[0]);
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(correct[0]);
+
+        api.root.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.ok === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('correct');
+              FX.fb(true);
+              api.add(10);
+              i++;
+              setTimeout(round, 800);
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+              api.root.querySelectorAll('.opt').forEach(x => {
+                if (x.dataset.ok === '1') x.classList.add('ok');
+              });
+              setTimeout(() => { i++; round(); }, 1200);
+            }
+          };
+        });
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 6) 🐝 HECELE VE YAZ ---------------- */
+  {
+    id: 'spell',
+    e: '🐝',
+    t: 'Hecele ve Yaz',
+    d: 'Harflere dokun, kelimeyi doğru tamamla!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay (3-5 Harf)', c: { maxLen: 5, total: 6 } },
+      { n: 'Zor (Tüm Kelimeler)', c: { maxLen: 12, total: 8 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      const filtered = EWORDS(u).filter(w => w[0].length <= cfg.maxLen && /^[a-z]+$/i.test(w[0]));
+      const pool = shuffle(filtered.length ? filtered : EWORDS(u)).slice(0, cfg.total);
+      let i = 0;
+
+      const round = () => {
+        if (i >= pool.length) {
+          api.end({ score: api.score, max: pool.length * 15, note: 'Heceleme arısı! 🐝' });
+          return;
+        }
+        api.progress(i + 1, pool.length);
+        const w = pool[i];
+        const target = w[0].toLowerCase();
+        const letters = shuffle(target.split(''));
+        let current = '';
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <span class="pe">${w[1]}</span>
+              <div class="pw" style="font-size:1.2em;color:#4b5563">${esc(w[2])}</div>
+              <div class="spell-box" id="sb" style="display:flex;gap:8px;justify-content:center;margin:12px 0">
+                ${target.split('').map(() => `<span class="spell-slot" style="display:inline-block;width:38px;height:46px;border-bottom:4px solid #6366f1;font-size:2em;font-weight:900;text-align:center"></span>`).join('')}
+              </div>
+              <button class="btn small blue" id="spk">🔊 Dinle</button>
+            </div>
+            <div class="opt-grid" id="lg" style="grid-template-columns:repeat(auto-fit,minmax(50px,1fr));max-width:380px;margin:0 auto">
+              ${letters.map(l => `<button class="btn white l-btn" style="font-size:1.6em;padding:10px 14px">${l.toUpperCase()}</button>`).join('')}
+            </div>
+            <button class="btn small white" id="rst" style="margin-top:14px">🔄 Baştan Al</button>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
+
+        const slots = api.root.querySelectorAll('.spell-slot');
+        const updateSlots = () => {
+          slots.forEach((s, idx) => {
+            s.textContent = current[idx] ? current[idx].toUpperCase() : '';
+          });
+        };
+
+        api.root.querySelectorAll('.l-btn').forEach(btn => {
+          btn.onclick = () => {
+            if (current.length < target.length) {
+              current += btn.textContent.toLowerCase();
+              btn.disabled = true;
+              btn.style.opacity = '0.3';
+              MEDIA.fx('pop');
+              updateSlots();
+
+              if (current.length === target.length) {
+                if (current === target) {
+                  MEDIA.fx('correct');
+                  FX.fb(true);
+                  MEDIA.speak(w[0]);
+                  api.add(15);
+                  i++;
+                  setTimeout(round, 900);
+                } else {
+                  MEDIA.fx('wrong');
+                  FX.shake(api.root.querySelector('#sb'));
+                  setTimeout(() => {
+                    current = '';
+                    updateSlots();
+                    api.root.querySelectorAll('.l-btn').forEach(b => {
+                      b.disabled = false;
+                      b.style.opacity = '1';
+                    });
+                  }, 600);
+                }
+              }
+            }
+          };
+        });
+
+        api.root.querySelector('#rst').onclick = () => {
+          current = '';
+          updateSlots();
+          api.root.querySelectorAll('.l-btn').forEach(b => {
+            b.disabled = false;
+            b.style.opacity = '1';
+          });
+        };
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 7) 🎡 KELİME ÇARKI ---------------- */
+  {
+    id: 'wheel',
+    e: '🎡',
+    t: 'Kelime Çarkı',
+    d: 'Çarkı çevir, duran kelimenin anlamını bil!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Standart (6 Tur)', c: { rounds: 6 } },
+      { n: 'Usta (10 Tur)', c: { rounds: 10 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let r = 0;
+
+      const spin = () => {
+        if (r >= cfg.rounds) {
+          api.end({ score: api.score, max: cfg.rounds * 10, note: 'Çark şampiyonu! 🎡' });
+          return;
+        }
+        api.progress(r + 1, cfg.rounds);
+        const w = pick(pool);
+        const others = sample(pool.filter(x => x !== w), 2);
+        const opts = shuffle([w, ...others]);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="wheel-box" style="margin-bottom:14px">
+              <div class="big-emoji popflash" style="font-size:72px">🎡</div>
+              <div class="pw" style="font-size:1.8em;color:#7c3aed">${esc(w[0])}</div>
+              <div class="muted">${w[1]}</div>
+              <button class="btn small blue" id="spk">🔊 Dinle</button>
+            </div>
+            <div class="opt-grid">
+              ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}">
+                <span class="ow" style="font-size:1.3em">${esc(o[2])}</span></div>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
+
+        api.root.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.ok === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('correct');
+              FX.stars();
+              api.add(10);
+              r++;
+              setTimeout(spin, 750);
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+              setTimeout(() => { r++; spin(); }, 1000);
+            }
+          };
+        });
+      };
+      spin();
+    }
+  },
+
+  /* ---------------- 8) ⚡ HIZLI CEVAP ---------------- */
+  {
+    id: 'speed',
+    e: '⚡',
+    t: 'Hızlı Cevap',
+    d: 'Süre bitmeden en çok doğru kelimeyi tıkla!',
+    stages: [1, 2],
+    levels: [
+      { n: '30 Saniye', c: { time: 30 } },
+      { n: '45 Saniye', c: { time: 45 } },
+      { n: '60 Saniye', c: { time: 60 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let timeLeft = cfg.time, count = 0, timer = null;
+
+      api.root.innerHTML = `
+        <div class="center">
+          <div class="prompt-box">
+            <div class="pw">Kalan Süre: <b id="st" style="color:#ef4444">${timeLeft}s</b></div>
+          </div>
+          <div id="sq-area" style="width:100%"></div>
+        </div>`;
+
+      const area = api.root.querySelector('#sq-area');
+
+      const nextQuestion = () => {
+        if (timeLeft <= 0) return;
+        const w = pick(pool);
+        const others = sample(pool.filter(x => x !== w), 2);
+        const opts = shuffle([w, ...others]);
+
+        area.innerHTML = `
+          <div class="center">
+            <div class="big-emoji">${w[1]}</div>
+            <div class="pw" style="font-size:1.5em">${esc(w[0])}</div>
+            <div class="opt-grid">
+              ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[2])}</span></div>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+
+        area.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (timeLeft <= 0) return;
+            if (o.dataset.ok === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('pop');
+              count++;
+              api.add(5);
+              setTimeout(nextQuestion, 250);
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+              setTimeout(nextQuestion, 450);
+            }
+          };
+        });
+      };
+
+      timer = setInterval(() => {
+        timeLeft--;
+        const st = document.getElementById('st');
+        if (st) st.textContent = timeLeft + 's';
+        api.progress(cfg.time - timeLeft, cfg.time);
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          api.end({ score: api.score, max: 80, note: `${count} doğru cevap verdin! ⚡` });
+        }
+      }, 1000);
+
+      api.cleanup(() => clearInterval(timer));
+      nextQuestion();
+    }
+  },
+
+  /* ---------------- 9) 📦 KATEGORİYE AYIR ---------------- */
+  {
+    id: 'sort',
+    e: '📦',
+    t: 'Kategoriye Ayır',
+    d: 'Kelime hangi kutuya ait? Doğru kutuyu seç!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Standart (8 Soru)', c: { rounds: 8 } },
+      { n: 'Usta (12 Soru)', c: { rounds: 12 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      let r = 0;
+      const cats = u.cats;
+
+      const round = () => {
+        if (r >= cfg.rounds) {
+          api.end({ score: api.score, max: cfg.rounds * 10, note: 'Düzen şampiyonu! 📦' });
+          return;
+        }
+        api.progress(r + 1, cfg.rounds);
+        const w = pick(u.w);
+        const correctCatIdx = w[3];
+        const correctCat = cats[correctCatIdx];
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <span class="pe">${w[1] || '🔤'}</span>
+              <div class="pw" style="font-size:1.6em"><b>${esc(w[0])}</b> (${esc(w[2])})</div>
+              <div class="muted">Hangi kategoriye ait?</div>
+            </div>
+            <div class="opt-grid">
+              ${cats.map((cat, i) => `
+                <div class="opt txt" data-ok="${i === correctCatIdx ? 1 : 0}">
+                  <span class="ow" style="font-size:1.2em">📦 ${esc(cat)}</span>
+                </div>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+
+        api.root.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.ok === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('correct');
+              FX.fb(true);
+              api.add(10);
+              r++;
+              setTimeout(round, 800);
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+              setTimeout(() => { r++; round(); }, 1100);
+            }
+          };
+        });
+      };
+      round();
+    }
+  }
+];
+
+/* Ana ENGINES dizisini oluştur */
+const ENGINES = [...ENGINES_A];
+
+/* ============================================================
+   🎮 OYUN MOTORLARI — BÖLÜM B (10-18)
+   ============================================================ */
+
+const ENGINES_B = [
+  /* ---------------- 10) 🎱 KELİME BİNGOSU ---------------- */
+  {
+    id: 'bingo',
+    e: '🎱',
+    t: 'Kelime Bingosu',
+    d: 'Söylenen kelimeleri tombala kartında bul, bingo yap!',
+    stages: [1, 2],
+    levels: [
+      { n: '3x3 Kart', c: { size: 9, lineToWin: 3 } },
+      { n: 'Hızlı Bingo', c: { size: 9, lineToWin: 2 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      const cardWords = sample(pool, Math.min(cfg.size, pool.length));
+      const marked = new Set();
+      let callPool = shuffle([...cardWords]);
+      let currentCall = null;
+
+      api.root.innerHTML = `
+        <div class="center">
+          <div class="prompt-box">
+            <div class="pw">Sıradaki Kelime: <b id="call-w" style="color:#2563eb;font-size:1.4em">...</b></div>
+            <button class="btn small blue" id="call-spk">🔊 Tekrar Dinle</button>
+          </div>
+          <div class="opt-grid" id="bg-grid" style="grid-template-columns:repeat(3,1fr);max-width:420px;margin:12px auto">
+            ${cardWords.map((w, i) => `
+              <div class="opt" data-w="${esc(w[0])}" style="min-height:90px">
+                <span class="oe">${w[1]}</span>
+                <span class="ow">${esc(w[0])}</span>
+              </div>`).join('')}
+          </div>
+        </div>`;
+
+      const nextCall = () => {
+        if (!callPool.length) {
+          api.end({ score: marked.size * 10, max: cardWords.length * 10, note: 'Tebrikler, tüm kartlar bitti! 🎱' });
+          return;
+        }
+        currentCall = callPool.pop();
+        const cw = api.root.querySelector('#call-w');
+        if (cw) cw.textContent = `${currentCall[1]} ${currentCall[0]}`;
+        MEDIA.speak(currentCall[0]);
+      };
+
+      const spkBtn = api.root.querySelector('#call-spk');
+      if (spkBtn) spkBtn.onclick = () => currentCall && MEDIA.speak(currentCall[0]);
+
+      api.root.querySelector('#bg-grid').onclick = (e) => {
+        const o = e.target.closest('.opt');
+        if (!o || o.classList.contains('ok') || !currentCall) return;
+
+        if (o.dataset.w === currentCall[0]) {
+          o.classList.add('ok');
+          o.style.pointerEvents = 'none';
+          marked.add(currentCall[0]);
+          MEDIA.fx('correct');
+          FX.stars();
+          api.add(15);
+          api.progress(marked.size, cardWords.length);
+
+          if (marked.size >= cfg.lineToWin) {
+            MEDIA.fx('cheer');
+            FX.toast('BINGO! 🎉');
+          }
+          if (marked.size >= cardWords.length) {
+            setTimeout(() => {
+              api.end({ score: api.score, max: cardWords.length * 15, note: 'BİNGO ŞAMPİYONU! 🏆' });
+            }, 800);
+          } else {
+            setTimeout(nextCall, 900);
+          }
+        } else {
+          MEDIA.fx('wrong');
+          FX.shake(o);
+        }
+      };
+      nextCall();
+    }
+  },
+
+  /* ---------------- 11) ⚔️ TAKIM YARIŞI ---------------- */
+  {
+    id: 'team',
+    e: '⚔️',
+    t: 'Takım Yarışı',
+    d: 'Akıllı tahta için Kırmızı & Mavi takım kapışması!',
+    stages: [1, 2],
+    levels: [
+      { n: '5 Puan Yarışı', c: { targetScore: 5 } },
+      { n: '10 Puan Yarışı', c: { targetScore: 10 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let sA = 0, sB = 0;
+
+      const round = () => {
+        if (sA >= cfg.targetScore || sB >= cfg.targetScore) {
+          const winner = sA >= cfg.targetScore ? '🔴 Kırmızı Takım' : '🔵 Mavi Takım';
+          MEDIA.fx('win');
+          FX.confetti(80);
+          api.end({ score: Math.max(sA, sB) * 10, max: cfg.targetScore * 10, note: `${winner} Kazandı! 🏆` });
+          return;
+        }
+
+        const w = pick(pool);
+        const others = sample(pool.filter(x => x !== w), 3);
+        const opts = shuffle([w, ...others]);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="row" style="justify-content:space-around;width:100%;margin-bottom:12px">
+              <div class="badge red" style="background:#fee2e2;color:#b91c1c;font-size:1.3em;padding:8px 18px">🔴 Kırmızı: ${sA}</div>
+              <div class="badge blue" style="background:#dbeafe;color:#1d4ed8;font-size:1.3em;padding:8px 18px">🔵 Mavi: ${sB}</div>
+            </div>
+            <div class="prompt-box">
+              <span class="pe">${w[1]}</span>
+              <div class="pw">${esc(w[0])} (${esc(w[2])})</div>
+              <button class="btn small blue" id="spk">🔊 Dinle</button>
+            </div>
+            <div class="opt-grid">
+              ${opts.map(o => `
+                <div class="opt" data-ok="${o === w ? 1 : 0}">
+                  <span class="oe">${o[1]}</span>
+                  <span class="ow">${esc(o[0])}</span>
+                </div>`).join('')}
+            </div>
+            <div class="row" style="margin-top:16px;gap:16px">
+              <button class="btn red" id="pt-a" style="background:#ef4444;color:#fff;font-weight:900">+1 Kırmızı 🔴</button>
+              <button class="btn blue" id="pt-b" style="background:#3b82f6;color:#fff;font-weight:900">+1 Mavi 🔵</button>
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
+
+        api.root.querySelector('#pt-a').onclick = () => {
+          sA++;
+          MEDIA.fx('team');
+          round();
+        };
+        api.root.querySelector('#pt-b').onclick = () => {
+          sB++;
+          MEDIA.fx('team');
+          round();
+        };
+
+        api.root.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.ok === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('correct');
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+            }
+          };
+        });
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 12) 🕳️ KÖSTEBEK VURMACA ---------------- */
+  {
+    id: 'mole',
+    e: '🕳️',
+    t: 'Köstebek Vurmaca',
+    d: 'Delikten fırlayan doğru kelimeye hızla tıkla!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay', c: { speed: 2200, rounds: 8 } },
+      { n: 'Hızlı', c: { speed: 1500, rounds: 10 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let r = 0, timer = null;
+
+      api.root.innerHTML = `
+        <div class="center">
+          <div class="prompt-box"><div class="pw">Hedef: <b id="mt-target" style="color:#2563eb">...</b></div></div>
+          <div class="mole-grid" id="mgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:380px;margin:16px auto">
+            ${[0, 1, 2, 3, 4, 5].map(i => `
+              <div class="mole-hole" data-h="${i}" style="height:90px;background:#78350f;border-radius:50%;border:4px solid #451a03;position:relative;overflow:hidden;cursor:pointer">
+                <div class="mole-char" style="position:absolute;top:100%;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border-radius:20px;transition:top 0.2s">
+                  <span class="me" style="font-size:32px"></span>
+                  <span class="mw" style="font-weight:900;font-size:0.85em"></span>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>`;
+
+      const holes = api.root.querySelectorAll('.mole-hole');
+
+      const popNext = () => {
+        if (r >= cfg.rounds) {
+          api.end({ score: api.score, max: cfg.rounds * 10, note: 'Köstebek avcısı! 🕳️' });
+          return;
+        }
+        api.progress(r + 1, cfg.rounds);
+        const target = pick(pool);
+        const targetEl = document.getElementById('mt-target');
+        if (targetEl) targetEl.textContent = `${target[1]} ${target[0]}`;
+        MEDIA.speak(target[0]);
+
+        holes.forEach(h => {
+          const char = h.querySelector('.mole-char');
+          char.style.top = '100%';
+          char.dataset.ok = '0';
+        });
+
+        const chosenHole = pick([...holes]);
+        const char = chosenHole.querySelector('.mole-char');
+        char.querySelector('.me').textContent = target[1];
+        char.querySelector('.mw').textContent = target[0];
+        char.dataset.ok = '1';
+        char.style.top = '10%';
+        MEDIA.fx('hop');
+
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+          char.style.top = '100%';
+          r++;
+          setTimeout(popNext, 400);
+        }, cfg.speed);
+      };
+
+      holes.forEach(h => {
+        h.onclick = (e) => {
+          const char = h.querySelector('.mole-char');
+          if (char.style.top !== '100%' && char.dataset.ok === '1') {
+            char.style.top = '100%';
+            MEDIA.fx('correct');
+            FX.stars(e.clientX, e.clientY);
+            api.add(10);
+            if (timer) clearTimeout(timer);
+            r++;
+            setTimeout(popNext, 500);
+          }
+        };
+      });
+
+      api.cleanup(() => timer && clearTimeout(timer));
+      popNext();
+    }
+  },
+
+  /* ---------------- 13) 🔀 CÜMLE KURMA ---------------- */
+  {
+    id: 'scramble',
+    e: '🔀',
+    t: 'Cümle Kurma',
+    d: 'Karışık kelimelere dokun, doğru cümleyi kur!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay (Kısa Cümleler)', c: { total: 5 } },
+      { n: 'Zor (Uzun Cümleler)', c: { total: 8 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      const sPool = shuffle(u.s || []).slice(0, cfg.total);
+      if (!sPool.length) {
+        api.root.innerHTML = '<div class="center">Bu ünitede cümle bulunamadı.</div>';
+        return;
+      }
+      let i = 0;
+
+      const round = () => {
+        if (i >= sPool.length) {
+          api.end({ score: api.score, max: sPool.length * 15, note: 'Cümle mimarı! 🔀' });
+          return;
+        }
+        api.progress(i + 1, sPool.length);
+        const sObj = sPool[i];
+        const cleanSentence = sObj[0].replace(/[.,!?;:]/g, '');
+        const words = cleanSentence.split(/\s+/).filter(Boolean);
+        const shuffledWords = shuffle(words);
+        const built = [];
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <span class="pe">${sObj[1]}</span>
+              <div class="pw" style="font-size:1.2em;color:#4b5563">"${esc(sObj[2])}"</div>
+              <div class="scramble-slot" id="ss" style="min-height:48px;padding:8px;border:3px dashed #6366f1;border-radius:12px;margin:12px 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center"></div>
+              <button class="btn small blue" id="spk">🔊 Cümleyi Dinle</button>
+            </div>
+            <div class="opt-grid" id="sg" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px">
+              ${shuffledWords.map((w, idx) => `<button class="btn white w-piece" data-idx="${idx}">${esc(w)}</button>`).join('')}
+            </div>
+            <button class="btn small white" id="rst" style="margin-top:14px">🔄 Sıfırla</button>
+          </div>`;
+
+        MEDIA.speak(sObj[0]);
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(sObj[0]);
+
+        const slot = api.root.querySelector('#ss');
+        const pieces = api.root.querySelectorAll('.w-piece');
+
+        pieces.forEach(btn => {
+          btn.onclick = () => {
+            built.push(btn.textContent.trim());
+            btn.disabled = true;
+            btn.style.opacity = '0.3';
+            slot.innerHTML = built.map(w => `<span class="badge blue" style="font-size:1.1em;padding:6px 12px">${esc(w)}</span>`).join('');
+            MEDIA.fx('pop');
+
+            if (built.length === words.length) {
+              if (built.join(' ').toLowerCase() === cleanSentence.toLowerCase()) {
+                MEDIA.fx('correct');
+                FX.fb(true);
+                MEDIA.speak(sObj[0]);
+                api.add(15);
+                i++;
+                setTimeout(round, 1000);
+              } else {
+                MEDIA.fx('wrong');
+                FX.shake(slot);
+                setTimeout(() => {
+                  built.length = 0;
+                  slot.innerHTML = '';
+                  pieces.forEach(b => {
+                    b.disabled = false;
+                    b.style.opacity = '1';
+                  });
+                }, 800);
+              }
+            }
+          };
+        });
+
+        api.root.querySelector('#rst').onclick = () => {
+          built.length = 0;
+          slot.innerHTML = '';
+          pieces.forEach(b => {
+            b.disabled = false;
+            b.style.opacity = '1';
+          });
+        };
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 14) 🔍 KELİME ARAMA ---------------- */
+  {
+    id: 'search',
+    e: '🔍',
+    t: 'Kelime Arama',
+    d: 'Kelimenin harflerini ızgarada sırasıyla bul!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Kolay (4 Kelime)', c: { total: 4, grid: 5 } },
+      { n: 'Zor (6 Kelime)', c: { total: 6, grid: 6 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      const words = shuffle(pool).slice(0, cfg.total);
+      let currentIdx = 0;
+
+      const round = () => {
+        if (currentIdx >= words.length) {
+          api.end({ score: api.score, max: words.length * 15, note: 'Harika bir dedektifsin! 🔍' });
+          return;
+        }
+        api.progress(currentIdx + 1, words.length);
+        const target = words[currentIdx][0].toUpperCase();
+        let clicked = '';
+
+        const letters = target.split('');
+        const fillers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const totalCells = cfg.grid * cfg.grid;
+        const gridLetters = [...letters];
+        while (gridLetters.length < totalCells) {
+          gridLetters.push(pick(fillers.split('')));
+        }
+        const shuffledGrid = shuffle(gridLetters);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <span class="pe">${words[currentIdx][1]}</span>
+              <div class="pw">Ara: <b style="color:#7c3aed">${target}</b> (${esc(words[currentIdx][2])})</div>
+              <div class="pw" id="srch-status" style="font-size:1.3em;letter-spacing:4px;color:#2563eb">_ _ _</div>
+            </div>
+            <div class="grid-search" id="gs" style="display:grid;grid-template-columns:repeat(${cfg.grid},1fr);gap:8px;max-width:320px;margin:14px auto">
+              ${shuffledGrid.map(l => `<button class="btn white g-cell" style="padding:12px;font-size:1.3em;font-weight:900">${l}</button>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(words[currentIdx][0]);
+        const statusEl = api.root.querySelector('#srch-status');
+        statusEl.textContent = '_ '.repeat(target.length);
+
+        api.root.querySelectorAll('.g-cell').forEach(btn => {
+          btn.onclick = () => {
+            const letter = btn.textContent.trim();
+            const nextExpected = target[clicked.length];
+            if (letter === nextExpected) {
+              clicked += letter;
+              btn.classList.add('ok');
+              btn.disabled = true;
+              MEDIA.fx('pop');
+              statusEl.textContent = clicked + ' _ '.repeat(target.length - clicked.length);
+
+              if (clicked === target) {
+                MEDIA.fx('correct');
+                FX.stars();
+                api.add(15);
+                currentIdx++;
+                setTimeout(round, 700);
+              }
+            } else {
+              MEDIA.fx('wrong');
+              FX.shake(btn);
+            }
+          };
+        });
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 15) 🚫 FARKLI OLANI BUL ---------------- */
+  {
+    id: 'odd',
+    e: '🚫',
+    t: 'Farklı Olanı Bul',
+    d: 'Gruba uymayan farklı kelimeyi keşfet!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Standart (6 Soru)', c: { rounds: 6 } },
+      { n: 'Usta (10 Soru)', c: { rounds: 10 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      let r = 0;
+
+      const round = () => {
+        if (r >= cfg.rounds) {
+          api.end({ score: api.score, max: cfg.rounds * 10, note: 'Müthiş mantık! 🚫' });
+          return;
+        }
+        api.progress(r + 1, cfg.rounds);
+
+        const catsWithWords = u.cats.map((c, i) => u.w.filter(w => w[3] === i)).filter(arr => arr.length >= 3);
+        const mainCatPool = catsWithWords.length ? pick(catsWithWords) : u.w;
+        const mainWords = sample(mainCatPool, 3);
+        const otherPool = ALLSETS.flatMap(x => x.w).filter(x => !mainWords.includes(x));
+        const oddWord = pick(otherPool);
+        const opts = shuffle([...mainWords, oddWord]);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="prompt-box">
+              <div class="big-emoji popflash">🔍</div>
+              <div class="pw">Hangi kelime diğerlerinden farklı?</div>
+            </div>
+            <div class="opt-grid">
+              ${opts.map(o => `
+                <div class="opt" data-odd="${o === oddWord ? 1 : 0}">
+                  <span class="oe">${o[1] || '🔤'}</span>
+                  <span class="ow">${esc(o[0])}</span>
+                  <span class="muted" style="font-size:0.85em">${esc(o[2])}</span>
+                </div>`).join('')}
+            </div>
+          </div>`;
+
+        api.root.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.odd === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('correct');
+              FX.fb(true);
+              api.add(10);
+              r++;
+              setTimeout(round, 850);
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+              setTimeout(() => { r++; round(); }, 1100);
+            }
+          };
+        });
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 16) 🦜 POLLY İLE TEKRAR ---------------- */
+  {
+    id: 'echo',
+    e: '🦜',
+    t: 'Polly ile Tekrar',
+    d: 'Polly söylesin, sen tekrarla ve pekiştir!',
+    stages: [1, 2],
+    levels: [
+      { n: '6 Kelime', c: { total: 6 } },
+      { n: '10 Kelime', c: { total: 10 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = shuffle(EWORDS(u)).slice(0, cfg.total);
+      let i = 0;
+
+      const round = () => {
+        if (i >= pool.length) {
+          api.end({ score: api.score, max: pool.length * 10, note: 'Polly seninle gurur duyuyor! 🦜' });
+          return;
+        }
+        api.progress(i + 1, pool.length);
+        const w = pool[i];
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="card" style="max-width:380px;margin:0 auto;text-align:center">
+              <div class="big-emoji popflash">${w[1]}</div>
+              <div class="pw" style="font-size:2em">${esc(w[0])}</div>
+              <div class="muted" style="font-size:1.2em;color:#2563eb;font-weight:700">${esc(w[2])}</div>
+              <div class="row" style="margin-top:14px;justify-content:center">
+                <button class="btn blue" id="spk">🔊 Dinle</button>
+                <button class="btn green" id="rep">🗣️ Söyledim!</button>
+              </div>
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+        api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
+        api.root.querySelector('#rep').onclick = () => {
+          MEDIA.fx('correct');
+          FX.stars();
+          api.add(10);
+          i++;
+          setTimeout(round, 600);
+        };
+      };
+      round();
+    }
+  },
+
+  /* ---------------- 17) 🖼️ RESİM YAPBOZ ---------------- */
+  {
+    id: 'picture',
+    e: '🖼️',
+    t: 'Resim Yapboz',
+    d: 'Soruları doğru cevapla, gizli resmi ortaya çıkar!',
+    stages: [1, 2],
+    levels: [
+      { n: '4 Parça', c: { pieces: 4 } },
+      { n: '6 Parça', c: { pieces: 6 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let opened = 0;
+
+      api.root.innerHTML = `
+        <div class="center">
+          <div class="puzzle-container" style="position:relative;width:240px;height:240px;margin:0 auto 16px;border:4px solid #6366f1;border-radius:18px;overflow:hidden;background:#f8fafc;display:flex;align-items:center;justify-content:center">
+            <div class="big-emoji" style="font-size:110px">${u.emoji}</div>
+            <div id="p-overlay" style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(${cfg.pieces / 2},1fr)">
+              ${Array.from({ length: cfg.pieces }).map((_, idx) => `
+                <div class="p-tile" data-idx="${idx}" style="background:#818cf8;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:900;transition:opacity 0.3s">❓</div>`).join('')}
+            </div>
+          </div>
+          <div id="pq-area"></div>
+        </div>`;
+
+      const qArea = api.root.querySelector('#pq-area');
+
+      const nextQ = () => {
+        if (opened >= cfg.pieces) {
+          MEDIA.fx('win');
+          FX.confetti(60);
+          api.end({ score: cfg.pieces * 15, max: cfg.pieces * 15, note: 'Yapboz tamamlandı! 🖼️' });
+          return;
+        }
+        api.progress(opened, cfg.pieces);
+        const w = pick(pool);
+        const others = sample(pool.filter(x => x !== w), 2);
+        const opts = shuffle([w, ...others]);
+
+        qArea.innerHTML = `
+          <div class="prompt-box"><div class="pw"><b>${esc(w[0])}</b> ne demek?</div></div>
+          <div class="opt-grid">
+            ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[2])}</span></div>`).join('')}
+          </div>`;
+
+        MEDIA.speak(w[0]);
+
+        qArea.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.ok === '1') {
+              const tile = api.root.querySelector(`.p-tile[data-idx="${opened}"]`);
+              if (tile) tile.style.opacity = '0';
+              opened++;
+              MEDIA.fx('pop');
+              api.add(15);
+              setTimeout(nextQ, 600);
+            } else {
+              MEDIA.fx('wrong');
+            }
+          };
+        });
+      };
+      nextQ();
+    }
+  },
+
+  /* ---------------- 18) 🚂 KELİME TRENİ ---------------- */
+  {
+    id: 'train',
+    e: '🚂',
+    t: 'Kelime Treni',
+    d: 'Tren vagonlarına doğru kelimeleri yükle!',
+    stages: [1, 2],
+    levels: [
+      { n: '5 Vagon', c: { cars: 5 } },
+      { n: '8 Vagon', c: { cars: 8 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv, pool = EWORDS(u);
+      let step = 0;
+
+      const round = () => {
+        if (step >= cfg.cars) {
+          api.end({ score: api.score, max: cfg.cars * 10, note: 'Tren hedefine ulaştı! 🚂' });
+          return;
+        }
+        api.progress(step + 1, cfg.cars);
+        const w = pick(pool);
+        const others = sample(pool.filter(x => x !== w), 2);
+        const opts = shuffle([w, ...others]);
+
+        api.root.innerHTML = `
+          <div class="center">
+            <div class="train-track" style="font-size:42px;margin-bottom:12px">
+              🚂💨 ${'🚃'.repeat(step)}
+            </div>
+            <div class="prompt-box">
+              <span class="pe">${w[1]}</span>
+              <div class="pw">Sonraki vagon: <b>${esc(w[0])}</b></div>
+            </div>
+            <div class="opt-grid">
+              ${opts.map(o => `
+                <div class="opt txt" data-ok="${o === w ? 1 : 0}">
+                  <span class="ow">${esc(o[2])}</span>
+                </div>`).join('')}
+            </div>
+          </div>`;
+
+        MEDIA.speak(w[0]);
+
+        api.root.querySelectorAll('.opt').forEach(o => {
+          o.onclick = () => {
+            if (o.dataset.ok === '1') {
+              o.classList.add('ok');
+              MEDIA.fx('correct');
+              step++;
+              api.add(10);
+              setTimeout(round, 700);
+            } else {
+              o.classList.add('no');
+              MEDIA.fx('wrong');
+              setTimeout(round, 900);
+            }
+          };
+        });
+      };
+      round();
+    }
+  }
+];
+
+/* ENGINES listesine Bölüm B motorlarını ekle */
+ENGINES.push(...ENGINES_B);
+
+/* ============================================================
+   🎮 OYUN MOTORLARI — BÖLÜM C (19-24) · v2 YENİ MOTORLAR
+   ============================================================ */
+const ENGINES_C=[
+
+/* ---------------- 19) 🎯 SIRA HAFIZASI ---------------- */
+{id:'seq',e:'🎯',t:'Sıra Hafızası',d:'Sırayı izle, dinle ve tekrarla!',
+ stages:[1,2],levels:[{n:'Kolay (3)',c:{len:3}},{n:'Orta (4)',c:{len:4}},{n:'Zor (5)',c:{len:5}}],
+ init(api){ const u=api.unit,cfg=api.lv,pool=EWORDS(u);let r=0;const R=4;
+  const round=()=>{ if(r>=R){api.end({score:api.score,max:R*15,note:'Süper hafıza! 🧠'});return}
+    api.progress(r+1,R);
+    const seq=sample(pool,Math.min(cfg.len,pool.length));let step=0;
+    const show=()=>{ if(step>=seq.length){setTimeout(ask,600);return}
+      const w=seq[step];
+      api.root.innerHTML=`<div class="center"><div class="prompt-box"><div class="pw">İzle ve hatırla! 👀</div></div>
+        <div class="big-emoji popflash">${w[1]}</div><div class="pw">${esc(w[0])}</div>
+        <div class="muted">${step+1} / ${seq.length}</div></div>`;
+      MEDIA.speak(w[0]);step++;setTimeout(show,1500)};
+    const ask=()=>{ let next=0;
+      api.root.innerHTML=`<div class="center"><div class="prompt-box"><div class="pw">Şimdi tekrarla! 🎯</div></div>
+        <div class="opt-grid" id="sq">${shuffle(seq).map(w=>`<div class="opt" data-w="${esc(w[0])}">
+          <span class="oe">${w[1]}</span><span class="ow">${esc(w[0])}</span></div>`).join('')}</div></div>`;
+      api.root.querySelector('#sq').onclick=e=>{const o=e.target.closest('.opt');if(!o)return;
+        if(o.dataset.w===seq[next][0]){o.classList.add('ok');o.style.pointerEvents='none';MEDIA.fx('pop');next++;
+          if(next===seq.length){MEDIA.fx('correct');FX.fb(true);api.add(15);r++;setTimeout(round,950)}}
+        else{o.classList.add('no');MEDIA.fx('wrong')}}};
+    show();};
+  round();
+ }},
+
+/* ---------------- 20) 🌧️ KELİME YAĞMURU ---------------- */
+{id:'rain',e:'🌧️',t:'Kelime Yağmuru',d:'Gökten yağan doğru kelimeyi yakala!',
+ stages:[1,2],levels:[{n:'Sakin',c:{dur:60,fall:2.4,per:1500}},{n:'Orta',c:{dur:60,fall:3.2,per:1300}},{n:'Sağanak',c:{dur:75,fall:4.2,per:1050}}],
+ init(api){ const u=api.unit,cfg=api.lv;let t=cfg.dur,caught=0,target=pick(u.w),spawnIv=null,timerIv=null;
+  api.root.innerHTML=`<div class="balloon-field" id="rf" style="background:linear-gradient(180deg,#c7d2fe,#e0f2fe)"></div>`;
+  const F=api.root.querySelector('#rf');
+  const infoEl=api.info(`<div class="prompt-box"><div class="pw">Yakala: <b id="rt" style="color:#1d4ed8">🎈 ${esc(target[0])} 🎈</b>
+    <button class="btn small blue" id="rl">🔊</button></div></div>`);
+  const setTarget=w=>{target=w;const rt=document.getElementById('rt');if(rt)rt.textContent=w[0];MEDIA.speak(w[0])};
+  if(infoEl){const bl=infoEl.querySelector('#rl');if(bl)bl.onclick=()=>MEDIA.speak(target[0])}
+  setTarget(target);
+  const spawn=()=>{ const others=u.w.filter(x=>x[0]!==target[0]);
+    const w=Math.random()<.4?target:(others.length?pick(others):target);
+    const d=el(`<div class="raindrop" style="left:${rnd(86)}%"><span class="re">${w[1]||'🔤'}</span><span class="rw">${esc(w[0])}</span></div>`);
+    d.style.top='-80px';F.appendChild(d);let y=-80;
+    const tm=setInterval(()=>{y+=cfg.fall;d.style.top=y+'px';
+      if(y>F.clientHeight+30){clearInterval(tm);d.remove()}},30);
+    d.onclick=ev=>{ ev.stopPropagation();
+      if(w[0]===target[0]){caught++;api.add(5);MEDIA.fx('catch');FX.stars(ev.clientX,ev.clientY);
+        d.remove();clearInterval(tm);setTarget(pick(u.w))}
+      else{MEDIA.fx('wrong');FX.shake(d)} };
+  };
+  spawnIv=setInterval(spawn,cfg.per);
+  timerIv=setInterval(()=>{t--;api.progress(cfg.dur-t,cfg.dur);
+    if(t<=0){clearInterval(spawnIv);clearInterval(timerIv);F.innerHTML='';
+      api.end({score:api.score,max:cfg.dur,note:caught+' kelime yakaladın! 🌧️'})}},1000);
+  api.cleanup(()=>{clearInterval(spawnIv);clearInterval(timerIv)});
+ }},
+
+/* ---------------- 21) 🔤 İLK HARF (fonik) ---------------- */
+{id:'letter',e:'🅰️',t:'İlk Harf',d:'Kelimenin ilk harfini bul! (fonik)',
+ stages:[1,2],levels:[{n:'Kolay (2)',c:{n:2}},{n:'Orta (3)',c:{n:3}},{n:'Zor (4)',c:{n:4}}],
+ init(api){ const u=api.unit,cfg=api.lv;
+  const pool=shuffle(u.w.filter(w=>/^[a-z]/i.test(w[0]))).slice(0,10);
+  const allL=[...new Set(u.w.filter(w=>/^[a-z]/i.test(w[0])).map(w=>w[0][0].toUpperCase()))];
+  const ABC='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let i=0;
+  const round=()=>{ if(i>=pool.length){api.end({score:api.score,max:pool.length*10,note:'Harf dedektifi! 🔤'});return}
+    const w=pool[i],C=w[0][0].toUpperCase();api.progress(i+1,pool.length);
+    let ds=allL.filter(L=>L!==C);if(ds.length<cfg.n-1)ds=ds.concat(shuffle(ABC.split('').filter(L=>L!==C&&!ds.includes(L))));
+    const opts=shuffle([C,...sample(ds,cfg.n-1)]);
+    api.root.innerHTML=`<div class="center">
+      <div class="prompt-box"><span class="pe">${w[1]||'🔤'}</span><div class="pw">${esc(w[0])}</div>
+        <button class="btn small blue" id="lh">🔊 Dinle</button></div>
+      <div class="opt-grid">${opts.map(L=>`<div class="opt txt" data-l="${L}">
+        <span class="ow" style="font-size:2.2em;color:#7c3aed">${L}</span></div>`).join('')}</div></div>`;
+    MEDIA.speak(w[0]);
+    api.root.querySelector('#lh').onclick=()=>MEDIA.speak(w[0]);
+    api.root.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
+      if(o.dataset.l===C){o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(C);api.add(10);i++;setTimeout(round,850)}
+      else{o.classList.add('no');MEDIA.fx('wrong');
+        api.root.querySelectorAll('.opt').forEach(x=>{if(x.dataset.l===C)x.classList.add('ok')});
+        setTimeout(()=>{i++;round()},1300)}});
+  };round();
+ }},
+
+/* ---------------- 22) 📖 CÜMLE TAMAMLA ---------------- */
+{id:'cloze',e:'📖',t:'Cümle Tamamla',d:'Cümledeki eksik kelimeyi seç!',
+ stages:[1,2],levels:[{n:'Kolay (2 şık)',c:{n:2}},{n:'Zor (3 şık)',c:{n:3}}],
+ init(api){ const u=api.unit,cfg=api.lv;const rounds=[];
+  const rx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  u.s.forEach(s=>{ const inS=u.w.filter(w=>new RegExp('\\b'+rx(w[0])+'\\b','i').test(s[0]));
+    if(inS.length)rounds.push({s,w:pick(inS)})});
+  const R=shuffle(rounds).slice(0,8);let i=0;
+  if(!R.length){api.root.innerHTML='<div class="center"><div class="big-emoji">🙈</div><div>Bu ünitede cümle tamamlanacak kelime yok.</div></div>';return}
+  const round=()=>{ if(i>=R.length){api.end({score:api.score,max:R.length*10,note:'Cümle kahramanı! 📖'});return}
+    const r=R[i];api.progress(i+1,R.length);
+    const text=r.s[0].replace(new RegExp('\\b'+rx(r.w[0])+'\\b','i'),'_____');
+    const sameCat=u.w.filter(x=>x[3]===r.w[3]&&x!==r.w);
+    const others=sameCat.length>=cfg.n-1?sample(sameCat,cfg.n-1):sample(u.w.filter(x=>x!==r.w),cfg.n-1);
+    const opts=shuffle([r.w,...others]);
+    api.root.innerHTML=`<div class="center">
+      <div class="prompt-box"><span class="pe">${r.s[1]}</span>
+        <div class="pw" style="font-size:1.25em">"${esc(text)}"</div>
+        <button class="btn small blue" id="cl">🔊 Tümünü dinle</button></div>
+      <div class="opt-grid">${opts.map(o=>`<div class="opt txt" data-ok="${o===r.w?1:0}">
+        <span class="ow" style="font-size:1.3em">${esc(o[0])}</span></div>`).join('')}</div></div>`;
+    MEDIA.speak(r.s[0],.85);
+    api.root.querySelector('#cl').onclick=()=>MEDIA.speak(r.s[0],.85);
+    api.root.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
+      if(o.dataset.ok==='1'){o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(r.s[0],.9);api.add(10);i++;setTimeout(round,1100)}
+      else{o.classList.add('no');MEDIA.fx('wrong');setTimeout(()=>{i++;round()},1200)}});
+  };round();
+ }},
+
+/* ---------------- 23) 🏁 YARIŞ PİSTİ ---------------- */
+{id:'race',e:'🏁',t:'Yarış Pisti',d:'Doğru cevaplarla rakibi geç, bitişe ilk sen ulaş!',
+ stages:[1,2],levels:[{n:'Kolay',c:{qs:10,ai:10}},{n:'Zor',c:{qs:12,ai:16}}],
+ init(api){ const u=api.unit,cfg=api.lv;const EW=EWORDS(u);
+  let me=0,ai=0,qi=0,correct=0,done=false,iv=null;
+  api.root.innerHTML=`<div class="center">
+    <div class="track">
+      <div class="lane"><span class="lane-label">🫵 Sen</span><span class="runner" id="rme" style="left:0%">🏃💨</span><span class="fin">🏁</span></div>
+      <div class="lane sky"><span class="lane-label">🤖 Rakip</span><span class="runner" id="rai" style="left:0%">🤖</span><span class="fin">🏁</span></div>
+    </div>
+    <div id="rq" style="width:100%"></div></div>`;
+  const RQ=api.root.querySelector('#rq'),RME=api.root.querySelector('#rme'),RAI=api.root.querySelector('#rai');
+  const finish=win=>{ if(done)return;done=true;clearInterval(iv);
+    if(win){MEDIA.fx('win');FX.confetti(150)}else MEDIA.fx('wrong');
+    api.end({score:correct*10,max:cfg.qs*10,note:win?'Yarışı kazandın! 🏆':'Rakip kazandı — tekrar dene! 💪'})};
+  const move=()=>{RME.style.left=Math.min(86,me)+'%';RAI.style.left=Math.min(86,ai)+'%';
+    if(me>=100)finish(true);else if(ai>=100)finish(false)};
+  const q=()=>{ if(done)return; if(qi>=cfg.qs){finish(me>=ai);return}
+    qi++;api.progress(qi,cfg.qs);
+    const w=pick(EW),opts=shuffle([w,...sample(EW.filter(x=>x!==w),3)]);
+    RQ.innerHTML=`<div class="prompt-box"><div class="pw">${esc(w[0])} <button class="btn small blue" id="rs">🔊</button></div></div>
+      <div class="opt-grid">${opts.map(o=>`<div class="opt" data-ok="${o===w?1:0}"><span class="oe">${o[1]}</span></div>`).join('')}</div>`;
+    MEDIA.speak(w[0]);
+    const sb=RQ.querySelector('#rs');if(sb)sb.onclick=()=>MEDIA.speak(w[0]);
+    RQ.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
+      if(done)return;
+      if(o.dataset.ok==='1'){o.classList.add('ok');MEDIA.fx('hop');correct++;me+=Math.round(100/cfg.qs)+2;move();setTimeout(q,650)}
+      else{o.classList.add('no');MEDIA.fx('wrong');setTimeout(q,850)}})};
+  iv=setInterval(()=>{if(done)return;ai+=cfg.ai;move()},2500);
+  api.cleanup(()=>clearInterval(iv));
+  move();q();
+ }},
+
+/* ---------------- 24) 🔢 SAY VE BAS ---------------- */
+{id:'count',e:'🔢',t:'Say ve Bas',d:'Kaç tane var? Doğru sayıyı bas!',
+ stages:[1,2],levels:[{n:'1-5',c:{max:5,n:2}},{n:'1-10',c:{max:10,n:3}},{n:'Hızlı',c:{max:10,n:4}}],
+ init(api){ const u=api.unit,cfg=api.lv;const EW=EWORDS(u);
+  const NW=[['one','1️⃣'],['two','2️⃣'],['three','3️⃣'],['four','4️⃣'],['five','5️⃣'],['six','6️⃣'],['seven','7️⃣'],['eight','8️⃣'],['nine','9️⃣'],['ten','🔟']];
+  const R=10;let i=0;
+  const round=()=>{ if(i>=R){api.end({score:api.score,max:R*10,note:'Sayma şampiyonu! 🔢'});return}
+    const n=1+rnd(cfg.max);const w=pick(EW);api.progress(i+1,R);
+    const correct=NW[n-1];
+    const others=sample(NW.filter(x=>x!==correct),cfg.n-1);
+    const opts=shuffle([correct,...others]);
+    api.root.innerHTML=`<div class="center">
+      <div class="prompt-box"><div class="pw">How many? 🔍</div>
+        <div class="pw" style="font-size:clamp(34px,7vw,52px);letter-spacing:6px">${w[1].repeat(n)}</div></div>
+      <div class="opt-grid">${opts.map(o=>`<div class="opt txt" data-ok="${o===correct?1:0}">
+        <span class="ow" style="font-size:1.5em">${o[1]} ${esc(o[0])}</span></div>`).join('')}</div></div>`;
+    MEDIA.speak('How many?');
+    api.root.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
+      if(o.dataset.ok==='1'){o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(correct[0]+'!');api.add(10);i++;setTimeout(round,900)}
+      else{o.classList.add('no');MEDIA.fx('wrong');
+        api.root.querySelectorAll('.opt').forEach(x=>{if(x.dataset.ok==='1')x.classList.add('ok')});
+        setTimeout(()=>{i++;round()},1400)}});
+  };round();
+ }}
+];
+
+/* Yeni motorları listeye ekle */
+ENGINES.push(...ENGINES_C);
+
+/* ============================================================
+   🦜 ANA UYGULAMA MOTORU — Polly's Fun English (v2)
+   Ekranlar, katalog, skorlar, şarkı oynatıcı ve Anti-Crash Kalkanı
+   ============================================================ */
+
+const PRAISE = [
+  'Great job!',
+  'Well done!',
+  'You are a star!',
+  'Amazing work!',
+  'Super!',
+  'Fantastic!',
+  'Brilliant!',
+  'Keep going!'
+];
+
+const APP = {
+  scr: 'home',
+  stage: null,
+  unitId: null,
+  engineId: null,
+  lvIdx: 0,
+  songFilter: { stage: 's1', unit: null },
+  playing: null,
+  cleanups: [],
+
+  /* ---------- Navigasyon & Durum Yönetimi ---------- */
+  go(scr, p = {}) {
+    this.cleanup();
+    MEDIA.stopSpeak();
+    Object.assign(this, { scr, ...p });
+    this.saveState(); // // SAFETY: Her geçişte otomatik durum kaydı
+    if (typeof window !== 'undefined' && window.scrollTo) {
+      window.scrollTo(0, 0);
+    }
+    this.render();
+  },
+
+  cleanup() {
+    this.cleanups.forEach((f) => {
+      try {
+        f();
+      } catch (e) {}
+    });
+    this.cleanups = [];
+  },
+
+  /* // SAFETY: Çökme / Yenilenme Durumunda Kaldığı Yerden Devam */
+  saveState() {
+    try {
+      store.set('last_state', {
+        scr: this.scr,
+        stage: this.stage,
+        unitId: this.unitId,
+        engineId: this.engineId,
+        lvIdx: this.lvIdx,
+        timestamp: Date.now()
+      });
+    } catch (e) {}
+  },
+
+  restoreLastState() {
+    const s = store.get('last_state');
+    if (s && s.scr && s.scr !== 'home') {
+      this.go(s.scr, {
+        stage: s.stage,
+        unitId: s.unitId,
+        engineId: s.engineId,
+        lvIdx: s.lvIdx || 0
+      });
+      FX.toast('Kaldığınız yerden devam ediliyor! 🔄');
+      return true;
+    }
+    return false;
+  },
+
+  /* ---------- Katalog Sayıları ---------- */
+  countGames() {
+    let n = 0;
+    ALLSETS.forEach((u) => {
+      const st = u.stage === 's1' ? 1 : 2;
+      ENGINES.forEach((e) => {
+        if (e.stages.includes(st)) n += e.levels.length;
+      });
+    });
+    return n;
+  },
+
+  unitStars(uid) {
+    const b = store.get('best') || {};
+    let s = 0;
+    Object.keys(b).forEach((k) => {
+      if (k.split('|')[1] === uid) s += b[k].st;
+    });
+    return s;
+  },
+
+  /* ---------- Render ---------- */
+  render() {
+    const app = document.getElementById('app');
+    if (!app) return;
+    document.body.className = this.stage
+      ? (STAGES.find((s) => s.id === this.stage) || {}).cls || ''
+      : '';
+    const R = {
+      home: () => this.vHome(),
+      stage: () => this.vStage(),
+      unit: () => this.vUnit(),
+      game: () => this.vGame(),
+      songs: () => this.vSongs(),
+      player: () => this.vPlayer(),
+      scores: () => this.vScores(),
+      help: () => this.vHelp()
+    };
+    app.innerHTML = `<div class="screen">${(R[this.scr] || R.home)()}</div>`;
+    this.bind();
+  },
+
+  bar(title) {
+    const stars = Object.values(store.get('best') || {}).reduce((a, b) => a + (b.st || 0), 0);
+    return `<div class="topbar">
+      ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Geri</button>' : ''}
+      <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
+      <div class="badge gold">⭐ ${stars}</div>
+      <button class="btn small white" id="hm">🏠</button>
+      <button class="btn small white" id="mu">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
+  },
+
+  /* ---------- 🏠 ANA SAYFA ---------- */
+  vHome() {
+    return (
+      this.bar() +
+      `
+   <div class="hero">
+     <div class="mascot" id="mas">🦜</div>
+     <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
+     <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1 & 2 (2. Baskı) ile uyumlu</div>
+   </div>
+   <div class="stats-bar">
+     <div class="stat">🎮 <b>${this.countGames()}</b>farklı oyun</div>
+     <div class="stat">🎵 <b>${TOTALSONGS}</b>şarkı & chant</div>
+     <div class="stat">🔤 <b>${totalWords}</b>İngilizce kelime</div>
+     <div class="stat">🕹️ <b>${ENGINES.length}</b>oyun türü · 25 set</div>
+   </div>
+   <div class="stage-cards">
+     <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
+       <h2>🟢 1. Sınıf</h2><p>Global English 1 · Starter + 9 ünite<br>Renkler, aile, çiftlik, taşıtlar, su...</p></div>
+     <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
+       <h2>🔵 2. Sınıf</h2><p>Global English 2 · 9 ünite<br>Meslekler, geçmiş zaman, ölçme, şehir...</p></div>
+     <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
+       <h2>🎶 Şarkı Köşesi</h2><p>${TOTALSONGS} şarkı & chant · Klasikler + kelime chant'leri<br>Sınıfta birlikte söyleyin!</p></div>
+   </div>
+   <div class="quick-row">
+     <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
+     <button class="btn white" id="sc">🏆 Skorlar</button>
+     <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
+   </div>`
+    );
+  },
+
+  /* ---------- 📚 ÜNİTE LİSTESİ ---------- */
+  vStage() {
+    const st = STAGES.find((s) => s.id === this.stage) || STAGES[0],
+      us = unitsOfStage(this.stage);
+    return (
+      this.bar() +
+      `
+   <div class="unit-head ${st.id}"><span class="ue">${st.emoji}</span>
+     <div><h2>${st.name} — ${st.book}</h2><div class="sub">${st.desc}</div></div></div>
+   <div class="unit-grid">${us
+     .map(
+       (u) => `
+     <div class="card" data-u="${u.id}">
+       ${u.mix ? '<div class="ribbon">TEKRAR</div>' : ''}
+       <span class="big">${u.emoji}</span>
+       <h3>${u.no === '⭐' || u.no === '🔁' ? '' : 'Ünite ' + u.no + ' · '}${u.title}</h3>
+       <div class="sub">${u.tr} · ${u.w.length} kelime</div>
+       <div style="margin-top:8px"><span class="badge">${'⭐'.repeat(Math.min(3, this.unitStars(u.id))) || '☆ başla!'}</span></div>
+     </div>`
+     )
+     .join('')}</div>`
+    );
+  },
+
+  /* ---------- 🎮 OYUN SEÇİMİ ---------- */
+  vUnit() {
+    const u = unitById(this.unitId);
+    if (!u) return this.vHome();
+    const stn = u.stage === 's1' ? 1 : 2;
+    const eng = ENGINES.filter((e) => e.stages.includes(stn));
+    return (
+      this.bar() +
+      `
+   <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
+     <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div></div>
+   <div class="word-wall">${u.w
+     .map(
+       (w) =>
+         `<span class="word-pill" data-w="${esc(w[0])}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])}</span>`
+     )
+     .join('')}</div>
+   <div class="muted" style="margin-bottom:10px">👆 Kelimelere dokun, Polly söylesin! · Bir oyun seç:</div>
+   <div class="game-grid">${eng
+     .map((e) => {
+       const b = (store.get('best') || {})[e.id + '|' + u.id];
+       return `<div class="card" data-e="${e.id}">
+       <span class="big">${e.e}</span><h3>${e.t}</h3>
+       <div class="sub">${e.d}</div>
+       <div style="margin-top:8px">${
+         b
+           ? `<span class="badge gold">En iyi: ${b.s} ${'⭐'.repeat(b.st)}</span>`
+           : '<span class="badge blue">Yeni!</span>'
+       }</div>
+     </div>`;
+     })
+     .join('')}</div>`
+    );
+  },
+
+  /* ---------- 🕹️ OYUN EKRANI ---------- */
+  vGame() {
+    const u = unitById(this.unitId),
+      e = ENGINES.find((x) => x.id === this.engineId);
+    if (!u || !e) return this.vHome();
+    const lvName = e.levels[this.lvIdx] ? e.levels[this.lvIdx].n : 'Standart';
+    return (
+      this.bar() +
+      `
+   <div class="game-head">
+     <div class="gscore">${e.e} ${e.t} <span class="badge">${esc(u.title)} · ${lvName}</span></div>
+     <div class="spacer"></div>
+     <div class="gscore">⭐ <span class="v" id="gsc">0</span></div>
+     ${e.id === 'team' ? '' : '<div class="gscore">📊 <span id="gpc" style="color:#b45309;font-weight:900">0%</span></div>'}
+   </div>
+   <div class="timerbar" id="gtb" style="margin-bottom:12px"><i id="gtbi" style="width:0%"></i></div>
+   <div id="ginfo"></div>
+   <div class="game-area" id="garea"></div>`
+    );
+  },
+
+  /* ---------- 🎵 ŞARKI KÖŞESİ ---------- */
+  vSongs() {
+    const st = this.songFilter.stage;
+    const us = unitsOfStage(st);
+    const sel = this.songFilter.unit || us[0].id;
+    const classics = SONGS.filter((s) => s.u === sel);
+    const chants = ALLCHANTS.filter((c) => c.u === sel);
+    return (
+      this.bar() +
+      `
+   <div class="unit-head songs" style="background:linear-gradient(120deg,#db2777,#f59e0b);color:#fff">
+     <span class="ue">🎵</span><div><h2 style="color:#fff">Şarkı & Chant Köşesi</h2>
+     <div class="sub" style="color:#ffe4e6">Toplam ${TOTALSONGS} şarkı & chant · ${SONGS.length} klasik + ${ALLCHANTS.length} ünite chant'i</div></div></div>
+   <div class="song-tabs">
+     ${STAGES.map(
+       (s) =>
+         `<button class="lvl-pill ${this.songFilter.stage === s.id ? 'active' : ''}" data-st="${s.id}">${s.emoji} ${s.name}</button>`
+     ).join('')}
+   </div>
+   <div class="word-wall">${us
+     .map(
+       (u) =>
+         `<span class="word-pill" data-sunit="${u.id}" style="${u.id === sel ? 'background:#fde68a;transform:scale(1.06);border-color:#f59e0b' : ''}">${u.emoji} ${u.tr}</span>`
+     )
+     .join('')}</div>
+   <h3 style="margin:16px 0 8px">🎶 Klasik Şarkılar</h3>
+   <div class="song-list">${
+     classics.length
+       ? classics
+           .map(
+             (s) => `
+     <div class="song-item" data-song="${SONGS.indexOf(s)}"><span class="se">${s.e}</span>
+       <h4>${s.t}</h4><div class="tune">🎼 ${s.tune}</div></div>`
+           )
+           .join('')
+       : '<div class="muted">Bu ünitede klasik şarkı yok — chant’lere göz at! 👇</div>'
+   }</div>
+   <h3 style="margin:16px 0 8px">🗣️ Kelime Chant’leri <span class="badge">${chants.length}</span></h3>
+   <div class="song-list">${chants
+     .map(
+       (c) => `
+     <div class="song-item" data-chant="${ALLCHANTS.indexOf(c)}"><span class="se">${c.e}</span>
+       <h4>${c.t}</h4><div class="tune">🥁 Ritmik chant</div></div>`
+     )
+     .join('')}</div>`
+    );
+  },
+
+  /* ---------- 🎼 ŞARKI OYNATICI ---------- */
+  vPlayer() {
+    const s = this.playing;
+    if (!s) return this.vSongs();
+    return (
+      this.bar() +
+      `
+   <div class="player">
+     <div class="big-emoji" style="font-size:72px">${s.e}</div>
+     <h2 style="margin:4px 0">${s.t}</h2>
+     <div class="row" style="display:flex;justify-content:center;gap:8px;margin:8px 0">
+       <span class="badge purple">🎼 ${s.tune}</span>
+       ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
+     </div>
+     <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
+     <div class="controls">
+       <button class="btn green pulse" id="pp">▶️ Başlat</button>
+       <button class="btn blue" id="pr">🔁 Baştan</button>
+       <button class="btn white" id="ps">🐢 Yavaş</button>
+       <button class="btn white" id="pa">🛑 Dur</button>
+     </div>
+     <div class="muted" style="margin-top:10px">💡 Polly satırları okur (konuşma sesi) — çocuklar sizinle birlikte söylesin! 🎤</div>
+   </div>`
+    );
+  },
+
+  /* ---------- 🏆 SKORLAR ---------- */
+  vScores() {
+    const b = store.get('best') || {};
+    const rows = Object.keys(b)
+      .map((k) => {
+        const [eid, uid, lv] = k.split('|');
+        const u = unitById(uid),
+          e = ENGINES.find((x) => x.id === eid);
+        return u && e ? { u, e, lv: +lv, s: b[k].s, st: b[k].st } : null;
+      })
+      .filter(Boolean)
+      .sort((a, c) => c.s - a.s)
+      .slice(0, 40);
+    const tot = Object.values(b).reduce((a, x) => a + (x.st || 0), 0);
+    return (
+      this.bar() +
+      `
+   <div class="center" style="min-height:120px">
+     <div class="big-emoji" style="font-size:64px">🏆</div>
+     <div class="pw" style="font-size:1.6em;margin:6px 0">Toplam ${tot} ⭐ toplanmış!</div>
+     <button class="btn small white" id="rst">🗑️ Skorları Sıfırla</button>
+   </div>
+   <table class="score-table"><tr><th>Oyun</th><th>Ünite</th><th>Seviye</th><th>Puan</th><th>Yıldız</th></tr>
+   ${
+     rows
+       .map(
+         (r) => `<tr><td>${r.e.e} ${r.e.t}</td><td>${r.u.emoji} ${esc(r.u.tr)}</td>
+     <td>${r.e.levels[r.lv] ? r.e.levels[r.lv].n : '1'}</td><td><b>${r.s}</b></td><td>${'⭐'.repeat(r.st)}</td></tr>`
+       )
+       .join('') ||
+     '<tr><td colspan="5" class="muted" style="text-align:center;padding:18px">Henüz skor yok — haydi oyna! 🎮</td></tr>'
+   }</table>`
+    );
+  },
+
+  /* ---------- ❓ YARDIM ---------- */
+  vHelp() {
+    return (
+      this.bar() +
+      `
+   <div class="card" style="max-width:760px;margin:0 auto;text-align:left;line-height:1.6">
+     <h3 style="font-size:1.3em;margin-bottom:10px">👩‍🏫 Öğretmen Rehberi</h3>
+     <p><b>1) Site nasıl kullanılır?</b><br>Tek bir HTML dosyasıdır — internet gerekmez! USB’ye kopyalayıp okul bilgisayarında/akıllı tahtada açabilirsiniz. Tablet ve telefonda da çalışır.</p>
+     <p><b>2) Sesler:</b> Tüm sesler tarayıcıda üretilir. 🔊 düğmesiyle açıp kapatabilirsiniz. İngilizce telaffuzlar tarayıcının konuşma motoruyla (TTS) okunur — Chrome/Edge/Safari’de en iyi sonucu verir.</p>
+     <p><b>3) Akıllı tahta için:</b> <b>⚔️ Takım Yarışı</b> oyununu seçin — sınıfı iki takıma bölün! 🎱 Bingo ve 🎈 Balon Patlat da sınıfça oynanabilir.</p>
+     <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyunu seçin (Kolay/Orta/Zor). Her oyunda ⭐ toplanır, skorlar cihaza kaydedilir.</p>
+     <p><b>5) Şarkılar:</b> TTS konuşur, şarkı söyletir. Çocuklara sözleri gösterir, ritimle birlikte okutur.</p>
+     <p><b>6) Anti-Crash Koruması:</b> Herhangi bir aksilikte sayfa çökmeyi engeller ve kaldığınız skordan devam ettirir.</p>
+     <p class="muted" style="margin-top:14px">Cambridge Global English 1 & 2 (Second Edition) üniteleriyle uyumludur. Bağımsız eğitsel yardımcı materyaldir.</p>
+   </div>`
+    );
+  },
+
+  /* ---------- Event Bağlama ---------- */
+  bind() {
+    const $ = (s) => document.querySelector(s),
+      $$ = (s) => [...document.querySelectorAll(s)];
+    const on = (sel, ev, fn) => {
+      const e = $(sel);
+      if (e) e.addEventListener(ev, fn);
+    };
+    const backMap = {
+      game: 'unit',
+      unit: 'stage',
+      stage: 'home',
+      player: 'songs',
+      songs: 'home',
+      scores: 'home',
+      help: 'home'
+    };
+
+    on('#bk', 'click', () => {
+      MEDIA.fx('click');
+      this.go(backMap[this.scr] || 'home');
+    });
+    on('#hm', 'click', () => {
+      MEDIA.fx('click');
+      this.stage = null;
+      this.go('home');
+    });
+    on('#mu', 'click', (e) => {
+      MEDIA.toggleMute();
+      e.target.textContent = MEDIA.muted ? '🔇' : '🔊';
+      FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
+    });
+    on('#mas', 'click', () => {
+      const ps = [
+        'Hello! I’m Polly! 🦜',
+        'Let’s play a game! 🎮',
+        'Can you say it? 🗣️',
+        'You can do it! 💪',
+        'Sing with me! 🎵'
+      ];
+      const p = pick(ps);
+      FX.mascotSay(p);
+      MEDIA.speak(p.replace(/[🦜🎮🗣️💪🎵]/g, ''));
+    });
+    on('#rndG', 'click', () => {
+      MEDIA.fx('whoosh');
+      const st = pick(STAGES);
+      const us = unitsOfStage(st.id);
+      const u = pick(us);
+      const stn = st.id === 's1' ? 1 : 2;
+      const e = pick(ENGINES.filter((x) => x.stages.includes(stn)));
+      const lv = rnd(e.levels.length);
+      this.stage = st.id;
+      this.go('game', { unitId: u.id, engineId: e.id, lvIdx: lv });
+    });
+    on('#sc', 'click', () => this.go('scores'));
+    on('#hp', 'click', () => this.go('help'));
+
+    $$('.stage-card').forEach((c) =>
+      c.addEventListener('click', () => {
+        MEDIA.fx('whoosh');
+        if (c.dataset.go) return this.go('songs');
+        this.stage = c.dataset.st;
+        this.go('stage');
+      })
+    );
+
+    $$('.card[data-u]').forEach((c) =>
+      c.addEventListener('click', () => {
+        MEDIA.fx('pop');
+        this.go('unit', { unitId: c.dataset.u });
+      })
+    );
+
+    $$('.word-pill[data-w]').forEach((p) =>
+      p.addEventListener('click', () => {
+        MEDIA.speak(p.dataset.w);
+        FX.notes(innerWidth / 2, innerHeight - 140);
+      })
+    );
+
+    $$('.card[data-e]').forEach((c) =>
+      c.addEventListener('click', () => {
+        MEDIA.fx('pop');
+        this.pickLevel(c.dataset.e);
+      })
+    );
+
+    $$('.lvl-pill[data-st]').forEach((b) =>
+      b.addEventListener('click', () => {
+        this.songFilter = { stage: b.dataset.st, unit: null };
+        this.go('songs');
+      })
+    );
+
+    $$('.word-pill[data-sunit]').forEach((b) =>
+      b.addEventListener('click', () => {
+        this.songFilter.unit = b.dataset.sunit;
+        this.go('songs');
+      })
+    );
+
+    $$('.song-item[data-song]').forEach((s) =>
+      s.addEventListener('click', () => {
+        MEDIA.fx('click');
+        this.playing = SONGS[+s.dataset.song];
+        this.go('player');
+      })
+    );
+
+    $$('.song-item[data-chant]').forEach((s) =>
+      s.addEventListener('click', () => {
+        MEDIA.fx('click');
+        this.playing = ALLCHANTS[+s.dataset.chant];
+        this.go('player');
+      })
+    );
+
+    on('#rst', 'click', () => {
+      if (confirm('Tüm skorlar silinsin mi?')) {
+        store.set('best', {});
+        this.go('scores');
+      }
+    });
+
+    if (this.scr === 'game') this.mountGame();
+    if (this.scr === 'player') this.mountPlayer();
+  },
+
+  /* ---------- Seviye Seçme Modalı ---------- */
+  pickLevel(eid) {
+    const e = ENGINES.find((x) => x.id === eid);
+    if (!e) return;
+    const ov = el(`<div class="overlay"><div class="modal">
+     <h3>${e.e} ${e.t}</h3><div class="muted" style="margin-bottom:10px">${e.d}</div>
+     <div class="lvl-row" style="justify-content:center">${e.levels
+       .map(
+         (l, i) =>
+           `<button class="lvl-pill" data-l="${i}">${'🟢🟡🔴'[i] || '🎯'} ${l.n}</button>`
+       )
+       .join('')}</div></div></div>`);
+    document.body.appendChild(ov);
+    ov.addEventListener('click', (ev) => {
+      if (ev.target === ov) ov.remove();
+      const b = ev.target.closest('[data-l]');
+      if (b) {
+        ov.remove();
+        MEDIA.fx('whoosh');
+        this.go('game', { engineId: eid, unitId: this.unitId, lvIdx: +b.dataset.l });
+      }
+    });
+  },
+
+  /* ---------- Oyunu Başlat ---------- */
+  mountGame() {
+    const area = document.getElementById('garea');
+    if (!area) return;
+    const u = unitById(this.unitId),
+      e = ENGINES.find((x) => x.id === this.engineId);
+    if (!u || !e) return;
+    const self = this;
+    let score = 0;
+
+    const upd = () => {
+      const s = document.getElementById('gsc');
+      if (s) {
+        s.textContent = score;
+        s.classList.remove('bump');
+        void s.offsetWidth;
+        s.classList.add('bump');
+      }
+    };
+
+    const api = {
+      root: area,
+      unit: u,
+      lv: e.levels[this.lvIdx] ? e.levels[this.lvIdx].c : {},
+      score: 0,
+      add(n) {
+        score += n;
+        this.score = score;
+        upd();
+        if (score > 0 && score % 60 === 0) {
+          const p = pick(PRAISE);
+          FX.mascotSay(p + ' 🦜');
+          MEDIA.speak(p);
+          FX.confetti(30);
+          MEDIA.fx('cheer');
+        }
+      },
+      progress(c, t) {
+        const p = Math.min(100, Math.round((c / t) * 100));
+        const b = document.getElementById('gtbi');
+        if (b) b.style.width = p + '%';
+        const pc = document.getElementById('gpc');
+        if (pc) pc.textContent = p + '%';
+      },
+      info(html) {
+        const i = document.getElementById('ginfo');
+        if (i) {
+          i.innerHTML = html;
+          return i.firstElementChild || i;
+        }
+        return null;
+      },
+      speak: (t, r, cb) => MEDIA.speak(t, r, cb),
+      fx: (n) => MEDIA.fx(n),
+      cleanup(f) {
+        self.cleanups.push(f);
+      },
+      restart() {
+        self.go('game', {
+          engineId: self.engineId,
+          unitId: self.unitId,
+          lvIdx: self.lvIdx
+        });
+      },
+      end(res) {
+        self.cleanup();
+        MEDIA.stopSpeak();
+        const pct = res.max ? res.score / res.max : 1;
+        const st = pct >= 0.85 ? 3 : pct >= 0.55 ? 2 : 1;
+        const key = e.id + '|' + u.id + '|' + self.lvIdx,
+          b = store.get('best') || {};
+        if (!b[key] || b[key].s < res.score) {
+          b[key] = { s: res.score, st: Math.max(st, b[key] ? b[key].st : 0) };
+          store.set('best', b);
+        } else if (b[key].st < st) {
+          b[key].st = st;
+          store.set('best', b);
+        }
+        FX.confetti(st * 50);
+        MEDIA.fx(st >= 2 ? 'win' : 'levelup');
+        area.innerHTML = `<div class="center">
+         <div class="result-stars">${'⭐'.repeat(st) + '<span>☆</span>'.repeat(3 - st)}</div>
+         <div class="pw" style="font-size:1.5em">Puan: ${res.score}</div>
+         <div class="muted">${res.note || ''}</div>
+         <div class="row" style="display:flex;gap:10px;margin-top:16px"><button class="btn green" id="rag">🔁 Tekrar Oyna</button>
+           <button class="btn blue" id="run">➡️ Diğer Oyunlar</button></div></div>`;
+        const rag = area.querySelector('#rag');
+        if (rag) rag.onclick = () => api.restart();
+        const run = area.querySelector('#run');
+        if (run) run.onclick = () => self.go('unit', { unitId: u.id });
+      }
+    };
+
+    upd();
+    try {
+      e.init(api);
+    } catch (err) {
+      // // SAFETY: Motor hata verse dahi beyaz ekran olmasını engelle
+      area.innerHTML = `<div class="center"><div class="big-emoji">🙈</div>
+     <div>Bu oyunda bir aksilik oldu. Diğer oyunları deneyin!</div><div class="muted">${esc(err.message)}</div></div>`;
+    }
+  },
+
+  /* ---------- Şarkı Oynatıcı ---------- */
+  mountPlayer() {
+    const s = this.playing;
+    if (!s) return;
+    let idx = 0,
+      slow = false,
+      running = false,
+      timer = null;
+    const lines = [...document.querySelectorAll('#ly .line')];
+    const stop = () => {
+      running = false;
+      clearTimeout(timer);
+      MEDIA.stopSpeak();
+      lines.forEach((l) => l.classList.remove('active'));
+    };
+    this.cleanups.push(stop);
+
+    const step = () => {
+      if (!running) return;
+      if (idx >= lines.length) {
+        stop();
+        FX.mascotSay('Bravo! 🎉 Bir daha söyleyelim mi?');
+        return;
+      }
+      lines.forEach((l) => l.classList.remove('active'));
+      const ln = lines[idx];
+      if (ln) {
+        ln.classList.add('active');
+        if (ln.scrollIntoView) {
+          try {
+            ln.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          } catch (e) {}
+        }
+        FX.notes(innerWidth / 2, innerHeight - 160);
+        const txt = ln.textContent.replace(/[^\w\s'’,.!?-]/g, '').trim() || 'la la la';
+        MEDIA.speak(txt, slow ? 0.7 : 0.85, () => {
+          if (!running) return;
+          timer = setTimeout(() => {
+            idx++;
+            step();
+          }, 550);
+        });
+      }
+    };
+
+    const pp = document.getElementById('pp');
+    if (pp) {
+      pp.onclick = () => {
+        MEDIA.fx('click');
+        running = true;
+        idx = 0;
+        step();
+      };
+    }
+    const pr = document.getElementById('pr');
+    if (pr) {
+      pr.onclick = () => {
+        MEDIA.fx('click');
+        stop();
+        running = true;
+        idx = 0;
+        setTimeout(step, 150);
+      };
+    }
+    const ps = document.getElementById('ps');
+    if (ps) {
+      ps.onclick = (e) => {
+        slow = !slow;
+        e.target.textContent = slow ? '🐇 Normal' : '🐢 Yavaş';
+        MEDIA.fx('click');
+      };
+    }
+    const pa = document.getElementById('pa');
+    if (pa) {
+      pa.onclick = () => {
+        MEDIA.fx('click');
+        stop();
+      };
+    }
+  },
+
+  /* ---------- Gökyüzü Dekoru (P1: Düşük CPU / RAM) ---------- */
+  floaties() {
+    const f = document.getElementById('floaties');
+    if (!f) return;
+    const em = ['☁️', '🎈', '⭐', '🦋', '🪁', '🌸', '🍃', '💫', '🐝', '☁️'];
+    for (let i = 0; i < 12; i++) {
+      const s = document.createElement('span');
+      s.textContent = em[i % em.length];
+      s.style.left = Math.random() * 96 + '%';
+      s.style.fontSize = 24 + Math.random() * 24 + 'px';
+      s.style.animationDuration = 14 + Math.random() * 14 + 's';
+      s.style.animationDelay = -Math.random() * 18 + 's';
+      f.appendChild(s);
+    }
+  }
+};
+
+/* ---------- ANTİ-CRASH SHIELD (Global Hata Yakalayıcı) ---------- */
+window.addEventListener('error', (event) => {
+  const banner = document.getElementById('crash-banner');
+  if (banner) {
+    banner.classList.add('show');
+    const resBtn = document.getElementById('crash-resume');
+    if (resBtn) {
+      resBtn.onclick = () => {
+        banner.classList.remove('show');
+        APP.restoreLastState();
+      };
+    }
+    const hmBtn = document.getElementById('crash-home');
+    if (hmBtn) {
+      hmBtn.onclick = () => {
+        banner.classList.remove('show');
+        APP.go('home');
+      };
+    }
+  }
+});
+
+window.addEventListener('unhandledrejection', () => {
+  // Promise rejection fail-safe
+});
+
+/* ---------- DOKUNMA DALGASI & UÇAN SÜRPRİZLER ---------- */
+document.addEventListener(
+  'pointerdown',
+  (ev) => {
+    // // PERF: Sadece görünür ekranlarda hafif dalga efekti
+    if (ev.clientY < 60) return; // Topbar tıklamalarını rahatlat
+    const r = document.createElement('i');
+    r.className = 'ripple';
+    r.style.left = ev.clientX + 'px';
+    r.style.top = ev.clientY + 'px';
+    document.body.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  },
+  { passive: true }
+);
+
+// // PERF: Uçan maskotlar arka planda çalışmaz, maksimum 2 eleman sınırı
+setInterval(() => {
+  const L = document.getElementById('fxlayer');
+  if (L && Math.random() < 0.35 && !document.hidden && L.querySelectorAll('.flyby').length < 2) {
+    const b = document.createElement('span');
+    b.className = 'flyby';
+    b.textContent = pick(['🕊️', '🦋', '🎈', '🦜', '🚀', '🐝', '🪁']);
+    const dur = 6 + Math.random() * 5;
+    b.style.top = 8 + rnd(38) + 'vh';
+    b.style.animationDuration = dur + 's';
+    b.style.setProperty('--fly', window.innerWidth + 160 + 'px');
+    L.appendChild(b);
+    setTimeout(() => b.remove(), dur * 1000 + 500);
+  }
+}, 9000);
+
+/* ---------- UYGULAMAYI BAŞLAT ---------- */
+if (typeof document !== 'undefined') {
+  APP.floaties();
+  APP.render();
+  document.addEventListener('click', () => MEDIA.init(), { once: true });
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    try {
+      speechSynthesis.onvoiceschanged = () => {
+        MEDIA.voice = null;
+      };
+    } catch (e) {}
+  }
+  FX.mascotSay('Merhaba! Ben Polly 🦜 Bir sınıf seç ve başlayalım!', 4500);
+}
+
+  </script>
+</body>
+</html>
