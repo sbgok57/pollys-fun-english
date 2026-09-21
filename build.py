@@ -14,6 +14,9 @@ html = (src / 'shell.html').read_text(encoding='utf-8')
 assert '</script' not in js, 'JS içinde </script> var!'
 out = html.replace('/*__CSS__*/', css).replace('//__JS__', js)
 
+audio_src = root / 'audio'
+img_src = root / 'images'
+
 # 1. Ana dosyalar
 dest = root / 'english-fun-zone.html'
 dest.write_text(out, encoding='utf-8')
@@ -25,6 +28,15 @@ index_dest.write_text(out, encoding='utf-8')
 public_dir = root / 'public'
 public_dir.mkdir(exist_ok=True)
 (public_dir / 'index.html').write_text(out, encoding='utf-8')
+(public_dir / 'english-fun-zone.html').write_text(out, encoding='utf-8')
+if audio_src.exists():
+    pub_audio = public_dir / 'audio'
+    shutil.rmtree(pub_audio, ignore_errors=True)
+    shutil.copytree(audio_src, pub_audio)
+if img_src.exists():
+    pub_img = public_dir / 'images'
+    shutil.rmtree(pub_img, ignore_errors=True)
+    shutil.copytree(img_src, pub_img)
 
 # 3. 🛡️ v7 SIFIR-HATA DAĞITIM PAKETİ — her seferinde sıfırdan, eksiksiz kurulur
 vd = root / 'vercel-deploy'
@@ -33,19 +45,44 @@ shutil.rmtree(vd, ignore_errors=True)
 (vd / 'images').mkdir(parents=True, exist_ok=True)
 (vd / 'index.html').write_text(out, encoding='utf-8')
 (vd / 'english-fun-zone.html').write_text(out, encoding='utf-8')
-(vd / 'public').mkdir(exist_ok=True)
-(vd / 'public' / 'index.html').write_text(out, encoding='utf-8')
-(vd / 'vercel.json').write_text('{}\n', encoding='utf-8')
 
-audio_src = root / 'audio'
+vd_pub = vd / 'public'
+vd_pub.mkdir(exist_ok=True)
+(vd_pub / 'index.html').write_text(out, encoding='utf-8')
+(vd_pub / 'english-fun-zone.html').write_text(out, encoding='utf-8')
+
+vjson_content = json.dumps({
+    "cleanUrls": True,
+    "headers": [
+        {
+            "source": "/audio/(.*)",
+            "headers": [
+                {"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}
+            ]
+        },
+        {
+            "source": "/(.*)",
+            "headers": [
+                {"key": "X-Content-Type-Options", "value": "nosniff"}
+            ]
+        }
+    ]
+}, indent=2) + '\n'
+
+(root / 'vercel.json').write_text(vjson_content, encoding='utf-8')
+(vd / 'vercel.json').write_text(vjson_content, encoding='utf-8')
+
 if audio_src.exists():
     shutil.rmtree(vd / 'audio', ignore_errors=True)
     shutil.copytree(audio_src, vd / 'audio')
+    shutil.rmtree(vd_pub / 'audio', ignore_errors=True)
+    shutil.copytree(audio_src, vd_pub / 'audio')
 
-img_src = root / 'images'
 if img_src.exists():
     shutil.rmtree(vd / 'images', ignore_errors=True)
     shutil.copytree(img_src, vd / 'images')
+    shutil.rmtree(vd_pub / 'images', ignore_errors=True)
+    shutil.copytree(img_src, vd_pub / 'images')
 
 print(f'OK → vercel-deploy/index.html + vercel.json + audio + images')
 
@@ -53,16 +90,26 @@ print(f'OK → vercel-deploy/index.html + vercel.json + audio + images')
 desktop_vd = pathlib.Path('/Users/sbgok57/Desktop/vercel-deploy')
 if desktop_vd.exists():
     (desktop_vd / 'index.html').write_text(out, encoding='utf-8')
-    (desktop_vd / 'public').mkdir(exist_ok=True)
-    (desktop_vd / 'public' / 'index.html').write_text(out, encoding='utf-8')
+    (desktop_vd / 'english-fun-zone.html').write_text(out, encoding='utf-8')
+    (desktop_vd / 'vercel.json').write_text(vjson_content, encoding='utf-8')
+    desk_pub = desktop_vd / 'public'
+    desk_pub.mkdir(exist_ok=True)
+    (desk_pub / 'index.html').write_text(out, encoding='utf-8')
+    (desk_pub / 'english-fun-zone.html').write_text(out, encoding='utf-8')
     if audio_src.exists():
         desk_audio = desktop_vd / 'audio'
         shutil.rmtree(desk_audio, ignore_errors=True)
         shutil.copytree(audio_src, desk_audio)
+        desk_pub_audio = desk_pub / 'audio'
+        shutil.rmtree(desk_pub_audio, ignore_errors=True)
+        shutil.copytree(audio_src, desk_pub_audio)
     if img_src.exists():
         desk_img = desktop_vd / 'images'
         shutil.rmtree(desk_img, ignore_errors=True)
         shutil.copytree(img_src, desk_img)
+        desk_pub_img = desk_pub / 'images'
+        shutil.rmtree(desk_pub_img, ignore_errors=True)
+        shutil.copytree(img_src, desk_pub_img)
 
 # ── 🛡️ TAM DOĞRULAMA: her varlık referansı diskte VAR MI? ──
 hatalar = []
