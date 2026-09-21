@@ -747,6 +747,71 @@ body.s2 {
 }
 #crash-banner.show { display: block; animation: popIn 0.3s; }
 
+/* ============ v3: 🎤 Ses seçim modalı ============ */
+#vmodal{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s}
+.vmbox{background:#fff;border-radius:22px;padding:18px 18px 16px;max-width:540px;width:92%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.vmbox h3{margin:0 0 4px;color:#6b21a8}
+.vlist{overflow:auto;margin:4px 0 12px;border:3px dashed #e9d5ff;border-radius:14px;background:#faf5ff}
+.vitem{padding:10px 12px;cursor:pointer;border-bottom:1px solid #f1f5f9;font-weight:600;animation:fadeIn .25s}
+.vitem:last-child{border-bottom:none}
+.vitem:hover{background:#fef9c3}
+.vitem.sel{background:#dcfce7}
+.vitem .muted{font-weight:400;float:right}
+
+/* ============ v4: 📚 Konu Anlatımı ============ */
+.lesson{max-width:780px;margin:0 auto;padding-bottom:8px}
+.lhead{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#fef9c3,#fde68a);border-radius:20px;padding:10px 14px;margin-bottom:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);flex-wrap:wrap}
+.lhead.s2{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.lhead .ue{font-size:46px;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.15))}
+.lhead h2{margin:0;font-size:1.22em}
+.lhero{margin-left:auto}
+.lhero img{height:66px;border-radius:14px;border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.25);display:block}
+.lbody{border-radius:24px;padding:18px 16px;min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;box-shadow:0 14px 40px rgba(0,0,0,.16)}
+.lbody.g0{background:linear-gradient(160deg,#fff1f2,#ffe4e6)}
+.lbody.g1{background:linear-gradient(160deg,#fefce8,#fef9c3)}
+.lbody.g2{background:linear-gradient(160deg,#f0fdf4,#dcfce7)}
+.lbody.g3{background:linear-gradient(160deg,#eff6ff,#dbeafe)}
+.lbody.g4{background:linear-gradient(160deg,#faf5ff,#f3e8ff)}
+.lbody.g5{background:linear-gradient(160deg,#fff7ed,#ffedd5)}
+.lslide{display:flex;flex-direction:column;align-items:center;gap:10px;animation:slideUp .45s;width:100%}
+.lscene{font-size:clamp(58px,17vw,104px);line-height:1.2;filter:drop-shadow(0 8px 12px rgba(0,0,0,.28))}
+.lscene.f{animation:floaty 2.6s ease-in-out infinite}
+.lscene.w{animation:wig 3s ease-in-out infinite}
+.len{font-size:clamp(21px,4.6vw,31px);font-weight:800;color:#1e293b;text-align:center;line-height:1.35}
+.ltr{font-size:clamp(15px,3.4vw,19px);color:#64748b;text-align:center;font-weight:600}
+.lbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:4px}
+.lwords{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;width:100%;max-height:48vh;overflow:auto;padding:4px}
+.lword{display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.82);border:3px solid #fbbf24;border-radius:16px;padding:10px 6px;cursor:pointer;transition:.18s;font-family:inherit}
+.lword:hover{transform:translateY(-4px) rotate(-1.5deg) scale(1.04);border-color:#f97316;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.lword.lit{background:#dcfce7;border-color:#22c55e;animation:heartbeat .6s}
+.lwe{font-size:38px;line-height:1.15}
+.lword b{font-size:1.0em;color:#0f172a}
+.lwt{font-size:.8em;color:#64748b}
+.lvideo{width:100%;max-width:560px;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:4px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,.25);background:#0f172a}
+.lvideo iframe{width:100%;height:100%;border:0;display:block}
+.lnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.ldots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.ldot{width:13px;height:13px;border-radius:50%;background:#cbd5e1;transition:.2s}
+.ldot.on{background:#f59e0b;transform:scale(1.35);box-shadow:0 0 0 3px #fde68a}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes wig{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) scale(1.05)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}25%{transform:scale(1.12)}50%{transform:scale(.96)}75%{transform:scale(1.1)}}
+
+/* ============ v5: 🎯 Mini Quiz + Dril + Kelime sahnesi ============ */
+.ldrill{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2px}
+.lwscene{width:100%;max-width:430px;max-height:150px;object-fit:cover;border-radius:16px;border:4px solid #fff;box-shadow:0 10px 26px rgba(0,0,0,.2)}
+.lquiz{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+.lqq{font-size:clamp(19px,4vw,27px);font-weight:800;color:#0f172a}
+.lqopts{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.lqopt{font-size:clamp(46px,12vw,68px);line-height:1.1;background:#fff;border:4px solid #a78bfa;border-radius:20px;padding:14px 20px;cursor:pointer;transition:.18s;animation:popIn .3s;font-family:inherit}
+.lqopt:hover{transform:scale(1.12) rotate(2deg);border-color:#7c3aed}
+.lqopt.ok{background:#dcfce7;border-color:#22c55e;animation:heartbeat .6s}
+.lqopt.no{background:#fee2e2;border-color:#ef4444}
+.lqstars{font-size:24px;letter-spacing:3px}
+.lqdone{text-align:center;animation:popIn .4s}
+
+
   </style>
 </head>
 <body>
@@ -4032,6 +4097,234 @@ ALLCHANTS.push(...ALLSETS.flatMap(u=>chantsForUnit(u.id)));
 TOTALSONGS=SONGS.length+ALLCHANTS.length;
 
 /* ============================================================
+   🎵 MELODİ HARİTASI (v3)
+   Klasik şarkılar → audio/ klasöründeki gerçek melodi dosyaları.
+   Melodiler kamu malıdır; müzik kutusu tınısıyla üretilmiştir.
+   Eşleşen melodi yoksa şarkı, neşeli bir ritim döngüsüyle çalar.
+   ============================================================ */
+const MELODY_TUNE = {
+  'Twinkle Twinkle': 'mel-twinkle',   /* Alphabet Song + Baa Baa Black Sheep */
+  'Frère Jacques': 'mel-frere'        /* Hello Song + Good Morning + Are You Sleeping? */
+};
+const MELODY_TITLE = {
+  'Head, Shoulders, Knees and Toes': 'mel-head',
+  "If You\u2019re Happy and You Know It": 'mel-happy',
+  'The Wheels on the Bus': 'mel-wheels',
+  'Old MacDonald Had a Farm': 'mel-oldmac',
+  'Mary Had a Little Lamb': 'mel-mary',
+  'Row Row Row Your Boat': 'mel-row',
+  'Rain Rain Go Away': 'mel-rain',
+  'London Bridge Is Falling Down': 'mel-london',
+  'Hot Cross Buns': 'mel-hotcross',
+  'Ten Little Fingers': 'mel-ten'
+};
+function melodyFor(s) {
+  try {
+    return (s && (MELODY_TUNE[s.tune] || MELODY_TITLE[s.t])) || null;
+  } catch (e) {
+    return null;
+  }
+}
+const BEATN = 6;
+
+/* ============================================================
+   📚 KONU ANLATIMI (v4)
+   Her ünite için: animasyonlu slaytlar (emoji sahne + İngilizce
+   cümle + Türkçe), otomatik kelime kartları ve video bölümü.
+   Polly sesli: 🎧 Dinle (yavaş+net TTS) · 🗣️ Tekrar (gömülü
+   gerçek Polly sesi: "Now, listen and repeat!")
+   ============================================================ */
+const LESSONS={
+ s1u0:[
+  ['👋🌟','Hello! Hello! My name is Polly. What is your name?','Merhaba! Benim adım Polly. Senin adın ne?'],
+  ['🙋‍♀️😊','How are you today? I am fine, thank you!','Bugün nasılsın? İyiyim, teşekkürler!'],
+  ['🔴🟠🟡🟢🔵💜','Look! Red, blue, green, yellow! What is your favourite colour?','Bak! Kırmızı, mavi, yeşil, sarı! En sevdiğin renk ne?'],
+  ['1️⃣2️⃣3️⃣4️⃣5️⃣','Let us count! One, two, three, four, five, six, seven, eight, nine, ten!','Hadi sayalım! Bir, iki, üç, dört, beş, altı, yedi, sekiz, dokuz, on!'],
+  ['👏🕺💃','Stand up! Jump! Clap your hands! Well done!','Ayağa kalk! Zıpla! El çırp! Harika!'],
+  ['🙏💛✨','Please and thank you — magic words! Say them every day!','Lütfen ve teşekkürler — sihirli kelimeler! Her gün söyleyin!']
+ ],
+ s1u1:[
+  ['🏫🎒','Welcome to school! This is my school bag.','Okula hoş geldin! Bu benim okul çantam.'],
+  ['📖✏️🖍️','I have a book, a pencil and a crayon.','Bir kitabım, bir kalemim ve bir pastel kalemim var.'],
+  ['✂️📏🧴','Scissors, ruler, glue — open your pencil case!','Makas, cetvel, yapıştırıcı — kalemliğinizi açın!'],
+  ['👩‍🏫🧑‍🎓','This is my teacher. I am a student!','Bu benim öğretmenim. Ben öğrenciyim!'],
+  ['📖✍️🌟','I can read. I can write. I love my school!','Okuyabilirim. Yazabilirim. Okulumu seviyorum!']
+ ],
+ s1u2:[
+  ['👨‍👩‍👧‍👦❤️','This is my family! I love my family.','Bu benim ailem! Ailemi seviyorum.'],
+  ['👩👶','This is my mother. This is my baby sister.','Bu benim annem. Bu bebek kız kardeşim.'],
+  ['👴👵','Hello, grandma! Hello, grandpa!','Merhaba büyükanne! Merhaba büyükbaba!'],
+  ['🛏️🪥🧼','I wake up. I brush my teeth. I wash my hands.','Uyanırım. Dişlerimi fırçalarım. Ellerimi yıkarım.'],
+  ['🍽️😴🌙','I eat my dinner. Good night, family!','Akşam yemeğimi yerim. İyi geceler aile!']
+ ],
+ s1u3:[
+  ['🧸🪁🥁','Look at my toys! A teddy bear, a kite and a drum.','Oyuncaklarıma bak! Bir peluş ayı, bir uçurtma ve bir davul.'],
+  ['🤖🚂','I have a robot and a toy boat. They are fun!','Bir robotum ve bir oyuncak teknem var. Çok eğlenceliler!'],
+  ['🎾🙌','I can catch the ball! I can throw the ball!','Topu yakalayabilirim! Topu atabilirim!'],
+  ['🤝💛','Let us share our toys. Take turns, please!','Oyuncaklarımızı paylaşalım. Lütfen sırayla oynayalım!'],
+  ['🙈🎉','Hide and seek! One, two, three... I see you!','Saklambaç! Bir, iki, üç... Seni gördüm!']
+ ],
+ s1u4:[
+  ['👕👖👟','I put on my T-shirt. I put on my shoes.','Tişörtümü giyerim. Ayakkabılarımı giyerim.'],
+  ['🎩🧦🧥','Look at my hat! Look at my socks! Warm and cosy!','Şapkama bakın! Çoraplarıma bakın! Sıcacık ve rahat!'],
+  ['🔵🔺⭐','A circle, a square, a triangle and a star! Can you draw them?','Bir daire, bir kare, bir üçgen ve bir yıldız! Çizebilir misiniz?'],
+  ['✂️🖍️📄','Cut the paper. Fold it. Paint it! What is it?','Kâğıdı kesin. Katlayın. Boyayın! Bu ne?'],
+  ['🎀✨','I can make a card! I love making things!','Bir kart yapabilirim! Bir şeyler yapmayı seviyorum!']
+ ],
+ s1u5:[
+  ['🚜🐄🐑','Old MacDonald has a farm! Let us visit the animals!','Old MacDonald\u2019un bir çiftliği var! Hayvanları ziyaret edelim!'],
+  ['🐷🐣','A pig and a chick! The pig says oink oink!','Bir domuz ve bir civciv! Domuz "oink oink" der!'],
+  ['🐴🐕🐈','A horse can run fast! A cat says meow!','Bir at hızlı koşabilir! Bir kedi "miyav" der!'],
+  ['🚜🌾','The tractor works in the field. Farm life is fun!','Traktör tarlada çalışır. Çiftlik hayatı eğlencelidir!'],
+  ['🥚🥛❤️','Hens give us eggs. Cows give us milk. Thank you, animals!','Tavuklar bize yumurta verir. İnekler süt verir. Teşekkürler hayvanlar!']
+ ],
+ s1u6:[
+  ['👀👂👃','I have five senses! I see, I hear, I smell!','Beş duyum var! Görürüm, duyarım, koklarım!'],
+  ['👅🤲','I taste with my tongue. I touch with my hands!','Dilimle tadarım. Ellerimle dokunurum!'],
+  ['🥁🔔','Loud or quiet? The drum is loud. The bell is quiet.','Gürültülü mü sessiz mi? Davul gürültülüdür. Zil sessizdir.'],
+  ['🍬🍋','Sweet or sour? Sugar is sweet. Lemons are sour!','Tatlı mı ekşi mi? Şeker tatlıdır. Limonlar ekşidir!'],
+  ['🧸🪨','Soft or hard? My teddy is soft. A rock is hard!','Yumuşak mı sert mi? Peluş ayım yumuşaktır. Taş serttir!']
+ ],
+ s1u7:[
+  ['🚌🚗✈️','The wheels on the bus go round and round! Let us go!','Otobüsün tekerlekleri dönüp döner! Hadi gidelim!'],
+  ['🚂🚢','I go by train. I go by ship. Choo choo!','Trenle giderim. Gemiyle giderim. Çuf çuf!'],
+  ['🚁🚀','Look up! A helicopter! A rocket goes to the moon!','Yukarıya bakın! Bir helikopter! Roket aya gider!'],
+  ['🚦🛑','Red says stop! Green says go! Be careful!','Kırmızı "dur" der! Yeşil "geç" der! Dikkatli olun!'],
+  ['🚴💨','My bike is fast! My bike is slow... Speed up!','Bisikletim hızlı! Bisikletim yavaş... Hızlanın!']
+ ],
+ s1u8:[
+  ['🏙️🚦','Welcome to our town! So many places to see!','Kasabamıza hoş geldiniz! Görülecek çok yer var!'],
+  ['🏥🏦📚','A hospital, a bank and a library. Where are you going?','Bir hastane, bir banka ve bir kütüphane. Nereye gidiyorsunuz?'],
+  ['🌳🏊🦓','I play in the park. I swim in the pool. I love the zoo!','Parkta oynarım. Havuzda yüzerim. Hayvanat bahçesini severim!'],
+  ['🚏🌉','Wait at the bus stop. Walk over the bridge!','Otobüs durağında bekleyin. Köprüden yürüyün!'],
+  ['☕🍦','A café and a shop. Let us buy an ice cream! Yummy!','Bir kafe ve bir dükkân. Dondurma alalım! Çok lezzetli!']
+ ],
+ s1u9:[
+  ['💧🌊','Water, water everywhere! In rivers and in the sea!','Su, su her yerde! Nehirlerde ve denizde!'],
+  ['🌧️☔','Rain, rain, go away! Come again another day!','Yağmur, yağmur, git buradan! Başka bir gün gel!'],
+  ['☀️⛅🌧️','Sunny, cloudy, rainy... What is the weather today?','Güneşli, bulutlu, yağmurlu... Bugün hava nasıl?'],
+  ['❄️🧊','Snow is cold. Ice is cold. Brrr!','Kar soğuktur. Buz soğuktur. Brrr!'],
+  ['🏊🚿💦','I drink water. I wash my hands. I love to swim!','Su içerim. Ellerimi yıkarım. Yüzmeyi severim!']
+ ],
+ s2u1:[
+  ['⏰🎒','Good morning! Time for school! Look at my clock!','Günaydın! Okul zamanı! Saatime bakın!'],
+  ['📅💻📓','A calendar, a computer and my notebook!','Bir takvim, bir bilgisayar ve defterim!'],
+  ['🖌️🎨🖼️','I paint with my paintbrush. What a beautiful picture!','Fırçamla resim yaparım. Ne güzel bir resim!'],
+  ['🍱🥤','Lunchtime! My lunchbox and my water bottle!','Yemek zamanı! Yemek kutum ve su şişem!'],
+  ['⏰👋','School starts at nine. School ends at three. See you!','Okul dokuzda başlar. Üçte biter. Görüşürüz!']
+ ],
+ s2u2:[
+  ['🧑‍🚒👩‍⚕️','Who helps us? Firefighters and doctors help us!','Bize kim yardım eder? İtfaiyeciler ve doktorlar!'],
+  ['👮‍♀️👩‍🏫','A police officer keeps us safe. A teacher helps us learn!','Polis bizi güvende tutar. Öğretmen öğrenmemize yardım eder!'],
+  ['👨‍🍳🚕','A baker makes bread. A driver drives a taxi!','Fırıncı ekmek yapar. Şoför taksi kullanır!'],
+  ['👨‍🌾🦷🐾','A farmer grows food. A vet helps our pets!','Çiftçi yiyecek yetiştirir. Veteriner evcil hayvanlarımıza yardım eder!'],
+  ['🤝🏘️💛','Good neighbours are kind. Let us help each other!','İyi komşular kibardır. Hadi birbirimize yardım edelim!']
+ ],
+ s2u3:[
+  ['🤸🏃💨','Ready, steady, go! I can run very fast!','Hazır, başla, git! Çok hızlı koşabilirim!'],
+  ['🤾🏊🚴','I can jump, swim and ride my bike!','Zıplayabilirim, yüzebilirim ve bisiklete binebilirim!'],
+  ['🧗💃','I can climb! I can dance! Look at me!','Tırmanabilirim! Dans edebilirim! Bana bakın!'],
+  ['⚽🦵🙌','Kick the ball! Throw the ball! Catch it!','Topa vurun! Topu atın! Yakalayın!'],
+  ['🏃‍♀️🏅💪','Run with your arms and legs. You are the champion!','Kollarınız ve bacaklarınızla koşun. Siz şampiyonsunuz!']
+ ],
+ s2u4:[
+  ['🌞🌍🌙','Good morning, sun! Good night, moon!','Günaydın güneş! İyi geceler ay!'],
+  ['☀️⛅☁️','The sun is hot. The clouds are white and soft!','Güneş sıcaktır. Bulutlar beyaz ve yumuşaktır!'],
+  ['⭐🌈','Twinkle, twinkle, little stars! Look, a rainbow!','Parılda, parılda küçük yıldızlar! Bakın, bir gökkuşağı!'],
+  ['🌪️🌫️','A storm is loud. Fog is grey. Stay inside!','Fırtına gürültülüdür. Sis gridir. İçeride kalın!'],
+  ['🪐🌍✨','This is our planet Earth. The sky is amazing!','Bu bizim gezegenimiz Dünya. Gökyüzü harika!']
+ ],
+ s2u5:[
+  ['📏✏️','Let us measure! How long is your pencil?','Hadi ölçelim! Kaleminiz ne kadar uzun?'],
+  ['🦒🐭','A giraffe is tall. A mouse is short!','Zürafa uzundur. Fare kısadır!'],
+  ['🐘🪶','An elephant is heavy. A feather is light!','Fil ağırdır. Tüy hafiftir!'],
+  ['📏🔢','One metre is one hundred centimetres! Wow!','Bir metre, yüz santimetredir! Vay canına!'],
+  ['⭕🔺🟦','Circle, square, triangle, rectangle, oval! Shapes everywhere!','Daire, kare, üçgen, dikdörtgen, oval! Her yerde şekiller!']
+ ],
+ s2u6:[
+  ['🐝🦋🐞','Welcome to bug world! A bee, a butterfly and a ladybug!','Böcekler alemine hoş geldiniz! Arı, kelebek ve uğur böceği!'],
+  ['🐜🕷️','An ant is very small. A spider has eight legs!','Karınca çok küçüktür. Örümceğin sekiz bacağı vardır!'],
+  ['🦗🐌','A grasshopper can jump! A snail is very slow!','Çekirge zıplayabilir! Salyangoz çok yavaştır!'],
+  ['🐛🦋','A caterpillar becomes a butterfly! Amazing!','Bir tırtıl kelebek olur! İnanılmaz!'],
+  ['🐝🌸🍯','Bees love flowers. They make honey! Yummy!','Arılar çiçekleri sever. Bal yaparlar! Çok lezzetli!']
+ ],
+ s2u7:[
+  ['🌳🌍🌸','Look around! Trees, grass and flowers! This is our world!','Etrafınıza bakın! Ağaçlar, çimenler ve çiçekler! Bu bizim dünyamız!'],
+  ['🌱🌿🌳','A seed grows and grows. It becomes a big tree!','Bir tohum büyür büyür. Büyük bir ağaç olur!'],
+  ['🍃🟤','Leaves are green. The trunk is brown and strong!','Yapraklar yeşildir. Gövde kahverengi ve güçlüdür!'],
+  ['🍎🍊','Apple trees give us apples. Orange trees give us oranges!','Elma ağaçları bize elma verir. Portakal ağaçları portakal verir!'],
+  ['🌳💧🤍','We love the Earth. Let us water the plants!','Dünyayı severiz. Hadi bitkileri sularız!']
+ ],
+ s2u8:[
+  ['🏠❤️','Home, sweet home! Welcome to my house!','Ev, tatlı ev! Evime hoş geldiniz!'],
+  ['🛏️🛋️🪑','This is my bedroom. I sleep in my bed!','Bu benim yatak odam. Yatağımda uyurum!'],
+  ['🍳🍽️','This is the kitchen. Yummy food is in the kitchen!','Bu mutfak. Lezzetli yemekler mutfaktadır!'],
+  ['🛁🚿','I take a bath in the bathroom. Splash, splash!','Banyoda yıkanırım. Şıp şıp!'],
+  ['🪜🪞','I go up the stairs. I look in the mirror. Hello, me!','Merdivenlerden çıkarım. Aynaya bakarım. Merhaba, ben!']
+ ],
+ s2u9:[
+  ['🗺️🚌','Let us explore the city! All aboard the bus!','Hadi şehri keşfedelim! Herkes otobüse!'],
+  ['🏛️🎬','A museum and a cinema! What fun places!','Bir müze ve bir sinema! Ne eğlenceli yerler!'],
+  ['🚉🍿','The train is at the station. Let us watch a film!','Tren istasyonda. Hadi bir film izleyelim!'],
+  ['🛒🍎','I buy apples at the supermarket. I play at the playground!','Süpermarkette elma alırım. Oyun parkında oynarım!'],
+  ['⛲📚🤫','The fountain is beautiful. The library is quiet. Shh!','Çeşme çok güzel. Kütüphane sessizdir. Şşt!']
+ ]
+};
+/* 📺 Gömülü videolar (resmî Super Simple Songs) — doğrulanmış ID'ler */
+const LVID={
+ s1u0:[['AclVcrAQKWA','I See Something Blue 🎨'],['FejjRyuOcYw','Ten in the Bed 🔢']],
+ s1u4:[['tb_PKP3xI-g','Put On Your Shoes 👟']],
+ s1u5:[['j9-7ooe3JLM','Old MacDonald Had a Farm 🚜']],
+ s1u6:[['VAOOT5ZfQyU','Head Shoulders Knees & Toes 🕺']],
+ s1u7:[['KRmSqBmCH8I','The Wheels on the Bus 🚌']],
+ s1u9:[['eHJXXei0E-4','Rain Rain Go Away ☔']],
+ s2u5:[['FejjRyuOcYw','Ten in the Bed 🔢']],
+ s2u7:[['GoSq-yZcJ-4','Walking in the Jungle 🌳']],
+ s1u1:[['Y9-erBW5JxQ','Back to School Song 🎒']],
+ s1u2:[['m0lQyezHvuc','Cody\u2019s Finger Family 👨👩👧']],
+ s1u8:[['FxRGkjkVTGA','Where Are You Going? 🏙️']],
+ s2u1:[['XHrJvcdgT-4','Days of the Week 📅']],
+ s2u2:[['BOv4EnaeM9w','Occupations Song 👩🚒']],
+ s2u3:[['gCPbZ3XM2js','We All Fall Down 🤸']],
+ s2u4:[['iq6Y8fBRLmw','How Is The Weather? 🌤️']],
+ s2u6:[['D-dbrkCkkO0','The Bees Go Buzzing 🐝']],
+ s2u8:[['fRcLxsUg4Gc','My House 🏠']],
+ s2u9:[['PPCx3pSkKjg','Driving In My Car 🚗']]
+};
+/* 🔎 Her ünite için YouTube arama önerisi (öğretmen seçip oynatır) */
+const LQ={
+ s1u0:'hello song for kids super simple songs',
+ s1u1:'school song for kids super simple songs',
+ s1u2:'finger family song for kids',
+ s1u3:'toys song for kids super simple songs',
+ s1u4:'shapes song for kids super simple songs',
+ s1u5:'animal sounds song for kids',
+ s1u6:'five senses song for kids',
+ s1u7:'driving in my car super simple songs',
+ s1u8:'places in town song for kids',
+ s1u9:'the bath song super simple songs',
+ s2u1:'days of the week song for kids',
+ s2u2:'people work jobs song for kids',
+ s2u3:'action song for kids super simple',
+ s2u4:'how is the weather super simple songs',
+ s2u5:'counting song for kids super simple',
+ s2u6:'the bees go buzzing super simple songs',
+ s2u7:'walking in the forest super simple songs',
+ s2u8:'my house song for kids english',
+ s2u9:'the city song for kids english'
+};
+
+/* ============================================================
+   🎙️ GERÇEK İNSAN SESİ HARİTASI (v6)
+   VOICESET bildirgesi — mevcut insan sesi kayıtlarının slug listesi.
+   Slug bu kümede varsa speak() audio/w-<slug>.mp3 dosyasını çalar;
+   bulunamazsa tarayıcı TTS yedeğine döner.
+   ============================================================ */
+const VOICESET = new Set([
+  'w-zztest'
+]);
+
+/* ============================================================
    🔊 SES & GÖRSEL EFEKT MOTORU (Web Audio API + TTS + FX)
    Offline çalışır, harici dosya/CDN gerektirmez.
    ============================================================ */
@@ -4192,41 +4485,158 @@ const MEDIA = {
     }
   },
 
-  getVoice() {
-    if (!window.speechSynthesis) return null;
-    if (this.voice) return this.voice;
-    const voices = speechSynthesis.getVoices();
-    if (!voices || !voices.length) return null;
-    // Prefer English voices: Google, Samantha, Daniel, or en-US/en-GB
-    const en = voices.filter((v) => /^en/i.test(v.lang));
-    const preferred =
-      en.find((v) => /natural|samantha|karen|daniel|google/i.test(v.name)) ||
-      en[0] ||
-      voices[0];
-    this.voice = preferred;
-    return preferred;
+  /* 🎵 Gömülü ses dosyaları (audio/ klasörü — yoksa sessizce TTS'e döner) */
+  ac: {},
+  playFile(name, vol, loop) {
+    try {
+      vol = vol == null ? 1 : vol;
+      if (this.muted) return null;
+      let a = this.ac[name];
+      if (!a) {
+        a = new Audio('audio/' + name + '.mp3');
+        this.ac[name] = a;
+      }
+      a.currentTime = 0;
+      a.volume = vol;
+      a.loop = !!loop;
+      const pr = a.play();
+      if (pr && pr.catch) pr.catch(() => {});
+      return a;
+    } catch (e) {
+      return null;
+    }
+  },
+  stopMusic(a) {
+    try {
+      if (a) {
+        a.pause();
+        a.currentTime = 0;
+      }
+    } catch (e) {}
+  },
+  praise() {
+    const f = ['yay', 'super', 'great', 'welldone', 'wow'][Math.floor(Math.random() * 5)];
+    return this.playFile(f, 0.95);
+  },
+  pickVoice() {
+    try {
+      const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      if (!vs || !vs.length) return null;
+      const pref = [
+        (v) => /natural/i.test(v.name) && /en[-_](GB|US)/i.test(v.lang),
+        (v) => /Online \(Natural\)/i.test(v.name),
+        (v) => /Google.*English/i.test(v.name),
+        (v) => /en[-_]GB/i.test(v.lang) && /female|Kate|Serena|Libby/i.test(v.name),
+        (v) => /en[-_]GB/i.test(v.lang),
+        (v) => /en[-_]US/i.test(v.lang),
+        (v) => /^en/i.test(v.lang)
+      ];
+      for (const p of pref) {
+        const f = vs.find(p);
+        if (f) {
+          this.voice = f;
+          return f;
+        }
+      }
+      return vs[0] || null;
+    } catch (e) {
+      return null;
+    }
+  },
+  setVoice(name) {
+    try {
+      const vs = speechSynthesis.getVoices();
+      const v = vs.find((x) => x.name === name);
+      if (v) {
+        this.voice = v;
+        try {
+          localStorage.setItem('polly_voice', name);
+        } catch (e) {}
+      }
+    } catch (e) {}
   },
 
-  speak(text, rate = 0.88, onEnd = null) {
-    if (this.muted || !window.speechSynthesis) {
-      if (onEnd) setTimeout(onEnd, 300);
+  /* 🎙️ ANA KONUŞMA — GERÇEK İNSAN SESİ ÖNCELİKLİ
+     voice-map.js bildirgesinde (VOICESET) slug'ı varsa audio/w-<slug>.mp3
+     dosyası çalınır (gerçek nöral insan sesi kaydı). Dosya yoksa veya
+     çalınamazsa tarayıcı TTS yedeğine (tts) döner — sessiz asla kalmaz.
+     rate değeri dosya hızına çevrilir: >=.8 normal · .7-.79 hafif yavaş ·
+     <.7 yavaş (gerçek ses playbackRate ile yavaşlatılır — robotikleşmez) */
+  speak(text, rate = 0.82, cb, vol) {
+    try {
+      if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
+        const t = String(text || '');
+        const slug = 'w-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        if (typeof VOICESET !== 'undefined' && VOICESET.has(slug)) {
+          let a = null;
+          try {
+            a = this.playFile(slug, vol == null ? 1 : vol);
+          } catch (e) {}
+          if (a) {
+            this.stopSpeak();
+            let done = false,
+              to = null;
+            try {
+              a.playbackRate = rate >= 0.8 ? 1 : rate >= 0.7 ? 0.92 : 0.78;
+            } catch (e) {}
+            const fall = () => {
+              if (done) return;
+              done = true;
+              if (to) clearTimeout(to);
+              this.tts(text, rate, cb, vol);
+            };
+            const fin = () => {
+              if (done) return;
+              done = true;
+              if (to) clearTimeout(to);
+              cb && cb();
+            };
+            if (cb)
+              to = setTimeout(() => {
+                if (!done) {
+                  done = true;
+                  cb();
+                }
+              }, 4000);
+            a.onended = fin;
+            a.onerror = fall;
+            const pr = a.play && a.play();
+            if (pr && pr.catch) pr.catch(fall);
+            return;
+          }
+        }
+      }
+    } catch (e) {}
+    this.tts(text, rate, cb, vol);
+  },
+
+  /* Yedek: tarayıcı TTS (Edge "Natural" sesleri öncelikli seçilir) */
+  tts(text, rate = 0.82, cb, vol) {
+    if (this.muted) {
+      cb && cb();
       return;
     }
     try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      const v = this.getVoice();
-      if (v) u.voice = v;
-      u.rate = rate;
-      u.pitch = 1.05;
-      u.lang = 'en-US';
-      if (onEnd) {
-        u.onend = () => onEnd();
-        u.onerror = () => onEnd();
+      const synth = window.speechSynthesis;
+      if (!synth) {
+        cb && cb();
+        return;
       }
-      speechSynthesis.speak(u);
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-GB';
+      u.rate = rate;
+      u.pitch = 1.12;
+      if (vol != null) u.volume = vol;
+      if (!this.voice) this.pickVoice();
+      if (this.voice) u.voice = this.voice;
+      if (cb) {
+        u.onend = cb;
+        u.onerror = cb;
+      }
+      synth.speak(u);
     } catch (e) {
-      if (onEnd) setTimeout(onEnd, 300);
+      cb && cb();
     }
   },
 
@@ -5987,6 +6397,7 @@ const APP = {
       home: () => this.vHome(),
       stage: () => this.vStage(),
       unit: () => this.vUnit(),
+      lesson: () => this.vLesson(),
       game: () => this.vGame(),
       songs: () => this.vSongs(),
       player: () => this.vPlayer(),
@@ -6034,6 +6445,7 @@ const APP = {
    <div class="quick-row">
      <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
      <button class="btn white" id="sc">🏆 Skorlar</button>
+     <button class="btn white" id="vbtn">🎤 Polly’nin Sesi</button>
      <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
    </div>`
     );
@@ -6049,16 +6461,18 @@ const APP = {
    <div class="unit-head ${st.id}"><span class="ue">${st.emoji}</span>
      <div><h2>${st.name} — ${st.book}</h2><div class="sub">${st.desc}</div></div></div>
    <div class="unit-grid">${us
-     .map(
-       (u) => `
-     <div class="card" data-u="${u.id}">
-       ${u.mix ? '<div class="ribbon">TEKRAR</div>' : ''}
-       <span class="big">${u.emoji}</span>
-       <h3>${u.no === '⭐' || u.no === '🔁' ? '' : 'Ünite ' + u.no + ' · '}${u.title}</h3>
+     .map((u) => {
+       const b = this.unitStars(u.id);
+       return `<div class="unit-card ${u.stage}" data-u="${u.id}">
+       <span class="ue">${u.emoji}</span>
+       <h3>${u.title}</h3>
        <div class="sub">${u.tr} · ${u.w.length} kelime</div>
-       <div style="margin-top:8px"><span class="badge">${'⭐'.repeat(Math.min(3, this.unitStars(u.id))) || '☆ başla!'}</span></div>
-     </div>`
-     )
+       <div class="u-meta">
+         <span class="badge ${u.stage === 's1' ? 'green' : 'blue'}">${u.stage.toUpperCase()}</span>
+         ${b > 0 ? `<span class="badge gold">⭐ ${b}</span>` : ''}
+       </div>
+     </div>`;
+     })
      .join('')}</div>`
     );
   },
@@ -6073,7 +6487,8 @@ const APP = {
       this.bar() +
       `
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
-     <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div></div>
+     <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div>
+     ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="margin-left:auto;font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı</button>' : ''}</div>
    <div class="word-wall">${u.w
      .map(
        (w) =>
@@ -6182,14 +6597,15 @@ const APP = {
        ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
      </div>
      <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
-     <div class="controls">
-       <button class="btn green pulse" id="pp">▶️ Başlat</button>
-       <button class="btn blue" id="pr">🔁 Baştan</button>
-       <button class="btn white" id="ps">🐢 Yavaş</button>
-       <button class="btn white" id="pa">🛑 Dur</button>
-     </div>
-     <div class="muted" style="margin-top:10px">💡 Polly satırları okur (konuşma sesi) — çocuklar sizinle birlikte söylesin! 🎤</div>
-   </div>`
+      <div class="controls">
+        <button class="btn green pulse" id="pp">▶️ Başlat</button>
+        <button class="btn blue" id="pr">🔁 Baştan</button>
+        <button class="btn white" id="ps">🐢 Yavaş</button>
+        <button class="btn white" id="pm">🎵 Müzik: Açık</button>
+        <button class="btn white" id="pa">🛑 Dur</button>
+      </div>
+      <div class="muted" style="margin-top:10px">🎵 Gerçek melodi çalar · Polly satırları söyler — çocuklar birlikte söylesin! 🎤</div>
+    </div>`
     );
   },
 
@@ -6236,10 +6652,10 @@ const APP = {
    <div class="card" style="max-width:760px;margin:0 auto;text-align:left;line-height:1.6">
      <h3 style="font-size:1.3em;margin-bottom:10px">👩‍🏫 Öğretmen Rehberi</h3>
      <p><b>1) Site nasıl kullanılır?</b><br>Tek bir HTML dosyasıdır — internet gerekmez! USB’ye kopyalayıp okul bilgisayarında/akıllı tahtada açabilirsiniz. Tablet ve telefonda da çalışır.</p>
-     <p><b>2) Sesler:</b> Tüm sesler tarayıcıda üretilir. 🔊 düğmesiyle açıp kapatabilirsiniz. İngilizce telaffuzlar tarayıcının konuşma motoruyla (TTS) okunur — Chrome/Edge/Safari’de en iyi sonucu verir.</p>
+     <p><b>2) Sesler:</b> Polly’nin <b>tüm kelimeleri ve ders cümleleri (500+ kayıt) gerçek insan sesiyle</b> kayıtlıdır (audio/ klasörü — nöral ses teknolojisi, robotik TTS değil!). Şarkı melodileri de gömülüdür. Kaydı olmayan az sayıdaki metin tarayıcı sesine düşer (Microsoft Edge’te daha gerçekçi). 🔊 düğmesiyle açıp kapatabilirsiniz.</p>
      <p><b>3) Akıllı tahta için:</b> <b>⚔️ Takım Yarışı</b> oyununu seçin — sınıfı iki takıma bölün! 🎱 Bingo ve 🎈 Balon Patlat da sınıfça oynanabilir.</p>
      <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyunu seçin (Kolay/Orta/Zor). Her oyunda ⭐ toplanır, skorlar cihaza kaydedilir.</p>
-     <p><b>5) Şarkılar:</b> TTS konuşur, şarkı söyletir. Çocuklara sözleri gösterir, ritimle birlikte okutur.</p>
+     <p><b>5) Şarkılar:</b> 15 klasik şarkının gerçek melodisi çalar (müzik kutusu tınısı), diğerlerinde neşeli bir ritim eşlik eder — Polly satırları seslendirir, sınıfça söyleyin! 🎵 Ana ekrandaki <b>🎤 Polly’nin Sesi</b> düğmesinden tarayıcının en gerçekçi sesini seçebilirsiniz (en iyileri Microsoft Edge’teki “Natural” sesler).</p>
      <p><b>6) Anti-Crash Koruması:</b> Herhangi bir aksilikte sayfa çökmeyi engeller ve kaldığınız skordan devam ettirir.</p>
      <p class="muted" style="margin-top:14px">Cambridge Global English 1 & 2 (Second Edition) üniteleriyle uyumludur. Bağımsız eğitsel yardımcı materyaldir.</p>
    </div>`
@@ -6255,6 +6671,7 @@ const APP = {
       if (e) e.addEventListener(ev, fn);
     };
     const backMap = {
+      lesson: 'unit',
       game: 'unit',
       unit: 'stage',
       stage: 'home',
@@ -6277,6 +6694,12 @@ const APP = {
       MEDIA.toggleMute();
       e.target.textContent = MEDIA.muted ? '🔇' : '🔊';
       FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
+    });
+    on('#vbtn', 'click', () => this.showVoices());
+    on('#lbtn', 'click', () => {
+      MEDIA.fx('magic');
+      this.lesIdx = 0;
+      this.go('lesson', { unitId: this.unitId });
     });
     on('#mas', 'click', () => {
       const ps = [
@@ -6373,6 +6796,7 @@ const APP = {
 
     if (this.scr === 'game') this.mountGame();
     if (this.scr === 'player') this.mountPlayer();
+    if (this.scr === 'lesson') this.mountLesson();
   },
 
   /* ---------- Seviye Seçme Modalı ---------- */
@@ -6511,10 +6935,38 @@ const APP = {
       running = false,
       timer = null;
     const lines = [...document.querySelectorAll('#ly .line')];
+    const mel = typeof melodyFor === 'function' ? melodyFor(s) : null;
+    const bt = 'beat' + ([...(s.t || 'x')].reduce((a, c) => a + c.codePointAt(0), 0) % (typeof BEATN !== 'undefined' ? BEATN : 6));
+    let mus = null,
+      music = true;
+    const musStop = () => {
+      if (mus) {
+        MEDIA.stopMusic(mus);
+        mus = null;
+      }
+    };
+    const musStart = () => {
+      musStop();
+      if (!music) return;
+      if (mel) {
+        MEDIA.playFile('sing', 0.9);
+        mus = MEDIA.playFile(mel, 0.8, true) || MEDIA.playFile(bt, 0.4, true);
+      } else {
+        mus = MEDIA.playFile(bt, 0.4, true);
+      }
+    };
+    const duck = (v) => {
+      if (mus) {
+        try {
+          mus.volume = v;
+        } catch (e) {}
+      }
+    };
     const stop = () => {
       running = false;
       clearTimeout(timer);
       MEDIA.stopSpeak();
+      musStop();
       lines.forEach((l) => l.classList.remove('active'));
     };
     this.cleanups.push(stop);
@@ -6537,8 +6989,10 @@ const APP = {
         }
         FX.notes(innerWidth / 2, innerHeight - 160);
         const txt = ln.textContent.replace(/[^\w\s'’,.!?-]/g, '').trim() || 'la la la';
+        duck(0.22);
         MEDIA.speak(txt, slow ? 0.7 : 0.85, () => {
           if (!running) return;
+          duck(0.8);
           timer = setTimeout(() => {
             idx++;
             step();
@@ -6553,6 +7007,7 @@ const APP = {
         MEDIA.fx('click');
         running = true;
         idx = 0;
+        musStart();
         step();
       };
     }
@@ -6563,7 +7018,10 @@ const APP = {
         stop();
         running = true;
         idx = 0;
-        setTimeout(step, 150);
+        setTimeout(() => {
+          musStart();
+          step();
+        }, 150);
       };
     }
     const ps = document.getElementById('ps');
@@ -6574,12 +7032,307 @@ const APP = {
         MEDIA.fx('click');
       };
     }
+    const pm = document.getElementById('pm');
+    if (pm) {
+      pm.onclick = (e) => {
+        music = !music;
+        e.target.textContent = music ? '🎵 Müzik: Açık' : '🎵 Müzik: Kapalı';
+        MEDIA.fx('click');
+        if (music && running) musStart();
+        else musStop();
+      };
+    }
     const pa = document.getElementById('pa');
     if (pa) {
       pa.onclick = () => {
         MEDIA.fx('click');
         stop();
       };
+    }
+  },
+
+  /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
+  showVoices() {
+    const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : [])
+      .filter((v) => /^en/i.test(v.lang));
+    const cur = (MEDIA.voice && MEDIA.voice.name) || '';
+    const d = document.createElement('div');
+    d.id = 'vmodal';
+    d.innerHTML = `<div class="vmbox">
+      <h3>🎤 Polly’nin Sesini Seçin</h3>
+      <div class="muted">Microsoft Edge tarayıcısında "Natural" sesler çok daha gerçekçidir.</div>
+      <div class="vlist">${
+        vs
+          .map(
+            (v) => `<div class="vitem ${v.name === cur ? 'sel' : ''}" data-v="${esc(v.name)}">
+          ${/natural/i.test(v.name) ? '🌟 ' : ''}${esc(v.name)} <span class="muted">${v.lang}</span>
+        </div>`
+          )
+          .join('') || '<div class="vitem">Tarayıcı sesi bulunamadı</div>'
+      }</div>
+      <button class="btn white" id="vmclose">✅ Kapat</button></div>`;
+    document.body.appendChild(d);
+    d.querySelectorAll('.vitem').forEach(
+      (it) =>
+        (it.onclick = () => {
+          const n = it.dataset.v;
+          MEDIA.setVoice(n);
+          MEDIA.speak('Hello! I am Polly! Let us learn English!');
+          d.querySelectorAll('.vitem').forEach((x) => x.classList.remove('sel'));
+          it.classList.add('sel');
+          FX.toast('✔ ' + n);
+        })
+    );
+    const vmclose = d.querySelector('#vmclose');
+    if (vmclose) vmclose.onclick = () => d.remove();
+  },
+
+  /* ---------- 📚 KONU ANLATIMI (v4 & v5) ---------- */
+  vLesson() {
+    const u = unitById(this.unitId);
+    if (!u || !LESSONS[u.id]) return this.vUnit();
+    const L = LESSONS[u.id],
+      n = this.lesIdx || 0,
+      total = L.length + 4;
+    let body = '';
+    if (n < L.length) {
+      const s = L[n];
+      body = `<div class="lslide"><div class="lscene f">${s[0]}</div>
+        <div class="len">${esc(s[1])}</div><div class="ltr">${esc(s[2])}</div>
+        <div class="lbtns">
+          <button class="btn green" id="lL">🎧 Dinle</button>
+          <button class="btn blue" id="lS">🐢 Yavaş Dinle</button>
+          <button class="btn white" id="lR">🗣️ Tekrar!</button>
+        </div>
+        <div class="ldrill">
+          <button class="btn small white" data-d="tog">👥 Birlikte</button>
+          <button class="btn small white" data-d="boys">👦 Erkekler</button>
+          <button class="btn small white" data-d="girls">👧 Kızlar</button>
+          <button class="btn small white" data-d="loud">📢 Yüksek</button>
+          <button class="btn small white" data-d="whis">🤫 Fısıltı</button>
+          <button class="btn small white" data-d="clap">👏 El Çırp</button>
+          <button class="btn small white" data-d="once">🔁 Bir Daha</button>
+        </div></div>`;
+    } else if (n === L.length) {
+      body = `<div class="lslide"><img class="lwscene" src="images/w-${u.id}.jpg" alt="" onerror="this.style.display='none'"><div class="lscene f" style="font-size:44px">📚</div>
+        <div class="len">Our New Words! 🌟</div>
+        <div class="ltr">Dokun, dinle ve birlikte söyle!</div>
+        <div class="lwords">${u.w
+          .map(
+            (w, i) =>
+              `<button class="lword" data-i="${i}"><span class="lwe">${w[1] || '🔤'}</span><b>${esc(w[0])}</b><span class="lwt">${esc(w[2])}</span></button>`
+          )
+          .join('')}</div></div>`;
+    } else if (n === L.length + 1) {
+      body = `<div class="lslide"><div class="lscene w">🎯</div>
+        <div class="len">Show Me! 🎯</div>
+        <div class="ltr">Polly hangisi? Doğru resme dokun!</div>
+        <div id="lquiz" class="lquiz"></div></div>`;
+    } else if (n === L.length + 2) {
+      const vs = LVID[u.id] || [],
+        q = LQ[u.id] || 'english for kids ' + u.title;
+      body = `<div class="lslide"><div class="lscene">🎬</div>
+        <div class="len">Sing & Watch! 🎵</div>
+        <div class="ltr">Super Simple Songs ile şarkı söyleyelim</div>
+        ${
+          vs.length
+            ? vs
+                .map(
+                  (v) =>
+                    `<div class="lvideo"><iframe src="https://www.youtube-nocookie.com/embed/${v[0]}?rel=0" title="${esc(v[1])}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div style="font-weight:700">${v[1]}</div>`
+                )
+                .join('')
+            : '<div class="muted">Bu ünite için önerilen şarkıyı YouTube üzerinden arayabilirsiniz:</div>'
+        }
+        <a class="btn purple" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">🔎 YouTube’da Şarkı Ara</a>
+      </div>`;
+    } else {
+      body = `<div class="lslide"><div class="lscene f">🎉</div>
+        <div class="len">Great Job! You are ready to play! 🌟</div>
+        <div class="ltr">Harika bir ders oldu! Şimdi oyunlarla pekiştirelim.</div>
+        <div class="lbtns" style="margin-top:14px">
+          <button class="btn green big" id="lP">🎮 Oyunlara Başla!</button>
+          <button class="btn white" id="lB">🔁 Dersi Baştan Al</button>
+        </div></div>`;
+    }
+    const dots = Array.from(
+      { length: total },
+      (_, i) => `<span class="ldot ${i === n ? 'on' : ''}"></span>`
+    ).join('');
+    return (
+      this.bar() +
+      `
+    <div class="lesson">
+      <div class="lhead ${u.stage}"><span class="ue">${u.emoji}</span>
+        <div><h2>${u.title} · Ders</h2><div class="sub">${u.tr} · Slayt ${n + 1} / ${total}</div></div>
+        <div class="lhero"><img src="images/${u.id}.jpg" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="lbody g${n % 6}">${body}</div>
+      <div class="lnav">
+        <button class="btn white" id="lprev" ${n === 0 ? 'disabled' : ''}>⬅️ Geri</button>
+        <div class="ldots">${dots}</div>
+        <button class="btn green" id="lnext">${n >= total - 1 ? '🏁 Bitir' : 'İleri ➡️'}</button>
+      </div>
+      <div class="muted" style="text-align:center;margin-top:10px">💡 <b>🎧 Dinle</b>: Polly söyler · <b>🗣️ Tekrar</b>: çocuklarla birlikte söyleyin · <b>🐢 Yavaş</b>: ağır çekim</div>
+    </div>`
+    );
+  },
+
+  mountLesson() {
+    const u = unitById(this.unitId);
+    if (!u || !LESSONS[u.id]) return;
+    const L = LESSONS[u.id],
+      total = L.length + 4,
+      n = this.lesIdx || 0;
+    if (n === 0) MEDIA.playFile('les-ready', 0.9);
+    if (n === L.length) MEDIA.playFile('les-words', 0.9);
+    if (n === L.length + 1) MEDIA.playFile('les-point', 0.9);
+    if (n === L.length + 2) MEDIA.playFile('les-video', 0.9);
+    if (n === L.length + 3) {
+      MEDIA.playFile('les-welldone', 0.95);
+      FX.confetti(70);
+      MEDIA.fx('win');
+    }
+    const say = (t, r) => MEDIA.speak(t, r || 0.72);
+    const prev = document.getElementById('lprev'),
+      next = document.getElementById('lnext');
+    if (prev)
+      prev.onclick = () => {
+        MEDIA.fx('click');
+        this.lesIdx = Math.max(0, n - 1);
+        this.render();
+      };
+    if (next)
+      next.onclick = () => {
+        MEDIA.fx('pop');
+        if (n >= total - 1) this.go('unit', { unitId: u.id });
+        else {
+          this.lesIdx = n + 1;
+          this.render();
+        }
+      };
+    if (n < L.length) {
+      const s = L[n];
+      const b1 = document.getElementById('lL'),
+        b2 = document.getElementById('lS'),
+        b3 = document.getElementById('lR');
+      if (b1)
+        b1.onclick = () => {
+          MEDIA.fx('click');
+          say(s[1]);
+        };
+      if (b2)
+        b2.onclick = () => {
+          MEDIA.fx('click');
+          say(s[1], 0.55);
+        };
+      if (b3)
+        b3.onclick = () => {
+          MEDIA.fx('magic');
+          const a = MEDIA.playFile('les-repeat', 0.95);
+          if (a) {
+            a.onended = () => say(s[1]);
+            a.onerror = () => say(s[1]);
+          } else say(s[1]);
+        };
+      document.querySelectorAll('.ldrill [data-d]').forEach(
+        (b) =>
+          (b.onclick = () => {
+            const d = b.dataset.d;
+            MEDIA.fx('click');
+            const clip = {
+              tog: 'les-drill-tog',
+              boys: 'les-drill-boys',
+              girls: 'les-drill-girls',
+              loud: 'les-drill-loud',
+              whis: 'les-drill-whis',
+              clap: 'les-drill-clap',
+              once: 'les-drill-once'
+            }[d];
+            const after = () => {
+              if (d === 'loud') MEDIA.speak(s[1], 0.92, null, 1);
+              else if (d === 'whis') MEDIA.speak(s[1], 0.6, null, 0.3);
+              else if (d === 'clap') {
+                FX.confetti(14);
+                MEDIA.speak(s[1], 0.8);
+              } else say(s[1]);
+            };
+            const a = MEDIA.playFile(clip, 0.95);
+            if (a) {
+              a.onended = after;
+              a.onerror = after;
+            } else after();
+          })
+      );
+    }
+    if (n === L.length) {
+      document.querySelectorAll('.lword').forEach(
+        (b) =>
+          (b.onclick = () => {
+            const w = u.w[+b.dataset.i];
+            MEDIA.fx('pop');
+            b.classList.add('lit');
+            setTimeout(() => b.classList.remove('lit'), 700);
+            MEDIA.speak(w[0], 0.68);
+            FX.notes(innerWidth / 2, innerHeight - 140);
+          })
+      );
+    }
+    if (n === L.length + 1) {
+      /* 🎯 mini quiz */
+      const qw = shuffle(u.w.filter((w) => w[1])).slice(0, 4);
+      const box = document.getElementById('lquiz');
+      if (box && qw.length) {
+        let qi = 0;
+        const drawQ = () => {
+          if (qi >= qw.length) {
+            box.innerHTML = `<div class="lqdone">🎉🌟🎉<div class="len" style="margin-top:8px">You know the words!</div><div class="ltr">Kelime şampiyonusunuz!</div></div>`;
+            MEDIA.playFile('les-welldone', 0.95);
+            FX.confetti(60);
+            return;
+          }
+          const cur = qw[qi];
+          const opts = shuffle([cur, ...sample(u.w.filter((w) => w[1] && w[0] !== cur[0]), 2)]);
+          box.innerHTML = `<div class="lqq">Show me the <b>${esc(cur[0])}</b>!</div>
+            <div class="lqopts">${opts.map((o) => `<button class="lqopt" data-ok="${o[0] === cur[0] ? 1 : 0}"><span>${o[1]}</span></button>`).join('')}</div>
+            <div class="lqstars">${'⭐'.repeat(qi)}${'☆'.repeat(qw.length - qi)}</div>`;
+          MEDIA.speak(cur[0], 0.72);
+          box.querySelectorAll('.lqopt').forEach((ob) => (ob.onclick = () => {
+            if (ob.dataset.ok === '1') {
+              ob.classList.add('ok');
+              MEDIA.fx('correct');
+              FX.confetti(24);
+              MEDIA.playFile('les-yes', 0.95);
+              setTimeout(() => {
+                qi++;
+                drawQ();
+              }, 1100);
+            } else {
+              ob.classList.add('no');
+              FX.shake(ob);
+              MEDIA.fx('wrong');
+              MEDIA.playFile('les-no', 0.9);
+            }
+          }));
+        };
+        drawQ();
+      }
+    }
+    if (n === L.length + 3) {
+      const p = document.getElementById('lP'),
+        b = document.getElementById('lB');
+      if (p)
+        p.onclick = () => {
+          MEDIA.fx('whoosh');
+          MEDIA.playFile('les-bye', 0.9);
+          setTimeout(() => this.go('unit', { unitId: u.id }), 500);
+        };
+      if (b)
+        b.onclick = () => {
+          MEDIA.fx('click');
+          this.lesIdx = 0;
+          this.render();
+        };
     }
   },
 

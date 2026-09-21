@@ -737,3 +737,68 @@ body.s2 {
   text-align: left;
 }
 #crash-banner.show { display: block; animation: popIn 0.3s; }
+
+/* ============ v3: 🎤 Ses seçim modalı ============ */
+#vmodal{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s}
+.vmbox{background:#fff;border-radius:22px;padding:18px 18px 16px;max-width:540px;width:92%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.vmbox h3{margin:0 0 4px;color:#6b21a8}
+.vlist{overflow:auto;margin:4px 0 12px;border:3px dashed #e9d5ff;border-radius:14px;background:#faf5ff}
+.vitem{padding:10px 12px;cursor:pointer;border-bottom:1px solid #f1f5f9;font-weight:600;animation:fadeIn .25s}
+.vitem:last-child{border-bottom:none}
+.vitem:hover{background:#fef9c3}
+.vitem.sel{background:#dcfce7}
+.vitem .muted{font-weight:400;float:right}
+
+/* ============ v4: 📚 Konu Anlatımı ============ */
+.lesson{max-width:780px;margin:0 auto;padding-bottom:8px}
+.lhead{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#fef9c3,#fde68a);border-radius:20px;padding:10px 14px;margin-bottom:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);flex-wrap:wrap}
+.lhead.s2{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.lhead .ue{font-size:46px;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.15))}
+.lhead h2{margin:0;font-size:1.22em}
+.lhero{margin-left:auto}
+.lhero img{height:66px;border-radius:14px;border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.25);display:block}
+.lbody{border-radius:24px;padding:18px 16px;min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;box-shadow:0 14px 40px rgba(0,0,0,.16)}
+.lbody.g0{background:linear-gradient(160deg,#fff1f2,#ffe4e6)}
+.lbody.g1{background:linear-gradient(160deg,#fefce8,#fef9c3)}
+.lbody.g2{background:linear-gradient(160deg,#f0fdf4,#dcfce7)}
+.lbody.g3{background:linear-gradient(160deg,#eff6ff,#dbeafe)}
+.lbody.g4{background:linear-gradient(160deg,#faf5ff,#f3e8ff)}
+.lbody.g5{background:linear-gradient(160deg,#fff7ed,#ffedd5)}
+.lslide{display:flex;flex-direction:column;align-items:center;gap:10px;animation:slideUp .45s;width:100%}
+.lscene{font-size:clamp(58px,17vw,104px);line-height:1.2;filter:drop-shadow(0 8px 12px rgba(0,0,0,.28))}
+.lscene.f{animation:floaty 2.6s ease-in-out infinite}
+.lscene.w{animation:wig 3s ease-in-out infinite}
+.len{font-size:clamp(21px,4.6vw,31px);font-weight:800;color:#1e293b;text-align:center;line-height:1.35}
+.ltr{font-size:clamp(15px,3.4vw,19px);color:#64748b;text-align:center;font-weight:600}
+.lbtns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:4px}
+.lwords{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;width:100%;max-height:48vh;overflow:auto;padding:4px}
+.lword{display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.82);border:3px solid #fbbf24;border-radius:16px;padding:10px 6px;cursor:pointer;transition:.18s;font-family:inherit}
+.lword:hover{transform:translateY(-4px) rotate(-1.5deg) scale(1.04);border-color:#f97316;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.lword.lit{background:#dcfce7;border-color:#22c55e;animation:heartbeat .6s}
+.lwe{font-size:38px;line-height:1.15}
+.lword b{font-size:1.0em;color:#0f172a}
+.lwt{font-size:.8em;color:#64748b}
+.lvideo{width:100%;max-width:560px;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:4px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,.25);background:#0f172a}
+.lvideo iframe{width:100%;height:100%;border:0;display:block}
+.lnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.ldots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.ldot{width:13px;height:13px;border-radius:50%;background:#cbd5e1;transition:.2s}
+.ldot.on{background:#f59e0b;transform:scale(1.35);box-shadow:0 0 0 3px #fde68a}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes wig{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) scale(1.05)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}25%{transform:scale(1.12)}50%{transform:scale(.96)}75%{transform:scale(1.1)}}
+
+/* ============ v5: 🎯 Mini Quiz + Dril + Kelime sahnesi ============ */
+.ldrill{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:2px}
+.lwscene{width:100%;max-width:430px;max-height:150px;object-fit:cover;border-radius:16px;border:4px solid #fff;box-shadow:0 10px 26px rgba(0,0,0,.2)}
+.lquiz{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+.lqq{font-size:clamp(19px,4vw,27px);font-weight:800;color:#0f172a}
+.lqopts{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.lqopt{font-size:clamp(46px,12vw,68px);line-height:1.1;background:#fff;border:4px solid #a78bfa;border-radius:20px;padding:14px 20px;cursor:pointer;transition:.18s;animation:popIn .3s;font-family:inherit}
+.lqopt:hover{transform:scale(1.12) rotate(2deg);border-color:#7c3aed}
+.lqopt.ok{background:#dcfce7;border-color:#22c55e;animation:heartbeat .6s}
+.lqopt.no{background:#fee2e2;border-color:#ef4444}
+.lqstars{font-size:24px;letter-spacing:3px}
+.lqdone{text-align:center;animation:popIn .4s}
+

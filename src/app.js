@@ -106,6 +106,7 @@ const APP = {
       home: () => this.vHome(),
       stage: () => this.vStage(),
       unit: () => this.vUnit(),
+      lesson: () => this.vLesson(),
       game: () => this.vGame(),
       songs: () => this.vSongs(),
       player: () => this.vPlayer(),
@@ -153,6 +154,7 @@ const APP = {
    <div class="quick-row">
      <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
      <button class="btn white" id="sc">🏆 Skorlar</button>
+     <button class="btn white" id="vbtn">🎤 Polly’nin Sesi</button>
      <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
    </div>`
     );
@@ -168,16 +170,18 @@ const APP = {
    <div class="unit-head ${st.id}"><span class="ue">${st.emoji}</span>
      <div><h2>${st.name} — ${st.book}</h2><div class="sub">${st.desc}</div></div></div>
    <div class="unit-grid">${us
-     .map(
-       (u) => `
-     <div class="card" data-u="${u.id}">
-       ${u.mix ? '<div class="ribbon">TEKRAR</div>' : ''}
-       <span class="big">${u.emoji}</span>
-       <h3>${u.no === '⭐' || u.no === '🔁' ? '' : 'Ünite ' + u.no + ' · '}${u.title}</h3>
+     .map((u) => {
+       const b = this.unitStars(u.id);
+       return `<div class="unit-card ${u.stage}" data-u="${u.id}">
+       <span class="ue">${u.emoji}</span>
+       <h3>${u.title}</h3>
        <div class="sub">${u.tr} · ${u.w.length} kelime</div>
-       <div style="margin-top:8px"><span class="badge">${'⭐'.repeat(Math.min(3, this.unitStars(u.id))) || '☆ başla!'}</span></div>
-     </div>`
-     )
+       <div class="u-meta">
+         <span class="badge ${u.stage === 's1' ? 'green' : 'blue'}">${u.stage.toUpperCase()}</span>
+         ${b > 0 ? `<span class="badge gold">⭐ ${b}</span>` : ''}
+       </div>
+     </div>`;
+     })
      .join('')}</div>`
     );
   },
@@ -192,7 +196,8 @@ const APP = {
       this.bar() +
       `
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
-     <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div></div>
+     <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div>
+     ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="margin-left:auto;font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı</button>' : ''}</div>
    <div class="word-wall">${u.w
      .map(
        (w) =>
@@ -301,14 +306,15 @@ const APP = {
        ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
      </div>
      <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
-     <div class="controls">
-       <button class="btn green pulse" id="pp">▶️ Başlat</button>
-       <button class="btn blue" id="pr">🔁 Baştan</button>
-       <button class="btn white" id="ps">🐢 Yavaş</button>
-       <button class="btn white" id="pa">🛑 Dur</button>
-     </div>
-     <div class="muted" style="margin-top:10px">💡 Polly satırları okur (konuşma sesi) — çocuklar sizinle birlikte söylesin! 🎤</div>
-   </div>`
+      <div class="controls">
+        <button class="btn green pulse" id="pp">▶️ Başlat</button>
+        <button class="btn blue" id="pr">🔁 Baştan</button>
+        <button class="btn white" id="ps">🐢 Yavaş</button>
+        <button class="btn white" id="pm">🎵 Müzik: Açık</button>
+        <button class="btn white" id="pa">🛑 Dur</button>
+      </div>
+      <div class="muted" style="margin-top:10px">🎵 Gerçek melodi çalar · Polly satırları söyler — çocuklar birlikte söylesin! 🎤</div>
+    </div>`
     );
   },
 
@@ -355,10 +361,10 @@ const APP = {
    <div class="card" style="max-width:760px;margin:0 auto;text-align:left;line-height:1.6">
      <h3 style="font-size:1.3em;margin-bottom:10px">👩‍🏫 Öğretmen Rehberi</h3>
      <p><b>1) Site nasıl kullanılır?</b><br>Tek bir HTML dosyasıdır — internet gerekmez! USB’ye kopyalayıp okul bilgisayarında/akıllı tahtada açabilirsiniz. Tablet ve telefonda da çalışır.</p>
-     <p><b>2) Sesler:</b> Tüm sesler tarayıcıda üretilir. 🔊 düğmesiyle açıp kapatabilirsiniz. İngilizce telaffuzlar tarayıcının konuşma motoruyla (TTS) okunur — Chrome/Edge/Safari’de en iyi sonucu verir.</p>
+     <p><b>2) Sesler:</b> Polly’nin <b>tüm kelimeleri ve ders cümleleri (500+ kayıt) gerçek insan sesiyle</b> kayıtlıdır (audio/ klasörü — nöral ses teknolojisi, robotik TTS değil!). Şarkı melodileri de gömülüdür. Kaydı olmayan az sayıdaki metin tarayıcı sesine düşer (Microsoft Edge’te daha gerçekçi). 🔊 düğmesiyle açıp kapatabilirsiniz.</p>
      <p><b>3) Akıllı tahta için:</b> <b>⚔️ Takım Yarışı</b> oyununu seçin — sınıfı iki takıma bölün! 🎱 Bingo ve 🎈 Balon Patlat da sınıfça oynanabilir.</p>
      <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyunu seçin (Kolay/Orta/Zor). Her oyunda ⭐ toplanır, skorlar cihaza kaydedilir.</p>
-     <p><b>5) Şarkılar:</b> TTS konuşur, şarkı söyletir. Çocuklara sözleri gösterir, ritimle birlikte okutur.</p>
+     <p><b>5) Şarkılar:</b> 15 klasik şarkının gerçek melodisi çalar (müzik kutusu tınısı), diğerlerinde neşeli bir ritim eşlik eder — Polly satırları seslendirir, sınıfça söyleyin! 🎵 Ana ekrandaki <b>🎤 Polly’nin Sesi</b> düğmesinden tarayıcının en gerçekçi sesini seçebilirsiniz (en iyileri Microsoft Edge’teki “Natural” sesler).</p>
      <p><b>6) Anti-Crash Koruması:</b> Herhangi bir aksilikte sayfa çökmeyi engeller ve kaldığınız skordan devam ettirir.</p>
      <p class="muted" style="margin-top:14px">Cambridge Global English 1 & 2 (Second Edition) üniteleriyle uyumludur. Bağımsız eğitsel yardımcı materyaldir.</p>
    </div>`
@@ -374,6 +380,7 @@ const APP = {
       if (e) e.addEventListener(ev, fn);
     };
     const backMap = {
+      lesson: 'unit',
       game: 'unit',
       unit: 'stage',
       stage: 'home',
@@ -396,6 +403,12 @@ const APP = {
       MEDIA.toggleMute();
       e.target.textContent = MEDIA.muted ? '🔇' : '🔊';
       FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
+    });
+    on('#vbtn', 'click', () => this.showVoices());
+    on('#lbtn', 'click', () => {
+      MEDIA.fx('magic');
+      this.lesIdx = 0;
+      this.go('lesson', { unitId: this.unitId });
     });
     on('#mas', 'click', () => {
       const ps = [
@@ -492,6 +505,7 @@ const APP = {
 
     if (this.scr === 'game') this.mountGame();
     if (this.scr === 'player') this.mountPlayer();
+    if (this.scr === 'lesson') this.mountLesson();
   },
 
   /* ---------- Seviye Seçme Modalı ---------- */
@@ -630,10 +644,38 @@ const APP = {
       running = false,
       timer = null;
     const lines = [...document.querySelectorAll('#ly .line')];
+    const mel = typeof melodyFor === 'function' ? melodyFor(s) : null;
+    const bt = 'beat' + ([...(s.t || 'x')].reduce((a, c) => a + c.codePointAt(0), 0) % (typeof BEATN !== 'undefined' ? BEATN : 6));
+    let mus = null,
+      music = true;
+    const musStop = () => {
+      if (mus) {
+        MEDIA.stopMusic(mus);
+        mus = null;
+      }
+    };
+    const musStart = () => {
+      musStop();
+      if (!music) return;
+      if (mel) {
+        MEDIA.playFile('sing', 0.9);
+        mus = MEDIA.playFile(mel, 0.8, true) || MEDIA.playFile(bt, 0.4, true);
+      } else {
+        mus = MEDIA.playFile(bt, 0.4, true);
+      }
+    };
+    const duck = (v) => {
+      if (mus) {
+        try {
+          mus.volume = v;
+        } catch (e) {}
+      }
+    };
     const stop = () => {
       running = false;
       clearTimeout(timer);
       MEDIA.stopSpeak();
+      musStop();
       lines.forEach((l) => l.classList.remove('active'));
     };
     this.cleanups.push(stop);
@@ -656,8 +698,10 @@ const APP = {
         }
         FX.notes(innerWidth / 2, innerHeight - 160);
         const txt = ln.textContent.replace(/[^\w\s'’,.!?-]/g, '').trim() || 'la la la';
+        duck(0.22);
         MEDIA.speak(txt, slow ? 0.7 : 0.85, () => {
           if (!running) return;
+          duck(0.8);
           timer = setTimeout(() => {
             idx++;
             step();
@@ -672,6 +716,7 @@ const APP = {
         MEDIA.fx('click');
         running = true;
         idx = 0;
+        musStart();
         step();
       };
     }
@@ -682,7 +727,10 @@ const APP = {
         stop();
         running = true;
         idx = 0;
-        setTimeout(step, 150);
+        setTimeout(() => {
+          musStart();
+          step();
+        }, 150);
       };
     }
     const ps = document.getElementById('ps');
@@ -693,12 +741,307 @@ const APP = {
         MEDIA.fx('click');
       };
     }
+    const pm = document.getElementById('pm');
+    if (pm) {
+      pm.onclick = (e) => {
+        music = !music;
+        e.target.textContent = music ? '🎵 Müzik: Açık' : '🎵 Müzik: Kapalı';
+        MEDIA.fx('click');
+        if (music && running) musStart();
+        else musStop();
+      };
+    }
     const pa = document.getElementById('pa');
     if (pa) {
       pa.onclick = () => {
         MEDIA.fx('click');
         stop();
       };
+    }
+  },
+
+  /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
+  showVoices() {
+    const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : [])
+      .filter((v) => /^en/i.test(v.lang));
+    const cur = (MEDIA.voice && MEDIA.voice.name) || '';
+    const d = document.createElement('div');
+    d.id = 'vmodal';
+    d.innerHTML = `<div class="vmbox">
+      <h3>🎤 Polly’nin Sesini Seçin</h3>
+      <div class="muted">Microsoft Edge tarayıcısında "Natural" sesler çok daha gerçekçidir.</div>
+      <div class="vlist">${
+        vs
+          .map(
+            (v) => `<div class="vitem ${v.name === cur ? 'sel' : ''}" data-v="${esc(v.name)}">
+          ${/natural/i.test(v.name) ? '🌟 ' : ''}${esc(v.name)} <span class="muted">${v.lang}</span>
+        </div>`
+          )
+          .join('') || '<div class="vitem">Tarayıcı sesi bulunamadı</div>'
+      }</div>
+      <button class="btn white" id="vmclose">✅ Kapat</button></div>`;
+    document.body.appendChild(d);
+    d.querySelectorAll('.vitem').forEach(
+      (it) =>
+        (it.onclick = () => {
+          const n = it.dataset.v;
+          MEDIA.setVoice(n);
+          MEDIA.speak('Hello! I am Polly! Let us learn English!');
+          d.querySelectorAll('.vitem').forEach((x) => x.classList.remove('sel'));
+          it.classList.add('sel');
+          FX.toast('✔ ' + n);
+        })
+    );
+    const vmclose = d.querySelector('#vmclose');
+    if (vmclose) vmclose.onclick = () => d.remove();
+  },
+
+  /* ---------- 📚 KONU ANLATIMI (v4 & v5) ---------- */
+  vLesson() {
+    const u = unitById(this.unitId);
+    if (!u || !LESSONS[u.id]) return this.vUnit();
+    const L = LESSONS[u.id],
+      n = this.lesIdx || 0,
+      total = L.length + 4;
+    let body = '';
+    if (n < L.length) {
+      const s = L[n];
+      body = `<div class="lslide"><div class="lscene f">${s[0]}</div>
+        <div class="len">${esc(s[1])}</div><div class="ltr">${esc(s[2])}</div>
+        <div class="lbtns">
+          <button class="btn green" id="lL">🎧 Dinle</button>
+          <button class="btn blue" id="lS">🐢 Yavaş Dinle</button>
+          <button class="btn white" id="lR">🗣️ Tekrar!</button>
+        </div>
+        <div class="ldrill">
+          <button class="btn small white" data-d="tog">👥 Birlikte</button>
+          <button class="btn small white" data-d="boys">👦 Erkekler</button>
+          <button class="btn small white" data-d="girls">👧 Kızlar</button>
+          <button class="btn small white" data-d="loud">📢 Yüksek</button>
+          <button class="btn small white" data-d="whis">🤫 Fısıltı</button>
+          <button class="btn small white" data-d="clap">👏 El Çırp</button>
+          <button class="btn small white" data-d="once">🔁 Bir Daha</button>
+        </div></div>`;
+    } else if (n === L.length) {
+      body = `<div class="lslide"><img class="lwscene" src="images/w-${u.id}.jpg" alt="" onerror="this.style.display='none'"><div class="lscene f" style="font-size:44px">📚</div>
+        <div class="len">Our New Words! 🌟</div>
+        <div class="ltr">Dokun, dinle ve birlikte söyle!</div>
+        <div class="lwords">${u.w
+          .map(
+            (w, i) =>
+              `<button class="lword" data-i="${i}"><span class="lwe">${w[1] || '🔤'}</span><b>${esc(w[0])}</b><span class="lwt">${esc(w[2])}</span></button>`
+          )
+          .join('')}</div></div>`;
+    } else if (n === L.length + 1) {
+      body = `<div class="lslide"><div class="lscene w">🎯</div>
+        <div class="len">Show Me! 🎯</div>
+        <div class="ltr">Polly hangisi? Doğru resme dokun!</div>
+        <div id="lquiz" class="lquiz"></div></div>`;
+    } else if (n === L.length + 2) {
+      const vs = LVID[u.id] || [],
+        q = LQ[u.id] || 'english for kids ' + u.title;
+      body = `<div class="lslide"><div class="lscene">🎬</div>
+        <div class="len">Sing & Watch! 🎵</div>
+        <div class="ltr">Super Simple Songs ile şarkı söyleyelim</div>
+        ${
+          vs.length
+            ? vs
+                .map(
+                  (v) =>
+                    `<div class="lvideo"><iframe src="https://www.youtube-nocookie.com/embed/${v[0]}?rel=0" title="${esc(v[1])}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div style="font-weight:700">${v[1]}</div>`
+                )
+                .join('')
+            : '<div class="muted">Bu ünite için önerilen şarkıyı YouTube üzerinden arayabilirsiniz:</div>'
+        }
+        <a class="btn purple" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">🔎 YouTube’da Şarkı Ara</a>
+      </div>`;
+    } else {
+      body = `<div class="lslide"><div class="lscene f">🎉</div>
+        <div class="len">Great Job! You are ready to play! 🌟</div>
+        <div class="ltr">Harika bir ders oldu! Şimdi oyunlarla pekiştirelim.</div>
+        <div class="lbtns" style="margin-top:14px">
+          <button class="btn green big" id="lP">🎮 Oyunlara Başla!</button>
+          <button class="btn white" id="lB">🔁 Dersi Baştan Al</button>
+        </div></div>`;
+    }
+    const dots = Array.from(
+      { length: total },
+      (_, i) => `<span class="ldot ${i === n ? 'on' : ''}"></span>`
+    ).join('');
+    return (
+      this.bar() +
+      `
+    <div class="lesson">
+      <div class="lhead ${u.stage}"><span class="ue">${u.emoji}</span>
+        <div><h2>${u.title} · Ders</h2><div class="sub">${u.tr} · Slayt ${n + 1} / ${total}</div></div>
+        <div class="lhero"><img src="images/${u.id}.jpg" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="lbody g${n % 6}">${body}</div>
+      <div class="lnav">
+        <button class="btn white" id="lprev" ${n === 0 ? 'disabled' : ''}>⬅️ Geri</button>
+        <div class="ldots">${dots}</div>
+        <button class="btn green" id="lnext">${n >= total - 1 ? '🏁 Bitir' : 'İleri ➡️'}</button>
+      </div>
+      <div class="muted" style="text-align:center;margin-top:10px">💡 <b>🎧 Dinle</b>: Polly söyler · <b>🗣️ Tekrar</b>: çocuklarla birlikte söyleyin · <b>🐢 Yavaş</b>: ağır çekim</div>
+    </div>`
+    );
+  },
+
+  mountLesson() {
+    const u = unitById(this.unitId);
+    if (!u || !LESSONS[u.id]) return;
+    const L = LESSONS[u.id],
+      total = L.length + 4,
+      n = this.lesIdx || 0;
+    if (n === 0) MEDIA.playFile('les-ready', 0.9);
+    if (n === L.length) MEDIA.playFile('les-words', 0.9);
+    if (n === L.length + 1) MEDIA.playFile('les-point', 0.9);
+    if (n === L.length + 2) MEDIA.playFile('les-video', 0.9);
+    if (n === L.length + 3) {
+      MEDIA.playFile('les-welldone', 0.95);
+      FX.confetti(70);
+      MEDIA.fx('win');
+    }
+    const say = (t, r) => MEDIA.speak(t, r || 0.72);
+    const prev = document.getElementById('lprev'),
+      next = document.getElementById('lnext');
+    if (prev)
+      prev.onclick = () => {
+        MEDIA.fx('click');
+        this.lesIdx = Math.max(0, n - 1);
+        this.render();
+      };
+    if (next)
+      next.onclick = () => {
+        MEDIA.fx('pop');
+        if (n >= total - 1) this.go('unit', { unitId: u.id });
+        else {
+          this.lesIdx = n + 1;
+          this.render();
+        }
+      };
+    if (n < L.length) {
+      const s = L[n];
+      const b1 = document.getElementById('lL'),
+        b2 = document.getElementById('lS'),
+        b3 = document.getElementById('lR');
+      if (b1)
+        b1.onclick = () => {
+          MEDIA.fx('click');
+          say(s[1]);
+        };
+      if (b2)
+        b2.onclick = () => {
+          MEDIA.fx('click');
+          say(s[1], 0.55);
+        };
+      if (b3)
+        b3.onclick = () => {
+          MEDIA.fx('magic');
+          const a = MEDIA.playFile('les-repeat', 0.95);
+          if (a) {
+            a.onended = () => say(s[1]);
+            a.onerror = () => say(s[1]);
+          } else say(s[1]);
+        };
+      document.querySelectorAll('.ldrill [data-d]').forEach(
+        (b) =>
+          (b.onclick = () => {
+            const d = b.dataset.d;
+            MEDIA.fx('click');
+            const clip = {
+              tog: 'les-drill-tog',
+              boys: 'les-drill-boys',
+              girls: 'les-drill-girls',
+              loud: 'les-drill-loud',
+              whis: 'les-drill-whis',
+              clap: 'les-drill-clap',
+              once: 'les-drill-once'
+            }[d];
+            const after = () => {
+              if (d === 'loud') MEDIA.speak(s[1], 0.92, null, 1);
+              else if (d === 'whis') MEDIA.speak(s[1], 0.6, null, 0.3);
+              else if (d === 'clap') {
+                FX.confetti(14);
+                MEDIA.speak(s[1], 0.8);
+              } else say(s[1]);
+            };
+            const a = MEDIA.playFile(clip, 0.95);
+            if (a) {
+              a.onended = after;
+              a.onerror = after;
+            } else after();
+          })
+      );
+    }
+    if (n === L.length) {
+      document.querySelectorAll('.lword').forEach(
+        (b) =>
+          (b.onclick = () => {
+            const w = u.w[+b.dataset.i];
+            MEDIA.fx('pop');
+            b.classList.add('lit');
+            setTimeout(() => b.classList.remove('lit'), 700);
+            MEDIA.speak(w[0], 0.68);
+            FX.notes(innerWidth / 2, innerHeight - 140);
+          })
+      );
+    }
+    if (n === L.length + 1) {
+      /* 🎯 mini quiz */
+      const qw = shuffle(u.w.filter((w) => w[1])).slice(0, 4);
+      const box = document.getElementById('lquiz');
+      if (box && qw.length) {
+        let qi = 0;
+        const drawQ = () => {
+          if (qi >= qw.length) {
+            box.innerHTML = `<div class="lqdone">🎉🌟🎉<div class="len" style="margin-top:8px">You know the words!</div><div class="ltr">Kelime şampiyonusunuz!</div></div>`;
+            MEDIA.playFile('les-welldone', 0.95);
+            FX.confetti(60);
+            return;
+          }
+          const cur = qw[qi];
+          const opts = shuffle([cur, ...sample(u.w.filter((w) => w[1] && w[0] !== cur[0]), 2)]);
+          box.innerHTML = `<div class="lqq">Show me the <b>${esc(cur[0])}</b>!</div>
+            <div class="lqopts">${opts.map((o) => `<button class="lqopt" data-ok="${o[0] === cur[0] ? 1 : 0}"><span>${o[1]}</span></button>`).join('')}</div>
+            <div class="lqstars">${'⭐'.repeat(qi)}${'☆'.repeat(qw.length - qi)}</div>`;
+          MEDIA.speak(cur[0], 0.72);
+          box.querySelectorAll('.lqopt').forEach((ob) => (ob.onclick = () => {
+            if (ob.dataset.ok === '1') {
+              ob.classList.add('ok');
+              MEDIA.fx('correct');
+              FX.confetti(24);
+              MEDIA.playFile('les-yes', 0.95);
+              setTimeout(() => {
+                qi++;
+                drawQ();
+              }, 1100);
+            } else {
+              ob.classList.add('no');
+              FX.shake(ob);
+              MEDIA.fx('wrong');
+              MEDIA.playFile('les-no', 0.9);
+            }
+          }));
+        };
+        drawQ();
+      }
+    }
+    if (n === L.length + 3) {
+      const p = document.getElementById('lP'),
+        b = document.getElementById('lB');
+      if (p)
+        p.onclick = () => {
+          MEDIA.fx('whoosh');
+          MEDIA.playFile('les-bye', 0.9);
+          setTimeout(() => this.go('unit', { unitId: u.id }), 500);
+        };
+      if (b)
+        b.onclick = () => {
+          MEDIA.fx('click');
+          this.lesIdx = 0;
+          this.render();
+        };
     }
   },
 

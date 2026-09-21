@@ -159,41 +159,158 @@ const MEDIA = {
     }
   },
 
-  getVoice() {
-    if (!window.speechSynthesis) return null;
-    if (this.voice) return this.voice;
-    const voices = speechSynthesis.getVoices();
-    if (!voices || !voices.length) return null;
-    // Prefer English voices: Google, Samantha, Daniel, or en-US/en-GB
-    const en = voices.filter((v) => /^en/i.test(v.lang));
-    const preferred =
-      en.find((v) => /natural|samantha|karen|daniel|google/i.test(v.name)) ||
-      en[0] ||
-      voices[0];
-    this.voice = preferred;
-    return preferred;
+  /* 🎵 Gömülü ses dosyaları (audio/ klasörü — yoksa sessizce TTS'e döner) */
+  ac: {},
+  playFile(name, vol, loop) {
+    try {
+      vol = vol == null ? 1 : vol;
+      if (this.muted) return null;
+      let a = this.ac[name];
+      if (!a) {
+        a = new Audio('audio/' + name + '.mp3');
+        this.ac[name] = a;
+      }
+      a.currentTime = 0;
+      a.volume = vol;
+      a.loop = !!loop;
+      const pr = a.play();
+      if (pr && pr.catch) pr.catch(() => {});
+      return a;
+    } catch (e) {
+      return null;
+    }
+  },
+  stopMusic(a) {
+    try {
+      if (a) {
+        a.pause();
+        a.currentTime = 0;
+      }
+    } catch (e) {}
+  },
+  praise() {
+    const f = ['yay', 'super', 'great', 'welldone', 'wow'][Math.floor(Math.random() * 5)];
+    return this.playFile(f, 0.95);
+  },
+  pickVoice() {
+    try {
+      const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      if (!vs || !vs.length) return null;
+      const pref = [
+        (v) => /natural/i.test(v.name) && /en[-_](GB|US)/i.test(v.lang),
+        (v) => /Online \(Natural\)/i.test(v.name),
+        (v) => /Google.*English/i.test(v.name),
+        (v) => /en[-_]GB/i.test(v.lang) && /female|Kate|Serena|Libby/i.test(v.name),
+        (v) => /en[-_]GB/i.test(v.lang),
+        (v) => /en[-_]US/i.test(v.lang),
+        (v) => /^en/i.test(v.lang)
+      ];
+      for (const p of pref) {
+        const f = vs.find(p);
+        if (f) {
+          this.voice = f;
+          return f;
+        }
+      }
+      return vs[0] || null;
+    } catch (e) {
+      return null;
+    }
+  },
+  setVoice(name) {
+    try {
+      const vs = speechSynthesis.getVoices();
+      const v = vs.find((x) => x.name === name);
+      if (v) {
+        this.voice = v;
+        try {
+          localStorage.setItem('polly_voice', name);
+        } catch (e) {}
+      }
+    } catch (e) {}
   },
 
-  speak(text, rate = 0.88, onEnd = null) {
-    if (this.muted || !window.speechSynthesis) {
-      if (onEnd) setTimeout(onEnd, 300);
+  /* 🎙️ ANA KONUŞMA — GERÇEK İNSAN SESİ ÖNCELİKLİ
+     voice-map.js bildirgesinde (VOICESET) slug'ı varsa audio/w-<slug>.mp3
+     dosyası çalınır (gerçek nöral insan sesi kaydı). Dosya yoksa veya
+     çalınamazsa tarayıcı TTS yedeğine (tts) döner — sessiz asla kalmaz.
+     rate değeri dosya hızına çevrilir: >=.8 normal · .7-.79 hafif yavaş ·
+     <.7 yavaş (gerçek ses playbackRate ile yavaşlatılır — robotikleşmez) */
+  speak(text, rate = 0.82, cb, vol) {
+    try {
+      if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
+        const t = String(text || '');
+        const slug = 'w-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        if (typeof VOICESET !== 'undefined' && VOICESET.has(slug)) {
+          let a = null;
+          try {
+            a = this.playFile(slug, vol == null ? 1 : vol);
+          } catch (e) {}
+          if (a) {
+            this.stopSpeak();
+            let done = false,
+              to = null;
+            try {
+              a.playbackRate = rate >= 0.8 ? 1 : rate >= 0.7 ? 0.92 : 0.78;
+            } catch (e) {}
+            const fall = () => {
+              if (done) return;
+              done = true;
+              if (to) clearTimeout(to);
+              this.tts(text, rate, cb, vol);
+            };
+            const fin = () => {
+              if (done) return;
+              done = true;
+              if (to) clearTimeout(to);
+              cb && cb();
+            };
+            if (cb)
+              to = setTimeout(() => {
+                if (!done) {
+                  done = true;
+                  cb();
+                }
+              }, 4000);
+            a.onended = fin;
+            a.onerror = fall;
+            const pr = a.play && a.play();
+            if (pr && pr.catch) pr.catch(fall);
+            return;
+          }
+        }
+      }
+    } catch (e) {}
+    this.tts(text, rate, cb, vol);
+  },
+
+  /* Yedek: tarayıcı TTS (Edge "Natural" sesleri öncelikli seçilir) */
+  tts(text, rate = 0.82, cb, vol) {
+    if (this.muted) {
+      cb && cb();
       return;
     }
     try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      const v = this.getVoice();
-      if (v) u.voice = v;
-      u.rate = rate;
-      u.pitch = 1.05;
-      u.lang = 'en-US';
-      if (onEnd) {
-        u.onend = () => onEnd();
-        u.onerror = () => onEnd();
+      const synth = window.speechSynthesis;
+      if (!synth) {
+        cb && cb();
+        return;
       }
-      speechSynthesis.speak(u);
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-GB';
+      u.rate = rate;
+      u.pitch = 1.12;
+      if (vol != null) u.volume = vol;
+      if (!this.voice) this.pickVoice();
+      if (this.voice) u.voice = this.voice;
+      if (cb) {
+        u.onend = cb;
+        u.onerror = cb;
+      }
+      synth.speak(u);
     } catch (e) {
-      if (onEnd) setTimeout(onEnd, 300);
+      cb && cb();
     }
   },
 
