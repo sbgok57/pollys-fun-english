@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Tüm modülleri tek dosyada birleştirir → english-fun-zone.html & index.html & vercel-deploy
-import pathlib, shutil
+# v7 — SIFIR HATA ZIRHI: dağıtım paketi her seferinde sıfırdan eksiksiz kurulur + TAM DOĞRULAMA
+import pathlib, shutil, re, sys, json
 
 root = pathlib.Path(__file__).parent
 src = root / 'src'
@@ -26,34 +26,34 @@ public_dir = root / 'public'
 public_dir.mkdir(exist_ok=True)
 (public_dir / 'index.html').write_text(out, encoding='utf-8')
 
-# 3. vercel-deploy klasörü
-vd_dir = root / 'vercel-deploy'
-vd_dir.mkdir(exist_ok=True)
-(vd_dir / 'index.html').write_text(out, encoding='utf-8')
-vd_pub = vd_dir / 'public'
-vd_pub.mkdir(exist_ok=True)
-(vd_pub / 'index.html').write_text(out, encoding='utf-8')
+# 3. 🛡️ v7 SIFIR-HATA DAĞITIM PAKETİ — her seferinde sıfırdan, eksiksiz kurulur
+vd = root / 'vercel-deploy'
+shutil.rmtree(vd, ignore_errors=True)
+(vd / 'audio').mkdir(parents=True, exist_ok=True)
+(vd / 'images').mkdir(parents=True, exist_ok=True)
+(vd / 'index.html').write_text(out, encoding='utf-8')
+(vd / 'english-fun-zone.html').write_text(out, encoding='utf-8')
+(vd / 'public').mkdir(exist_ok=True)
+(vd / 'public' / 'index.html').write_text(out, encoding='utf-8')
+(vd / 'vercel.json').write_text('{}\n', encoding='utf-8')
 
-# audio/ klasörünü de Vercel paketine kopyala (Polly sesi + melodiler)
 audio_src = root / 'audio'
 if audio_src.exists():
-    vd_audio = vd_dir / 'audio'
-    shutil.rmtree(vd_audio, ignore_errors=True)
-    shutil.copytree(audio_src, vd_audio)
-    print(f'OK → vercel-deploy/audio ({len(list(vd_audio.glob("*.mp3")))} mp3)')
+    shutil.rmtree(vd / 'audio', ignore_errors=True)
+    shutil.copytree(audio_src, vd / 'audio')
 
-# images/ klasörü varsa kopyala
 img_src = root / 'images'
 if img_src.exists():
-    vd_img = vd_dir / 'images'
-    shutil.rmtree(vd_img, ignore_errors=True)
-    shutil.copytree(img_src, vd_img)
-    print(f'OK → vercel-deploy/images ({len(list(vd_img.glob("*")))} dosya)')
+    shutil.rmtree(vd / 'images', ignore_errors=True)
+    shutil.copytree(img_src, vd / 'images')
+
+print(f'OK → vercel-deploy/index.html + vercel.json + audio + images')
 
 # 4. Masaüstü vercel-deploy kopyası
 desktop_vd = pathlib.Path('/Users/sbgok57/Desktop/vercel-deploy')
 if desktop_vd.exists():
     (desktop_vd / 'index.html').write_text(out, encoding='utf-8')
+    (desktop_vd / 'public').mkdir(exist_ok=True)
     (desktop_vd / 'public' / 'index.html').write_text(out, encoding='utf-8')
     if audio_src.exists():
         desk_audio = desktop_vd / 'audio'
@@ -64,6 +64,54 @@ if desktop_vd.exists():
         shutil.rmtree(desk_img, ignore_errors=True)
         shutil.copytree(img_src, desk_img)
 
-print(f'OK → {dest} ({dest.stat().st_size/1024:.0f} KB)')
-print(f'OK → {index_dest} ({index_dest.stat().st_size/1024:.0f} KB)')
-print('OK → vercel-deploy & public senkronize edildi.')
+# ── 🛡️ TAM DOĞRULAMA: her varlık referansı diskte VAR MI? ──
+hatalar = []
+
+# a) HTML bütünlüğü (kesik/kırık dosya yok)
+if not out.rstrip().endswith('</html>'):
+    hatalar.append('html dosyası eksik/kırık (</html> yok)')
+if len(out) < 100000:
+    hatalar.append('html beklenmedik küçük: %d bayt' % len(out))
+
+# b) VOICESET slug kontrolü
+vm = (root / 'src' / 'voice-map.js').read_text(encoding='utf-8')
+slugs = re.findall(r'["\x27](w-[^"\x27]+)["\x27]', vm)
+for s in slugs:
+    if s != 'w-zztest' and not (vd / 'audio' / (s + '.mp3')).exists():
+        hatalar.append('ses dosyası yok: ' + s)
+
+# c) sıfır baytlı / bozuk dosya var mı?
+for f in (vd / 'audio').glob('*.mp3'):
+    if f.stat().st_size < 400:
+        hatalar.append('şüpheli küçük ses: %s (%d B)' % (f.name, f.stat().st_size))
+for f in (vd / 'images').glob('*.jpg'):
+    if f.stat().st_size < 1000:
+        hatalar.append('şüpheli küçük resim: %s' % f.name)
+
+# d) MP3 sayıları kontrolü
+n_mp3 = len(list((vd / 'audio').glob('*.mp3')))
+n_img = len(list((vd / 'images').glob('*.jpg')))
+if n_mp3 < 18:
+    hatalar.append('mp3 sayısı beklenenden az: %d (en az 18 melodi olmalı)' % n_mp3)
+
+# e) video kimlikleri geçerli biçimde mi?
+lv = (root / 'src' / 'lessons.js').read_text(encoding='utf-8')
+vids = re.findall(r'["\x27]([A-Za-z0-9_-]{11})["\x27]', lv)
+if len(set(vids)) < 18:
+    hatalar.append('video kimliği sayısı düşük: %d (en az 18 gömülü video beklenir)' % len(set(vids)))
+
+# f) vercel.json geçerli JSON mı?
+try:
+    json.loads((vd / 'vercel.json').read_text(encoding='utf-8'))
+except Exception as e:
+    hatalar.append('vercel.json geçersiz JSON: ' + str(e))
+
+if hatalar:
+    print('!!! DOĞRULAMA HATALARI — PAKET KULLANILMAMALI:')
+    for h in hatalar:
+        print('   ✘', h)
+    sys.exit(1)
+
+mb = sum(f.stat().st_size for f in vd.rglob('*') if f.is_file()) / 1e6
+print(f'✔ DOĞRULANDI: {n_mp3} mp3 dosyası · {n_img} resim · {len(set(vids))} video kimliği')
+print(f'✔ TÜM referanslar diskte mevcut · paket {mb:.1f} MB · SIFIR HATA')

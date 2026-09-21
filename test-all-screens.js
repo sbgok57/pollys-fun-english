@@ -44,13 +44,11 @@ global.innerHeight = 768;
 global.confirm = () => true;
 global.CSS = { escape: (s) => String(s).replace(/[^a-zA-Z0-9_-]/g, '\\$&') };
 
-// Load the compiled file's script content
+// Load all compiled script contents in order
 const html = fs.readFileSync('english-fun-zone.html', 'utf8');
-const scriptStart = html.indexOf('<script>') + '<script>'.length;
-const scriptEnd = html.indexOf('</script>');
-const scriptCode = html.slice(scriptStart, scriptEnd);
-
-const vm = require("vm"); vm.runInThisContext(scriptCode);
+const scriptMatches = [...html.matchAll(/<script>([\s\S]*?)<\/script>/gi)];
+const vm = require("vm");
+scriptMatches.forEach(m => vm.runInThisContext(m[1]));
 
 console.log('Testing APP screens...');
 const screens = ['home', 'scores', 'help'];

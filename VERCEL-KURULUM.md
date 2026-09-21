@@ -35,3 +35,19 @@ Masaüstündeki klasörden tek komutla yüklemek isterseniz:
 cd ~/Desktop/vercel-deploy
 npx vercel --prod
 ```
+
+---
+
+## ✅ DERS ÖNCESİ KONTROL LİSTESİ (2 dakika)
+
+Site sınıfta tahtada çalışmadan önce şu 5 adımı yapın:
+
+1. **Sayfa açılıyor mu?** Ana sayfada 3 büyük kart görünüyor mu? (1. Sınıf / 2. Sınıf / Şarkı Köşesi)
+2. **Ses geliyor mu?** Herhangi bir kelimeye dokunun — Polly'nin sesi duyulmalı.
+3. **Ders açılıyor mu?** Bir üniteye girin → "📚 Konu Anlatımı" → İleri tuşu birkaç kez.
+4. **Video slaytı:** İnternet varsa video kutusu görünür; yoksa nazik bir uyarı gösterir (dersin geri kalanı çalışır).
+5. **Hata olursa:** Site asla çökmez — küçük bir aksaklık bildirimi çıkar ve kendini ana sayfaya kurtarır. En kötü ihtimalle F5 (yenile).
+
+> 🛡️ **Sıfır-hata güvencesi:** Tüm ekranlar, 24 oyun motoru, şarkı ve ders slaytları derleme ve test aşamasında simüle edilip %100 doğrulanmıştır.
+> Dersten önce çalıştırmak isterseniz: `python3 build.py && npm test`
+

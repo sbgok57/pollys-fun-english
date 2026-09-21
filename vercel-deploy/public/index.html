@@ -6,6 +6,13 @@
   <title>Polly’s Fun English — Cambridge Global English 1 & 2</title>
   <meta name="description" content="İlkokul 1 ve 2. Sınıf İngilizce Eğitsel Oyun ve Şarkı Platformu">
   <meta name="theme-color" content="#4f46e5">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦜%3C/text%3E%3C/svg%3E">
+  <script>
+  /* 🛡️ ERKEN HATA KALKANI v7 — sayfa yüklenirken bile hata yutulur, beyaz ekran asla olmaz */
+  window.__EARLY = 0;
+  window.addEventListener('error', function() { window.__EARLY++; });
+  window.addEventListener('unhandledrejection', function() { window.__EARLY++; });
+  </script>
   <style>
 /* ============================================================
    🎨 POLLY'S FUN ENGLISH — CSS TASARIM SİSTEMİ (v2)
@@ -6416,6 +6423,32 @@ ENGINES.push(...ENGINES_C);
    🦜 ANA UYGULAMA MOTORU — Polly's Fun English (v2)
    Ekranlar, katalog, skorlar, şarkı oynatıcı ve Anti-Crash Kalkanı
    ============================================================ */
+/* 🛡️ SIFIR-HATA KALKANI v7 — ders tahtasında asla çökme/beyaz ekran yok.
+   Beklenmeyen bir hata olursa: nazik bir bildirim çıkar, boş ekran
+   kendini ana sayfaya kurtarır; site çalışmaya devam eder. */
+(function () {
+  if (typeof window === 'undefined' || window.__SHIELD || typeof window.addEventListener !== 'function') return;
+  window.__SHIELD = 1;
+  var sonBildirim = 0;
+  window.addEventListener('error', function () {
+    try {
+      var n = Date.now();
+      if (n - sonBildirim > 5000) {
+        sonBildirim = n;
+        if (typeof FX !== 'undefined' && FX.toast) FX.toast('Küçük bir aksaklık — devam ediyoruz 🦜');
+      }
+    } catch (e) {}
+    setTimeout(function () {
+      try {
+        var a = document.getElementById('app');
+        if (a && !a.innerHTML.trim() && typeof APP !== 'undefined') APP.go('home');
+      } catch (e) {}
+    }, 60);
+  });
+  window.addEventListener('unhandledrejection', function () {
+    /* sessizce yut */
+  });
+})();
 
 const PRAISE = [
   'Great job!',
@@ -6536,8 +6569,30 @@ const APP = {
       scores: () => this.vScores(),
       help: () => this.vHelp()
     };
-    app.innerHTML = `<div class="screen">${(R[this.scr] || R.home)()}</div>`;
-    this.bind();
+    /* 🛡️ render zırhı: görünüm fonksiyonu hataya düşerse ana sayfa devreye girer */
+    const view = R[this.scr] || R.home;
+    let icerik = '';
+    try {
+      icerik = view();
+    } catch (e) {
+      try {
+        console.warn('görünüm hatası:', e);
+      } catch (x) {}
+      try {
+        icerik = R.home();
+      } catch (x) {
+        icerik =
+          '<div style="padding:40px;text-align:center">🦜 <a href="#" onclick="location.reload();return false">Sayfayı yenile</a></div>';
+      }
+    }
+    app.innerHTML = `<div class="screen">${icerik}</div>`;
+    try {
+      this.bind();
+    } catch (e) {
+      try {
+        console.warn('bağlama hatası:', e);
+      } catch (x) {}
+    }
   },
 
   bar(title) {
@@ -7293,22 +7348,22 @@ const APP = {
         <div id="lquiz" class="lquiz"></div></div>`;
     } else if (n === L.length + 2) {
       const vs = LVID[u.id] || [],
-        q = LQ[u.id] || 'english for kids ' + u.title;
-      body = `<div class="lslide"><div class="lscene">🎬</div>
-        <div class="len">Sing & Watch! 🎵</div>
-        <div class="ltr">Super Simple Songs ile şarkı söyleyelim</div>
+        q = LQ[u.id] || ('english for kids ' + u.title);
+      const online = typeof navigator !== 'undefined' && navigator.onLine !== false; /* 🛡️ internet yoksa video yerine nazik mesaj */
+      body = `<div class="lslide"><div class="lscene w">📺</div>
+        <div class="len">Video Time! 🎬</div>
+        <div class="ltr">Şimdi video zamanı — birlikte izleyelim!</div>
         ${
-          vs.length
+          online
             ? vs
                 .map(
                   (v) =>
-                    `<div class="lvideo"><iframe src="https://www.youtube-nocookie.com/embed/${v[0]}?rel=0" title="${esc(v[1])}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div style="font-weight:700">${v[1]}</div>`
+                    `<div class="lvideo"><iframe src="https://www.youtube-nocookie.com/embed/${v[0]}?rel=0" title="${esc(v[1])}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="muted" style="margin:-4px 0 8px">🎬 ${esc(v[1])} · <a href="https://www.youtube.com/watch?v=${v[0]}" target="_blank" rel="noopener" style="color:#2563eb;font-weight:700">▶ YouTube'da aç</a></div>`
                 )
                 .join('')
-            : '<div class="muted">Bu ünite için önerilen şarkıyı YouTube üzerinden arayabilirsiniz:</div>'
+            : `<div class="lscene f" style="font-size:56px">📡</div><div class="ltr" style="margin:10px 0">İnternet bağlantısı yok — video için internet gerekiyor.<br>Dersin diğer tüm bölümleri internetsiz de çalışır! ✅</div>`
         }
-        <a class="btn purple" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">🔎 YouTube’da Şarkı Ara</a>
-      </div>`;
+        <a class="btn white" style="text-decoration:none" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">🔎 Bu konunun tüm videoları</a></div>`;
     } else {
       body = `<div class="lslide"><div class="lscene f">🎉</div>
         <div class="len">Great Job! You are ready to play! 🌟</div>
