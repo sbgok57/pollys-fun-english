@@ -2975,10 +2975,25 @@ function unitsOfStage(stageId) {
 /* Kalıcı Hafıza & Durum Geçmişi (P0 Dayanıklılık / Anti-Crash Kalkanı) */
 const store = {
   _mem: {},
+  ok: (() => {
+    try {
+      if (typeof window === 'undefined') return false;
+      const ls = window.localStorage;
+      if (!ls) return false;
+      ls.setItem('__t', '1');
+      ls.removeItem('__t');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  })(),
   get(key) {
     try {
-      const val = typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('polly_' + key) : null;
-      return val ? JSON.parse(val) : (this._mem[key] || null);
+      if (this.ok) {
+        const val = localStorage.getItem('polly_' + key);
+        return val ? JSON.parse(val) : (this._mem[key] || null);
+      }
+      return this._mem[key] || null;
     } catch (err) {
       return this._mem[key] || null;
     }
@@ -2986,7 +3001,7 @@ const store = {
   set(key, val) {
     this._mem[key] = val;
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
+      if (this.ok) {
         localStorage.setItem('polly_' + key, JSON.stringify(val));
       }
     } catch (err) {
@@ -2996,7 +3011,7 @@ const store = {
   remove(key) {
     delete this._mem[key];
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
+      if (this.ok) {
         localStorage.removeItem('polly_' + key);
       }
     } catch (err) {}

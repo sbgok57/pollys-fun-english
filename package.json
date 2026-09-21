@@ -1,10 +1,13 @@
 {
   "name": "pollys-fun-english",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Polly's Fun English - Primary School ESL Educational Games",
   "private": true,
   "scripts": {
     "build": "python3 build.py",
-    "test": "node smoke-test.js && node test-all-screens.js && node test-lesson.js && node test-resilience.js && node test-build.js"
+    "test": "node smoke-test.js && node test-all-screens.js && node test-lesson.js && node test-resilience.js && node test-build.js && node test-hostile.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.0"
   }
 }

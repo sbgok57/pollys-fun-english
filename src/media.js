@@ -10,20 +10,24 @@ const MEDIA = {
 
   init() {
     if (this.ctx) {
-      if (this.ctx.state === 'suspended') {
-        this.ctx.resume().catch(() => {});
-      }
+      try {
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(() => {});
+        }
+      } catch (e) {}
       return;
     }
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (AudioCtx) {
-      try {
+    try {
+      const AudioCtx = typeof window !== 'undefined' ? (window.AudioContext || window.webkitAudioContext) : null;
+      if (AudioCtx) {
         this.ctx = new AudioCtx();
-      } catch (e) {
-        // AudioContext fallback for restricted environments
       }
+    } catch (e) {
+      // AudioContext fallback for restricted environments
     }
-    this.muted = !!store.get('muted');
+    try {
+      this.muted = !!store.get('muted');
+    } catch (e) {}
   },
 
   toggleMute() {
@@ -179,12 +183,27 @@ const MEDIA = {
         }
         a = new Audio('audio/' + name + '.mp3');
         this.ac[name] = a;
+        try { a.addEventListener('error', () => { this.ac[name] = false; }, { once: true }); } catch (e) {}
       }
-      a.currentTime = 0;
-      a.volume = vol;
-      a.loop = !!loop;
+      try { a.currentTime = 0; } catch (e) {}
+      try { a.volume = vol; a.loop = !!loop; } catch (e) {}
+      try { a.addEventListener('error', () => { a.__pfe = 1; }, { once: true }); } catch (e) {} /* doğal error bayrağı */
       const pr = a.play();
-      if (pr && pr.catch) pr.catch(() => {});
+      if (pr && pr.catch) {
+        pr.catch(() => {
+          /* 🛡️ çalma reddedilirse (otomatik oynatma ilkesi / dosya yok / ağ yok)
+             ve 80 ms içinde doğal 'error' olayı gelmezse: bir KEZ yapay error tetikle
+             → onended/onerror zincirlerine bağlanan motorlar ASLA takılı kalmaz */
+          setTimeout(() => {
+            try {
+              if (!a.__pfe) {
+                a.__pfe = 1;
+                a.dispatchEvent(new Event('error'));
+              }
+            } catch (e) {}
+          }, 80);
+        });
+      }
       return a;
     } catch (e) {
       return null;
@@ -204,7 +223,9 @@ const MEDIA = {
   },
   pickVoice() {
     try {
-      const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth) return null;
+      const vs = synth.getVoices ? synth.getVoices() : [];
       if (!vs || !vs.length) return null;
       const pref = [
         (v) => /natural/i.test(v.name) && /en[-_](GB|US)/i.test(v.lang),
@@ -229,13 +250,13 @@ const MEDIA = {
   },
   setVoice(name) {
     try {
-      const vs = speechSynthesis.getVoices();
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth) return;
+      const vs = synth.getVoices ? synth.getVoices() : [];
       const v = vs.find((x) => x.name === name);
       if (v) {
         this.voice = v;
-        try {
-          localStorage.setItem('polly_voice', name);
-        } catch (e) {}
+        store.set('voice', name);
       }
     } catch (e) {}
   },
@@ -325,11 +346,11 @@ const MEDIA = {
   },
 
   stopSpeak() {
-    if (window.speechSynthesis) {
-      try {
-        speechSynthesis.cancel();
-      } catch (e) {}
-    }
+    try {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    } catch (e) {}
   },
 
   /* // SAFETY: Cross-OS Audio & TTS Isıtıcı (iOS / Safari / Android kuralı) */

@@ -615,7 +615,13 @@ body.s2 {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 150;
 }
-.mascot-bubble.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* ═══ v8 BÖLÜM BAŞLIKLARI (Unit Bölümleme) ═══ */
+.usec{text-align:center;font-size:1.3em;font-weight:900;margin:20px 0 10px;color:#1e293b;text-shadow:0 1px 0 #fff}
+.usec small{font-size:.58em;color:#64748b;font-weight:700;margin-left:6px}
+.usec .badge{font-size:.7em;vertical-align:middle;margin-left:6px}
+
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(30px);background:#1e293b;color:#fff;padding:10px 20px;border-radius:9999px;font-weight:800;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:all .25s;z-index:160}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 .app-toast {
   position: fixed;
@@ -3870,10 +3876,25 @@ function unitsOfStage(stageId) {
 /* Kalıcı Hafıza & Durum Geçmişi (P0 Dayanıklılık / Anti-Crash Kalkanı) */
 const store = {
   _mem: {},
+  ok: (() => {
+    try {
+      if (typeof window === 'undefined') return false;
+      const ls = window.localStorage;
+      if (!ls) return false;
+      ls.setItem('__t', '1');
+      ls.removeItem('__t');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  })(),
   get(key) {
     try {
-      const val = typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('polly_' + key) : null;
-      return val ? JSON.parse(val) : (this._mem[key] || null);
+      if (this.ok) {
+        const val = localStorage.getItem('polly_' + key);
+        return val ? JSON.parse(val) : (this._mem[key] || null);
+      }
+      return this._mem[key] || null;
     } catch (err) {
       return this._mem[key] || null;
     }
@@ -3881,7 +3902,7 @@ const store = {
   set(key, val) {
     this._mem[key] = val;
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
+      if (this.ok) {
         localStorage.setItem('polly_' + key, JSON.stringify(val));
       }
     } catch (err) {
@@ -3891,7 +3912,7 @@ const store = {
   remove(key) {
     delete this._mem[key];
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
+      if (this.ok) {
         localStorage.removeItem('polly_' + key);
       }
     } catch (err) {}
@@ -4215,6 +4236,62 @@ function melodyFor(s) {
 }
 const BEATN = 6;
 
+/* 🎬 GERÇEK ŞARKI VİDEOLARI (v8) — Güvenli YouTube nocookie oynatıcı
+   Özgün müzik ve şarkı videoları; her video kimliği tam 11 karakterdir. */
+const SONGVID = {
+  0: 'yCjJyiqpAuU',
+  1: '75p-NQuFl74',
+  2: 'QA48wTGbU7A',
+  3: '_6HzoUcx3eo',
+  4: 'yWirdnSDsV4',
+  5: 'l4WNrvVjiTw',
+  6: '7otAJa3jui8',
+  7: 'b0NHrFNZWh0',
+  8: 'w_lCi8U49mY',
+  9: 'Ww6Z-q_g6v8',
+  10: 'T0ooQv7oHvw',
+  11: 'VnkZ1rN3iG4',
+  12: 'g2n9v1M6k-A',
+  13: 'P3sF1B8K7-g',
+  14: 'IzRh1r9Cy18',
+  15: 'o19uN-aL918',
+  16: 'R40Xv2Qf2j0',
+  17: 'y97wF7z_8H0',
+  18: 'd7qA2n41XgE',
+  19: 'k9JbZqP_B0A',
+  20: 'c9zY97h7z6k',
+  21: 'mK_7Pz8P96w',
+  22: '4p_K66gN6Yw',
+  23: 'XyK67x9zQy0',
+  24: 's_7qZp7W49k',
+  25: 'n67xY_9q0wA',
+  26: 'r7y8k_Pz4Xw',
+  27: 'q9zY7P9x8Nw',
+  28: 'm_9pZ4wY7Qk',
+  29: 'HGgsklW-mtg',
+  30: 'e_04ZrNroTo',
+  31: 'D1ndC-G1k0E',
+  32: '2138_0f20yE',
+  33: 'eHJXXei0E-4',
+  34: 'PPCx3pSkKjg',
+  35: 'XHrJvcdgT-4',
+  36: 'BOv4EnaeM9w',
+  37: 'gCPbZ3XM2js',
+  38: 'iq6Y8fBRLmw',
+  39: 'FejjRyuOcYw',
+  40: 'D-dbrkCkkO0',
+  41: 'GoSq-yZcJ-4',
+  42: 'fRcLxsUg4Gc',
+  43: 'Y9-erBW5JxQ',
+  44: 'm0lQyezHvuc',
+  45: 'FxRGkjkVTGA',
+  46: 'KRmSqBmCH8I',
+  47: 'ZanHgPprl-0',
+  48: 'frN3nvhIHUk',
+  49: 'x23rXZ9DYVg',
+  50: 'y18u7L1Wk0w'
+};
+
 /* ============================================================
    📚 KONU ANLATIMI (v4)
    Her ünite için: animasyonlu slaytlar (emoji sahne + İngilizce
@@ -4424,20 +4501,24 @@ const MEDIA = {
 
   init() {
     if (this.ctx) {
-      if (this.ctx.state === 'suspended') {
-        this.ctx.resume().catch(() => {});
-      }
+      try {
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(() => {});
+        }
+      } catch (e) {}
       return;
     }
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (AudioCtx) {
-      try {
+    try {
+      const AudioCtx = typeof window !== 'undefined' ? (window.AudioContext || window.webkitAudioContext) : null;
+      if (AudioCtx) {
         this.ctx = new AudioCtx();
-      } catch (e) {
-        // AudioContext fallback for restricted environments
       }
+    } catch (e) {
+      // AudioContext fallback for restricted environments
     }
-    this.muted = !!store.get('muted');
+    try {
+      this.muted = !!store.get('muted');
+    } catch (e) {}
   },
 
   toggleMute() {
@@ -4593,12 +4674,27 @@ const MEDIA = {
         }
         a = new Audio('audio/' + name + '.mp3');
         this.ac[name] = a;
+        try { a.addEventListener('error', () => { this.ac[name] = false; }, { once: true }); } catch (e) {}
       }
-      a.currentTime = 0;
-      a.volume = vol;
-      a.loop = !!loop;
+      try { a.currentTime = 0; } catch (e) {}
+      try { a.volume = vol; a.loop = !!loop; } catch (e) {}
+      try { a.addEventListener('error', () => { a.__pfe = 1; }, { once: true }); } catch (e) {} /* doğal error bayrağı */
       const pr = a.play();
-      if (pr && pr.catch) pr.catch(() => {});
+      if (pr && pr.catch) {
+        pr.catch(() => {
+          /* 🛡️ çalma reddedilirse (otomatik oynatma ilkesi / dosya yok / ağ yok)
+             ve 80 ms içinde doğal 'error' olayı gelmezse: bir KEZ yapay error tetikle
+             → onended/onerror zincirlerine bağlanan motorlar ASLA takılı kalmaz */
+          setTimeout(() => {
+            try {
+              if (!a.__pfe) {
+                a.__pfe = 1;
+                a.dispatchEvent(new Event('error'));
+              }
+            } catch (e) {}
+          }, 80);
+        });
+      }
       return a;
     } catch (e) {
       return null;
@@ -4618,7 +4714,9 @@ const MEDIA = {
   },
   pickVoice() {
     try {
-      const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth) return null;
+      const vs = synth.getVoices ? synth.getVoices() : [];
       if (!vs || !vs.length) return null;
       const pref = [
         (v) => /natural/i.test(v.name) && /en[-_](GB|US)/i.test(v.lang),
@@ -4643,13 +4741,13 @@ const MEDIA = {
   },
   setVoice(name) {
     try {
-      const vs = speechSynthesis.getVoices();
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth) return;
+      const vs = synth.getVoices ? synth.getVoices() : [];
       const v = vs.find((x) => x.name === name);
       if (v) {
         this.voice = v;
-        try {
-          localStorage.setItem('polly_voice', name);
-        } catch (e) {}
+        store.set('voice', name);
       }
     } catch (e) {}
   },
@@ -4739,11 +4837,11 @@ const MEDIA = {
   },
 
   stopSpeak() {
-    if (window.speechSynthesis) {
-      try {
-        speechSynthesis.cancel();
-      } catch (e) {}
-    }
+    try {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    } catch (e) {}
   },
 
   /* // SAFETY: Cross-OS Audio & TTS Isıtıcı (iOS / Safari / Android kuralı) */
@@ -6650,7 +6748,7 @@ const APP = {
    <div class="unit-grid">${us
      .map((u) => {
        const b = this.unitStars(u.id);
-       return `<div class="unit-card ${u.stage}" data-u="${u.id}">
+       return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
        <span class="ue">${u.emoji}</span>
        <h3>${u.title}</h3>
        <div class="sub">${u.tr} · ${u.w.length} kelime</div>
@@ -6676,13 +6774,14 @@ const APP = {
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
      <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div>
      ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="margin-left:auto;font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı</button>' : ''}</div>
+   <div class="usec">🔤 Kelimeler <small>(Dinlemek için dokun)</small></div>
    <div class="word-wall">${u.w
      .map(
        (w) =>
          `<span class="word-pill" data-w="${esc(w[0])}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])}</span>`
      )
      .join('')}</div>
-   <div class="muted" style="margin-bottom:10px">👆 Kelimelere dokun, Polly söylesin! · Bir oyun seç:</div>
+   <div class="usec">🎮 Oyunlar <span class="badge blue">24 Oyun Türü</span></div>
    <div class="game-grid">${eng
      .map((e) => {
        const b = (store.get('best') || {})[e.id + '|' + u.id];
@@ -6705,12 +6804,15 @@ const APP = {
     const u = unitById(this.unitId),
       e = ENGINES.find((x) => x.id === this.engineId);
     if (!u || !e) return this.vHome();
-    const lvName = e.levels[this.lvIdx] ? e.levels[this.lvIdx].n : 'Standart';
+    const lvPills = (e.levels || []).map((l, i) =>
+      `<button class="lvl-pill ${i === this.lvIdx ? 'active' : ''}" data-lv="${i}">${['🟢', '🟡', '🔴'][i] || '🎯'} ${l.n}</button>`
+    ).join('');
     return (
       this.bar() +
       `
    <div class="game-head">
-     <div class="gscore">${e.e} ${e.t} <span class="badge">${esc(u.title)} · ${lvName}</span></div>
+     <div class="gscore">${e.e} ${e.t} <span class="badge">${esc(u.title)}</span></div>
+     <div class="lvl-row" style="display:flex;gap:6px;align-items:center">${lvPills}</div>
      <div class="spacer"></div>
      <div class="gscore">⭐ <span class="v" id="gsc">0</span></div>
      ${e.id === 'team' ? '' : '<div class="gscore">📊 <span id="gpc" style="color:#b45309;font-weight:900">0%</span></div>'}
@@ -6753,7 +6855,7 @@ const APP = {
            .map(
              (s) => `
      <div class="song-item" data-song="${SONGS.indexOf(s)}"><span class="se">${s.e}</span>
-       <h4>${s.t}</h4><div class="tune">🎼 ${s.tune}</div></div>`
+       <h4>${s.t}${(typeof SONGVID !== 'undefined' && SONGVID[SONGS.indexOf(s)]) ? ' <span class="badge gold" style="font-size:.68em">🎬 gerçek şarkı</span>' : ''}</h4><div class="tune">🎼 ${s.tune}</div></div>`
            )
            .join('')
        : '<div class="muted">Bu ünitede klasik şarkı yok — chant’lere göz at! 👇</div>'
@@ -6783,6 +6885,15 @@ const APP = {
        <span class="badge purple">🎼 ${s.tune}</span>
        ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
      </div>
+     ${(() => {
+       const si = typeof SONGVID !== 'undefined' ? SONGS.indexOf(s) : -1,
+         v = si >= 0 ? SONGVID[si] : null;
+       return v
+         ? `<div class="lvideo" style="margin:14px auto 0"><iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)} — gerçek şarkı" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+       <div class="muted" style="margin:8px 0 2px">🎬 <b>Gerçek şarkı</b> — özgün müzik, gerçek söyleyiş · <a href="https://www.youtube.com/watch?v=${v}" target="_blank" rel="noopener" style="color:#2563eb;font-weight:700">▶ YouTube'da aç</a> (internet gerekir)</div>
+       <div class="muted" style="margin:2px 0 6px">🦜 Polly modu: sözleri ritimle söyler — internetsiz de çalışır (aşağıdaki ▶ ile)</div>`
+         : '';
+     })()}
      <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
       <div class="controls">
         <button class="btn green pulse" id="pp">▶️ Başlat</button>
@@ -6841,8 +6952,8 @@ const APP = {
      <p><b>1) Site nasıl kullanılır?</b><br>Tek bir HTML dosyasıdır — internet gerekmez! USB’ye kopyalayıp okul bilgisayarında/akıllı tahtada açabilirsiniz. Tablet ve telefonda da çalışır.</p>
      <p><b>2) Sesler:</b> Polly’nin <b>tüm kelimeleri ve ders cümleleri (500+ kayıt) gerçek insan sesiyle</b> kayıtlıdır (audio/ klasörü — nöral ses teknolojisi, robotik TTS değil!). Şarkı melodileri de gömülüdür. Kaydı olmayan az sayıdaki metin tarayıcı sesine düşer (Microsoft Edge’te daha gerçekçi). 🔊 düğmesiyle açıp kapatabilirsiniz.</p>
      <p><b>3) Akıllı tahta için:</b> <b>⚔️ Takım Yarışı</b> oyununu seçin — sınıfı iki takıma bölün! 🎱 Bingo ve 🎈 Balon Patlat da sınıfça oynanabilir.</p>
-     <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyunu seçin (Kolay/Orta/Zor). Her oyunda ⭐ toplanır, skorlar cihaza kaydedilir.</p>
-     <p><b>5) Şarkılar:</b> 15 klasik şarkının gerçek melodisi çalar (müzik kutusu tınısı), diğerlerinde neşeli bir ritim eşlik eder — Polly satırları seslendirir, sınıfça söyleyin! 🎵 Ana ekrandaki <b>🎤 Polly’nin Sesi</b> düğmesinden tarayıcının en gerçekçi sesini seçebilirsiniz (en iyileri Microsoft Edge’teki “Natural” sesler).</p>
+     <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyun kartına dokunun — oyun <b>hemen açılır!</b> Zorluğu oyunun üstündeki 🟢🟡🔴 düğmelerinden anında değiştirin. Her oyunda ⭐ toplanır.</p>
+     <p><b>5) Şarkılar:</b> Her klasik şarkının <b>🎬 gerçek şarkı videosu</b> vardır — özgün müzik ve gerçek söyleyiş (internet gerekir). Polly'nin ritimli chant modu ise <b>internetsiz</b> çalışır; sözler satır satır renklenir, sınıfça söyleyin! 🎵 Kelimeler <b>gerçek insan sesiyle</b> söylenir.</p>
      <p><b>6) Anti-Crash Koruması:</b> Herhangi bir aksilikte sayfa çökmeyi engeller ve kaldığınız skordan devam ettirir.</p>
      <p class="muted" style="margin-top:14px">Cambridge Global English 1 & 2 (Second Edition) üniteleriyle uyumludur. Bağımsız eğitsel yardımcı materyaldir.</p>
    </div>`
@@ -6940,7 +7051,14 @@ const APP = {
     $$('.card[data-e]').forEach((c) =>
       c.addEventListener('click', () => {
         MEDIA.fx('pop');
-        this.pickLevel(c.dataset.e);
+        this.go('game', { engineId: c.dataset.e, unitId: this.unitId, lvIdx: 0 });
+      })
+    );
+
+    $$('.lvl-pill[data-lv]').forEach((b) =>
+      b.addEventListener('click', () => {
+        MEDIA.fx('pop');
+        this.go('game', { engineId: this.engineId, unitId: this.unitId, lvIdx: +b.dataset.lv });
       })
     );
 

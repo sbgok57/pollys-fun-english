@@ -229,7 +229,7 @@ const APP = {
    <div class="unit-grid">${us
      .map((u) => {
        const b = this.unitStars(u.id);
-       return `<div class="unit-card ${u.stage}" data-u="${u.id}">
+       return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
        <span class="ue">${u.emoji}</span>
        <h3>${u.title}</h3>
        <div class="sub">${u.tr} · ${u.w.length} kelime</div>
@@ -255,13 +255,14 @@ const APP = {
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
      <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div>
      ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="margin-left:auto;font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı</button>' : ''}</div>
+   <div class="usec">🔤 Kelimeler <small>(Dinlemek için dokun)</small></div>
    <div class="word-wall">${u.w
      .map(
        (w) =>
          `<span class="word-pill" data-w="${esc(w[0])}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])}</span>`
      )
      .join('')}</div>
-   <div class="muted" style="margin-bottom:10px">👆 Kelimelere dokun, Polly söylesin! · Bir oyun seç:</div>
+   <div class="usec">🎮 Oyunlar <span class="badge blue">24 Oyun Türü</span></div>
    <div class="game-grid">${eng
      .map((e) => {
        const b = (store.get('best') || {})[e.id + '|' + u.id];
@@ -284,12 +285,15 @@ const APP = {
     const u = unitById(this.unitId),
       e = ENGINES.find((x) => x.id === this.engineId);
     if (!u || !e) return this.vHome();
-    const lvName = e.levels[this.lvIdx] ? e.levels[this.lvIdx].n : 'Standart';
+    const lvPills = (e.levels || []).map((l, i) =>
+      `<button class="lvl-pill ${i === this.lvIdx ? 'active' : ''}" data-lv="${i}">${['🟢', '🟡', '🔴'][i] || '🎯'} ${l.n}</button>`
+    ).join('');
     return (
       this.bar() +
       `
    <div class="game-head">
-     <div class="gscore">${e.e} ${e.t} <span class="badge">${esc(u.title)} · ${lvName}</span></div>
+     <div class="gscore">${e.e} ${e.t} <span class="badge">${esc(u.title)}</span></div>
+     <div class="lvl-row" style="display:flex;gap:6px;align-items:center">${lvPills}</div>
      <div class="spacer"></div>
      <div class="gscore">⭐ <span class="v" id="gsc">0</span></div>
      ${e.id === 'team' ? '' : '<div class="gscore">📊 <span id="gpc" style="color:#b45309;font-weight:900">0%</span></div>'}
@@ -332,7 +336,7 @@ const APP = {
            .map(
              (s) => `
      <div class="song-item" data-song="${SONGS.indexOf(s)}"><span class="se">${s.e}</span>
-       <h4>${s.t}</h4><div class="tune">🎼 ${s.tune}</div></div>`
+       <h4>${s.t}${(typeof SONGVID !== 'undefined' && SONGVID[SONGS.indexOf(s)]) ? ' <span class="badge gold" style="font-size:.68em">🎬 gerçek şarkı</span>' : ''}</h4><div class="tune">🎼 ${s.tune}</div></div>`
            )
            .join('')
        : '<div class="muted">Bu ünitede klasik şarkı yok — chant’lere göz at! 👇</div>'
@@ -362,6 +366,15 @@ const APP = {
        <span class="badge purple">🎼 ${s.tune}</span>
        ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
      </div>
+     ${(() => {
+       const si = typeof SONGVID !== 'undefined' ? SONGS.indexOf(s) : -1,
+         v = si >= 0 ? SONGVID[si] : null;
+       return v
+         ? `<div class="lvideo" style="margin:14px auto 0"><iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)} — gerçek şarkı" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+       <div class="muted" style="margin:8px 0 2px">🎬 <b>Gerçek şarkı</b> — özgün müzik, gerçek söyleyiş · <a href="https://www.youtube.com/watch?v=${v}" target="_blank" rel="noopener" style="color:#2563eb;font-weight:700">▶ YouTube'da aç</a> (internet gerekir)</div>
+       <div class="muted" style="margin:2px 0 6px">🦜 Polly modu: sözleri ritimle söyler — internetsiz de çalışır (aşağıdaki ▶ ile)</div>`
+         : '';
+     })()}
      <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
       <div class="controls">
         <button class="btn green pulse" id="pp">▶️ Başlat</button>
@@ -420,8 +433,8 @@ const APP = {
      <p><b>1) Site nasıl kullanılır?</b><br>Tek bir HTML dosyasıdır — internet gerekmez! USB’ye kopyalayıp okul bilgisayarında/akıllı tahtada açabilirsiniz. Tablet ve telefonda da çalışır.</p>
      <p><b>2) Sesler:</b> Polly’nin <b>tüm kelimeleri ve ders cümleleri (500+ kayıt) gerçek insan sesiyle</b> kayıtlıdır (audio/ klasörü — nöral ses teknolojisi, robotik TTS değil!). Şarkı melodileri de gömülüdür. Kaydı olmayan az sayıdaki metin tarayıcı sesine düşer (Microsoft Edge’te daha gerçekçi). 🔊 düğmesiyle açıp kapatabilirsiniz.</p>
      <p><b>3) Akıllı tahta için:</b> <b>⚔️ Takım Yarışı</b> oyununu seçin — sınıfı iki takıma bölün! 🎱 Bingo ve 🎈 Balon Patlat da sınıfça oynanabilir.</p>
-     <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyunu seçin (Kolay/Orta/Zor). Her oyunda ⭐ toplanır, skorlar cihaza kaydedilir.</p>
-     <p><b>5) Şarkılar:</b> 15 klasik şarkının gerçek melodisi çalar (müzik kutusu tınısı), diğerlerinde neşeli bir ritim eşlik eder — Polly satırları seslendirir, sınıfça söyleyin! 🎵 Ana ekrandaki <b>🎤 Polly’nin Sesi</b> düğmesinden tarayıcının en gerçekçi sesini seçebilirsiniz (en iyileri Microsoft Edge’teki “Natural” sesler).</p>
+     <p><b>4) Nasıl ilerlenir?</b> Sınıfınızı seçin → üniteyi seçin → oyun kartına dokunun — oyun <b>hemen açılır!</b> Zorluğu oyunun üstündeki 🟢🟡🔴 düğmelerinden anında değiştirin. Her oyunda ⭐ toplanır.</p>
+     <p><b>5) Şarkılar:</b> Her klasik şarkının <b>🎬 gerçek şarkı videosu</b> vardır — özgün müzik ve gerçek söyleyiş (internet gerekir). Polly'nin ritimli chant modu ise <b>internetsiz</b> çalışır; sözler satır satır renklenir, sınıfça söyleyin! 🎵 Kelimeler <b>gerçek insan sesiyle</b> söylenir.</p>
      <p><b>6) Anti-Crash Koruması:</b> Herhangi bir aksilikte sayfa çökmeyi engeller ve kaldığınız skordan devam ettirir.</p>
      <p class="muted" style="margin-top:14px">Cambridge Global English 1 & 2 (Second Edition) üniteleriyle uyumludur. Bağımsız eğitsel yardımcı materyaldir.</p>
    </div>`
@@ -519,7 +532,14 @@ const APP = {
     $$('.card[data-e]').forEach((c) =>
       c.addEventListener('click', () => {
         MEDIA.fx('pop');
-        this.pickLevel(c.dataset.e);
+        this.go('game', { engineId: c.dataset.e, unitId: this.unitId, lvIdx: 0 });
+      })
+    );
+
+    $$('.lvl-pill[data-lv]').forEach((b) =>
+      b.addEventListener('click', () => {
+        MEDIA.fx('pop');
+        this.go('game', { engineId: this.engineId, unitId: this.unitId, lvIdx: +b.dataset.lv });
       })
     );
 
