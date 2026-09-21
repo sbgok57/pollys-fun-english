@@ -87,29 +87,29 @@ if img_src.exists():
 print(f'OK → vercel-deploy/index.html + vercel.json + audio + images')
 
 # 4. Masaüstü vercel-deploy kopyası
-desktop_vd = pathlib.Path('/Users/sbgok57/Desktop/vercel-deploy')
-if desktop_vd.exists():
-    (desktop_vd / 'index.html').write_text(out, encoding='utf-8')
-    (desktop_vd / 'english-fun-zone.html').write_text(out, encoding='utf-8')
-    (desktop_vd / 'vercel.json').write_text(vjson_content, encoding='utf-8')
-    desk_pub = desktop_vd / 'public'
-    desk_pub.mkdir(exist_ok=True)
-    (desk_pub / 'index.html').write_text(out, encoding='utf-8')
-    (desk_pub / 'english-fun-zone.html').write_text(out, encoding='utf-8')
-    if audio_src.exists():
-        desk_audio = desktop_vd / 'audio'
-        shutil.rmtree(desk_audio, ignore_errors=True)
-        shutil.copytree(audio_src, desk_audio)
-        desk_pub_audio = desk_pub / 'audio'
-        shutil.rmtree(desk_pub_audio, ignore_errors=True)
-        shutil.copytree(audio_src, desk_pub_audio)
-    if img_src.exists():
-        desk_img = desktop_vd / 'images'
-        shutil.rmtree(desk_img, ignore_errors=True)
-        shutil.copytree(img_src, desk_img)
-        desk_pub_img = desk_pub / 'images'
-        shutil.rmtree(desk_pub_img, ignore_errors=True)
-        shutil.copytree(img_src, desk_pub_img)
+for desktop_vd in [pathlib.Path('/Users/sbgok57/Desktop/vercel-deploy'), pathlib.Path('/Users/sbgok57/Desktop/Antigravity/vercel-deploy')]:
+    if desktop_vd.exists():
+        (desktop_vd / 'index.html').write_text(out, encoding='utf-8')
+        (desktop_vd / 'english-fun-zone.html').write_text(out, encoding='utf-8')
+        (desktop_vd / 'vercel.json').write_text(vjson_content, encoding='utf-8')
+        desk_pub = desktop_vd / 'public'
+        desk_pub.mkdir(exist_ok=True)
+        (desk_pub / 'index.html').write_text(out, encoding='utf-8')
+        (desk_pub / 'english-fun-zone.html').write_text(out, encoding='utf-8')
+        if audio_src.exists():
+            desk_audio = desktop_vd / 'audio'
+            shutil.rmtree(desk_audio, ignore_errors=True)
+            shutil.copytree(audio_src, desk_audio)
+            desk_pub_audio = desk_pub / 'audio'
+            shutil.rmtree(desk_pub_audio, ignore_errors=True)
+            shutil.copytree(audio_src, desk_pub_audio)
+        if img_src.exists():
+            desk_img = desktop_vd / 'images'
+            shutil.rmtree(desk_img, ignore_errors=True)
+            shutil.copytree(img_src, desk_img)
+            desk_pub_img = desk_pub / 'images'
+            shutil.rmtree(desk_pub_img, ignore_errors=True)
+            shutil.copytree(img_src, desk_pub_img)
 
 # ── 🛡️ TAM DOĞRULAMA: her varlık referansı diskte VAR MI? ──
 hatalar = []
