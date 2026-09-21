@@ -37,11 +37,20 @@
   user-select: none;
 }
 
+button, .btn, .card, .unit-card, .word-pill, .lword, .lqopt, .opt, .match-card, .drag-pill {
+  touch-action: manipulation;
+}
+
 body {
   font-family: var(--font-family);
   background: var(--bg-gradient);
   color: var(--text-main);
   min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
   overflow-x: hidden;
   position: relative;
   line-height: 1.4;
@@ -68,6 +77,8 @@ body.s2 {
   bottom: -60px;
   animation: floatUp linear infinite;
   opacity: 0.6;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 @keyframes floatUp {
@@ -734,18 +745,36 @@ body.s2 {
 #crash-banner {
   display: none;
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
+  left: auto;
   background: #ffffff;
   border: 4px solid #f43f5e;
   border-radius: var(--radius-lg);
-  padding: 16px 20px;
-  box-shadow: var(--shadow-float);
-  z-index: 9999;
-  max-width: 380px;
+  padding: 18px 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  z-index: 10000;
+  max-width: 420px;
+  width: calc(100% - 40px);
   text-align: left;
+  transform: translate3d(0, 0, 0);
 }
 #crash-banner.show { display: block; animation: popIn 0.3s; }
+.crash-details {
+  display: none;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px;
+  font-family: monospace;
+  font-size: 0.78em;
+  color: #64748b;
+  max-height: 100px;
+  overflow: auto;
+  margin: 8px 0;
+  word-break: break-all;
+}
+.crash-details.show { display: block; }
 
 /* ============ v3: 🎤 Ses seçim modalı ============ */
 #vmodal{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s}
@@ -811,6 +840,26 @@ body.s2 {
 .lqstars{font-size:24px;letter-spacing:3px}
 .lqdone{text-align:center;animation:popIn .4s}
 
+/* ═══ GPU İVMELENDİRME & PERFORMANS ═══ */
+.confetti-piece, .pop-star, .flyby, .ripple {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ═══ ERİŞİLEBİLİRLİK & CPU TASARRUFU (WCAG AA & Pil Tasarrufu) ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #floaties, .flyby, .confetti-piece {
+    display: none !important;
+  }
+}
+
+
 
   </style>
 </head>
@@ -823,11 +872,13 @@ body.s2 {
 
   <!-- Anti-Crash Kurtarma Paneli (P0 Dayanıklılık) -->
   <div id="crash-banner" role="alert">
-    <div style="font-weight:900;font-size:1.1em;color:#991b1b;margin-bottom:4px">⚠️ Bir aksilik oldu!</div>
-    <div style="font-size:0.88em;color:#475569;margin-bottom:12px">Endişelenmeyin, puanlarınız ve seviyeniz güvende. Kaldığınız yerden devam edebilirsiniz.</div>
-    <div style="display:flex;gap:8px">
-      <button class="btn small green" id="crash-resume">🔄 Devam Et</button>
+    <div style="font-weight:900;font-size:1.1em;color:#991b1b;margin-bottom:4px">⚠️ Polly Bir Sorun Engelledi!</div>
+    <div id="crash-msg" style="font-size:0.88em;color:#475569;margin-bottom:10px">Endişelenmeyin, puanlarınız ve seviyeniz hafızaya alındı. Kaldığınız yerden devam edebilirsiniz.</div>
+    <pre id="crash-diag" class="crash-details"></pre>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <button class="btn small green" id="crash-resume">🔄 Kaldığım Yerden Devam Et</button>
       <button class="btn small white" id="crash-home">🏠 Ana Sayfa</button>
+      <button class="btn small white" id="crash-toggle-diag" style="font-size:0.75em;opacity:0.75">🔍 Detay</button>
     </div>
   </div>
 
@@ -3809,12 +3860,12 @@ function unitsOfStage(stageId) {
   return ALLSETS.filter(u => u.stage === stageId);
 }
 
-/* Kalıcı Hafıza (P0 Dayanıklılık / Anti-Crash) */
+/* Kalıcı Hafıza & Durum Geçmişi (P0 Dayanıklılık / Anti-Crash Kalkanı) */
 const store = {
   _mem: {},
   get(key) {
     try {
-      const val = window.localStorage ? localStorage.getItem('polly_' + key) : null;
+      const val = typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('polly_' + key) : null;
       return val ? JSON.parse(val) : (this._mem[key] || null);
     } catch (err) {
       return this._mem[key] || null;
@@ -3823,20 +3874,50 @@ const store = {
   set(key, val) {
     this._mem[key] = val;
     try {
-      if (window.localStorage) {
+      if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem('polly_' + key, JSON.stringify(val));
       }
     } catch (err) {
-      // Quota exceeded or private browsing safeguard
+      // // SAFETY: Quota exceeded or private browsing safeguard
     }
   },
   remove(key) {
     delete this._mem[key];
     try {
-      if (window.localStorage) {
+      if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.removeItem('polly_' + key);
       }
     } catch (err) {}
+  },
+  /* // PERF: Bounded Ring-Buffer History Ledger (Maks 20 kayıt) */
+  pushHistory(entry) {
+    try {
+      const hist = this.get('history') || [];
+      const item = { timestamp: Date.now(), t: Date.now(), ...entry };
+      hist.push(item);
+      if (hist.length > 20) hist.shift(); // Bound memory growth
+      this.set('history', hist);
+    } catch (e) {}
+  },
+  getHistory() {
+    return this.get('history') || [];
+  },
+  clearHistory() {
+    this.remove('history');
+  },
+  /* // SAFETY: Ayrıntılı Checkpoint (Kaldığı Yerden Pürüzsüz Devam İçin) */
+  saveCheckpoint(ckpt) {
+    try {
+      const snap = {
+        timestamp: Date.now(),
+        ...ckpt
+      };
+      this.set('checkpoint', snap);
+      this.pushHistory({ type: 'checkpoint', ...ckpt });
+    } catch (e) {}
+  },
+  getCheckpoint() {
+    return this.get('checkpoint');
   }
 };
 
@@ -4493,6 +4574,16 @@ const MEDIA = {
       if (this.muted) return null;
       let a = this.ac[name];
       if (!a) {
+        // // PERF: Bellek sınırlandırması (Maksimum 35 eşzamanlı ses nesnesi)
+        const keys = Object.keys(this.ac);
+        if (keys.length >= 35) {
+          const pruneKey = keys.find((k) => this.ac[k] && this.ac[k].paused && !this.ac[k].loop) || keys[0];
+          try {
+            this.ac[pruneKey].pause();
+            this.ac[pruneKey].src = '';
+          } catch (e) {}
+          delete this.ac[pruneKey];
+        }
         a = new Audio('audio/' + name + '.mp3');
         this.ac[name] = a;
       }
@@ -4645,6 +4736,36 @@ const MEDIA = {
       try {
         speechSynthesis.cancel();
       } catch (e) {}
+    }
+  },
+
+  /* // SAFETY: Cross-OS Audio & TTS Isıtıcı (iOS / Safari / Android kuralı) */
+  warmUp() {
+    this.init();
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
+    try {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        const u = new SpeechSynthesisUtterance(' ');
+        u.volume = 0.01;
+        window.speechSynthesis.speak(u);
+      }
+    } catch (e) {}
+  },
+
+  /* // PERF: Ekran geçişlerinde bellek ve ses kaynaklarını temizle */
+  disposeAll() {
+    this.stopSpeak();
+    if (this.ac) {
+      Object.values(this.ac).forEach((a) => {
+        try {
+          if (a && a.pause) {
+            a.pause();
+            a.currentTime = 0;
+          }
+        } catch (e) {}
+      });
     }
   }
 };
@@ -6153,22 +6274,24 @@ const ENGINES_C=[
   const setTarget=w=>{target=w;const rt=document.getElementById('rt');if(rt)rt.textContent=w[0];MEDIA.speak(w[0])};
   if(infoEl){const bl=infoEl.querySelector('#rl');if(bl)bl.onclick=()=>MEDIA.speak(target[0])}
   setTarget(target);
+  const dropTimers = new Set();
   const spawn=()=>{ const others=u.w.filter(x=>x[0]!==target[0]);
     const w=Math.random()<.4?target:(others.length?pick(others):target);
     const d=el(`<div class="raindrop" style="left:${rnd(86)}%"><span class="re">${w[1]||'🔤'}</span><span class="rw">${esc(w[0])}</span></div>`);
     d.style.top='-80px';F.appendChild(d);let y=-80;
     const tm=setInterval(()=>{y+=cfg.fall;d.style.top=y+'px';
-      if(y>F.clientHeight+30){clearInterval(tm);d.remove()}},30);
+      if(y>F.clientHeight+30){clearInterval(tm);dropTimers.delete(tm);d.remove()}},30);
+    dropTimers.add(tm);
     d.onclick=ev=>{ ev.stopPropagation();
       if(w[0]===target[0]){caught++;api.add(5);MEDIA.fx('catch');FX.stars(ev.clientX,ev.clientY);
-        d.remove();clearInterval(tm);setTarget(pick(u.w))}
+        d.remove();clearInterval(tm);dropTimers.delete(tm);setTarget(pick(u.w))}
       else{MEDIA.fx('wrong');FX.shake(d)} };
   };
   spawnIv=setInterval(spawn,cfg.per);
   timerIv=setInterval(()=>{t--;api.progress(cfg.dur-t,cfg.dur);
-    if(t<=0){clearInterval(spawnIv);clearInterval(timerIv);F.innerHTML='';
+    if(t<=0){clearInterval(spawnIv);clearInterval(timerIv);dropTimers.forEach(id=>clearInterval(id));dropTimers.clear();F.innerHTML='';
       api.end({score:api.score,max:cfg.dur,note:caught+' kelime yakaladın! 🌧️'})}},1000);
-  api.cleanup(()=>{clearInterval(spawnIv);clearInterval(timerIv)});
+  api.cleanup(()=>{clearInterval(spawnIv);clearInterval(timerIv);dropTimers.forEach(id=>clearInterval(id));dropTimers.clear()});
  }},
 
 /* ---------------- 21) 🔤 İLK HARF (fonik) ---------------- */
@@ -6314,6 +6437,7 @@ const APP = {
   songFilter: { stage: 's1', unit: null },
   playing: null,
   cleanups: [],
+  currentScore: 0,
 
   /* ---------- Navigasyon & Durum Yönetimi ---------- */
   go(scr, p = {}) {
@@ -6334,34 +6458,42 @@ const APP = {
       } catch (e) {}
     });
     this.cleanups = [];
+    MEDIA.disposeAll(); // // PERF: Ekran geçişlerinde ses ve konuşma motorunu sıfırla
   },
 
-  /* // SAFETY: Çökme / Yenilenme Durumunda Kaldığı Yerden Devam */
+  /* // SAFETY: Çökme / Yenilenme Durumunda Kaldığı Yerden Devam (Checkpoint) */
   saveState() {
     try {
-      store.set('last_state', {
+      const snap = {
         scr: this.scr,
         stage: this.stage,
         unitId: this.unitId,
         engineId: this.engineId,
         lvIdx: this.lvIdx,
+        lesIdx: this.lesIdx,
+        score: this.currentScore || 0,
         timestamp: Date.now()
-      });
+      };
+      store.set('last_state', snap);
+      store.saveCheckpoint(snap);
     } catch (e) {}
   },
 
   restoreLastState() {
-    const s = store.get('last_state');
+    const s = store.getCheckpoint() || store.get('last_state');
     if (s && s.scr && s.scr !== 'home') {
       this.go(s.scr, {
         stage: s.stage,
         unitId: s.unitId,
         engineId: s.engineId,
-        lvIdx: s.lvIdx || 0
+        lvIdx: s.lvIdx || 0,
+        lesIdx: s.lesIdx || 0,
+        restoredScore: s.score || 0
       });
       FX.toast('Kaldığınız yerden devam ediliyor! 🔄');
       return true;
     }
+    this.go('home');
     return false;
   },
 
@@ -6831,7 +6963,8 @@ const APP = {
       e = ENGINES.find((x) => x.id === this.engineId);
     if (!u || !e) return;
     const self = this;
-    let score = 0;
+    let score = this.restoredScore || 0;
+    this.currentScore = score;
 
     const upd = () => {
       const s = document.getElementById('gsc');
@@ -6847,11 +6980,20 @@ const APP = {
       root: area,
       unit: u,
       lv: e.levels[this.lvIdx] ? e.levels[this.lvIdx].c : {},
-      score: 0,
+      score: score,
       add(n) {
         score += n;
+        self.currentScore = score;
         this.score = score;
         upd();
+        store.saveCheckpoint({
+          scr: 'game',
+          stage: self.stage,
+          unitId: u.id,
+          engineId: e.id,
+          lvIdx: self.lvIdx,
+          score: score
+        });
         if (score > 0 && score % 60 === 0) {
           const p = pick(PRAISE);
           FX.mascotSay(p + ' 🦜');
@@ -6920,9 +7062,30 @@ const APP = {
     try {
       e.init(api);
     } catch (err) {
-      // // SAFETY: Motor hata verse dahi beyaz ekran olmasını engelle
-      area.innerHTML = `<div class="center"><div class="big-emoji">🙈</div>
-     <div>Bu oyunda bir aksilik oldu. Diğer oyunları deneyin!</div><div class="muted">${esc(err.message)}</div></div>`;
+      // // SAFETY: Motor hata verse dahi beyaz ekran olmasını engelle, puanı koru ve kurtar
+      console.error(`[EngineIsolation] Error in engine ${e.id}:`, err);
+      store.saveCheckpoint({
+        scr: 'game',
+        stage: self.stage,
+        unitId: u.id,
+        engineId: e.id,
+        lvIdx: self.lvIdx,
+        score: score,
+        error: String(err && err.message)
+      });
+      area.innerHTML = `<div class="center" style="padding:22px;background:#fff;border-radius:22px;border:3px dashed #f59e0b;margin:16px auto;max-width:480px">
+        <div class="big-emoji" style="font-size:54px">🦜</div>
+        <h3 style="margin:8px 0;color:#0f172a">Polly bir aksilik yakaladı ve çözdü!</h3>
+        <p style="color:#64748b;margin-bottom:14px">Toplanan puanın (${score} ⭐) hafızada güvende.</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn green" id="rec-restart">🔄 Yeniden Başlat</button>
+          <button class="btn white" id="rec-unit">📚 Üniteye Dön</button>
+        </div>
+      </div>`;
+      const rb = area.querySelector('#rec-restart'),
+        ub = area.querySelector('#rec-unit');
+      if (rb) rb.onclick = () => api.restart();
+      if (ub) ub.onclick = () => self.go('unit', { unitId: u.id });
     }
   },
 
@@ -7184,6 +7347,14 @@ const APP = {
     const L = LESSONS[u.id],
       total = L.length + 4,
       n = this.lesIdx || 0;
+    // // SAFETY: Ders slayt durumu hafızaya kaydedilir (çökme/yenileme kurtarma)
+    store.saveCheckpoint({
+      scr: 'lesson',
+      stage: this.stage,
+      unitId: u.id,
+      lesIdx: n,
+      timestamp: Date.now()
+    });
     if (n === 0) MEDIA.playFile('les-ready', 0.9);
     if (n === L.length) MEDIA.playFile('les-words', 0.9);
     if (n === L.length + 1) MEDIA.playFile('les-point', 0.9);
@@ -7353,52 +7524,91 @@ const APP = {
   }
 };
 
-/* ---------- ANTİ-CRASH SHIELD (Global Hata Yakalayıcı) ---------- */
-window.addEventListener('error', (event) => {
-  const banner = document.getElementById('crash-banner');
-  if (banner) {
-    banner.classList.add('show');
-    const resBtn = document.getElementById('crash-resume');
-    if (resBtn) {
-      resBtn.onclick = () => {
-        banner.classList.remove('show');
-        APP.restoreLastState();
-      };
-    }
-    const hmBtn = document.getElementById('crash-home');
-    if (hmBtn) {
-      hmBtn.onclick = () => {
-        banner.classList.remove('show');
-        APP.go('home');
-      };
-    }
+/* ---------- ANTİ-CRASH SHIELD (Global Hata Yakalayıcı & Otomatik Kurtarma) ---------- */
+function handleGlobalCrash(err, type = 'error') {
+  // // SAFETY: P0 Asla Çökme Kuralı — global hataları yakala, hafızaya işle ve kurtarma UI göster
+  console.error(`[Anti-Crash Shield] Intercepted ${type}:`, err);
+  if (typeof store !== 'undefined' && store.pushHistory) {
+    store.pushHistory({
+      type: 'crash',
+      error: String(err && err.message ? err.message : err),
+      timestamp: Date.now()
+    });
   }
-});
 
-window.addEventListener('unhandledrejection', () => {
-  // Promise rejection fail-safe
-});
+  const banner = document.getElementById('crash-banner');
+  if (!banner) return;
+  banner.classList.add('show');
+
+  const diag = document.getElementById('crash-diag');
+  if (diag) {
+    const hist = (typeof store !== 'undefined' && store.getHistory ? store.getHistory() : [])
+      .slice(-5)
+      .map((h) => `${new Date(h.timestamp).toLocaleTimeString()}: ${h.action || h.type || 'olay'}`)
+      .join('\n');
+    diag.textContent = `Hata Detayı: ${err && err.message ? err.message : err}\n\nYığın İzleme:\n${(err && err.stack) || 'Bilgi yok'}\n\nSon 5 İşlem Geçmişi:\n${hist || 'Kayıt yok'}`;
+  }
+
+  const toggleBtn = document.getElementById('crash-toggle-diag');
+  if (toggleBtn && diag) {
+    toggleBtn.onclick = () => {
+      diag.classList.toggle('show');
+    };
+  }
+
+  const resBtn = document.getElementById('crash-resume');
+  if (resBtn) {
+    resBtn.onclick = () => {
+      banner.classList.remove('show');
+      if (diag) diag.classList.remove('show');
+      APP.restoreLastState();
+    };
+  }
+
+  const hmBtn = document.getElementById('crash-home');
+  if (hmBtn) {
+    hmBtn.onclick = () => {
+      banner.classList.remove('show');
+      if (diag) diag.classList.remove('show');
+      APP.go('home');
+    };
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('error', (event) => {
+    handleGlobalCrash(event.error || event.message, 'uncaught-error');
+  });
+
+  window.addEventListener('unhandledrejection', (event) => {
+    handleGlobalCrash(event.reason, 'unhandled-rejection');
+  });
+}
 
 /* ---------- DOKUNMA DALGASI & UÇAN SÜRPRİZLER ---------- */
-document.addEventListener(
-  'pointerdown',
-  (ev) => {
-    // // PERF: Sadece görünür ekranlarda hafif dalga efekti
-    if (ev.clientY < 60) return; // Topbar tıklamalarını rahatlat
-    const r = document.createElement('i');
-    r.className = 'ripple';
-    r.style.left = ev.clientX + 'px';
-    r.style.top = ev.clientY + 'px';
-    document.body.appendChild(r);
-    setTimeout(() => r.remove(), 700);
-  },
-  { passive: true }
-);
+if (typeof document !== 'undefined') {
+  document.addEventListener(
+    'pointerdown',
+    (ev) => {
+      // // PERF: Sadece görünür ekranlarda hafif dalga efekti
+      if (ev.clientY < 60) return; // Topbar tıklamalarını rahatlat
+      const r = document.createElement('i');
+      r.className = 'ripple';
+      r.style.left = ev.clientX + 'px';
+      r.style.top = ev.clientY + 'px';
+      document.body.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    },
+    { passive: true }
+  );
+}
 
-// // PERF: Uçan maskotlar arka planda çalışmaz, maksimum 2 eleman sınırı
+// // PERF: Uçan maskotlar arka planda veya oyun esnasında çalışmaz (CPU/GPU tasarrufu)
 setInterval(() => {
-  const L = document.getElementById('fxlayer');
-  if (L && Math.random() < 0.35 && !document.hidden && L.querySelectorAll('.flyby').length < 2) {
+  if (typeof APP !== 'undefined' && APP.scr === 'game') return;
+  if (typeof document !== 'undefined' && document.hidden) return;
+  const L = typeof document !== 'undefined' ? document.getElementById('fxlayer') : null;
+  if (L && Math.random() < 0.35 && L.querySelectorAll('.flyby').length < 2) {
     const b = document.createElement('span');
     b.className = 'flyby';
     b.textContent = pick(['🕊️', '🦋', '🎈', '🦜', '🚀', '🐝', '🪁']);
@@ -7411,11 +7621,20 @@ setInterval(() => {
   }
 }, 9000);
 
-/* ---------- UYGULAMAYI BAŞLAT ---------- */
+/* ---------- UYGULAMAYI BAŞLAT (Cross-OS & Safe Autoplay) ---------- */
 if (typeof document !== 'undefined') {
   APP.floaties();
   APP.render();
-  document.addEventListener('click', () => MEDIA.init(), { once: true });
+
+  // // SAFETY: iOS Safari, Android Chrome ve Akıllı Tahtalarda ses ve sentezleyiciyi güvenle uyandır
+  const warmAudio = () => {
+    MEDIA.warmUp();
+    MEDIA.init();
+  };
+  ['pointerdown', 'touchstart', 'click', 'keydown'].forEach((evType) => {
+    document.addEventListener(evType, warmAudio, { capture: true, passive: true, once: true });
+  });
+
   if (typeof window !== 'undefined' && window.speechSynthesis) {
     try {
       speechSynthesis.onvoiceschanged = () => {

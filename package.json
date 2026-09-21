@@ -5,6 +5,6 @@
   "private": true,
   "scripts": {
     "build": "python3 build.py",
-    "test": "node smoke-test.js && node test-all-screens.js && node test-lesson.js"
+    "test": "node smoke-test.js && node test-all-screens.js && node test-lesson.js && node test-resilience.js"
   }
 }

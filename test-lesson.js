@@ -210,7 +210,7 @@ code += `
   console.log('———');
   console.log('Toplam: ' + toplamSlayt + ' slayt · ' + toplamKelime + ' kelime kartı · ' + toplamVideo + ' gömülü video');
   console.log(hata ? '!!! ' + hata + ' HATA' : '★★★ DERS SİSTEMİ TÜM TESTLERİ GEÇTİ ★★★');
-  if (hata > 0) process.exit(1);
+  process.exit(hata > 0 ? 1 : 0);
 })().catch((e) => {
   console.error('FATAL', e);
   process.exit(1);

@@ -167,6 +167,16 @@ const MEDIA = {
       if (this.muted) return null;
       let a = this.ac[name];
       if (!a) {
+        // // PERF: Bellek sınırlandırması (Maksimum 35 eşzamanlı ses nesnesi)
+        const keys = Object.keys(this.ac);
+        if (keys.length >= 35) {
+          const pruneKey = keys.find((k) => this.ac[k] && this.ac[k].paused && !this.ac[k].loop) || keys[0];
+          try {
+            this.ac[pruneKey].pause();
+            this.ac[pruneKey].src = '';
+          } catch (e) {}
+          delete this.ac[pruneKey];
+        }
         a = new Audio('audio/' + name + '.mp3');
         this.ac[name] = a;
       }
@@ -319,6 +329,36 @@ const MEDIA = {
       try {
         speechSynthesis.cancel();
       } catch (e) {}
+    }
+  },
+
+  /* // SAFETY: Cross-OS Audio & TTS Isıtıcı (iOS / Safari / Android kuralı) */
+  warmUp() {
+    this.init();
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
+    try {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        const u = new SpeechSynthesisUtterance(' ');
+        u.volume = 0.01;
+        window.speechSynthesis.speak(u);
+      }
+    } catch (e) {}
+  },
+
+  /* // PERF: Ekran geçişlerinde bellek ve ses kaynaklarını temizle */
+  disposeAll() {
+    this.stopSpeak();
+    if (this.ac) {
+      Object.values(this.ac).forEach((a) => {
+        try {
+          if (a && a.pause) {
+            a.pause();
+            a.currentTime = 0;
+          }
+        } catch (e) {}
+      });
     }
   }
 };

@@ -2972,12 +2972,12 @@ function unitsOfStage(stageId) {
   return ALLSETS.filter(u => u.stage === stageId);
 }
 
-/* Kalıcı Hafıza (P0 Dayanıklılık / Anti-Crash) */
+/* Kalıcı Hafıza & Durum Geçmişi (P0 Dayanıklılık / Anti-Crash Kalkanı) */
 const store = {
   _mem: {},
   get(key) {
     try {
-      const val = window.localStorage ? localStorage.getItem('polly_' + key) : null;
+      const val = typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('polly_' + key) : null;
       return val ? JSON.parse(val) : (this._mem[key] || null);
     } catch (err) {
       return this._mem[key] || null;
@@ -2986,19 +2986,49 @@ const store = {
   set(key, val) {
     this._mem[key] = val;
     try {
-      if (window.localStorage) {
+      if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem('polly_' + key, JSON.stringify(val));
       }
     } catch (err) {
-      // Quota exceeded or private browsing safeguard
+      // // SAFETY: Quota exceeded or private browsing safeguard
     }
   },
   remove(key) {
     delete this._mem[key];
     try {
-      if (window.localStorage) {
+      if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.removeItem('polly_' + key);
       }
     } catch (err) {}
+  },
+  /* // PERF: Bounded Ring-Buffer History Ledger (Maks 20 kayıt) */
+  pushHistory(entry) {
+    try {
+      const hist = this.get('history') || [];
+      const item = { timestamp: Date.now(), t: Date.now(), ...entry };
+      hist.push(item);
+      if (hist.length > 20) hist.shift(); // Bound memory growth
+      this.set('history', hist);
+    } catch (e) {}
+  },
+  getHistory() {
+    return this.get('history') || [];
+  },
+  clearHistory() {
+    this.remove('history');
+  },
+  /* // SAFETY: Ayrıntılı Checkpoint (Kaldığı Yerden Pürüzsüz Devam İçin) */
+  saveCheckpoint(ckpt) {
+    try {
+      const snap = {
+        timestamp: Date.now(),
+        ...ckpt
+      };
+      this.set('checkpoint', snap);
+      this.pushHistory({ type: 'checkpoint', ...ckpt });
+    } catch (e) {}
+  },
+  getCheckpoint() {
+    return this.get('checkpoint');
   }
 };

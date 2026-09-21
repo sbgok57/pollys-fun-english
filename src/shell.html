@@ -19,11 +19,13 @@
 
   <!-- Anti-Crash Kurtarma Paneli (P0 Dayanıklılık) -->
   <div id="crash-banner" role="alert">
-    <div style="font-weight:900;font-size:1.1em;color:#991b1b;margin-bottom:4px">⚠️ Bir aksilik oldu!</div>
-    <div style="font-size:0.88em;color:#475569;margin-bottom:12px">Endişelenmeyin, puanlarınız ve seviyeniz güvende. Kaldığınız yerden devam edebilirsiniz.</div>
-    <div style="display:flex;gap:8px">
-      <button class="btn small green" id="crash-resume">🔄 Devam Et</button>
+    <div style="font-weight:900;font-size:1.1em;color:#991b1b;margin-bottom:4px">⚠️ Polly Bir Sorun Engelledi!</div>
+    <div id="crash-msg" style="font-size:0.88em;color:#475569;margin-bottom:10px">Endişelenmeyin, puanlarınız ve seviyeniz hafızaya alındı. Kaldığınız yerden devam edebilirsiniz.</div>
+    <pre id="crash-diag" class="crash-details"></pre>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <button class="btn small green" id="crash-resume">🔄 Kaldığım Yerden Devam Et</button>
       <button class="btn small white" id="crash-home">🏠 Ana Sayfa</button>
+      <button class="btn small white" id="crash-toggle-diag" style="font-size:0.75em;opacity:0.75">🔍 Detay</button>
     </div>
   </div>
 

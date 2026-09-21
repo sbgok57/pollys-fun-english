@@ -39,22 +39,24 @@ const ENGINES_C=[
   const setTarget=w=>{target=w;const rt=document.getElementById('rt');if(rt)rt.textContent=w[0];MEDIA.speak(w[0])};
   if(infoEl){const bl=infoEl.querySelector('#rl');if(bl)bl.onclick=()=>MEDIA.speak(target[0])}
   setTarget(target);
+  const dropTimers = new Set();
   const spawn=()=>{ const others=u.w.filter(x=>x[0]!==target[0]);
     const w=Math.random()<.4?target:(others.length?pick(others):target);
     const d=el(`<div class="raindrop" style="left:${rnd(86)}%"><span class="re">${w[1]||'🔤'}</span><span class="rw">${esc(w[0])}</span></div>`);
     d.style.top='-80px';F.appendChild(d);let y=-80;
     const tm=setInterval(()=>{y+=cfg.fall;d.style.top=y+'px';
-      if(y>F.clientHeight+30){clearInterval(tm);d.remove()}},30);
+      if(y>F.clientHeight+30){clearInterval(tm);dropTimers.delete(tm);d.remove()}},30);
+    dropTimers.add(tm);
     d.onclick=ev=>{ ev.stopPropagation();
       if(w[0]===target[0]){caught++;api.add(5);MEDIA.fx('catch');FX.stars(ev.clientX,ev.clientY);
-        d.remove();clearInterval(tm);setTarget(pick(u.w))}
+        d.remove();clearInterval(tm);dropTimers.delete(tm);setTarget(pick(u.w))}
       else{MEDIA.fx('wrong');FX.shake(d)} };
   };
   spawnIv=setInterval(spawn,cfg.per);
   timerIv=setInterval(()=>{t--;api.progress(cfg.dur-t,cfg.dur);
-    if(t<=0){clearInterval(spawnIv);clearInterval(timerIv);F.innerHTML='';
+    if(t<=0){clearInterval(spawnIv);clearInterval(timerIv);dropTimers.forEach(id=>clearInterval(id));dropTimers.clear();F.innerHTML='';
       api.end({score:api.score,max:cfg.dur,note:caught+' kelime yakaladın! 🌧️'})}},1000);
-  api.cleanup(()=>{clearInterval(spawnIv);clearInterval(timerIv)});
+  api.cleanup(()=>{clearInterval(spawnIv);clearInterval(timerIv);dropTimers.forEach(id=>clearInterval(id));dropTimers.clear()});
  }},
 
 /* ---------------- 21) 🔤 İLK HARF (fonik) ---------------- */
