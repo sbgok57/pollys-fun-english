@@ -189,7 +189,7 @@ assert(APP.scr === 'game' && APP.engineId === 'flash' && APP.unitId === 's1u1', 
 // 3. Audio & Media Cleanup
 console.log('\n[3] Ses & Bellek Temizleme (MEDIA.disposeAll):');
 try {
-  MEDIA.playFile('les-ready', 0.8);
+  MEDIA.playFile('beat0', 0.8);
   MEDIA.disposeAll();
   assert(true, 'MEDIA.disposeAll() sessizce ve hatasız tüm kaynakları serbest bıraktı');
 } catch (err) {
