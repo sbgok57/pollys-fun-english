@@ -766,7 +766,6 @@ const APP = {
       musStop();
       if (!music) return;
       if (mel) {
-        MEDIA.playFile('sing', 0.9);
         mus = MEDIA.playFile(mel, 0.8, true) || MEDIA.playFile(bt, 0.4, true);
       } else {
         mus = MEDIA.playFile(bt, 0.4, true);
@@ -931,7 +930,7 @@ const APP = {
           <button class="btn small white" data-d="once">🔁 Bir Daha</button>
         </div></div>`;
     } else if (n === L.length) {
-      body = `<div class="lslide"><img class="lwscene" src="images/w-${u.id}.jpg" alt="" onerror="this.style.display='none'"><div class="lscene f" style="font-size:44px">📚</div>
+      body = `<div class="lslide"><div class="lscene f" style="font-size:44px">📚</div>
         <div class="len">Our New Words! 🌟</div>
         <div class="ltr">Dokun, dinle ve birlikte söyle!</div>
         <div class="lwords">${u.w
@@ -982,7 +981,7 @@ const APP = {
     <div class="lesson">
       <div class="lhead ${u.stage}"><span class="ue">${u.emoji}</span>
         <div><h2>${u.title} · Ders</h2><div class="sub">${u.tr} · Slayt ${n + 1} / ${total}</div></div>
-        <div class="lhero"><img src="images/${u.id}.jpg" alt="" onerror="this.style.display='none'"></div>
+        <div class="lhero"><span class="badge ${u.stage === 's1' ? 'purple' : 'gold'}" style="font-size:13px;padding:4px 10px">Unit ${u.id.replace(/^[s12]+[u]/i, '')}</span></div>
       </div>
       <div class="lbody g${n % 6}">${body}</div>
       <div class="lnav">
@@ -1009,12 +1008,12 @@ const APP = {
       lesIdx: n,
       timestamp: Date.now()
     });
-    if (n === 0) MEDIA.playFile('les-ready', 0.9);
-    if (n === L.length) MEDIA.playFile('les-words', 0.9);
-    if (n === L.length + 1) MEDIA.playFile('les-point', 0.9);
-    if (n === L.length + 2) MEDIA.playFile('les-video', 0.9);
+    if (n === 0) MEDIA.speak("Ready? Let's begin!");
+    if (n === L.length) MEDIA.speak('Our new words!');
+    if (n === L.length + 1) MEDIA.speak('Show me!');
+    if (n === L.length + 2) MEDIA.speak('Watch the video!');
     if (n === L.length + 3) {
-      MEDIA.playFile('les-welldone', 0.95);
+      MEDIA.speak('Well done! You completed the lesson!');
       FX.confetti(70);
       MEDIA.fx('win');
     }
@@ -1054,25 +1053,21 @@ const APP = {
       if (b3)
         b3.onclick = () => {
           MEDIA.fx('magic');
-          const a = MEDIA.playFile('les-repeat', 0.95);
-          if (a) {
-            a.onended = () => say(s[1]);
-            a.onerror = () => say(s[1]);
-          } else say(s[1]);
+          MEDIA.speak('Listen and repeat!', 0.9, () => say(s[1]));
         };
       document.querySelectorAll('.ldrill [data-d]').forEach(
         (b) =>
           (b.onclick = () => {
             const d = b.dataset.d;
             MEDIA.fx('click');
-            const clip = {
-              tog: 'les-drill-tog',
-              boys: 'les-drill-boys',
-              girls: 'les-drill-girls',
-              loud: 'les-drill-loud',
-              whis: 'les-drill-whis',
-              clap: 'les-drill-clap',
-              once: 'les-drill-once'
+            const drillPrompt = {
+              tog: 'Together!',
+              boys: 'Boys!',
+              girls: 'Girls!',
+              loud: 'Loud!',
+              whis: 'Whisper!',
+              clap: 'Clap!',
+              once: 'One more time!'
             }[d];
             const after = () => {
               if (d === 'loud') MEDIA.speak(s[1], 0.92, null, 1);
@@ -1082,11 +1077,11 @@ const APP = {
                 MEDIA.speak(s[1], 0.8);
               } else say(s[1]);
             };
-            const a = MEDIA.playFile(clip, 0.95);
-            if (a) {
-              a.onended = after;
-              a.onerror = after;
-            } else after();
+            if (drillPrompt) {
+              MEDIA.speak(drillPrompt, 0.95, after);
+            } else {
+              after();
+            }
           })
       );
     }
@@ -1112,7 +1107,7 @@ const APP = {
         const drawQ = () => {
           if (qi >= qw.length) {
             box.innerHTML = `<div class="lqdone">🎉🌟🎉<div class="len" style="margin-top:8px">You know the words!</div><div class="ltr">Kelime şampiyonusunuz!</div></div>`;
-            MEDIA.playFile('les-welldone', 0.95);
+            MEDIA.speak('Well done! You know the words!');
             FX.confetti(60);
             return;
           }
@@ -1127,7 +1122,7 @@ const APP = {
               ob.classList.add('ok');
               MEDIA.fx('correct');
               FX.confetti(24);
-              MEDIA.playFile('les-yes', 0.95);
+              MEDIA.speak('Yes!');
               setTimeout(() => {
                 qi++;
                 drawQ();
@@ -1136,7 +1131,7 @@ const APP = {
               ob.classList.add('no');
               FX.shake(ob);
               MEDIA.fx('wrong');
-              MEDIA.playFile('les-no', 0.9);
+              MEDIA.speak('Try again!');
             }
           }));
         };
@@ -1149,7 +1144,7 @@ const APP = {
       if (p)
         p.onclick = () => {
           MEDIA.fx('whoosh');
-          MEDIA.playFile('les-bye', 0.9);
+          MEDIA.speak('Bye bye!');
           setTimeout(() => this.go('unit', { unitId: u.id }), 500);
         };
       if (b)

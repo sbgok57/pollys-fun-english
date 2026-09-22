@@ -153,6 +153,17 @@ try:
 except Exception as e:
     hatalar.append('vercel.json geçersiz JSON: ' + str(e))
 
+# g) 404 Varlık Kalkanı: HTML/JS içinde diskte olmayan hiçbir görsel veya ses referansı olamaz!
+unbundled_imgs = re.findall(r'src=["\x27](images/[^"\x27]+)["\x27]', out)
+for img_path in unbundled_imgs:
+    if not (vd / img_path).exists():
+        hatalar.append(f'404 Tehlikesi - Diskte olmayan görsel referansı: {img_path}')
+
+playfile_calls = set(re.findall(r'playFile\(["\x27]([^"\x27]+)["\x27]', out))
+for clip_name in playfile_calls:
+    if not (vd / 'audio' / (clip_name + '.mp3')).exists() and clip_name != 'w-zztest':
+        hatalar.append(f'404 Tehlikesi - Diskte olmayan playFile ses çağrısı: {clip_name}.mp3')
+
 if hatalar:
     print('!!! DOĞRULAMA HATALARI — PAKET KULLANILMAMALI:')
     for h in hatalar:
@@ -161,4 +172,5 @@ if hatalar:
 
 mb = sum(f.stat().st_size for f in vd.rglob('*') if f.is_file()) / 1e6
 print(f'✔ DOĞRULANDI: {n_mp3} mp3 dosyası · {n_img} resim · {len(set(vids))} video kimliği')
+print(f'✔ 404 Varlık Kalkanı: 0 eksik görsel · 0 eksik ses çağrısı')
 print(f'✔ TÜM referanslar diskte mevcut · paket {mb:.1f} MB · SIFIR HATA')

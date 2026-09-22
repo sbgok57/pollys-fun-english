@@ -3,6 +3,14 @@
    Offline çalışır, harici dosya/CDN gerektirmez.
    ============================================================ */
 
+/* 🎵 Bilinen mevcut ses dosyaları (404 kalkanı — diskte olmayan dosya ağdan istenmez) */
+const AVAILABLE_AUDIO = new Set([
+  'beat0', 'beat1', 'beat2', 'beat3', 'beat4', 'beat5',
+  'mel-frere', 'mel-happy', 'mel-head', 'mel-hotcross',
+  'mel-london', 'mel-mary', 'mel-oldmac', 'mel-rain',
+  'mel-row', 'mel-ten', 'mel-twinkle', 'mel-wheels'
+]);
+
 const MEDIA = {
   ctx: null,
   voice: null,
@@ -169,6 +177,14 @@ const MEDIA = {
     try {
       vol = vol == null ? 1 : vol;
       if (this.muted) return null;
+
+      // // SAFETY: Prevent network 404s by verifying file exists in bundled audio or VOICESET
+      const isBundleAudio = typeof AVAILABLE_AUDIO !== 'undefined' && AVAILABLE_AUDIO.has(name);
+      const isVoiceWord = typeof VOICESET !== 'undefined' && VOICESET.has(name);
+      if (!isBundleAudio && !isVoiceWord) {
+        return null;
+      }
+
       let a = this.ac[name];
       if (!a) {
         // // PERF: Bellek sınırlandırması (Maksimum 35 eşzamanlı ses nesnesi)
@@ -218,8 +234,11 @@ const MEDIA = {
     } catch (e) {}
   },
   praise() {
-    const f = ['yay', 'super', 'great', 'welldone', 'wow'][Math.floor(Math.random() * 5)];
-    return this.playFile(f, 0.95);
+    this.fx('win');
+    const compliments = ['Super!', 'Great job!', 'Well done!', 'Awesome!', 'Brilliant!'];
+    const word = compliments[Math.floor(Math.random() * compliments.length)];
+    this.speak(word, 0.95);
+    return null;
   },
   pickVoice() {
     try {

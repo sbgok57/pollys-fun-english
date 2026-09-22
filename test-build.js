@@ -47,6 +47,18 @@ if (fs.existsSync('images')) {
   boyuk.length === 0 ? ok('Tüm resimler sağlam') : bad('Bozuk resim: ' + boyuk);
 }
 
+/* ── 2b) 404 VARLIK KALKANI (SIFIR 404 DOĞRULAMASI) ── */
+const missingImgs = [...H.matchAll(/src=["\x27](images\/[^"\x27]+)["\x27]/g)].filter((m) => !fs.existsSync(m[1]));
+missingImgs.length === 0
+  ? ok('404 Varlık Kalkanı: HTML içinde 0 eksik görsel')
+  : bad('HTML içinde eksik görsel referansı: ' + missingImgs.map((m) => m[1]).join(', '));
+
+const unbundledPlayFiles = [...new Set([...H.matchAll(/playFile\(["\x27]([^"\x27]+)["\x27]/g)].map((m) => m[1]))]
+  .filter((name) => !fs.existsSync(path.join('audio', name + '.mp3')) && name !== 'w-zztest');
+unbundledPlayFiles.length === 0
+  ? ok('404 Varlık Kalkanı: JS içinde 0 eksik playFile çağrısı')
+  : bad('Eksik playFile çağrıları: ' + unbundledPlayFiles.join(', '));
+
 /* ── 3) DAĞITIM PAKETİ ── */
 fs.existsSync('vercel-deploy/index.html') ? ok('vercel-deploy/index.html var') : bad('index.html yok');
 fs.existsSync('vercel-deploy/vercel.json') ? ok('vercel-deploy/vercel.json var') : bad('vercel.json yok');
