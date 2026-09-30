@@ -171,8 +171,377 @@ const ENGINES_C=[
         api.root.querySelectorAll('.opt').forEach(x=>{if(x.dataset.ok==='1')x.classList.add('ok')});
         setTimeout(()=>{i++;round()},1400)}});
   };round();
- }}
+ }},
+
+  /* ---------------- 25) ✍️ HARF & KELİME ÇİZME (TRACING) ---------------- */
+  {
+    id: 'trace',
+    e: '✍️',
+    t: 'Harf & Kelime Çizme',
+    d: 'Harflerin ve kelimelerin üzerinden geç, doğru yazmayı öğren!',
+    stages: [1, 2],
+    levels: [
+      { n: 'Harf Harf (Büyük Harf)', c: { mode: 'letter', count: 6 } },
+      { n: 'Tüm Kelime (Kılavuz Çizgili)', c: { mode: 'word', count: 6 } },
+      { n: 'Yıldız Mücadelesi (Serbest Çizim)', c: { mode: 'free', count: 8 } }
+    ],
+    init(api) {
+      const u = api.unit;
+      const cfg = api.lv || {};
+      const EW = EWORDS(u);
+      const pool = shuffle(EW.length ? EW : [['STAR', '⭐', 'Yıldız', 0]]).slice(0, cfg.count || 6);
+      let wordIdx = 0;
+      let letterIdx = 0;
+      const totalRounds = pool.length;
+
+      let currentColor = '#8b5cf6';
+      let isRainbow = false;
+      let rainbowHue = 0;
+      let brushSize = 16;
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      let checkpoints = [];
+      const coveredPoints = new Set();
+      let hasCompleted = false;
+
+      const renderRound = () => {
+        if (wordIdx >= totalRounds) {
+          api.end({ score: api.score, max: totalRounds * 15, note: 'Yazı ve Çizim Ustası! ✍️🌟' });
+          return;
+        }
+        hasCompleted = false;
+        coveredPoints.clear();
+        checkpoints = [];
+
+        const curWord = pool[wordIdx];
+        const wordText = String(curWord[0] || '').toUpperCase();
+        const wordEmoji = curWord[1] || '✍️';
+        const wordTr = curWord[2] || '';
+
+        const isLetterMode = cfg.mode === 'letter';
+        const activeChar = isLetterMode ? (wordText[letterIdx] || wordText[0]) : wordText;
+
+        api.progress(wordIdx + 1, totalRounds);
+
+        api.root.innerHTML = `
+          <div class="trace-box">
+            <div class="trace-header">
+              <div class="trace-word-info">
+                <span class="emoji">${wordEmoji}</span>
+                <div>
+                  <span style="font-size:1.15em;letter-spacing:1px">${esc(curWord[0])}</span>
+                  <span class="muted" style="font-size:0.75em;margin-left:6px">(${esc(wordTr)})</span>
+                  ${isLetterMode ? `<span class="badge purple" style="margin-left:8px">Harf ${letterIdx + 1}/${wordText.length}: <b>${activeChar}</b></span>` : ''}
+                </div>
+              </div>
+              <div class="trace-progress-wrap">
+                <span>Çizim:</span>
+                <div class="trace-meter">
+                  <div class="trace-meter-bar" id="tmb"></div>
+                </div>
+                <span id="tmp">0%</span>
+              </div>
+            </div>
+
+            <div class="trace-canvas-wrap" id="tcw">
+              <canvas class="trace-canvas" id="tcv"></canvas>
+            </div>
+
+            <div class="trace-toolbar">
+              <div class="trace-palette">
+                <button class="trace-color active" data-color="#8b5cf6" style="background:#8b5cf6" title="Mor"></button>
+                <button class="trace-color" data-color="#0ea5e9" style="background:#0ea5e9" title="Mavi"></button>
+                <button class="trace-color" data-color="#10b981" style="background:#10b981" title="Yeşil"></button>
+                <button class="trace-color" data-color="#f97316" style="background:#f97316" title="Turuncu"></button>
+                <button class="trace-color" data-color="#ec4899" style="background:#ec4899" title="Pembe"></button>
+                <button class="trace-color" data-color="rainbow" style="background:linear-gradient(135deg,red,orange,yellow,green,blue,indigo,violet)" title="Gökkuşağı"></button>
+              </div>
+              <div class="trace-actions">
+                <button class="btn small white" id="t-spk" title="Seslendir">🔊 Dinle</button>
+                <button class="btn small white" id="t-clr" title="Temizle">🗑️ Temizle</button>
+                <button class="btn small green" id="t-nxt" title="Sonraki">Sonraki ➡️</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        if (isLetterMode) {
+          MEDIA.speak(activeChar);
+        } else {
+          MEDIA.speak(curWord[0]);
+        }
+
+        const canvas = api.root.querySelector('#tcv');
+        const wrap = api.root.querySelector('#tcw');
+        const meterBar = api.root.querySelector('#tmb');
+        const meterPct = api.root.querySelector('#tmp');
+        if (!canvas || !canvas.getContext) return; // // SAFETY: Headless/test fallback
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return; // // SAFETY: Missing 2d context guard
+
+        const setupCanvasSize = () => {
+          const rect = wrap ? wrap.getBoundingClientRect() : { width: 560, height: 280 };
+          const dpr = typeof window !== 'undefined' && window.devicePixelRatio ? Math.min(window.devicePixelRatio, 2) : 1;
+          const w = rect.width > 50 ? rect.width : 560;
+          const h = rect.height > 50 ? rect.height : 280;
+          canvas.width = w * dpr;
+          canvas.height = h * dpr;
+          if (ctx.resetTransform) ctx.resetTransform();
+          if (ctx.scale) ctx.scale(dpr, dpr);
+          return { w, h };
+        };
+
+        const dim = setupCanvasSize();
+        const W = dim.w;
+        const H = dim.h;
+
+        const drawBackground = () => {
+          if (!ctx.clearRect) return;
+          ctx.clearRect(0, 0, W, H);
+
+          const yTop = H * 0.22;
+          const yMid = H * 0.44;
+          const yBase = H * 0.72;
+          const yBot = H * 0.90;
+
+          if (ctx.beginPath) {
+            // Top line
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 1.5;
+            if (ctx.setLineDash) ctx.setLineDash([]);
+            ctx.beginPath();
+            ctx.moveTo(16, yTop);
+            ctx.lineTo(W - 16, yTop);
+            ctx.stroke();
+
+            // Mid dashed line
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 1.5;
+            if (ctx.setLineDash) ctx.setLineDash([8, 6]);
+            ctx.beginPath();
+            ctx.moveTo(16, yMid);
+            ctx.lineTo(W - 16, yMid);
+            ctx.stroke();
+            if (ctx.setLineDash) ctx.setLineDash([]);
+
+            // Baseline (solid coral line)
+            ctx.strokeStyle = '#f43f5e';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(16, yBase);
+            ctx.lineTo(W - 16, yBase);
+            ctx.stroke();
+
+            // Bottom line (descender)
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(16, yBot);
+            ctx.lineTo(W - 16, yBot);
+            ctx.stroke();
+          }
+        };
+
+        const drawTemplate = () => {
+          if (!ctx.strokeText || !ctx.fillText) return;
+          ctx.save && ctx.save();
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'alphabetic';
+
+          let fontSize = H * 0.48;
+          const yPos = H * 0.72;
+
+          if (isLetterMode) {
+            fontSize = Math.min(H * 0.65, 170);
+            ctx.font = `900 ${fontSize}px "Comic Sans MS", "Chalkboard SE", "Nunito", sans-serif`;
+          } else {
+            fontSize = Math.min(H * 0.42, 95);
+            ctx.font = `900 ${fontSize}px "Comic Sans MS", "Chalkboard SE", "Nunito", sans-serif`;
+          }
+
+          ctx.strokeStyle = cfg.mode === 'free' ? 'rgba(203, 213, 225, 0.35)' : '#94a3b8';
+          ctx.lineWidth = isLetterMode ? 8 : 5;
+          if (ctx.setLineDash) ctx.setLineDash([8, 6]);
+          ctx.strokeText(activeChar, W / 2, yPos);
+
+          ctx.fillStyle = 'rgba(241, 245, 249, 0.55)';
+          ctx.fillText(activeChar, W / 2, yPos);
+          if (ctx.setLineDash) ctx.setLineDash([]);
+          ctx.restore && ctx.restore();
+
+          if (checkpoints.length === 0) {
+            const stepX = isLetterMode ? 14 : 20;
+            const stepY = 16;
+            const startX = W * 0.20;
+            const endX = W * 0.80;
+            const startY = H * 0.24;
+            const endY = H * 0.74;
+            let idCount = 0;
+            for (let px = startX; px <= endX; px += stepX) {
+              for (let py = startY; py <= endY; py += stepY) {
+                checkpoints.push({ id: idCount++, x: px, y: py });
+              }
+            }
+          }
+        };
+
+        drawBackground();
+        drawTemplate();
+
+        const getPos = (e) => {
+          const r = canvas.getBoundingClientRect ? canvas.getBoundingClientRect() : { left: 0, top: 0 };
+          return {
+            x: (e.clientX || 0) - r.left,
+            y: (e.clientY || 0) - r.top
+          };
+        };
+
+        const checkHit = (x, y) => {
+          if (hasCompleted || !checkpoints.length) return;
+          const radius = brushSize * 1.5;
+          for (let k = 0; k < checkpoints.length; k++) {
+            const cp = checkpoints[k];
+            if (!coveredPoints.has(cp.id)) {
+              const dx = cp.x - x;
+              const dy = cp.y - y;
+              if (dx * dx + dy * dy <= radius * radius) {
+                coveredPoints.add(cp.id);
+              }
+            }
+          }
+
+          const targetThreshold = Math.max(8, Math.floor(checkpoints.length * 0.32));
+          const pct = Math.min(100, Math.floor((coveredPoints.size / targetThreshold) * 100));
+          if (meterBar) meterBar.style.width = pct + '%';
+          if (meterPct) meterPct.textContent = pct + '%';
+
+          if (pct >= 85 && !hasCompleted) {
+            hasCompleted = true;
+            MEDIA.fx('correct');
+            FX.confetti(26);
+            const praiseList = ['Super!', 'Great tracing!', 'Well done!', 'Awesome!'];
+            MEDIA.speak(praiseList[Math.floor(Math.random() * praiseList.length)]);
+            api.add(15);
+
+            setTimeout(() => {
+              if (isLetterMode && letterIdx < wordText.length - 1) {
+                letterIdx++;
+              } else {
+                letterIdx = 0;
+                wordIdx++;
+              }
+              renderRound();
+            }, 1000);
+          }
+        };
+
+        const startDraw = (e) => {
+          e.preventDefault && e.preventDefault();
+          isDrawing = true;
+          const p = getPos(e);
+          lastX = p.x;
+          lastY = p.y;
+          checkHit(p.x, p.y);
+        };
+
+        const moveDraw = (e) => {
+          if (!isDrawing) return;
+          e.preventDefault && e.preventDefault();
+          const p = getPos(e);
+
+          if (ctx.beginPath && ctx.moveTo && ctx.lineTo && ctx.stroke) {
+            ctx.save && ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(p.x, p.y);
+
+            if (isRainbow) {
+              rainbowHue = (rainbowHue + 4) % 360;
+              ctx.strokeStyle = `hsl(${rainbowHue}, 90%, 55%)`;
+            } else {
+              ctx.strokeStyle = currentColor;
+            }
+
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+            ctx.restore && ctx.restore();
+          }
+
+          lastX = p.x;
+          lastY = p.y;
+          checkHit(p.x, p.y);
+        };
+
+        const stopDraw = () => {
+          isDrawing = false;
+        };
+
+        canvas.addEventListener('pointerdown', startDraw);
+        canvas.addEventListener('pointermove', moveDraw);
+        canvas.addEventListener('pointerup', stopDraw);
+        canvas.addEventListener('pointercancel', stopDraw);
+
+        api.root.querySelectorAll('.trace-color').forEach((b) => {
+          b.onclick = () => {
+            api.root.querySelectorAll('.trace-color').forEach((x) => x.classList.remove('active'));
+            b.classList.add('active');
+            const col = b.dataset.color;
+            if (col === 'rainbow') {
+              isRainbow = true;
+            } else {
+              isRainbow = false;
+              currentColor = col;
+            }
+            MEDIA.fx('click');
+          };
+        });
+
+        const spkBtn = api.root.querySelector('#t-spk');
+        if (spkBtn) {
+          spkBtn.onclick = () => {
+            MEDIA.fx('click');
+            if (isLetterMode) MEDIA.speak(activeChar);
+            else MEDIA.speak(curWord[0]);
+          };
+        }
+
+        const clrBtn = api.root.querySelector('#t-clr');
+        if (clrBtn) {
+          clrBtn.onclick = () => {
+            MEDIA.fx('whoosh');
+            coveredPoints.clear();
+            if (meterBar) meterBar.style.width = '0%';
+            if (meterPct) meterPct.textContent = '0%';
+            hasCompleted = false;
+            drawBackground();
+            drawTemplate();
+          };
+        }
+
+        const nxtBtn = api.root.querySelector('#t-nxt');
+        if (nxtBtn) {
+          nxtBtn.onclick = () => {
+            MEDIA.fx('click');
+            if (isLetterMode && letterIdx < wordText.length - 1) {
+              letterIdx++;
+            } else {
+              letterIdx = 0;
+              wordIdx++;
+            }
+            renderRound();
+          };
+        }
+      };
+
+      renderRound();
+    }
+  }
 ];
 
 /* Yeni motorları listeye ekle */
 ENGINES.push(...ENGINES_C);
+

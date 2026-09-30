@@ -71,7 +71,7 @@ console.log('Testing Songs screen...');
 APP.go('songs');
 console.log('✔ Şarkı köşesi render edildi');
 
-console.log('Testing Game Engine Init for all 24 engines on Unit s1u1...');
+console.log(`Testing Game Engine Init for all ${ENGINES.length} engines on Unit s1u1...`);
 let engineErrors = 0;
 const testUnit = ALLSETS.find(u => u.id === 's1u1');
 
@@ -100,7 +100,7 @@ ENGINES.forEach(e => {
   }
 });
 
-console.log(`\nSonuç: 24/24 Motor Başarılı. Hata sayısı: ${engineErrors}`);
+console.log(`\nSonuç: ${ENGINES.length}/${ENGINES.length} Motor Başarılı. Hata sayısı: ${engineErrors}`);
 if (engineErrors > 0) process.exit(1);
 console.log('✔ TÜM EKRANLAR VE MOTORLAR %100 HATASIZ!');
 process.exit(0);
