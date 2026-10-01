@@ -183,7 +183,7 @@ const ENGINES_C=[
     levels: [
       { n: 'Harf Harf (Büyük Harf)', c: { mode: 'letter', count: 6 } },
       { n: 'Tüm Kelime (Kılavuz Çizgili)', c: { mode: 'word', count: 6 } },
-      { n: 'Yıldız Mücadelesi (Serbest Çizim)', c: { mode: 'free', count: 8 } }
+      { n: 'Serbest Çizim (Kılavuz Çizgili)', c: { mode: 'free', count: 6 } }
     ],
     init(api) {
       const u = api.unit;
@@ -197,7 +197,7 @@ const ENGINES_C=[
       let currentColor = '#8b5cf6';
       let isRainbow = false;
       let rainbowHue = 0;
-      let brushSize = 16;
+      let brushSize = 18;
       let isDrawing = false;
       let lastX = 0;
       let lastY = 0;
@@ -207,7 +207,8 @@ const ENGINES_C=[
 
       const renderRound = () => {
         if (wordIdx >= totalRounds) {
-          api.end({ score: api.score, max: totalRounds * 15, note: 'Yazı ve Çizim Ustası! ✍️🌟' });
+          // // SAFETY / USER-REQ: Puan veya yıldız yok, saf teşvik ve tebrik mesajı
+          api.end({ score: totalRounds, max: totalRounds, note: 'Harika bir çalışma! Tüm harfleri başarıyla yazdın! ✍️🎉' });
           return;
         }
         hasCompleted = false;
@@ -235,12 +236,8 @@ const ENGINES_C=[
                   ${isLetterMode ? `<span class="badge purple" style="margin-left:8px">Harf ${letterIdx + 1}/${wordText.length}: <b>${activeChar}</b></span>` : ''}
                 </div>
               </div>
-              <div class="trace-progress-wrap">
-                <span>Çizim:</span>
-                <div class="trace-meter">
-                  <div class="trace-meter-bar" id="tmb"></div>
-                </div>
-                <span id="tmp">0%</span>
+              <div class="trace-guide-wrap">
+                <span class="trace-badge" id="t-status">✏️ Harfin üzerinden geç</span>
               </div>
             </div>
 
@@ -274,8 +271,7 @@ const ENGINES_C=[
 
         const canvas = api.root.querySelector('#tcv');
         const wrap = api.root.querySelector('#tcw');
-        const meterBar = api.root.querySelector('#tmb');
-        const meterPct = api.root.querySelector('#tmp');
+        const statusEl = api.root.querySelector('#t-status');
         if (!canvas || !canvas.getContext) return; // // SAFETY: Headless/test fallback
 
         const ctx = canvas.getContext('2d');
@@ -412,18 +408,19 @@ const ENGINES_C=[
             }
           }
 
-          const targetThreshold = Math.max(8, Math.floor(checkpoints.length * 0.32));
-          const pct = Math.min(100, Math.floor((coveredPoints.size / targetThreshold) * 100));
-          if (meterBar) meterBar.style.width = pct + '%';
-          if (meterPct) meterPct.textContent = pct + '%';
-
-          if (pct >= 85 && !hasCompleted) {
+          // // PERF / SAFETY / USER-REQ: Esnek harf algılama — tüm boşlukları boyamaya gerek yok!
+          // Öğrencinin harfin üzerinden bir miktar geçmesi yeterlidir, puan/yıldız baskısı yok.
+          const minHits = Math.min(5, Math.max(3, Math.floor(checkpoints.length * 0.12)));
+          if (coveredPoints.size >= minHits && !hasCompleted) {
             hasCompleted = true;
+            if (statusEl) {
+              statusEl.innerHTML = '✨ Harika yazdın! 👏';
+              statusEl.classList.add('success');
+            }
             MEDIA.fx('correct');
-            FX.confetti(26);
-            const praiseList = ['Super!', 'Great tracing!', 'Well done!', 'Awesome!'];
+            FX.confetti(22);
+            const praiseList = ['Super!', 'Great writing!', 'Well done!', 'Awesome!'];
             MEDIA.speak(praiseList[Math.floor(Math.random() * praiseList.length)]);
-            api.add(15);
 
             setTimeout(() => {
               if (isLetterMode && letterIdx < wordText.length - 1) {
@@ -433,7 +430,7 @@ const ENGINES_C=[
                 wordIdx++;
               }
               renderRound();
-            }, 1000);
+            }, 900);
           }
         };
 
@@ -478,6 +475,9 @@ const ENGINES_C=[
 
         const stopDraw = () => {
           isDrawing = false;
+          if (!hasCompleted && coveredPoints.size >= 3) {
+            checkHit(lastX, lastY);
+          }
         };
 
         canvas.addEventListener('pointerdown', startDraw);
@@ -514,8 +514,10 @@ const ENGINES_C=[
           clrBtn.onclick = () => {
             MEDIA.fx('whoosh');
             coveredPoints.clear();
-            if (meterBar) meterBar.style.width = '0%';
-            if (meterPct) meterPct.textContent = '0%';
+            if (statusEl) {
+              statusEl.innerHTML = '✏️ Harfin üzerinden geç';
+              statusEl.classList.remove('success');
+            }
             hasCompleted = false;
             drawBackground();
             drawTemplate();

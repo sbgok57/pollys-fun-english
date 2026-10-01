@@ -32,7 +32,7 @@ const ALLSETS = [
     "cats": [
       "Greetings",
       "Colors",
-      "Numbers"
+      "Numbers & School"
     ],
     "w": [
       [
@@ -57,6 +57,18 @@ const ALLSETS = [
         "name",
         "🏷️",
         "isim / ad",
+        0
+      ],
+      [
+        "please",
+        "🙏",
+        "lütfen",
+        0
+      ],
+      [
+        "thank you",
+        "💛",
+        "teşekkür ederim",
         0
       ],
       [
@@ -112,6 +124,60 @@ const ALLSETS = [
         "5️⃣",
         "beş",
         2
+      ],
+      [
+        "six",
+        "6️⃣",
+        "altı",
+        2
+      ],
+      [
+        "seven",
+        "7️⃣",
+        "yedi",
+        2
+      ],
+      [
+        "eight",
+        "8️⃣",
+        "sekiz",
+        2
+      ],
+      [
+        "nine",
+        "9️⃣",
+        "dokuz",
+        2
+      ],
+      [
+        "ten",
+        "🔟",
+        "on",
+        2
+      ],
+      [
+        "book",
+        "📖",
+        "kitap",
+        2
+      ],
+      [
+        "pencil",
+        "✏️",
+        "kurşun kalem",
+        2
+      ],
+      [
+        "ruler",
+        "📏",
+        "cetvel",
+        2
+      ],
+      [
+        "scissors",
+        "✂️",
+        "makas",
+        2
       ]
     ],
     "s": [
@@ -136,14 +202,14 @@ const ALLSETS = [
         "Yeşil ağacı görebiliyor musun?"
       ],
       [
-        "I have one yellow pencil.",
+        "I have one yellow pencil and a ruler.",
         "✏️",
-        "Bir tane sarı kurşun kalemim var."
+        "Bir tane sarı kurşun kalemim ve bir cetvelim var."
       ],
       [
-        "Count from one to five with me!",
+        "Count from one to ten with me!",
         "🔢",
-        "Benimle birden beşe kadar say!"
+        "Benimle birden ona kadar say!"
       ]
     ]
   },
@@ -156,26 +222,50 @@ const ALLSETS = [
     "emoji": "🎒",
     "cats": [
       "School Items",
-      "Actions",
-      "Classroom"
+      "Actions & Learning",
+      "Classroom & Nature"
     ],
     "w": [
       [
-        "pencil",
-        "✏️",
-        "kurşun kalem",
+        "table",
+        "🟫",
+        "masa",
+        0
+      ],
+      [
+        "chair",
+        "🪑",
+        "sandalye",
+        0
+      ],
+      [
+        "computer",
+        "💻",
+        "bilgisayar",
+        0
+      ],
+      [
+        "whiteboard",
+        "📋",
+        "yazı tahtası",
+        0
+      ],
+      [
+        "crayons",
+        "🖍️",
+        "pastel boyalar",
         0
       ],
       [
         "book",
-        "📖",
+        "📚",
         "kitap",
         0
       ],
       [
-        "bag",
-        "🎒",
-        "çanta",
+        "pencil",
+        "✏️",
+        "kurşun kalem",
         0
       ],
       [
@@ -185,45 +275,69 @@ const ALLSETS = [
         0
       ],
       [
-        "eraser",
-        "🧼",
-        "silgi",
+        "clock",
+        "⏰",
+        "duvar saati",
         0
       ],
       [
-        "desk",
-        "🪑",
-        "öğrenci sırası",
+        "backpack",
+        "🎒",
+        "okul çantası",
         0
       ],
       [
-        "chair",
-        "💺",
-        "sandalye",
-        0
-      ],
-      [
-        "open",
-        "📂",
-        "açmak",
+        "read",
+        "📖",
+        "okumak",
         1
       ],
       [
-        "close",
-        "📁",
-        "kapatmak",
+        "write",
+        "✍️",
+        "yazmak",
         1
       ],
       [
-        "listen",
-        "👂",
-        "dinlemek",
+        "sing",
+        "🎤",
+        "şarkı söylemek",
         1
       ],
       [
-        "point",
-        "👉",
-        "işaret etmek",
+        "draw",
+        "🎨",
+        "resim çizmek",
+        1
+      ],
+      [
+        "do maths",
+        "🔢",
+        "matematik yapmak",
+        1
+      ],
+      [
+        "use computers",
+        "⌨️",
+        "bilgisayar kullanmak",
+        1
+      ],
+      [
+        "same",
+        "♊",
+        "aynı",
+        1
+      ],
+      [
+        "different",
+        "🔀",
+        "farklı",
+        1
+      ],
+      [
+        "interview",
+        "🎙️",
+        "röportaj",
         1
       ],
       [
@@ -231,38 +345,122 @@ const ALLSETS = [
         "👩‍🏫",
         "öğretmen",
         2
+      ],
+      [
+        "boy",
+        "👦",
+        "erkek çocuk",
+        2
+      ],
+      [
+        "girl",
+        "👧",
+        "kız çocuk",
+        2
+      ],
+      [
+        "children",
+        "🧑‍🤝‍🧑",
+        "çocuklar",
+        2
+      ],
+      [
+        "bicycle",
+        "🚲",
+        "bisiklet",
+        2
+      ],
+      [
+        "bus",
+        "🚌",
+        "otobüs",
+        2
+      ],
+      [
+        "car",
+        "🚗",
+        "araba",
+        2
+      ],
+      [
+        "boat",
+        "⛵",
+        "tekne",
+        2
+      ],
+      [
+        "sky",
+        "☁️",
+        "gökyüzü",
+        2
+      ],
+      [
+        "grass",
+        "🌱",
+        "çimen",
+        2
+      ],
+      [
+        "flowers",
+        "🌸",
+        "çiçekler",
+        2
+      ],
+      [
+        "tree",
+        "🌳",
+        "ağaç",
+        2
+      ],
+      [
+        "bee",
+        "🐝",
+        "arı",
+        2
+      ],
+      [
+        "bird",
+        "🐦",
+        "kuş",
+        2
+      ],
+      [
+        "lizard",
+        "🦎",
+        "kertenkele",
+        2
       ]
     ],
     "s": [
       [
-        "Open your book, please.",
-        "📖",
-        "Lütfen kitabını aç."
-      ],
-      [
-        "Put your pencil in the bag.",
+        "Welcome to our classroom!",
         "🎒",
-        "Kalemini çantaya koy."
+        "Sınıfımıza hoş geldiniz!"
       ],
       [
-        "Listen to the teacher carefully.",
+        "Open your book and take your pencil.",
+        "📖",
+        "Kitabını aç ve kurşun kalemini al."
+      ],
+      [
+        "Sit on the chair at the table.",
+        "🪑",
+        "Masadaki sandalyeye otur."
+      ],
+      [
+        "Look at the teacher and the whiteboard.",
         "👩‍🏫",
-        "Öğretmeni dikkatle dinle."
+        "Öğretmene ve yazı tahtasına bakın."
       ],
       [
-        "Point to the ruler on the desk.",
-        "📏",
-        "Sıradaki cetveli işaret et."
+        "We read, write, draw and sing together.",
+        "🎨",
+        "Birlikte okuruz, yazarız, çizeriz ve şarkı söyleriz."
       ],
       [
-        "Sit down on your chair.",
-        "💺",
-        "Sandalyene otur."
-      ],
-      [
-        "Use your eraser to clean it.",
-        "🧼",
-        "Temizlemek için silgini kullan."
+        "I go to school by bus with my friends.",
+        "🚌",
+        "Arkadaşlarımla okula otobüsle giderim."
       ]
     ]
   },
@@ -274,9 +472,9 @@ const ALLSETS = [
     "tr": "Aile Zamanı",
     "emoji": "👨‍👩‍👧‍👦",
     "cats": [
-      "Family",
-      "Home",
-      "Feelings"
+      "Family Members",
+      "Home & Rooms",
+      "Feelings & Love"
     ],
     "w": [
       [
@@ -286,15 +484,21 @@ const ALLSETS = [
         0
       ],
       [
+        "mum",
+        "👩‍🦰",
+        "annecik",
+        0
+      ],
+      [
         "father",
         "👨",
         "baba",
         0
       ],
       [
-        "sister",
-        "👧",
-        "kız kardeş",
+        "dad",
+        "🧔",
+        "babacık",
         0
       ],
       [
@@ -304,9 +508,15 @@ const ALLSETS = [
         0
       ],
       [
-        "baby",
-        "👶",
-        "bebek",
+        "sister",
+        "👧",
+        "kız kardeş",
+        0
+      ],
+      [
+        "grandpa",
+        "👴",
+        "dede",
         0
       ],
       [
@@ -316,9 +526,27 @@ const ALLSETS = [
         0
       ],
       [
-        "grandpa",
-        "👴",
-        "büyükbaba",
+        "baby",
+        "👶",
+        "bebek",
+        0
+      ],
+      [
+        "family",
+        "👨‍👩‍👧‍👦",
+        "aile",
+        0
+      ],
+      [
+        "me",
+        "🙋",
+        "ben",
+        0
+      ],
+      [
+        "friend",
+        "🤝",
+        "arkadaş",
         0
       ],
       [
@@ -328,16 +556,34 @@ const ALLSETS = [
         1
       ],
       [
-        "kitchen",
-        "🍳",
-        "mutfak",
+        "door",
+        "🚪",
+        "kapı",
         1
       ],
       [
-        "bedroom",
-        "🛏️",
-        "yatak odası",
+        "window",
+        "🪟",
+        "pencere",
         1
+      ],
+      [
+        "bed",
+        "🛏️",
+        "yatak",
+        1
+      ],
+      [
+        "room",
+        "🛋️",
+        "oda",
+        1
+      ],
+      [
+        "love",
+        "❤️",
+        "sevmek",
+        2
       ],
       [
         "happy",
@@ -347,41 +593,53 @@ const ALLSETS = [
       ],
       [
         "kind",
-        "💖",
-        "nazik / sevecen",
+        "🥰",
+        "kibar / nazik",
+        2
+      ],
+      [
+        "hug",
+        "🤗",
+        "sarılmak",
+        2
+      ],
+      [
+        "smile",
+        "😁",
+        "gülümsemek",
         2
       ]
     ],
     "s": [
       [
-        "This is my mother and father.",
-        "👨‍👩‍👦",
+        "This is my mother and my father.",
+        "👨‍👩‍👧",
         "Bu benim annem ve babam."
       ],
       [
-        "My sister is playing in the bedroom.",
-        "🛏️",
-        "Kız kardeşim yatak odasında oynuyor."
+        "My brother and sister play together.",
+        "👧👦",
+        "Erkek kardeşim ve kız kardeşim birlikte oynar."
       ],
       [
-        "Grandma is making soup in the kitchen.",
-        "🍳",
-        "Büyükanne mutfakta çorba yapıyor."
+        "Grandma and grandpa tell lovely stories.",
+        "👵👴",
+        "Büyükannem ve dedem güzel hikayeler anlatır."
       ],
       [
-        "We are a very happy family.",
-        "😊",
-        "Biz çok mutlu bir aileyiz."
-      ],
-      [
-        "The baby is sleeping in the house.",
+        "We live in a nice house with a big window.",
         "🏠",
-        "Bebek evde uyuyor."
+        "Büyük pencereli güzel bir evde yaşıyoruz."
       ],
       [
-        "My brother is very kind to me.",
-        "💖",
-        "Erkek kardeşim bana karşı çok naziktir."
+        "I love my family very much.",
+        "❤️",
+        "Ailemi çok seviyorum."
+      ],
+      [
+        "Baby is sleeping quietly in the bed.",
+        "👶",
+        "Bebek yatakta sessizce uyuyor."
       ]
     ]
   },
@@ -391,13 +649,49 @@ const ALLSETS = [
     "no": "3",
     "title": "Fun and Games",
     "tr": "Eğlence ve Oyunlar",
-    "emoji": "🎲",
+    "emoji": "⚽",
     "cats": [
-      "Toys",
-      "Play Actions",
-      "Adjectives"
+      "Sports & Ball Actions",
+      "Body Movement",
+      "Prepositions & Words"
     ],
     "w": [
+      [
+        "throw",
+        "🤾",
+        "atmak / fırlatmak",
+        0
+      ],
+      [
+        "catch",
+        "🧤",
+        "yakalamak",
+        0
+      ],
+      [
+        "roll",
+        "🔄",
+        "yuvarlamak",
+        0
+      ],
+      [
+        "hit",
+        "🏏",
+        "vurmak",
+        0
+      ],
+      [
+        "kick",
+        "🦵",
+        "tekmelemek / ayakla vurmak",
+        0
+      ],
+      [
+        "bounce",
+        "🏀",
+        "zıplatmak (top)",
+        0
+      ],
       [
         "ball",
         "⚽",
@@ -405,45 +699,15 @@ const ALLSETS = [
         0
       ],
       [
-        "doll",
-        "🪆",
-        "oyuncak bebek",
-        0
-      ],
-      [
-        "teddy",
-        "🧸",
-        "oyuncak ayı",
-        0
-      ],
-      [
-        "car",
-        "🚗",
-        "oyuncak araba",
-        0
-      ],
-      [
-        "puzzle",
-        "🧩",
-        "yapboz",
-        0
-      ],
-      [
-        "kite",
-        "🪁",
-        "uçurtma",
-        0
-      ],
-      [
-        "jump",
-        "🦘",
-        "zıplamak",
+        "clap",
+        "👏",
+        "el çırpmak",
         1
       ],
       [
-        "dance",
-        "💃",
-        "dans etmek",
+        "cut",
+        "✂️",
+        "kesmek",
         1
       ],
       [
@@ -453,54 +717,120 @@ const ALLSETS = [
         1
       ],
       [
-        "big",
-        "🐘",
-        "büyük",
+        "jump",
+        "🦘",
+        "zıplamak / atlamak",
+        1
+      ],
+      [
+        "win",
+        "🏆",
+        "kazanmak",
+        1
+      ],
+      [
+        "play",
+        "🎮",
+        "oynamak",
+        1
+      ],
+      [
+        "compare",
+        "⚖️",
+        "karşılaştırmak",
+        1
+      ],
+      [
+        "on",
+        "🔛",
+        "üzerinde",
         2
       ],
       [
-        "small",
-        "🐭",
-        "küçük",
+        "under",
+        "🔽",
+        "altında",
         2
       ],
       [
-        "fast",
-        "⚡",
-        "hızlı",
+        "next to",
+        "➡️",
+        "yanında",
+        2
+      ],
+      [
+        "above",
+        "⬆️",
+        "yukarısında",
+        2
+      ],
+      [
+        "rabbit",
+        "🐰",
+        "tavşan",
+        2
+      ],
+      [
+        "duck",
+        "🦆",
+        "ördek",
+        2
+      ],
+      [
+        "hat",
+        "🧢",
+        "şapka",
+        2
+      ],
+      [
+        "cup",
+        "🥤",
+        "bardak / kupa",
+        2
+      ],
+      [
+        "hand",
+        "✋",
+        "el",
+        2
+      ],
+      [
+        "rug",
+        "🧶",
+        "kilim / halı",
         2
       ]
     ],
     "s": [
       [
-        "Kick the big ball into the goal!",
+        "Bounce the ball and catch it!",
+        "🏀",
+        "Topu zıplat ve onu yakala!"
+      ],
+      [
+        "Kick the ball into the goal!",
         "⚽",
-        "Büyük topu kaleye at!"
+        "Topu kaleye tekmele!"
       ],
       [
-        "The teddy is soft and brown.",
-        "🧸",
-        "Oyuncak ayı yumuşak ve kahverengidir."
+        "We can run, jump and clap our hands.",
+        "🏃",
+        "Koşabilir, zıplayabilir ve el çırpabiliriz."
       ],
       [
-        "I can fly my colorful kite.",
-        "🪁",
-        "Renkli uçurtmamı uçurabilirim."
+        "The ball is under the table.",
+        "🔽",
+        "Top masanın altındadır."
       ],
       [
-        "Jump and dance with all your friends.",
-        "💃",
-        "Bütün arkadaşlarınla zıpla ve dans et."
+        "You win! Let us play the game again.",
+        "🏆",
+        "Kazandın! Hadi oyunu bir daha oynayalım."
       ],
       [
-        "The red car is very fast.",
-        "🚗",
-        "Kırmızı araba çok hızlıdır."
-      ],
-      [
-        "This is a small and fun puzzle.",
-        "🧩",
-        "Bu küçük ve eğlenceli bir yapbozdur."
+        "Rabbit is next to the tree.",
+        "🐰",
+        "Tavşan ağacın yanındadır."
       ]
     ]
   },
@@ -512,114 +842,198 @@ const ALLSETS = [
     "tr": "Bir Şeyler Yapmak",
     "emoji": "🎨",
     "cats": [
-      "Art Supplies",
-      "Shapes",
-      "Craft Verbs"
+      "Clothes",
+      "Colors",
+      "Craft & Actions"
     ],
     "w": [
       [
-        "paper",
-        "📄",
-        "kâğıt",
+        "dress",
+        "👗",
+        "elbise",
         0
       ],
       [
-        "glue",
-        "🧴",
-        "yapıştırıcı",
+        "shirt",
+        "👔",
+        "gömlek",
         0
       ],
       [
-        "scissors",
-        "✂️",
-        "makas",
+        "trousers",
+        "👖",
+        "pantolon",
         0
       ],
       [
-        "paint",
-        "🎨",
-        "boya",
+        "jacket",
+        "🧥",
+        "ceket",
         0
       ],
       [
-        "brush",
+        "skirt",
+        "🥻",
+        "etek",
+        0
+      ],
+      [
+        "shoes",
+        "👞",
+        "ayakkabılar",
+        0
+      ],
+      [
+        "boots",
+        "👢",
+        "çizmeler / botlar",
+        0
+      ],
+      [
+        "glasses",
+        "👓",
+        "gözlük",
+        0
+      ],
+      [
+        "hat",
+        "👒",
+        "şapka",
+        0
+      ],
+      [
+        "red",
+        "🔴",
+        "kırmızı",
+        1
+      ],
+      [
+        "blue",
+        "🔵",
+        "mavi",
+        1
+      ],
+      [
+        "yellow",
+        "🟡",
+        "sarı",
+        1
+      ],
+      [
+        "green",
+        "🟢",
+        "yeşil",
+        1
+      ],
+      [
+        "orange",
+        "🟠",
+        "turuncu",
+        1
+      ],
+      [
+        "purple",
+        "🟣",
+        "mor",
+        1
+      ],
+      [
+        "black",
+        "⚫",
+        "siyah",
+        1
+      ],
+      [
+        "pink",
+        "🌸",
+        "pembe",
+        1
+      ],
+      [
+        "playing",
+        "🪁",
+        "oynama",
+        2
+      ],
+      [
+        "painting",
         "🖌️",
-        "fırça",
-        0
-      ],
-      [
-        "circle",
-        "⭕",
-        "daire / çember",
-        1
-      ],
-      [
-        "square",
-        "⬛",
-        "kare",
-        1
-      ],
-      [
-        "triangle",
-        "🔺",
-        "üçgen",
-        1
-      ],
-      [
-        "cut",
-        "✄",
-        "kesmek",
+        "boyama",
         2
       ],
       [
-        "stick",
-        "📎",
-        "yapıştırmak",
+        "making",
+        "🧵",
+        "yapma",
         2
       ],
       [
-        "draw",
-        "✏️",
-        "çizmek",
+        "wearing",
+        "👕",
+        "giyme",
         2
       ],
       [
-        "fold",
-        "📑",
-        "katlamak",
+        "cutting",
+        "✂️",
+        "kesme",
+        2
+      ],
+      [
+        "cat",
+        "🐱",
+        "kedi",
+        2
+      ],
+      [
+        "sun",
+        "☀️",
+        "güneş",
+        2
+      ],
+      [
+        "pen",
+        "🖊️",
+        "tükenmez kalem",
+        2
+      ],
+      [
+        "tent",
+        "⛺",
+        "çadır",
         2
       ]
     ],
     "s": [
       [
-        "Cut the paper with scissors.",
+        "She is wearing a beautiful red dress.",
+        "👗",
+        "O güzel kırmızı bir elbise giyiyor."
+      ],
+      [
+        "Put on your warm jacket and boots.",
+        "🧥",
+        "Sıcak ceketini ve botlarını giy."
+      ],
+      [
+        "I am painting a yellow sun with my brush.",
+        "☀️",
+        "Fırçamla sarı bir güneş boyuyorum."
+      ],
+      [
+        "We are making things with paper and glue.",
         "✂️",
-        "Kâğıdı makasla kes."
+        "Kağıt ve yapıştırıcıyla bir şeyler yapıyoruz."
       ],
       [
-        "Draw a yellow circle on the page.",
-        "⭕",
-        "Sayfaya sarı bir daire çiz."
+        "He has black glasses and blue trousers.",
+        "👓",
+        "Onun siyah gözlükleri ve mavi pantolonu var."
       ],
       [
-        "Use the glue to stick the triangle.",
-        "🔺",
-        "Üçgeni yapıştırmak için yapıştırıcı kullan."
-      ],
-      [
-        "Paint the square with a big brush.",
-        "🖌️",
-        "Kareyi büyük bir fırçayla boya."
-      ],
-      [
-        "Fold the paper to make a hat.",
-        "📑",
-        "Şapka yapmak için kâğıdı katla."
-      ],
-      [
-        "I love to draw and paint pictures.",
-        "🎨",
-        "Resim çizmeyi ve boyamayı çok severim."
+        "Cut the paper and make a funny hat.",
+        "👒",
+        "Kağıdı kes ve komik bir şapka yap."
       ]
     ]
   },
@@ -632,10 +1046,16 @@ const ALLSETS = [
     "emoji": "🚜",
     "cats": [
       "Farm Animals",
-      "Animal Products",
-      "Farm Words"
+      "Baby Animals & Food",
+      "Farm Actions"
     ],
     "w": [
+      [
+        "tractor",
+        "🚜",
+        "traktör",
+        0
+      ],
       [
         "cow",
         "🐄",
@@ -644,8 +1064,14 @@ const ALLSETS = [
       ],
       [
         "sheep",
-        "🐑",
+        "🐏",
         "koyun",
+        0
+      ],
+      [
+        "hen",
+        "🐔",
+        "tavuk",
         0
       ],
       [
@@ -655,40 +1081,106 @@ const ALLSETS = [
         0
       ],
       [
-        "duck",
-        "🦆",
-        "ördek",
-        0
-      ],
-      [
-        "chicken",
-        "🐔",
-        "tavuk",
-        0
-      ],
-      [
         "goat",
         "🐐",
         "keçi",
         0
       ],
       [
-        "milk",
-        "🥛",
-        "süt",
+        "duck",
+        "🦆",
+        "ördek",
+        0
+      ],
+      [
+        "chick",
+        "🐥",
+        "civciv",
         1
       ],
       [
-        "egg",
-        "🥚",
-        "yumurta",
+        "lamb",
+        "🐑",
+        "kuzu",
         1
       ],
       [
-        "wool",
-        "🧶",
-        "yün",
+        "puppy",
+        "🐶",
+        "köpek yavrusu",
         1
+      ],
+      [
+        "duckling",
+        "🐣",
+        "ördek yavrusu",
+        1
+      ],
+      [
+        "tadpole",
+        "🐸",
+        "kurbağa yavrusu / iribaş",
+        1
+      ],
+      [
+        "carrot",
+        "🥕",
+        "havuç",
+        1
+      ],
+      [
+        "pepper",
+        "🫑",
+        "biber",
+        1
+      ],
+      [
+        "onion",
+        "🧅",
+        "soğan",
+        1
+      ],
+      [
+        "potato",
+        "🥔",
+        "patates",
+        1
+      ],
+      [
+        "driving",
+        "🚗",
+        "araba/araç sürme",
+        2
+      ],
+      [
+        "carrying",
+        "📦",
+        "taşıma",
+        2
+      ],
+      [
+        "picking",
+        "🍎",
+        "toplama",
+        2
+      ],
+      [
+        "eating",
+        "🍽️",
+        "yeme",
+        2
+      ],
+      [
+        "cooking",
+        "🍳",
+        "yemek pişirme",
+        2
+      ],
+      [
+        "farm",
+        "🌾",
+        "çiftlik",
+        2
       ],
       [
         "barn",
@@ -697,48 +1189,42 @@ const ALLSETS = [
         2
       ],
       [
-        "farmer",
-        "👨‍🌾",
-        "çiftçi",
-        2
-      ],
-      [
-        "grass",
-        "🌱",
-        "çimen / ot",
+        "diagram",
+        "📊",
+        "şema / diyagram",
         2
       ]
     ],
     "s": [
       [
-        "The cow gives fresh milk every day.",
+        "The farmer drives a big green tractor.",
+        "🚜",
+        "Çiftçi büyük yeşil bir traktör sürüyor."
+      ],
+      [
+        "The cow gives sweet milk on the farm.",
         "🐄",
-        "İnek her gün taze süt verir."
+        "İnek çiftlikte tatlı süt verir."
       ],
       [
-        "The white sheep eats green grass.",
-        "🐑",
-        "Beyaz koyun yeşil çimen yer."
+        "Look at the cute yellow chick and lamb!",
+        "🐥",
+        "Şu sevimli sarı civcive ve kuzuya bakın!"
       ],
       [
-        "The duck swims happily in the pond.",
-        "🦆",
-        "Ördek gölette neşeyle yüzer."
+        "We pick fresh carrots and potatoes.",
+        "🥕",
+        "Taze havuç ve patates topluyoruz."
       ],
       [
-        "The chicken lays a brown egg.",
-        "🥚",
-        "Tavuk kahverengi bir yumurta yumurtlar."
-      ],
-      [
-        "The horse is running near the barn.",
+        "Horses run fast across the big green field.",
         "🐎",
-        "At ahırın yanında koşuyor."
+        "Atlar büyük yeşil arazide hızlıca koşar."
       ],
       [
-        "The farmer feeds the playful goat.",
-        "👨‍🌾",
-        "Çiftçi oyuncu keçiyi besliyor."
+        "Thank you for helping me on the farm.",
+        "🌾",
+        "Çiftlikte bana yardım ettiğin için teşekkür ederim."
       ]
     ]
   },
@@ -750,51 +1236,51 @@ const ALLSETS = [
     "tr": "Vücudum",
     "emoji": "👀",
     "cats": [
+      "Five Senses",
       "Body Parts",
-      "Face",
-      "Actions"
+      "Describing Words"
     ],
     "w": [
       [
-        "head",
-        "🗣️",
-        "baş / kafa",
-        0
-      ],
-      [
-        "arm",
-        "💪",
-        "kol",
-        0
-      ],
-      [
-        "hand",
-        "✋",
-        "el",
-        0
-      ],
-      [
-        "leg",
-        "🦵",
-        "bacak",
-        0
-      ],
-      [
-        "foot",
-        "🦶",
-        "ayak",
-        0
-      ],
-      [
-        "eye",
+        "see",
         "👁️",
-        "göz",
+        "görmek",
+        0
+      ],
+      [
+        "hear",
+        "🎧",
+        "duymak",
+        0
+      ],
+      [
+        "smell",
+        "🌸",
+        "koklamak",
+        0
+      ],
+      [
+        "taste",
+        "👅",
+        "tatmak",
+        0
+      ],
+      [
+        "touch",
+        "✋",
+        "dokunmak",
+        0
+      ],
+      [
+        "eyes",
+        "👀",
+        "gözler",
         1
       ],
       [
-        "ear",
+        "ears",
         "👂",
-        "kulak",
+        "kulaklar",
         1
       ],
       [
@@ -810,54 +1296,126 @@ const ALLSETS = [
         1
       ],
       [
-        "clap",
-        "👏",
-        "alkışlamak",
+        "head",
+        "🗣️",
+        "baş / kafa",
+        1
+      ],
+      [
+        "arm",
+        "💪",
+        "kol",
+        1
+      ],
+      [
+        "leg",
+        "🦵",
+        "bacak",
+        1
+      ],
+      [
+        "tail",
+        "🐕",
+        "kuyruk",
+        1
+      ],
+      [
+        "trunk",
+        "🪵",
+        "fil hortumu / gövde",
+        1
+      ],
+      [
+        "soft",
+        "🧸",
+        "yumuşak",
         2
       ],
       [
-        "stomp",
-        "👣",
-        "ayak vurmak",
+        "hard",
+        "🧱",
+        "sert",
         2
       ],
       [
-        "touch",
-        "👉",
-        "dokunmak",
+        "round",
+        "⚪",
+        "yuvarlak",
+        2
+      ],
+      [
+        "flat",
+        "📐",
+        "düz",
+        2
+      ],
+      [
+        "short",
+        "🤏",
+        "kısa",
+        2
+      ],
+      [
+        "long",
+        "📏",
+        "uzun",
+        2
+      ],
+      [
+        "big",
+        "🐘",
+        "büyük",
+        2
+      ],
+      [
+        "furry",
+        "🐱",
+        "tüylü",
+        2
+      ],
+      [
+        "rock",
+        "🪨",
+        "kaya",
+        2
+      ],
+      [
+        "pond",
+        "🌊",
+        "gölet",
         2
       ]
     ],
     "s": [
       [
-        "Touch your head with your hand.",
-        "✋",
-        "Elinle başına dokun."
+        "I see with my two bright eyes.",
+        "👀",
+        "İki parlak gözümle görürüm."
       ],
       [
-        "Clap your hands and stomp your feet.",
-        "👏",
-        "Ellerini çırp ve ayaklarını yere vur."
-      ],
-      [
-        "I can see with my two eyes.",
-        "👁️",
-        "İki gözümle görebilirim."
-      ],
-      [
-        "Listen with your ear to the sound.",
+        "I hear lovely music with my ears.",
         "👂",
-        "Kulağınla sesi dinle."
+        "Kulaklarımla güzel müzik duyarım."
       ],
       [
-        "Open your mouth and smile happily.",
-        "👄",
-        "Ağzını aç ve mutlulukla gülümse."
+        "I smell fresh flowers with my nose.",
+        "👃",
+        "Burnumla taze çiçekleri koklarım."
       ],
       [
-        "He has a strong arm and long leg.",
-        "💪",
-        "Onun güçlü bir kolu ve uzun bir bacağı var."
+        "Touch the furry kitten; it is so soft.",
+        "🐱",
+        "Tüylü kediye dokun; çok yumuşak."
+      ],
+      [
+        "The rock is hard and the ball is round.",
+        "🪨",
+        "Kaya serttir ve top yuvarlaktır."
+      ],
+      [
+        "Wash your hands and brush your teeth.",
+        "🪥",
+        "Ellerini yıka ve dişlerini fırçala."
       ]
     ]
   },
@@ -869,34 +1427,64 @@ const ALLSETS = [
     "tr": "Ulaşım ve Taşıtlar",
     "emoji": "🚗",
     "cats": [
-      "Land Transport",
-      "Air & Water",
-      "Travel Verbs"
+      "Move & Travel Verbs",
+      "Vehicles",
+      "Nature & Rhymes"
     ],
     "w": [
       [
-        "bus",
-        "🚌",
-        "otobüs",
+        "climb",
+        "🧗",
+        "tırmanmak",
+        0
+      ],
+      [
+        "slide",
+        "🛝",
+        "kaymak",
+        0
+      ],
+      [
+        "float",
+        "🛟",
+        "suda batmadan yüzmek",
+        0
+      ],
+      [
+        "drive",
+        "🚥",
+        "araba sürmek",
+        0
+      ],
+      [
+        "fly",
+        "🛫",
+        "uçmak",
+        0
+      ],
+      [
+        "fold",
+        "📄",
+        "katlamak",
         0
       ],
       [
         "car",
         "🚗",
         "araba",
-        0
+        1
+      ],
+      [
+        "bus",
+        "🚌",
+        "otobüs",
+        1
       ],
       [
         "train",
         "🚆",
         "tren",
-        0
-      ],
-      [
-        "bicycle",
-        "🚲",
-        "bisiklet",
-        0
+        1
       ],
       [
         "plane",
@@ -911,72 +1499,90 @@ const ALLSETS = [
         1
       ],
       [
-        "helicopter",
-        "🚁",
-        "helikopter",
+        "jeep",
+        "🚙",
+        "arazi aracı / cip",
         1
       ],
       [
-        "drive",
-        "🚘",
-        "sürmek",
+        "wheel",
+        "🛞",
+        "tekerlek",
+        1
+      ],
+      [
+        "sheep",
+        "🐑",
+        "koyun",
         2
       ],
       [
-        "fly",
-        "🕊️",
-        "uçmak",
+        "deer",
+        "🦌",
+        "geyik",
         2
       ],
       [
-        "ride",
-        "🚴",
-        "binmek",
+        "bee",
+        "🐝",
+        "arı",
         2
       ],
       [
-        "stop",
-        "🛑",
-        "durmak",
+        "tree",
+        "🌳",
+        "ağaç",
         2
       ],
       [
-        "ticket",
-        "🎟️",
-        "bilet",
+        "seeds",
+        "🌱",
+        "tohumlar",
+        2
+      ],
+      [
+        "teeth",
+        "🦷",
+        "dişler",
+        2
+      ],
+      [
+        "knees",
+        "🦵",
+        "dizler",
         2
       ]
     ],
     "s": [
       [
-        "The yellow bus takes us to school.",
-        "🚌",
-        "Sarı otobüs bizi okula götürür."
-      ],
-      [
-        "I can ride my small bicycle.",
-        "🚲",
-        "Küçük bisikletime binebilirim."
-      ],
-      [
-        "The train is moving fast on the track.",
-        "🚆",
-        "Tren raylarda hızlı ilerliyor."
-      ],
-      [
-        "A plane can fly high in the sky.",
+        "Airplanes fly high up in the sky.",
         "✈️",
-        "Bir uçak gökyüzünde yükseklere uçabilir."
+        "Uçaklar gökyüzünde çok yüksekte uçar."
       ],
       [
-        "We ride a boat across the river.",
+        "Boats float gently on the blue water.",
         "⛵",
-        "Nehir boyunca bir tekneye biniyoruz."
+        "Tekneler mavi suda usulca yüzer."
       ],
       [
-        "Please show your ticket to the driver.",
-        "🎟️",
-        "Lütfen biletinizi şoföre gösterin."
+        "The wheels on the bus go round and round.",
+        "🚌",
+        "Otobüsün tekerlekleri döner durur."
+      ],
+      [
+        "Can you drive a jeep through the mud?",
+        "🚙",
+        "Çamurda bir cip sürebilir misin?"
+      ],
+      [
+        "Children climb the ladder and slide down.",
+        "🛝",
+        "Çocuklar merdivene tırmanır ve kaydıraktan kayar."
+      ],
+      [
+        "I travel to the seaside with my family.",
+        "🌊",
+        "Ailemle deniz kenarına seyahat ederim."
       ]
     ]
   },
@@ -986,116 +1592,188 @@ const ALLSETS = [
     "no": "8",
     "title": "Animals Around Us",
     "tr": "Çevremizdeki Hayvanlar",
-    "emoji": "🐾",
+    "emoji": "🦁",
     "cats": [
+      "City & Places",
       "Wild Animals",
-      "Habitats",
-      "Animal Traits"
+      "Describing Words"
     ],
     "w": [
+      [
+        "road",
+        "🛣️",
+        "yol",
+        0
+      ],
+      [
+        "pavement",
+        "🚶",
+        "kaldırım",
+        0
+      ],
+      [
+        "shops",
+        "🛍️",
+        "dükkanlar / mağazalar",
+        0
+      ],
+      [
+        "traffic",
+        "🚦",
+        "trafik",
+        0
+      ],
+      [
+        "traffic light",
+        "🚥",
+        "trafik ışığı",
+        0
+      ],
+      [
+        "bus stop",
+        "🚏",
+        "otobüs durağı",
+        0
+      ],
+      [
+        "library",
+        "📚",
+        "kütüphane",
+        0
+      ],
+      [
+        "bakery",
+        "🥖",
+        "fırın",
+        0
+      ],
+      [
+        "park",
+        "🌳",
+        "park",
+        0
+      ],
+      [
+        "zoo",
+        "🎟️",
+        "hayvanat bahçesi",
+        0
+      ],
       [
         "lion",
         "🦁",
         "aslan",
-        0
+        1
+      ],
+      [
+        "tiger",
+        "🐯",
+        "kaplan",
+        1
       ],
       [
         "elephant",
         "🐘",
         "fil",
-        0
+        1
       ],
       [
         "monkey",
-        "🐒",
+        "🐵",
         "maymun",
-        0
+        1
       ],
       [
-        "tiger",
-        "🐅",
-        "kaplan",
-        0
+        "zebra",
+        "🦓",
+        "zebra",
+        1
       ],
       [
-        "rabbit",
-        "🐇",
-        "tavşan",
-        0
+        "bear",
+        "🐻",
+        "ayı",
+        1
       ],
       [
         "bird",
         "🐦",
         "kuş",
-        0
-      ],
-      [
-        "jungle",
-        "🌴",
-        "orman / cangıl",
         1
       ],
       [
-        "river",
-        "🏞️",
-        "nehir",
-        1
-      ],
-      [
-        "tree",
-        "🌳",
-        "ağaç",
-        1
-      ],
-      [
-        "climb",
-        "🧗",
-        "tırmanmak",
+        "small",
+        "🤏",
+        "küçük",
         2
       ],
       [
-        "swim",
-        "🏊",
-        "yüzmek",
+        "big",
+        "🏔️",
+        "büyük",
         2
       ],
       [
-        "tail",
-        "🐕",
-        "kuyruk",
+        "hot",
+        "🔥",
+        "sıcak",
+        2
+      ],
+      [
+        "noisy",
+        "📢",
+        "gürültülü",
+        2
+      ],
+      [
+        "happy",
+        "😊",
+        "mutlu",
+        2
+      ],
+      [
+        "scary",
+        "👻",
+        "korkutucu",
+        2
+      ],
+      [
+        "choose",
+        "👉",
+        "seçmek",
         2
       ]
     ],
     "s": [
       [
-        "The lion roars loudly in the jungle.",
-        "🦁",
-        "Aslan ormanda yüksek sesle kükrer."
+        "Wait for the green light at the traffic light.",
+        "🚥",
+        "Trafik ışığında yeşil ışığı bekleyin."
       ],
       [
-        "The big elephant drinks water from the river.",
+        "Walk carefully on the pavement by the road.",
+        "🚶",
+        "Yol kenarındaki kaldırımda dikkatlice yürüyün."
+      ],
+      [
+        "The big elephant has very long ears.",
         "🐘",
-        "Büyük fil nehirden su içer."
+        "Büyük filin çok uzun kulakları vardır."
       ],
       [
-        "The playful monkey can climb the tall tree.",
-        "🐒",
-        "Oyuncu maymun uzun ağaca tırmanabilir."
+        "Monkeys climb tall trees in the jungle.",
+        "🐵",
+        "Maymunlar ormanda uzun ağaçlara tırmanır."
       ],
       [
-        "A bird can fly and sing a sweet song.",
-        "🐦",
-        "Bir kuş uçabilir ve tatlı bir şarkı söyleyebilir."
+        "We borrow fun storybooks from the library.",
+        "📚",
+        "Kütüphaneden eğlenceli hikaye kitapları ödünç alırız."
       ],
       [
-        "The rabbit has long ears and a short tail.",
-        "🐇",
-        "Tavşanın uzun kulakları ve kısa bir kuyruğu vardır."
-      ],
-      [
-        "Fish love to swim in the cool river.",
-        "🏊",
-        "Balıklar serin nehirde yüzmeyi sever."
+        "Buy warm fresh bread at the bakery.",
+        "🥖",
+        "Fırından sıcak taze ekmek al."
       ]
     ]
   },
@@ -1107,63 +1785,123 @@ const ALLSETS = [
     "tr": "Harika Su",
     "emoji": "💧",
     "cats": [
-      "Water in Nature",
-      "Sea Animals",
-      "Water Fun"
+      "Weather Words",
+      "Water Daily Life",
+      "Action Verbs"
     ],
     "w": [
+      [
+        "cloudy",
+        "☁️",
+        "bulutlu",
+        0
+      ],
+      [
+        "windy",
+        "💨",
+        "rüzgarlı",
+        0
+      ],
+      [
+        "rainy",
+        "🌦️",
+        "yağmurlu",
+        0
+      ],
+      [
+        "sunny",
+        "☀️",
+        "güneşli",
+        0
+      ],
+      [
+        "hot",
+        "🌡️",
+        "sıcak",
+        0
+      ],
+      [
+        "cold",
+        "❄️",
+        "soğuk",
+        0
+      ],
       [
         "water",
         "💧",
         "su",
-        0
+        1
       ],
       [
         "rain",
         "🌧️",
         "yağmur",
-        0
+        1
       ],
       [
-        "sea",
-        "🌊",
-        "deniz",
-        0
+        "umbrella",
+        "☂️",
+        "şemsiye",
+        1
+      ],
+      [
+        "boots",
+        "👢",
+        "yağmur çizmeleri",
+        1
+      ],
+      [
+        "pond",
+        "🏊‍♂️",
+        "gölet",
+        1
       ],
       [
         "river",
         "🏞️",
         "nehir",
-        0
-      ],
-      [
-        "puddle",
-        "💦",
-        "su birikintisi",
-        0
-      ],
-      [
-        "fish",
-        "🐟",
-        "balık",
         1
       ],
       [
-        "crab",
-        "🦀",
-        "yengeç",
+        "sea",
+        "🌊",
+        "deniz",
         1
       ],
       [
-        "dolphin",
-        "🐬",
-        "yunus",
+        "tea",
+        "🍵",
+        "çay",
         1
       ],
       [
-        "splash",
-        "🫧",
-        "sıçratmak",
+        "rice",
+        "🍚",
+        "pirinç",
+        1
+      ],
+      [
+        "eat",
+        "🍽️",
+        "yemek yemek",
+        2
+      ],
+      [
+        "sleep",
+        "😴",
+        "uyumak",
+        2
+      ],
+      [
+        "play",
+        "⚽",
+        "oynamak",
+        2
+      ],
+      [
+        "swim",
+        "🏊",
+        "yüzmek",
         2
       ],
       [
@@ -1173,48 +1911,48 @@ const ALLSETS = [
         2
       ],
       [
-        "wash",
-        "🧼",
-        "yıkamak",
+        "wake up",
+        "⏰",
+        "uyanmak",
         2
       ],
       [
-        "clean",
-        "✨",
-        "temiz",
+        "wash",
+        "🧼",
+        "yıkamak",
         2
       ]
     ],
     "s": [
       [
-        "Plants and animals need fresh water to live.",
+        "It is rainy today; take your umbrella!",
+        "☂️",
+        "Bugün hava yağmurlu; şemsiyeni al!"
+      ],
+      [
+        "Put on your rain boots and splash in puddles.",
+        "👢",
+        "Yağmur botlarını giy ve su birikintilerinde sıçrat."
+      ],
+      [
+        "Fish swim happily in rivers and seas.",
+        "🐟",
+        "Balıklar nehirlerde ve denizlerde mutlulukla yüzer."
+      ],
+      [
+        "Drink clean water every day to stay healthy.",
         "💧",
-        "Bitkiler ve hayvanlar yaşamak için tatlı suya ihtiyaç duyar."
+        "Sağlıklı kalmak için her gün temiz su için."
       ],
       [
-        "I put on boots to jump in the puddle.",
-        "💦",
-        "Su birikintisinde zıplamak için botlarımı giyiyorum."
-      ],
-      [
-        "The blue dolphin leaps out of the sea.",
-        "🐬",
-        "Mavi yunus denizden yukarı sıçrar."
-      ],
-      [
-        "Always drink clean water every day.",
-        "🥤",
-        "Her gün mutlaka temiz su için."
-      ],
-      [
-        "Wash your hands with soap and water.",
+        "I wash my hands with soap and water.",
         "🧼",
-        "Ellerinizi sabun ve suyla yıkayın."
+        "Ellerimi su ve sabunla yıkarım."
       ],
       [
-        "Rain makes the flowers grow tall.",
-        "🌧️",
-        "Yağmur çiçeklerin uzamasını sağlar."
+        "The sun is warm and bright in the sky.",
+        "☀️",
+        "Güneş gökyüzünde sıcak ve parlaktır."
       ]
     ]
   },
@@ -1223,9 +1961,8 @@ const ALLSETS = [
     "stage": "s1",
     "no": "⭐",
     "title": "Term 1 Review",
-    "tr": "1. Dönem Tekrarı",
-    "emoji": "⭐",
-    "mix": true,
+    "tr": "1. Dönem Genel Tekrar",
+    "emoji": "🌟",
     "cats": [
       "School & Colors",
       "Family & Home",
@@ -1233,15 +1970,27 @@ const ALLSETS = [
     ],
     "w": [
       [
-        "pencil",
-        "✏️",
-        "kalem",
+        "hello",
+        "👋",
+        "merhaba",
         0
       ],
       [
-        "bag",
-        "🎒",
-        "çanta",
+        "pencil",
+        "✏️",
+        "kurşun kalem",
+        0
+      ],
+      [
+        "book",
+        "📖",
+        "kitap",
+        0
+      ],
+      [
+        "ruler",
+        "📏",
+        "cetvel",
         0
       ],
       [
@@ -1269,6 +2018,18 @@ const ALLSETS = [
         1
       ],
       [
+        "sister",
+        "👧",
+        "kız kardeş",
+        1
+      ],
+      [
+        "brother",
+        "👦",
+        "erkek kardeş",
+        1
+      ],
+      [
         "house",
         "🏠",
         "ev",
@@ -1281,9 +2042,21 @@ const ALLSETS = [
         2
       ],
       [
-        "kite",
-        "🪁",
-        "uçurtma",
+        "catch",
+        "🧤",
+        "yakalamak",
+        2
+      ],
+      [
+        "throw",
+        "🤾",
+        "atmak",
+        2
+      ],
+      [
+        "jump",
+        "🦘",
+        "zıplamak",
         2
       ],
       [
@@ -1295,29 +2068,29 @@ const ALLSETS = [
     ],
     "s": [
       [
-        "My red pencil is inside the school bag.",
-        "🎒",
-        "Kırmızı kalemim okul çantamın içinde."
+        "Welcome back to our fun English review!",
+        "🌟",
+        "Eğlenceli İngilizce tekrarımıza tekrar hoş geldiniz!"
       ],
       [
-        "Mother and father are at home.",
-        "👨‍👩‍👦",
-        "Anne ve baba evdedir."
+        "My family lives in a cozy house.",
+        "🏠",
+        "Ailem sıcak ve rahat bir evde yaşıyor."
       ],
       [
-        "Let us fly a colorful kite today.",
-        "🪁",
-        "Bugün rengârenk bir uçurtma uçuralım."
+        "Throw the red ball to your friend.",
+        "🔴",
+        "Kırmızı topu arkadaşına fırlat."
       ],
       [
-        "The blue ball bounces high in the house.",
-        "⚽",
-        "Mavi top evin içinde yükseğe zıplar."
+        "We read books and write with pencils.",
+        "✏️",
+        "Kitap okuruz ve kurşun kalemlerle yazarız."
       ],
       [
-        "We are all happy to learn English together.",
-        "😊",
-        "Birlikte İngilizce öğrendiğimiz için hepimiz mutluyuz."
+        "Count your toys and jump with joy!",
+        "🦘",
+        "Oyuncaklarını say ve neşeyle zıpla."
       ]
     ]
   },
@@ -1326,9 +2099,8 @@ const ALLSETS = [
     "stage": "s1",
     "no": "🌟",
     "title": "Term 2 Review",
-    "tr": "2. Dönem Tekrarı",
-    "emoji": "🌟",
-    "mix": true,
+    "tr": "2. Dönem Genel Tekrar",
+    "emoji": "🎯",
     "cats": [
       "Farm & Animals",
       "Body & Motion",
@@ -1336,40 +2108,76 @@ const ALLSETS = [
     ],
     "w": [
       [
+        "tractor",
+        "🚜",
+        "traktör",
+        0
+      ],
+      [
         "cow",
         "🐄",
         "inek",
         0
       ],
       [
-        "duck",
-        "🦆",
-        "ördek",
+        "sheep",
+        "🐑",
+        "koyun",
         0
       ],
       [
-        "lion",
-        "🦁",
-        "aslan",
+        "horse",
+        "🐎",
+        "at",
         0
       ],
       [
-        "hand",
+        "dress",
+        "👗",
+        "elbise",
+        0
+      ],
+      [
+        "shoes",
+        "👞",
+        "ayakkabılar",
+        0
+      ],
+      [
+        "eyes",
+        "👀",
+        "gözler",
+        1
+      ],
+      [
+        "ears",
+        "👂",
+        "kulaklar",
+        1
+      ],
+      [
+        "see",
+        "👁️",
+        "görmek",
+        1
+      ],
+      [
+        "hear",
+        "🎧",
+        "duymak",
+        1
+      ],
+      [
+        "touch",
         "✋",
-        "el",
+        "dokunmak",
         1
       ],
       [
-        "foot",
-        "🦶",
-        "ayak",
-        1
-      ],
-      [
-        "clap",
-        "👏",
-        "alkışlamak",
-        1
+        "car",
+        "🚗",
+        "araba",
+        2
       ],
       [
         "bus",
@@ -1378,9 +2186,15 @@ const ALLSETS = [
         2
       ],
       [
-        "train",
-        "🚆",
-        "tren",
+        "plane",
+        "✈️",
+        "uçak",
+        2
+      ],
+      [
+        "rain",
+        "🌧️",
+        "yağmur",
         2
       ],
       [
@@ -1388,39 +2202,33 @@ const ALLSETS = [
         "💧",
         "su",
         2
-      ],
-      [
-        "swim",
-        "🏊",
-        "yüzmek",
-        2
       ]
     ],
     "s": [
       [
-        "The cow drinks cool water on the farm.",
-        "🐄",
-        "İnek çiftlikte serin su içer."
+        "The cow and sheep live on the green farm.",
+        "🚜",
+        "İnek ve koyun yeşil çiftlikte yaşar."
       ],
       [
-        "Clap your hand when the train arrives.",
-        "🚆",
-        "Tren geldiğinde ellerini çırp."
+        "I hear birds singing with my two ears.",
+        "👂",
+        "İki kulağımla kuşların ötüşünü duyarım."
       ],
       [
-        "The yellow bus stops for the children.",
+        "Put on your warm shoes and coat.",
+        "👞",
+        "Sıcak ayakkabılarını ve montunu giy."
+      ],
+      [
+        "We travel by bus and see the big river.",
         "🚌",
-        "Sarı otobüs çocuklar için durur."
+        "Otobüsle seyahat eder ve büyük nehri görürüz."
       ],
       [
-        "The duck can swim across the river.",
-        "🦆",
-        "Ördek nehrin karşısına yüzebilir."
-      ],
-      [
-        "The brave lion walks on four feet.",
-        "🦁",
-        "Cesur aslan dört ayağı üzerinde yürür."
+        "Water gives life to all animals and plants.",
+        "💧",
+        "Su tüm hayvanlara ve bitkilere hayat verir."
       ]
     ]
   },
@@ -1429,9 +2237,8 @@ const ALLSETS = [
     "stage": "s1",
     "no": "🔁",
     "title": "Grade 1 Master Review",
-    "tr": "1. Sınıf Genel Tekrar",
-    "emoji": "🏆",
-    "mix": true,
+    "tr": "1. Sınıf Şampiyon Tekrarı",
+    "emoji": "👑",
     "cats": [
       "Everyday Words",
       "Creatures & Nature",
@@ -1439,9 +2246,15 @@ const ALLSETS = [
     ],
     "w": [
       [
-        "hello",
-        "👋",
-        "merhaba",
+        "school",
+        "🏫",
+        "okul",
+        0
+      ],
+      [
+        "family",
+        "👨‍👩‍👧‍👦",
+        "aile",
         0
       ],
       [
@@ -1451,15 +2264,21 @@ const ALLSETS = [
         0
       ],
       [
-        "book",
-        "📖",
-        "kitap",
+        "teacher",
+        "👩‍🏫",
+        "öğretmen",
         0
       ],
       [
-        "sheep",
-        "🐑",
-        "koyun",
+        "yellow",
+        "🟡",
+        "sarı",
+        0
+      ],
+      [
+        "lion",
+        "🦁",
+        "aslan",
         1
       ],
       [
@@ -1469,61 +2288,85 @@ const ALLSETS = [
         1
       ],
       [
-        "rain",
-        "🌧️",
-        "yağmur",
+        "tree",
+        "🌳",
+        "ağaç",
         1
       ],
       [
-        "dance",
-        "💃",
-        "dans etmek",
+        "flower",
+        "🌸",
+        "çiçek",
+        1
+      ],
+      [
+        "sunny",
+        "☀️",
+        "güneşli",
+        1
+      ],
+      [
+        "run",
+        "🏃",
+        "koşmak",
+        2
+      ],
+      [
+        "sing",
+        "🎤",
+        "şarkı söylemek",
         2
       ],
       [
         "draw",
-        "✏️",
+        "🎨",
         "çizmek",
         2
       ],
       [
-        "ride",
-        "🚴",
-        "binmek",
+        "swim",
+        "🏊",
+        "yüzmek",
         2
       ],
       [
-        "clean",
-        "✨",
-        "temiz",
+        "climb",
+        "🧗",
+        "tırmanmak",
+        2
+      ],
+      [
+        "smile",
+        "😁",
+        "gülümsemek",
         2
       ]
     ],
     "s": [
       [
-        "Say hello to your best friend.",
-        "👋",
-        "En iyi arkadaşına merhaba de."
+        "Congratulations! You finished Grade 1 English!",
+        "👑",
+        "Tebrikler! 1. Sınıf İngilizceyi tamamladın!"
       ],
       [
-        "Open your book and draw a happy sheep.",
-        "📖",
-        "Kitabını aç ve mutlu bir koyun çiz."
+        "You know many English words and songs.",
+        "🎶",
+        "Artık birçok İngilizce kelime ve şarkı biliyorsun."
       ],
       [
-        "The elephant walks under the gentle rain.",
-        "🐘",
-        "Fil hafif yağmurun altında yürür."
+        "Lions roar and monkeys climb tall trees.",
+        "🦁",
+        "Aslanlar kükrer ve maymunlar uzun ağaçlara tırmanır."
       ],
       [
-        "We ride bicycles and dance in the sun.",
-        "💃",
-        "Bisiklete biniyoruz ve güneşte dans ediyoruz."
+        "Always smile and be kind to your friends.",
+        "😁",
+        "Her zaman gülümse ve arkadaşlarına nazik ol."
       ],
       [
-        "Keep your classroom clean and tidy.",
-        "✨",
-        "Sınıfınızı temiz ve düzenli tutun."
+        "Ready for Grade 2 adventures with Polly!",
+        "🚀",
+        "Polly ile 2. Sınıf maceralarına hazırsın!"
       ]
     ]
   },
@@ -1533,116 +2376,188 @@ const ALLSETS = [
     "no": "1",
     "title": "Look in a Book",
     "tr": "Kitaba Bak",
-    "emoji": "📚",
+    "emoji": "📖",
     "cats": [
-      "Books & Reading",
-      "Story Elements",
-      "Classroom Life"
+      "Books & School Tools",
+      "Actions & Subjects",
+      "Alphabet & Stories"
     ],
     "w": [
       [
         "book",
-        "📖",
+        "📚",
         "kitap",
         0
       ],
       [
-        "story",
-        "📜",
-        "hikâye",
+        "map",
+        "🗺️",
+        "harita",
         0
       ],
       [
-        "cover",
-        "📔",
-        "kitap kapağı",
+        "calendar",
+        "📅",
+        "takvim",
         0
       ],
       [
-        "page",
-        "📄",
-        "sayfa",
+        "clock",
+        "⏰",
+        "saat",
         0
       ],
       [
-        "author",
+        "tablet",
+        "📱",
+        "tablet",
+        0
+      ],
+      [
+        "notebook",
+        "📓",
+        "defter",
+        0
+      ],
+      [
+        "marker",
+        "🖊️",
+        "keçeli kalem",
+        0
+      ],
+      [
+        "paint",
+        "🖌️",
+        "boya",
+        0
+      ],
+      [
+        "write",
         "✍️",
-        "yazar",
+        "yazmak",
         1
       ],
       [
-        "illustrator",
+        "sing",
+        "🎤",
+        "şarkı söylemek",
+        1
+      ],
+      [
+        "play",
+        "🎮",
+        "oynamak",
+        1
+      ],
+      [
+        "draw",
         "🎨",
-        "çizer",
+        "çizmek",
         1
       ],
       [
-        "character",
-        "🦸",
-        "karakter",
+        "read",
+        "📖",
+        "okumak",
+        1
+      ],
+      [
+        "maths",
+        "🔢",
+        "matematik",
+        1
+      ],
+      [
+        "science",
+        "🔬",
+        "fen bilgisi",
+        1
+      ],
+      [
+        "pool",
+        "🏊",
+        "yüzme havuzu",
         1
       ],
       [
         "title",
         "🏷️",
         "başlık",
-        1
-      ],
-      [
-        "read",
-        "👓",
-        "okumak",
         2
       ],
       [
-        "turn",
-        "🔄",
-        "çevirmek",
+        "author",
+        "📝",
+        "yazar",
         2
       ],
       [
-        "look",
-        "👀",
-        "bakmak",
+        "ant",
+        "🐜",
+        "karınca",
         2
       ],
       [
-        "library",
-        "🏛️",
-        "kütüphane",
+        "fish",
+        "🐟",
+        "balık",
+        2
+      ],
+      [
+        "octopus",
+        "🐙",
+        "ahtapot",
+        2
+      ],
+      [
+        "umbrella",
+        "☂️",
+        "şemsiye",
+        2
+      ],
+      [
+        "egg",
+        "🥚",
+        "yumurta",
+        2
+      ],
+      [
+        "apple",
+        "🍎",
+        "elma",
         2
       ]
     ],
     "s": [
       [
-        "Look at the colorful cover of this story book.",
+        "Look at the title and the author of the book.",
         "📖",
-        "Bu hikâye kitabının renkli kapağına bak."
+        "Kitabın başlığına ve yazarına bakın."
       ],
       [
-        "Turn the page to read what happens next.",
-        "📄",
-        "Sırada ne olacağını okumak için sayfayı çevir."
+        "I check the date on the classroom calendar.",
+        "📅",
+        "Sınıf takviminden bugünün tarihini kontrol ederim."
       ],
       [
-        "The author wrote an exciting tale for us.",
-        "✍️",
-        "Yazar bizim için heyecan verici bir hikâye yazdı."
+        "We use computers and tablets for science.",
+        "💻",
+        "Fen dersi için bilgisayar ve tablet kullanıyoruz."
       ],
       [
-        "My favorite character is a clever little fox.",
-        "🦸",
-        "En sevdiğim karakter akıllı küçük bir tilkidir."
+        "Draw a colourful map with pencils and markers.",
+        "🗺️",
+        "Boya ve keçeli kalemlerle renkli bir harita çizin."
       ],
       [
-        "We visit the quiet library every Friday.",
-        "🏛️",
-        "Her Cuma sessiz kütüphaneyi ziyaret ederiz."
+        "Reading books makes our imagination grow.",
+        "✨",
+        "Kitap okumak hayal gücümüzü geliştirir."
       ],
       [
-        "Read the title at the top of the page.",
-        "🏷️",
-        "Sayfanın başındaki başlığı oku."
+        "An ant is small but an octopus has eight arms.",
+        "🐙",
+        "Karınca küçüktür ama ahtapotun sekiz kolu vardır."
       ]
     ]
   },
@@ -1652,29 +2567,47 @@ const ALLSETS = [
     "no": "2",
     "title": "Good Neighbours",
     "tr": "İyi Komşular",
-    "emoji": "🏘️",
+    "emoji": "🧑‍🚒",
     "cats": [
-      "Community People",
-      "Places",
-      "Helping Verbs"
+      "Community Helpers",
+      "Uniforms & Equipment",
+      "Directions & Places"
     ],
     "w": [
       [
-        "neighbour",
-        "🏡",
-        "komşu",
+        "police officer",
+        "👮",
+        "polis memuru",
+        0
+      ],
+      [
+        "firefighter",
+        "🧑‍🚒",
+        "itfaiyeci",
+        0
+      ],
+      [
+        "reporter",
+        "🎙️",
+        "muhabir / gazeteci",
+        0
+      ],
+      [
+        "nurse",
+        "👩‍⚕️",
+        "hemşire",
         0
       ],
       [
         "doctor",
-        "🩺",
+        "👨‍⚕️",
         "doktor",
         0
       ],
       [
-        "police",
-        "👮",
-        "polis",
+        "bus driver",
+        "🚌",
+        "otobüs şoförü",
         0
       ],
       [
@@ -1684,84 +2617,138 @@ const ALLSETS = [
         0
       ],
       [
-        "firefighter",
-        "🚒",
-        "itfaiyeci",
+        "actor",
+        "🎭",
+        "oyuncu / aktör",
         0
       ],
       [
-        "hospital",
-        "🏥",
-        "hastane",
+        "painter",
+        "🎨",
+        "ressam / boyacı",
+        0
+      ],
+      [
+        "farmer",
+        "👨‍🌾",
+        "çiftçi",
+        0
+      ],
+      [
+        "sailor",
+        "뚬",
+        "denizci",
+        0
+      ],
+      [
+        "window cleaner",
+        "🪟",
+        "cam temizleyicisi",
+        0
+      ],
+      [
+        "helmet",
+        "⛑️",
+        "kask / baret",
         1
       ],
       [
-        "bakery",
-        "🥐",
-        "fırın",
+        "jacket",
+        "🧥",
+        "ceket / üniforma",
         1
       ],
       [
-        "park",
-        "🌳",
-        "park",
+        "boots",
+        "🥾",
+        "botlar",
         1
       ],
       [
-        "shop",
-        "🏪",
-        "dükkân",
+        "gloves",
+        "🧤",
+        "eldivenler",
         1
+      ],
+      [
+        "mask",
+        "😷",
+        "maske",
+        1
+      ],
+      [
+        "backpack",
+        "🎒",
+        "sırt çantası",
+        1
+      ],
+      [
+        "skipping rope",
+        "🪢",
+        "atlama ipi",
+        1
+      ],
+      [
+        "ruler",
+        "📏",
+        "cetvel",
+        1
+      ],
+      [
+        "behind",
+        "🔙",
+        "arkasında",
+        2
+      ],
+      [
+        "in front of",
+        "🔜",
+        "önünde",
+        2
+      ],
+      [
+        "continent",
+        "🌍",
+        "kıta",
+        2
       ],
       [
         "help",
         "🤝",
         "yardım etmek",
         2
-      ],
-      [
-        "share",
-        "🤲",
-        "paylaşmak",
-        2
-      ],
-      [
-        "smile",
-        "😊",
-        "gülümsemek",
-        2
       ]
     ],
     "s": [
       [
-        "A good neighbour is always ready to help.",
-        "🏡",
-        "İyi bir komşu her zaman yardıma hazırdır."
+        "Firefighters wear red helmets and help people.",
+        "🧑‍🚒",
+        "İtfaiyeciler kırmızı kask takar ve insanlara yardım eder."
       ],
       [
-        "The doctor cares for sick people at the hospital.",
-        "🩺",
-        "Doktor hastanedeki hasta insanlarla ilgilenir."
+        "A police officer keeps our town safe.",
+        "👮",
+        "Polis memuru kasabamızı güvende tutar."
       ],
       [
-        "The friendly baker makes warm bread at the bakery.",
+        "Doctors and nurses care for sick people in hospital.",
+        "👩‍⚕️",
+        "Doktorlar ve hemşireler hastanedeki hastalara bakar."
+      ],
+      [
+        "The baker makes delicious fresh bread every morning.",
         "🥖",
-        "Dost canlısı fırıncı fırında sıcak ekmek yapar."
+        "Fırıncı her sabah lezzetli taze ekmek yapar."
       ],
       [
-        "The brave firefighter rides in a big red truck.",
-        "🚒",
-        "Cesur itfaiyeci büyük kırmızı bir kamyonda gider."
+        "Good neighbours always help each other.",
+        "🤝",
+        "İyi komşular her zaman birbirlerine yardım eder."
       ],
       [
-        "Children play together happily in the green park.",
-        "🌳",
-        "Çocuklar yeşil parkta neşeyle birlikte oynarlar."
-      ],
-      [
-        "Always share your toys and smile with kindness.",
-        "😊",
-        "Oyuncaklarını her zaman paylaş ve nezaketle gülümse."
+        "My backpack is behind the classroom chair.",
+        "🎒",
+        "Sırt çantam sınıf sandalyesinin arkasındadır."
       ]
     ]
   },
@@ -1773,114 +2760,186 @@ const ALLSETS = [
     "tr": "Hazır, Başla!",
     "emoji": "🏃",
     "cats": [
-      "Sports",
-      "Movement Verbs",
-      "Health & Energy"
+      "Action Verbs",
+      "Body & Motion",
+      "School & Quantifiers"
     ],
     "w": [
       [
-        "run",
-        "🏃",
-        "koşmak",
+        "wave",
+        "👋",
+        "el sallamak",
         0
       ],
       [
-        "jump",
-        "🦘",
-        "zıplamak",
-        0
-      ],
-      [
-        "skip",
-        "🤸",
-        "ip atlamak",
+        "stand",
+        "🧍",
+        "ayağa kalkmak",
         0
       ],
       [
         "hop",
-        "🐰",
-        "seksek oynamak / sekmek",
+        "🦘",
+        "tek ayakla sıçramak",
         0
       ],
       [
-        "catch",
-        "🧤",
-        "yakalamak",
+        "fall",
+        "🍂",
+        "düşmek",
+        0
+      ],
+      [
+        "flap",
+        "🦅",
+        "kanat çırpmak",
+        0
+      ],
+      [
+        "wiggle",
+        "🐛",
+        "kıpırdamak / kıvrılmak",
+        0
+      ],
+      [
+        "nod",
+        "🙆",
+        "başını sallamak (onay)",
+        0
+      ],
+      [
+        "touch",
+        "✋",
+        "dokunmak",
+        0
+      ],
+      [
+        "clap",
+        "👏",
+        "el çırpmak",
+        0
+      ],
+      [
+        "head",
+        "🗣️",
+        "baş",
         1
       ],
       [
-        "throw",
-        "⚾",
-        "fırlatmak / atmak",
-        1
-      ],
-      [
-        "kick",
-        "⚽",
-        "tekmelemek",
-        1
-      ],
-      [
-        "score",
-        "🥅",
-        "sayı yapmak / gol atmak",
-        1
-      ],
-      [
-        "strong",
+        "arm",
         "💪",
-        "güçlü",
+        "kol",
+        1
+      ],
+      [
+        "leg",
+        "🦵",
+        "bacak",
+        1
+      ],
+      [
+        "foot",
+        "🦶",
+        "ayak",
+        1
+      ],
+      [
+        "tummy",
+        "🤰",
+        "göbek / karın",
+        1
+      ],
+      [
+        "fingers",
+        "🖐️",
+        "parmaklar",
+        1
+      ],
+      [
+        "toes",
+        "👣",
+        "ayak parmakları",
+        1
+      ],
+      [
+        "nose",
+        "👃",
+        "burun",
+        1
+      ],
+      [
+        "playground",
+        "🎪",
+        "oyun parkı",
         2
       ],
       [
-        "healthy",
-        "🥗",
-        "sağlıklı",
+        "slide",
+        "🛝",
+        "kaydırak",
         2
       ],
       [
-        "water",
-        "💧",
-        "su",
+        "teacher",
+        "👩‍🏫",
+        "öğretmen",
         2
       ],
       [
-        "rest",
-        "🛋️",
-        "dinlenmek",
+        "glue",
+        "🧴",
+        "yapıştırıcı",
+        2
+      ],
+      [
+        "all",
+        "👥",
+        "hepsi / tümü",
+        2
+      ],
+      [
+        "most",
+        "📊",
+        "çoğu",
+        2
+      ],
+      [
+        "some",
+        "🤏",
+        "bazıları / biraz",
         2
       ]
     ],
     "s": [
       [
-        "Ready, steady, go! Run as fast as you can.",
+        "Ready, steady, go! Run as fast as you can!",
         "🏃",
-        "Hazır, dikkat, başla! Koşabildiğin kadar hızlı koş."
+        "Hazır, başla! Koşabildiğin kadar hızlı koş!"
       ],
       [
-        "Throw the ball to me and I will catch it.",
-        "🧤",
-        "Topu bana at, ben yakalayacağım."
+        "Stand up tall and wave your hands high.",
+        "👋",
+        "Dimdik ayağa kalk ve ellerini havaya salla."
       ],
       [
-        "Kick the soccer ball to score a winning goal!",
-        "⚽",
-        "Kazanan golü atmak için futbol topuna vur!"
+        "Hop on one foot and touch your toes.",
+        "🦶",
+        "Tek ayak üzerinde zıpla ve ayak parmaklarına dokun."
       ],
       [
-        "Eating fruits helps you stay strong and healthy.",
-        "🥗",
-        "Meyve yemek güçlü ve sağlıklı kalmanıza yardımcı olur."
+        "Nod your head if you know the answer.",
+        "🙆",
+        "Cevabı biliyorsan başını onayla salla."
       ],
       [
-        "Drink fresh water after playing outside.",
-        "💧",
-        "Dışarıda oynadıktan sonra temiz su için."
+        "We play happily in the school playground.",
+        "🛝",
+        "Okul bahçesinde mutlulukla oynuyoruz."
       ],
       [
-        "Sit on the bench to take a well-deserved rest.",
-        "🛋️",
-        "Hak edilmiş bir mola vermek için bankta oturun."
+        "All the children clap their hands together.",
+        "👏",
+        "Bütün çocuklar birlikte ellerini çırpar."
       ]
     ]
   },
@@ -1892,15 +2951,27 @@ const ALLSETS = [
     "tr": "Büyük Gökyüzü",
     "emoji": "☀️",
     "cats": [
-      "Sky Objects",
-      "Weather",
-      "Time of Day"
+      "Sky Objects & Day",
+      "Weather & Light",
+      "Action & Position"
     ],
     "w": [
+      [
+        "sky",
+        "🌌",
+        "gökyüzü",
+        0
+      ],
       [
         "sun",
         "☀️",
         "güneş",
+        0
+      ],
+      [
+        "sunshine",
+        "🌞",
+        "güneş ışığı",
         0
       ],
       [
@@ -1910,96 +2981,132 @@ const ALLSETS = [
         0
       ],
       [
-        "star",
+        "stars",
         "⭐",
-        "yıldız",
+        "yıldızlar",
+        0
+      ],
+      [
+        "planet",
+        "🪐",
+        "gezegen",
+        0
+      ],
+      [
+        "night",
+        "🌃",
+        "gece",
         0
       ],
       [
         "cloud",
         "☁️",
         "bulut",
-        0
-      ],
-      [
-        "rainbow",
-        "🌈",
-        "gökkuşağı",
-        0
-      ],
-      [
-        "wind",
-        "💨",
-        "rüzgâr",
         1
       ],
       [
-        "rain",
-        "🌧️",
-        "yağmur",
+        "shadow",
+        "👤",
+        "gölge",
         1
       ],
       [
-        "storm",
-        "⛈️",
-        "fırtına",
+        "low",
+        "🔽",
+        "alçak",
         1
       ],
       [
-        "morning",
-        "🌅",
-        "sabah",
+        "high",
+        "🔼",
+        "yüksek",
+        1
+      ],
+      [
+        "long",
+        "📏",
+        "uzun",
+        1
+      ],
+      [
+        "short",
+        "📐",
+        "kısa",
+        1
+      ],
+      [
+        "dark",
+        "🌑",
+        "karanlık",
+        1
+      ],
+      [
+        "helicopter",
+        "🚁",
+        "helikopter",
         2
       ],
       [
-        "night",
-        "🌃",
-        "gece",
+        "bicycle",
+        "🚲",
+        "bisiklet",
         2
       ],
       [
-        "shine",
-        "✨",
-        "parlamak",
+        "insect",
+        "🦗",
+        "böcek",
         2
       ],
       [
-        "blow",
-        "🌬️",
-        "esmek",
+        "played",
+        "🎮",
+        "oynadı",
+        2
+      ],
+      [
+        "climbed",
+        "🧗",
+        "tırmandı",
+        2
+      ],
+      [
+        "waved",
+        "👋",
+        "el salladı",
         2
       ]
     ],
     "s": [
       [
-        "The warm sun rises brightly in the morning.",
+        "The sun shines brightly in the blue sky.",
         "☀️",
-        "Ilık güneş sabahleyin parlak bir şekilde doğar."
+        "Güneş mavi gökyüzünde ışıl ışıl parlar."
       ],
       [
-        "Look at that stunning rainbow across the big sky.",
-        "🌈",
-        "Büyük gökyüzündeki şu büyüleyici gökkuşağına bak."
-      ],
-      [
-        "The cool wind begins to blow through the trees.",
-        "💨",
-        "Ağaçların arasından serin rüzgâr esmeye başlar."
-      ],
-      [
-        "Millions of stars shine like diamonds at night.",
-        "⭐",
-        "Geceleri milyonlarca yıldız elmas gibi parıldar."
-      ],
-      [
-        "A fluffy white cloud drifts slowly overhead.",
-        "☁️",
-        "Tombul beyaz bir bulut yavaşça başımızın üzerinden süzülür."
-      ],
-      [
-        "The silver moon lights up the quiet garden.",
+        "At night, we can see the glowing moon and stars.",
         "🌙",
-        "Gümüş ay sessiz bahçeyi aydınlatır."
+        "Geceleri parıldayan ayı ve yıldızları görebiliriz."
+      ],
+      [
+        "When the sun is low, your shadow is very long.",
+        "👤",
+        "Güneş alçaktayken gölgen çok uzundur."
+      ],
+      [
+        "Earth is our beautiful round planet.",
+        "🪐",
+        "Dünya bizim güzel, yuvarlak gezegenimizdir."
+      ],
+      [
+        "A helicopter flies high above the clouds.",
+        "🚁",
+        "Bir helikopter bulutların çok üstünde uçar."
+      ],
+      [
+        "Watch the clouds change shape in the wind.",
+        "☁️",
+        "Bulutların rüzgarda şekil değiştirmesini izleyin."
       ]
     ]
   },
@@ -2011,313 +3118,141 @@ const ALLSETS = [
     "tr": "Ölçelim",
     "emoji": "📏",
     "cats": [
-      "Measurement Tools",
-      "Comparisons",
-      "Shapes & Math"
+      "Numbers 10-100",
+      "Shapes & Geometry",
+      "Measurement Words"
     ],
     "w": [
       [
-        "ruler",
+        "ten",
+        "🔟",
+        "on",
+        0
+      ],
+      [
+        "twenty",
+        "2️⃣0️⃣",
+        "yirmi",
+        0
+      ],
+      [
+        "thirty",
+        "3️⃣0️⃣",
+        "otuz",
+        0
+      ],
+      [
+        "forty",
+        "4️⃣0️⃣",
+        "kırk",
+        0
+      ],
+      [
+        "fifty",
+        "5️⃣0️⃣",
+        "elli",
+        0
+      ],
+      [
+        "sixty",
+        "6️⃣0️⃣",
+        "altmış",
+        0
+      ],
+      [
+        "seventy",
+        "7️⃣0️⃣",
+        "yetmiş",
+        0
+      ],
+      [
+        "eighty",
+        "8️⃣0️⃣",
+        "seksen",
+        0
+      ],
+      [
+        "ninety",
+        "9️⃣0️⃣",
+        "doksan",
+        0
+      ],
+      [
+        "one hundred",
+        "💯",
+        "yüz",
+        0
+      ],
+      [
+        "star",
+        "⭐",
+        "yıldız",
+        1
+      ],
+      [
+        "triangle",
+        "🔺",
+        "üçgen",
+        1
+      ],
+      [
+        "circle",
+        "⭕",
+        "daire / çember",
+        1
+      ],
+      [
+        "heart",
+        "❤️",
+        "kalp",
+        1
+      ],
+      [
+        "square",
+        "⏹️",
+        "kare",
+        1
+      ],
+      [
+        "rectangle",
+        "▬",
+        "dikdörtgen",
+        1
+      ],
+      [
+        "measure",
         "📏",
-        "cetvel",
-        0
-      ],
-      [
-        "scale",
-        "⚖️",
-        "terazi / tartı",
-        0
-      ],
-      [
-        "tape",
-        "📐",
-        "mezura / şerit metre",
-        0
-      ],
-      [
-        "clock",
-        "🕐",
-        "saat",
-        0
-      ],
-      [
-        "long",
-        "🐍",
-        "uzun",
-        1
-      ],
-      [
-        "short",
-        "🐛",
-        "kısa",
-        1
-      ],
-      [
-        "heavy",
-        "🪨",
-        "ağır",
-        1
-      ],
-      [
-        "light",
-        "🪶",
-        "hafif",
-        1
-      ],
-      [
-        "tall",
-        "🦒",
-        "uzun boylu",
-        1
-      ],
-      [
-        "weight",
-        "🏋️",
-        "ağırlık",
+        "ölçmek",
         2
       ],
       [
-        "size",
-        "📦",
-        "boyut / ebat",
+        "one",
+        "1️⃣",
+        "bir",
         2
       ],
       [
-        "count",
-        "🔢",
-        "saymak",
-        2
-      ]
-    ],
-    "s": [
-      [
-        "Use the wooden ruler to measure the paper.",
-        "📏",
-        "Kâğıdı ölçmek için tahta cetveli kullan."
-      ],
-      [
-        "The giraffe is very tall and the insect is short.",
-        "🦒",
-        "Zürafa çok uzun boyludur, böcek ise kısadır."
-      ],
-      [
-        "A heavy rock will tilt the balancing scale.",
-        "⚖️",
-        "Ağır bir taş denge terazisini eğer."
-      ],
-      [
-        "A bird feather is remarkably light.",
-        "🪶",
-        "Bir kuş tüyü son derece hafiftir."
-      ],
-      [
-        "Look at the clock to know the exact time.",
-        "🕐",
-        "Tam zamanı bilmek için saate bak."
-      ],
-      [
-        "Let us count all the objects by their size.",
-        "🔢",
-        "Tüm nesneleri boyutlarına göre sayalım."
-      ]
-    ]
-  },
-  {
-    "id": "s2u6",
-    "stage": "s2",
-    "no": "6",
-    "title": "Bugs and Critters",
-    "tr": "Böcekler ve Minik Canlılar",
-    "emoji": "🐞",
-    "cats": [
-      "Insects",
-      "Body Features",
-      "Garden Nature"
-    ],
-    "w": [
-      [
-        "ant",
-        "🐜",
-        "karınca",
-        0
-      ],
-      [
-        "bee",
-        "🐝",
-        "arı",
-        0
-      ],
-      [
-        "butterfly",
-        "🦋",
-        "kelebek",
-        0
-      ],
-      [
-        "ladybird",
-        "🐞",
-        "uğur böceği",
-        0
-      ],
-      [
-        "spider",
-        "🕷️",
-        "örümcek",
-        0
-      ],
-      [
-        "caterpillar",
-        "🐛",
-        "tırtıl",
-        0
-      ],
-      [
-        "wing",
-        "🪽",
-        "kanat",
-        1
-      ],
-      [
-        "leg",
-        "🦵",
-        "bacak",
-        1
-      ],
-      [
-        "spot",
-        "⚪",
-        "benek / leke",
-        1
-      ],
-      [
-        "flower",
-        "🌸",
-        "çiçek",
+        "two",
+        "2️⃣",
+        "iki",
         2
       ],
       [
-        "web",
-        "🕸️",
-        "ağ",
+        "four",
+        "4️⃣",
+        "dört",
         2
       ],
       [
-        "crawl",
-        "🪱",
-        "sürünmek / emeklemek",
-        2
-      ]
-    ],
-    "s": [
-      [
-        "The busy bee visits each sweet flower.",
-        "🐝",
-        "Çalışkan arı her tatlı çiçeği ziyaret eder."
-      ],
-      [
-        "A tiny ladybird has red wings and black spots.",
-        "🐞",
-        "Minik bir uğur böceğinin kırmızı kanatları ve siyah benekleri vardır."
-      ],
-      [
-        "The caterpillar will change into a colorful butterfly.",
-        "🦋",
-        "Tırtıl renkli bir kelebeğe dönüşecek."
-      ],
-      [
-        "A spider spins a sticky web between the branches.",
-        "🕷️",
-        "Bir örümcek dalların arasına yapışkan bir ağ örer."
-      ],
-      [
-        "Hardworking ants crawl together in a straight line.",
-        "🐜",
-        "Çalışkan karıncalar düz bir çizgide birlikte sürünürler."
-      ],
-      [
-        "Count how many legs the bug has.",
-        "🦵",
-        "Böceğin kaç bacağı olduğunu say."
-      ]
-    ]
-  },
-  {
-    "id": "s2u7",
-    "stage": "s2",
-    "no": "7",
-    "title": "Long Ago and Today",
-    "tr": "Geçmişte ve Bugün",
-    "emoji": "⏳",
-    "cats": [
-      "Time Concepts",
-      "Old & Modern Things",
-      "History Verbs"
-    ],
-    "w": [
-      [
-        "past",
-        "📜",
-        "geçmiş",
-        0
-      ],
-      [
-        "present",
-        "📱",
-        "günümüz / şimdiki zaman",
-        0
-      ],
-      [
-        "castle",
-        "🏰",
-        "kale / şato",
-        0
-      ],
-      [
-        "museum",
-        "🏛️",
-        "müze",
-        0
-      ],
-      [
-        "candle",
-        "🕯️",
-        "mum",
-        1
-      ],
-      [
-        "lamp",
-        "💡",
-        "lamba",
-        1
-      ],
-      [
-        "quill",
-        "🪶",
-        "tüy kalem",
-        1
-      ],
-      [
-        "pen",
-        "🖊️",
-        "tükenmez kalem",
-        1
-      ],
-      [
-        "travel",
-        "🧳",
-        "seyahat etmek",
+        "eight",
+        "8️⃣",
+        "sekiz",
         2
       ],
       [
-        "live",
-        "🏡",
-        "yaşamak",
-        2
-      ],
-      [
-        "old",
-        "👴",
-        "eski / yaşlı",
+        "first",
+        "🥇",
+        "birinci",
         2
       ],
       [
@@ -2329,34 +3264,380 @@ const ALLSETS = [
     ],
     "s": [
       [
-        "People used a flickering candle long ago in the past.",
-        "🕯️",
-        "İnsanlar geçmişte uzun zaman önce titreyen bir mum kullanırdı."
+        "Let us measure the table with our ruler.",
+        "📏",
+        "Hadi masayı cetvelimizle ölçelim."
       ],
       [
-        "Today we turn on an electric lamp with a click.",
+        "A square has four equal sides and corners.",
+        "⏹️",
+        "Bir karenin dört eşit kenarı ve köşesi vardır."
+      ],
+      [
+        "Can you count from ten to one hundred by tens?",
+        "💯",
+        "Onar onar ondan yüze kadar sayabilir misin?"
+      ],
+      [
+        "Draw a bright yellow star and a red heart.",
+        "⭐",
+        "Parlak sarı bir yıldız ve kırmızı bir kalp çizin."
+      ],
+      [
+        "A circle is round like a ball or a coin.",
+        "⭕",
+        "Daire top veya madeni para gibi yuvarlaktır."
+      ],
+      [
+        "One metre has one hundred centimetres.",
+        "📏",
+        "Bir metrede yüz santimetre vardır."
+      ]
+    ]
+  },
+  {
+    "id": "s2u6",
+    "stage": "s2",
+    "no": "6",
+    "title": "Bugs and Critters",
+    "tr": "Böcekler ve Minik Canlılar",
+    "emoji": "🐝",
+    "cats": [
+      "Insects & Bugs",
+      "Rhyming Words & Body",
+      "Food & Nature"
+    ],
+    "w": [
+      [
+        "butterfly",
+        "🦋",
+        "kelebek",
+        0
+      ],
+      [
+        "bee",
+        "🐝",
+        "arı",
+        0
+      ],
+      [
+        "cricket",
+        "🦗",
+        "cırcır böceği",
+        0
+      ],
+      [
+        "ant",
+        "🐜",
+        "karınca",
+        0
+      ],
+      [
+        "worm",
+        "🪱",
+        "solucan",
+        0
+      ],
+      [
+        "spider",
+        "🕷️",
+        "örümcek",
+        0
+      ],
+      [
+        "flea",
+        "🪲",
+        "pire",
+        0
+      ],
+      [
+        "ladybug",
+        "🐞",
+        "uğur böceği",
+        0
+      ],
+      [
+        "caterpillar",
+        "🐛",
+        "tırtıl",
+        0
+      ],
+      [
+        "knee",
+        "🦵",
+        "diz",
+        1
+      ],
+      [
+        "head",
+        "🗣️",
+        "baş",
+        1
+      ],
+      [
+        "tree",
+        "🌳",
+        "ağaç",
+        1
+      ],
+      [
+        "red",
+        "🔴",
+        "kırmızı",
+        1
+      ],
+      [
+        "bed",
+        "🛏️",
+        "yatak",
+        1
+      ],
+      [
+        "sea",
+        "🌊",
+        "deniz",
+        1
+      ],
+      [
+        "fact",
         "💡",
-        "Bugün ise tek bir tıkla elektrikli lambayı açıyoruz."
+        "gerçek bilgi",
+        1
       ],
       [
-        "Kings and queens lived inside a stone castle.",
-        "🏰",
-        "Krallar ve kraliçeler taştan bir kalede yaşarlardı."
+        "cheese",
+        "🧀",
+        "peynir",
+        2
       ],
       [
-        "We can see ancient treasures at the museum.",
-        "🏛️",
-        "Eski hazineleri müzede görebiliriz."
+        "tea",
+        "🍵",
+        "çay",
+        2
       ],
       [
-        "Long ago children wrote with a bird quill.",
-        "🪶",
-        "Uzun zaman önce çocuklar kuş tüyü kalemle yazarlardı."
+        "bread",
+        "🍞",
+        "ekmek",
+        2
       ],
       [
-        "Modern trains travel much faster than old wagons.",
-        "🧳",
-        "Modern trenler eski vagonlardan çok daha hızlı seyahat eder."
+        "meat",
+        "🥩",
+        "et",
+        2
+      ],
+      [
+        "honey",
+        "🍯",
+        "bal",
+        2
+      ],
+      [
+        "flower",
+        "🌸",
+        "çiçek",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "A busy bee buzzes around the pink flower.",
+        "🐝",
+        "Çalışkan bir arı pembe çiçeğin etrafında vızıldar."
+      ],
+      [
+        "The colorful caterpillar becomes a butterfly.",
+        "🦋",
+        "Renkli tırtıl bir kelebeğe dönüşür."
+      ],
+      [
+        "A tiny ant can carry heavy food to its nest.",
+        "🐜",
+        "Küçük bir karınca yuvasına ağır yiyecekler taşıyabilir."
+      ],
+      [
+        "Spiders have eight legs and spin strong webs.",
+        "🕷️",
+        "Örümceklerin sekiz bacağı vardır ve güçlü ağlar örer."
+      ],
+      [
+        "Bees make sweet and healthy golden honey.",
+        "🍯",
+        "Arılar tatlı ve sağlıklı altın bal yaparlar."
+      ],
+      [
+        "Earthworms help the soil in our garden.",
+        "🪱",
+        "Toprak solucanları bahçemizdeki toprağa yardım eder."
+      ]
+    ]
+  },
+  {
+    "id": "s2u7",
+    "stage": "s2",
+    "no": "7",
+    "title": "Long Ago and Today",
+    "tr": "Geçmişte ve Bugün",
+    "emoji": "🌱",
+    "cats": [
+      "Gardening & Ecology",
+      "Plant Parts & Life",
+      "Nature & Animals"
+    ],
+    "w": [
+      [
+        "planting",
+        "🪴",
+        "ekim / dikim",
+        0
+      ],
+      [
+        "watering",
+        "🚿",
+        "sulama",
+        0
+      ],
+      [
+        "picking up",
+        "🧹",
+        "yerden toplama",
+        0
+      ],
+      [
+        "bin",
+        "🗑️",
+        "çöp kutusu",
+        0
+      ],
+      [
+        "recycle",
+        "♻️",
+        "geri dönüştürmek",
+        0
+      ],
+      [
+        "roots",
+        "🥕",
+        "kökler",
+        1
+      ],
+      [
+        "stem",
+        "🎋",
+        "gövde / sap (bitki)",
+        1
+      ],
+      [
+        "leaf",
+        "🍃",
+        "yaprak",
+        1
+      ],
+      [
+        "leaves",
+        "🍂",
+        "yapraklar",
+        1
+      ],
+      [
+        "flower",
+        "🌸",
+        "çiçek",
+        1
+      ],
+      [
+        "seed",
+        "🌱",
+        "tohum",
+        1
+      ],
+      [
+        "wood",
+        "🪵",
+        "odun / ahşap",
+        1
+      ],
+      [
+        "tomatoes",
+        "🍅",
+        "domatesler",
+        1
+      ],
+      [
+        "owl",
+        "🦉",
+        "baykuş",
+        2
+      ],
+      [
+        "crow",
+        "🦅",
+        "karga",
+        2
+      ],
+      [
+        "cow",
+        "🐄",
+        "inek",
+        2
+      ],
+      [
+        "earth",
+        "🌍",
+        "dünya / toprak",
+        2
+      ],
+      [
+        "forest",
+        "🌲",
+        "orman",
+        2
+      ],
+      [
+        "grow",
+        "🌿",
+        "büyümek",
+        2
+      ],
+      [
+        "green",
+        "🟢",
+        "yeşil",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "A tiny seed grows into a magnificent tall tree.",
+        "🌱",
+        "Küçük bir tohum muhteşem uzun bir ağaca dönüşür."
+      ],
+      [
+        "Plants drink water and food through their roots.",
+        "🥕",
+        "Bitkiler kökleri aracılığıyla su ve besin alır."
+      ],
+      [
+        "Water your garden plants to keep them green.",
+        "🚿",
+        "Bitkilerinizi yeşil tutmak için bahçenizi sulayın."
+      ],
+      [
+        "Put plastic and paper in the recycling bin.",
+        "♻️",
+        "Plastik ve kağıtları geri dönüşüm kutusuna atın."
+      ],
+      [
+        "Long ago people used wood and stones for tools.",
+        "🪵",
+        "Çok eskiden insanlar aletler için odun ve taş kullanırdı."
+      ],
+      [
+        "Wise owls sleep in the day and hunt at night.",
+        "🦉",
+        "Bilge baykuşlar gündüz uyur ve gece avlanır."
       ]
     ]
   },
@@ -2366,116 +3647,200 @@ const ALLSETS = [
     "no": "8",
     "title": "In the City",
     "tr": "Şehirde",
-    "emoji": "🏙️",
+    "emoji": "🏠",
     "cats": [
-      "City Places",
-      "Street Objects",
-      "City Directions"
+      "Building & Structure",
+      "Rooms & Furniture",
+      "Places & Temperatures"
     ],
     "w": [
       [
-        "city",
-        "🏙️",
-        "şehir",
+        "roof",
+        "🏠",
+        "çatı",
         0
       ],
       [
-        "street",
-        "🛣️",
-        "cadde / sokak",
+        "wall",
+        "🧱",
+        "duvar",
         0
       ],
       [
-        "building",
-        "🏢",
-        "bina",
+        "stairs",
+        "📈",
+        "merdivenler",
         0
       ],
       [
-        "cinema",
-        "🎬",
-        "sinema",
+        "ladder",
+        "🪜",
+        "seyyar merdiven",
         0
       ],
       [
-        "station",
-        "🚉",
-        "istasyon",
+        "railing",
+        "🚧",
+        "tırabzan / korkuluk",
         0
       ],
       [
-        "traffic",
-        "🚦",
-        "trafik ışığı",
+        "lift",
+        "🛗",
+        "asansör",
+        0
+      ],
+      [
+        "bedroom",
+        "🛌",
+        "yatak odası",
         1
       ],
       [
-        "bridge",
-        "🌉",
-        "köprü",
+        "kitchen",
+        "🧑‍🍳",
+        "mutfak",
         1
       ],
       [
-        "crosswalk",
-        "🦓",
-        "yaya geçidi",
+        "bathroom",
+        "🛁",
+        "banyo",
         1
       ],
       [
-        "walk",
-        "🚶",
-        "yürümek",
+        "hall",
+        "🚪",
+        "hol / koridor",
+        1
+      ],
+      [
+        "garden",
+        "🏡",
+        "bahçe",
+        1
+      ],
+      [
+        "bed",
+        "🛏️",
+        "yatak",
+        1
+      ],
+      [
+        "sink",
+        "🚰",
+        "lavabo",
+        1
+      ],
+      [
+        "toilet",
+        "🚽",
+        "tuvalet",
+        1
+      ],
+      [
+        "cooker",
+        "🍳",
+        "ocak / fırın",
+        1
+      ],
+      [
+        "table",
+        "🟫",
+        "masa",
+        1
+      ],
+      [
+        "lamp",
+        "💡",
+        "lamba",
+        1
+      ],
+      [
+        "refrigerator",
+        "🧊",
+        "buzdolabı",
+        1
+      ],
+      [
+        "chair",
+        "🪑",
+        "sandalye",
+        1
+      ],
+      [
+        "shower",
+        "🚿",
+        "duş",
+        1
+      ],
+      [
+        "swimming pool",
+        "🏊",
+        "yüzme havuzu",
         2
       ],
       [
-        "cross",
-        "🚸",
-        "karşıya geçmek",
+        "zoo",
+        "🦁",
+        "hayvanat bahçesi",
         2
       ],
       [
-        "left",
-        "⬅️",
-        "sol",
+        "balloon",
+        "🎈",
+        "balon",
         2
       ],
       [
-        "right",
-        "➡️",
-        "sağ",
+        "cold",
+        "❄️",
+        "soğuk",
+        2
+      ],
+      [
+        "warm",
+        "☀️",
+        "ılık / sıcak",
+        2
+      ],
+      [
+        "hot",
+        "🔥",
+        "sıcak",
         2
       ]
     ],
     "s": [
       [
-        "There are tall buildings all over the big city.",
-        "🏢",
-        "Büyük şehrin her yerinde yüksek binalar var."
+        "Welcome to our modern apartment in the city.",
+        "🏠",
+        "Şehirdeki modern apartmanımıza hoş geldiniz."
       ],
       [
-        "Always wait for the traffic light to turn green.",
-        "🚦",
-        "Trafik ışığının yeşile dönmesini mutlaka bekleyin."
+        "Take the lift or climb the stairs to the top.",
+        "🛗",
+        "Asansöre binin veya merdivenlerden yukarı çıkın."
       ],
       [
-        "Use the safe crosswalk to cross the busy street.",
-        "🦓",
-        "Kalabalık caddeden karşıya geçmek için güvenli yaya geçidini kullanın."
+        "Mum is cooking delicious dinner in the kitchen.",
+        "🍳",
+        "Annem mutfakta lezzetli bir akşam yemeği pişiriyor."
       ],
       [
-        "We catch an electric train at the central station.",
-        "🚉",
-        "Merkez istasyonundan elektrikli bir trene biniyoruz."
+        "Keep juice and fresh milk in the refrigerator.",
+        "🧊",
+        "Meyve suyunu ve taze sütü buzdolabında tutun."
       ],
       [
-        "Turn left at the corner to find the modern cinema.",
-        "🎬",
-        "Modern sinemayı bulmak için köşeden sola dönün."
+        "Children swim happily in the warm swimming pool.",
+        "🏊",
+        "Çocuklar ılık yüzme havuzunda neşeyle yüzer."
       ],
       [
-        "A long suspension bridge spans across the wide river.",
-        "🌉",
-        "Geniş nehrin üzerinde uzun bir asma köprü uzanır."
+        "Look out from the balcony across the city roofs.",
+        "🌆",
+        "Balkondan şehrin çatılarına doğru bakın."
       ]
     ]
   },
@@ -2487,114 +3852,186 @@ const ALLSETS = [
     "tr": "Harika Dünya",
     "emoji": "🌍",
     "cats": [
-      "World Landscapes",
-      "Earth Care",
-      "Nature Wonders"
+      "City & Vehicles",
+      "Ocean Life",
+      "Describing Our World"
     ],
     "w": [
       [
-        "world",
-        "🌍",
-        "dünya",
+        "traffic",
+        "🚦",
+        "trafik",
         0
       ],
       [
-        "mountain",
-        "🏔️",
-        "dağ",
+        "helicopter",
+        "🚁",
+        "helikopter",
         0
+      ],
+      [
+        "ferry",
+        "⛴️",
+        "feribot",
+        0
+      ],
+      [
+        "musicians",
+        "🎺",
+        "müzisyenler",
+        0
+      ],
+      [
+        "underground train",
+        "🚇",
+        "metro",
+        0
+      ],
+      [
+        "bridge",
+        "🌉",
+        "köprü",
+        0
+      ],
+      [
+        "plane",
+        "✈️",
+        "uçak",
+        0
+      ],
+      [
+        "traffic light",
+        "🚥",
+        "trafik ışığı",
+        0
+      ],
+      [
+        "map",
+        "🗺️",
+        "harita",
+        0
+      ],
+      [
+        "octopus",
+        "🐙",
+        "ahtapot",
+        1
+      ],
+      [
+        "jellyfish",
+        "🪼",
+        "denizanası",
+        1
+      ],
+      [
+        "penguin",
+        "🐧",
+        "penguen",
+        1
+      ],
+      [
+        "sea turtle",
+        "🐢",
+        "deniz kaplumbağası",
+        1
+      ],
+      [
+        "whale",
+        "🐋",
+        "balina",
+        1
+      ],
+      [
+        "dolphin",
+        "🐬",
+        "yunus",
+        1
       ],
       [
         "ocean",
         "🌊",
         "okyanus",
-        0
-      ],
-      [
-        "forest",
-        "🌲",
-        "orman",
-        0
-      ],
-      [
-        "island",
-        "🏝️",
-        "ada",
-        0
-      ],
-      [
-        "desert",
-        "🏜️",
-        "çöl",
-        0
-      ],
-      [
-        "plant",
-        "🌱",
-        "bitki / dikmek",
         1
       ],
       [
-        "protect",
-        "🛡️",
-        "korumak",
-        1
-      ],
-      [
-        "recycle",
-        "♻️",
-        "geri dönüştürmek",
-        1
-      ],
-      [
-        "clean",
+        "amazing",
         "✨",
-        "temiz",
+        "harika / şaşırtıcı",
         2
       ],
       [
-        "love",
-        "❤️",
-        "sevmek",
+        "beautiful",
+        "🌺",
+        "güzel",
         2
       ],
       [
-        "share",
-        "🤲",
-        "paylaşmak",
+        "graceful",
+        "🦢",
+        "zarif",
+        2
+      ],
+      [
+        "huge",
+        "🏔️",
+        "devasa / kocaman",
+        2
+      ],
+      [
+        "fast",
+        "⚡",
+        "hızlı",
+        2
+      ],
+      [
+        "gentle",
+        "🕊️",
+        "nazik / uysal",
+        2
+      ],
+      [
+        "world",
+        "🌍",
+        "dünya",
+        2
+      ],
+      [
+        "dangerous",
+        "⚠️",
+        "tehlikeli",
         2
       ]
     ],
     "s": [
       [
-        "Our world is filled with breathtaking wonders.",
+        "Our planet Earth is a wonderful and beautiful world.",
         "🌍",
-        "Dünyamız nefes kesici harikalarla doludur."
+        "Gezegenimiz Dünya harika ve güzel bir dünyadır."
       ],
       [
-        "The snow-capped mountain reaches into the clouds.",
-        "🏔️",
-        "Karlarla kaplı dağ bulutlara kadar uzanır."
+        "A sea turtle swims gracefully across the blue ocean.",
+        "🐢",
+        "Bir deniz kaplumbağası mavi okyanusta zarifçe yüzer."
       ],
       [
-        "Vast blue oceans are home to playful whales.",
-        "🌊",
-        "Uçsuz bucaksız mavi okyanuslar oyuncu balinalara ev sahipliği yapar."
+        "Huge blue whales sing songs in the deep sea.",
+        "🐋",
+        "Devasa mavi balinalar derin denizde şarkılar söyler."
       ],
       [
-        "Plant a green tree to keep our air fresh and clean.",
-        "🌱",
-        "Havamızı temiz ve taze tutmak için yeşil bir ağaç dikin."
+        "Take the ferry across the water under the bridge.",
+        "⛴️",
+        "Köprünün altından feribotla suyun karşısına geçin."
       ],
       [
-        "We must protect every endangered animal and forest.",
-        "🛡️",
-        "Tehlike altındaki her hayvanı ve ormanı korumalıyız."
+        "Musicians play joyful music in the city square.",
+        "🎺",
+        "Müzisyenler şehir meydanında neşeli müzikler çalar."
       ],
       [
-        "Always recycle paper and plastic bottles.",
-        "♻️",
-        "Kâğıt ve plastik şişeleri her zaman geri dönüştürün."
+        "We protect our earth, oceans, and all creatures.",
+        "💚",
+        "Dünyamızı, okyanuslarımızı ve tüm canlıları koruyoruz."
       ]
     ]
   },
@@ -2603,9 +4040,8 @@ const ALLSETS = [
     "stage": "s2",
     "no": "⭐",
     "title": "Stage 2 Mid Review",
-    "tr": "2. Sınıf Yarıyıl Tekrarı",
-    "emoji": "⭐",
-    "mix": true,
+    "tr": "2. Sınıf Ara Tekrar",
+    "emoji": "🌟",
     "cats": [
       "Stories & Community",
       "Sports & Energy",
@@ -2613,21 +4049,33 @@ const ALLSETS = [
     ],
     "w": [
       [
-        "story",
-        "📜",
-        "hikâye",
+        "book",
+        "📖",
+        "kitap",
+        0
+      ],
+      [
+        "author",
+        "✍️",
+        "yazar",
+        0
+      ],
+      [
+        "police officer",
+        "👮",
+        "polis memuru",
+        0
+      ],
+      [
+        "firefighter",
+        "🧑‍🚒",
+        "itfaiyeci",
         0
       ],
       [
         "doctor",
-        "🩺",
+        "👨‍⚕️",
         "doktor",
-        0
-      ],
-      [
-        "park",
-        "🌳",
-        "park",
         0
       ],
       [
@@ -2637,15 +4085,21 @@ const ALLSETS = [
         1
       ],
       [
-        "catch",
-        "🧤",
-        "yakalamak",
+        "jump",
+        "🦘",
+        "zıplamak",
         1
       ],
       [
-        "healthy",
-        "🥗",
-        "sağlıklı",
+        "hop",
+        "🐇",
+        "sekmek",
+        1
+      ],
+      [
+        "clap",
+        "👏",
+        "el çırpmak",
         1
       ],
       [
@@ -2655,49 +4109,67 @@ const ALLSETS = [
         2
       ],
       [
-        "star",
-        "⭐",
-        "yıldız",
+        "moon",
+        "🌙",
+        "ay",
         2
       ],
       [
-        "ruler",
+        "shadow",
+        "👤",
+        "gölge",
+        2
+      ],
+      [
+        "square",
+        "⏹️",
+        "kare",
+        2
+      ],
+      [
+        "triangle",
+        "🔺",
+        "üçgen",
+        2
+      ],
+      [
+        "measure",
         "📏",
-        "cetvel",
+        "ölçmek",
         2
       ],
       [
-        "clock",
-        "🕐",
-        "saat",
+        "one hundred",
+        "💯",
+        "yüz",
         2
       ]
     ],
     "s": [
       [
-        "Read a wonderful story in the quiet park.",
-        "🌳",
-        "Sessiz parkta harika bir hikâye oku."
+        "Welcome to the Stage 2 Mid Review adventure!",
+        "🌟",
+        "2. Sınıf Ara Tekrar macerasına hoş geldiniz!"
       ],
       [
-        "The kind doctor keeps us strong and healthy.",
-        "🩺",
-        "İyi kalpli doktor bizi güçlü ve sağlıklı tutar."
+        "Doctors and nurses care for people with kindness.",
+        "👨‍⚕️",
+        "Doktorlar ve hemşireler insanlara nezaketle bakar."
       ],
       [
-        "The sun warms our playground during the day.",
-        "☀️",
-        "Güneş gün boyunca oyun alanımızı ısıtır."
-      ],
-      [
-        "Run and catch the bouncing ball with your friend.",
-        "🏃",
-        "Arkadaşınla birlikte zıplayan topun peşinden koş ve yakala."
-      ],
-      [
-        "Use your ruler to measure and check the clock.",
+        "Measure the length of shapes with a wooden ruler.",
         "📏",
-        "Ölçüm yapmak için cetvelini kullan ve saati kontrol et."
+        "Şekillerin uzunluğunu tahta bir cetvelle ölçün."
+      ],
+      [
+        "The bright sunshine makes your shadow change.",
+        "☀️",
+        "Parlak güneş ışığı gölgenin değişmesini sağlar."
+      ],
+      [
+        "Keep reading exciting books every single day!",
+        "📖",
+        "Her gün heyecan verici kitaplar okumaya devam edin!"
       ]
     ]
   },
@@ -2707,8 +4179,7 @@ const ALLSETS = [
     "no": "🌟",
     "title": "Nature & City Review",
     "tr": "Doğa ve Şehir Tekrarı",
-    "emoji": "🌟",
-    "mix": true,
+    "emoji": "🌿",
     "cats": [
       "Bugs & Nature",
       "Time & City",
@@ -2716,33 +4187,177 @@ const ALLSETS = [
     ],
     "w": [
       [
-        "bee",
-        "🐝",
-        "arı",
-        0
-      ],
-      [
         "butterfly",
         "🦋",
         "kelebek",
         0
       ],
       [
-        "castle",
-        "🏰",
-        "kale",
+        "bee",
+        "🐝",
+        "arı",
+        0
+      ],
+      [
+        "spider",
+        "🕷️",
+        "örümcek",
+        0
+      ],
+      [
+        "ant",
+        "🐜",
+        "karınca",
+        0
+      ],
+      [
+        "honey",
+        "🍯",
+        "bal",
+        0
+      ],
+      [
+        "planting",
+        "🌱",
+        "ekim / dikim",
         1
       ],
       [
-        "city",
-        "🏙️",
-        "şehir",
+        "watering",
+        "🚿",
+        "sulama",
         1
       ],
       [
-        "street",
-        "🛣️",
-        "cadde",
+        "tree",
+        "🌳",
+        "ağaç",
+        1
+      ],
+      [
+        "recycle",
+        "♻️",
+        "geri dönüştürmek",
+        1
+      ],
+      [
+        "kitchen",
+        "🍳",
+        "mutfak",
+        2
+      ],
+      [
+        "bedroom",
+        "🛏️",
+        "yatak odası",
+        2
+      ],
+      [
+        "stairs",
+        "🪜",
+        "merdivenler",
+        2
+      ],
+      [
+        "lift",
+        "🛗",
+        "asansör",
+        2
+      ],
+      [
+        "roof",
+        "🏠",
+        "çatı",
+        2
+      ],
+      [
+        "garden",
+        "🏡",
+        "bahçe",
+        2
+      ],
+      [
+        "warm",
+        "☀️",
+        "ılık",
+        2
+      ]
+    ],
+    "s": [
+      [
+        "Butterflies fly softly over colorful flowers.",
+        "🦋",
+        "Kelebekler renkli çiçeklerin üzerinde usulca uçar."
+      ],
+      [
+        "Always put plastic bottles in the recycle bin.",
+        "♻️",
+        "Plastik şişeleri her zaman geri dönüşüm kutusuna atın."
+      ],
+      [
+        "We plant seeds and water them every morning.",
+        "🌱",
+        "Tohumlar ekiyoruz ve onları her sabah suluyoruz."
+      ],
+      [
+        "Our city apartment has stairs and a fast lift.",
+        "🛗",
+        "Şehir apartmanımızda merdivenler ve hızlı bir asansör var."
+      ],
+      [
+        "Enjoy relaxing in the quiet green garden.",
+        "🏡",
+        "Sessiz yeşil bahçede dinlenmenin tadını çıkarın."
+      ]
+    ]
+  },
+  {
+    "id": "s2rev3",
+    "stage": "s2",
+    "no": "👑",
+    "title": "Grade 2 Grand Champion",
+    "tr": "2. Sınıf Büyük Şampiyon",
+    "emoji": "🏆",
+    "cats": [
+      "Master Words",
+      "Daily Life & City",
+      "Discovery & Action"
+    ],
+    "w": [
+      [
+        "planet",
+        "🪐",
+        "gezegen",
+        0
+      ],
+      [
+        "ocean",
+        "🌊",
+        "okyanus",
+        0
+      ],
+      [
+        "sea turtle",
+        "🐢",
+        "deniz kaplumbağası",
+        0
+      ],
+      [
+        "whale",
+        "🐋",
+        "balina",
+        0
+      ],
+      [
+        "dolphin",
+        "🐬",
+        "yunus",
+        0
+      ],
+      [
+        "ferry",
+        "⛴️",
+        "feribot",
         1
       ],
       [
@@ -2752,163 +4367,101 @@ const ALLSETS = [
         1
       ],
       [
+        "traffic",
+        "🚦",
+        "trafik",
+        1
+      ],
+      [
+        "musicians",
+        "🎺",
+        "müzisyenler",
+        1
+      ],
+      [
+        "map",
+        "🗺️",
+        "harita",
+        1
+      ],
+      [
+        "amazing",
+        "✨",
+        "harika",
+        2
+      ],
+      [
+        "beautiful",
+        "🌺",
+        "güzel",
+        2
+      ],
+      [
+        "gentle",
+        "🕊️",
+        "nazik",
+        2
+      ],
+      [
+        "huge",
+        "🏔️",
+        "devasa",
+        2
+      ],
+      [
+        "fast",
+        "⚡",
+        "hızlı",
+        2
+      ],
+      [
         "world",
         "🌍",
         "dünya",
         2
       ],
       [
-        "ocean",
-        "🌊",
-        "okyanus",
-        2
-      ],
-      [
-        "forest",
-        "🌲",
-        "orman",
-        2
-      ],
-      [
-        "protect",
-        "🛡️",
-        "korumak",
-        2
-      ]
-    ],
-    "s": [
-      [
-        "The colorful butterfly flutters near the ancient castle.",
-        "🏰",
-        "Renkli kelebek antik kalenin yanında kanat çırpar."
-      ],
-      [
-        "The busy city has a wide bridge over the river.",
-        "🌉",
-        "Hareketli şehrin nehri üzerinde geniş bir köprü vardır."
-      ],
-      [
-        "A gentle bee gathers honey in the green forest.",
-        "🐝",
-        "Uysal arı yeşil ormanda bal toplar."
-      ],
-      [
-        "We cross the safe city street together.",
-        "🛣️",
-        "Güvenli şehir caddesini birlikte geçiyoruz."
-      ],
-      [
-        "Together we can protect our beautiful blue world.",
-        "🌍",
-        "Güzel mavi dünyamızı birlikte koruyabiliriz."
-      ]
-    ]
-  },
-  {
-    "id": "s2rev3",
-    "stage": "s2",
-    "no": "👑",
-    "title": "Grade 2 Grand Champion",
-    "tr": "2. Sınıf Şampiyon Tekrar",
-    "emoji": "👑",
-    "mix": true,
-    "cats": [
-      "Master Words",
-      "Daily Life & City",
-      "Discovery & Action"
-    ],
-    "w": [
-      [
-        "read",
-        "👓",
-        "okumak",
-        0
-      ],
-      [
         "help",
         "🤝",
         "yardım etmek",
-        0
-      ],
-      [
-        "strong",
-        "💪",
-        "güçlü",
-        0
-      ],
-      [
-        "rainbow",
-        "🌈",
-        "gökkuşağı",
-        1
-      ],
-      [
-        "flower",
-        "🌸",
-        "çiçek",
-        1
-      ],
-      [
-        "museum",
-        "🏛️",
-        "müze",
-        1
-      ],
-      [
-        "crosswalk",
-        "🦓",
-        "yaya geçidi",
         2
       ],
       [
-        "mountain",
-        "🏔️",
-        "dağ",
-        2
-      ],
-      [
-        "plant",
-        "🌱",
-        "bitki dikmek",
-        2
-      ],
-      [
-        "smile",
-        "😊",
-        "gülümsemek",
+        "champion",
+        "🏆",
+        "şampiyon",
         2
       ]
     ],
     "s": [
       [
-        "Read every day to become smart and strong.",
-        "👓",
-        "Akıllı ve güçlü olmak için her gün kitap oku."
+        "You are the Grand Champion of Primary English!",
+        "🏆",
+        "İlkokul İngilizcesinin Büyük Şampiyonusun!"
       ],
       [
-        "Always smile and help people whenever you can.",
-        "🤝",
-        "Her zaman gülümse ve elinden geldiğince insanlara yardım et."
+        "You have mastered Cambridge Global English Stage 1 and 2.",
+        "🎓",
+        "Cambridge Global English 1 ve 2. Seviyeleri başarıyla tamamladın."
       ],
       [
-        "A bright rainbow appeared above the snowy mountain.",
-        "🌈",
-        "Karlı dağın üzerinde parlak bir gökkuşağı belirdi."
+        "Explore the oceans, the cities, and the wide world.",
+        "🌍",
+        "Okyanusları, şehirleri ve geniş dünyayı keşfet."
       ],
       [
-        "Plant a lovely flower in front of the local museum.",
-        "🏛️",
-        "Yerel müzenin önüne sevimli bir çiçek dikin."
+        "Speak English proudly with your friends and teachers.",
+        "🗣️",
+        "Arkadaşların ve öğretmenlerinle gururla İngilizce konuş."
       ],
       [
-        "Use the marked crosswalk to safely cross the avenue.",
-        "🦓",
-        "Caddeden güvenle geçmek için işaretli yaya geçidini kullanın."
+        "Keep learning, dreaming, and flying high!",
+        "🚀",
+        "Öğrenmeye, hayal kurmaya ve yükseklere uçmaya devam et!"
       ]
     ]
   }
 ];
-
 
 /* Toplam kelime sayısı */
 const totalWords = ALLSETS.reduce((acc, u) => acc + u.w.length, 0);

@@ -141,6 +141,7 @@ const APP = {
       home: () => this.vHome(),
       stage: () => this.vStage(),
       unit: () => this.vUnit(),
+      learn: () => this.vLearn(),
       lesson: () => this.vLesson(),
       game: () => this.vGame(),
       songs: () => this.vSongs(),
@@ -244,25 +245,56 @@ const APP = {
   },
 
   /* ---------- 🎮 OYUN SEÇİMİ ---------- */
+  /* ---------- 🎮 OYUN SEÇİMİ ---------- */
   vUnit() {
     const u = unitById(this.unitId);
     if (!u) return this.vHome();
     const stn = u.stage === 's1' ? 1 : 2;
     const eng = ENGINES.filter((e) => e.stages.includes(stn));
+    const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || {
+      name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
+      quoteEn: "Let's explore new words and play games!", quoteTr: "Haydi yeni kelimeler keşfedelim ve oyunlar oynayalım!",
+      badge: "🦜 Polly", color: "#8b5cf6", bg: "#f3e8ff", anim: "anim-bounce"
+    };
+    const vids = (typeof LVID !== 'undefined' && LVID[u.id]) || [];
+
     return (
       this.bar() +
       `
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
      <div><h2>${u.title}</h2><div class="sub">${u.tr} · ${u.w.length} kelime · ${u.cats.length} kategori</div></div>
-     ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="margin-left:auto;font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı</button>' : ''}</div>
-   <div class="usec">🔤 Kelimeler <small>(Dinlemek için dokun)</small></div>
+     <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+       <button class="btn purple" id="learn-btn" style="font-size:1em;padding:10px 16px">📖 Kelime Öğrenelim</button>
+       ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="font-size:1em;padding:10px 16px">📚 Konu Anlatımı</button>' : ''}
+     </div>
+   </div>
+
+   <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg}">
+     <div class="mascot-avatar-wrap">
+       <div class="mascot-tag ${m.anim}">${m.tag}</div>
+       <span class="mascot-show">${esc(m.show)}</span>
+     </div>
+     <div class="mascot-bubble">
+       <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
+       <div class="mascot-quote-tr">${esc(m.quoteTr)}</div>
+     </div>
+   </div>
+
+   <div class="unit-actions-row">
+     <button class="btn purple big" id="learn-btn-hero" style="font-size:1.05em;padding:12px 20px;box-shadow:0 4px 12px rgba(139,92,246,0.25)">📖 Kelime Öğrenelim & Kartlar (${u.w.length} Kelime)</button>
+     ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold big" id="lbtn-hero" style="font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı (Ders)</button>' : ''}
+     ${vids.length ? `<button class="btn blue big" id="videos-scroll-btn" style="font-size:1.05em;padding:12px 18px">🎬 Eğitici Videolar (${vids.length})</button>` : ''}
+   </div>
+
+   <div class="usec">🔤 Kelimeler <small>(Dinlemek için dokun · ${u.w.length} Kelime)</small></div>
    <div class="word-wall">${u.w
      .map(
        (w) =>
          `<span class="word-pill" data-w="${esc(w[0])}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])}</span>`
      )
      .join('')}</div>
-   <div class="usec">🎮 Oyunlar <span class="badge blue">24 Oyun Türü</span></div>
+
+   <div class="usec">🎮 Oyunlar <span class="badge blue">${eng.length} Oyun Türü</span></div>
    <div class="game-grid">${eng
      .map((e) => {
        const b = (store.get('best') || {})[e.id + '|' + u.id];
@@ -276,7 +308,92 @@ const APP = {
        }</div>
      </div>`;
      })
-     .join('')}</div>`
+     .join('')}</div>
+
+   ${vids.length ? `
+   <div class="usec" id="unit-videos-sec" style="margin-top:24px">🎬 Eğitici YouTube Videoları <span class="badge red">${vids.length} Video</span></div>
+   <div class="video-shelf-box">
+     <div class="video-player-wrap">
+       <iframe id="unit-video-frame" src="https://www.youtube-nocookie.com/embed/${vids[0][0]}?rel=0" title="${esc(vids[0][1])}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+     </div>
+     <div class="muted" style="margin:10px 0 6px;font-weight:700" id="unit-video-title">🎬 ${esc(vids[0][1])}</div>
+     <div class="video-list-scroll">
+       ${vids.map((v, i) => `<button class="video-pill-btn ${i===0?'active':''}" data-vid="${v[0]}" data-tit="${esc(v[1])}">▶️ ${esc(v[1])}</button>`).join('')}
+     </div>
+   </div>` : ''}`
+    );
+  },
+
+  /* ---------- 📖 KELİME ÖĞRENELİM (THEATER & FLASHCARDS) ---------- */
+  vLearn() {
+    const u = unitById(this.unitId);
+    if (!u) return this.vHome();
+    const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || {
+      name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
+      quoteEn: "Let's learn new words together!", quoteTr: "Birlikte yeni kelimeler öğrenelim!",
+      badge: "🦜 Polly", color: "#8b5cf6", bg: "#f3e8ff", anim: "anim-bounce"
+    };
+    const words = u.w || [];
+    const idx = Math.max(0, Math.min(this.learnIdx || 0, words.length - 1));
+    const cur = words[idx] || words[0] || ['word', '🔤', 'kelime', 0];
+    const catName = (u.cats && u.cats[cur[3]]) || 'Kelime';
+
+    return (
+      this.bar() +
+      `
+    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
+      <div><h2>${u.title} · Kelime Öğrenelim</h2>
+      <div class="sub">${u.tr} · Kart ${idx + 1} / ${words.length}</div></div>
+      <button class="btn white" id="lback" style="margin-left:auto;font-size:1em;padding:10px 16px">🔙 Üniteye Dön</button>
+    </div>
+
+    <div class="learn-box">
+      <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};width:100%">
+        <div class="mascot-avatar-wrap">
+          <div class="mascot-tag ${m.anim}">${m.tag}</div>
+          <span class="mascot-show">${esc(m.show)}</span>
+        </div>
+        <div class="mascot-bubble">
+          <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
+          <div class="mascot-quote-tr">${esc(m.quoteTr)}</div>
+        </div>
+      </div>
+
+      <div class="learn-theater-card">
+        <span class="learn-cat-badge">📂 ${esc(catName)}</span>
+        <span class="learn-count-badge">Kart ${idx + 1} / ${words.length}</span>
+        <div class="learn-emoji-huge">${cur[1] || '🔤'}</div>
+        <div class="learn-word-en">${esc(cur[0])}</div>
+        <div class="learn-word-tr">${esc(cur[2])}</div>
+
+        <div class="learn-mascot-cheer" style="border-left-color:${m.color}">
+          <span class="mascot-tag ${m.anim}">${m.tag}</span>
+          <div class="learn-mascot-bubble">
+            <b>${esc(m.name)}</b>: "Say it with me: <b>${esc(cur[0])}</b>! Great pronunciation!"
+          </div>
+        </div>
+
+        <div class="learn-voice-btns">
+          <button class="btn green big" id="learn-speak-btn">🎧 Dinle</button>
+          <button class="btn blue big" id="learn-slow-btn">🐢 Yavaş Dinle</button>
+          <button class="btn white big" id="learn-repeat-btn">🗣️ Polly ile Tekrar</button>
+        </div>
+      </div>
+
+      <div class="learn-nav-bar">
+        <button class="btn white" id="learn-prev" ${idx === 0 ? 'disabled' : ''}>⬅️ Önceki</button>
+        <button class="btn purple" id="learn-rand">🔀 Karışık</button>
+        <button class="btn green" id="learn-next">${idx >= words.length - 1 ? '🏁 Başa Dön' : 'Sonraki ➡️'}</button>
+      </div>
+
+      <div class="usec" style="width:100%;margin-top:12px">🔤 Ünitenin Tüm Kelimeleri (${words.length} Kelime) <small>(Seçmek için dokun)</small></div>
+      <div class="word-wall" style="width:100%">${words
+        .map(
+          (w, i) =>
+            `<span class="word-pill ${i === idx ? 'active' : ''}" data-wi="${i}" style="cursor:pointer;${i === idx ? 'border-color:#8b5cf6;background:#f3e8ff;' : ''}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])} <small class="muted">(${esc(w[2])})</small></span>`
+        )
+        .join('')}</div>
+    </div>`
     );
   },
 
@@ -450,6 +567,7 @@ const APP = {
       if (e) e.addEventListener(ev, fn);
     };
     const backMap = {
+      learn: 'unit',
       lesson: 'unit',
       game: 'unit',
       unit: 'stage',
@@ -475,11 +593,107 @@ const APP = {
       FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
     });
     on('#vbtn', 'click', () => this.showVoices());
+
+    const startLearn = () => {
+      MEDIA.fx('magic');
+      this.learnIdx = 0;
+      this.go('learn', { unitId: this.unitId });
+    };
+    on('#learn-btn', 'click', startLearn);
+    on('#learn-btn-hero', 'click', startLearn);
+    on('#lback', 'click', () => {
+      MEDIA.fx('click');
+      this.go('unit', { unitId: this.unitId });
+    });
+    on('#videos-scroll-btn', 'click', () => {
+      MEDIA.fx('click');
+      const el = document.getElementById('unit-videos-sec');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+
     on('#lbtn', 'click', () => {
       MEDIA.fx('magic');
       this.lesIdx = 0;
       this.go('lesson', { unitId: this.unitId });
     });
+    on('#lbtn-hero', 'click', () => {
+      MEDIA.fx('magic');
+      this.lesIdx = 0;
+      this.go('lesson', { unitId: this.unitId });
+    });
+
+    // Learn Theater bindings
+    on('#learn-speak-btn', 'click', () => {
+      const u = unitById(this.unitId);
+      if (u && u.w) {
+        const cur = u.w[this.learnIdx || 0];
+        if (cur) {
+          MEDIA.fx('pop');
+          MEDIA.speak(cur[0]);
+          FX.notes(innerWidth / 2, innerHeight - 160);
+        }
+      }
+    });
+    on('#learn-slow-btn', 'click', () => {
+      const u = unitById(this.unitId);
+      if (u && u.w) {
+        const cur = u.w[this.learnIdx || 0];
+        if (cur) {
+          MEDIA.fx('click');
+          MEDIA.speak(cur[0], 0.55);
+        }
+      }
+    });
+    on('#learn-repeat-btn', 'click', () => {
+      const u = unitById(this.unitId);
+      if (u && u.w) {
+        const cur = u.w[this.learnIdx || 0];
+        if (cur) {
+          MEDIA.fx('magic');
+          FX.confetti(22);
+          MEDIA.speak('Say it with me! ' + cur[0]);
+        }
+      }
+    });
+    on('#learn-prev', 'click', () => {
+      MEDIA.fx('click');
+      this.learnIdx = Math.max(0, (this.learnIdx || 0) - 1);
+      this.render();
+    });
+    on('#learn-next', 'click', () => {
+      MEDIA.fx('pop');
+      const u = unitById(this.unitId);
+      const totalW = (u && u.w) ? u.w.length : 1;
+      this.learnIdx = ((this.learnIdx || 0) + 1) % totalW;
+      this.render();
+    });
+    on('#learn-rand', 'click', () => {
+      MEDIA.fx('whoosh');
+      const u = unitById(this.unitId);
+      const totalW = (u && u.w) ? u.w.length : 1;
+      this.learnIdx = rnd(totalW);
+      this.render();
+    });
+
+    $$('.video-pill-btn[data-vid]').forEach((b) =>
+      b.addEventListener('click', () => {
+        MEDIA.fx('click');
+        $$('.video-pill-btn').forEach((x) => x.classList.remove('active'));
+        b.classList.add('active');
+        const frame = $('#unit-video-frame');
+        const tit = $('#unit-video-title');
+        if (frame) frame.src = `https://www.youtube-nocookie.com/embed/${b.dataset.vid}?rel=0`;
+        if (tit) tit.textContent = '🎬 ' + b.dataset.tit;
+      })
+    );
+
+    $$('.word-pill[data-wi]').forEach((p) =>
+      p.addEventListener('click', () => {
+        MEDIA.fx('pop');
+        this.learnIdx = +p.dataset.wi;
+        this.render();
+      })
+    );
     on('#mas', 'click', () => {
       const ps = [
         'Hello! I’m Polly! 🦜',
@@ -930,9 +1144,11 @@ const APP = {
           <button class="btn small white" data-d="once">🔁 Bir Daha</button>
         </div></div>`;
     } else if (n === L.length) {
+      const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
       body = `<div class="lslide"><div class="lscene f" style="font-size:44px">📚</div>
         <div class="len">Our New Words! 🌟</div>
         <div class="ltr">Dokun, dinle ve birlikte söyle!</div>
+        ${m ? `<div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};margin:14px auto;max-width:580px;text-align:left"><div class="mascot-avatar-wrap"><span class="mascot-tag ${m.anim}">${m.tag}</span><span class="mascot-show">${esc(m.show)}</span></div><div class="mascot-bubble"><div class="mascot-quote-en">"${esc(m.quoteEn)}"</div><div class="mascot-quote-tr">${esc(m.quoteTr)}</div></div></div>` : ''}
         <div class="lwords">${u.w
           .map(
             (w, i) =>
@@ -948,17 +1164,15 @@ const APP = {
       const vs = LVID[u.id] || [],
         q = LQ[u.id] || ('english for kids ' + u.title);
       const online = typeof navigator !== 'undefined' && navigator.onLine !== false; /* 🛡️ internet yoksa video yerine nazik mesaj */
+      const firstV = vs[0] || ['tVlcKp3bWH8', 'Educational Video'];
       body = `<div class="lslide"><div class="lscene w">📺</div>
-        <div class="len">Video Time! 🎬</div>
-        <div class="ltr">Şimdi video zamanı — birlikte izleyelim!</div>
+        <div class="len">Video Time! (${vs.length} Eğitici Video) 🎬</div>
+        <div class="ltr">Şimdi video zamanı — seç ve birlikte izle!</div>
         ${
           online
-            ? vs
-                .map(
-                  (v) =>
-                    `<div class="lvideo"><iframe src="https://www.youtube-nocookie.com/embed/${v[0]}?rel=0" title="${esc(v[1])}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="muted" style="margin:-4px 0 8px">🎬 ${esc(v[1])} · <a href="https://www.youtube.com/watch?v=${v[0]}" target="_blank" rel="noopener" style="color:#2563eb;font-weight:700">▶ YouTube'da aç</a></div>`
-                )
-                .join('')
+            ? `<div class="lvideo"><iframe id="les-video-frame" src="https://www.youtube-nocookie.com/embed/${firstV[0]}?rel=0" title="${esc(firstV[1])}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+               <div class="muted" style="margin:-4px 0 8px">🎬 <span id="les-video-title">${esc(firstV[1])}</span></div>
+               <div class="video-list-scroll" style="max-width:620px;margin:0 auto 12px auto">${vs.map((v, i) => `<button class="video-pill-btn ${i===0?'active':''}" data-lvid="${v[0]}" data-ltit="${esc(v[1])}">▶️ ${esc(v[1])}</button>`).join('')}</div>`
             : `<div class="lscene f" style="font-size:56px">📡</div><div class="ltr" style="margin:10px 0">İnternet bağlantısı yok — video için internet gerekiyor.<br>Dersin diğer tüm bölümleri internetsiz de çalışır! ✅</div>`
         }
         <a class="btn white" style="text-decoration:none" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">🔎 Bu konunun tüm videoları</a></div>`;
@@ -1137,6 +1351,18 @@ const APP = {
         };
         drawQ();
       }
+    }
+    if (n === L.length + 2) {
+      document.querySelectorAll('.video-pill-btn[data-lvid]').forEach((b) => {
+        b.onclick = () => {
+          document.querySelectorAll('.video-pill-btn[data-lvid]').forEach((x) => x.classList.remove('active'));
+          b.classList.add('active');
+          const vf = document.getElementById('les-video-frame');
+          const vt = document.getElementById('les-video-title');
+          if (vf) vf.src = `https://www.youtube-nocookie.com/embed/${b.dataset.lvid}?rel=0`;
+          if (vt) vt.textContent = b.dataset.ltit;
+        };
+      });
     }
     if (n === L.length + 3) {
       const p = document.getElementById('lP'),
