@@ -57,7 +57,9 @@ const ENGINES_B = [
         if (o.dataset.w === currentCall[0]) {
           o.classList.add('ok');
           o.style.pointerEvents = 'none';
-          marked.add(currentCall[0]);
+          const matchedWord = currentCall[0];
+          currentCall = null;
+          marked.add(matchedWord);
           MEDIA.fx('correct');
           FX.stars();
           api.add(15);
@@ -225,7 +227,7 @@ const ENGINES_B = [
         timer = setTimeout(() => {
           char.style.top = '100%';
           r++;
-          setTimeout(popNext, 400);
+          timer = setTimeout(popNext, 400);
         }, cfg.speed);
       };
 
@@ -233,13 +235,14 @@ const ENGINES_B = [
         h.onclick = (e) => {
           const char = h.querySelector('.mole-char');
           if (char.style.top !== '100%' && char.dataset.ok === '1') {
+            char.dataset.ok = '0';
             char.style.top = '100%';
             MEDIA.fx('correct');
             FX.stars(e.clientX, e.clientY);
             api.add(10);
             if (timer) clearTimeout(timer);
             r++;
-            setTimeout(popNext, 500);
+            timer = setTimeout(popNext, 500);
           }
         };
       });
@@ -301,8 +304,10 @@ const ENGINES_B = [
         const slot = api.root.querySelector('#ss');
         const pieces = api.root.querySelectorAll('.w-piece');
 
+        let scrambleLock = false;
         pieces.forEach(btn => {
           btn.onclick = () => {
+            if (scrambleLock) return;
             built.push(btn.textContent.trim());
             btn.disabled = true;
             btn.style.opacity = '0.3';
@@ -310,6 +315,7 @@ const ENGINES_B = [
             MEDIA.fx('pop');
 
             if (built.length === words.length) {
+              scrambleLock = true;
               if (built.join(' ').toLowerCase() === cleanSentence.toLowerCase()) {
                 MEDIA.fx('correct');
                 FX.fb(true);
@@ -327,6 +333,7 @@ const ENGINES_B = [
                     b.disabled = false;
                     b.style.opacity = '1';
                   });
+                  scrambleLock = false;
                 }, 800);
               }
             }
@@ -334,6 +341,7 @@ const ENGINES_B = [
         });
 
         api.root.querySelector('#rst').onclick = () => {
+          if (scrambleLock) return;
           built.length = 0;
           slot.innerHTML = '';
           pieces.forEach(b => {
@@ -368,10 +376,11 @@ const ENGINES_B = [
           return;
         }
         api.progress(currentIdx + 1, words.length);
-        const target = words[currentIdx][0].toUpperCase();
+        const displayWord = words[currentIdx][0].toUpperCase();
+        const cleanTarget = displayWord.replace(/[^A-Z]/g, '') || displayWord;
         let clicked = '';
 
-        const letters = target.split('');
+        const letters = cleanTarget.split('');
         const fillers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const totalCells = cfg.grid * cfg.grid;
         const gridLetters = [...letters];
@@ -384,7 +393,7 @@ const ENGINES_B = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${words[currentIdx][1]}</span>
-              <div class="pw">Ara: <b style="color:#7c3aed">${target}</b> (${esc(words[currentIdx][2])})</div>
+              <div class="pw">Ara: <b style="color:#7c3aed">${esc(displayWord)}</b> (${esc(words[currentIdx][2])})</div>
               <div class="pw" id="srch-status" style="font-size:1.3em;letter-spacing:4px;color:#2563eb">_ _ _</div>
             </div>
             <div class="grid-search" id="gs" style="display:grid;grid-template-columns:repeat(${cfg.grid},1fr);gap:8px;max-width:320px;margin:14px auto">
@@ -394,20 +403,20 @@ const ENGINES_B = [
 
         MEDIA.speak(words[currentIdx][0]);
         const statusEl = api.root.querySelector('#srch-status');
-        statusEl.textContent = '_ '.repeat(target.length);
+        statusEl.textContent = '_ '.repeat(cleanTarget.length);
 
         api.root.querySelectorAll('.g-cell').forEach(btn => {
           btn.onclick = () => {
             const letter = btn.textContent.trim();
-            const nextExpected = target[clicked.length];
+            const nextExpected = cleanTarget[clicked.length];
             if (letter === nextExpected) {
               clicked += letter;
               btn.classList.add('ok');
               btn.disabled = true;
               MEDIA.fx('pop');
-              statusEl.textContent = clicked + ' _ '.repeat(target.length - clicked.length);
+              statusEl.textContent = clicked + ' _ '.repeat(cleanTarget.length - clicked.length);
 
-              if (clicked === target) {
+              if (clicked === cleanTarget) {
                 MEDIA.fx('correct');
                 FX.stars();
                 api.add(15);
@@ -470,9 +479,12 @@ const ENGINES_B = [
             </div>
           </div>`;
 
+        let locked = false;
         api.root.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
+            if (locked) return;
             if (o.dataset.odd === '1') {
+              locked = true;
               o.classList.add('ok');
               MEDIA.fx('correct');
               FX.fb(true);
@@ -480,6 +492,7 @@ const ENGINES_B = [
               r++;
               setTimeout(round, 850);
             } else {
+              locked = true;
               o.classList.add('no');
               MEDIA.fx('wrong');
               setTimeout(() => { r++; round(); }, 1100);
@@ -529,7 +542,10 @@ const ENGINES_B = [
 
         MEDIA.speak(w[0]);
         api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
+        let repLocked = false;
         api.root.querySelector('#rep').onclick = () => {
+          if (repLocked) return;
+          repLocked = true;
           MEDIA.fx('correct');
           FX.stars();
           api.add(10);
@@ -590,9 +606,12 @@ const ENGINES_B = [
 
         MEDIA.speak(w[0]);
 
+        let qLocked = false;
         qArea.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
+            if (qLocked) return;
             if (o.dataset.ok === '1') {
+              qLocked = true;
               const tile = api.root.querySelector(`.p-tile[data-idx="${opened}"]`);
               if (tile) tile.style.opacity = '0';
               opened++;
@@ -653,15 +672,19 @@ const ENGINES_B = [
 
         MEDIA.speak(w[0]);
 
+        let locked = false;
         api.root.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
+            if (locked) return;
             if (o.dataset.ok === '1') {
+              locked = true;
               o.classList.add('ok');
               MEDIA.fx('correct');
               step++;
               api.add(10);
               setTimeout(round, 700);
             } else {
+              locked = true;
               o.classList.add('no');
               MEDIA.fx('wrong');
               setTimeout(round, 900);

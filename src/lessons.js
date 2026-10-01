@@ -1247,7 +1247,13 @@ const LQ = {
   s2u6: 'the bees go buzzing super simple songs',
   s2u7: 'walking in the forest super simple songs',
   s2u8: 'my house song for kids english',
-  s2u9: 'the city song for kids english'
+  s2u9: 'the city song for kids english',
+  s1rev1: 'grade 1 english vocabulary review for kids',
+  s1rev2: 'cambridge primary english review songs for kids',
+  s1rev3: 'grade 1 end of year english celebration songs',
+  s2rev1: 'grade 2 english vocabulary review for kids',
+  s2rev2: 'cambridge primary english year 2 revision songs',
+  s2rev3: 'grade 2 english celebration and review for kids'
 };
 
 /* 🌟 Gerçek Çizgi Film Maskotları & Karakterler (Her Ünite İçin Canlı Karakterler) */

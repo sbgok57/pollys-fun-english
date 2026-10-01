@@ -4478,9 +4478,16 @@ function esc(s) {
 }
 
 function el(html) {
-  const t = document.createElement('template');
-  t.innerHTML = html.trim();
-  return t.content.firstElementChild;
+  try {
+    const t = document.createElement('template');
+    if (t && t.content && t.content.firstElementChild) {
+      t.innerHTML = html.trim();
+      if (t.content.firstElementChild) return t.content.firstElementChild;
+    }
+  } catch (e) {}
+  const d = document.createElement('div');
+  d.innerHTML = (html || '').trim();
+  return d.firstElementChild || d;
 }
 
 function pick(arr) {

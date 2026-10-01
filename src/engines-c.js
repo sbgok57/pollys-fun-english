@@ -16,13 +16,13 @@ const ENGINES_C=[
         <div class="big-emoji popflash">${w[1]}</div><div class="pw">${esc(w[0])}</div>
         <div class="muted">${step+1} / ${seq.length}</div></div>`;
       MEDIA.speak(w[0]);step++;setTimeout(show,1500)};
-    const ask=()=>{ let next=0;
+    const ask=()=>{ let next=0, locked=false;
       api.root.innerHTML=`<div class="center"><div class="prompt-box"><div class="pw">Şimdi tekrarla! 🎯</div></div>
         <div class="opt-grid" id="sq">${shuffle(seq).map(w=>`<div class="opt" data-w="${esc(w[0])}">
           <span class="oe">${w[1]}</span><span class="ow">${esc(w[0])}</span></div>`).join('')}</div></div>`;
-      api.root.querySelector('#sq').onclick=e=>{const o=e.target.closest('.opt');if(!o)return;
+      api.root.querySelector('#sq').onclick=e=>{const o=e.target.closest('.opt');if(!o||locked)return;
         if(o.dataset.w===seq[next][0]){o.classList.add('ok');o.style.pointerEvents='none';MEDIA.fx('pop');next++;
-          if(next===seq.length){MEDIA.fx('correct');FX.fb(true);api.add(15);r++;setTimeout(round,950)}}
+          if(next===seq.length){locked=true;MEDIA.fx('correct');FX.fb(true);api.add(15);r++;setTimeout(round,950)}}
         else{o.classList.add('no');MEDIA.fx('wrong')}}};
     show();};
   round();
@@ -78,11 +78,19 @@ const ENGINES_C=[
         <span class="ow" style="font-size:2.2em;color:#7c3aed">${L}</span></div>`).join('')}</div></div>`;
     MEDIA.speak(w[0]);
     api.root.querySelector('#lh').onclick=()=>MEDIA.speak(w[0]);
+    let locked = false;
     api.root.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
-      if(o.dataset.l===C){o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(C);api.add(10);i++;setTimeout(round,850)}
-      else{o.classList.add('no');MEDIA.fx('wrong');
+      if(locked) return;
+      if(o.dataset.l===C){
+        locked = true;
+        o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(C);api.add(10);i++;setTimeout(round,850);
+      } else {
+        locked = true;
+        o.classList.add('no');MEDIA.fx('wrong');
         api.root.querySelectorAll('.opt').forEach(x=>{if(x.dataset.l===C)x.classList.add('ok')});
-        setTimeout(()=>{i++;round()},1300)}});
+        setTimeout(()=>{i++;round()},1300);
+      }
+    });
   };round();
  }},
 
@@ -109,9 +117,17 @@ const ENGINES_C=[
         <span class="ow" style="font-size:1.3em">${esc(o[0])}</span></div>`).join('')}</div></div>`;
     MEDIA.speak(r.s[0],.85);
     api.root.querySelector('#cl').onclick=()=>MEDIA.speak(r.s[0],.85);
+    let locked = false;
     api.root.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
-      if(o.dataset.ok==='1'){o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(r.s[0],.9);api.add(10);i++;setTimeout(round,1100)}
-      else{o.classList.add('no');MEDIA.fx('wrong');setTimeout(()=>{i++;round()},1200)}});
+      if(locked) return;
+      if(o.dataset.ok==='1'){
+        locked = true;
+        o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(r.s[0],.9);api.add(10);i++;setTimeout(round,1100);
+      } else {
+        locked = true;
+        o.classList.add('no');MEDIA.fx('wrong');setTimeout(()=>{i++;round()},1200);
+      }
+    });
   };round();
  }},
 
@@ -139,10 +155,18 @@ const ENGINES_C=[
       <div class="opt-grid">${opts.map(o=>`<div class="opt" data-ok="${o===w?1:0}"><span class="oe">${o[1]}</span></div>`).join('')}</div>`;
     MEDIA.speak(w[0]);
     const sb=RQ.querySelector('#rs');if(sb)sb.onclick=()=>MEDIA.speak(w[0]);
+    let locked = false;
     RQ.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
-      if(done)return;
-      if(o.dataset.ok==='1'){o.classList.add('ok');MEDIA.fx('hop');correct++;me+=Math.round(100/cfg.qs)+2;move();setTimeout(q,650)}
-      else{o.classList.add('no');MEDIA.fx('wrong');setTimeout(q,850)}})};
+      if(done || locked)return;
+      if(o.dataset.ok==='1'){
+        locked = true;
+        o.classList.add('ok');MEDIA.fx('hop');correct++;me+=Math.round(100/cfg.qs)+2;move();setTimeout(q,650);
+      } else {
+        locked = true;
+        o.classList.add('no');MEDIA.fx('wrong');setTimeout(q,850);
+      }
+    });
+  };
   iv=setInterval(()=>{if(done)return;ai+=cfg.ai;move()},2500);
   api.cleanup(()=>clearInterval(iv));
   move();q();
@@ -165,11 +189,19 @@ const ENGINES_C=[
       <div class="opt-grid">${opts.map(o=>`<div class="opt txt" data-ok="${o===correct?1:0}">
         <span class="ow" style="font-size:1.5em">${o[1]} ${esc(o[0])}</span></div>`).join('')}</div></div>`;
     MEDIA.speak('How many?');
+    let locked = false;
     api.root.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
-      if(o.dataset.ok==='1'){o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(correct[0]+'!');api.add(10);i++;setTimeout(round,900)}
-      else{o.classList.add('no');MEDIA.fx('wrong');
+      if(locked) return;
+      if(o.dataset.ok==='1'){
+        locked = true;
+        o.classList.add('ok');MEDIA.fx('correct');FX.fb(true);MEDIA.speak(correct[0]+'!');api.add(10);i++;setTimeout(round,900);
+      } else {
+        locked = true;
+        o.classList.add('no');MEDIA.fx('wrong');
         api.root.querySelectorAll('.opt').forEach(x=>{if(x.dataset.ok==='1')x.classList.add('ok')});
-        setTimeout(()=>{i++;round()},1400)}});
+        setTimeout(()=>{i++;round()},1400);
+      }
+    });
   };round();
  }},
 
@@ -512,6 +544,7 @@ const ENGINES_C=[
         const clrBtn = api.root.querySelector('#t-clr');
         if (clrBtn) {
           clrBtn.onclick = () => {
+            if (hasCompleted) return;
             MEDIA.fx('whoosh');
             coveredPoints.clear();
             if (statusEl) {
@@ -527,6 +560,7 @@ const ENGINES_C=[
         const nxtBtn = api.root.querySelector('#t-nxt');
         if (nxtBtn) {
           nxtBtn.onclick = () => {
+            if (hasCompleted) return;
             MEDIA.fx('click');
             if (isLetterMode && letterIdx < wordText.length - 1) {
               letterIdx++;

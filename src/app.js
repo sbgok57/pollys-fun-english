@@ -844,12 +844,19 @@ const APP = {
       }
     };
 
+    let isDestroyed = false;
+    self.cleanups.push(() => {
+      isDestroyed = true;
+    });
+
     const api = {
       root: area,
       unit: u,
       lv: e.levels[this.lvIdx] ? e.levels[this.lvIdx].c : {},
       score: score,
+      isDestroyed: () => isDestroyed,
       add(n) {
+        if (isDestroyed) return;
         score += n;
         self.currentScore = score;
         this.score = score;
@@ -871,6 +878,7 @@ const APP = {
         }
       },
       progress(c, t) {
+        if (isDestroyed) return;
         const p = Math.min(100, Math.round((c / t) * 100));
         const b = document.getElementById('gtbi');
         if (b) b.style.width = p + '%';
@@ -878,6 +886,7 @@ const APP = {
         if (pc) pc.textContent = p + '%';
       },
       info(html) {
+        if (isDestroyed) return null;
         const i = document.getElementById('ginfo');
         if (i) {
           i.innerHTML = html;
@@ -885,8 +894,8 @@ const APP = {
         }
         return null;
       },
-      speak: (t, r, cb) => MEDIA.speak(t, r, cb),
-      fx: (n) => MEDIA.fx(n),
+      speak: (t, r, cb) => !isDestroyed && MEDIA.speak(t, r, cb),
+      fx: (n) => !isDestroyed && MEDIA.fx(n),
       cleanup(f) {
         self.cleanups.push(f);
       },
@@ -898,6 +907,8 @@ const APP = {
         });
       },
       end(res) {
+        if (isDestroyed) return;
+        isDestroyed = true;
         self.cleanup();
         MEDIA.stopSpeak();
         const pct = res.max ? res.score / res.max : 1;
@@ -1207,6 +1218,9 @@ const APP = {
     );
     const vmclose = d.querySelector('#vmclose');
     if (vmclose) vmclose.onclick = () => d.remove();
+    d.onclick = (e) => {
+      if (e.target === d) d.remove();
+    };
   },
 
   /* ---------- 📚 KONU ANLATIMI (v4 & v5) ---------- */

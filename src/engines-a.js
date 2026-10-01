@@ -196,9 +196,12 @@ const ENGINES_A = [
         MEDIA.speak(target[0]);
         api.root.querySelector('#sp').onclick = () => MEDIA.speak(target[0]);
 
+        let locked = false;
         api.root.querySelectorAll('.balloon').forEach(b => {
           b.onclick = (e) => {
+            if (locked) return;
             if (b.dataset.ok === '1') {
+              locked = true;
               b.style.transform = 'scale(1.3) rotate(15deg)';
               b.style.opacity = '0';
               MEDIA.fx('pop');
@@ -272,31 +275,39 @@ const ENGINES_A = [
           const i1 = cards[+f1.dataset.idx];
           const i2 = cards[+f2.dataset.idx];
 
+          const totalPairs = selected.length;
           if (i1.id === i2.id) {
             f1.classList.add('matched', 'ok');
             f2.classList.add('matched', 'ok');
             MEDIA.fx('correct');
             api.add(15);
             pairsFound++;
-            api.progress(pairsFound, cfg.pairs);
+            api.progress(pairsFound, totalPairs);
             f1 = null;
             f2 = null;
             lock = false;
-            if (pairsFound >= cfg.pairs) {
+            if (pairsFound >= totalPairs) {
               setTimeout(() => {
-                api.end({ score: api.score, max: cfg.pairs * 15, note: 'Hafıza şampiyonu! 🏆' });
+                api.end({ score: api.score, max: totalPairs * 15, note: 'Hafıza şampiyonu! 🏆' });
               }, 700);
             }
           } else {
             MEDIA.fx('wrong');
             setTimeout(() => {
-              f1.querySelector('.card-back').style.display = 'block';
-              f1.querySelector('.card-front').style.display = 'none';
-              f1.style.background = '#e0e7ff';
-              f2.querySelector('.card-back').style.display = 'none';
-              f2.querySelector('.card-front').style.display = 'none';
-              f2.querySelector('.card-back').style.display = 'block';
-              f2.style.background = '#e0e7ff';
+              if (f1) {
+                const b1 = f1.querySelector('.card-back');
+                const fr1 = f1.querySelector('.card-front');
+                if (b1) b1.style.display = 'block';
+                if (fr1) fr1.style.display = 'none';
+                f1.style.background = '#e0e7ff';
+              }
+              if (f2) {
+                const b2 = f2.querySelector('.card-back');
+                const fr2 = f2.querySelector('.card-front');
+                if (b2) b2.style.display = 'block';
+                if (fr2) fr2.style.display = 'none';
+                f2.style.background = '#e0e7ff';
+              }
               f1 = null;
               f2 = null;
               lock = false;
@@ -351,9 +362,12 @@ const ENGINES_A = [
         MEDIA.speak(correct[0]);
         api.root.querySelector('#spk').onclick = () => MEDIA.speak(correct[0]);
 
+        let locked = false;
         api.root.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
+            if (locked) return;
             if (o.dataset.ok === '1') {
+              locked = true;
               o.classList.add('ok');
               MEDIA.fx('correct');
               FX.fb(true);
@@ -361,6 +375,7 @@ const ENGINES_A = [
               i++;
               setTimeout(round, 800);
             } else {
+              locked = true;
               o.classList.add('no');
               MEDIA.fx('wrong');
               api.root.querySelectorAll('.opt').forEach(x => {
@@ -429,8 +444,10 @@ const ENGINES_A = [
           });
         };
 
+        let spellLock = false;
         api.root.querySelectorAll('.l-btn').forEach(btn => {
           btn.onclick = () => {
+            if (spellLock) return;
             if (current.length < target.length) {
               current += btn.textContent.toLowerCase();
               btn.disabled = true;
@@ -439,6 +456,7 @@ const ENGINES_A = [
               updateSlots();
 
               if (current.length === target.length) {
+                spellLock = true;
                 if (current === target) {
                   MEDIA.fx('correct');
                   FX.fb(true);
@@ -456,6 +474,7 @@ const ENGINES_A = [
                       b.disabled = false;
                       b.style.opacity = '1';
                     });
+                    spellLock = false;
                   }, 600);
                 }
               }
@@ -464,6 +483,7 @@ const ENGINES_A = [
         });
 
         api.root.querySelector('#rst').onclick = () => {
+          if (spellLock) return;
           current = '';
           updateSlots();
           api.root.querySelectorAll('.l-btn').forEach(b => {
@@ -518,9 +538,12 @@ const ENGINES_A = [
         MEDIA.speak(w[0]);
         api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
 
+        let locked = false;
         api.root.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
+            if (locked) return;
             if (o.dataset.ok === '1') {
+              locked = true;
               o.classList.add('ok');
               MEDIA.fx('correct');
               FX.stars();
@@ -528,6 +551,7 @@ const ENGINES_A = [
               r++;
               setTimeout(spin, 750);
             } else {
+              locked = true;
               o.classList.add('no');
               MEDIA.fx('wrong');
               setTimeout(() => { r++; spin(); }, 1000);
@@ -582,9 +606,11 @@ const ENGINES_A = [
 
         MEDIA.speak(w[0]);
 
+        let locked = false;
         area.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
-            if (timeLeft <= 0) return;
+            if (timeLeft <= 0 || locked) return;
+            locked = true;
             if (o.dataset.ok === '1') {
               o.classList.add('ok');
               MEDIA.fx('pop');
@@ -659,9 +685,12 @@ const ENGINES_A = [
 
         MEDIA.speak(w[0]);
 
+        let locked = false;
         api.root.querySelectorAll('.opt').forEach(o => {
           o.onclick = () => {
+            if (locked) return;
             if (o.dataset.ok === '1') {
+              locked = true;
               o.classList.add('ok');
               MEDIA.fx('correct');
               FX.fb(true);
@@ -669,6 +698,7 @@ const ENGINES_A = [
               r++;
               setTimeout(round, 800);
             } else {
+              locked = true;
               o.classList.add('no');
               MEDIA.fx('wrong');
               setTimeout(() => { r++; round(); }, 1100);
