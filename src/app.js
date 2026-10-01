@@ -629,7 +629,7 @@ const APP = {
         const cur = u.w[this.learnIdx || 0];
         if (cur) {
           MEDIA.fx('pop');
-          MEDIA.speak(cur[0]);
+          MEDIA.speak(cur[0], 0.9);
           FX.notes(innerWidth / 2, innerHeight - 160);
         }
       }
@@ -640,7 +640,7 @@ const APP = {
         const cur = u.w[this.learnIdx || 0];
         if (cur) {
           MEDIA.fx('click');
-          MEDIA.speak(cur[0], 0.55);
+          MEDIA.speak(cur[0], 0.78);
         }
       }
     });
@@ -651,7 +651,7 @@ const APP = {
         if (cur) {
           MEDIA.fx('magic');
           FX.confetti(22);
-          MEDIA.speak('Say it with me! ' + cur[0]);
+          MEDIA.speak('Say it with me! ' + cur[0], 0.9);
         }
       }
     });
@@ -1083,34 +1083,126 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : [])
-      .filter((v) => /^en/i.test(v.lang));
+    const humanVoices = MEDIA.getHumanVoices ? MEDIA.getHumanVoices() : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
+
+    const getVoiceMeta = (v) => {
+      const n = v.name;
+      const isNatural = /natural|neural|online/i.test(n);
+      let desc = 'Doğal İnsan Sesi';
+      let badge = '🎙️ Doğal';
+      let icon = '🌟';
+
+      if (/maisie/i.test(n)) {
+        desc = 'Neşeli İngiliz Kız Çocuğu Sesi';
+        badge = '🦜 Polly’nin Favorisi';
+        icon = '👧';
+      } else if (/ana\b/i.test(n)) {
+        desc = 'Neşeli Çocuk Sesi (ABD)';
+        badge = '🦜 Polly’nin Favorisi';
+        icon = '👧';
+      } else if (/flo\b/i.test(n)) {
+        desc = 'Canlı & Neşeli Genç Sesi';
+        badge = '✨ Çok Neşeli';
+        icon = '🎉';
+      } else if (/sandy\b/i.test(n)) {
+        desc = 'Sıcak & Dost Canlısı Ses';
+        badge = '✨ Sevimli';
+        icon = '🌸';
+      } else if (/samantha\b/i.test(n)) {
+        desc = 'Doğal & Güler Yüzlü İnsan Sesi';
+        badge = '⭐ Çok Popüler';
+        icon = '👩';
+      } else if (/shelley\b/i.test(n)) {
+        desc = 'Neşeli & Açık İnsan Sesi';
+        badge = '🌸 Neşeli';
+        icon = '🌸';
+      } else if (/serena\b/i.test(n)) {
+        desc = 'Doğal İngiliz Öğretmen Sesi';
+        badge = '🇬🇧 Cambridge';
+        icon = '👩‍🏫';
+      } else if (/sonia\b|libby\b/i.test(n)) {
+        desc = 'Sevimli & Net İngiliz Sesi';
+        badge = '🇬🇧 İngiltere';
+        icon = '🇬🇧';
+      } else if (/jenny\b|aria\b/i.test(n)) {
+        desc = 'Heyecanlı & Canlı Amerikan Sesi';
+        badge = '🇺🇸 Doğal';
+        icon = '✨';
+      } else if (/karen\b|moira\b/i.test(n)) {
+        desc = 'Sıcak & Samimi İnsan Sesi';
+        badge = '🌍 Doğal';
+        icon = '☀️';
+      } else if (/daniel\b|oliver\b|jamie\b|eddy\b/i.test(n)) {
+        desc = 'Net & Genç İngiliz Sesi';
+        badge = '🇬🇧 Net & Canlı';
+        icon = '👦';
+      } else if (isNatural) {
+        desc = 'Yüksek Kalite Doğal Nöral Ses';
+        badge = '🌟 Doğal';
+        icon = '🎧';
+      }
+      return { desc, badge, icon };
+    };
+
     const d = document.createElement('div');
     d.id = 'vmodal';
-    d.innerHTML = `<div class="vmbox">
-      <h3>🎤 Polly’nin Sesini Seçin</h3>
-      <div class="muted">Microsoft Edge tarayıcısında "Natural" sesler çok daha gerçekçidir.</div>
+    d.innerHTML = `<div class="vmbox voice-modal-box">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <span style="font-size:36px">🦜</span>
+        <div>
+          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Polly’nin Neşeli Sesini Seçin</h3>
+          <div class="muted" style="font-size:0.88em">Robotik sesler tamamen kaldırıldı. Sadece eğlenceli, neşeli ve doğal insan sesleri listelenir!</div>
+        </div>
+      </div>
+      <div class="voice-help-banner">
+        💡 <b>İpucu:</b> Bir sese dokunarak Polly’yi dinleyin. Beğendiğiniz neşeli sesi seçebilirsiniz!
+      </div>
       <div class="vlist">${
-        vs
-          .map(
-            (v) => `<div class="vitem ${v.name === cur ? 'sel' : ''}" data-v="${esc(v.name)}">
-          ${/natural/i.test(v.name) ? '🌟 ' : ''}${esc(v.name)} <span class="muted">${v.lang}</span>
-        </div>`
-          )
-          .join('') || '<div class="vitem">Tarayıcı sesi bulunamadı</div>'
+        humanVoices.length > 0
+          ? humanVoices
+              .map((v) => {
+                const meta = getVoiceMeta(v);
+                const isSelected = v.name === cur;
+                return `<div class="vitem ${isSelected ? 'sel' : ''}" data-v="${esc(v.name)}">
+                  <div class="vitem-main">
+                    <span class="vitem-icon">${meta.icon}</span>
+                    <div class="vitem-info">
+                      <div class="vitem-name">${esc(v.name)}</div>
+                      <div class="vitem-desc">${meta.desc} · <span class="muted">${v.lang}</span></div>
+                    </div>
+                  </div>
+                  <div class="vitem-badges">
+                    <span class="vbadge">${meta.badge}</span>
+                    ${isSelected ? '<span class="vbadge active">✔ Aktif</span>' : ''}
+                  </div>
+                </div>`;
+              })
+              .join('')
+          : '<div class="vitem">Tarayıcınızda uygun insan sesi yükleniyor, lütfen birkaç saniye bekleyin...</div>'
       }</div>
-      <button class="btn white" id="vmclose">✅ Kapat</button></div>`;
+      <div style="margin-top:14px;display:flex;justify-content:flex-end">
+        <button class="btn green big" id="vmclose">✅ Tamam, Bu Ses Harika!</button>
+      </div>
+    </div>`;
     document.body.appendChild(d);
     d.querySelectorAll('.vitem').forEach(
       (it) =>
         (it.onclick = () => {
           const n = it.dataset.v;
           MEDIA.setVoice(n);
-          MEDIA.speak('Hello! I am Polly! Let us learn English!');
-          d.querySelectorAll('.vitem').forEach((x) => x.classList.remove('sel'));
+          MEDIA.speak("Hello! I'm Polly! 🦜 Let's learn English together! Super fun!");
+          d.querySelectorAll('.vitem').forEach((x) => {
+            x.classList.remove('sel');
+            const act = x.querySelector('.vbadge.active');
+            if (act) act.remove();
+          });
           it.classList.add('sel');
-          FX.toast('✔ ' + n);
+          const badgesEl = it.querySelector('.vitem-badges');
+          if (badgesEl && !badgesEl.querySelector('.active')) {
+            badgesEl.insertAdjacentHTML('beforeend', '<span class="vbadge active">✔ Aktif</span>');
+          }
+          FX.toast('✔ ' + n + ' seçildi!');
         })
     );
     const vmclose = d.querySelector('#vmclose');
@@ -1231,7 +1323,7 @@ const APP = {
       FX.confetti(70);
       MEDIA.fx('win');
     }
-    const say = (t, r) => MEDIA.speak(t, r || 0.72);
+    const say = (t, r) => MEDIA.speak(t, r || 0.88);
     const prev = document.getElementById('lprev'),
       next = document.getElementById('lnext');
     if (prev)
@@ -1262,12 +1354,12 @@ const APP = {
       if (b2)
         b2.onclick = () => {
           MEDIA.fx('click');
-          say(s[1], 0.55);
+          say(s[1], 0.78);
         };
       if (b3)
         b3.onclick = () => {
           MEDIA.fx('magic');
-          MEDIA.speak('Listen and repeat!', 0.9, () => say(s[1]));
+          MEDIA.speak('Listen and repeat!', 0.92, () => say(s[1]));
         };
       document.querySelectorAll('.ldrill [data-d]').forEach(
         (b) =>
@@ -1284,11 +1376,11 @@ const APP = {
               once: 'One more time!'
             }[d];
             const after = () => {
-              if (d === 'loud') MEDIA.speak(s[1], 0.92, null, 1);
-              else if (d === 'whis') MEDIA.speak(s[1], 0.6, null, 0.3);
+              if (d === 'loud') MEDIA.speak(s[1], 0.95, null, 1);
+              else if (d === 'whis') MEDIA.speak(s[1], 0.82, null, 0.4);
               else if (d === 'clap') {
                 FX.confetti(14);
-                MEDIA.speak(s[1], 0.8);
+                MEDIA.speak(s[1], 0.88);
               } else say(s[1]);
             };
             if (drillPrompt) {
@@ -1307,7 +1399,7 @@ const APP = {
             MEDIA.fx('pop');
             b.classList.add('lit');
             setTimeout(() => b.classList.remove('lit'), 700);
-            MEDIA.speak(w[0], 0.68);
+            MEDIA.speak(w[0], 0.88);
             FX.notes(innerWidth / 2, innerHeight - 140);
           })
       );
@@ -1330,7 +1422,7 @@ const APP = {
           box.innerHTML = `<div class="lqq">Show me the <b>${esc(cur[0])}</b>!</div>
             <div class="lqopts">${opts.map((o) => `<button class="lqopt" data-ok="${o[0] === cur[0] ? 1 : 0}"><span>${o[1]}</span></button>`).join('')}</div>
             <div class="lqstars">${'⭐'.repeat(qi)}${'☆'.repeat(qw.length - qi)}</div>`;
-          MEDIA.speak(cur[0], 0.72);
+          MEDIA.speak(cur[0], 0.88);
           box.querySelectorAll('.lqopt').forEach((ob) => (ob.onclick = () => {
             if (ob.dataset.ok === '1') {
               ob.classList.add('ok');
@@ -1512,9 +1604,11 @@ if (typeof document !== 'undefined') {
 
   if (typeof window !== 'undefined' && window.speechSynthesis) {
     try {
-      speechSynthesis.onvoiceschanged = () => {
-        MEDIA.voice = null;
+      const initVoices = () => {
+        MEDIA.pickVoice();
       };
+      speechSynthesis.onvoiceschanged = initVoices;
+      initVoices();
     } catch (e) {}
   }
   FX.mascotSay('Merhaba! Ben Polly 🦜 Bir sınıf seç ve başlayalım!', 4500);

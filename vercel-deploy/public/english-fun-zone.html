@@ -790,15 +790,23 @@ body.s2 {
 .crash-details.show { display: block; }
 
 /* ============ v3: 🎤 Ses seçim modalı ============ */
-#vmodal{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s}
-.vmbox{background:#fff;border-radius:22px;padding:18px 18px 16px;max-width:540px;width:92%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#vmodal{position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s;padding:12px}
+.vmbox{background:#fff;border-radius:24px;padding:20px 20px 16px;max-width:580px;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.35);border:3px solid #f3e8ff}
 .vmbox h3{margin:0 0 4px;color:#6b21a8}
-.vlist{overflow:auto;margin:4px 0 12px;border:3px dashed #e9d5ff;border-radius:14px;background:#faf5ff}
-.vitem{padding:10px 12px;cursor:pointer;border-bottom:1px solid #f1f5f9;font-weight:600;animation:fadeIn .25s}
-.vitem:last-child{border-bottom:none}
-.vitem:hover{background:#fef9c3}
-.vitem.sel{background:#dcfce7}
-.vitem .muted{font-weight:400;float:right}
+.voice-help-banner{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af;border-radius:14px;padding:10px 12px;font-size:0.88em;margin-bottom:12px;line-height:1.4}
+.vlist{overflow-y:auto;overflow-x:hidden;margin:4px 0 12px;border:2.5px dashed #e9d5ff;border-radius:16px;background:#faf5ff;max-height:46vh;padding:4px}
+.vitem{padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:12px;transition:all .18s ease;margin-bottom:3px}
+.vitem:last-child{border-bottom:none;margin-bottom:0}
+.vitem:hover{background:#fef9c3;transform:translateX(3px)}
+.vitem.sel{background:#dcfce7;border:2px solid #22c55e;box-shadow:0 3px 10px rgba(34,197,94,.18)}
+.vitem-main{display:flex;align-items:center;gap:12px;text-align:left;flex:1;min-width:0}
+.vitem-icon{font-size:24px;line-height:1;flex-shrink:0}
+.vitem-info{display:flex;flex-direction:column;min-width:0}
+.vitem-name{font-size:0.95em;color:#0f172a;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vitem-desc{font-size:0.82em;color:#64748b;font-weight:500}
+.vitem-badges{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.vbadge{font-size:0.75em;padding:4px 8px;border-radius:10px;background:#e2e8f0;color:#334155;font-weight:700;white-space:nowrap}
+.vbadge.active{background:#22c55e;color:#fff;box-shadow:0 2px 6px rgba(34,197,94,.3)}
 
 /* ============ v4: 📚 Konu Anlatımı ============ */
 .lesson{max-width:780px;margin:0 auto;padding-bottom:8px}
@@ -7984,34 +7992,126 @@ const MEDIA = {
   },
   praise() {
     this.fx('win');
-    const compliments = ['Super!', 'Great job!', 'Well done!', 'Awesome!', 'Brilliant!'];
+    const compliments = [
+      'Super!',
+      'Great job!',
+      'Well done!',
+      'Awesome!',
+      'Brilliant!',
+      'Fantastic!',
+      'Amazing!',
+      'Super work!'
+    ];
     const word = compliments[Math.floor(Math.random() * compliments.length)];
     this.speak(word, 0.95);
     return null;
   },
+
+  /* 🚫 Robotik, mekanik, fısıltılı veya eski sistem seslerini filtreleme */
+  isRoboticVoice(v) {
+    if (!v) return true;
+    const name = String(v.name || '').toLowerCase();
+    const lang = String(v.lang || '').toLowerCase();
+    if (!/^en/i.test(lang)) return true;
+    const robotPattern = /(albert|fred|ralph|junior|kathy|victoria|vicki|bruce|bad news|good news|bahh|bells|boing|bubbles|cellos|deranged|hysterical|jester|organ|superstar|trinoids|whisper|wobble|zarvox|david|zira|mark|hazel|george|desktop|espeak|festival|mbrola|sample|compact|mechanical|robot)/i;
+    return robotPattern.test(name);
+  },
+
+  /* 🌟 Neşeli, doğal ve çocuklara uygun insan sesi puanlama motoru */
+  getVoiceScore(v) {
+    if (!v || this.isRoboticVoice(v)) return -1000;
+    const name = String(v.name || '');
+    const lang = String(v.lang || '');
+    let score = 50;
+
+    // 🏆 En neşeli, doğal çocuk ve öğretmen sesleri (Polly için mükemmel insan sesleri)
+    if (/maisie/i.test(name)) score += 130; // Neşeli İngiliz çocuk sesi
+    else if (/ana\b/i.test(name) && /natural/i.test(name)) score += 125; // Neşeli ABD çocuk sesi
+    else if (/flo\b/i.test(name)) score += 120; // Canlı, neşeli Apple insan sesi
+    else if (/sandy\b/i.test(name)) score += 115; // Sıcak & neşeli Apple insan sesi
+    else if (/samantha\b/i.test(name)) score += 110; // Doğal ve neşeli Apple sesi
+    else if (/shelley\b/i.test(name)) score += 105; // Neşeli Apple sesi
+    else if (/serena\b/i.test(name)) score += 100; // Doğal İngiliz öğretmen sesi
+    else if (/sonia\b/i.test(name)) score += 96; // Güler yüzlü İngiliz sesi
+    else if (/libby\b/i.test(name)) score += 94; // Sevimli İngiliz sesi
+    else if (/jenny\b/i.test(name)) score += 92; // Doğal ve neşeli ABD sesi
+    else if (/aria\b/i.test(name)) score += 90; // Canlı ve neşeli ABD sesi
+    else if (/ava\b/i.test(name)) score += 88; // Doğal akıcı ses
+    else if (/zoe\b/i.test(name)) score += 86; // Canlı ve enerjik ses
+    else if (/karen\b/i.test(name)) score += 82; // Sıcak Avustralya sesi
+    else if (/moira\b/i.test(name)) score += 80; // Neşeli İrlanda sesi
+    else if (/daniel\b/i.test(name)) score += 78; // Net İngiliz sesi
+    else if (/eddy\b/i.test(name)) score += 74; // Genç & samimi ses
+
+    // Doğal/Nöral ses belirteçleri
+    if (/online \(natural\)/i.test(name)) score += 60;
+    if (/\bnatural\b/i.test(name)) score += 50;
+    if (/\bneural\b/i.test(name)) score += 50;
+    if (/\bpremium\b/i.test(name)) score += 40;
+    if (/\benhanced\b/i.test(name)) score += 35;
+
+    // Cambridge müfredatı için aksan önceliği: BK ve ABD
+    if (/en[-_]GB/i.test(lang)) score += 20;
+    else if (/en[-_]US/i.test(lang)) score += 15;
+    else if (/en[-_](AU|CA|IE|NZ)/i.test(lang)) score += 10;
+
+    // Kadın veya çocuk ses tonları ilkokul öğrencileri için daha neşeli ve samimi algılanır
+    if (/female|girl|child|kid/i.test(name)) score += 10;
+
+    return score;
+  },
+
+  /* 🎙️ Mevcut insan seslerini listeleme (filtreli ve sıralı) */
+  getHumanVoices() {
+    try {
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth || !synth.getVoices) return [];
+      const vs = synth.getVoices() || [];
+      return vs
+        .filter((v) => !this.isRoboticVoice(v))
+        .sort((a, b) => this.getVoiceScore(b) - this.getVoiceScore(a));
+    } catch (e) {
+      return [];
+    }
+  },
+
   pickVoice() {
     try {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
-      if (!synth) return null;
-      const vs = synth.getVoices ? synth.getVoices() : [];
-      if (!vs || !vs.length) return null;
-      const pref = [
-        (v) => /natural/i.test(v.name) && /en[-_](GB|US)/i.test(v.lang),
-        (v) => /Online \(Natural\)/i.test(v.name),
-        (v) => /Google.*English/i.test(v.name),
-        (v) => /en[-_]GB/i.test(v.lang) && /female|Kate|Serena|Libby/i.test(v.name),
-        (v) => /en[-_]GB/i.test(v.lang),
-        (v) => /en[-_]US/i.test(v.lang),
-        (v) => /^en/i.test(v.lang)
-      ];
-      for (const p of pref) {
-        const f = vs.find(p);
-        if (f) {
-          this.voice = f;
-          return f;
+      if (!synth || !synth.getVoices) return null;
+      const vs = synth.getVoices() || [];
+      if (!vs.length) return null;
+
+      // Kullanıcı daha önce geçerli bir ses seçtiyse onu koru
+      try {
+        const saved = store.get('voice');
+        if (saved) {
+          const match = vs.find((v) => v.name === saved && !this.isRoboticVoice(v));
+          if (match) {
+            this.voice = match;
+            return match;
+          }
         }
+      } catch (e) {}
+
+      // Sadece neşeli insan seslerini al ve puanlarına göre sırala
+      const humanVoices = this.getHumanVoices();
+      if (humanVoices.length > 0) {
+        this.voice = humanVoices[0];
+        return humanVoices[0];
       }
-      return vs[0] || null;
+
+      // Güvenlik yedeği: robotik filtreyi geçen ilk İngilizce ses
+      const fallback = vs.find((v) => /^en/i.test(v.lang) && !this.isRoboticVoice(v));
+      if (fallback) {
+        this.voice = fallback;
+        return fallback;
+      }
+
+      // Son çare: robotik filtreyi geçen herhangi bir ses
+      const anyNonRobot = vs.find((v) => !this.isRoboticVoice(v));
+      this.voice = anyNonRobot || null;
+      return this.voice;
     } catch (e) {
       return null;
     }
@@ -8029,13 +8129,10 @@ const MEDIA = {
     } catch (e) {}
   },
 
-  /* 🎙️ ANA KONUŞMA — GERÇEK İNSAN SESİ ÖNCELİKLİ
-     voice-map.js bildirgesinde (VOICESET) slug'ı varsa audio/w-<slug>.mp3
-     dosyası çalınır (gerçek nöral insan sesi kaydı). Dosya yoksa veya
-     çalınamazsa tarayıcı TTS yedeğine (tts) döner — sessiz asla kalmaz.
-     rate değeri dosya hızına çevrilir: >=.8 normal · .7-.79 hafif yavaş ·
-     <.7 yavaş (gerçek ses playbackRate ile yavaşlatılır — robotikleşmez) */
-  speak(text, rate = 0.82, cb, vol) {
+  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ
+     Neşeli, enerjik ve çocuk dostu bir tempoda seslendirir.
+     Robotik sesleri kesinlikle engeller. */
+  speak(text, rate = 0.9, cb, vol) {
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
         const t = String(text || '');
@@ -8050,7 +8147,7 @@ const MEDIA = {
             let done = false,
               to = null;
             try {
-              a.playbackRate = rate >= 0.8 ? 1 : rate >= 0.7 ? 0.92 : 0.78;
+              a.playbackRate = rate >= 0.8 ? 1 : 0.88;
             } catch (e) {}
             const fall = () => {
               if (done) return;
@@ -8083,26 +8180,33 @@ const MEDIA = {
     this.tts(text, rate, cb, vol);
   },
 
-  /* Yedek: tarayıcı TTS (Edge "Natural" sesleri öncelikli seçilir) */
-  tts(text, rate = 0.82, cb, vol) {
+  /* 🎙️ Tarayıcı TTS — Neşeli, sıcak ve doğal insan sesleri */
+  tts(text, rate = 0.9, cb, vol) {
     if (this.muted) {
       cb && cb();
       return;
     }
     try {
-      const synth = window.speechSynthesis;
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
       if (!synth) {
         cb && cb();
         return;
       }
       synth.cancel();
       const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-GB';
-      u.rate = rate;
-      u.pitch = 1.12;
-      if (vol != null) u.volume = vol;
       if (!this.voice) this.pickVoice();
-      if (this.voice) u.voice = this.voice;
+      if (this.voice) {
+        u.voice = this.voice;
+        u.lang = this.voice.lang || 'en-GB';
+      } else {
+        u.lang = 'en-GB';
+      }
+      // // SAFETY: Doğal insan sesi tınısını korumak için pitch 1.0 (robotikleşmeyi önler)
+      u.pitch = 1.0;
+      // // SAFETY: Robotik takılmaları engelleyen güvenli insan konuşma hızı (asla <0.78 olmaz)
+      const safeRate = Math.max(0.78, Math.min(1.08, rate || 0.9));
+      u.rate = safeRate;
+      if (vol != null) u.volume = vol;
       if (cb) {
         u.onend = cb;
         u.onerror = cb;
@@ -10796,7 +10900,7 @@ const APP = {
         const cur = u.w[this.learnIdx || 0];
         if (cur) {
           MEDIA.fx('pop');
-          MEDIA.speak(cur[0]);
+          MEDIA.speak(cur[0], 0.9);
           FX.notes(innerWidth / 2, innerHeight - 160);
         }
       }
@@ -10807,7 +10911,7 @@ const APP = {
         const cur = u.w[this.learnIdx || 0];
         if (cur) {
           MEDIA.fx('click');
-          MEDIA.speak(cur[0], 0.55);
+          MEDIA.speak(cur[0], 0.78);
         }
       }
     });
@@ -10818,7 +10922,7 @@ const APP = {
         if (cur) {
           MEDIA.fx('magic');
           FX.confetti(22);
-          MEDIA.speak('Say it with me! ' + cur[0]);
+          MEDIA.speak('Say it with me! ' + cur[0], 0.9);
         }
       }
     });
@@ -11250,34 +11354,126 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const vs = (window.speechSynthesis ? speechSynthesis.getVoices() : [])
-      .filter((v) => /^en/i.test(v.lang));
+    const humanVoices = MEDIA.getHumanVoices ? MEDIA.getHumanVoices() : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
+
+    const getVoiceMeta = (v) => {
+      const n = v.name;
+      const isNatural = /natural|neural|online/i.test(n);
+      let desc = 'Doğal İnsan Sesi';
+      let badge = '🎙️ Doğal';
+      let icon = '🌟';
+
+      if (/maisie/i.test(n)) {
+        desc = 'Neşeli İngiliz Kız Çocuğu Sesi';
+        badge = '🦜 Polly’nin Favorisi';
+        icon = '👧';
+      } else if (/ana\b/i.test(n)) {
+        desc = 'Neşeli Çocuk Sesi (ABD)';
+        badge = '🦜 Polly’nin Favorisi';
+        icon = '👧';
+      } else if (/flo\b/i.test(n)) {
+        desc = 'Canlı & Neşeli Genç Sesi';
+        badge = '✨ Çok Neşeli';
+        icon = '🎉';
+      } else if (/sandy\b/i.test(n)) {
+        desc = 'Sıcak & Dost Canlısı Ses';
+        badge = '✨ Sevimli';
+        icon = '🌸';
+      } else if (/samantha\b/i.test(n)) {
+        desc = 'Doğal & Güler Yüzlü İnsan Sesi';
+        badge = '⭐ Çok Popüler';
+        icon = '👩';
+      } else if (/shelley\b/i.test(n)) {
+        desc = 'Neşeli & Açık İnsan Sesi';
+        badge = '🌸 Neşeli';
+        icon = '🌸';
+      } else if (/serena\b/i.test(n)) {
+        desc = 'Doğal İngiliz Öğretmen Sesi';
+        badge = '🇬🇧 Cambridge';
+        icon = '👩‍🏫';
+      } else if (/sonia\b|libby\b/i.test(n)) {
+        desc = 'Sevimli & Net İngiliz Sesi';
+        badge = '🇬🇧 İngiltere';
+        icon = '🇬🇧';
+      } else if (/jenny\b|aria\b/i.test(n)) {
+        desc = 'Heyecanlı & Canlı Amerikan Sesi';
+        badge = '🇺🇸 Doğal';
+        icon = '✨';
+      } else if (/karen\b|moira\b/i.test(n)) {
+        desc = 'Sıcak & Samimi İnsan Sesi';
+        badge = '🌍 Doğal';
+        icon = '☀️';
+      } else if (/daniel\b|oliver\b|jamie\b|eddy\b/i.test(n)) {
+        desc = 'Net & Genç İngiliz Sesi';
+        badge = '🇬🇧 Net & Canlı';
+        icon = '👦';
+      } else if (isNatural) {
+        desc = 'Yüksek Kalite Doğal Nöral Ses';
+        badge = '🌟 Doğal';
+        icon = '🎧';
+      }
+      return { desc, badge, icon };
+    };
+
     const d = document.createElement('div');
     d.id = 'vmodal';
-    d.innerHTML = `<div class="vmbox">
-      <h3>🎤 Polly’nin Sesini Seçin</h3>
-      <div class="muted">Microsoft Edge tarayıcısında "Natural" sesler çok daha gerçekçidir.</div>
+    d.innerHTML = `<div class="vmbox voice-modal-box">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <span style="font-size:36px">🦜</span>
+        <div>
+          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Polly’nin Neşeli Sesini Seçin</h3>
+          <div class="muted" style="font-size:0.88em">Robotik sesler tamamen kaldırıldı. Sadece eğlenceli, neşeli ve doğal insan sesleri listelenir!</div>
+        </div>
+      </div>
+      <div class="voice-help-banner">
+        💡 <b>İpucu:</b> Bir sese dokunarak Polly’yi dinleyin. Beğendiğiniz neşeli sesi seçebilirsiniz!
+      </div>
       <div class="vlist">${
-        vs
-          .map(
-            (v) => `<div class="vitem ${v.name === cur ? 'sel' : ''}" data-v="${esc(v.name)}">
-          ${/natural/i.test(v.name) ? '🌟 ' : ''}${esc(v.name)} <span class="muted">${v.lang}</span>
-        </div>`
-          )
-          .join('') || '<div class="vitem">Tarayıcı sesi bulunamadı</div>'
+        humanVoices.length > 0
+          ? humanVoices
+              .map((v) => {
+                const meta = getVoiceMeta(v);
+                const isSelected = v.name === cur;
+                return `<div class="vitem ${isSelected ? 'sel' : ''}" data-v="${esc(v.name)}">
+                  <div class="vitem-main">
+                    <span class="vitem-icon">${meta.icon}</span>
+                    <div class="vitem-info">
+                      <div class="vitem-name">${esc(v.name)}</div>
+                      <div class="vitem-desc">${meta.desc} · <span class="muted">${v.lang}</span></div>
+                    </div>
+                  </div>
+                  <div class="vitem-badges">
+                    <span class="vbadge">${meta.badge}</span>
+                    ${isSelected ? '<span class="vbadge active">✔ Aktif</span>' : ''}
+                  </div>
+                </div>`;
+              })
+              .join('')
+          : '<div class="vitem">Tarayıcınızda uygun insan sesi yükleniyor, lütfen birkaç saniye bekleyin...</div>'
       }</div>
-      <button class="btn white" id="vmclose">✅ Kapat</button></div>`;
+      <div style="margin-top:14px;display:flex;justify-content:flex-end">
+        <button class="btn green big" id="vmclose">✅ Tamam, Bu Ses Harika!</button>
+      </div>
+    </div>`;
     document.body.appendChild(d);
     d.querySelectorAll('.vitem').forEach(
       (it) =>
         (it.onclick = () => {
           const n = it.dataset.v;
           MEDIA.setVoice(n);
-          MEDIA.speak('Hello! I am Polly! Let us learn English!');
-          d.querySelectorAll('.vitem').forEach((x) => x.classList.remove('sel'));
+          MEDIA.speak("Hello! I'm Polly! 🦜 Let's learn English together! Super fun!");
+          d.querySelectorAll('.vitem').forEach((x) => {
+            x.classList.remove('sel');
+            const act = x.querySelector('.vbadge.active');
+            if (act) act.remove();
+          });
           it.classList.add('sel');
-          FX.toast('✔ ' + n);
+          const badgesEl = it.querySelector('.vitem-badges');
+          if (badgesEl && !badgesEl.querySelector('.active')) {
+            badgesEl.insertAdjacentHTML('beforeend', '<span class="vbadge active">✔ Aktif</span>');
+          }
+          FX.toast('✔ ' + n + ' seçildi!');
         })
     );
     const vmclose = d.querySelector('#vmclose');
@@ -11398,7 +11594,7 @@ const APP = {
       FX.confetti(70);
       MEDIA.fx('win');
     }
-    const say = (t, r) => MEDIA.speak(t, r || 0.72);
+    const say = (t, r) => MEDIA.speak(t, r || 0.88);
     const prev = document.getElementById('lprev'),
       next = document.getElementById('lnext');
     if (prev)
@@ -11429,12 +11625,12 @@ const APP = {
       if (b2)
         b2.onclick = () => {
           MEDIA.fx('click');
-          say(s[1], 0.55);
+          say(s[1], 0.78);
         };
       if (b3)
         b3.onclick = () => {
           MEDIA.fx('magic');
-          MEDIA.speak('Listen and repeat!', 0.9, () => say(s[1]));
+          MEDIA.speak('Listen and repeat!', 0.92, () => say(s[1]));
         };
       document.querySelectorAll('.ldrill [data-d]').forEach(
         (b) =>
@@ -11451,11 +11647,11 @@ const APP = {
               once: 'One more time!'
             }[d];
             const after = () => {
-              if (d === 'loud') MEDIA.speak(s[1], 0.92, null, 1);
-              else if (d === 'whis') MEDIA.speak(s[1], 0.6, null, 0.3);
+              if (d === 'loud') MEDIA.speak(s[1], 0.95, null, 1);
+              else if (d === 'whis') MEDIA.speak(s[1], 0.82, null, 0.4);
               else if (d === 'clap') {
                 FX.confetti(14);
-                MEDIA.speak(s[1], 0.8);
+                MEDIA.speak(s[1], 0.88);
               } else say(s[1]);
             };
             if (drillPrompt) {
@@ -11474,7 +11670,7 @@ const APP = {
             MEDIA.fx('pop');
             b.classList.add('lit');
             setTimeout(() => b.classList.remove('lit'), 700);
-            MEDIA.speak(w[0], 0.68);
+            MEDIA.speak(w[0], 0.88);
             FX.notes(innerWidth / 2, innerHeight - 140);
           })
       );
@@ -11497,7 +11693,7 @@ const APP = {
           box.innerHTML = `<div class="lqq">Show me the <b>${esc(cur[0])}</b>!</div>
             <div class="lqopts">${opts.map((o) => `<button class="lqopt" data-ok="${o[0] === cur[0] ? 1 : 0}"><span>${o[1]}</span></button>`).join('')}</div>
             <div class="lqstars">${'⭐'.repeat(qi)}${'☆'.repeat(qw.length - qi)}</div>`;
-          MEDIA.speak(cur[0], 0.72);
+          MEDIA.speak(cur[0], 0.88);
           box.querySelectorAll('.lqopt').forEach((ob) => (ob.onclick = () => {
             if (ob.dataset.ok === '1') {
               ob.classList.add('ok');
@@ -11679,9 +11875,11 @@ if (typeof document !== 'undefined') {
 
   if (typeof window !== 'undefined' && window.speechSynthesis) {
     try {
-      speechSynthesis.onvoiceschanged = () => {
-        MEDIA.voice = null;
+      const initVoices = () => {
+        MEDIA.pickVoice();
       };
+      speechSynthesis.onvoiceschanged = initVoices;
+      initVoices();
     } catch (e) {}
   }
   FX.mascotSay('Merhaba! Ben Polly 🦜 Bir sınıf seç ve başlayalım!', 4500);

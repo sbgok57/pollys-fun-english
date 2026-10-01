@@ -235,34 +235,126 @@ const MEDIA = {
   },
   praise() {
     this.fx('win');
-    const compliments = ['Super!', 'Great job!', 'Well done!', 'Awesome!', 'Brilliant!'];
+    const compliments = [
+      'Super!',
+      'Great job!',
+      'Well done!',
+      'Awesome!',
+      'Brilliant!',
+      'Fantastic!',
+      'Amazing!',
+      'Super work!'
+    ];
     const word = compliments[Math.floor(Math.random() * compliments.length)];
     this.speak(word, 0.95);
     return null;
   },
+
+  /* 🚫 Robotik, mekanik, fısıltılı veya eski sistem seslerini filtreleme */
+  isRoboticVoice(v) {
+    if (!v) return true;
+    const name = String(v.name || '').toLowerCase();
+    const lang = String(v.lang || '').toLowerCase();
+    if (!/^en/i.test(lang)) return true;
+    const robotPattern = /(albert|fred|ralph|junior|kathy|victoria|vicki|bruce|bad news|good news|bahh|bells|boing|bubbles|cellos|deranged|hysterical|jester|organ|superstar|trinoids|whisper|wobble|zarvox|david|zira|mark|hazel|george|desktop|espeak|festival|mbrola|sample|compact|mechanical|robot)/i;
+    return robotPattern.test(name);
+  },
+
+  /* 🌟 Neşeli, doğal ve çocuklara uygun insan sesi puanlama motoru */
+  getVoiceScore(v) {
+    if (!v || this.isRoboticVoice(v)) return -1000;
+    const name = String(v.name || '');
+    const lang = String(v.lang || '');
+    let score = 50;
+
+    // 🏆 En neşeli, doğal çocuk ve öğretmen sesleri (Polly için mükemmel insan sesleri)
+    if (/maisie/i.test(name)) score += 130; // Neşeli İngiliz çocuk sesi
+    else if (/ana\b/i.test(name) && /natural/i.test(name)) score += 125; // Neşeli ABD çocuk sesi
+    else if (/flo\b/i.test(name)) score += 120; // Canlı, neşeli Apple insan sesi
+    else if (/sandy\b/i.test(name)) score += 115; // Sıcak & neşeli Apple insan sesi
+    else if (/samantha\b/i.test(name)) score += 110; // Doğal ve neşeli Apple sesi
+    else if (/shelley\b/i.test(name)) score += 105; // Neşeli Apple sesi
+    else if (/serena\b/i.test(name)) score += 100; // Doğal İngiliz öğretmen sesi
+    else if (/sonia\b/i.test(name)) score += 96; // Güler yüzlü İngiliz sesi
+    else if (/libby\b/i.test(name)) score += 94; // Sevimli İngiliz sesi
+    else if (/jenny\b/i.test(name)) score += 92; // Doğal ve neşeli ABD sesi
+    else if (/aria\b/i.test(name)) score += 90; // Canlı ve neşeli ABD sesi
+    else if (/ava\b/i.test(name)) score += 88; // Doğal akıcı ses
+    else if (/zoe\b/i.test(name)) score += 86; // Canlı ve enerjik ses
+    else if (/karen\b/i.test(name)) score += 82; // Sıcak Avustralya sesi
+    else if (/moira\b/i.test(name)) score += 80; // Neşeli İrlanda sesi
+    else if (/daniel\b/i.test(name)) score += 78; // Net İngiliz sesi
+    else if (/eddy\b/i.test(name)) score += 74; // Genç & samimi ses
+
+    // Doğal/Nöral ses belirteçleri
+    if (/online \(natural\)/i.test(name)) score += 60;
+    if (/\bnatural\b/i.test(name)) score += 50;
+    if (/\bneural\b/i.test(name)) score += 50;
+    if (/\bpremium\b/i.test(name)) score += 40;
+    if (/\benhanced\b/i.test(name)) score += 35;
+
+    // Cambridge müfredatı için aksan önceliği: BK ve ABD
+    if (/en[-_]GB/i.test(lang)) score += 20;
+    else if (/en[-_]US/i.test(lang)) score += 15;
+    else if (/en[-_](AU|CA|IE|NZ)/i.test(lang)) score += 10;
+
+    // Kadın veya çocuk ses tonları ilkokul öğrencileri için daha neşeli ve samimi algılanır
+    if (/female|girl|child|kid/i.test(name)) score += 10;
+
+    return score;
+  },
+
+  /* 🎙️ Mevcut insan seslerini listeleme (filtreli ve sıralı) */
+  getHumanVoices() {
+    try {
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth || !synth.getVoices) return [];
+      const vs = synth.getVoices() || [];
+      return vs
+        .filter((v) => !this.isRoboticVoice(v))
+        .sort((a, b) => this.getVoiceScore(b) - this.getVoiceScore(a));
+    } catch (e) {
+      return [];
+    }
+  },
+
   pickVoice() {
     try {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
-      if (!synth) return null;
-      const vs = synth.getVoices ? synth.getVoices() : [];
-      if (!vs || !vs.length) return null;
-      const pref = [
-        (v) => /natural/i.test(v.name) && /en[-_](GB|US)/i.test(v.lang),
-        (v) => /Online \(Natural\)/i.test(v.name),
-        (v) => /Google.*English/i.test(v.name),
-        (v) => /en[-_]GB/i.test(v.lang) && /female|Kate|Serena|Libby/i.test(v.name),
-        (v) => /en[-_]GB/i.test(v.lang),
-        (v) => /en[-_]US/i.test(v.lang),
-        (v) => /^en/i.test(v.lang)
-      ];
-      for (const p of pref) {
-        const f = vs.find(p);
-        if (f) {
-          this.voice = f;
-          return f;
+      if (!synth || !synth.getVoices) return null;
+      const vs = synth.getVoices() || [];
+      if (!vs.length) return null;
+
+      // Kullanıcı daha önce geçerli bir ses seçtiyse onu koru
+      try {
+        const saved = store.get('voice');
+        if (saved) {
+          const match = vs.find((v) => v.name === saved && !this.isRoboticVoice(v));
+          if (match) {
+            this.voice = match;
+            return match;
+          }
         }
+      } catch (e) {}
+
+      // Sadece neşeli insan seslerini al ve puanlarına göre sırala
+      const humanVoices = this.getHumanVoices();
+      if (humanVoices.length > 0) {
+        this.voice = humanVoices[0];
+        return humanVoices[0];
       }
-      return vs[0] || null;
+
+      // Güvenlik yedeği: robotik filtreyi geçen ilk İngilizce ses
+      const fallback = vs.find((v) => /^en/i.test(v.lang) && !this.isRoboticVoice(v));
+      if (fallback) {
+        this.voice = fallback;
+        return fallback;
+      }
+
+      // Son çare: robotik filtreyi geçen herhangi bir ses
+      const anyNonRobot = vs.find((v) => !this.isRoboticVoice(v));
+      this.voice = anyNonRobot || null;
+      return this.voice;
     } catch (e) {
       return null;
     }
@@ -280,13 +372,10 @@ const MEDIA = {
     } catch (e) {}
   },
 
-  /* 🎙️ ANA KONUŞMA — GERÇEK İNSAN SESİ ÖNCELİKLİ
-     voice-map.js bildirgesinde (VOICESET) slug'ı varsa audio/w-<slug>.mp3
-     dosyası çalınır (gerçek nöral insan sesi kaydı). Dosya yoksa veya
-     çalınamazsa tarayıcı TTS yedeğine (tts) döner — sessiz asla kalmaz.
-     rate değeri dosya hızına çevrilir: >=.8 normal · .7-.79 hafif yavaş ·
-     <.7 yavaş (gerçek ses playbackRate ile yavaşlatılır — robotikleşmez) */
-  speak(text, rate = 0.82, cb, vol) {
+  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ
+     Neşeli, enerjik ve çocuk dostu bir tempoda seslendirir.
+     Robotik sesleri kesinlikle engeller. */
+  speak(text, rate = 0.9, cb, vol) {
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
         const t = String(text || '');
@@ -301,7 +390,7 @@ const MEDIA = {
             let done = false,
               to = null;
             try {
-              a.playbackRate = rate >= 0.8 ? 1 : rate >= 0.7 ? 0.92 : 0.78;
+              a.playbackRate = rate >= 0.8 ? 1 : 0.88;
             } catch (e) {}
             const fall = () => {
               if (done) return;
@@ -334,26 +423,33 @@ const MEDIA = {
     this.tts(text, rate, cb, vol);
   },
 
-  /* Yedek: tarayıcı TTS (Edge "Natural" sesleri öncelikli seçilir) */
-  tts(text, rate = 0.82, cb, vol) {
+  /* 🎙️ Tarayıcı TTS — Neşeli, sıcak ve doğal insan sesleri */
+  tts(text, rate = 0.9, cb, vol) {
     if (this.muted) {
       cb && cb();
       return;
     }
     try {
-      const synth = window.speechSynthesis;
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
       if (!synth) {
         cb && cb();
         return;
       }
       synth.cancel();
       const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'en-GB';
-      u.rate = rate;
-      u.pitch = 1.12;
-      if (vol != null) u.volume = vol;
       if (!this.voice) this.pickVoice();
-      if (this.voice) u.voice = this.voice;
+      if (this.voice) {
+        u.voice = this.voice;
+        u.lang = this.voice.lang || 'en-GB';
+      } else {
+        u.lang = 'en-GB';
+      }
+      // // SAFETY: Doğal insan sesi tınısını korumak için pitch 1.0 (robotikleşmeyi önler)
+      u.pitch = 1.0;
+      // // SAFETY: Robotik takılmaları engelleyen güvenli insan konuşma hızı (asla <0.78 olmaz)
+      const safeRate = Math.max(0.78, Math.min(1.08, rate || 0.9));
+      u.rate = safeRate;
+      if (vol != null) u.volume = vol;
       if (cb) {
         u.onend = cb;
         u.onerror = cb;
