@@ -290,7 +290,7 @@ const APP = {
    <div class="word-wall">${u.w
      .map(
        (w) =>
-         `<span class="word-pill" data-w="${esc(w[0])}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])}</span>`
+         `<span class="word-pill" data-w="${esc(w[0])}" data-tr="${esc(w[2])}" data-em="${w[1] || '🔤'}"><span class="pe">${w[1] || '🔤'}</span><strong>${esc(w[0])}</strong> <small class="muted" style="font-weight:600;opacity:0.85">(${esc(w[2])})</small></span>`
      )
      .join('')}</div>
 
@@ -687,10 +687,28 @@ const APP = {
       })
     );
 
+    on('.learn-theater-card', 'click', (e) => {
+      if (e.target.closest('.learn-voice-btns') || e.target.closest('button')) return;
+      const u = unitById(this.unitId);
+      if (u && u.w) {
+        const cur = u.w[this.learnIdx || 0];
+        if (cur) {
+          MEDIA.fx('pop');
+          MEDIA.speak(cur[0], 0.9);
+          FX.notes(innerWidth / 2, innerHeight - 160);
+        }
+      }
+    });
+
     $$('.word-pill[data-wi]').forEach((p) =>
       p.addEventListener('click', () => {
-        MEDIA.fx('pop');
         this.learnIdx = +p.dataset.wi;
+        const u = unitById(this.unitId);
+        if (u && u.w && u.w[this.learnIdx]) {
+          MEDIA.speak(u.w[this.learnIdx][0], 0.9);
+        } else {
+          MEDIA.fx('pop');
+        }
         this.render();
       })
     );
@@ -738,7 +756,16 @@ const APP = {
 
     $$('.word-pill[data-w]').forEach((p) =>
       p.addEventListener('click', () => {
-        MEDIA.speak(p.dataset.w);
+        const w = p.dataset.w;
+        const tr = p.dataset.tr;
+        const em = p.dataset.em || '🔤';
+        MEDIA.speak(w);
+        p.classList.add('lit');
+        setTimeout(() => p.classList.remove('lit'), 800);
+        if (tr) {
+          FX.toast(`${em} ${w} = ${tr}`);
+          FX.mascotSay(`${em} <b>${w}</b>: ${tr}`);
+        }
         FX.notes(innerWidth / 2, innerHeight - 140);
       })
     );

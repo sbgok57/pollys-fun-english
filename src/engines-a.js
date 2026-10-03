@@ -79,7 +79,7 @@ const ENGINES_A = [
     init(api) {
       const u = api.unit, cfg = api.lv;
       const pool = sample(EWORDS(u), Math.min(cfg.pairs, EWORDS(u).length));
-      let selWord = null, selEmoji = null, matched = 0;
+      let selWord = null, selEmoji = null, matched = 0, matchingLock = false;
 
       const words = shuffle(pool);
       const emojis = shuffle(pool);
@@ -117,20 +117,23 @@ const ENGINES_A = [
             }, 600);
           }
         } else {
+          matchingLock = true;
           selWord.classList.add('no');
           selEmoji.classList.add('no');
           MEDIA.fx('wrong');
           const w1 = selWord, e1 = selEmoji;
+          selWord = null;
+          selEmoji = null;
           setTimeout(() => {
             w1.classList.remove('no', 'sel');
             e1.classList.remove('no', 'sel');
+            matchingLock = false;
           }, 600);
-          selWord = null;
-          selEmoji = null;
         }
       };
 
       api.root.querySelector('#mw').onclick = (e) => {
+        if (matchingLock) return;
         const o = e.target.closest('.opt');
         if (!o || o.classList.contains('ok')) return;
         api.root.querySelectorAll('#mw .opt').forEach(x => x.classList.remove('sel'));
@@ -141,12 +144,13 @@ const ENGINES_A = [
       };
 
       api.root.querySelector('#me').onclick = (e) => {
+        if (matchingLock) return;
         const o = e.target.closest('.opt');
         if (!o || o.classList.contains('ok')) return;
         api.root.querySelectorAll('#me .opt').forEach(x => x.classList.remove('sel'));
         o.classList.add('sel');
         selEmoji = o;
-        MEDIA.fx('click');
+        MEDIA.speak(o.dataset.w);
         checkMatch();
       };
     }
@@ -250,7 +254,7 @@ const ENGINES_A = [
             ${cards.map((c, i) => `
               <div class="opt memory-card" data-idx="${i}" style="height:100px;font-size:2em;display:flex;align-items:center;justify-content:center;background:#e0e7ff;border:4px solid #818cf8;border-radius:16px;cursor:pointer">
                 <span class="card-back">❓</span>
-                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : c.content}</span>
+                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : `<div style="text-align:center">${c.content}<div style="font-size:0.35em;font-weight:700;color:#64748b">${esc(c.w[2])}</div></div>`}</span>
               </div>`).join('')}
           </div>
         </div>`;
@@ -265,7 +269,7 @@ const ENGINES_A = [
         elCard.querySelector('.card-front').style.display = 'block';
         elCard.style.background = '#ffffff';
         MEDIA.fx('pop');
-        if (item.t === 'word') MEDIA.speak(item.content);
+        MEDIA.speak(item.w[0]);
 
         if (!f1) {
           f1 = elCard;

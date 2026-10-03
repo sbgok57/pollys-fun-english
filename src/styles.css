@@ -320,6 +320,12 @@ body.s2 {
   background: #fef08a;
   transform: scale(1.06);
 }
+.word-pill.lit {
+  background: #fef08a !important;
+  border-color: #f59e0b !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
 
 /* ═══ OYUN EKRANI ═══ */
 .game-head {

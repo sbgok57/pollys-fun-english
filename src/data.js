@@ -324,7 +324,7 @@ const ALLSETS = [
       ],
       [
         "same",
-        "♊",
+        "🟰",
         "aynı",
         1
       ],
@@ -486,7 +486,7 @@ const ALLSETS = [
       [
         "mum",
         "👩‍🦰",
-        "annecik",
+        "anne / anneciğim",
         0
       ],
       [
@@ -498,7 +498,7 @@ const ALLSETS = [
       [
         "dad",
         "🧔",
-        "babacık",
+        "baba / babacığım",
         0
       ],
       [
@@ -1321,7 +1321,7 @@ const ALLSETS = [
       ],
       [
         "trunk",
-        "🪵",
+        "🐘",
         "fil hortumu / gövde",
         1
       ],
@@ -1363,7 +1363,7 @@ const ALLSETS = [
       ],
       [
         "big",
-        "🐘",
+        "🐋",
         "büyük",
         2
       ],
@@ -1447,12 +1447,12 @@ const ALLSETS = [
       [
         "float",
         "🛟",
-        "suda batmadan yüzmek",
+        "yüzmek (batmamak)",
         0
       ],
       [
         "drive",
-        "🚥",
+        "🏎️",
         "araba sürmek",
         0
       ],
@@ -1655,7 +1655,7 @@ const ALLSETS = [
       ],
       [
         "zoo",
-        "🎟️",
+        "🦒",
         "hayvanat bahçesi",
         0
       ],
@@ -2636,7 +2636,7 @@ const ALLSETS = [
       ],
       [
         "sailor",
-        "뚬",
+        "⚓",
         "denizci",
         0
       ],
@@ -2702,7 +2702,7 @@ const ALLSETS = [
       ],
       [
         "in front of",
-        "🔜",
+        "👉",
         "önünde",
         2
       ],
@@ -2785,7 +2785,7 @@ const ALLSETS = [
       ],
       [
         "fall",
-        "🍂",
+        "🤸",
         "düşmek",
         0
       ],
@@ -2804,7 +2804,7 @@ const ALLSETS = [
       [
         "nod",
         "🙆",
-        "başını sallamak (onay)",
+        "başını sallamak",
         0
       ],
       [
@@ -2845,7 +2845,7 @@ const ALLSETS = [
       ],
       [
         "tummy",
-        "🤰",
+        "🐻",
         "göbek / karın",
         1
       ],
@@ -3215,7 +3215,7 @@ const ALLSETS = [
       ],
       [
         "rectangle",
-        "▬",
+        "▭",
         "dikdörtgen",
         1
       ],
@@ -3490,13 +3490,13 @@ const ALLSETS = [
       [
         "planting",
         "🪴",
-        "ekim / dikim",
+        "fidan dikmek / ekmek",
         0
       ],
       [
         "watering",
         "🚿",
-        "sulama",
+        "sulama / sulamak",
         0
       ],
       [
@@ -3668,7 +3668,7 @@ const ALLSETS = [
       ],
       [
         "stairs",
-        "📈",
+        "🪜",
         "merdivenler",
         0
       ],
@@ -4219,13 +4219,13 @@ const ALLSETS = [
       [
         "planting",
         "🌱",
-        "ekim / dikim",
+        "fidan dikmek / ekmek",
         1
       ],
       [
         "watering",
         "🚿",
-        "sulama",
+        "sulama / sulamak",
         1
       ],
       [

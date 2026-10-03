@@ -21,10 +21,29 @@ const ENGINES_C=[
         <div class="opt-grid" id="sq">${shuffle(seq).map(w=>`<div class="opt" data-w="${esc(w[0])}">
           <span class="oe">${w[1]}</span><span class="ow">${esc(w[0])}</span></div>`).join('')}</div></div>`;
       api.root.querySelector('#sq').onclick=e=>{const o=e.target.closest('.opt');if(!o||locked)return;
-        if(o.dataset.w===seq[next][0]){o.classList.add('ok');o.style.pointerEvents='none';MEDIA.fx('pop');next++;
-          if(next===seq.length){locked=true;MEDIA.fx('correct');FX.fb(true);api.add(15);r++;setTimeout(round,950)}}
-        else{o.classList.add('no');MEDIA.fx('wrong')}}};
-    show();};
+        if(o.dataset.w===seq[next][0]){
+          o.classList.add('ok');
+          o.style.pointerEvents='none';
+          MEDIA.speak(o.dataset.w);
+          MEDIA.fx('pop');
+          next++;
+          if(next===seq.length){
+            locked=true;
+            MEDIA.fx('correct');
+            FX.fb(true);
+            api.add(15);
+            r++;
+            setTimeout(round,950);
+          }
+        } else {
+          o.classList.add('no');
+          MEDIA.fx('wrong');
+          setTimeout(() => o.classList.remove('no'), 600);
+        }
+      };
+    };
+    show();
+  };
   round();
  }},
 

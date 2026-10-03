@@ -336,6 +336,12 @@ body.s2 {
   background: #fef08a;
   transform: scale(1.06);
 }
+.word-pill.lit {
+  background: #fef08a !important;
+  border-color: #f59e0b !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
 
 /* ═══ OYUN EKRANI ═══ */
 .game-head {
@@ -1594,7 +1600,7 @@ const ALLSETS = [
       ],
       [
         "same",
-        "♊",
+        "🟰",
         "aynı",
         1
       ],
@@ -1756,7 +1762,7 @@ const ALLSETS = [
       [
         "mum",
         "👩‍🦰",
-        "annecik",
+        "anne / anneciğim",
         0
       ],
       [
@@ -1768,7 +1774,7 @@ const ALLSETS = [
       [
         "dad",
         "🧔",
-        "babacık",
+        "baba / babacığım",
         0
       ],
       [
@@ -2591,7 +2597,7 @@ const ALLSETS = [
       ],
       [
         "trunk",
-        "🪵",
+        "🐘",
         "fil hortumu / gövde",
         1
       ],
@@ -2633,7 +2639,7 @@ const ALLSETS = [
       ],
       [
         "big",
-        "🐘",
+        "🐋",
         "büyük",
         2
       ],
@@ -2717,12 +2723,12 @@ const ALLSETS = [
       [
         "float",
         "🛟",
-        "suda batmadan yüzmek",
+        "yüzmek (batmamak)",
         0
       ],
       [
         "drive",
-        "🚥",
+        "🏎️",
         "araba sürmek",
         0
       ],
@@ -2925,7 +2931,7 @@ const ALLSETS = [
       ],
       [
         "zoo",
-        "🎟️",
+        "🦒",
         "hayvanat bahçesi",
         0
       ],
@@ -3906,7 +3912,7 @@ const ALLSETS = [
       ],
       [
         "sailor",
-        "뚬",
+        "⚓",
         "denizci",
         0
       ],
@@ -3972,7 +3978,7 @@ const ALLSETS = [
       ],
       [
         "in front of",
-        "🔜",
+        "👉",
         "önünde",
         2
       ],
@@ -4055,7 +4061,7 @@ const ALLSETS = [
       ],
       [
         "fall",
-        "🍂",
+        "🤸",
         "düşmek",
         0
       ],
@@ -4074,7 +4080,7 @@ const ALLSETS = [
       [
         "nod",
         "🙆",
-        "başını sallamak (onay)",
+        "başını sallamak",
         0
       ],
       [
@@ -4115,7 +4121,7 @@ const ALLSETS = [
       ],
       [
         "tummy",
-        "🤰",
+        "🐻",
         "göbek / karın",
         1
       ],
@@ -4485,7 +4491,7 @@ const ALLSETS = [
       ],
       [
         "rectangle",
-        "▬",
+        "▭",
         "dikdörtgen",
         1
       ],
@@ -4760,13 +4766,13 @@ const ALLSETS = [
       [
         "planting",
         "🪴",
-        "ekim / dikim",
+        "fidan dikmek / ekmek",
         0
       ],
       [
         "watering",
         "🚿",
-        "sulama",
+        "sulama / sulamak",
         0
       ],
       [
@@ -4938,7 +4944,7 @@ const ALLSETS = [
       ],
       [
         "stairs",
-        "📈",
+        "🪜",
         "merdivenler",
         0
       ],
@@ -5489,13 +5495,13 @@ const ALLSETS = [
       [
         "planting",
         "🌱",
-        "ekim / dikim",
+        "fidan dikmek / ekmek",
         1
       ],
       [
         "watering",
         "🚿",
-        "sulama",
+        "sulama / sulamak",
         1
       ],
       [
@@ -8448,7 +8454,7 @@ const ENGINES_A = [
     init(api) {
       const u = api.unit, cfg = api.lv;
       const pool = sample(EWORDS(u), Math.min(cfg.pairs, EWORDS(u).length));
-      let selWord = null, selEmoji = null, matched = 0;
+      let selWord = null, selEmoji = null, matched = 0, matchingLock = false;
 
       const words = shuffle(pool);
       const emojis = shuffle(pool);
@@ -8486,20 +8492,23 @@ const ENGINES_A = [
             }, 600);
           }
         } else {
+          matchingLock = true;
           selWord.classList.add('no');
           selEmoji.classList.add('no');
           MEDIA.fx('wrong');
           const w1 = selWord, e1 = selEmoji;
+          selWord = null;
+          selEmoji = null;
           setTimeout(() => {
             w1.classList.remove('no', 'sel');
             e1.classList.remove('no', 'sel');
+            matchingLock = false;
           }, 600);
-          selWord = null;
-          selEmoji = null;
         }
       };
 
       api.root.querySelector('#mw').onclick = (e) => {
+        if (matchingLock) return;
         const o = e.target.closest('.opt');
         if (!o || o.classList.contains('ok')) return;
         api.root.querySelectorAll('#mw .opt').forEach(x => x.classList.remove('sel'));
@@ -8510,12 +8519,13 @@ const ENGINES_A = [
       };
 
       api.root.querySelector('#me').onclick = (e) => {
+        if (matchingLock) return;
         const o = e.target.closest('.opt');
         if (!o || o.classList.contains('ok')) return;
         api.root.querySelectorAll('#me .opt').forEach(x => x.classList.remove('sel'));
         o.classList.add('sel');
         selEmoji = o;
-        MEDIA.fx('click');
+        MEDIA.speak(o.dataset.w);
         checkMatch();
       };
     }
@@ -8619,7 +8629,7 @@ const ENGINES_A = [
             ${cards.map((c, i) => `
               <div class="opt memory-card" data-idx="${i}" style="height:100px;font-size:2em;display:flex;align-items:center;justify-content:center;background:#e0e7ff;border:4px solid #818cf8;border-radius:16px;cursor:pointer">
                 <span class="card-back">❓</span>
-                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : c.content}</span>
+                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : `<div style="text-align:center">${c.content}<div style="font-size:0.35em;font-weight:700;color:#64748b">${esc(c.w[2])}</div></div>`}</span>
               </div>`).join('')}
           </div>
         </div>`;
@@ -8634,7 +8644,7 @@ const ENGINES_A = [
         elCard.querySelector('.card-front').style.display = 'block';
         elCard.style.background = '#ffffff';
         MEDIA.fx('pop');
-        if (item.t === 'word') MEDIA.speak(item.content);
+        MEDIA.speak(item.w[0]);
 
         if (!f1) {
           f1 = elCard;
@@ -9808,10 +9818,29 @@ const ENGINES_C=[
         <div class="opt-grid" id="sq">${shuffle(seq).map(w=>`<div class="opt" data-w="${esc(w[0])}">
           <span class="oe">${w[1]}</span><span class="ow">${esc(w[0])}</span></div>`).join('')}</div></div>`;
       api.root.querySelector('#sq').onclick=e=>{const o=e.target.closest('.opt');if(!o||locked)return;
-        if(o.dataset.w===seq[next][0]){o.classList.add('ok');o.style.pointerEvents='none';MEDIA.fx('pop');next++;
-          if(next===seq.length){locked=true;MEDIA.fx('correct');FX.fb(true);api.add(15);r++;setTimeout(round,950)}}
-        else{o.classList.add('no');MEDIA.fx('wrong')}}};
-    show();};
+        if(o.dataset.w===seq[next][0]){
+          o.classList.add('ok');
+          o.style.pointerEvents='none';
+          MEDIA.speak(o.dataset.w);
+          MEDIA.fx('pop');
+          next++;
+          if(next===seq.length){
+            locked=true;
+            MEDIA.fx('correct');
+            FX.fb(true);
+            api.add(15);
+            r++;
+            setTimeout(round,950);
+          }
+        } else {
+          o.classList.add('no');
+          MEDIA.fx('wrong');
+          setTimeout(() => o.classList.remove('no'), 600);
+        }
+      };
+    };
+    show();
+  };
   round();
  }},
 
@@ -10661,7 +10690,7 @@ const APP = {
    <div class="word-wall">${u.w
      .map(
        (w) =>
-         `<span class="word-pill" data-w="${esc(w[0])}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])}</span>`
+         `<span class="word-pill" data-w="${esc(w[0])}" data-tr="${esc(w[2])}" data-em="${w[1] || '🔤'}"><span class="pe">${w[1] || '🔤'}</span><strong>${esc(w[0])}</strong> <small class="muted" style="font-weight:600;opacity:0.85">(${esc(w[2])})</small></span>`
      )
      .join('')}</div>
 
@@ -11058,10 +11087,28 @@ const APP = {
       })
     );
 
+    on('.learn-theater-card', 'click', (e) => {
+      if (e.target.closest('.learn-voice-btns') || e.target.closest('button')) return;
+      const u = unitById(this.unitId);
+      if (u && u.w) {
+        const cur = u.w[this.learnIdx || 0];
+        if (cur) {
+          MEDIA.fx('pop');
+          MEDIA.speak(cur[0], 0.9);
+          FX.notes(innerWidth / 2, innerHeight - 160);
+        }
+      }
+    });
+
     $$('.word-pill[data-wi]').forEach((p) =>
       p.addEventListener('click', () => {
-        MEDIA.fx('pop');
         this.learnIdx = +p.dataset.wi;
+        const u = unitById(this.unitId);
+        if (u && u.w && u.w[this.learnIdx]) {
+          MEDIA.speak(u.w[this.learnIdx][0], 0.9);
+        } else {
+          MEDIA.fx('pop');
+        }
         this.render();
       })
     );
@@ -11109,7 +11156,16 @@ const APP = {
 
     $$('.word-pill[data-w]').forEach((p) =>
       p.addEventListener('click', () => {
-        MEDIA.speak(p.dataset.w);
+        const w = p.dataset.w;
+        const tr = p.dataset.tr;
+        const em = p.dataset.em || '🔤';
+        MEDIA.speak(w);
+        p.classList.add('lit');
+        setTimeout(() => p.classList.remove('lit'), 800);
+        if (tr) {
+          FX.toast(`${em} ${w} = ${tr}`);
+          FX.mascotSay(`${em} <b>${w}</b>: ${tr}`);
+        }
         FX.notes(innerWidth / 2, innerHeight - 140);
       })
     );
