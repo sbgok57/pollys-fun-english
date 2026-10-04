@@ -231,6 +231,8 @@ body.s2 {
 }
 .stage-card.s1 { border-color: #86efac; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%); }
 .stage-card.s2 { border-color: #93c5fd; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); }
+.stage-card.s3 { border-color: #d8b4fe; background: linear-gradient(180deg, #faf5ff 0%, #ffffff 100%); }
+.stage-card.s4 { border-color: #fdba74; background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%); }
 .stage-card.songs { border-color: #f472b6; background: linear-gradient(180deg, #fdf2f8 0%, #ffffff 100%); }
 .sc-emoji { font-size: 46px; display: block; margin-bottom: 8px; }
 .stage-card h2 { font-size: 1.45em; color: #0f172a; margin-bottom: 6px; font-weight: 900; }

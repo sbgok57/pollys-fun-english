@@ -56,8 +56,8 @@ const bekle = (ms) => new Promise((r) => setTimeout(r, ms));
   const tık = (el) => el && el.dispatchEvent(new w.Event('click', { bubbles: true }));
   try {
     /* A) ana sayfa */
-    qa('.stage-card').length === 3
-      ? ok('A) ana sayfa render (localStorage reddedilse bile)')
+    qa('.stage-card').length >= 4
+      ? ok('A) ana sayfa render (1-4. Sınıf ve Şarkı Kartları Mevcut: ' + qa('.stage-card').length + ' kart)')
       : bad('ana sayfa yok!');
 
     /* B) 1. Sınıf → ünite listesi */

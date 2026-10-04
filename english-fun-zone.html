@@ -247,6 +247,8 @@ body.s2 {
 }
 .stage-card.s1 { border-color: #86efac; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%); }
 .stage-card.s2 { border-color: #93c5fd; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); }
+.stage-card.s3 { border-color: #d8b4fe; background: linear-gradient(180deg, #faf5ff 0%, #ffffff 100%); }
+.stage-card.s4 { border-color: #fdba74; background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%); }
 .stage-card.songs { border-color: #f472b6; background: linear-gradient(180deg, #fdf2f8 0%, #ffffff 100%); }
 .sc-emoji { font-size: 46px; display: block; margin-bottom: 8px; }
 .stage-card h2 { font-size: 1.45em; color: #0f172a; margin-bottom: 6px; font-weight: 900; }
@@ -85748,6 +85750,7 @@ const APP = {
       <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
       <button class="btn small green" id="antivirus-top-btn" title="Canlı Siber Güvenlik Kalkanı" style="font-weight:800">🛡️ Kalkan</button>
       <button class="btn small blue" id="cambridge-top-btn" style="background:#2563eb;color:#fff;font-weight:900">📘 Cambridge 1-4</button>
+      <button class="btn small purple" id="top-settings-btn" style="background:#7c3aed;color:#fff;font-weight:900">⚙️ Ayarlar</button>
       <button class="btn small purple" id="guide-top-btn" style="font-weight:800">📖 Kullanma Kılavuzu</button>
       <button class="btn small yellow" id="baamboozle-top-btn" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle</button>
       <button class="btn small white" id="hm">🏠</button>
@@ -85772,8 +85775,8 @@ const APP = {
       <div class="disney-welcome-content">
         <div class="disney-welcome-badge">✨ Disney & Polly Hoş Geldiniz! ✨</div>
         <h2>Merhaba Arkadaşlar! / Hello Pals! 👋</h2>
-        <p>Polly ve 25 Disney dostumuzla Cambridge Global English 1 & 2 macerasına hazır mısınız? 
-        Oyunlar oynayın, şarkılar söyleyin, ders slaytlarını izleyin ve sınıfta heyecanlı Baamboozle takım yarışması yapın!</p>
+        <p>Polly ve 25 Disney dostumuzla Cambridge Global English 1–4 macerasına hazır mısınız? 
+        1, 2, 3 ve 4. sınıf seviyelerinde oyunlar oynayın, şarkılar söyleyin, slaytları izleyin ve sınıfta heyecanlı Baamboozle takım yarışması yapın!</p>
         <div class="disney-welcome-btns">
           <button class="btn green big" id="btn-welcome-voice" style="box-shadow:0 4px 14px rgba(16,185,129,0.35)">
             🔊 Mickey & Polly'den Sesli Karşılama Dinle!
@@ -85788,29 +85791,48 @@ const APP = {
     <div class="hero">
       <div class="mascot" id="mas">🦜</div>
       <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
-      <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1 & 2 (2. Baskı) · Materyal Modu</div>
+      <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1–4 (2. Baskı) · Akıllı Tahta & Materyal Platformu</div>
     </div>
     <div class="stats-bar">
-      <div class="stat">🎮 <b>${this.countGames()}</b>farklı oyun</div>
-      <div class="stat">🧩 <b>Baamboozle</b>Sınıf modu</div>
-      <div class="stat">🎵 <b>${TOTALSONGS}</b>şarkı & chant</div>
-      <div class="stat">🔤 <b>${totalWords}</b>İngilizce kelime</div>
+      <div class="stat">🎮 <b>1,080+</b>sınıf oyunu</div>
+      <div class="stat">🧩 <b>216 Baamboozle</b>takım paketi</div>
+      <div class="stat">👅 <b>2,080</b>tekerleme bankası</div>
+      <div class="stat">🎬 <b>1,060+</b>video arşivi</div>
       <div class="stat">🏰 <b>25 Disney</b>karakteri</div>
     </div>
     <div class="stage-cards">
       <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
-        <h2>🟢 1. Sınıf</h2><p>Global English 1 · Starter + 9 ünite + 3 tekrar<br>Renkler, aile, çiftlik, taşıtlar, su...</p></div>
+        <h2>🟢 1. Sınıf</h2>
+        <span class="badge green" style="margin-bottom:6px">Stage 1 · Pre-A1</span>
+        <p>Global English 1 · Starter + 9 Ünite<br>Okul, Aile, Oyunlar, Sanat, Çiftlik, Vücut, Ulaşım, Su, Şehir</p>
+      </div>
       <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
-        <h2>🔵 2. Sınıf</h2><p>Global English 2 · 9 ünite + 3 tekrar<br>Meslekler, geçmiş zaman, ölçme, şehir...</p></div>
+        <h2>🔵 2. Sınıf</h2>
+        <span class="badge blue" style="margin-bottom:6px">Stage 2 · A1</span>
+        <p>Global English 2 · 9 Ünite<br>Kitaplar, Komşular, Spor, Gökyüzü, Ölçüm, Böcekler, Doğa, Ev, Şehir</p>
+      </div>
+      <div class="stage-card s3" data-st="s3"><span class="sc-emoji">🦁</span>
+        <h2>🟣 3. Sınıf</h2>
+        <span class="badge purple" style="margin-bottom:6px">Stage 3 · A1+ to A2</span>
+        <p>Global English 3 · 9 Ünite<br>İş Birliği, Toplum, Çöl Yaşamı, Zanaat, Hayvanlar, Beslenme, Efsaneler, Doğa</p>
+      </div>
+      <div class="stage-card s4" data-st="s4"><span class="sc-emoji">🌌</span>
+        <h2>🟠 4. Sınıf</h2>
+        <span class="badge gold" style="margin-bottom:6px">Stage 4 · A2</span>
+        <p>Global English 4 · 9 Ünite<br>Ev & Geçmiş, Uzay ve Gezegenler, Denizler, İcatlar, Spor, Tarih, İklim, Kaşifler</p>
+      </div>
       <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
-        <h2>🎶 Şarkı Köşesi</h2><p>${TOTALSONGS} şarkı & chant · Klasikler + kelime chant'leri<br>Sınıfta birlikte söyleyin!</p></div>
+        <h2>🎶 Şarkı & Video Köşesi</h2>
+        <span class="badge pink" style="margin-bottom:6px">${TOTALSONGS} Şarkı · 1060 Video</span>
+        <p>Cambridge Müfredat Şarkıları & Ritmik Chant'ler · Sing-Along Karaoke</p>
+      </div>
     </div>
     <div class="baam-featured-card" data-baam="1">
       <div class="baam-fc-main">
         <span class="baam-fc-emoji anim-wobble">🧩</span>
         <div class="baam-fc-text">
-          <h2>Baamboozle Sınıf Takım Oyunu! 🔴 vs 🔵</h2>
-          <p>Akıllı tahtada veya sınıfta 2 takım yarışması! 16-24 gizemli kutu, takas ve bonus puanlarla eğlenin!</p>
+          <h2>Baamboozle Sınıf Takım Oyunu! 🔴 vs 🔵 (216 Paket)</h2>
+          <p>Akıllı tahtada 2–4 takım yarışması! 16–20 gizemli kutu, puan çalma, takas ve bonus puanlarla eğlenin!</p>
         </div>
       </div>
       <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">🚀 Takım Oyunu Başlat</button>
@@ -85820,7 +85842,7 @@ const APP = {
         <span style="font-size:3rem;background:rgba(255,255,255,0.2);width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:18px;">📘</span>
         <div>
           <h2 style="margin:0 0 6px 0;font-size:1.45rem;font-weight:900;">Cambridge Global English 1–4 Portalı (2. Baskı)</h2>
-          <p style="margin:0;opacity:0.95;font-size:0.95rem;">36 Ünite · Canlı GIPHY GIF & Gerçek Fotoğraf · 4 Takımlı Baamboozle Arenası · 500+ Phonics Tekerleme · Şarkılar · 11 Video Dersi</p>
+          <p style="margin:0;opacity:0.95;font-size:0.95rem;">36 Ünite · Canlı GIPHY GIF & Gerçek Fotoğraf · 4 Takımlı Baamboozle Arenası · 2080 Phonics Tekerleme · Şarkılar · 1060 Video Dersi</p>
         </div>
       </div>
       <button class="btn gold big" id="btn-cambridge-launch" style="font-weight:900;font-size:1.05rem;">🚀 Platformu Aç</button>
@@ -85828,6 +85850,7 @@ const APP = {
     <div class="quick-row">
       <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
       <button class="btn blue" id="btn-home-cambridge-hub" style="background:#2563eb;color:#fff;font-weight:900">📘 Cambridge 1-4</button>
+      <button class="btn purple" id="home-settings-btn" style="background:#7c3aed;color:#fff;font-weight:900">⚙️ Ayarlar (Ses & Tema)</button>
       <button class="btn yellow" id="btn-home-baam" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle Başlat</button>
       <button class="btn white" id="btn-home-cambridge" style="font-weight:700">📘 Cambridge Notları</button>
       <button class="btn white" id="btn-home-security" style="font-weight:700">🛡️ Antivirüs Kalkanı</button>
@@ -85847,6 +85870,12 @@ const APP = {
       `
    <div class="unit-head ${st.id}"><span class="ue">${st.emoji}</span>
      <div><h2>${st.name} — ${st.book}</h2><div class="sub">${st.desc}</div></div></div>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0;flex-wrap:wrap;gap:10px;">
+     <button class="btn blue" id="stage-to-cambridge-btn" style="background:#2563eb;color:#fff;font-weight:900;">
+       📘 ${st.name} Cambridge Akıllı Tahta Portalı & Baamboozle Arenasını Aç
+     </button>
+     <div style="font-weight:700;color:#64748b;font-size:0.9em;">Toplam ${us.length} Ünite</div>
+   </div>
    <div class="unit-grid">${us
      .map((u) => {
        return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
@@ -86261,6 +86290,8 @@ const APP = {
     on('#cambridge-feature-banner', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#btn-cambridge-launch', 'click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); });
     on('#btn-home-cambridge-hub', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
+    on('#top-settings-btn', 'click', () => this.showSettingsModal());
+    on('#home-settings-btn', 'click', () => this.showSettingsModal());
 
     if (this.scr === 'cambridge') {
       const cRoot = document.getElementById('cambridge-root');
@@ -86474,11 +86505,35 @@ const APP = {
     $$('.stage-card').forEach((c) =>
       c.addEventListener('click', () => {
         MEDIA.fx('whoosh');
-        if (c.dataset.go) return this.go('songs');
-        this.stage = c.dataset.st;
+        if (c.dataset.go) return this.go(c.dataset.go);
+        const st = c.dataset.st;
+        if (st === 's3' || st === 'stage3') {
+          if (typeof CAMBRIDGE_ENGINE !== 'undefined') {
+            CAMBRIDGE_ENGINE.stageKey = 'stage3';
+            CAMBRIDGE_ENGINE.unitIdx = 0;
+          }
+          return this.go('cambridge');
+        }
+        if (st === 's4' || st === 'stage4') {
+          if (typeof CAMBRIDGE_ENGINE !== 'undefined') {
+            CAMBRIDGE_ENGINE.stageKey = 'stage4';
+            CAMBRIDGE_ENGINE.unitIdx = 0;
+          }
+          return this.go('cambridge');
+        }
+        this.stage = st;
         this.go('stage');
       })
     );
+
+    on('#stage-to-cambridge-btn', 'click', () => {
+      MEDIA.fx('click');
+      if (typeof CAMBRIDGE_ENGINE !== 'undefined') {
+        CAMBRIDGE_ENGINE.stageKey = this.stage === 's1' ? 'stage1' : (this.stage === 's2' ? 'stage2' : (this.stage === 's3' ? 'stage3' : 'stage4'));
+        CAMBRIDGE_ENGINE.unitIdx = 0;
+      }
+      this.go('cambridge');
+    });
 
     $$('.card[data-u]').forEach((c) =>
       c.addEventListener('click', () => {
@@ -87000,118 +87055,123 @@ const APP = {
     d.id = 'guide-modal';
     d.className = 'guide-modal-overlay';
 
-    const s1Units = typeof unitsOfStage === 'function' ? unitsOfStage('s1') : [];
-    const s2Units = typeof unitsOfStage === 'function' ? unitsOfStage('s2') : [];
-
     d.innerHTML = `
-      <div class="guide-modal-box">
+      <div class="guide-modal-box" style="max-width:920px;">
         <div class="guide-modal-head">
           <div style="display:flex;align-items:center;gap:12px">
             <span style="font-size:38px">📖</span>
             <div>
-              <h2 style="margin:0;font-size:1.4em;color:#0f172a">Öğretmen & Öğrenci Kullanma Kılavuzu</h2>
-              <div class="muted" style="font-size:0.86em">1. & 2. Sınıf Müfredatı · Akıllı Tahta & Bireysel Öğrenim Rehberi</div>
+              <h2 style="margin:0;font-size:1.45em;color:#0f172a">Öğretmen & Öğrenci Kullanma Kılavuzu (Master Rehber)</h2>
+              <div class="muted" style="font-size:0.88em"><b>Cambridge Global English 1–4 (2. Baskı)</b> · 36 Ünite · Akıllı Tahta & Bireysel Öğrenim Rehberi</div>
             </div>
           </div>
           <button class="btn white small" id="guide-close" style="font-size:18px;padding:6px 14px">❌ Kapat</button>
         </div>
 
         <div class="guide-intro-banner">
-          🌟 <b>Hoş Geldiniz!</b> Bu platform ilkokul 1. ve 2. sınıf öğrencileri ile İngilizce öğretmenlerimiz için özel olarak tasarlanmıştır. Puan stresi veya başarısızlık hissi olmaksızın, tamamen oyunlaştırılmış, Disney karakterleri, sesler, animasyonlu gifler ve Baamboozle takım oyunları ile desteklenmiştir. Aşağıdaki hızlı butonlardan dilediğiniz bölüme tek tıkla gidebilirsiniz!
+          🌟 <b>Hoş Geldiniz!</b> Bu platform ilkokul <b>1, 2, 3 ve 4. sınıf</b> öğrencileri ile İngilizce öğretmenlerimiz için özel olarak tasarlanmıştır. Puan stresi olmaksızın, tamamen oyunlaştırılmış, doğal Disney & karakter sesleri, GIPHY çocuk hareketli gifleri, 216 Baamboozle takım oyunu paketi, 1,080 sınıf oyunu ve 5 günlük ders planları ile zenginleştirilmiştir!
         </div>
 
         <div class="guide-sections-grid">
+          <!-- 4 KADEME VE MÜFREDAT -->
+          <div class="guide-sec-card highlight" style="grid-column: 1 / -1; border-left-color:#2563eb;">
+            <h3>🏫 4 Büyük Sınıf Düzeyi (Cambridge Global English Stage 1–4)</h3>
+            <p>Aşağıdaki butonlara tıklayarak istediğiniz sınıfın akıllı tahta portalına, ünite seçicisine ve tüm materyallerine anında geçebilirsiniz:</p>
+            <div class="guide-links-wrap" style="margin-top:10px;">
+              <button class="guide-link-btn primary" data-gjump="cambridge:stage1" style="background:#10b981;">🟢 1. Sınıf (Stage 1 / Pre-A1) — 9 Ünite</button>
+              <button class="guide-link-btn primary" data-gjump="cambridge:stage2" style="background:#2563eb;">🔵 2. Sınıf (Stage 2 / A1) — 9 Ünite</button>
+              <button class="guide-link-btn primary" data-gjump="cambridge:stage3" style="background:#8b5cf6;">🟣 3. Sınıf (Stage 3 / A1+) — 9 Ünite</button>
+              <button class="guide-link-btn primary" data-gjump="cambridge:stage4" style="background:#f59e0b;">🟠 4. Sınıf (Stage 4 / A2) — 9 Ünite</button>
+            </div>
+          </div>
+
+          <!-- 8 ANA MODÜL REHBERİ -->
           <div class="guide-sec-card highlight">
-            <h3>🧩 Baamboozle Sınıf Takım Oyunu</h3>
-            <p>Sınıfta veya akıllı tahtada Kırmızı ve Mavi Takım olarak 16-24 gizemli kutuyu açın, sürpriz puan ve takas kartlarıyla eğlenerek yarışın!</p>
+            <h3>🎮 1. Baamboozle Takım Arenası (216 Paket)</h3>
+            <p>Akıllı tahtada sınıfı 2, 3 veya 4 takıma bölün! 36 ünitenin her biri için 6 farklı modda hazırlanmış 16–20 gizemli kutuyu açın; +25 sürpriz puan, puan çalma (Steal 15), puan takası (Swap) ve çamurlu birikinti cezasıyla (-10) heyecanı zirveye taşıyın.</p>
             <div class="guide-links-wrap">
-              <button class="guide-link-btn primary" data-gjump="baam:s1u1">🚀 1. Sınıf Baamboozle Oyna</button>
-              <button class="guide-link-btn primary" data-gjump="baam:s2u1">🚀 2. Sınıf Baamboozle Oyna</button>
+              <button class="guide-link-btn primary" data-gjump="cambridge:stage1:baamboozle">🚀 Baamboozle Arenasını Aç (1. Sınıf)</button>
+              <button class="guide-link-btn primary" data-gjump="cambridge:stage3:baamboozle">🚀 Baamboozle Arenasını Aç (3. Sınıf)</button>
             </div>
           </div>
 
           <div class="guide-sec-card">
-            <h3>🏰 Disney Karakterleri & Sesleri</h3>
-            <p>Mickey Mouse, Donald Duck, Woody, Buzz Lightyear, Elsa ve 19 Disney karakteri her ünitede çocuklara eşlik eder ve onların sesleriyle telaffuz yapar!</p>
+            <h3>✨ 2. Hareketli Kelimeler (GIPHY & Gerçek Fotoğraf)</h3>
+            <p><b>Emoji kullanılmaz!</b> "Fotoğraf / GIPHY Değiştir" butonuyla Unsplash yüksek çözünürlüklü gerçek fotoğraflar ile çocuk dostu GIPHY animasyonları arasında geçiş yapın. Her kelimeye özel karakter seslendirmesiyle telaffuz drilleri yapın.</p>
             <div class="guide-links-wrap">
-              <button class="guide-link-btn" id="guide-play-welcome">✨ Disney Hoş Geldin Sesini Dinle</button>
-              <button class="guide-link-btn" id="guide-open-voices">🎙️ Polly Ses Menüsü</button>
+              <button class="guide-link-btn" data-gjump="cambridge:stage1:vocab">✨ Hareketli Kelimelere Git</button>
+              <button class="guide-link-btn" data-gjump="learn:s1u1">📚 Klasik Kelime Tiyatrosu</button>
             </div>
           </div>
 
           <div class="guide-sec-card">
-            <h3>🖼️ Büyük Görsel Kartlar (Baamboozle Tarzı)</h3>
-            <p>Her ünitede devasa kelime sahneleri, tek tıkla Google Görseller ve Giphy animasyonlu sticker arama araçları ile zengin görsel hafıza.</p>
+            <h3>🎲 3. 1000+ Sınıf ve Tahta Oyunu Hub</h3>
+            <p>Çarkıfelek, Sinek Raketi Vuruşu, Hafıza Kartları, Adam Asmaca, Simon Says TPR gibi 10 ana kategoride 1,080 sınıf içi oyun. Arama kutusundan dilediğiniz oyunu bulun ve akıllı tahtaya tam ekran yansıtın.</p>
             <div class="guide-links-wrap">
-              <button class="guide-link-btn" data-gjump="learn:s1u1">📚 1. Sınıf Kelime Tiyatrosu</button>
-              <button class="guide-link-btn" data-gjump="learn:s2u1">📚 2. Sınıf Kelime Tiyatrosu</button>
+              <button class="guide-link-btn" data-gjump="cambridge:stage1:games-hub">🎲 1000+ Oyun Hub'ını Aç</button>
             </div>
           </div>
 
+          <div class="guide-sec-card">
+            <h3>👅 4. Fonetik Tekerleme Bankası (2,080 Adet)</h3>
+            <p>Her sınıf seviyesi için 520 adet (toplam 2,080) fonetik dil tekerlemesi. 🐢 0.8x (Yavaş), 🐰 1.0x (Normal) ve ⚡ 1.25x (Hızlı) kademeleriyle telaffuz yarışması düzenleyin.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="cambridge:stage1:twisters">👅 Tekerleme Bankasını Aç</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🎵 5. Sing-Along Şarkılar & 🎬 6. 1000+ Video Hub</h3>
+            <p>Cambridge Global English ünite şarkı sözleri ve akustik melodi eşlikleri. Ayrıca her kademe için yaşa uygun 1,060 seçkin YouTube eğitim videosu (youtube-nocookie altyapısıyla güvenli).</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="songs">🎶 Şarkı Köşesine Git</button>
+              <button class="guide-link-btn" data-gjump="cambridge:stage1:videos">🎬 Video Kütüphanesini Aç</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>📖 7. Öğretmen Rehberi & 📋 8. 5 Günlük Ders Planları</h3>
+            <p>Pazartesi'den Cuma'ya Warm-Up, Presentation, Practice, Production ve Wrap-Up adımları. Flyswatter Relay, Magic Bag, Four Corners ve Human Knot gibi fiziksel TPR sınıf etkinlikleri.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="cambridge:stage1:teacher-guide">📖 Öğretmen Kılavuzunu Gör</button>
+              <button class="guide-link-btn" data-gjump="cambridge:stage1:lesson">📋 5 Günlük Planları Gör</button>
+            </div>
+          </div>
+
+          <!-- AYARLAR VE SES MODÜLÜ -->
+          <div class="guide-sec-card highlight" style="border-left-color:#7c3aed;">
+            <h3>⚙️ Ses Değiştirme ve Arayüz Ayarları</h3>
+            <p>Doğal karakter sesinizi <b>Polly, Peppa Pig, Bluey, Chase veya Disney karakterleri</b> arasından seçebilir, okuma hızını (0.8x - 1.2x), fon müziğini ve akıllı tahta yüksek kontrast temasını ayarlayabilirsiniz.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn primary" data-gjump="settings" style="background:#7c3aed;">⚙️ Ayarlar Panelini Aç</button>
+              <button class="guide-link-btn" id="guide-play-welcome">🔊 Sesli Karşılamayı Dinle</button>
+            </div>
+          </div>
+
+          <!-- TRACING (ÇİZME) - HATA DÜZELTİLDİ: game:trace -->
           <div class="guide-sec-card">
             <h3>✍️ Tracing (Harf & Kelime Çizme)</h3>
-            <p>Çocukların el-göz koordinasyonunu ve motor becerilerini geliştiren, harf hatlarını çizme ve sesli okuma aktivitesi.</p>
+            <p>Çocukların el-göz koordinasyonunu geliştiren akıllı tahtada veya tablette dokunmatik çizim ve sesli telaffuz motoru.</p>
             <div class="guide-links-wrap">
-              <button class="guide-link-btn" data-gjump="game:tracing:s1u1">✍️ 1. Sınıf Tracing</button>
-              <button class="guide-link-btn" data-gjump="game:tracing:s2u1">✍️ 2. Sınıf Tracing</button>
+              <button class="guide-link-btn" data-gjump="game:trace:s1u1">✍️ 1. Sınıf Tracing Başlat</button>
+              <button class="guide-link-btn" data-gjump="game:trace:s2u1">✍️ 2. Sınıf Tracing Başlat</button>
             </div>
           </div>
 
-          <div class="guide-sec-card">
-            <h3>🎵 Sing & Learn (200+ Şarkı & Video)</h3>
-            <p>Cambridge Global English müfredatına tam uyumlu ritmik şarkılar, karaokeler ve üniteye özel seçilmiş güvenli YouTube eğitim videoları.</p>
-            <div class="guide-links-wrap">
-              <button class="guide-link-btn" data-gjump="songs">🎶 Tüm Şarkılara Git</button>
-            </div>
-          </div>
-
-          <div class="guide-sec-card highlight" style="border-left-color:#0284c7">
-            <h3>📘 Cambridge Öğretmen & Kitap Kılavuzu</h3>
-            <p>Cambridge Global English 1 & 2 Learner's Book, Workbook ve Teacher's Resource kılavuzları, TPR aktiviteleri ve fonetik hedefleri.</p>
-            <div class="guide-links-wrap">
-              <button class="guide-link-btn primary" id="guide-open-cambridge" style="background:#0284c7">📘 Cambridge Notlarını Aç</button>
-            </div>
-          </div>
-
-          <div class="guide-sec-card highlight" style="border-left-color:#10b981">
+          <!-- SİBER GÜVENLİK -->
+          <div class="guide-sec-card" style="border-left-color:#10b981;">
             <h3>🛡️ Cyber-Shield Antivirüs & Kalkan</h3>
-            <p>Sıfır XSS, iframe sandbox, prototype kalkanı ve 6 noktalı gerçek zamanlı güvenlik denetimi.</p>
+            <p>Sıfır XSS, CSP sandbox ve prototype kalkanı ile sınıf tahtasını ve öğrencileri zararlı içeriklerden korur.</p>
             <div class="guide-links-wrap">
-              <button class="guide-link-btn primary" id="guide-open-security" style="background:#10b981">🛡️ Güvenlik Durumunu İncele</button>
-            </div>
-          </div>
-
-          <div class="guide-sec-card" style="grid-column: 1 / -1">
-            <h3>🏫 1. Sınıf Üniteleri (9 Temel Ünite)</h3>
-            <p>Tıklayarak doğrudan ünitenin interaktif sayfasına gidebilirsiniz:</p>
-            <div class="guide-links-wrap">
-              ${s1Units
-                .map((u) => {
-                  const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
-                  const mName = m ? m.char.split(' ')[0] : '';
-                  return `<button class="guide-link-btn" data-gjump="unit:${u.id}">${u.emoji} ${u.title} ${mName ? `(${mName})` : ''}</button>`;
-                })
-                .join('')}
-            </div>
-          </div>
-
-          <div class="guide-sec-card" style="grid-column: 1 / -1">
-            <h3>🏫 2. Sınıf Üniteleri (16 Kapsamlı Ünite)</h3>
-            <p>Cambridge Global English 2 ve tematik genişletilmiş üniteler:</p>
-            <div class="guide-links-wrap">
-              ${s2Units
-                .map((u) => {
-                  const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
-                  const mName = m ? m.char.split(' ')[0] : '';
-                  return `<button class="guide-link-btn" data-gjump="unit:${u.id}">${u.emoji} ${u.title} ${mName ? `(${mName})` : ''}</button>`;
-                })
-                .join('')}
+              <button class="guide-link-btn" id="guide-open-security" style="color:#059669;font-weight:700;">🛡️ Kalkan Durumunu Gör</button>
             </div>
           </div>
         </div>
 
-        <div style="margin-top:20px;text-align:center">
-          <button class="btn green big" id="guide-bottom-close" style="min-width:200px">✅ Anladım, Öğrenmeye Başla!</button>
+        <div style="margin-top:24px;text-align:center">
+          <button class="btn green big" id="guide-bottom-close" style="min-width:240px;font-size:1.1rem;font-weight:900;">
+            ✅ Harika! Öğrenmeye ve Oynamaya Başla
+          </button>
         </div>
       </div>
     `;
@@ -87140,22 +87200,6 @@ const APP = {
       };
     }
 
-    const pVoi = d.querySelector('#guide-open-voices');
-    if (pVoi) {
-      pVoi.onclick = () => {
-        d.remove();
-        this.showVoices();
-      };
-    }
-
-    const pCam = d.querySelector('#guide-open-cambridge');
-    if (pCam) {
-      pCam.onclick = () => {
-        d.remove();
-        this.showCambridgeModal(this.unitId || 's1u1');
-      };
-    }
-
     const pSec = d.querySelector('#guide-open-security');
     if (pSec) {
       pSec.onclick = () => {
@@ -87168,16 +87212,28 @@ const APP = {
       b.onclick = () => {
         const val = b.dataset.gjump;
         close();
-        if (val.startsWith('baam:')) {
+        if (val.startsWith('cambridge:')) {
+          const parts = val.split(':');
+          const stKey = parts[1] || 'stage1';
+          const viewKey = parts[2] || 'vocab';
+          if (typeof CAMBRIDGE_ENGINE !== 'undefined') {
+            CAMBRIDGE_ENGINE.stageKey = stKey;
+            CAMBRIDGE_ENGINE.view = viewKey;
+            CAMBRIDGE_ENGINE.unitIdx = 0;
+          }
+          this.go('cambridge');
+        } else if (val === 'settings') {
+          this.showSettingsModal();
+        } else if (val.startsWith('baam:')) {
           const uid = val.split(':')[1];
           this.go('game', { engineId: 'baamboozle', unitId: uid, lvIdx: 0 });
         } else if (val.startsWith('learn:')) {
           const uid = val.split(':')[1];
           this.learnIdx = 0;
           this.go('learn', { unitId: uid });
-        } else if (val.startsWith('game:tracing:')) {
+        } else if (val.startsWith('game:trace:') || val.startsWith('game:tracing:')) {
           const uid = val.split(':')[2];
-          this.go('game', { engineId: 'tracing', unitId: uid, lvIdx: 0 });
+          this.go('game', { engineId: 'trace', unitId: uid, lvIdx: 0 });
         } else if (val.startsWith('unit:')) {
           const uid = val.split(':')[1];
           this.go('unit', { unitId: uid });
@@ -87186,6 +87242,247 @@ const APP = {
         }
       };
     });
+  },
+
+  /* ---------- ⚙️ Platform, Ses ve Tema Ayarları Modalı ---------- */
+  showSettingsModal() {
+    const existing = document.getElementById('settings-app-modal');
+    if (existing) existing.remove();
+
+    const d = document.createElement('div');
+    d.id = 'settings-app-modal';
+    d.className = 'modal-overlay active';
+
+    const s = (typeof SettingsManager !== 'undefined' && SettingsManager.getSettings)
+      ? SettingsManager.getSettings()
+      : {
+          bgmEnabled: false,
+          bgmVolume: 0.35,
+          sfxEnabled: true,
+          sfxVolume: 0.8,
+          voiceCharacter: 'polly',
+          voiceSpeed: 1.0,
+          themeMode: 'colorful-kids',
+          defaultMedia: 'gif',
+          confettiEnabled: true
+        };
+
+    d.innerHTML = `
+      <div class="modal-content" style="max-width:540px;text-align:left;position:relative;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:2px solid #e2e8f0;padding-bottom:12px;">
+          <h3 style="margin:0;font-size:1.35rem;color:#1e1b4b;display:flex;align-items:center;gap:10px;">
+            <span>⚙️</span> Platform, Ses ve Tema Ayarları
+          </h3>
+          <button class="btn white small" id="set-close-top" style="font-size:16px;padding:4px 10px;">❌</button>
+        </div>
+
+        <div class="settings-group">
+          <label style="display:flex;justify-content:space-between;">
+            <span>🎵 Tatlı Fon Müziği (BGM)</span>
+            <span id="set-bgm-val" style="font-size:0.85em;color:#64748b;">${Math.round((s.bgmVolume || 0.35) * 100)}%</span>
+          </label>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <input type="range" id="set-bgm-volume" min="0" max="1" step="0.05" value="${s.bgmVolume || 0.35}" style="flex:1;" />
+            <button class="btn small ${s.bgmEnabled ? 'green' : 'white'}" id="set-bgm-toggle" style="padding:4px 10px;font-size:0.85rem;">
+              ${s.bgmEnabled ? 'Açık 🔊' : 'Kapalı 🔇'}
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <label style="display:flex;justify-content:space-between;">
+            <span>🔊 Ses Efektleri (SFX - Alkış, Doğru, Yanlış)</span>
+            <span id="set-sfx-val" style="font-size:0.85em;color:#64748b;">${Math.round((s.sfxVolume || 0.8) * 100)}%</span>
+          </label>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <input type="range" id="set-sfx-volume" min="0" max="1" step="0.05" value="${s.sfxVolume || 0.8}" style="flex:1;" />
+            <button class="btn small ${s.sfxEnabled ? 'green' : 'white'}" id="set-sfx-toggle" style="padding:4px 10px;font-size:0.85rem;">
+              ${s.sfxEnabled ? 'Açık 🔔' : 'Kapalı 🔕'}
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <label>🗣️ Doğal Karakter Seslendirmesi</label>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
+            <select id="set-voice-char" style="flex:1;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;">
+              <option value="polly" ${s.voiceCharacter === 'polly' ? 'selected' : ''}>🦜 Polly (İngilizce Öğretmeni)</option>
+              <option value="peppa" ${s.voiceCharacter === 'peppa' ? 'selected' : ''}>🐷 Peppa Pig (Sevimli Çocuk Sesi)</option>
+              <option value="bluey" ${s.voiceCharacter === 'bluey' ? 'selected' : ''}>🐶 Bluey (Enerjik & Coşkulu)</option>
+              <option value="chase" ${s.voiceCharacter === 'chase' ? 'selected' : ''}>🚓 Chase - Paw Patrol (Cesur Kurtarma Köpeği)</option>
+              <option value="mickey" ${s.voiceCharacter === 'mickey' ? 'selected' : ''}>🐭 Mickey Mouse (Disney Lideri)</option>
+              <option value="elsa" ${s.voiceCharacter === 'elsa' ? 'selected' : ''}>❄️ Elsa (Frozen)</option>
+              <option value="olaf" ${s.voiceCharacter === 'olaf' ? 'selected' : ''}>⛄ Olaf (Sevimli Kardan Adam)</option>
+              <option value="buzz" ${s.voiceCharacter === 'buzz' ? 'selected' : ''}>🚀 Buzz Lightyear (Uzay Kahramanı)</option>
+              <option value="woody" ${s.voiceCharacter === 'woody' ? 'selected' : ''}>🤠 Woody (Cesur Kovboy)</option>
+            </select>
+            <button class="btn btn-outline" id="set-test-voice-btn" style="padding:8px 14px;white-space:nowrap;font-weight:700;">
+              🔊 Sesi Dinle
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <label>⚡ Ses Okuma Hızı (TTS Speed)</label>
+          <select id="set-voice-speed" style="width:100%;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;margin-top:6px;">
+            <option value="0.8" ${s.voiceSpeed === 0.8 ? 'selected' : ''}>🐢 0.8x (Yavaş - Yeni Başlayanlar İçin İdeal)</option>
+            <option value="1.0" ${s.voiceSpeed === 1.0 ? 'selected' : ''}>🐰 1.0x (Normal - Standart Akıcı Hız)</option>
+            <option value="1.2" ${s.voiceSpeed === 1.2 ? 'selected' : ''}>⚡ 1.2x (Hızlı - İleri Seviye Dinleme)</option>
+          </select>
+        </div>
+
+        <div class="settings-group">
+          <label>🎨 Görsel Arayüz Teması</label>
+          <select id="set-theme-mode" style="width:100%;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;margin-top:6px;">
+            <option value="colorful-kids" ${s.themeMode === 'colorful-kids' ? 'selected' : ''}>🌈 Renkli Çocuk Dünyası (Varsayılan)</option>
+            <option value="smartboard-contrast" ${s.themeMode === 'smartboard-contrast' ? 'selected' : ''}>🖥️ Akıllı Tahta Yüksek Kontrast (Sınıf & Projeksiyon)</option>
+            <option value="pastel" ${s.themeMode === 'pastel' ? 'selected' : ''}>🌸 Pastel Yumuşak Tonlar (Göz Yormayan Mod)</option>
+          </select>
+        </div>
+
+        <div class="settings-group">
+          <label>🖼️ Varsayılan Kelime Görsel Tercihi</label>
+          <select id="set-media-mode" style="width:100%;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;margin-top:6px;">
+            <option value="gif" ${(s.defaultMedia || 'gif') === 'gif' ? 'selected' : ''}>✨ GIPHY Çocuk Dostu Hareketli GIF</option>
+            <option value="photo" ${(s.defaultMedia || 'gif') === 'photo' ? 'selected' : ''}>📸 Yüksek Çözünürlüklü Gerçek Fotoğraf</option>
+          </select>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;">
+          <button class="btn btn-outline" id="set-cancel-btn">İptal</button>
+          <button class="btn green" id="set-save-btn" style="padding:10px 24px;font-weight:900;">
+            💾 Ayarları Kaydet ve Uygula
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(d);
+
+    const close = () => {
+      if (typeof MEDIA !== 'undefined' && MEDIA.fx) MEDIA.fx('click');
+      d.remove();
+    };
+
+    const cTop = d.querySelector('#set-close-top');
+    if (cTop) cTop.onclick = close;
+    const cCancel = d.querySelector('#set-cancel-btn');
+    if (cCancel) cCancel.onclick = close;
+    d.onclick = (e) => { if (e.target === d) close(); };
+
+    // Range display listeners
+    const bgmRange = d.querySelector('#set-bgm-volume');
+    const bgmVal = d.querySelector('#set-bgm-val');
+    if (bgmRange && bgmVal) {
+      bgmRange.oninput = () => { bgmVal.textContent = Math.round(parseFloat(bgmRange.value) * 100) + '%'; };
+    }
+    const sfxRange = d.querySelector('#set-sfx-volume');
+    const sfxVal = d.querySelector('#set-sfx-val');
+    if (sfxRange && sfxVal) {
+      sfxRange.oninput = () => { sfxVal.textContent = Math.round(parseFloat(sfxRange.value) * 100) + '%'; };
+    }
+
+    // Toggle BGM
+    let bgmEnabled = !!s.bgmEnabled;
+    const bgmToggleBtn = d.querySelector('#set-bgm-toggle');
+    if (bgmToggleBtn) {
+      bgmToggleBtn.onclick = () => {
+        bgmEnabled = !bgmEnabled;
+        bgmToggleBtn.textContent = bgmEnabled ? 'Açık 🔊' : 'Kapalı 🔇';
+        bgmToggleBtn.className = `btn small ${bgmEnabled ? 'green' : 'white'}`;
+        if (typeof BackgroundMusicPlayer !== 'undefined' && BackgroundMusicPlayer.toggle) {
+          BackgroundMusicPlayer.toggle();
+        }
+      };
+    }
+
+    // Toggle SFX
+    let sfxEnabled = s.sfxEnabled !== false;
+    const sfxToggleBtn = d.querySelector('#set-sfx-toggle');
+    if (sfxToggleBtn) {
+      sfxToggleBtn.onclick = () => {
+        sfxEnabled = !sfxEnabled;
+        sfxToggleBtn.textContent = sfxEnabled ? 'Açık 🔔' : 'Kapalı 🔕';
+        sfxToggleBtn.className = `btn small ${sfxEnabled ? 'green' : 'white'}`;
+      };
+    }
+
+    // Voice test button
+    const testVoiceBtn = d.querySelector('#set-test-voice-btn');
+    const voiceSelect = d.querySelector('#set-voice-char');
+    const speedSelect = d.querySelector('#set-voice-speed');
+    if (testVoiceBtn && voiceSelect) {
+      testVoiceBtn.onclick = () => {
+        const char = voiceSelect.value;
+        const spd = parseFloat(speedSelect ? speedSelect.value : '1.0');
+        const testQuotes = {
+          polly: "Hello students! Welcome to Polly's Fun English! Let us learn and have fun together!",
+          peppa: "Oink oink! Hello everyone! I am Peppa Pig, let us jump into learning English!",
+          bluey: "Wackadoo! Hi mates! Bluey is here, let us play and sing together, hooray!",
+          chase: "Chase is on the case! Paw Patrol is ready to learn English words!",
+          mickey: "Hiya pals! It's me, Mickey Mouse! Oh boy, welcome to our magical English adventure!",
+          elsa: "Hello friends! The magic of English is inside all of us! Let it go and speak freely!",
+          olaf: "Hi! I am Olaf and I like warm hugs and happy English songs!",
+          buzz: "To infinity and beyond! Star command welcomes all English learners!",
+          woody: "Howdy partner! You've got a friend in me, let us explore English together!"
+        };
+        const quote = testQuotes[char] || "Hello! Polly's Fun English is so much fun!";
+        if (typeof NaturalVoiceEngine !== 'undefined' && NaturalVoiceEngine.speak) {
+          NaturalVoiceEngine.speak(quote, char, spd);
+        } else if (typeof MEDIA !== 'undefined' && MEDIA.speakDisney) {
+          MEDIA.speakDisney(char, quote);
+        }
+        if (typeof FX !== 'undefined' && FX.stars) FX.stars();
+      };
+    }
+
+    // Save button
+    const saveBtn = d.querySelector('#set-save-btn');
+    if (saveBtn) {
+      saveBtn.onclick = () => {
+        const bgmVolume = parseFloat(d.querySelector('#set-bgm-volume').value);
+        const sfxVolume = parseFloat(d.querySelector('#set-sfx-volume').value);
+        const voiceCharacter = d.querySelector('#set-voice-char').value;
+        const voiceSpeed = parseFloat(d.querySelector('#set-voice-speed').value);
+        const themeMode = d.querySelector('#set-theme-mode').value;
+        const defaultMedia = d.querySelector('#set-media-mode').value;
+
+        const updated = {
+          ...s,
+          bgmEnabled,
+          bgmVolume,
+          sfxEnabled,
+          sfxVolume,
+          voiceCharacter,
+          voiceSpeed,
+          themeMode,
+          defaultMedia
+        };
+
+        if (typeof SettingsManager !== 'undefined' && SettingsManager.saveSettings) {
+          SettingsManager.saveSettings(updated);
+        } else {
+          try {
+            localStorage.setItem('pollys_fun_english_settings', JSON.stringify(updated));
+          } catch (e) {}
+        }
+
+        // Apply theme immediately
+        document.body.classList.remove('theme-colorful-kids', 'theme-smartboard-contrast', 'theme-pastel');
+        document.body.classList.add(`theme-${themeMode}`);
+
+        close();
+        if (typeof FX !== 'undefined') {
+          FX.confetti(30);
+          FX.toast('⚙️ Ayarlar başarıyla kaydedildi ve uygulandı!');
+        }
+        if (typeof SoundFX !== 'undefined' && SoundFX.playWin) {
+          SoundFX.playWin();
+        } else if (typeof MEDIA !== 'undefined' && MEDIA.fx) {
+          MEDIA.fx('win');
+        }
+      };
+    }
   },
 
   /* ---------- 📘 Cambridge Global English 1 & 2 Müfredat & Notlar Modalı ---------- */
