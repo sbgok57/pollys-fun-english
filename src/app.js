@@ -176,11 +176,11 @@ const APP = {
   },
 
   bar(title) {
-    const stars = Object.values(store.get('best') || {}).reduce((a, b) => a + (b.st || 0), 0);
     return `<div class="topbar">
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Geri</button>' : ''}
       <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
-      <div class="badge gold">⭐ ${stars}</div>
+      <button class="btn small purple" id="guide-top-btn" style="font-weight:800">📖 Kullanma Kılavuzu</button>
+      <button class="btn small yellow" id="baamboozle-top-btn" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle</button>
       <button class="btn small white" id="hm">🏠</button>
       <button class="btn small white" id="mu">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
   },
@@ -190,31 +190,61 @@ const APP = {
     return (
       this.bar() +
       `
-   <div class="hero">
-     <div class="mascot" id="mas">🦜</div>
-     <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
-     <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1 & 2 (2. Baskı) ile uyumlu</div>
-   </div>
-   <div class="stats-bar">
-     <div class="stat">🎮 <b>${this.countGames()}</b>farklı oyun</div>
-     <div class="stat">🎵 <b>${TOTALSONGS}</b>şarkı & chant</div>
-     <div class="stat">🔤 <b>${totalWords}</b>İngilizce kelime</div>
-     <div class="stat">🕹️ <b>${ENGINES.length}</b>oyun türü · 25 set</div>
-   </div>
-   <div class="stage-cards">
-     <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
-       <h2>🟢 1. Sınıf</h2><p>Global English 1 · Starter + 9 ünite<br>Renkler, aile, çiftlik, taşıtlar, su...</p></div>
-     <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
-       <h2>🔵 2. Sınıf</h2><p>Global English 2 · 9 ünite<br>Meslekler, geçmiş zaman, ölçme, şehir...</p></div>
-     <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
-       <h2>🎶 Şarkı Köşesi</h2><p>${TOTALSONGS} şarkı & chant · Klasikler + kelime chant'leri<br>Sınıfta birlikte söyleyin!</p></div>
-   </div>
-   <div class="quick-row">
-     <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
-     <button class="btn white" id="sc">🏆 Skorlar</button>
-     <button class="btn white" id="vbtn">🎤 Polly’nin Sesi</button>
-     <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
-   </div>`
+    <div class="disney-welcome-hero">
+      <div class="disney-welcome-avatar anim-bounce">🏰🐭</div>
+      <div class="disney-welcome-content">
+        <div class="disney-welcome-badge">✨ Disney & Polly Hoş Geldiniz! ✨</div>
+        <h2>Merhaba Arkadaşlar! / Hello Pals! 👋</h2>
+        <p>Polly ve 25 Disney dostumuzla Cambridge Global English 1 & 2 macerasına hazır mısınız? 
+        Oyunlar oynayın, şarkılar söyleyin, ders slaytlarını izleyin ve sınıfta heyecanlı Baamboozle takım yarışması yapın!</p>
+        <div class="disney-welcome-btns">
+          <button class="btn green big" id="btn-welcome-voice" style="box-shadow:0 4px 14px rgba(16,185,129,0.35)">
+            🔊 Mickey & Polly'den Sesli Karşılama Dinle!
+          </button>
+          <button class="btn purple big" id="btn-welcome-guide">
+            📖 Kullanma Kılavuzu & Bölümler
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="mascot" id="mas">🦜</div>
+      <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
+      <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1 & 2 (2. Baskı) · Materyal Modu</div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat">🎮 <b>${this.countGames()}</b>farklı oyun</div>
+      <div class="stat">🧩 <b>Baamboozle</b>Sınıf modu</div>
+      <div class="stat">🎵 <b>${TOTALSONGS}</b>şarkı & chant</div>
+      <div class="stat">🔤 <b>${totalWords}</b>İngilizce kelime</div>
+      <div class="stat">🏰 <b>25 Disney</b>karakteri</div>
+    </div>
+    <div class="stage-cards">
+      <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
+        <h2>🟢 1. Sınıf</h2><p>Global English 1 · Starter + 9 ünite + 3 tekrar<br>Renkler, aile, çiftlik, taşıtlar, su...</p></div>
+      <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
+        <h2>🔵 2. Sınıf</h2><p>Global English 2 · 9 ünite + 3 tekrar<br>Meslekler, geçmiş zaman, ölçme, şehir...</p></div>
+      <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
+        <h2>🎶 Şarkı Köşesi</h2><p>${TOTALSONGS} şarkı & chant · Klasikler + kelime chant'leri<br>Sınıfta birlikte söyleyin!</p></div>
+    </div>
+    <div class="baam-featured-card" data-baam="1">
+      <div class="baam-fc-main">
+        <span class="baam-fc-emoji anim-wobble">🧩</span>
+        <div class="baam-fc-text">
+          <h2>Baamboozle Sınıf Takım Oyunu! 🔴 vs 🔵</h2>
+          <p>Akıllı tahtada veya sınıfta 2 takım yarışması! 16-24 gizemli kutu, takas ve bonus puanlarla eğlenin!</p>
+        </div>
+      </div>
+      <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">🚀 Takım Oyunu Başlat</button>
+    </div>
+    <div class="quick-row">
+      <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
+      <button class="btn yellow" id="btn-home-baam" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle Başlat</button>
+      <button class="btn white" id="btn-home-guide">📖 Kullanma Kılavuzu</button>
+      <button class="btn white" id="vbtn">🎤 Polly’nin Sesi</button>
+      <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
+    </div>`
     );
   },
 
@@ -229,14 +259,13 @@ const APP = {
      <div><h2>${st.name} — ${st.book}</h2><div class="sub">${st.desc}</div></div></div>
    <div class="unit-grid">${us
      .map((u) => {
-       const b = this.unitStars(u.id);
        return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
        <span class="ue">${u.emoji}</span>
        <h3>${u.title}</h3>
        <div class="sub">${u.tr} · ${u.w.length} kelime</div>
        <div class="u-meta">
          <span class="badge ${u.stage === 's1' ? 'green' : 'blue'}">${u.stage.toUpperCase()}</span>
-         ${b > 0 ? `<span class="badge gold">⭐ ${b}</span>` : ''}
+         <span class="badge purple">✨ Materyal</span>
        </div>
      </div>`;
      })
@@ -269,10 +298,11 @@ const APP = {
      </div>
    </div>
 
-   <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg}">
+   <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};cursor:pointer" id="unit-mascot-tap" title="Karakteri sesli dinlemek için tıkla">
      <div class="mascot-avatar-wrap">
        <div class="mascot-tag ${m.anim}">${m.tag}</div>
        <span class="mascot-show">${esc(m.show)}</span>
+       <span class="badge purple" style="margin-top:4px;font-size:0.7em">🗣️ Dinle</span>
      </div>
      <div class="mascot-bubble">
        <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
@@ -282,6 +312,7 @@ const APP = {
 
    <div class="unit-actions-row">
      <button class="btn purple big" id="learn-btn-hero" style="font-size:1.05em;padding:12px 20px;box-shadow:0 4px 12px rgba(139,92,246,0.25)">📖 Kelime Öğrenelim & Kartlar (${u.w.length} Kelime)</button>
+     <button class="btn yellow big" id="baamboozle-btn-hero" style="background:#f59e0b;color:#fff;font-size:1.05em;padding:12px 20px;font-weight:900;box-shadow:0 4px 12px rgba(245,158,11,0.25)">🧩 Baamboozle Takım Oyunu</button>
      ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold big" id="lbtn-hero" style="font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı (Ders)</button>' : ''}
      ${vids.length ? `<button class="btn blue big" id="videos-scroll-btn" style="font-size:1.05em;padding:12px 18px">🎬 Eğitici Videolar (${vids.length})</button>` : ''}
    </div>
@@ -303,8 +334,8 @@ const APP = {
        <div class="sub">${e.d}</div>
        <div style="margin-top:8px">${
          b
-           ? `<span class="badge gold">En iyi: ${b.s} ${'⭐'.repeat(b.st)}</span>`
-           : '<span class="badge blue">Yeni!</span>'
+           ? '<span class="badge green">✨ Tamamlandı</span>'
+           : '<span class="badge blue">🎮 Oyna</span>'
        }</div>
      </div>`;
      })
@@ -359,24 +390,40 @@ const APP = {
         </div>
       </div>
 
-      <div class="learn-theater-card">
-        <span class="learn-cat-badge">📂 ${esc(catName)}</span>
-        <span class="learn-count-badge">Kart ${idx + 1} / ${words.length}</span>
-        <div class="learn-emoji-huge">${cur[1] || '🔤'}</div>
+      <div class="learn-theater-card baamboozle-theater-card">
+        <div class="learn-theater-header">
+          <span class="learn-cat-badge">📂 ${esc(catName)}</span>
+          <span class="disney-guide-tag" style="background:${m.bg};color:${m.color}">🏰 ${esc(m.name)} ile Öğren</span>
+          <span class="learn-count-badge">Kart ${idx + 1} / ${words.length}</span>
+        </div>
+
+        <div class="baamboozle-stage">
+          <div class="learn-emoji-huge popflash">${cur[1] || '🔤'}</div>
+          <div class="stage-visual-tools">
+            <a class="btn-visual-chip google-btn" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(cur[0] + ' cartoon for kids')}" title="Google Görsellerde ${esc(cur[0])} ara">
+              🖼️ Google Görseller
+            </a>
+            <a class="btn-visual-chip giphy-btn" target="_blank" rel="noopener" href="https://giphy.com/search/${encodeURIComponent(cur[0] + ' cartoon sticker')}" title="Giphy Animasyonlarında ${esc(cur[0])} ara">
+              🎬 Giphy Animasyon
+            </a>
+          </div>
+        </div>
+
         <div class="learn-word-en">${esc(cur[0])}</div>
         <div class="learn-word-tr">${esc(cur[2])}</div>
 
-        <div class="learn-mascot-cheer" style="border-left-color:${m.color}">
+        <div class="learn-mascot-cheer" style="border-left-color:${m.color};cursor:pointer" id="learn-mascot-box" title="Disney arkadaşını dinle">
           <span class="mascot-tag ${m.anim}">${m.tag}</span>
           <div class="learn-mascot-bubble">
             <b>${esc(m.name)}</b>: "Say it with me: <b>${esc(cur[0])}</b>! Great pronunciation!"
+            <span class="badge purple" style="margin-left:8px;font-size:0.75em">🗣️ Dinle</span>
           </div>
         </div>
 
         <div class="learn-voice-btns">
           <button class="btn green big" id="learn-speak-btn">🎧 Dinle</button>
           <button class="btn blue big" id="learn-slow-btn">🐢 Yavaş Dinle</button>
-          <button class="btn white big" id="learn-repeat-btn">🗣️ Polly ile Tekrar</button>
+          <button class="btn purple big" id="learn-disney-btn">🏰 ${esc(m.name)} ile Tekrar</button>
         </div>
       </div>
 
@@ -593,6 +640,54 @@ const APP = {
       FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
     });
     on('#vbtn', 'click', () => this.showVoices());
+    on('#guide-top-btn', 'click', () => this.showGuideModal());
+    on('#btn-welcome-guide', 'click', () => this.showGuideModal());
+    on('#btn-home-guide', 'click', () => this.showGuideModal());
+
+    const startBaam = (uid) => {
+      MEDIA.fx('pop');
+      this.go('game', { engineId: 'baamboozle', unitId: uid || this.unitId || 's1u1', lvIdx: 0 });
+    };
+    on('#baamboozle-top-btn', 'click', () => startBaam());
+    on('#btn-home-baam', 'click', () => startBaam());
+    on('#baamboozle-btn-hero', 'click', () => startBaam());
+    $$('[data-baam]').forEach((b) => b.addEventListener('click', () => startBaam(b.dataset.baam)));
+
+    on('#btn-welcome-voice', 'click', () => {
+      MEDIA.welcomeGreeting();
+      FX.confetti(25);
+      FX.stars();
+    });
+
+    on('#unit-mascot-tap', 'click', () => {
+      const u = unitById(this.unitId);
+      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
+      if (m) {
+        MEDIA.speakDisney(m.voiceKey || 'mickey', m.quoteEn);
+        FX.stars();
+      }
+    });
+
+    on('#learn-mascot-box', 'click', () => {
+      const u = unitById(this.unitId);
+      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
+      if (m) {
+        MEDIA.speakDisney(m.voiceKey || 'mickey', m.quoteEn);
+        FX.stars();
+      }
+    });
+
+    on('#learn-disney-btn', 'click', () => {
+      const u = unitById(this.unitId);
+      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
+      const cur = (u && u.w && u.w[this.learnIdx || 0]) ? u.w[this.learnIdx || 0] : null;
+      if (cur) {
+        MEDIA.fx('magic');
+        FX.confetti(20);
+        const charKey = (m && m.voiceKey) ? m.voiceKey : 'mickey';
+        MEDIA.speakDisney(charKey, 'Say it with me: ' + cur[0] + '! Wonderful!');
+      }
+    });
 
     const startLearn = () => {
       MEDIA.fx('magic');
@@ -949,16 +1044,21 @@ const APP = {
           b[key].st = st;
           store.set('best', b);
         }
-        FX.confetti(st * 50);
-        MEDIA.fx(st >= 2 ? 'win' : 'levelup');
-        area.innerHTML = `<div class="center">
-         <div class="result-stars">${'⭐'.repeat(st) + '<span>☆</span>'.repeat(3 - st)}</div>
-         <div class="pw" style="font-size:1.5em">Puan: ${res.score}</div>
-         <div class="muted">${res.note || ''}</div>
-         <div class="row" style="display:flex;gap:10px;margin-top:16px"><button class="btn green" id="rag">🔁 Tekrar Oyna</button>
-           <button class="btn blue" id="run">➡️ Diğer Oyunlar</button></div></div>`;
+        FX.confetti(60);
+        MEDIA.fx('win');
+        area.innerHTML = `<div class="center" style="padding:24px 16px">
+         <div style="font-size:52px;margin-bottom:8px">🎉 🏆 🎉</div>
+         <div class="pw" style="font-size:1.6em;color:var(--c-primary);font-weight:900">Harika İş Çıkardın!</div>
+         <div class="muted" style="margin-top:6px;font-size:1em">${res.note || 'Tebrikler! Bu aktiviteyi başarıyla tamamladın.'}</div>
+         <div class="row" style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+           <button class="btn green" id="rag">🔁 Tekrar Oyna</button>
+           <button class="btn gold" id="rbaam">🧩 Baamboozle Takım Oyunu</button>
+           <button class="btn blue" id="run">➡️ Ünite Menüsü</button>
+         </div></div>`;
         const rag = area.querySelector('#rag');
         if (rag) rag.onclick = () => api.restart();
+        const rbaam = area.querySelector('#rbaam');
+        if (rbaam) rbaam.onclick = () => self.go('game', { engineId: 'baamboozle', unitId: u.id, lvIdx: 0 });
         const run = area.querySelector('#run');
         if (run) run.onclick = () => self.go('unit', { unitId: u.id });
       }
@@ -1248,6 +1348,171 @@ const APP = {
     d.onclick = (e) => {
       if (e.target === d) d.remove();
     };
+  },
+
+  /* ---------- 📖 Öğretmen & Öğrenci Kullanma Kılavuzu Modalı ---------- */
+  showGuideModal() {
+    const existing = document.getElementById('guide-modal');
+    if (existing) existing.remove();
+
+    const d = document.createElement('div');
+    d.id = 'guide-modal';
+    d.className = 'guide-modal-overlay';
+
+    const s1Units = typeof unitsOfStage === 'function' ? unitsOfStage('s1') : [];
+    const s2Units = typeof unitsOfStage === 'function' ? unitsOfStage('s2') : [];
+
+    d.innerHTML = `
+      <div class="guide-modal-box">
+        <div class="guide-modal-head">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:38px">📖</span>
+            <div>
+              <h2 style="margin:0;font-size:1.4em;color:#0f172a">Öğretmen & Öğrenci Kullanma Kılavuzu</h2>
+              <div class="muted" style="font-size:0.86em">1. & 2. Sınıf Müfredatı · Akıllı Tahta & Bireysel Öğrenim Rehberi</div>
+            </div>
+          </div>
+          <button class="btn white small" id="guide-close" style="font-size:18px;padding:6px 14px">❌ Kapat</button>
+        </div>
+
+        <div class="guide-intro-banner">
+          🌟 <b>Hoş Geldiniz!</b> Bu platform ilkokul 1. ve 2. sınıf öğrencileri ile İngilizce öğretmenlerimiz için özel olarak tasarlanmıştır. Puan stresi veya başarısızlık hissi olmaksızın, tamamen oyunlaştırılmış, Disney karakterleri, sesler, animasyonlu gifler ve Baamboozle takım oyunları ile desteklenmiştir. Aşağıdaki hızlı butonlardan dilediğiniz bölüme tek tıkla gidebilirsiniz!
+        </div>
+
+        <div class="guide-sections-grid">
+          <div class="guide-sec-card highlight">
+            <h3>🧩 Baamboozle Sınıf Takım Oyunu</h3>
+            <p>Sınıfta veya akıllı tahtada Kırmızı ve Mavi Takım olarak 16-24 gizemli kutuyu açın, sürpriz puan ve takas kartlarıyla eğlenerek yarışın!</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn primary" data-gjump="baam:s1u1">🚀 1. Sınıf Baamboozle Oyna</button>
+              <button class="guide-link-btn primary" data-gjump="baam:s2u1">🚀 2. Sınıf Baamboozle Oyna</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🏰 Disney Karakterleri & Sesleri</h3>
+            <p>Mickey Mouse, Donald Duck, Woody, Buzz Lightyear, Elsa ve 19 Disney karakteri her ünitede çocuklara eşlik eder ve onların sesleriyle telaffuz yapar!</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" id="guide-play-welcome">✨ Disney Hoş Geldin Sesini Dinle</button>
+              <button class="guide-link-btn" id="guide-open-voices">🎙️ Polly Ses Menüsü</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🖼️ Büyük Görsel Kartlar (Baamboozle Tarzı)</h3>
+            <p>Her ünitede devasa kelime sahneleri, tek tıkla Google Görseller ve Giphy animasyonlu sticker arama araçları ile zengin görsel hafıza.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="learn:s1u1">📚 1. Sınıf Kelime Tiyatrosu</button>
+              <button class="guide-link-btn" data-gjump="learn:s2u1">📚 2. Sınıf Kelime Tiyatrosu</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>✍️ Tracing (Harf & Kelime Çizme)</h3>
+            <p>Çocukların el-göz koordinasyonunu ve motor becerilerini geliştiren, harf hatlarını çizme ve sesli okuma aktivitesi.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="game:tracing:s1u1">✍️ 1. Sınıf Tracing</button>
+              <button class="guide-link-btn" data-gjump="game:tracing:s2u1">✍️ 2. Sınıf Tracing</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🎵 Sing & Learn (200+ Şarkı & Video)</h3>
+            <p>Cambridge Global English müfredatına tam uyumlu ritmik şarkılar, karaokeler ve üniteye özel seçilmiş güvenli YouTube eğitim videoları.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="songs">🎶 Tüm Şarkılara Git</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card" style="grid-column: 1 / -1">
+            <h3>🏫 1. Sınıf Üniteleri (9 Temel Ünite)</h3>
+            <p>Tıklayarak doğrudan ünitenin interaktif sayfasına gidebilirsiniz:</p>
+            <div class="guide-links-wrap">
+              ${s1Units
+                .map((u) => {
+                  const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
+                  const mName = m ? m.char.split(' ')[0] : '';
+                  return `<button class="guide-link-btn" data-gjump="unit:${u.id}">${u.emoji} ${u.title} ${mName ? `(${mName})` : ''}</button>`;
+                })
+                .join('')}
+            </div>
+          </div>
+
+          <div class="guide-sec-card" style="grid-column: 1 / -1">
+            <h3>🏫 2. Sınıf Üniteleri (16 Kapsamlı Ünite)</h3>
+            <p>Cambridge Global English 2 ve tematik genişletilmiş üniteler:</p>
+            <div class="guide-links-wrap">
+              ${s2Units
+                .map((u) => {
+                  const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
+                  const mName = m ? m.char.split(' ')[0] : '';
+                  return `<button class="guide-link-btn" data-gjump="unit:${u.id}">${u.emoji} ${u.title} ${mName ? `(${mName})` : ''}</button>`;
+                })
+                .join('')}
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;text-align:center">
+          <button class="btn green big" id="guide-bottom-close" style="min-width:200px">✅ Anladım, Öğrenmeye Başla!</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(d);
+
+    const close = () => {
+      MEDIA.fx('click');
+      d.remove();
+    };
+
+    const c1 = d.querySelector('#guide-close');
+    if (c1) c1.onclick = close;
+    const c2 = d.querySelector('#guide-bottom-close');
+    if (c2) c2.onclick = close;
+    d.onclick = (e) => {
+      if (e.target === d) close();
+    };
+
+    const pWel = d.querySelector('#guide-play-welcome');
+    if (pWel) {
+      pWel.onclick = () => {
+        MEDIA.welcomeGreeting();
+        FX.confetti(25);
+        FX.stars();
+      };
+    }
+
+    const pVoi = d.querySelector('#guide-open-voices');
+    if (pVoi) {
+      pVoi.onclick = () => {
+        d.remove();
+        this.showVoices();
+      };
+    }
+
+    d.querySelectorAll('[data-gjump]').forEach((b) => {
+      b.onclick = () => {
+        const val = b.dataset.gjump;
+        close();
+        if (val.startsWith('baam:')) {
+          const uid = val.split(':')[1];
+          this.go('game', { engineId: 'baamboozle', unitId: uid, lvIdx: 0 });
+        } else if (val.startsWith('learn:')) {
+          const uid = val.split(':')[1];
+          this.learnIdx = 0;
+          this.go('learn', { unitId: uid });
+        } else if (val.startsWith('game:tracing:')) {
+          const uid = val.split(':')[2];
+          this.go('game', { engineId: 'tracing', unitId: uid, lvIdx: 0 });
+        } else if (val.startsWith('unit:')) {
+          const uid = val.split(':')[1];
+          this.go('unit', { unitId: uid });
+        } else if (val === 'songs') {
+          this.go('songs');
+        }
+      };
+    });
   },
 
   /* ---------- 📚 KONU ANLATIMI (v4 & v5) ---------- */

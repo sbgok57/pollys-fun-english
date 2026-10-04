@@ -594,6 +594,206 @@ const ENGINES_C=[
 
       renderRound();
     }
+  },
+
+  /* ---------------- 26) 🧩 BAAMBOOZLE TAKIM & SINIF OYUNU ---------------- */
+  {
+    id: 'baamboozle',
+    e: '🧩',
+    t: 'Baamboozle Takım Oyunu',
+    d: 'Sınıf & Akıllı Tahta Yarışması! 2 Takım, gizemli kartlar ve sürpriz güçler!',
+    stages: [1, 2],
+    levels: [
+      { n: '16 Kart (Klasik 4x4)', c: { tiles: 16 } },
+      { n: '20 Kart (Orta 5x4)', c: { tiles: 20 } },
+      { n: '24 Kart (Geniş 6x4)', c: { tiles: 24 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      const count = Math.min(cfg.tiles, 24);
+      const pool = shuffle([...u.w]);
+
+      let team1Score = 0, team2Score = 0;
+      let activeTeam = 1; // 1: Red, 2: Blue
+      let openedCount = 0;
+      let isModalOpen = false;
+
+      const powerUpTypes = [
+        { type: 'swap', title: '⚡ PUANLARI TAKAS ET!', desc: 'İki takımın puanları yer değiştirdi!', icon: '⚡', action: () => { const tmp = team1Score; team1Score = team2Score; team2Score = tmp; MEDIA.fx('whoosh'); FX.confetti(25); } },
+        { type: 'gift', title: '🎁 SÜRPRİZ HEDİYE!', desc: 'Tebrikler! Takımına +25 bedava puan!', icon: '🎁', action: (tm) => { if(tm===1) team1Score += 25; else team2Score += 25; MEDIA.fx('win'); FX.stars(); } },
+        { type: 'trap', title: '💥 EYVAH! KÜÇÜK TUZAK!', desc: 'Dikkat! Takımın 10 puan kaybetti!', icon: '💥', action: (tm) => { if(tm===1) team1Score = Math.max(0, team1Score - 10); else team2Score = Math.max(0, team2Score - 10); MEDIA.fx('wrong'); } },
+        { type: 'share', title: '🤝 DOSTLUK PAYLAŞIMI!', desc: 'Diğer takıma +15 puan hediye ettiniz!', icon: '🤝', action: (tm) => { if(tm===1) team2Score += 15; else team1Score += 15; MEDIA.fx('magic'); FX.stars(); } }
+      ];
+
+      const deck = [];
+      for (let i = 0; i < count; i++) {
+        if (i > 0 && i % 4 === 2) {
+          const pu = pick(powerUpTypes);
+          deck.push({ isPower: true, ...pu, opened: false });
+        } else {
+          const w = pool[i % pool.length];
+          deck.push({ isPower: false, w, opened: false });
+        }
+      }
+
+      const renderBoard = () => {
+        api.root.innerHTML = `
+          <div class="baamboozle-wrap">
+            <div class="baamboozle-scoreboard">
+              <div class="bb-team t1 ${activeTeam === 1 ? 'active' : ''}">
+                <div class="bb-team-name">🔴 Kırmızı Takım</div>
+                <div class="bb-team-score" id="b-t1">${team1Score}</div>
+              </div>
+              <div class="bb-turn-pill" id="b-turn">
+                <span class="team-dot ${activeTeam === 1 ? 'red' : 'blue'}"></span>
+                ${activeTeam === 1 ? '🔴 Kırmızı Takım' : '🔵 Mavi Takım'} Sırası
+              </div>
+              <div class="bb-team t2 ${activeTeam === 2 ? 'active' : ''}">
+                <div class="bb-team-name">🔵 Mavi Takım</div>
+                <div class="bb-team-score" id="b-t2">${team2Score}</div>
+              </div>
+            </div>
+
+            <div class="baamboozle-grid">
+              ${deck.map((card, i) => `
+                <div class="bb-tile ${card.opened ? 'opened ' + (card.wonTeam === 1 ? 'by-t1' : card.wonTeam === 2 ? 'by-t2' : 'neutral') : ''}" data-idx="${i}">
+                  <span class="bb-num">${i + 1}</span>
+                  ${card.opened ? `<span class="bb-tile-icon">${card.isPower ? card.icon : card.w[1]}</span>` : ''}
+                </div>
+              `).join('')}
+            </div>
+            <div id="bb-modal-mount"></div>
+          </div>
+        `;
+        api.progress(openedCount, count);
+        bindBoard();
+      };
+
+      const openTile = (idx) => {
+        if (isModalOpen) return;
+        const card = deck[idx];
+        if (!card || card.opened) return;
+        isModalOpen = true;
+        MEDIA.fx('pop');
+
+        const mount = api.root.querySelector('#bb-modal-mount');
+        if (!mount) return;
+
+        if (card.isPower) {
+          card.opened = true;
+          card.wonTeam = activeTeam;
+          card.action(activeTeam);
+          openedCount++;
+
+          mount.innerHTML = `
+            <div class="bb-modal-overlay">
+              <div class="bb-modal-box power-box">
+                <div class="bb-power-icon anim-bounce" style="font-size:4.5em">${card.icon}</div>
+                <h2>${card.title}</h2>
+                <p style="font-size:1.25em;margin:12px 0 20px;color:#334155">${card.desc}</p>
+                <button class="btn green big" id="bb-power-ok" style="font-size:1.2em;padding:12px 30px">Harika! Devam Et ➡️</button>
+              </div>
+            </div>
+          `;
+          api.root.querySelector('#bb-power-ok').onclick = () => {
+            MEDIA.fx('click');
+            isModalOpen = false;
+            activeTeam = activeTeam === 1 ? 2 : 1;
+            checkGameEnd();
+            renderBoard();
+          };
+          return;
+        }
+
+        const w = card.w;
+        mount.innerHTML = `
+          <div class="bb-modal-overlay">
+            <div class="bb-modal-box">
+              <div class="bb-modal-badge">${activeTeam === 1 ? '🔴 Kırmızı Takım' : '🔵 Mavi Takım'} — Kart ${idx + 1}</div>
+              
+              <div class="bb-stage-visual">
+                <span class="bb-huge-emoji popflash" style="font-size:5.5em">${w[1] || '🔤'}</span>
+              </div>
+              <div class="bb-stage-prompt" id="bb-prompt">
+                <div class="pw" style="font-size:1.5em;color:#1e293b">Bu kelimenin İngilizcesi nedir? 🗣️</div>
+                <div class="muted" style="margin-top:6px;font-size:1.15em;font-weight:700">${esc(w[2])}</div>
+              </div>
+
+              <div id="bb-answer-revealed" style="display:none;margin:12px 0 16px">
+                <div class="pw" style="font-size:2.2em;color:#7c3aed;font-weight:900">${esc(w[0])}</div>
+                <div style="font-size:1.3em;color:#059669;font-weight:700">(${esc(w[2])})</div>
+                <button class="btn small blue" id="bb-spk-btn" style="margin-top:8px">🔊 Telaffuz Dinle</button>
+              </div>
+
+              <div class="row" style="margin-top:20px;gap:12px;justify-content:center" id="bb-actions">
+                <button class="btn purple big" id="bb-show-ans" style="font-size:1.15em;padding:12px 24px">👁️ Cevabı Göster</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        api.root.querySelector('#bb-show-ans').onclick = () => {
+          MEDIA.fx('magic');
+          MEDIA.speak(w[0]);
+          const ansEl = api.root.querySelector('#bb-answer-revealed');
+          const actionsEl = api.root.querySelector('#bb-actions');
+          if (ansEl) ansEl.style.display = 'block';
+          api.root.querySelector('#bb-spk-btn').onclick = () => MEDIA.speak(w[0]);
+
+          if (actionsEl) {
+            actionsEl.innerHTML = `
+              <button class="btn green big" id="bb-ans-ok" style="font-size:1.1em;padding:12px 22px">✅ Doğru Bildi (+15 Puan)</button>
+              <button class="btn white big" id="bb-ans-no" style="font-size:1.1em;padding:12px 22px">❌ Pas / Yanlış (0 Puan)</button>
+            `;
+            api.root.querySelector('#bb-ans-ok').onclick = () => {
+              card.opened = true;
+              card.wonTeam = activeTeam;
+              if (activeTeam === 1) team1Score += 15; else team2Score += 15;
+              MEDIA.fx('correct');
+              FX.stars();
+              openedCount++;
+              isModalOpen = false;
+              activeTeam = activeTeam === 1 ? 2 : 1;
+              checkGameEnd();
+              renderBoard();
+            };
+            api.root.querySelector('#bb-ans-no').onclick = () => {
+              card.opened = true;
+              card.wonTeam = 0;
+              MEDIA.fx('wrong');
+              openedCount++;
+              isModalOpen = false;
+              activeTeam = activeTeam === 1 ? 2 : 1;
+              checkGameEnd();
+              renderBoard();
+            };
+          }
+        };
+      };
+
+      const checkGameEnd = () => {
+        if (openedCount >= count) {
+          setTimeout(() => {
+            const winner = team1Score > team2Score ? '🔴 Kırmızı Takım Kazandı! 🏆' : (team2Score > team1Score ? '🔵 Mavi Takım Kazandı! 🏆' : '🤝 Berabere! Dostluk Kazandı! 🌟');
+            api.end({
+              score: Math.max(team1Score, team2Score),
+              max: count * 15,
+              note: `Baamboozle Tamamlandı! ${winner} (Kırmızı: ${team1Score} · Mavi: ${team2Score})`
+            });
+          }, 800);
+        }
+      };
+
+      const bindBoard = () => {
+        api.root.querySelectorAll('.bb-tile[data-idx]').forEach(tile => {
+          tile.onclick = () => {
+            openTile(+tile.dataset.idx);
+          };
+        });
+      };
+
+      renderBoard();
+    }
   }
 ];
 

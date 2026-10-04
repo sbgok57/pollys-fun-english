@@ -252,6 +252,30 @@ body.s2 {
 .stage-card h2 { font-size: 1.45em; color: #0f172a; margin-bottom: 6px; font-weight: 900; }
 .stage-card p { color: #64748b; font-size: 0.92em; font-weight: 700; }
 
+.baam-featured-card {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 4px solid #f59e0b;
+  border-radius: var(--radius-lg);
+  padding: 22px 26px;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.baam-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-float);
+}
+.baam-fc-main { display: flex; align-items: center; gap: 18px; }
+.baam-fc-emoji { font-size: 52px; }
+.baam-fc-text h2 { font-size: 1.4em; color: #b45309; margin: 0 0 4px 0; font-weight: 900; }
+.baam-fc-text p { margin: 0; color: #92400e; font-size: 0.95em; font-weight: 700; }
+
 .quick-row {
   display: flex;
   flex-wrap: wrap;
@@ -1244,6 +1268,354 @@ body.s2 {
   border-color: #3b82f6;
   color: #1d4ed8;
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+/* ═══ 🏰 DİSNEY MASKOT & HOŞ GELDİN HERO ═══ */
+.disney-welcome-hero {
+  background: linear-gradient(135deg, #fef08a 0%, #fed7aa 50%, #fbcfe8 100%);
+  border: 4px solid #f59e0b;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
+}
+.disney-welcome-avatar {
+  font-size: 3.8em;
+  background: #ffffff;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+  border: 3px solid #f59e0b;
+}
+.disney-welcome-content h2 {
+  font-size: 1.6em;
+  color: #1e1b4b;
+  margin: 4px 0 8px;
+}
+.disney-welcome-content p {
+  color: #334155;
+  font-size: 1em;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.disney-welcome-badge {
+  display: inline-block;
+  background: #8b5cf6;
+  color: #ffffff;
+  font-size: 0.8em;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+.disney-welcome-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ═══ 🧩 BAAMBOOZLE OYUN MOTORU STILLERI ═══ */
+.baamboozle-wrap {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.baamboozle-scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+  border: 3px solid #e2e8f0;
+}
+.bb-team {
+  padding: 10px 18px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 3px solid transparent;
+}
+.bb-team.t1 { background: #fee2e2; color: #991b1b; }
+.bb-team.t2 { background: #e0f2fe; color: #075985; }
+.bb-team.active {
+  transform: scale(1.08);
+  border-color: currentColor;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.bb-team-name { font-size: 0.9em; font-weight: 800; }
+.bb-team-score { font-size: 2em; font-weight: 900; line-height: 1.1; }
+.bb-turn-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05em;
+  font-weight: 800;
+  color: #1e293b;
+  background: #f8fafc;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+}
+.team-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.team-dot.red { background: #ef4444; }
+.team-dot.blue { background: #0284c7; }
+
+.baamboozle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 640px) {
+  .baamboozle-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.bb-tile {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #b45309, 0 10px 20px rgba(0,0,0,0.15);
+  transition: all 0.15s ease;
+  user-select: none;
+  position: relative;
+}
+.bb-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #b45309, 0 14px 24px rgba(0,0,0,0.2);
+}
+.bb-tile:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #b45309;
+}
+.bb-tile.opened {
+  transform: none;
+  cursor: default;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
+}
+.bb-tile.opened.by-t1 {
+  background: #fee2e2;
+  border: 3px solid #ef4444;
+  color: #991b1b;
+}
+.bb-tile.opened.by-t2 {
+  background: #e0f2fe;
+  border: 3px solid #0284c7;
+  color: #075985;
+}
+.bb-tile.opened.neutral {
+  background: #f1f5f9;
+  border: 3px solid #cbd5e1;
+  color: #64748b;
+}
+.bb-tile-icon { font-size: 0.9em; margin-top: 2px; }
+
+/* Modal overlay & box */
+.bb-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+.bb-modal-box {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 30px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  border: 4px solid #f1f5f9;
+  animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.bb-modal-badge {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  font-size: 0.9em;
+}
+
+/* ═══ 📖 BAAMBOOZLE-STYLE BÜYÜK GÖRSEL TİYATROSU ═══ */
+.baamboozle-theater-card {
+  padding: 24px;
+}
+.learn-theater-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.disney-guide-tag {
+  font-size: 0.85em;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+.baamboozle-stage {
+  width: 100%;
+  min-height: 220px;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #e0e7ff;
+  margin: 12px 0 16px 0;
+  padding: 20px;
+}
+.stage-visual-tools {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn-visual-chip {
+  text-decoration: none;
+  font-size: 0.82em;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  color: #334155;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #cbd5e1;
+  transition: all 0.15s ease;
+}
+.btn-visual-chip:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+.btn-visual-chip.google-btn { color: #1d4ed8; border-color: #bfdbfe; }
+.btn-visual-chip.giphy-btn { color: #7c3aed; border-color: #ddd6fe; }
+
+/* ═══ 📖 KULLANMA KILAVUZU MODALI ═══ */
+.guide-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.guide-modal-box {
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 860px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  border: 4px solid #f1f5f9;
+}
+.guide-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.guide-intro-banner {
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.92em;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.guide-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+}
+.guide-sec-card {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 16px;
+}
+.guide-sec-card.highlight {
+  background: #fefce8;
+  border-color: #fde047;
+}
+.guide-sec-card h3 {
+  font-size: 1.15em;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.guide-sec-card p {
+  font-size: 0.86em;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+.guide-links-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.guide-link-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.84em;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.guide-link-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.guide-link-btn.primary {
+  background: #f59e0b;
+  color: #ffffff;
+  border-color: #d97706;
+}
+.guide-link-btn.primary:hover {
+  background: #d97706;
 }
 
 
@@ -7487,280 +7859,333 @@ const LQ = {
 
 /* 🌟 Gerçek Çizgi Film Maskotları & Karakterler (Her Ünite İçin Canlı Karakterler) */
 const MASCOTS = {
+  // 🟢 1. Sınıf (Cambridge Global English 1)
   "s1u0": {
+    "id": "mickey",
     "name": "Mickey Mouse",
-    "show": "Disney",
-    "tag": "🐭 Mickey",
-    "quoteEn": "Hiya pals! Welcome to English fun!",
-    "quoteTr": "Selam arkadaşlar! İngilizce eğlencesine hoş geldiniz!",
-    "badge": "🐭 Disney Mickey",
+    "show": "Disney Mickey & Friends",
+    "tag": "🏰 Mickey Mouse",
+    "quoteEn": "Oh boy! Welcome to our English Clubhouse! Let's learn together!",
+    "quoteTr": "Yaşasın! İngilizce kulübümüze hoş geldiniz! Birlikte öğrenelim!",
+    "badge": "🏰 Disney Mickey Mouse",
     "color": "#ef4444",
     "bg": "#fee2e2",
-    "anim": "anim-bounce"
+    "anim": "anim-bounce",
+    "voiceKey": "mickey"
   },
   "s1u1": {
-    "name": "Peppa Pig & George",
-    "show": "Peppa Pig",
-    "tag": "🐷 Peppa Pig",
-    "quoteEn": "Oink! Pack your school bag, it is time for school!",
-    "quoteTr": "Oink! Çantanı hazırla, okul vakti geldi!",
-    "badge": "🐷 Peppa Pig",
-    "color": "#ec4899",
-    "bg": "#fce7f3",
-    "anim": "anim-wiggle"
+    "id": "donald",
+    "name": "Donald Duck",
+    "show": "Disney Mickey & Friends",
+    "tag": "🦆 Donald Duck",
+    "quoteEn": "Quack quack! Pack your school bag, it is time for school!",
+    "quoteTr": "Vak vak! Çantanı hazırla, okul vakti geldi!",
+    "badge": "🦆 Disney Donald Duck",
+    "color": "#0284c7",
+    "bg": "#e0f2fe",
+    "anim": "anim-wiggle",
+    "voiceKey": "donald"
   },
   "s1u2": {
-    "name": "Bluey & Bingo",
-    "show": "Bluey",
-    "tag": "🐶 Bluey",
-    "quoteEn": "Hooray! Family time is the best time ever!",
-    "quoteTr": "Yaşasın! Aile zamanı dünyanın en harika zamanı!",
-    "badge": "🐶 Bluey & Bingo",
-    "color": "#0284c7",
-    "bg": "#e0f2fe",
-    "anim": "anim-bounce"
+    "id": "pooh",
+    "name": "Winnie the Pooh",
+    "show": "Disney Winnie the Pooh",
+    "tag": "🍯 Winnie the Pooh",
+    "quoteEn": "A sweet family is the sweetest honey of all! Family time!",
+    "quoteTr": "Tatlı bir aile, balların en tatlısıdır! Aile zamanı!",
+    "badge": "🍯 Disney Pooh Bear",
+    "color": "#f59e0b",
+    "bg": "#fef3c7",
+    "anim": "anim-bounce",
+    "voiceKey": "pooh"
   },
   "s1u3": {
-    "name": "Chase & Marshall",
-    "show": "Paw Patrol",
-    "tag": "🐕 Chase & Marshall",
-    "quoteEn": "Paw Patrol is on a roll! Ready to play games!",
-    "quoteTr": "Paw Patrol görevde! Eğlenceli oyunlar oynamaya hazırız!",
-    "badge": "🐕 Paw Patrol",
-    "color": "#2563eb",
-    "bg": "#dbeafe",
-    "anim": "anim-pulse"
-  },
-  "s1u4": {
-    "name": "Bob the Builder",
-    "show": "Bob the Builder",
-    "tag": "👷 Bob the Builder",
-    "quoteEn": "Can we build it? Yes we can! Making crafts and colors!",
-    "quoteTr": "Yapabilir miyiz? Evet yaparız! Renkli el işleri zamanı!",
-    "badge": "👷 Bob the Builder",
-    "color": "#f59e0b",
-    "bg": "#fef3c7",
-    "anim": "anim-bounce"
-  },
-  "s1u5": {
-    "name": "Shaun the Sheep",
-    "show": "Shaun the Sheep",
-    "tag": "🐑 Shaun the Sheep",
-    "quoteEn": "Baa! Welcome to the farm with friendly animals!",
-    "quoteTr": "Mee! Sevimli çiftlik hayvanlarına hoş geldiniz!",
-    "badge": "🐑 Shaun the Sheep",
-    "color": "#10b981",
-    "bg": "#d1fae5",
-    "anim": "anim-wiggle"
-  },
-  "s1u6": {
-    "name": "Elmo",
-    "show": "Sesame Street",
-    "tag": "🔴 Elmo",
-    "quoteEn": "Elmo loves your bright eyes, ears, and happy smile!",
-    "quoteTr": "Elmo parlak gözlerini, kulaklarını ve neşeli gülüşünü seviyor!",
-    "badge": "🔴 Sesame Street Elmo",
-    "color": "#dc2626",
-    "bg": "#fee2e2",
-    "anim": "anim-bounce"
-  },
-  "s1u7": {
-    "name": "Thomas the Tank Engine",
-    "show": "Thomas & Friends",
-    "tag": "🚂 Thomas",
-    "quoteEn": "Choo-choo! All aboard the learning train!",
-    "quoteTr": "Çuf çuf! Öğrenme trenine herkes binsin!",
-    "badge": "🚂 Thomas & Friends",
-    "color": "#0284c7",
-    "bg": "#e0f2fe",
-    "anim": "anim-float"
-  },
-  "s1u8": {
-    "name": "Simba",
-    "show": "The Lion King",
-    "tag": "🦁 Simba",
-    "quoteEn": "Roar! Hakuna Matata! Explore the wild animal kingdom!",
-    "quoteTr": "Kükre! Hakuna Matata! Vahşi hayvanlar krallığını keşfet!",
-    "badge": "🦁 Disney Lion King",
+    "id": "woody",
+    "name": "Woody & Buzz",
+    "show": "Pixar Toy Story",
+    "tag": "🤠 Woody & Buzz",
+    "quoteEn": "Howdy partner! You've got a friend in English fun and games!",
+    "quoteTr": "Selam ortak! İngilizce oyunlarında harika bir dostun var!",
+    "badge": "🤠 Pixar Toy Story",
     "color": "#d97706",
     "bg": "#fef3c7",
-    "anim": "anim-pulse"
+    "anim": "anim-pulse",
+    "voiceKey": "woody"
   },
-  "s1u9": {
-    "name": "SpongeBob SquarePants",
-    "show": "SpongeBob",
-    "tag": "🧽 SpongeBob",
-    "quoteEn": "I am ready! Wonderful water, rivers, and the big blue sea!",
-    "quoteTr": "Ben hazırım! Harika sular, nehirler ve kocaman deniz!",
-    "badge": "🧽 SpongeBob",
-    "color": "#eab308",
-    "bg": "#fef9c3",
-    "anim": "anim-wiggle"
+  "s1u4": {
+    "id": "pinocchio",
+    "name": "Pinocchio & Geppetto",
+    "show": "Disney Pinocchio",
+    "tag": "🎨 Pinocchio & Geppetto",
+    "quoteEn": "Let's build, cut, paint and create colourful crafts together!",
+    "quoteTr": "Birlikte keselim, boyayalım ve rengarenk el işleri yapalım!",
+    "badge": "🎨 Disney Pinocchio",
+    "color": "#10b981",
+    "bg": "#d1fae5",
+    "anim": "anim-bounce",
+    "voiceKey": "mickey"
   },
-  "s2u1": {
-    "name": "Winnie the Pooh",
-    "show": "Disney Pooh",
-    "tag": "🐻 Winnie the Pooh",
-    "quoteEn": "A day without reading is like a honey pot without honey!",
-    "quoteTr": "Kitap okumasız bir gün, balsız bir bal çömleği gibidir!",
-    "badge": "🐻 Winnie the Pooh",
-    "color": "#f59e0b",
-    "bg": "#fef3c7",
-    "anim": "anim-bounce"
-  },
-  "s2u2": {
-    "name": "Skye & Rubble",
-    "show": "Paw Patrol",
-    "tag": "🚁 Skye & Rubble",
-    "quoteEn": "These paws uphold the laws! Saluting community helpers!",
-    "quoteTr": "Bu patiler kuralları korur! Toplum kahramanlarına selam!",
-    "badge": "🚁 Paw Patrol",
-    "color": "#ec4899",
-    "bg": "#fce7f3",
-    "anim": "anim-float"
-  },
-  "s2u3": {
-    "name": "Sonic the Hedgehog",
-    "show": "Sonic",
-    "tag": "🦔 Sonic",
-    "quoteEn": "Gotta go fast! Ready, steady, run and jump with energy!",
-    "quoteTr": "Hızlı olmalıyım! Hazır, başla, enerjiyle koş ve zıpla!",
-    "badge": "🦔 Sonic the Hedgehog",
-    "color": "#2563eb",
-    "bg": "#dbeafe",
-    "anim": "anim-bounce"
-  },
-  "s2u4": {
-    "name": "Buzz Lightyear",
-    "show": "Toy Story",
-    "tag": "🚀 Buzz Lightyear",
-    "quoteEn": "To infinity and beyond! Reaching for the big sky!",
-    "quoteTr": "Sonsuzluğa ve ötesine! Büyük gökyüzüne uzanıyoruz!",
-    "badge": "🚀 Pixar Toy Story",
-    "color": "#8b5cf6",
-    "bg": "#ede9fe",
-    "anim": "anim-float"
-  },
-  "s2u5": {
-    "name": "Numberblocks",
-    "show": "CBeebies Numberblocks",
-    "tag": "🔢 Numberblocks",
-    "quoteEn": "One, two, three, four, five! Let us measure shapes and count!",
-    "quoteTr": "Bir, iki, üç, dört, beş! Şekilleri ölçelim ve sayalım!",
-    "badge": "🔢 Numberblocks",
-    "color": "#ea580c",
-    "bg": "#ffedd5",
-    "anim": "anim-bounce"
-  },
-  "s2u6": {
-    "name": "Maya the Bee",
-    "show": "Maya the Bee",
-    "tag": "🐝 Maya the Bee",
-    "quoteEn": "Buzz buzz! Meet the cute little insects and spiders!",
-    "quoteTr": "Vız vız! Sevimli minik böceklerle ve arılarla tanış!",
-    "badge": "🐝 Maya the Bee",
-    "color": "#ca8a04",
-    "bg": "#fef08a",
-    "anim": "anim-wiggle"
-  },
-  "s2u7": {
-    "name": "Buddy the T-Rex",
-    "show": "Dinosaur Train",
-    "tag": "🦖 Buddy",
-    "quoteEn": "All aboard the time train! How nature grew long ago and today!",
-    "quoteTr": "Zaman trenine binin! Doğanın geçmişte ve bugün nasıl büyüdüğü!",
-    "badge": "🦖 Dinosaur Train",
+  "s1u5": {
+    "id": "farm",
+    "name": "Pegasus & Disney Farm Friends",
+    "show": "Disney Classics",
+    "tag": "🐴 Disney Farm Friends",
+    "quoteEn": "Neigh and moo! Welcome to our friendly farm animals!",
+    "quoteTr": "Sevimli çiftliğimizdeki neşeli hayvanlara merhaba de!",
+    "badge": "🐴 Disney Farm Friends",
     "color": "#16a34a",
     "bg": "#dcfce7",
-    "anim": "anim-bounce"
+    "anim": "anim-wiggle",
+    "voiceKey": "goofy"
   },
-  "s2u8": {
-    "name": "Arthur Read",
-    "show": "Arthur",
-    "tag": "👓 Arthur",
-    "quoteEn": "Welcome to our city street and cozy home sweet home!",
-    "quoteTr": "Şehir caddemize ve sıcacık tatlı evimize hoş geldiniz!",
-    "badge": "👓 Arthur (PBS Kids)",
-    "color": "#ca8a04",
-    "bg": "#fef08a",
-    "anim": "anim-float"
+  "s1u6": {
+    "id": "olaf",
+    "name": "Olaf & Baymax",
+    "show": "Disney Frozen & Big Hero",
+    "tag": "⛄ Olaf & Baymax",
+    "quoteEn": "Touch your head, arms and knees! Body movements are great!",
+    "quoteTr": "Başını, kollarını ve dizlerini hisset! Vücut hareketleri harika!",
+    "badge": "⛄ Disney Frozen Olaf",
+    "color": "#06b6d4",
+    "bg": "#cffafe",
+    "anim": "anim-bounce",
+    "voiceKey": "olaf"
   },
-  "s2u9": {
-    "name": "Nemo & Dory",
-    "show": "Finding Nemo",
-    "tag": "🐠 Nemo & Dory",
-    "quoteEn": "Just keep swimming! Explore the wonderful world oceans!",
-    "quoteTr": "Yüzmeye devam et! Dünyanın muhteşem okyanuslarını keşfet!",
-    "badge": "🐠 Finding Nemo / Pixar",
-    "color": "#f97316",
-    "bg": "#ffedd5",
-    "anim": "anim-float"
-  },
-  "s1rev1": {
-    "name": "Pikachu",
-    "show": "Pokémon",
-    "tag": "⚡ Pikachu",
-    "quoteEn": "Pika-pika! Term 1 Super Review Champion!",
-    "quoteTr": "Pika-pika! 1. Dönem Süper Tekrar Şampiyonu!",
-    "badge": "⚡ Pokémon",
-    "color": "#eab308",
-    "bg": "#fef9c3",
-    "anim": "anim-bounce"
-  },
-  "s1rev2": {
-    "name": "Paddington Bear",
-    "show": "Paddington",
-    "tag": "🐻 Paddington",
-    "quoteEn": "Please look after this vocabulary! Term 2 Super Review!",
-    "quoteTr": "Lütfen bu kelimelere iyi bakın! 2. Dönem Süper Tekrarı!",
-    "badge": "🐻 Paddington Bear",
-    "color": "#0284c7",
-    "bg": "#e0f2fe",
-    "anim": "anim-float"
-  },
-  "s1rev3": {
-    "name": "Kermit the Frog",
-    "show": "The Muppets",
-    "tag": "🐸 Kermit",
-    "quoteEn": "Yay! Grade 1 Master Champions! You did it!",
-    "quoteTr": "Yaşasın! 1. Sınıf Büyük Şampiyonları! Başardınız!",
-    "badge": "🐸 The Muppets",
-    "color": "#16a34a",
-    "bg": "#dcfce7",
-    "anim": "anim-bounce"
-  },
-  "s2rev1": {
-    "name": "Garfield & Odie",
-    "show": "Garfield",
-    "tag": "🐱 Garfield",
-    "quoteEn": "Awesome! Stage 2 Mid Review mastered with style!",
-    "quoteTr": "Harika! 2. Sınıf Ara Tekrarını ustalıkla tamamladık!",
-    "badge": "🐱 Garfield",
-    "color": "#ea580c",
-    "bg": "#ffedd5",
-    "anim": "anim-wiggle"
-  },
-  "s2rev2": {
-    "name": "Kung Fu Panda (Po)",
-    "show": "DreamWorks",
-    "tag": "🐼 Po (Kung Fu Panda)",
-    "quoteEn": "Skadoosh! Nature and City review hero!",
-    "quoteTr": "Skadoosh! Doğa ve Şehir tekrarı kahramanı!",
-    "badge": "🐼 Kung Fu Panda",
-    "color": "#475569",
-    "bg": "#f1f5f9",
-    "anim": "anim-bounce"
-  },
-  "s2rev3": {
-    "name": "Super Mario",
-    "show": "Nintendo",
-    "tag": "🍄 Mario",
-    "quoteEn": "Here we go! Grade 2 Grand Champion of English!",
-    "quoteTr": "Hadi bakalım! İngilizce 2. Sınıf Büyük Şampiyonu!",
-    "badge": "🍄 Super Mario",
+  "s1u7": {
+    "id": "mcqueen",
+    "name": "Lightning McQueen",
+    "show": "Pixar Cars",
+    "tag": "⚡ Lightning McQueen",
+    "quoteEn": "Ka-chow! Zoom with fast cars, trains, planes and bikes!",
+    "quoteTr": "Ka-çovv! Arabalar, trenler, uçaklar ve bisikletlerle hızlan!",
+    "badge": "⚡ Pixar Cars",
     "color": "#dc2626",
     "bg": "#fee2e2",
-    "anim": "anim-bounce"
+    "anim": "anim-float",
+    "voiceKey": "mcqueen"
+  },
+  "s1u8": {
+    "id": "simba",
+    "name": "Simba & Timon",
+    "show": "Disney The Lion King",
+    "tag": "🦁 Simba & Timon",
+    "quoteEn": "Roar! Hakuna Matata! Explore the wild animal kingdom!",
+    "quoteTr": "Kükre! Hakuna Matata! Vahşi hayvanlar krallığını keşfet!",
+    "badge": "🦁 Disney The Lion King",
+    "color": "#f59e0b",
+    "bg": "#fef3c7",
+    "anim": "anim-pulse",
+    "voiceKey": "simba"
+  },
+  "s1u9": {
+    "id": "ariel",
+    "name": "Ariel & Flounder",
+    "show": "Disney The Little Mermaid",
+    "tag": "🧜‍♀️ Ariel & Flounder",
+    "quoteEn": "Under the sea! Wonderful water, floating boats and sea friends!",
+    "quoteTr": "Denizler altında! Harika sular, yüzen tekneler ve deniz dostları!",
+    "badge": "🧜‍♀️ Disney The Little Mermaid",
+    "color": "#0d9488",
+    "bg": "#ccfbf1",
+    "anim": "anim-float",
+    "voiceKey": "ariel"
+  },
+  "s1rev1": {
+    "id": "aladdin",
+    "name": "Aladdin & Genie",
+    "show": "Disney Aladdin",
+    "tag": "🧞 Genie & Aladdin",
+    "quoteEn": "A whole new world of English words! You are doing fantastic!",
+    "quoteTr": "Yepyeni bir İngilizce dünyası! Harika gidiyorsun!",
+    "badge": "🧞 Disney Aladdin",
+    "color": "#8b5cf6",
+    "bg": "#ede9fe",
+    "anim": "anim-bounce",
+    "voiceKey": "aladdin"
+  },
+  "s1rev2": {
+    "id": "peterpan",
+    "name": "Peter Pan & Tinkerbell",
+    "show": "Disney Peter Pan",
+    "tag": "🧚 Tinkerbell & Peter",
+    "quoteEn": "Think happy thoughts and fly high with super vocabulary power!",
+    "quoteTr": "Mutlu şeyler düşün ve kelime gücünle göklere uç!",
+    "badge": "🧚 Disney Peter Pan",
+    "color": "#10b981",
+    "bg": "#d1fae5",
+    "anim": "anim-float",
+    "voiceKey": "peterpan"
+  },
+  "s1rev3": {
+    "id": "hercules",
+    "name": "Hercules & Pegasus",
+    "show": "Disney Hercules",
+    "tag": "⚡ Hercules",
+    "quoteEn": "Zero to hero! Grade 1 English Grand Champion! You did it!",
+    "quoteTr": "Adım adım şampiyonluğa! 1. Sınıf İngilizce Şampiyonu!",
+    "badge": "⚡ Disney Hercules",
+    "color": "#f97316",
+    "bg": "#ffedd5",
+    "anim": "anim-pulse",
+    "voiceKey": "buzz"
+  },
+
+  // 🔵 2. Sınıf (Cambridge Global English 2)
+  "s2u1": {
+    "id": "belle",
+    "name": "Belle & The Beast",
+    "show": "Disney Beauty and the Beast",
+    "tag": "📚 Belle & Friends",
+    "quoteEn": "Look inside a book! Reading opens doors to magical adventures!",
+    "quoteTr": "Kitabın içine bak! Okumak sihirli maceraların kapısını açar!",
+    "badge": "📚 Disney Belle",
+    "color": "#d97706",
+    "bg": "#fef3c7",
+    "anim": "anim-bounce",
+    "voiceKey": "elsa"
+  },
+  "s2u2": {
+    "id": "stitch",
+    "name": "Stitch & Lilo",
+    "show": "Disney Lilo & Stitch",
+    "tag": "🌺 Stitch & Lilo",
+    "quoteEn": "Aloha! Ohana means family and good neighbours help each other!",
+    "quoteTr": "Aloha! Ohana aile demektir ve iyi komşular yardımlaşır!",
+    "badge": "🌺 Disney Stitch",
+    "color": "#0284c7",
+    "bg": "#e0f2fe",
+    "anim": "anim-wiggle",
+    "voiceKey": "stitch"
+  },
+  "s2u3": {
+    "id": "incredibles",
+    "name": "Dash & The Incredibles",
+    "show": "Pixar The Incredibles",
+    "tag": "🏃 Dash Parr",
+    "quoteEn": "Ready, steady, go! Run, jump, hop and move with super speed!",
+    "quoteTr": "Hazır, başla! Süper hızla koş, zıpla ve hareket et!",
+    "badge": "🏃 Pixar The Incredibles",
+    "color": "#dc2626",
+    "bg": "#fee2e2",
+    "anim": "anim-bounce",
+    "voiceKey": "incredibles"
+  },
+  "s2u4": {
+    "id": "buzz",
+    "name": "Buzz Lightyear",
+    "show": "Pixar Toy Story",
+    "tag": "🚀 Buzz Lightyear",
+    "quoteEn": "To infinity and beyond! Explore planets and the big starry sky!",
+    "quoteTr": "Sonsuzluğa ve ötesine! Gezegenleri ve yıldızlı gökyüzünü keşfet!",
+    "badge": "🚀 Pixar Toy Story",
+    "color": "#7c3aed",
+    "bg": "#ede9fe",
+    "anim": "anim-float",
+    "voiceKey": "buzz"
+  },
+  "s2u5": {
+    "id": "scrooge",
+    "name": "Professor Ludwig & Scrooge",
+    "show": "Disney DuckTales",
+    "tag": "📐 Scrooge & Ludwig",
+    "quoteEn": "Count, measure, calculate! Numbers and shapes are pure treasure!",
+    "quoteTr": "Say, ölç, hesapla! Sayılar ve geometrik şekiller gerçek bir hazine!",
+    "badge": "📐 Disney DuckTales",
+    "color": "#ea580c",
+    "bg": "#ffedd5",
+    "anim": "anim-bounce",
+    "voiceKey": "donald"
+  },
+  "s2u6": {
+    "id": "flik",
+    "name": "Flik & Heimlich",
+    "show": "Pixar A Bug's Life",
+    "tag": "🐛 Flik & Heimlich",
+    "quoteEn": "Welcome to the world of busy ants, bees and colourful butterflies!",
+    "quoteTr": "Çalışkan karıncaların, arıların ve kelebeklerin dünyasına hoş geldin!",
+    "badge": "🐛 Pixar A Bug's Life",
+    "color": "#65a30d",
+    "bg": "#ecfccb",
+    "anim": "anim-wiggle",
+    "voiceKey": "olaf"
+  },
+  "s2u7": {
+    "id": "pocahontas",
+    "name": "Pocahontas & Meeko",
+    "show": "Disney Pocahontas",
+    "tag": "🍃 Pocahontas & Meeko",
+    "quoteEn": "Listen to the trees! How plants grew long ago and grow today!",
+    "quoteTr": "Ağaçları dinle! Bitkilerin geçmişte ve bugünkü büyümesini keşfet!",
+    "badge": "🍃 Disney Pocahontas",
+    "color": "#16a34a",
+    "bg": "#dcfce7",
+    "anim": "anim-float",
+    "voiceKey": "moana"
+  },
+  "s2u8": {
+    "id": "judy",
+    "name": "Judy Hopps & Nick",
+    "show": "Disney Zootopia",
+    "tag": "🐰 Judy Hopps",
+    "quoteEn": "Welcome to the bustling city! Rooms, streets, and home sweet home!",
+    "quoteTr": "Hareketli şehre hoş geldiniz! Odalar, caddeler ve tatlı evimiz!",
+    "badge": "🐰 Disney Zootopia",
+    "color": "#2563eb",
+    "bg": "#dbeafe",
+    "anim": "anim-bounce",
+    "voiceKey": "judy"
+  },
+  "s2u9": {
+    "id": "dory",
+    "name": "Nemo, Dory & Crush",
+    "show": "Pixar Finding Nemo",
+    "tag": "🐢 Nemo & Dory",
+    "quoteEn": "Just keep swimming! Explore the wonderful world oceans and whales!",
+    "quoteTr": "Yüzmeye devam et! Muhteşem dünya okyanuslarını ve balinaları keşfet!",
+    "badge": "🐢 Pixar Finding Nemo",
+    "color": "#0891b2",
+    "bg": "#cffafe",
+    "anim": "anim-float",
+    "voiceKey": "dory"
+  },
+  "s2rev1": {
+    "id": "robinhood",
+    "name": "Robin Hood",
+    "show": "Disney Robin Hood",
+    "tag": "🏹 Robin Hood",
+    "quoteEn": "Hit the bullseye! Term 1 Super Reading & Hero Review!",
+    "quoteTr": "Hedefi tam on ikiden vur! 1. Dönem Süper Okuma & Kahraman Tekrarı!",
+    "badge": "🏹 Disney Robin Hood",
+    "color": "#15803d",
+    "bg": "#dcfce7",
+    "anim": "anim-pulse",
+    "voiceKey": "mickey"
+  },
+  "s2rev2": {
+    "id": "baloo",
+    "name": "Baloo & Mowgli",
+    "show": "Disney The Jungle Book",
+    "tag": "🐻 Baloo & Mowgli",
+    "quoteEn": "Look for the bare necessities! Nature, city and caring review!",
+    "quoteTr": "Doğanın güzelliklerine bak! Doğa, şehir ve çevre sevgisi tekrarı!",
+    "badge": "🐻 Disney Jungle Book",
+    "color": "#475569",
+    "bg": "#f1f5f9",
+    "anim": "anim-bounce",
+    "voiceKey": "baloo"
+  },
+  "s2rev3": {
+    "id": "allstars",
+    "name": "Mickey & Disney All-Stars",
+    "show": "Disney Grand Celebration",
+    "tag": "🏰 Disney All-Stars",
+    "quoteEn": "Hooray! You are a brilliant English champion! Congratulations!",
+    "quoteTr": "Yaşasın! Sen muhteşem bir İngilizce şampiyonusun! Tebrikler!",
+    "badge": "🏰 Disney Grand Celebration",
+    "color": "#8b5cf6",
+    "bg": "#ede9fe",
+    "anim": "anim-bounce",
+    "voiceKey": "mickey"
   }
 };
 
@@ -8148,10 +8573,45 @@ const MEDIA = {
     } catch (e) {}
   },
 
-  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ
-     Neşeli, enerjik ve çocuk dostu bir tempoda seslendirir.
-     Robotik sesleri kesinlikle engeller. */
-  speak(text, rate = 0.9, cb, vol) {
+  /* 🎙️ Disney Karakter Ses Profilleri (Perdeler ve Tempomuz Çocuklara Özel) */
+  disneyProfiles: {
+    mickey:   { pitch: 1.48, rate: 1.05, label: 'Mickey Mouse' },
+    donald:   { pitch: 1.35, rate: 1.18, label: 'Donald Duck' },
+    goofy:    { pitch: 0.74, rate: 0.85, label: 'Goofy' },
+    elsa:     { pitch: 1.25, rate: 0.94, label: 'Elsa' },
+    olaf:     { pitch: 1.42, rate: 1.10, label: 'Olaf' },
+    simba:    { pitch: 1.32, rate: 1.05, label: 'Simba' },
+    buzz:     { pitch: 0.85, rate: 0.98, label: 'Buzz Lightyear' },
+    woody:    { pitch: 1.08, rate: 1.02, label: 'Woody' },
+    stitch:   { pitch: 1.52, rate: 1.14, label: 'Stitch' },
+    pooh:     { pitch: 0.82, rate: 0.85, label: 'Winnie the Pooh' },
+    mcqueen:  { pitch: 1.12, rate: 1.18, label: 'Lightning McQueen' },
+    moana:    { pitch: 1.18, rate: 1.00, label: 'Moana' },
+    ariel:    { pitch: 1.28, rate: 0.96, label: 'Ariel' },
+    aladdin:  { pitch: 1.15, rate: 1.08, label: 'Aladdin & Genie' },
+    peterpan: { pitch: 1.30, rate: 1.08, label: 'Peter Pan' },
+    dory:     { pitch: 1.38, rate: 1.12, label: 'Dory & Nemo' },
+    judy:     { pitch: 1.24, rate: 1.08, label: 'Judy Hopps' },
+    baloo:    { pitch: 0.76, rate: 0.86, label: 'Baloo' },
+    incredibles: { pitch: 1.42, rate: 1.22, label: 'Dash' }
+  },
+
+  speakDisney(charKey, text, cb, vol) {
+    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.mickey;
+    this.tts(text, prof.rate, cb, vol, prof.pitch);
+  },
+
+  welcomeGreeting(cb) {
+    this.fx('win');
+    const msg = "Hiya pals! Welcome to Polly's Fun English! I am Mickey Mouse, and together with all our Disney friends, let us explore exciting games, songs, and Baamboozle together!";
+    this.speakDisney('mickey', msg, cb);
+  },
+
+  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ & DİSNEY DESTEĞİ */
+  speak(text, rate = 0.9, cb, vol, charKey = null) {
+    if (charKey && this.disneyProfiles[charKey]) {
+      return this.speakDisney(charKey, text, cb, vol);
+    }
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
         const t = String(text || '');
@@ -8200,7 +8660,7 @@ const MEDIA = {
   },
 
   /* 🎙️ Tarayıcı TTS — Neşeli, sıcak ve doğal insan sesleri */
-  tts(text, rate = 0.9, cb, vol) {
+  tts(text, rate = 0.9, cb, vol, customPitch = 1.0) {
     if (this.muted) {
       cb && cb();
       return;
@@ -8211,8 +8671,13 @@ const MEDIA = {
         cb && cb();
         return;
       }
+      // // SAFETY: Tarayıcı askıda kalmasını (paused) engelle
+      if (synth.paused) {
+        try { synth.resume(); } catch (e) {}
+      }
       synth.cancel();
       const u = new SpeechSynthesisUtterance(text);
+      this._currUtt = u; // // SAFETY: V8 Garbage collection erken temizlemesini önle
       if (!this.voice) this.pickVoice();
       if (this.voice) {
         u.voice = this.voice;
@@ -8220,16 +8685,20 @@ const MEDIA = {
       } else {
         u.lang = 'en-GB';
       }
-      // // SAFETY: Doğal insan sesi tınısını korumak için pitch 1.0 (robotikleşmeyi önler)
-      u.pitch = 1.0;
-      // // SAFETY: Robotik takılmaları engelleyen güvenli insan konuşma hızı (asla <0.78 olmaz)
-      const safeRate = Math.max(0.78, Math.min(1.08, rate || 0.9));
+      u.pitch = customPitch || 1.0;
+      const safeRate = Math.max(0.75, Math.min(1.25, rate || 0.9));
       u.rate = safeRate;
       if (vol != null) u.volume = vol;
-      if (cb) {
-        u.onend = cb;
-        u.onerror = cb;
-      }
+      
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        if (this._currUtt === u) this._currUtt = null;
+        if (cb) cb();
+      };
+      u.onend = finish;
+      u.onerror = finish;
       synth.speak(u);
     } catch (e) {
       cb && cb();
@@ -10391,6 +10860,206 @@ const ENGINES_C=[
 
       renderRound();
     }
+  },
+
+  /* ---------------- 26) 🧩 BAAMBOOZLE TAKIM & SINIF OYUNU ---------------- */
+  {
+    id: 'baamboozle',
+    e: '🧩',
+    t: 'Baamboozle Takım Oyunu',
+    d: 'Sınıf & Akıllı Tahta Yarışması! 2 Takım, gizemli kartlar ve sürpriz güçler!',
+    stages: [1, 2],
+    levels: [
+      { n: '16 Kart (Klasik 4x4)', c: { tiles: 16 } },
+      { n: '20 Kart (Orta 5x4)', c: { tiles: 20 } },
+      { n: '24 Kart (Geniş 6x4)', c: { tiles: 24 } }
+    ],
+    init(api) {
+      const u = api.unit, cfg = api.lv;
+      const count = Math.min(cfg.tiles, 24);
+      const pool = shuffle([...u.w]);
+
+      let team1Score = 0, team2Score = 0;
+      let activeTeam = 1; // 1: Red, 2: Blue
+      let openedCount = 0;
+      let isModalOpen = false;
+
+      const powerUpTypes = [
+        { type: 'swap', title: '⚡ PUANLARI TAKAS ET!', desc: 'İki takımın puanları yer değiştirdi!', icon: '⚡', action: () => { const tmp = team1Score; team1Score = team2Score; team2Score = tmp; MEDIA.fx('whoosh'); FX.confetti(25); } },
+        { type: 'gift', title: '🎁 SÜRPRİZ HEDİYE!', desc: 'Tebrikler! Takımına +25 bedava puan!', icon: '🎁', action: (tm) => { if(tm===1) team1Score += 25; else team2Score += 25; MEDIA.fx('win'); FX.stars(); } },
+        { type: 'trap', title: '💥 EYVAH! KÜÇÜK TUZAK!', desc: 'Dikkat! Takımın 10 puan kaybetti!', icon: '💥', action: (tm) => { if(tm===1) team1Score = Math.max(0, team1Score - 10); else team2Score = Math.max(0, team2Score - 10); MEDIA.fx('wrong'); } },
+        { type: 'share', title: '🤝 DOSTLUK PAYLAŞIMI!', desc: 'Diğer takıma +15 puan hediye ettiniz!', icon: '🤝', action: (tm) => { if(tm===1) team2Score += 15; else team1Score += 15; MEDIA.fx('magic'); FX.stars(); } }
+      ];
+
+      const deck = [];
+      for (let i = 0; i < count; i++) {
+        if (i > 0 && i % 4 === 2) {
+          const pu = pick(powerUpTypes);
+          deck.push({ isPower: true, ...pu, opened: false });
+        } else {
+          const w = pool[i % pool.length];
+          deck.push({ isPower: false, w, opened: false });
+        }
+      }
+
+      const renderBoard = () => {
+        api.root.innerHTML = `
+          <div class="baamboozle-wrap">
+            <div class="baamboozle-scoreboard">
+              <div class="bb-team t1 ${activeTeam === 1 ? 'active' : ''}">
+                <div class="bb-team-name">🔴 Kırmızı Takım</div>
+                <div class="bb-team-score" id="b-t1">${team1Score}</div>
+              </div>
+              <div class="bb-turn-pill" id="b-turn">
+                <span class="team-dot ${activeTeam === 1 ? 'red' : 'blue'}"></span>
+                ${activeTeam === 1 ? '🔴 Kırmızı Takım' : '🔵 Mavi Takım'} Sırası
+              </div>
+              <div class="bb-team t2 ${activeTeam === 2 ? 'active' : ''}">
+                <div class="bb-team-name">🔵 Mavi Takım</div>
+                <div class="bb-team-score" id="b-t2">${team2Score}</div>
+              </div>
+            </div>
+
+            <div class="baamboozle-grid">
+              ${deck.map((card, i) => `
+                <div class="bb-tile ${card.opened ? 'opened ' + (card.wonTeam === 1 ? 'by-t1' : card.wonTeam === 2 ? 'by-t2' : 'neutral') : ''}" data-idx="${i}">
+                  <span class="bb-num">${i + 1}</span>
+                  ${card.opened ? `<span class="bb-tile-icon">${card.isPower ? card.icon : card.w[1]}</span>` : ''}
+                </div>
+              `).join('')}
+            </div>
+            <div id="bb-modal-mount"></div>
+          </div>
+        `;
+        api.progress(openedCount, count);
+        bindBoard();
+      };
+
+      const openTile = (idx) => {
+        if (isModalOpen) return;
+        const card = deck[idx];
+        if (!card || card.opened) return;
+        isModalOpen = true;
+        MEDIA.fx('pop');
+
+        const mount = api.root.querySelector('#bb-modal-mount');
+        if (!mount) return;
+
+        if (card.isPower) {
+          card.opened = true;
+          card.wonTeam = activeTeam;
+          card.action(activeTeam);
+          openedCount++;
+
+          mount.innerHTML = `
+            <div class="bb-modal-overlay">
+              <div class="bb-modal-box power-box">
+                <div class="bb-power-icon anim-bounce" style="font-size:4.5em">${card.icon}</div>
+                <h2>${card.title}</h2>
+                <p style="font-size:1.25em;margin:12px 0 20px;color:#334155">${card.desc}</p>
+                <button class="btn green big" id="bb-power-ok" style="font-size:1.2em;padding:12px 30px">Harika! Devam Et ➡️</button>
+              </div>
+            </div>
+          `;
+          api.root.querySelector('#bb-power-ok').onclick = () => {
+            MEDIA.fx('click');
+            isModalOpen = false;
+            activeTeam = activeTeam === 1 ? 2 : 1;
+            checkGameEnd();
+            renderBoard();
+          };
+          return;
+        }
+
+        const w = card.w;
+        mount.innerHTML = `
+          <div class="bb-modal-overlay">
+            <div class="bb-modal-box">
+              <div class="bb-modal-badge">${activeTeam === 1 ? '🔴 Kırmızı Takım' : '🔵 Mavi Takım'} — Kart ${idx + 1}</div>
+              
+              <div class="bb-stage-visual">
+                <span class="bb-huge-emoji popflash" style="font-size:5.5em">${w[1] || '🔤'}</span>
+              </div>
+              <div class="bb-stage-prompt" id="bb-prompt">
+                <div class="pw" style="font-size:1.5em;color:#1e293b">Bu kelimenin İngilizcesi nedir? 🗣️</div>
+                <div class="muted" style="margin-top:6px;font-size:1.15em;font-weight:700">${esc(w[2])}</div>
+              </div>
+
+              <div id="bb-answer-revealed" style="display:none;margin:12px 0 16px">
+                <div class="pw" style="font-size:2.2em;color:#7c3aed;font-weight:900">${esc(w[0])}</div>
+                <div style="font-size:1.3em;color:#059669;font-weight:700">(${esc(w[2])})</div>
+                <button class="btn small blue" id="bb-spk-btn" style="margin-top:8px">🔊 Telaffuz Dinle</button>
+              </div>
+
+              <div class="row" style="margin-top:20px;gap:12px;justify-content:center" id="bb-actions">
+                <button class="btn purple big" id="bb-show-ans" style="font-size:1.15em;padding:12px 24px">👁️ Cevabı Göster</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        api.root.querySelector('#bb-show-ans').onclick = () => {
+          MEDIA.fx('magic');
+          MEDIA.speak(w[0]);
+          const ansEl = api.root.querySelector('#bb-answer-revealed');
+          const actionsEl = api.root.querySelector('#bb-actions');
+          if (ansEl) ansEl.style.display = 'block';
+          api.root.querySelector('#bb-spk-btn').onclick = () => MEDIA.speak(w[0]);
+
+          if (actionsEl) {
+            actionsEl.innerHTML = `
+              <button class="btn green big" id="bb-ans-ok" style="font-size:1.1em;padding:12px 22px">✅ Doğru Bildi (+15 Puan)</button>
+              <button class="btn white big" id="bb-ans-no" style="font-size:1.1em;padding:12px 22px">❌ Pas / Yanlış (0 Puan)</button>
+            `;
+            api.root.querySelector('#bb-ans-ok').onclick = () => {
+              card.opened = true;
+              card.wonTeam = activeTeam;
+              if (activeTeam === 1) team1Score += 15; else team2Score += 15;
+              MEDIA.fx('correct');
+              FX.stars();
+              openedCount++;
+              isModalOpen = false;
+              activeTeam = activeTeam === 1 ? 2 : 1;
+              checkGameEnd();
+              renderBoard();
+            };
+            api.root.querySelector('#bb-ans-no').onclick = () => {
+              card.opened = true;
+              card.wonTeam = 0;
+              MEDIA.fx('wrong');
+              openedCount++;
+              isModalOpen = false;
+              activeTeam = activeTeam === 1 ? 2 : 1;
+              checkGameEnd();
+              renderBoard();
+            };
+          }
+        };
+      };
+
+      const checkGameEnd = () => {
+        if (openedCount >= count) {
+          setTimeout(() => {
+            const winner = team1Score > team2Score ? '🔴 Kırmızı Takım Kazandı! 🏆' : (team2Score > team1Score ? '🔵 Mavi Takım Kazandı! 🏆' : '🤝 Berabere! Dostluk Kazandı! 🌟');
+            api.end({
+              score: Math.max(team1Score, team2Score),
+              max: count * 15,
+              note: `Baamboozle Tamamlandı! ${winner} (Kırmızı: ${team1Score} · Mavi: ${team2Score})`
+            });
+          }, 800);
+        }
+      };
+
+      const bindBoard = () => {
+        api.root.querySelectorAll('.bb-tile[data-idx]').forEach(tile => {
+          tile.onclick = () => {
+            openTile(+tile.dataset.idx);
+          };
+        });
+      };
+
+      renderBoard();
+    }
   }
 ];
 
@@ -10576,11 +11245,11 @@ const APP = {
   },
 
   bar(title) {
-    const stars = Object.values(store.get('best') || {}).reduce((a, b) => a + (b.st || 0), 0);
     return `<div class="topbar">
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Geri</button>' : ''}
       <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
-      <div class="badge gold">⭐ ${stars}</div>
+      <button class="btn small purple" id="guide-top-btn" style="font-weight:800">📖 Kullanma Kılavuzu</button>
+      <button class="btn small yellow" id="baamboozle-top-btn" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle</button>
       <button class="btn small white" id="hm">🏠</button>
       <button class="btn small white" id="mu">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
   },
@@ -10590,31 +11259,61 @@ const APP = {
     return (
       this.bar() +
       `
-   <div class="hero">
-     <div class="mascot" id="mas">🦜</div>
-     <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
-     <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1 & 2 (2. Baskı) ile uyumlu</div>
-   </div>
-   <div class="stats-bar">
-     <div class="stat">🎮 <b>${this.countGames()}</b>farklı oyun</div>
-     <div class="stat">🎵 <b>${TOTALSONGS}</b>şarkı & chant</div>
-     <div class="stat">🔤 <b>${totalWords}</b>İngilizce kelime</div>
-     <div class="stat">🕹️ <b>${ENGINES.length}</b>oyun türü · 25 set</div>
-   </div>
-   <div class="stage-cards">
-     <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
-       <h2>🟢 1. Sınıf</h2><p>Global English 1 · Starter + 9 ünite<br>Renkler, aile, çiftlik, taşıtlar, su...</p></div>
-     <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
-       <h2>🔵 2. Sınıf</h2><p>Global English 2 · 9 ünite<br>Meslekler, geçmiş zaman, ölçme, şehir...</p></div>
-     <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
-       <h2>🎶 Şarkı Köşesi</h2><p>${TOTALSONGS} şarkı & chant · Klasikler + kelime chant'leri<br>Sınıfta birlikte söyleyin!</p></div>
-   </div>
-   <div class="quick-row">
-     <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
-     <button class="btn white" id="sc">🏆 Skorlar</button>
-     <button class="btn white" id="vbtn">🎤 Polly’nin Sesi</button>
-     <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
-   </div>`
+    <div class="disney-welcome-hero">
+      <div class="disney-welcome-avatar anim-bounce">🏰🐭</div>
+      <div class="disney-welcome-content">
+        <div class="disney-welcome-badge">✨ Disney & Polly Hoş Geldiniz! ✨</div>
+        <h2>Merhaba Arkadaşlar! / Hello Pals! 👋</h2>
+        <p>Polly ve 25 Disney dostumuzla Cambridge Global English 1 & 2 macerasına hazır mısınız? 
+        Oyunlar oynayın, şarkılar söyleyin, ders slaytlarını izleyin ve sınıfta heyecanlı Baamboozle takım yarışması yapın!</p>
+        <div class="disney-welcome-btns">
+          <button class="btn green big" id="btn-welcome-voice" style="box-shadow:0 4px 14px rgba(16,185,129,0.35)">
+            🔊 Mickey & Polly'den Sesli Karşılama Dinle!
+          </button>
+          <button class="btn purple big" id="btn-welcome-guide">
+            📖 Kullanma Kılavuzu & Bölümler
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="mascot" id="mas">🦜</div>
+      <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
+      <div class="tag">🎉 Oyna · Öğren · Söyle! 🎵 — Cambridge Global English 1 & 2 (2. Baskı) · Materyal Modu</div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat">🎮 <b>${this.countGames()}</b>farklı oyun</div>
+      <div class="stat">🧩 <b>Baamboozle</b>Sınıf modu</div>
+      <div class="stat">🎵 <b>${TOTALSONGS}</b>şarkı & chant</div>
+      <div class="stat">🔤 <b>${totalWords}</b>İngilizce kelime</div>
+      <div class="stat">🏰 <b>25 Disney</b>karakteri</div>
+    </div>
+    <div class="stage-cards">
+      <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
+        <h2>🟢 1. Sınıf</h2><p>Global English 1 · Starter + 9 ünite + 3 tekrar<br>Renkler, aile, çiftlik, taşıtlar, su...</p></div>
+      <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
+        <h2>🔵 2. Sınıf</h2><p>Global English 2 · 9 ünite + 3 tekrar<br>Meslekler, geçmiş zaman, ölçme, şehir...</p></div>
+      <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
+        <h2>🎶 Şarkı Köşesi</h2><p>${TOTALSONGS} şarkı & chant · Klasikler + kelime chant'leri<br>Sınıfta birlikte söyleyin!</p></div>
+    </div>
+    <div class="baam-featured-card" data-baam="1">
+      <div class="baam-fc-main">
+        <span class="baam-fc-emoji anim-wobble">🧩</span>
+        <div class="baam-fc-text">
+          <h2>Baamboozle Sınıf Takım Oyunu! 🔴 vs 🔵</h2>
+          <p>Akıllı tahtada veya sınıfta 2 takım yarışması! 16-24 gizemli kutu, takas ve bonus puanlarla eğlenin!</p>
+        </div>
+      </div>
+      <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">🚀 Takım Oyunu Başlat</button>
+    </div>
+    <div class="quick-row">
+      <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
+      <button class="btn yellow" id="btn-home-baam" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle Başlat</button>
+      <button class="btn white" id="btn-home-guide">📖 Kullanma Kılavuzu</button>
+      <button class="btn white" id="vbtn">🎤 Polly’nin Sesi</button>
+      <button class="btn white" id="hp">❓ Nasıl Oynanır?</button>
+    </div>`
     );
   },
 
@@ -10629,14 +11328,13 @@ const APP = {
      <div><h2>${st.name} — ${st.book}</h2><div class="sub">${st.desc}</div></div></div>
    <div class="unit-grid">${us
      .map((u) => {
-       const b = this.unitStars(u.id);
        return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
        <span class="ue">${u.emoji}</span>
        <h3>${u.title}</h3>
        <div class="sub">${u.tr} · ${u.w.length} kelime</div>
        <div class="u-meta">
          <span class="badge ${u.stage === 's1' ? 'green' : 'blue'}">${u.stage.toUpperCase()}</span>
-         ${b > 0 ? `<span class="badge gold">⭐ ${b}</span>` : ''}
+         <span class="badge purple">✨ Materyal</span>
        </div>
      </div>`;
      })
@@ -10669,10 +11367,11 @@ const APP = {
      </div>
    </div>
 
-   <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg}">
+   <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};cursor:pointer" id="unit-mascot-tap" title="Karakteri sesli dinlemek için tıkla">
      <div class="mascot-avatar-wrap">
        <div class="mascot-tag ${m.anim}">${m.tag}</div>
        <span class="mascot-show">${esc(m.show)}</span>
+       <span class="badge purple" style="margin-top:4px;font-size:0.7em">🗣️ Dinle</span>
      </div>
      <div class="mascot-bubble">
        <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
@@ -10682,6 +11381,7 @@ const APP = {
 
    <div class="unit-actions-row">
      <button class="btn purple big" id="learn-btn-hero" style="font-size:1.05em;padding:12px 20px;box-shadow:0 4px 12px rgba(139,92,246,0.25)">📖 Kelime Öğrenelim & Kartlar (${u.w.length} Kelime)</button>
+     <button class="btn yellow big" id="baamboozle-btn-hero" style="background:#f59e0b;color:#fff;font-size:1.05em;padding:12px 20px;font-weight:900;box-shadow:0 4px 12px rgba(245,158,11,0.25)">🧩 Baamboozle Takım Oyunu</button>
      ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold big" id="lbtn-hero" style="font-size:1.05em;padding:12px 18px">📚 Konu Anlatımı (Ders)</button>' : ''}
      ${vids.length ? `<button class="btn blue big" id="videos-scroll-btn" style="font-size:1.05em;padding:12px 18px">🎬 Eğitici Videolar (${vids.length})</button>` : ''}
    </div>
@@ -10703,8 +11403,8 @@ const APP = {
        <div class="sub">${e.d}</div>
        <div style="margin-top:8px">${
          b
-           ? `<span class="badge gold">En iyi: ${b.s} ${'⭐'.repeat(b.st)}</span>`
-           : '<span class="badge blue">Yeni!</span>'
+           ? '<span class="badge green">✨ Tamamlandı</span>'
+           : '<span class="badge blue">🎮 Oyna</span>'
        }</div>
      </div>`;
      })
@@ -10759,24 +11459,40 @@ const APP = {
         </div>
       </div>
 
-      <div class="learn-theater-card">
-        <span class="learn-cat-badge">📂 ${esc(catName)}</span>
-        <span class="learn-count-badge">Kart ${idx + 1} / ${words.length}</span>
-        <div class="learn-emoji-huge">${cur[1] || '🔤'}</div>
+      <div class="learn-theater-card baamboozle-theater-card">
+        <div class="learn-theater-header">
+          <span class="learn-cat-badge">📂 ${esc(catName)}</span>
+          <span class="disney-guide-tag" style="background:${m.bg};color:${m.color}">🏰 ${esc(m.name)} ile Öğren</span>
+          <span class="learn-count-badge">Kart ${idx + 1} / ${words.length}</span>
+        </div>
+
+        <div class="baamboozle-stage">
+          <div class="learn-emoji-huge popflash">${cur[1] || '🔤'}</div>
+          <div class="stage-visual-tools">
+            <a class="btn-visual-chip google-btn" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(cur[0] + ' cartoon for kids')}" title="Google Görsellerde ${esc(cur[0])} ara">
+              🖼️ Google Görseller
+            </a>
+            <a class="btn-visual-chip giphy-btn" target="_blank" rel="noopener" href="https://giphy.com/search/${encodeURIComponent(cur[0] + ' cartoon sticker')}" title="Giphy Animasyonlarında ${esc(cur[0])} ara">
+              🎬 Giphy Animasyon
+            </a>
+          </div>
+        </div>
+
         <div class="learn-word-en">${esc(cur[0])}</div>
         <div class="learn-word-tr">${esc(cur[2])}</div>
 
-        <div class="learn-mascot-cheer" style="border-left-color:${m.color}">
+        <div class="learn-mascot-cheer" style="border-left-color:${m.color};cursor:pointer" id="learn-mascot-box" title="Disney arkadaşını dinle">
           <span class="mascot-tag ${m.anim}">${m.tag}</span>
           <div class="learn-mascot-bubble">
             <b>${esc(m.name)}</b>: "Say it with me: <b>${esc(cur[0])}</b>! Great pronunciation!"
+            <span class="badge purple" style="margin-left:8px;font-size:0.75em">🗣️ Dinle</span>
           </div>
         </div>
 
         <div class="learn-voice-btns">
           <button class="btn green big" id="learn-speak-btn">🎧 Dinle</button>
           <button class="btn blue big" id="learn-slow-btn">🐢 Yavaş Dinle</button>
-          <button class="btn white big" id="learn-repeat-btn">🗣️ Polly ile Tekrar</button>
+          <button class="btn purple big" id="learn-disney-btn">🏰 ${esc(m.name)} ile Tekrar</button>
         </div>
       </div>
 
@@ -10993,6 +11709,54 @@ const APP = {
       FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
     });
     on('#vbtn', 'click', () => this.showVoices());
+    on('#guide-top-btn', 'click', () => this.showGuideModal());
+    on('#btn-welcome-guide', 'click', () => this.showGuideModal());
+    on('#btn-home-guide', 'click', () => this.showGuideModal());
+
+    const startBaam = (uid) => {
+      MEDIA.fx('pop');
+      this.go('game', { engineId: 'baamboozle', unitId: uid || this.unitId || 's1u1', lvIdx: 0 });
+    };
+    on('#baamboozle-top-btn', 'click', () => startBaam());
+    on('#btn-home-baam', 'click', () => startBaam());
+    on('#baamboozle-btn-hero', 'click', () => startBaam());
+    $$('[data-baam]').forEach((b) => b.addEventListener('click', () => startBaam(b.dataset.baam)));
+
+    on('#btn-welcome-voice', 'click', () => {
+      MEDIA.welcomeGreeting();
+      FX.confetti(25);
+      FX.stars();
+    });
+
+    on('#unit-mascot-tap', 'click', () => {
+      const u = unitById(this.unitId);
+      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
+      if (m) {
+        MEDIA.speakDisney(m.voiceKey || 'mickey', m.quoteEn);
+        FX.stars();
+      }
+    });
+
+    on('#learn-mascot-box', 'click', () => {
+      const u = unitById(this.unitId);
+      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
+      if (m) {
+        MEDIA.speakDisney(m.voiceKey || 'mickey', m.quoteEn);
+        FX.stars();
+      }
+    });
+
+    on('#learn-disney-btn', 'click', () => {
+      const u = unitById(this.unitId);
+      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
+      const cur = (u && u.w && u.w[this.learnIdx || 0]) ? u.w[this.learnIdx || 0] : null;
+      if (cur) {
+        MEDIA.fx('magic');
+        FX.confetti(20);
+        const charKey = (m && m.voiceKey) ? m.voiceKey : 'mickey';
+        MEDIA.speakDisney(charKey, 'Say it with me: ' + cur[0] + '! Wonderful!');
+      }
+    });
 
     const startLearn = () => {
       MEDIA.fx('magic');
@@ -11349,16 +12113,21 @@ const APP = {
           b[key].st = st;
           store.set('best', b);
         }
-        FX.confetti(st * 50);
-        MEDIA.fx(st >= 2 ? 'win' : 'levelup');
-        area.innerHTML = `<div class="center">
-         <div class="result-stars">${'⭐'.repeat(st) + '<span>☆</span>'.repeat(3 - st)}</div>
-         <div class="pw" style="font-size:1.5em">Puan: ${res.score}</div>
-         <div class="muted">${res.note || ''}</div>
-         <div class="row" style="display:flex;gap:10px;margin-top:16px"><button class="btn green" id="rag">🔁 Tekrar Oyna</button>
-           <button class="btn blue" id="run">➡️ Diğer Oyunlar</button></div></div>`;
+        FX.confetti(60);
+        MEDIA.fx('win');
+        area.innerHTML = `<div class="center" style="padding:24px 16px">
+         <div style="font-size:52px;margin-bottom:8px">🎉 🏆 🎉</div>
+         <div class="pw" style="font-size:1.6em;color:var(--c-primary);font-weight:900">Harika İş Çıkardın!</div>
+         <div class="muted" style="margin-top:6px;font-size:1em">${res.note || 'Tebrikler! Bu aktiviteyi başarıyla tamamladın.'}</div>
+         <div class="row" style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+           <button class="btn green" id="rag">🔁 Tekrar Oyna</button>
+           <button class="btn gold" id="rbaam">🧩 Baamboozle Takım Oyunu</button>
+           <button class="btn blue" id="run">➡️ Ünite Menüsü</button>
+         </div></div>`;
         const rag = area.querySelector('#rag');
         if (rag) rag.onclick = () => api.restart();
+        const rbaam = area.querySelector('#rbaam');
+        if (rbaam) rbaam.onclick = () => self.go('game', { engineId: 'baamboozle', unitId: u.id, lvIdx: 0 });
         const run = area.querySelector('#run');
         if (run) run.onclick = () => self.go('unit', { unitId: u.id });
       }
@@ -11648,6 +12417,171 @@ const APP = {
     d.onclick = (e) => {
       if (e.target === d) d.remove();
     };
+  },
+
+  /* ---------- 📖 Öğretmen & Öğrenci Kullanma Kılavuzu Modalı ---------- */
+  showGuideModal() {
+    const existing = document.getElementById('guide-modal');
+    if (existing) existing.remove();
+
+    const d = document.createElement('div');
+    d.id = 'guide-modal';
+    d.className = 'guide-modal-overlay';
+
+    const s1Units = typeof unitsOfStage === 'function' ? unitsOfStage('s1') : [];
+    const s2Units = typeof unitsOfStage === 'function' ? unitsOfStage('s2') : [];
+
+    d.innerHTML = `
+      <div class="guide-modal-box">
+        <div class="guide-modal-head">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:38px">📖</span>
+            <div>
+              <h2 style="margin:0;font-size:1.4em;color:#0f172a">Öğretmen & Öğrenci Kullanma Kılavuzu</h2>
+              <div class="muted" style="font-size:0.86em">1. & 2. Sınıf Müfredatı · Akıllı Tahta & Bireysel Öğrenim Rehberi</div>
+            </div>
+          </div>
+          <button class="btn white small" id="guide-close" style="font-size:18px;padding:6px 14px">❌ Kapat</button>
+        </div>
+
+        <div class="guide-intro-banner">
+          🌟 <b>Hoş Geldiniz!</b> Bu platform ilkokul 1. ve 2. sınıf öğrencileri ile İngilizce öğretmenlerimiz için özel olarak tasarlanmıştır. Puan stresi veya başarısızlık hissi olmaksızın, tamamen oyunlaştırılmış, Disney karakterleri, sesler, animasyonlu gifler ve Baamboozle takım oyunları ile desteklenmiştir. Aşağıdaki hızlı butonlardan dilediğiniz bölüme tek tıkla gidebilirsiniz!
+        </div>
+
+        <div class="guide-sections-grid">
+          <div class="guide-sec-card highlight">
+            <h3>🧩 Baamboozle Sınıf Takım Oyunu</h3>
+            <p>Sınıfta veya akıllı tahtada Kırmızı ve Mavi Takım olarak 16-24 gizemli kutuyu açın, sürpriz puan ve takas kartlarıyla eğlenerek yarışın!</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn primary" data-gjump="baam:s1u1">🚀 1. Sınıf Baamboozle Oyna</button>
+              <button class="guide-link-btn primary" data-gjump="baam:s2u1">🚀 2. Sınıf Baamboozle Oyna</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🏰 Disney Karakterleri & Sesleri</h3>
+            <p>Mickey Mouse, Donald Duck, Woody, Buzz Lightyear, Elsa ve 19 Disney karakteri her ünitede çocuklara eşlik eder ve onların sesleriyle telaffuz yapar!</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" id="guide-play-welcome">✨ Disney Hoş Geldin Sesini Dinle</button>
+              <button class="guide-link-btn" id="guide-open-voices">🎙️ Polly Ses Menüsü</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🖼️ Büyük Görsel Kartlar (Baamboozle Tarzı)</h3>
+            <p>Her ünitede devasa kelime sahneleri, tek tıkla Google Görseller ve Giphy animasyonlu sticker arama araçları ile zengin görsel hafıza.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="learn:s1u1">📚 1. Sınıf Kelime Tiyatrosu</button>
+              <button class="guide-link-btn" data-gjump="learn:s2u1">📚 2. Sınıf Kelime Tiyatrosu</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>✍️ Tracing (Harf & Kelime Çizme)</h3>
+            <p>Çocukların el-göz koordinasyonunu ve motor becerilerini geliştiren, harf hatlarını çizme ve sesli okuma aktivitesi.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="game:tracing:s1u1">✍️ 1. Sınıf Tracing</button>
+              <button class="guide-link-btn" data-gjump="game:tracing:s2u1">✍️ 2. Sınıf Tracing</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card">
+            <h3>🎵 Sing & Learn (200+ Şarkı & Video)</h3>
+            <p>Cambridge Global English müfredatına tam uyumlu ritmik şarkılar, karaokeler ve üniteye özel seçilmiş güvenli YouTube eğitim videoları.</p>
+            <div class="guide-links-wrap">
+              <button class="guide-link-btn" data-gjump="songs">🎶 Tüm Şarkılara Git</button>
+            </div>
+          </div>
+
+          <div class="guide-sec-card" style="grid-column: 1 / -1">
+            <h3>🏫 1. Sınıf Üniteleri (9 Temel Ünite)</h3>
+            <p>Tıklayarak doğrudan ünitenin interaktif sayfasına gidebilirsiniz:</p>
+            <div class="guide-links-wrap">
+              ${s1Units
+                .map((u) => {
+                  const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
+                  const mName = m ? m.char.split(' ')[0] : '';
+                  return `<button class="guide-link-btn" data-gjump="unit:${u.id}">${u.emoji} ${u.title} ${mName ? `(${mName})` : ''}</button>`;
+                })
+                .join('')}
+            </div>
+          </div>
+
+          <div class="guide-sec-card" style="grid-column: 1 / -1">
+            <h3>🏫 2. Sınıf Üniteleri (16 Kapsamlı Ünite)</h3>
+            <p>Cambridge Global English 2 ve tematik genişletilmiş üniteler:</p>
+            <div class="guide-links-wrap">
+              ${s2Units
+                .map((u) => {
+                  const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
+                  const mName = m ? m.char.split(' ')[0] : '';
+                  return `<button class="guide-link-btn" data-gjump="unit:${u.id}">${u.emoji} ${u.title} ${mName ? `(${mName})` : ''}</button>`;
+                })
+                .join('')}
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;text-align:center">
+          <button class="btn green big" id="guide-bottom-close" style="min-width:200px">✅ Anladım, Öğrenmeye Başla!</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(d);
+
+    const close = () => {
+      MEDIA.fx('click');
+      d.remove();
+    };
+
+    const c1 = d.querySelector('#guide-close');
+    if (c1) c1.onclick = close;
+    const c2 = d.querySelector('#guide-bottom-close');
+    if (c2) c2.onclick = close;
+    d.onclick = (e) => {
+      if (e.target === d) close();
+    };
+
+    const pWel = d.querySelector('#guide-play-welcome');
+    if (pWel) {
+      pWel.onclick = () => {
+        MEDIA.welcomeGreeting();
+        FX.confetti(25);
+        FX.stars();
+      };
+    }
+
+    const pVoi = d.querySelector('#guide-open-voices');
+    if (pVoi) {
+      pVoi.onclick = () => {
+        d.remove();
+        this.showVoices();
+      };
+    }
+
+    d.querySelectorAll('[data-gjump]').forEach((b) => {
+      b.onclick = () => {
+        const val = b.dataset.gjump;
+        close();
+        if (val.startsWith('baam:')) {
+          const uid = val.split(':')[1];
+          this.go('game', { engineId: 'baamboozle', unitId: uid, lvIdx: 0 });
+        } else if (val.startsWith('learn:')) {
+          const uid = val.split(':')[1];
+          this.learnIdx = 0;
+          this.go('learn', { unitId: uid });
+        } else if (val.startsWith('game:tracing:')) {
+          const uid = val.split(':')[2];
+          this.go('game', { engineId: 'tracing', unitId: uid, lvIdx: 0 });
+        } else if (val.startsWith('unit:')) {
+          const uid = val.split(':')[1];
+          this.go('unit', { unitId: uid });
+        } else if (val === 'songs') {
+          this.go('songs');
+        }
+      };
+    });
   },
 
   /* ---------- 📚 KONU ANLATIMI (v4 & v5) ---------- */

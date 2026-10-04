@@ -372,10 +372,45 @@ const MEDIA = {
     } catch (e) {}
   },
 
-  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ
-     Neşeli, enerjik ve çocuk dostu bir tempoda seslendirir.
-     Robotik sesleri kesinlikle engeller. */
-  speak(text, rate = 0.9, cb, vol) {
+  /* 🎙️ Disney Karakter Ses Profilleri (Perdeler ve Tempomuz Çocuklara Özel) */
+  disneyProfiles: {
+    mickey:   { pitch: 1.48, rate: 1.05, label: 'Mickey Mouse' },
+    donald:   { pitch: 1.35, rate: 1.18, label: 'Donald Duck' },
+    goofy:    { pitch: 0.74, rate: 0.85, label: 'Goofy' },
+    elsa:     { pitch: 1.25, rate: 0.94, label: 'Elsa' },
+    olaf:     { pitch: 1.42, rate: 1.10, label: 'Olaf' },
+    simba:    { pitch: 1.32, rate: 1.05, label: 'Simba' },
+    buzz:     { pitch: 0.85, rate: 0.98, label: 'Buzz Lightyear' },
+    woody:    { pitch: 1.08, rate: 1.02, label: 'Woody' },
+    stitch:   { pitch: 1.52, rate: 1.14, label: 'Stitch' },
+    pooh:     { pitch: 0.82, rate: 0.85, label: 'Winnie the Pooh' },
+    mcqueen:  { pitch: 1.12, rate: 1.18, label: 'Lightning McQueen' },
+    moana:    { pitch: 1.18, rate: 1.00, label: 'Moana' },
+    ariel:    { pitch: 1.28, rate: 0.96, label: 'Ariel' },
+    aladdin:  { pitch: 1.15, rate: 1.08, label: 'Aladdin & Genie' },
+    peterpan: { pitch: 1.30, rate: 1.08, label: 'Peter Pan' },
+    dory:     { pitch: 1.38, rate: 1.12, label: 'Dory & Nemo' },
+    judy:     { pitch: 1.24, rate: 1.08, label: 'Judy Hopps' },
+    baloo:    { pitch: 0.76, rate: 0.86, label: 'Baloo' },
+    incredibles: { pitch: 1.42, rate: 1.22, label: 'Dash' }
+  },
+
+  speakDisney(charKey, text, cb, vol) {
+    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.mickey;
+    this.tts(text, prof.rate, cb, vol, prof.pitch);
+  },
+
+  welcomeGreeting(cb) {
+    this.fx('win');
+    const msg = "Hiya pals! Welcome to Polly's Fun English! I am Mickey Mouse, and together with all our Disney friends, let us explore exciting games, songs, and Baamboozle together!";
+    this.speakDisney('mickey', msg, cb);
+  },
+
+  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ & DİSNEY DESTEĞİ */
+  speak(text, rate = 0.9, cb, vol, charKey = null) {
+    if (charKey && this.disneyProfiles[charKey]) {
+      return this.speakDisney(charKey, text, cb, vol);
+    }
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
         const t = String(text || '');
@@ -424,7 +459,7 @@ const MEDIA = {
   },
 
   /* 🎙️ Tarayıcı TTS — Neşeli, sıcak ve doğal insan sesleri */
-  tts(text, rate = 0.9, cb, vol) {
+  tts(text, rate = 0.9, cb, vol, customPitch = 1.0) {
     if (this.muted) {
       cb && cb();
       return;
@@ -435,8 +470,13 @@ const MEDIA = {
         cb && cb();
         return;
       }
+      // // SAFETY: Tarayıcı askıda kalmasını (paused) engelle
+      if (synth.paused) {
+        try { synth.resume(); } catch (e) {}
+      }
       synth.cancel();
       const u = new SpeechSynthesisUtterance(text);
+      this._currUtt = u; // // SAFETY: V8 Garbage collection erken temizlemesini önle
       if (!this.voice) this.pickVoice();
       if (this.voice) {
         u.voice = this.voice;
@@ -444,16 +484,20 @@ const MEDIA = {
       } else {
         u.lang = 'en-GB';
       }
-      // // SAFETY: Doğal insan sesi tınısını korumak için pitch 1.0 (robotikleşmeyi önler)
-      u.pitch = 1.0;
-      // // SAFETY: Robotik takılmaları engelleyen güvenli insan konuşma hızı (asla <0.78 olmaz)
-      const safeRate = Math.max(0.78, Math.min(1.08, rate || 0.9));
+      u.pitch = customPitch || 1.0;
+      const safeRate = Math.max(0.75, Math.min(1.25, rate || 0.9));
       u.rate = safeRate;
       if (vol != null) u.volume = vol;
-      if (cb) {
-        u.onend = cb;
-        u.onerror = cb;
-      }
+      
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        if (this._currUtt === u) this._currUtt = null;
+        if (cb) cb();
+      };
+      u.onend = finish;
+      u.onerror = finish;
       synth.speak(u);
     } catch (e) {
       cb && cb();
