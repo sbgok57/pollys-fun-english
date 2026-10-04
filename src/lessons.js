@@ -1587,3 +1587,164 @@ const MASCOTS = {
     "voiceKey": "mickey"
   }
 };
+
+/* ═════════════════════════════════════════════════════════════════
+   📘 CAMBRIDGE GLOBAL ENGLISH 1 & 2 (SECOND EDITION) MÜFREDAT HAVUZU
+   Learner's Book + Workbook + Teacher's Resource (Tüm Kazanımlar)
+   ═════════════════════════════════════════════════════════════════ */
+const CAMBRIDGE_CURRICULUM = {
+  s1u0: {
+    lb: ["Greetings & Introductions: Hello, Goodbye, What's your name?", "Numbers 1 to 10 counting games", "Primary colours: Red, Blue, Yellow, Green"],
+    wb: ["Letter tracing and motor coordination", "Colouring patterns and number-to-object matching", "Self-portrait and name writing"],
+    tr: ["Phonics: Initial sounds and rhythm chanting", "Classroom TPR: Stand up, Sit down, Clap", "Formative check: Responding to greetings"],
+    val: ["Being friendly, welcoming new classmates, saying please and thank you"]
+  },
+  s1u1: {
+    lb: ["Classroom objects: table, chair, computer, whiteboard, book, pencil, ruler, scissors", "Classroom action commands: Point, Look, Listen, Trace", "Singular and plural: a book / books"],
+    wb: ["School bag inventory and counting items", "Tracing school words and drawing school supplies", "Matching pictures with initial letters"],
+    tr: ["Phonics: Initial sounds /b/, /p/, /t/", "Sentence frame: What is this? It's a pencil.", "Formative check: Naming classroom objects accurately"],
+    val: ["Taking good care of school materials and keeping the classroom tidy"]
+  },
+  s1u2: {
+    lb: ["Family vocabulary: mother, father, brother, sister, baby, grandma, grandpa", "Daily morning and evening routines", "Feelings: happy, helpful, kind"],
+    wb: ["Family tree diagram and labelling", "Ordering daily routines (wake up, brush teeth, sleep)", "Drawing a family helper card"],
+    tr: ["Phonics: Initial sounds /m/, /d/, /f/", "Key structure: Who is this? This is my mother.", "Total Physical Response: Routine mime games"],
+    val: ["Loving family, helping parents with small chores, showing appreciation"]
+  },
+  s1u3: {
+    lb: ["Toys & games: ball, teddy bear, kite, doll, robot, bike, swing, slide", "Action abilities: catch, throw, kick, jump, run, share", "Playground game vocabulary: hide and seek, tag"],
+    wb: ["Matching toys with actions: kick a ball, fly a kite", "Ability sentences: I can jump / I can catch", "Tracing toy words"],
+    tr: ["Phonics: Initial /k/ and /s/ sounds", "Key grammar: Modal verb 'can' for ability", "Speaking game: Simon Says with actions"],
+    val: ["Sharing toys, waiting for your turn, playing fairly with friends"]
+  },
+  s1u4: {
+    lb: ["2D Shapes: circle, square, triangle, rectangle, star", "Art & craft materials: paper, card, paint, brush, glue, scissors", "Creative actions: cut, fold, paint, stick, make"],
+    wb: ["Counting shapes in compound pictures", "Pattern drawing and repeating shape sequences", "Creating a handmade greeting card"],
+    tr: ["Phonics: Digraphs /sh/, /ch/ in shape, chair", "Cross-curricular: Mathematics geometry and spatial awareness", "Classroom project: Making a paper puppet"],
+    val: ["Expressing creativity, patience during crafting, cleaning up art tools"]
+  },
+  s1u5: {
+    lb: ["Farm animals: cow, calf, horse, foal, sheep, lamb, duck, duckling, hen, chick, pig", "Farm products: milk, eggs, wool", "Animal movements and sounds: moo, baa, oink, cluck"],
+    wb: ["Mother and baby animal pairing", "Animal sound crossword and tracing", "Farm landscape coloring"],
+    tr: ["Phonics: Short vowels /a/, /e/, /i/, /o/, /u/", "Key grammar: Is it a cow? Yes, it is. / No, it isn't.", "Science connection: Living things and animal habitats"],
+    val: ["Kindness to animals, appreciating where our food comes from"]
+  },
+  s1u6: {
+    lb: ["Parts of the body: head, shoulders, knees, toes, eyes, ears, mouth, nose, arms, legs", "The five senses: see, hear, smell, taste, touch", "Movement commands: touch your nose, clap your hands"],
+    wb: ["Labelling boy and girl body figures", "Matching sense organs with sensory inputs", "Action rhyme tracing"],
+    tr: ["Phonics: Initial sounds /h/, /n/, /m/", "Song: Head, Shoulders, Knees and Toes", "Health focus: Personal hygiene and keeping clean"],
+    val: ["Body awareness, staying active, washing hands regularly"]
+  },
+  s1u7: {
+    lb: ["Transport modes: bus, train, plane, boat, bicycle, car, helicopter, lorry, van", "Travel environments: on land, on water, in the air", "Journey words: ticket, driver, road, track, station"],
+    wb: ["Sorting vehicles by road, rail, sky, and sea", "Transportation puzzle and vehicle spelling", "Tracing ticket info"],
+    tr: ["Phonics: Initial blends /tr/, /pl/, /st/", "Road Safety: Stop, Look, Listen before crossing", "Speaking: How do you come to school? By bus / on foot."],
+    val: ["Road safety rules, patience when travelling, public transit etiquette"]
+  },
+  s1u8: {
+    lb: ["Wild animals & adaptations: lion, elephant, giraffe, monkey, zebra, kangaroo, penguin", "Animal body parts: trunk, neck, tail, fur, feathers, claws, pouch", "Habitats: jungle, savannah, desert, polar"],
+    wb: ["Animal riddles and description matching", "Habitat mapping and sticker placement", "Writing animal fact files"],
+    tr: ["Phonics: Digraphs /th/, /wh/ in thick, white", "Science link: Animal diets and physical adaptations", "Speaking: It has a long neck. It lives in Africa."],
+    val: ["Respecting wild nature, protecting endangered animal species"]
+  },
+  s1u9: {
+    lb: ["Water in nature: rain, puddle, river, lake, sea, ocean, clouds, ice, steam", "Uses of water: drinking, swimming, washing, watering crops", "Science concepts: float and sink"],
+    wb: ["Recording Float or Sink experiment results", "Water cycle picture sequencing", "Water conservation checklist"],
+    tr: ["Phonics: Liquid consonants /l/, /r/, /w/", "Hands-on Science: Float and Sink water tub activity", "Language focus: Does it sink? Yes, it sinks."],
+    val: ["Conserving water, turning off the tap while brushing, keeping rivers clean"]
+  },
+  s1rev1: {
+    lb: ["Term 1 Revision: School, Family, Numbers, Greetings", "Oral storytelling and vocabulary quiz", "Self-assessment checklist"],
+    wb: ["Review crossword and word searches", "Revision handwriting practice"],
+    tr: ["Formative assessment review games", "Differentiated reinforcement"],
+    val: ["Reflecting on learning progress and celebrating achievements"]
+  },
+  s1rev2: {
+    lb: ["Term 2 Revision: Toys, Shapes, Farm Animals, Body Parts", "Action games and team quizzes", "Integrated review songs"],
+    wb: ["Shape and animal cross-matching", "Sentence building revision"],
+    tr: ["Peer review and speaking pair-work", "Diagnostic assessment check"],
+    val: ["Collaboration, supporting peers who need help"]
+  },
+  s1rev3: {
+    lb: ["Grade 1 Master Review: Transport, Wild Animals, Water, Nature", "End of Year celebration and showcase", "Global English Champion awards"],
+    wb: ["Comprehensive Grade 1 portfolio pages", "My favorite English activities review"],
+    tr: ["Summative progress assessment", "Transition guidance for Grade 2"],
+    val: ["Pride in learning English, confidence in public speaking"]
+  },
+  s2u1: {
+    lb: ["Parts of a book: cover, title, author, illustrator, contents, blurb, page", "Story genres: fairy tales, animal stories, poetry, non-fiction", "Story elements: characters, setting, plot"],
+    wb: ["Writing a book review card", "Alphabetical order in a mini-dictionary", "Sequencing a fairy tale story"],
+    tr: ["Phonics: Long vowel sounds /ee/ and /ea/", "Literacy skills: Predicting story outcomes from pictures", "Language focus: My favourite book is... because..."],
+    val: ["Loving books, taking care of library resources, reading every day"]
+  },
+  s2u2: {
+    lb: ["Community helpers: doctor, nurse, firefighter, police officer, postal worker, vet, baker, dentist", "Places in our neighbourhood: clinic, hospital, fire station, post office, bakery", "Tools of the trade"],
+    wb: ["Matching workers with their uniforms and vehicles", "Asking polite questions: What do you do?", "Neighbourhood map tracing"],
+    tr: ["Phonics: Silent letters in knife, write", "Social Studies: Community interdependence and mutual aid", "Language: She is a doctor. She works in a hospital."],
+    val: ["Gratitude for community workers, civic responsibility, helping neighbours"]
+  },
+  s2u3: {
+    lb: ["Sports and fitness: football, basketball, gymnastics, athletics, tennis, swimming, cycling", "Movement verbs: balance, stretch, hop, kick, score, bounce", "Playground sports rules"],
+    wb: ["Sports gear matching and sentence building", "Personal fitness and health activity log", "Prepositions of movement: over, under, through"],
+    tr: ["Phonics: Consonant clusters /sp/, /st/, /sk/", "Physical Education: Warm-up coordination and body rhythm", "Language: Present continuous tense (He is kicking the ball)"],
+    val: ["Fair play, teamwork, cheering for all players, healthy daily exercise"]
+  },
+  s2u4: {
+    lb: ["The Day & Night Sky: sun, moon, stars, planets, constellations, Earth, daytime, nighttime", "Weather phenomena: rainbow, storm, thunder, lightning, wind, clouds", "Shadows and light"],
+    wb: ["Shadow tracking diary (morning, noon, evening)", "Planet order drawing and solar system facts", "Day vs night activity sorting"],
+    tr: ["Phonics: Diphthongs /oi/, /oy/, /ou/, /ow/", "Astronomy & Earth Science: Day/night rotation concept", "Language: In the daytime we see... At night the moon shines."],
+    val: ["Awe for the universe, curiosity about space and science"]
+  },
+  s2u5: {
+    lb: ["Measurement vocabulary: tall, short, long, heavy, light, wide, narrow, thick, thin", "Measurement tools: ruler, tape measure, balance scale, clock", "Units: centimetres, metres, kilograms, grams"],
+    wb: ["Comparing lengths of classroom objects", "Estimating and checking weights", "Graphing heights and comparing scores"],
+    tr: ["Phonics: Comparative suffixes -er and -est", "Mathematics: Standard and non-standard measurement", "Language: The pencil is longer than the crayon."],
+    val: ["Accuracy, precision, patience in measuring and recording data"]
+  },
+  s2u6: {
+    lb: ["Bugs & mini-beasts: caterpillar, butterfly, bee, ladybird, ant, beetle, dragonfly, spider, snail", "Insect body anatomy: head, thorax, abdomen, wings, antennae, 6 legs", "Life cycle of a butterfly"],
+    wb: ["Sequencing the 4 stages of a butterfly life cycle", "Counting bug legs and drawing insect habitats", "Bug fact file writing"],
+    tr: ["Phonics: Double consonants in butter, grass, buzz", "Biology: Pollinators, insect habitats and biodiversity", "Language: Bees live in hives. They make honey."],
+    val: ["Respect for small creatures, protecting bees and pollinators"]
+  },
+  s2u7: {
+    lb: ["Past vs Present: castle, knight, carriage, candle, quill vs skyscraper, car, tablet, lightbulb", "Inventions that changed the world", "Museums, ancient artifacts, and historical timelines"],
+    wb: ["Then and Now timeline matching", "Writing a museum label for an ancient object", "Sorting old vs modern items"],
+    tr: ["Phonics: Regular past tense -ed sounds (/t/, /d/, /id/)", "History: Changes within living memory and beyond", "Language: Long ago, people travelled by carriage. Today, we drive cars."],
+    val: ["Valuing history, learning from ancestors, curiosity about human innovation"]
+  },
+  s2u8: {
+    lb: ["City infrastructure: skyscraper, traffic lights, pedestrian crossing, roundabout, pavement, subway", "Giving directions: turn left, turn right, go straight ahead, stop", "City buildings: museum, library, bank, supermarket"],
+    wb: ["Following direction maps through the town maze", "Writing a mini-guide to your town", "Traffic sign identification"],
+    tr: ["Phonics: Prepositions of place (next to, opposite, between, behind)", "Geography: Map reading and spatial navigation", "Language: How do I get to the library? Turn right and go straight."],
+    val: ["Pedestrian safety, polite street manners, keeping cities clean"]
+  },
+  s2u9: {
+    lb: ["Earth's natural wonders: mountain, forest, desert, island, volcano, waterfall, ocean, river", "Caring for our planet: reduce, reuse, recycle, plant trees, save energy", "Nature conservation"],
+    wb: ["Recycling sorting challenge (paper, plastic, glass, organic)", "Earth Day poster design", "Writing an eco-pledge"],
+    tr: ["Phonics: Prefix re- (recycle, reuse, refill, renew)", "Environmental Science: Global ecosystems and conservation", "Language: We must protect our planet by planting trees."],
+    val: ["Global environmental citizenship, sustainability, protecting forests and seas"]
+  },
+  s2rev1: {
+    lb: ["Mid-Stage 2 Review: Books, Neighbours, Sports, Sky", "Integrated reading and writing challenges", "Mid-term vocabulary master"],
+    wb: ["Review puzzles, grammar check, and writing exercises"],
+    tr: ["Diagnostic mid-year progress evaluation", "Remediation and extension"],
+    val: ["Goal setting, perseverance, self-assessment"]
+  },
+  s2rev2: {
+    lb: ["Nature & City Review: Measuring, Bugs, History, City Directions, Nature", "Cross-curricular inquiry projects", "Interactive quiz show"],
+    wb: ["Project reflection pages and vocabulary mastery checklists"],
+    tr: ["Holistic language assessment and communicative fluency check"],
+    val: ["Environmental ethics, civic responsibility, cultural awareness"]
+  },
+  s2rev3: {
+    lb: ["Grade 2 Grand Champion: All 18 Stage 2 Topics Mastery", "Cambridge Young Learners English foundation", "Graduation celebration and presentation"],
+    wb: ["Grade 2 Certificate of Completion portfolio", "Reflection on personal learning journey"],
+    tr: ["Summative Cambridge Stage 2 attainment certification", "Preparation for Stage 3"],
+    val: ["Lifelong learning joy, confidence, empathy, international friendship"]
+  }
+};
+
+if (typeof window !== 'undefined') {
+  window.CAMBRIDGE_CURRICULUM = CAMBRIDGE_CURRICULUM;
+}
