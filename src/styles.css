@@ -1793,5 +1793,1011 @@ body.s2 {
   line-height: 1.6;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   📘 CAMBRIDGE 1-4 SMARTBOARD & BAAMBOOZLE PLATFORM STYLES
+   ══════════════════════════════════════════════════════════════ */
+.cambridge-platform {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: inherit;
+  color: #1e293b;
+}
+
+/* 1. TOP HEADER & STAGES */
+.cambridge-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  border-radius: 24px;
+  padding: 20px 24px;
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(30, 58, 138, 0.25);
+  margin-bottom: 24px;
+}
+.cam-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.cam-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cam-logo {
+  font-size: 2.8rem;
+  background: rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+}
+.cam-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+.cam-sub {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+.cam-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cam-btn-mode, .cam-btn-music, .cam-btn-home {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+.cam-btn-mode.active-gif {
+  background: #ec4899;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.4);
+}
+.cam-btn-mode.active-photo {
+  background: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+.cam-btn-music {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+.cam-btn-music.playing {
+  background: #f59e0b;
+  color: #ffffff;
+  animation: pulse 1.8s infinite;
+}
+.cam-btn-home {
+  background: #ffffff;
+  color: #1e3a8a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.cam-btn-home:hover {
+  transform: translateY(-2px);
+  background: #f8fafc;
+}
+
+/* STAGE TABS */
+.cam-stage-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.cam-stage-tab {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 12px 10px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+.cam-stage-tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+.cam-stage-tab.active {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.cam-stage-tab.active .c-badge {
+  background: #1e3a8a;
+  color: #ffffff;
+}
+.cam-stage-tab .c-badge {
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* UNIT SELECTOR BAR */
+.cam-unit-bar {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.cam-unit-dropdown-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cam-unit-dropdown-wrap label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.cam-select {
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: #ffffff;
+  color: #1e293b;
+  outline: none;
+  cursor: pointer;
+}
+.cam-unit-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cam-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* SUB NAVIGATION TABS */
+.cam-subnav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.cam-subnav::-webkit-scrollbar { display: none; }
+.cam-nav-tab {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+.cam-nav-tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.cam-nav-tab.active {
+  background: #f59e0b;
+  color: #ffffff;
+  border-color: #f59e0b;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+/* 2. SECTION BANNER */
+.cam-section-banner {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.cam-section-banner h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.35rem;
+  color: #1e3a8a;
+  font-weight: 900;
+}
+.cam-section-banner p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+.cam-mode-indicator {
+  background: #f1f5f9;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+/* 3. VOCABULARY DUAL MEDIA GRID */
+.cam-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.cam-vocab-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.cam-vocab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+.cam-card-media-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #0f172a;
+  overflow: hidden;
+}
+.cam-vocab-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.cam-vocab-card:hover .cam-vocab-img {
+  transform: scale(1.04);
+}
+.cam-char-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.cam-speak-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: #3b82f6;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  transition: transform 0.2s ease, background 0.2s;
+  touch-action: manipulation;
+}
+.cam-speak-btn:hover {
+  transform: scale(1.1);
+  background: #2563eb;
+}
+.cam-card-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+.cam-word-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1e293b;
+}
+.cam-word-tr {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #059669;
+}
+.cam-word-def {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+.cam-char-quote {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cam-char-quote i {
+  font-size: 0.85rem;
+  color: #334155;
+}
+.cam-quote-speak-btn {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2563eb;
+  cursor: pointer;
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+.cam-quote-speak-btn:hover {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+/* 4. BAAMBOOZLE 4-TEAM ARENA */
+.cam-baam-arena {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  border: 2px solid #e2e8f0;
+}
+.cam-arena-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  padding: 14px 20px;
+  border-radius: 16px;
+}
+.cam-team-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cam-team-selector span {
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.cam-team-btn {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+.cam-team-btn.active {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+.cam-team-btn.reset {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+  margin-left: 10px;
+}
+.cam-turn-indicator {
+  font-size: 1.05rem;
+  color: #334155;
+}
+.cam-active-team-name {
+  color: #2563eb;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+/* SCOREBOARD */
+.cam-scoreboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.cam-team-card {
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  background: #f1f5f9;
+  border: 3px solid transparent;
+  transition: all 0.2s;
+}
+.cam-team-card.team-0 { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.cam-team-card.team-1 { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+.cam-team-card.team-2 { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.cam-team-card.team-3 { background: #fefce8; border-color: #fef08a; color: #854d0e; }
+.cam-team-card.is-turn {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-width: 4px;
+  border-color: #f59e0b !important;
+}
+.cam-tc-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.cam-tc-score {
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.cam-tc-badge {
+  margin-top: 8px;
+  display: inline-block;
+  background: #f59e0b;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+/* 16 TILES SMARTBOARD GRID */
+.cam-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cam-tile {
+  aspect-ratio: 1.25 / 1;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  touch-action: manipulation;
+}
+.cam-tile.openable {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+}
+.cam-tile.openable:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 14px 28px rgba(217, 119, 6, 0.45);
+}
+.cam-tile-num {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.cam-tile-sparkle {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+.cam-tile.done {
+  background: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.cam-tile-check {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #10b981;
+}
+.cam-tile-done-pts {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #64748b;
+}
+
+/* GAME OVER BANNER */
+.cam-game-over-banner {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.3);
+}
+.cam-game-over-banner h2 { margin: 0 0 8px 0; font-size: 1.8rem; font-weight: 900; }
+.cam-btn-reset-big {
+  background: #ffffff;
+  color: #059669;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* 5. BAAMBOOZLE MODAL */
+.cam-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.cam-modal-box {
+  background: #ffffff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 680px;
+  padding: 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 4px solid #3b82f6;
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.cam-modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cam-modal-type-badge {
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+.cam-modal-pts-badge {
+  background: #f59e0b;
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+.cam-modal-q-text {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 900;
+  color: #1e293b;
+  text-align: center;
+  padding: 10px 0;
+  line-height: 1.35;
+}
+.cam-modal-a-box {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 16px 20px;
+  text-align: center;
+  border: 2px dashed #cbd5e1;
+}
+.cam-modal-a-box.hidden { display: none; }
+.cam-modal-a-label { font-size: 0.85rem; font-weight: 800; color: #64748b; margin-bottom: 4px; }
+.cam-modal-a-text { font-size: 1.3rem; font-weight: 900; color: #059669; }
+.cam-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cam-mbtn {
+  border: none;
+  padding: 14px 24px;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  touch-action: manipulation;
+}
+.cam-mbtn:hover { transform: scale(1.04); }
+.cam-mbtn.show-ans { background: #3b82f6; color: #ffffff; }
+.cam-mbtn.ok { background: #10b981; color: #ffffff; }
+.cam-mbtn.wrong { background: #ef4444; color: #ffffff; }
+.cam-mbtn.steal { background: #8b5cf6; color: #ffffff; }
+.cam-mbtn.swap { background: #ec4899; color: #ffffff; }
+.cam-mbtn.close { background: #e2e8f0; color: #475569; }
+
+/* 6. TONGUE TWISTERS */
+.cam-twisters-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cam-twister-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cam-speed-label { font-weight: 800; font-size: 0.9rem; color: #475569; }
+.cam-sp-btn {
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.cam-sp-btn.active {
+  background: #8b5cf6;
+  color: #ffffff;
+  border-color: #8b5cf6;
+}
+.cam-search-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.cam-input {
+  flex-grow: 1;
+  max-width: 450px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 2px solid #cbd5e1;
+  font-size: 0.95rem;
+  outline: none;
+  font-weight: 600;
+}
+.cam-input:focus { border-color: #3b82f6; }
+.cam-tw-count { font-weight: 700; color: #64748b; font-size: 0.9rem; }
+.cam-twisters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+.cam-twister-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #e2e8f0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+.cam-tw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cam-tw-stage {
+  background: #ede9fe;
+  color: #6d28d9;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.cam-tw-phonics { font-size: 0.85rem; color: #475569; }
+.cam-tw-text {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.4;
+}
+.cam-tw-tr {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #059669;
+}
+.cam-btn-speak-twister {
+  width: 100%;
+  background: #8b5cf6;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  touch-action: manipulation;
+}
+.cam-btn-speak-twister:hover { background: #7c3aed; }
+
+/* 7. SONGS & KARAOKE */
+.cam-songs-section { display: flex; flex-direction: column; gap: 20px; }
+.cam-btn-music-big {
+  border: none;
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 0.95rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.cam-btn-music-big.playing { background: #ef4444; }
+.cam-songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+.cam-song-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+.cam-song-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cam-song-stage {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+.cam-song-theme { font-size: 0.82rem; color: #64748b; font-weight: 700; }
+.cam-song-title { margin: 0; font-size: 1.25rem; font-weight: 900; color: #1e293b; }
+.cam-song-lyrics-box {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 14px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+}
+.cam-song-lyrics {
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.cam-btn-sing-along {
+  width: 100%;
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.cam-btn-sing-along:hover { background: #d97706; }
+
+/* 8. VIDEO LIBRARY */
+.cam-videos-section { display: flex; flex-direction: column; gap: 20px; }
+.cam-video-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.cam-vf-btn {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.cam-vf-btn.active {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+.cam-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+.cam-video-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.cam-video-iframe-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0f172a;
+}
+.cam-video-iframe-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.cam-video-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cam-v-badges {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #64748b;
+}
+.cam-v-title { margin: 0; font-size: 1.05rem; font-weight: 800; color: #1e293b; line-height: 1.35; }
+.cam-v-chan { font-size: 0.82rem; color: #64748b; }
+
+/* 9. TEACHER'S RESOURCE & LESSON PLAN */
+.cam-lesson-section { display: flex; flex-direction: column; gap: 20px; }
+.cam-btn-print {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.cam-goal-box {
+  background: #eff6ff;
+  border-radius: 18px;
+  padding: 20px 24px;
+  border-left: 6px solid #3b82f6;
+}
+.cam-goal-box h3 { margin: 0 0 6px 0; color: #1e40af; font-size: 1.15rem; font-weight: 900; }
+.cam-goal-box p { margin: 0; color: #1e293b; font-size: 1rem; line-height: 1.5; font-weight: 600; }
+.cam-daily-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+}
+.cam-day-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #e2e8f0;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+.cam-day-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  margin-bottom: 14px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+.cam-day-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cam-step {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.45;
+}
+.step-num {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  background: #3b82f6;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+}
+.cam-physical-games {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  padding: 24px;
+}
+.cam-physical-games h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #1e3a8a;
+}
+.cam-pgames-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.cam-pgame-card {
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cam-pg-badge {
+  align-self: flex-start;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.cam-pg-name { margin: 0; font-size: 1.05rem; font-weight: 900; color: #1e293b; }
+.cam-pg-rules { margin: 0; font-size: 0.88rem; color: #475569; line-height: 1.45; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .cam-stage-tabs { grid-template-columns: repeat(2, 1fr); }
+  .cam-tiles-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .cam-tiles-grid { grid-template-columns: repeat(2, 1fr); }
+  .cam-top-row { flex-direction: column; align-items: flex-start; }
+}
+
+
 
 

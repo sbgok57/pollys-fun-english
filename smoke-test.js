@@ -38,6 +38,7 @@ global.speechSynthesis = undefined;
 
 let code = [
   'data.js',
+  'cambridge-data.js',
   'songs.js',
   'songs-extra.js',
   'songs-mel.js',
@@ -47,6 +48,7 @@ let code = [
   'engines-a.js',
   'engines-b.js',
   'engines-c.js',
+  'cambridge-engine.js',
   'app.js'
 ]
   .map((f) => fs.readFileSync('src/' + f, 'utf8'))

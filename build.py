@@ -7,9 +7,9 @@ root = pathlib.Path(__file__).parent
 src = root / 'src'
 css = (src / 'styles.css').read_text(encoding='utf-8')
 js = '\n'.join((src / f).read_text(encoding='utf-8')
-               for f in ['data.js', 'songs.js', 'songs-extra.js', 'songs-mel.js',
+               for f in ['data.js', 'cambridge-data.js', 'songs.js', 'songs-extra.js', 'songs-mel.js',
                          'lessons.js', 'voice-map.js', 'media.js',
-                         'engines-a.js', 'engines-b.js', 'engines-c.js', 'app.js'])
+                         'engines-a.js', 'engines-b.js', 'engines-c.js', 'cambridge-engine.js', 'app.js'])
 html = (src / 'shell.html').read_text(encoding='utf-8')
 assert '</script' not in js, 'JS içinde </script> var!'
 out = html.replace('/*__CSS__*/', css).replace('//__JS__', js)

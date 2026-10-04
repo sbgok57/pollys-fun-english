@@ -51,7 +51,7 @@ const vm = require("vm");
 scriptMatches.forEach(m => vm.runInThisContext(m[1]));
 
 console.log('Testing APP screens...');
-const screens = ['home', 'scores', 'help'];
+const screens = ['home', 'cambridge', 'scores', 'help'];
 screens.forEach(s => {
   APP.go(s);
   console.log(`✔ Ekran render başarılı: ${s}`);

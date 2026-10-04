@@ -420,6 +420,9 @@ const APP = {
     });
     this.cleanups = [];
     MEDIA.disposeAll(); // // PERF: Ekran geçişlerinde ses ve konuşma motorunu sıfırla
+    if (typeof CAMBRIDGE_ENGINE !== 'undefined' && CAMBRIDGE_ENGINE.destroy) {
+      try { CAMBRIDGE_ENGINE.destroy(); } catch (e) {}
+    }
   },
 
   /* // SAFETY: Çökme / Yenilenme Durumunda Kaldığı Yerden Devam (Checkpoint) */
@@ -488,6 +491,7 @@ const APP = {
       : '';
     const R = {
       home: () => this.vHome(),
+      cambridge: () => this.vCambridge(),
       stage: () => this.vStage(),
       unit: () => this.vUnit(),
       learn: () => this.vLearn(),
@@ -529,10 +533,19 @@ const APP = {
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Geri</button>' : ''}
       <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
       <button class="btn small green" id="antivirus-top-btn" title="Canlı Siber Güvenlik Kalkanı" style="font-weight:800">🛡️ Kalkan</button>
+      <button class="btn small blue" id="cambridge-top-btn" style="background:#2563eb;color:#fff;font-weight:900">📘 Cambridge 1-4</button>
       <button class="btn small purple" id="guide-top-btn" style="font-weight:800">📖 Kullanma Kılavuzu</button>
       <button class="btn small yellow" id="baamboozle-top-btn" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle</button>
       <button class="btn small white" id="hm">🏠</button>
       <button class="btn small white" id="mu">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
+  },
+
+  /* ---------- 📘 CAMBRIDGE 1-4 MASTER PLATFORM ---------- */
+  vCambridge() {
+    return (
+      this.bar('Cambridge Global English 1-4') +
+      `<div id="cambridge-root" style="min-height:80vh"></div>`
+    );
   },
 
   /* ---------- 🏠 ANA SAYFA ---------- */
@@ -588,8 +601,19 @@ const APP = {
       </div>
       <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">🚀 Takım Oyunu Başlat</button>
     </div>
+    <div class="cambridge-featured-card" id="cambridge-feature-banner" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;border-radius:24px;padding:22px 28px;margin:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;box-shadow:0 10px 30px rgba(30,58,138,0.25);cursor:pointer;">
+      <div style="display:flex;align-items:center;gap:18px;">
+        <span style="font-size:3rem;background:rgba(255,255,255,0.2);width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:18px;">📘</span>
+        <div>
+          <h2 style="margin:0 0 6px 0;font-size:1.45rem;font-weight:900;">Cambridge Global English 1–4 Portalı (2. Baskı)</h2>
+          <p style="margin:0;opacity:0.95;font-size:0.95rem;">36 Ünite · Canlı GIPHY GIF & Gerçek Fotoğraf · 4 Takımlı Baamboozle Arenası · 500+ Phonics Tekerleme · Şarkılar · 11 Video Dersi</p>
+        </div>
+      </div>
+      <button class="btn gold big" id="btn-cambridge-launch" style="font-weight:900;font-size:1.05rem;">🚀 Platformu Aç</button>
+    </div>
     <div class="quick-row">
       <button class="btn purple wobble" id="rndG">🎲 Rastgele Oyun</button>
+      <button class="btn blue" id="btn-home-cambridge-hub" style="background:#2563eb;color:#fff;font-weight:900">📘 Cambridge 1-4</button>
       <button class="btn yellow" id="btn-home-baam" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle Başlat</button>
       <button class="btn white" id="btn-home-cambridge" style="font-weight:700">📘 Cambridge Notları</button>
       <button class="btn white" id="btn-home-security" style="font-weight:700">🛡️ Antivirüs Kalkanı</button>
@@ -992,6 +1016,7 @@ const APP = {
       if (e) e.addEventListener(ev, fn);
     };
     const backMap = {
+      cambridge: 'home',
       learn: 'unit',
       lesson: 'unit',
       game: 'unit',
@@ -1018,6 +1043,18 @@ const APP = {
       FX.toast(MEDIA.muted ? 'Sesler kapalı 🔇' : 'Sesler açık 🔊');
     });
     on('#vbtn', 'click', () => this.showVoices());
+    on('#cambridge-top-btn', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
+    on('#cambridge-feature-banner', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
+    on('#btn-cambridge-launch', 'click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); });
+    on('#btn-home-cambridge-hub', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
+
+    if (this.scr === 'cambridge') {
+      const cRoot = document.getElementById('cambridge-root');
+      if (cRoot && typeof CAMBRIDGE_ENGINE !== 'undefined' && CAMBRIDGE_ENGINE.init) {
+        CAMBRIDGE_ENGINE.init(cRoot);
+      }
+    }
+
     on('#guide-top-btn', 'click', () => this.showGuideModal());
     on('#btn-welcome-guide', 'click', () => this.showGuideModal());
     on('#btn-home-guide', 'click', () => this.showGuideModal());
