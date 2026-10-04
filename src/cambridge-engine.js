@@ -1,17 +1,18 @@
 /* ============================================================
-   📘 CAMBRIDGE GLOBAL ENGLISH 1-4 SMARTBOARD & LESSON ENGINE
+   📘 CAMBRIDGE GLOBAL ENGLISH 1-4 V2 SMARTBOARD & LESSON ENGINE
    ============================================================
    Features:
-   - Dual Media (GIPHY animated GIFs vs Unsplash Real Photos)
-   - Baamboozle 4-Team Smartboard Arena (Mystery, Steal, Swap, Bonus)
-   - Natural Character Voices & British English Speech Synthesis
-   - Confetti Particle Physics Engine & Web Audio Sound Effects
-   - Curated Acoustic Music Box Background Player (C-G-Am-F)
-   - 500+ Tongue Twisters with 0.8x, 1.0x, 1.25x speed controls
-   - Curated Songs & Karaoke with sing-along
-   - Educational Video Library (YouTube Embeds)
-   - Teacher's Resource & Interactive Lesson Plans
-   - Zero-Crash Hardened & Resource Safe Cleanup
+   - 4-Stage Selector (Stage 1 to Stage 4) with Large Tabs
+   - 1-9 Horizontal Unit Selector Pills Bar for Instant Navigation
+   - 8 Core Modules (Vocab, Baamboozle, Games Hub, Twisters, Songs, Videos, Teacher's Guide, 5-Day Lesson Plans)
+   - Dual Media Toggle (GIPHY Animated GIFs vs Unsplash Real Photos)
+   - 216 Baamboozle Game Packs (36 units x 6 game modes)
+   - 1,040+ Classroom & Smartboard Games Hub with Search & Launch
+   - 2,080 Tongue Twisters Bank (520 per stage) with 0.8x, 1.0x, 1.25x speed
+   - Sing-Along Songs & Curated Video Library (1,050+ videos)
+   - Settings Modal (BGM, SFX volume sliders, Character Voice, Speed, Theme Switcher)
+   - Themes: Colorful Kids, Smartboard High Contrast, Pastel Relaxing
+   - Zero-Crash Hardened, P0 Stability & Safe Resource Disposal
    ============================================================ */
 
 (function () {
@@ -33,28 +34,80 @@
   };
 
   /* ============================================================
-     1. 🎊 CONFETTI PARTICLE PHYSICS ENGINE
+     1. ⚙️ SETTINGS MANAGER FALLBACK
+     ============================================================ */
+  const Settings = (typeof window !== 'undefined' && window.SettingsManager) ? window.SettingsManager : class {
+    static STORAGE_KEY = "pollys_fun_english_settings";
+    static _memoryCache = null;
+    static defaults = {
+      bgmEnabled: false,
+      bgmVolume: 0.35,
+      sfxEnabled: true,
+      sfxVolume: 0.8,
+      voiceCharacter: "polly",
+      voiceSpeed: 1.0,
+      voicePitch: 1.35,
+      defaultMedia: "gif",
+      themeMode: "colorful-kids",
+      confettiEnabled: true
+    };
+    static getSettings() {
+      try {
+        if (typeof localStorage !== 'undefined') {
+          const saved = localStorage.getItem(this.STORAGE_KEY);
+          if (saved) return { ...this.defaults, ...JSON.parse(saved) };
+        }
+      } catch (e) {}
+      if (this._memoryCache) {
+        return { ...this.defaults, ...this._memoryCache };
+      }
+      return { ...this.defaults };
+    }
+    static saveSettings(newSettings) {
+      this._memoryCache = { ...newSettings };
+      try {
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newSettings));
+        }
+      } catch (e) {}
+      this.applySettings(newSettings);
+    }
+    static applySettings(settings) {
+      if (typeof document === 'undefined' || !document.body) return;
+      try {
+        document.body.classList.remove("theme-colorful-kids", "theme-smartboard-contrast", "theme-pastel");
+        document.body.classList.add(`theme-${settings.themeMode || 'colorful-kids'}`);
+        if (settings.themeMode === "smartboard-contrast") {
+          document.documentElement.style.setProperty("--primary", "#1d4ed8");
+          document.documentElement.style.setProperty("--dark", "#000000");
+        } else {
+          document.documentElement.style.setProperty("--primary", "#4f46e5");
+          document.documentElement.style.setProperty("--dark", "#1e1b4b");
+        }
+      } catch (e) {}
+    }
+  };
+
+  /* ============================================================
+     2. 🎊 CONFETTI PARTICLE PHYSICS ENGINE
      ============================================================ */
   const ConfettiEngine = {
     canvas: null,
     ctx: null,
-    particles: [],
+    pieces: [],
     animId: null,
-    isRunning: false,
 
-    init(containerEl) {
-      if (this.canvas) return;
-      this.canvas = document.createElement('canvas');
-      this.canvas.className = 'cambridge-confetti-canvas';
-      this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;';
-      (containerEl || document.body).appendChild(this.canvas);
-      this.ctx = this.canvas.getContext('2d');
+    init() {
+      let c = document.getElementById("confetti-canvas");
+      if (!c) {
+        c = document.createElement("canvas");
+        c.id = "confetti-canvas";
+        c.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;";
+        document.body.appendChild(c);
+      }
+      this.canvas = c;
+      this.ctx = (c && typeof c.getContext === 'function') ? c.getContext("2d") : null;
       this.resize();
-      window.addEventListener('resize', this.onResize);
-    },
-
-    onResize() {
-      if (ConfettiEngine.canvas) ConfettiEngine.resize();
     },
 
     resize() {
@@ -63,613 +116,463 @@
       this.canvas.height = window.innerHeight || 768;
     },
 
-    // PERF: Bounded particles (max 70) and max 2.5s duration
-    blast(x, y, count = 60) {
+    // PERF: Bounded particles (max 80) and 2.2s auto-cleanup
+    burst() {
+      const s = Settings.getSettings();
+      if (!s.confettiEnabled) return;
       this.init();
       this.resize();
-      const originX = x !== undefined ? x : (this.canvas ? this.canvas.width / 2 : 500);
-      const originY = y !== undefined ? y : (this.canvas ? this.canvas.height / 3 : 250);
-      const colors = ['#f59e0b', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6', '#ef4444', '#06b6d4'];
+      if (!this.ctx || !this.canvas) return;
 
-      for (let i = 0; i < Math.min(count, 80); i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 4 + Math.random() * 8;
-        this.particles.push({
-          x: originX,
-          y: originY,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 3,
-          size: 6 + Math.random() * 6,
+      const colors = ["#4f46e5", "#ec4899", "#f59e0b", "#10b981", "#3b82f6", "#8b5cf6", "#06b6d4"];
+      this.pieces = [];
+      for (let i = 0; i < 75; i++) {
+        this.pieces.push({
+          x: this.canvas.width / 2,
+          y: this.canvas.height / 2.5,
+          r: Math.random() * 7 + 4,
+          dx: (Math.random() - 0.5) * 16,
+          dy: (Math.random() - 0.7) * 16,
           color: colors[Math.floor(Math.random() * colors.length)],
-          rotation: Math.random() * 360,
-          rotSpeed: (Math.random() - 0.5) * 12,
-          opacity: 1,
-          decay: 0.015 + Math.random() * 0.015
+          tilt: Math.random() * 10
         });
       }
 
-      if (!this.isRunning) {
-        this.isRunning = true;
-        this.loop();
-      }
-
-      safeSetTimeout(() => {
-        if (this.particles.length === 0) this.stop();
-      }, 2500);
-    },
-
-    loop() {
-      if (!this.isRunning || !this.ctx || !this.canvas) return;
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      for (let i = this.particles.length - 1; i >= 0; i--) {
-        const p = this.particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.25; // gravity
-        p.vx *= 0.98; // air drag
-        p.rotation += p.rotSpeed;
-        p.opacity -= p.decay;
-
-        if (p.opacity <= 0 || p.y > this.canvas.height) {
-          this.particles.splice(i, 1);
-          continue;
-        }
-
-        this.ctx.save();
-        this.ctx.translate(p.x, p.y);
-        this.ctx.rotate((p.rotation * Math.PI) / 180);
-        this.ctx.fillStyle = p.color;
-        this.ctx.globalAlpha = Math.max(0, p.opacity);
-        this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
-        this.ctx.restore();
-      }
-
-      if (this.particles.length > 0) {
-        this.animId = requestAnimationFrame(() => this.loop());
-      } else {
-        this.stop();
-      }
-    },
-
-    stop() {
-      this.isRunning = false;
-      if (this.animId) {
-        cancelAnimationFrame(this.animId);
-        this.animId = null;
-      }
-      this.particles = [];
-      if (this.ctx && this.canvas) {
+      let frames = 0;
+      const animate = () => {
+        if (!this.ctx || !this.canvas) return;
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      }
+        this.pieces.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.dy += 0.35;
+          this.ctx.beginPath();
+          this.ctx.lineWidth = p.r / 2;
+          this.ctx.strokeStyle = p.color;
+          this.ctx.moveTo(p.x + p.tilt, p.y);
+          this.ctx.lineTo(p.x, p.y + p.tilt);
+          this.ctx.stroke();
+        });
+        if (++frames < 60) {
+          this.animId = requestAnimationFrame(animate);
+        } else {
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.animId = null;
+        }
+      };
+      animate();
     },
 
     destroy() {
-      this.stop();
-      window.removeEventListener('resize', this.onResize);
-      if (this.canvas && this.canvas.parentNode) {
-        this.canvas.parentNode.removeChild(this.canvas);
+      if (this.animId) cancelAnimationFrame(this.animId);
+      this.animId = null;
+      if (this.ctx && this.canvas) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       }
-      this.canvas = null;
-      this.ctx = null;
     }
   };
 
   /* ============================================================
-     2. 🔊 WEB AUDIO SOUND EFFECTS (WIN, LOSS, BONUS, SWAP, STEAL)
-     ============================================================ */
-  const SoundFX = {
-    audioCtx: null,
-
-    getAudioContext() {
-      if (typeof window === 'undefined') return null;
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return null;
-      if (!this.audioCtx) {
-        try {
-          this.audioCtx = new AudioCtx();
-        } catch (e) {
-          return null;
-        }
-      }
-      if (this.audioCtx && this.audioCtx.state === 'suspended') {
-        this.audioCtx.resume().catch(() => {});
-      }
-      return this.audioCtx;
-    },
-
-    // SAFETY: Ascending cheerful win chime
-    playWinChime() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const freqs = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
-        freqs.forEach((freq, idx) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-          gain.gain.setValueAtTime(0.001, now + idx * 0.08);
-          gain.gain.linearRampToValueAtTime(0.18, now + idx * 0.08 + 0.02);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.35);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + idx * 0.08);
-          osc.stop(now + idx * 0.08 + 0.4);
-        });
-      } catch (e) {}
-    },
-
-    // SAFETY: Low gentle "aww" buzz for wrong answers
-    playLossBuzz() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(160, now);
-        osc.frequency.linearRampToValueAtTime(110, now + 0.35);
-        gain.gain.setValueAtTime(0.12, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.4);
-      } catch (e) {}
-    },
-
-    // SAFETY: Click impulse
-    playClick() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(800, now);
-        gain.gain.setValueAtTime(0.08, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.06);
-      } catch (e) {}
-    },
-
-    // SAFETY: Mystery bonus chime
-    playBonus() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const freqs = [440, 554.37, 659.25, 880, 1108.7];
-        freqs.forEach((f, i) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, now + i * 0.05);
-          gain.gain.setValueAtTime(0.15, now + i * 0.05);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.25);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + i * 0.05);
-          osc.stop(now + i * 0.05 + 0.3);
-        });
-      } catch (e) {}
-    },
-
-    // SAFETY: Penalty slide down
-    playPenalty() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(320, now);
-        osc.frequency.exponentialRampToValueAtTime(90, now + 0.45);
-        gain.gain.setValueAtTime(0.15, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.48);
-      } catch (e) {}
-    },
-
-    // SAFETY: Whimsical pitch slide for swap
-    playSwap() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(260, now);
-        osc.frequency.linearRampToValueAtTime(750, now + 0.2);
-        osc.frequency.linearRampToValueAtTime(300, now + 0.4);
-        gain.gain.setValueAtTime(0.14, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.42);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.45);
-      } catch (e) {}
-    },
-
-    // SAFETY: Steal points effect
-    playSteal() {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-      try {
-        const now = ctx.currentTime;
-        const freqs = [350, 420, 520, 390];
-        freqs.forEach((f, i) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(f, now + i * 0.08);
-          gain.gain.setValueAtTime(0.12, now + i * 0.08);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.18);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now + i * 0.08);
-          osc.stop(now + i * 0.08 + 0.2);
-        });
-      } catch (e) {}
-    }
-  };
-
-  /* ============================================================
-     3. 🎶 BACKGROUND ACOUSTIC MUSIC BOX PLAYER
+     3. 🎶 BACKGROUND ACOUSTIC MUSIC PLAYER
      ============================================================ */
   const BackgroundMusicPlayer = {
-    audioCtx: null,
-    timerId: null,
+    ctx: null,
     isPlaying: false,
+    timer: null,
     noteIdx: 0,
-    // C - G - Am - F gentle acoustic progression arpeggio
-    progression: [
-      261.63, 329.63, 392.00, 523.25, // C - E - G - C
-      196.00, 246.94, 293.66, 392.00, // G - B - D - G
-      220.00, 261.63, 329.63, 440.00, // A - C - E - A
-      174.61, 220.00, 261.63, 349.23  // F - A - C - F
-    ],
+    scale: [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 440.00, 349.23],
+
+    init() {
+      if (!this.ctx && typeof window !== 'undefined') {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          try { this.ctx = new AudioCtx(); } catch (e) {}
+        }
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
+    },
 
     toggle() {
+      this.init();
+      this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
-        this.stop();
+        this.playNext();
       } else {
-        this.start();
+        this.stop();
       }
       return this.isPlaying;
     },
 
-    start() {
-      if (this.isPlaying) return;
-      const ctx = SoundFX.getAudioContext();
-      if (!ctx) return;
-      this.audioCtx = ctx;
-      this.isPlaying = true;
-      this.noteIdx = 0;
-      this.tick();
-    },
-
-    // PERF: Scheduled Web Audio notes with 0.12 volume and gentle decay
-    tick() {
-      if (!this.isPlaying || !this.audioCtx) return;
+    playNext() {
+      if (!this.isPlaying || !this.ctx) return;
       try {
-        const now = this.audioCtx.currentTime;
-        const freq = this.progression[this.noteIdx % this.progression.length];
-        this.noteIdx++;
+        const settings = Settings.getSettings();
+        const now = this.ctx.currentTime;
+        const freq = this.scale[this.noteIdx++ % this.scale.length];
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const filter = this.ctx.createBiquadFilter();
 
-        const osc = this.audioCtx.createOscillator();
-        const gain = this.audioCtx.createGain();
-        osc.type = 'sine';
+        osc.type = "sine";
         osc.frequency.setValueAtTime(freq, now);
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(1100, now);
 
-        gain.gain.setValueAtTime(0.001, now);
-        gain.gain.linearRampToValueAtTime(0.06, now + 0.03);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
+        const baseVol = 0.05 * (settings.bgmVolume !== undefined ? settings.bgmVolume : 0.35);
+        gain.gain.setValueAtTime(baseVol, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.1);
 
-        osc.connect(gain);
-        gain.connect(this.audioCtx.destination);
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+
         osc.start(now);
-        osc.stop(now + 0.5);
+        osc.stop(now + 1.1);
       } catch (e) {}
 
-      // SAFETY: Explicit timer with cancellation
-      this.timerId = safeSetTimeout(() => {
-        this.tick();
-      }, 350);
+      // SAFETY: Explicit timer registry with cancellation
+      this.timer = safeSetTimeout(() => {
+        if (this.isPlaying) this.playNext();
+      }, 480);
     },
 
     stop() {
       this.isPlaying = false;
-      if (this.timerId) {
-        clearTimeout(this.timerId);
-        this.timerId = null;
+      if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
       }
     }
   };
 
   /* ============================================================
-     4. 🗣️ KID FEEDBACK AUDIO & NATURAL CHARACTER VOICE ENGINE
+     4. 🔊 SOUND EFFECTS (WIN, LOSS, BONUS, SWAP, STEAL)
+     ============================================================ */
+  const SoundFX = {
+    ctx: null,
+
+    init() {
+      if (!this.ctx && typeof window !== 'undefined') {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          try { this.ctx = new AudioCtx(); } catch (e) {}
+        }
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
+    },
+
+    playWin() {
+      const s = Settings.getSettings();
+      if (!s.sfxEnabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.1);
+        osc.frequency.setValueAtTime(783.99, now + 0.2);
+        osc.frequency.setValueAtTime(1046.50, now + 0.3);
+        const vol = 0.22 * (s.sfxVolume !== undefined ? s.sfxVolume : 0.8);
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+        osc.start(now);
+        osc.stop(now + 0.5);
+      } catch (e) {}
+    },
+
+    playLoss() {
+      const s = Settings.getSettings();
+      if (!s.sfxEnabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = "sawtooth";
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.setValueAtTime(140, now + 0.15);
+        const vol = 0.18 * (s.sfxVolume !== undefined ? s.sfxVolume : 0.8);
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        osc.start(now);
+        osc.stop(now + 0.4);
+      } catch (e) {}
+    }
+  };
+
+  /* ============================================================
+     5. 🗣️ NATURAL CHARACTER VOICE ENGINE
      ============================================================ */
   const NaturalVoiceEngine = {
-    praises: [
-      'Super job!',
-      'Brilliant work!',
-      'Spot on, superstar!',
-      'Hip hip hooray!',
-      'Fantastic English!',
-      'You did it!',
-      'Awesome pronunciation!'
+    positive: [
+      { voice: "polly", phrase: "Brilliant job! You are a shining superstar!" },
+      { voice: "peppa", phrase: "Oinktastic! That is completely right, well done!" },
+      { voice: "chase", phrase: "Hooray! High paws, you nailed it perfectly!" },
+      { voice: "bluey", phrase: "Wackadoo! That was magnificent, high five!" }
+    ],
+    encouraging: [
+      { voice: "polly", phrase: "Super close! Take a deep breath, you can do it!" },
+      { voice: "peppa", phrase: "Never mind! Let us jump back in and try once more!" },
+      { voice: "chase", phrase: "Good effort team! Practice makes progress!" },
+      { voice: "bluey", phrase: "That was a wonderful try! Give it another go!" }
     ],
 
-    charVoices: {
-      polly: { pitch: 1.35, rate: 1.05, prefix: 'Polly says: ' },
-      peppa: { pitch: 1.45, rate: 1.08, prefix: 'Peppa says: ' },
-      bluey: { pitch: 1.25, rate: 1.10, prefix: 'Bluey says: ' },
-      chase: { pitch: 1.10, rate: 1.05, prefix: 'Chase says: ' },
-      mickey: { pitch: 1.50, rate: 1.05, prefix: 'Mickey says: ' },
-      woody: { pitch: 1.15, rate: 1.02, prefix: 'Woody says: ' }
+    playCorrect() {
+      ConfettiEngine.burst();
+      const s = Settings.getSettings();
+      const preferred = s.voiceCharacter || "polly";
+      const match = this.positive.find(p => p.voice === preferred) || this.positive[0];
+      this.speak(match.phrase, match.voice, 1.05);
     },
 
-    getRandomPraise() {
-      return this.praises[Math.floor(Math.random() * this.praises.length)];
+    playEncouragement() {
+      const s = Settings.getSettings();
+      const preferred = s.voiceCharacter || "polly";
+      const match = this.encouraging.find(p => p.voice === preferred) || this.encouraging[0];
+      this.speak(match.phrase, match.voice, 0.95);
     },
 
-    // SAFETY: Debounced speech synthesis with en-GB preferred
-    speak(text, charKey = 'polly', speedRate = 1.0) {
+    speak(phrase, character, rateModifier = 1.0) {
       if (typeof window === 'undefined' || !window.speechSynthesis) return;
       try {
-        window.speechSynthesis.cancel(); // cancel stale speech
-        const cleanText = String(text || '').replace(/[#*_`]/g, '').trim();
-        if (!cleanText) return;
+        window.speechSynthesis.cancel();
+        const s = Settings.getSettings();
+        const utt = new SpeechSynthesisUtterance(String(phrase || '').replace(/[#*_`]/g, '').trim());
+        utt.lang = 'en-GB';
 
-        const utter = new SpeechSynthesisUtterance(cleanText);
-        const config = this.charVoices[charKey.toLowerCase()] || this.charVoices.polly;
+        const baseSpeed = parseFloat(s.voiceSpeed || 1.0);
+        utt.rate = Math.max(0.6, Math.min(1.8, baseSpeed * (rateModifier || 1.0)));
 
-        utter.pitch = config.pitch;
-        utter.rate = (config.rate || 1.0) * (speedRate || 1.0);
+        const charKey = (character || s.voiceCharacter || 'polly').toLowerCase();
+        switch (charKey) {
+          case 'peppa': utt.pitch = 1.6; break;
+          case 'bluey': utt.pitch = 1.4; break;
+          case 'chase': utt.pitch = 1.2; break;
+          case 'polly':
+          default:
+            utt.pitch = parseFloat(s.voicePitch || 1.35);
+            break;
+        }
 
-        // Find British English voice if available, else first English voice
+        // Voice preference
         const voices = window.speechSynthesis.getVoices() || [];
         const gbVoice = voices.find(v => v.lang && (v.lang.includes('en-GB') || v.lang.includes('en_GB')));
         const enVoice = voices.find(v => v.lang && v.lang.startsWith('en'));
-        if (gbVoice) utter.voice = gbVoice;
-        else if (enVoice) utter.voice = enVoice;
-        else utter.lang = 'en-GB';
+        if (gbVoice) utt.voice = gbVoice;
+        else if (enVoice) utt.voice = enVoice;
 
-        window.speechSynthesis.speak(utter);
+        window.speechSynthesis.speak(utt);
       } catch (err) {
         console.warn('SpeechSynthesis error:', err);
-      }
-    },
-
-    speakPraise(callback) {
-      const praise = this.getRandomPraise();
-      this.speak(praise, 'polly');
-      if (typeof callback === 'function') {
-        safeSetTimeout(callback, 800);
       }
     }
   };
 
   /* ============================================================
-     5. 📘 CAMBRIDGE PLATFORM CONTROLLER
+     6. 📘 CAMBRIDGE PLATFORM V2 CONTROLLER
      ============================================================ */
   const CAMBRIDGE_ENGINE = {
     container: null,
-    stage: 1, // 1, 2, 3, 4
+    stageKey: 'stage1',
     unitIdx: 0,
-    activeTab: 'vocab', // 'vocab' | 'baamboozle' | 'twisters' | 'songs' | 'videos' | 'lesson'
-    mediaMode: 'gif', // 'gif' | 'photo'
-    twisterSpeed: 1.0,
-    twisterFilter: '',
-    videoFilter: 'all',
-
-    // Baamboozle Game State
-    baam: {
-      teamsCount: 2,
-      teamNames: ['🔴 Red Dragons', '🔵 Blue Sharks', '🟢 Green Ninjas', '🟡 Golden Eagles'],
-      teamScores: [0, 0, 0, 0],
-      turn: 0,
-      tiles: [],
-      activeModal: null,
-      winner: null
-    },
+    view: 'vocab', // 'vocab' | 'baamboozle' | 'games-hub' | 'twisters' | 'songs' | 'videos' | 'teacher-guide' | 'lesson'
+    media: 'gif', // 'gif' | 'photo'
+    teams: [
+      { name: 'Mavi Takım 🔵', score: 0 },
+      { name: 'Kırmızı Takım 🔴', score: 0 },
+      { name: 'Yeşil Takım 🟢', score: 0 },
+      { name: 'Sarı Takım 🟡', score: 0 }
+    ],
+    teamsCount: 2,
+    turn: 0,
+    opened: new Set(),
+    activeBaamboozleGame: null,
+    twisterSearch: '',
+    gameSearch: '',
+    videoSearch: '',
+    activeModal: null,
 
     init(containerEl) {
       this.container = containerEl || document.getElementById('cambridge-root') || document.getElementById('app');
-      this.resetBaamboozle();
+      const s = Settings.getSettings();
+      Settings.applySettings(s);
+      this.media = s.defaultMedia || 'gif';
+      this.initBaamboozlePack();
       this.render();
     },
 
-    getCurrentStageData() {
+    getCurrentStage() {
       const data = (typeof CURRICULUM_DATA !== 'undefined' ? CURRICULUM_DATA : (window.CURRICULUM_DATA || {}));
-      const stageKey = 'stage' + this.stage;
-      return data[stageKey] || { title: 'Stage ' + this.stage, units: [] };
+      return data[this.stageKey] || { title: 'Stage 1', units: [] };
     },
 
     getCurrentUnit() {
-      const stageData = this.getCurrentStageData();
-      if (!stageData.units || stageData.units.length === 0) return null;
-      if (this.unitIdx >= stageData.units.length) this.unitIdx = 0;
-      return stageData.units[this.unitIdx];
+      const stage = this.getCurrentStage();
+      if (!stage.units || stage.units.length === 0) return null;
+      if (this.unitIdx >= stage.units.length) this.unitIdx = 0;
+      return stage.units[this.unitIdx];
     },
 
-    setStage(stageNum) {
-      SoundFX.playClick();
-      this.stage = Math.max(1, Math.min(4, parseInt(stageNum, 10) || 1));
-      this.unitIdx = 0;
-      this.resetBaamboozle();
-      this.render();
-    },
-
-    setUnit(idx) {
-      SoundFX.playClick();
-      this.unitIdx = Math.max(0, parseInt(idx, 10) || 0);
-      this.resetBaamboozle();
-      this.render();
-    },
-
-    setTab(tabName) {
-      SoundFX.playClick();
-      this.activeTab = tabName;
-      this.render();
-    },
-
-    toggleMediaMode() {
-      SoundFX.playClick();
-      this.mediaMode = (this.mediaMode === 'gif' ? 'photo' : 'gif');
-      this.render();
-    },
-
-    resetBaamboozle() {
-      const unit = this.getCurrentUnit();
-      const rawQuestions = unit && unit.baamboozleQuestions ? unit.baamboozleQuestions : [];
-      // Build 16 tiles
-      this.baam.tiles = [];
-      for (let i = 0; i < 16; i++) {
-        const q = rawQuestions[i % (rawQuestions.length || 1)] || {
-          q: 'What is this unit about?',
-          a: unit ? unit.title : 'English',
-          pts: 15,
-          type: 'question'
+    initBaamboozlePack() {
+      const allPacks = (typeof BAAMBOOZLE_GAMES_DATA !== 'undefined' ? BAAMBOOZLE_GAMES_DATA : (window.BAAMBOOZLE_GAMES_DATA || []));
+      const stagePacks = allPacks.filter(g => g.stageKey === this.stageKey);
+      if (stagePacks.length > 0) {
+        // Choose pack matching current unit
+        const uNum = this.unitIdx + 1;
+        const match = stagePacks.find(g => g.unitNumber === uNum) || stagePacks[0];
+        this.activeBaamboozleGame = match;
+      } else {
+        const u = this.getCurrentUnit();
+        this.activeBaamboozleGame = {
+          id: 'default',
+          title: u ? u.title : 'English Game',
+          cardCount: 16,
+          tiles: (u && u.baamboozleQuestions ? u.baamboozleQuestions : []).map((q, i) => ({
+            tile: i + 1,
+            q: q.q,
+            a: q.a,
+            pts: q.pts || 15,
+            type: q.type || 'question'
+          }))
         };
-        this.baam.tiles.push({
-          idx: i + 1,
-          done: false,
-          question: q
-        });
       }
-      this.baam.teamScores = [0, 0, 0, 0];
-      this.baam.turn = 0;
-      this.baam.activeModal = null;
-      this.baam.winner = null;
     },
 
-    setTeamsCount(count) {
-      SoundFX.playClick();
-      this.baam.teamsCount = Math.max(2, Math.min(4, parseInt(count, 10) || 2));
-      this.baam.turn = 0;
+    selectStage(key) {
+      SoundFX.playWin();
+      this.stageKey = key;
+      this.unitIdx = 0;
+      this.opened.clear();
+      this.initBaamboozlePack();
       this.render();
     },
 
-    // RENDER MAIN SHELL
+    selectUnit(idx) {
+      SoundFX.playWin();
+      this.unitIdx = idx;
+      this.opened.clear();
+      this.initBaamboozlePack();
+      this.render();
+    },
+
+    setView(v) {
+      this.view = v;
+      this.render();
+    },
+
+    toggleMedia() {
+      this.media = (this.media === 'gif' ? 'photo' : 'gif');
+      this.render();
+    },
+
+    // ──────────────── RENDER COMPLETE INTERFACE ────────────────
     render() {
       if (!this.container) return;
+      const stage = this.getCurrentStage();
       const unit = this.getCurrentUnit();
-      const stageData = this.getCurrentStageData();
 
       const html = `
-        <div class="cambridge-platform">
-          <!-- 1. TOP HEADER & STAGE TABS -->
-          <header class="cambridge-header">
-            <div class="cam-top-row">
-              <div class="cam-brand">
-                <span class="cam-logo anim-bounce">📘</span>
-                <div>
-                  <h1 class="cam-title">Cambridge Global English (2. Baskı)</h1>
-                  <span class="cam-sub">Stages 1–4 · Akıllı Tahta & Bütünleşik Eğitim Portalı</span>
-                </div>
-              </div>
-              <div class="cam-actions">
-                <button class="cam-btn-mode ${this.mediaMode === 'gif' ? 'active-gif' : 'active-photo'}" id="cam-toggle-media">
-                  ${this.mediaMode === 'gif' ? '🎬 Hareketli GIF Modu' : '📷 Gerçek Fotoğraf Modu'}
-                </button>
-                <button class="cam-btn-music ${BackgroundMusicPlayer.isPlaying ? 'playing' : ''}" id="cam-toggle-music">
-                  ${BackgroundMusicPlayer.isPlaying ? '🎵 Müzik: Açık' : '🔇 Müzik: Kapalı'}
-                </button>
-                <button class="cam-btn-home" id="cam-btn-back-home">
-                  🏠 Ana Sayfaya Dön
-                </button>
+        <div class="cambridge-v2-container">
+          <!-- 1. HEADER & CONTROLS -->
+          <header class="cam-v2-header">
+            <div class="brand">
+              <div class="brand-logo anim-bounce">P</div>
+              <div>
+                <h1>Polly's <span>Fun English</span></h1>
+                <small style="color:#64748b; font-weight:600;">Cambridge Global English 1-2-3-4 Akıllı Tahta Portalı</small>
               </div>
             </div>
-
-            <!-- STAGE SELECTOR TABS -->
-            <div class="cam-stage-tabs">
-              <button class="cam-stage-tab ${this.stage === 1 ? 'active s1' : ''}" data-stage="1">
-                <span class="c-badge">Stage 1</span>
-                <b>🟢 1. Sınıf</b>
-                <small>Pre-A1 · 9 Ünite</small>
+            <div class="nav-controls">
+              <button class="btn btn-outline ${BackgroundMusicPlayer.isPlaying ? 'btn-accent' : ''}" id="bgm-toggle-btn">
+                ${BackgroundMusicPlayer.isPlaying ? '🎵 Tatlı Fon Müziği: AÇIK' : '🎵 Tatlı Fon Müziği: KAPALI'}
               </button>
-              <button class="cam-stage-tab ${this.stage === 2 ? 'active s2' : ''}" data-stage="2">
-                <span class="c-badge">Stage 2</span>
-                <b>🔵 2. Sınıf</b>
-                <small>A1 · 9 Ünite</small>
+              <button class="btn btn-outline" id="fullscreen-btn">📺 Tam Ekran</button>
+              <button class="btn btn-primary" id="toggle-media-btn">
+                ${this.media === 'gif' ? '📷 Fotoğraf Moduna Geç' : '🎬 GIPHY GIF Moduna Geç'}
               </button>
-              <button class="cam-stage-tab ${this.stage === 3 ? 'active s3' : ''}" data-stage="3">
-                <span class="c-badge">Stage 3</span>
-                <b>🟣 3. Sınıf</b>
-                <small>A1+ · 9 Ünite</small>
-              </button>
-              <button class="cam-stage-tab ${this.stage === 4 ? 'active s4' : ''}" data-stage="4">
-                <span class="c-badge">Stage 4</span>
-                <b>🟠 4. Sınıf</b>
-                <small>A2 · 9 Ünite</small>
-              </button>
+              <button class="btn btn-accent" id="open-settings-btn">⚙️ Ayarlar</button>
+              <button class="btn btn-secondary" id="cam-back-home-btn">🏠 Ana Sayfa</button>
             </div>
-
-            <!-- UNIT SELECTOR & HERO INFO -->
-            <div class="cam-unit-bar">
-              <div class="cam-unit-dropdown-wrap">
-                <label for="cam-unit-select">📍 Ünite Seçin:</label>
-                <select id="cam-unit-select" class="cam-select">
-                  ${(stageData.units || []).map((u, i) => `
-                    <option value="${i}" ${i === this.unitIdx ? 'selected' : ''}>
-                      Unit ${u.number}: ${u.title} (${u.theme})
-                    </option>
-                  `).join('')}
-                </select>
-              </div>
-              ${unit ? `
-                <div class="cam-unit-meta">
-                  <span class="cam-pill theme">🎯 ${unit.theme}</span>
-                  <span class="cam-pill cefr">🏅 ${unit.cefr}</span>
-                  <span class="cam-pill phonics">🗣️ ${unit.phonics}</span>
-                </div>
-              ` : ''}
-            </div>
-
-            <!-- NAVIGATION SUB-TABS -->
-            <nav class="cam-subnav">
-              <button class="cam-nav-tab ${this.activeTab === 'vocab' ? 'active' : ''}" data-tab="vocab">
-                🔤 1. Kelime Kartları (${this.mediaMode === 'gif' ? 'GIF' : 'Foto'})
-              </button>
-              <button class="cam-nav-tab ${this.activeTab === 'baamboozle' ? 'active' : ''}" data-tab="baamboozle">
-                🧩 2. Baamboozle Takım Arenası (2–4 Takım)
-              </button>
-              <button class="cam-nav-tab ${this.activeTab === 'twisters' ? 'active' : ''}" data-tab="twisters">
-                👅 3. Tongue Twisters (Tekerlemeler)
-              </button>
-              <button class="cam-nav-tab ${this.activeTab === 'songs' ? 'active' : ''}" data-tab="songs">
-                🎵 4. Şarkılar & Karaoke
-              </button>
-              <button class="cam-nav-tab ${this.activeTab === 'videos' ? 'active' : ''}" data-tab="videos">
-                📺 5. Eğitici Video Kütüphanesi
-              </button>
-              <button class="cam-nav-tab ${this.activeTab === 'lesson' ? 'active' : ''}" data-tab="lesson">
-                📋 6. Öğretmen Rehberi & Ders Planı
-              </button>
-            </nav>
           </header>
 
-          <!-- 2. MAIN ACTIVE VIEW CONTENT -->
-          <main class="cambridge-main-content">
-            ${this.renderActiveTabContent(unit)}
+          <main class="main-container">
+            <!-- 2. 1, 2, 3 ve 4. SINIF SEÇİCİ TABS -->
+            <section class="stage-selector" id="stage-tabs">
+              <div class="stage-tab ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1">
+                <h3>🟢 1. Sınıf (Stage 1)</h3>
+                <p>Pre-A1 · Okul, aile, çiftlik, duyular, taşıtlar...</p>
+              </div>
+              <div class="stage-tab ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2">
+                <h3>🔵 2. Sınıf (Stage 2)</h3>
+                <p>A1 · Kitaplar, komşular, hava, ölçme, böcekler...</p>
+              </div>
+              <div class="stage-tab ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3">
+                <h3>🟣 3. Sınıf (Stage 3)</h3>
+                <p>A1+ · Takım çalışması, çöl, icatlar, mitoloji...</p>
+              </div>
+              <div class="stage-tab ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4">
+                <h3>🟠 4. Sınıf (Stage 4)</h3>
+                <p>A2 · Uzay, mercan resifleri, teknoloji, liderlik...</p>
+              </div>
+            </section>
+
+            <!-- 3. 1'DEN 9'A KADAR YATAY ÜNİTE SEÇİCİ ÇUBUĞU -->
+            <div class="unit-selector-bar" id="unit-pills-bar">
+              ${(stage.units || []).map((u, idx) => `
+                <button class="unit-pill ${idx === this.unitIdx ? 'active' : ''}" data-uidx="${idx}">
+                  Ünite ${u.number}: ${u.title}
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- UNIT HERO TITLE & META INFO -->
+            ${unit ? `
+              <div style="background:white; border-radius:12px; padding:18px 24px; margin-bottom:20px; border-left:5px solid var(--primary); box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+                <h2 style="color:var(--dark); font-size:1.4rem; margin-bottom:6px;">
+                  📘 ${stage.title} — ${unit.number}. Ünite: ${unit.title}
+                </h2>
+                <p style="color:#475569; font-size:0.95rem; margin:0;">
+                  <strong>🎯 Tema:</strong> ${unit.theme} | <strong>📖 Gramer:</strong> ${unit.grammar} | <strong>🗣️ Fonetik:</strong> ${unit.phonics}
+                </p>
+              </div>
+            ` : ''}
+
+            <!-- 4. 8 MODÜL GEZİNME ÇUBUĞU (MODULE NAV) -->
+            <nav class="module-nav">
+              <button class="module-btn ${this.view === 'vocab' ? 'active' : ''}" data-view="vocab">✨ Hareketli Kelimeler</button>
+              <button class="module-btn ${this.view === 'baamboozle' ? 'active' : ''}" data-view="baamboozle">🎮 Baamboozle Arenası (216 Oyun)</button>
+              <button class="module-btn ${this.view === 'games-hub' ? 'active' : ''}" data-view="games-hub">🎲 1000+ Sınıf ve Tahta Oyunu</button>
+              <button class="module-btn ${this.view === 'twisters' ? 'active' : ''}" data-view="twisters">👅 500+ Tongue Twisters</button>
+              <button class="module-btn ${this.view === 'songs' ? 'active' : ''}" data-view="songs">🎵 Sing-Along Şarkılar</button>
+              <button class="module-btn ${this.view === 'videos' ? 'active' : ''}" data-view="videos">🎬 1000+ Eğitici Video Hub</button>
+              <button class="module-btn ${this.view === 'teacher-guide' ? 'active' : ''}" data-view="teacher-guide">📖 Öğretmen Akıllı Tahta Rehberi</button>
+              <button class="module-btn ${this.view === 'lesson' ? 'active' : ''}" data-view="lesson">📋 5 Günlük Ders Planları</button>
+            </nav>
+
+            <!-- 5. ACTIVE MODULE VIEW -->
+            ${this.renderActiveView(unit)}
           </main>
 
-          <!-- 3. BAAMBOOZLE QUESTION MODAL -->
-          ${this.baam.activeModal ? this.renderBaamModal() : ''}
+          <!-- 6. AYARLAR MODALI -->
+          <div class="modal-overlay ${this.activeModal === 'settings' ? 'active' : ''}" id="settings-modal">
+            ${this.renderSettingsModal()}
+          </div>
+
+          <!-- 7. BAAMBOOZLE QUESTION MODAL -->
+          <div class="modal-overlay ${this.activeModal === 'question' ? 'active' : ''}" id="question-modal">
+            ${this.renderQuestionModal()}
+          </div>
         </div>
       `;
 
@@ -677,488 +580,501 @@
       this.bindEvents();
     },
 
-    renderActiveTabContent(unit) {
-      if (!unit && this.activeTab !== 'twisters' && this.activeTab !== 'songs' && this.activeTab !== 'videos') {
-        return `<div class="cam-empty">Bu aşama için ünite bulunamadı.</div>`;
+    renderActiveView(unit) {
+      if (!unit && this.view !== 'games-hub' && this.view !== 'twisters' && this.view !== 'songs' && this.view !== 'videos' && this.view !== 'teacher-guide') {
+        return `<div class="resource-box">Ünite yüklenemedi.</div>`;
       }
-      switch (this.activeTab) {
-        case 'vocab': return this.renderVocabView(unit);
-        case 'baamboozle': return this.renderBaamboozleView(unit);
-        case 'twisters': return this.renderTwistersView();
-        case 'songs': return this.renderSongsView();
-        case 'videos': return this.renderVideosView();
-        case 'lesson': return this.renderLessonView(unit);
-        default: return this.renderVocabView(unit);
+      switch (this.view) {
+        case 'vocab': return this.renderVocab(unit);
+        case 'baamboozle': return this.renderBaamboozle();
+        case 'games-hub': return this.renderGamesHub();
+        case 'twisters': return this.renderTwisters();
+        case 'songs': return this.renderSongs();
+        case 'videos': return this.renderVideos();
+        case 'teacher-guide': return this.renderTeacherGuide();
+        case 'lesson': return this.renderLesson(unit);
+        default: return this.renderVocab(unit);
       }
     },
 
-    /* ============================================================
-       VIEW 1: VOCABULARY DUAL MEDIA (GIF & REAL PHOTO)
-       ============================================================ */
-    renderVocabView(unit) {
+    // 1. VOCABULARY VIEW
+    renderVocab(unit) {
       const words = unit.vocabulary || [];
       return `
-        <div class="cam-vocab-section">
-          <div class="cam-section-banner">
-            <div>
-              <h2>🌟 Unit ${unit.number}: ${unit.title} — Kelime Keşfi</h2>
-              <p>Yapay zeka emojisi yerine çocuklara yönelik <b>hareketli GIPHY GIF'leri</b> ve <b>gerçek yüksek çözünürlüklü fotoğraflar</b> kullanılmıştır.</p>
-            </div>
-            <div class="cam-mode-indicator">
-              Aktif Görünüm: <b>${this.mediaMode === 'gif' ? '🎬 Canlı GIF Modu' : '📷 Gerçek Fotoğraf Modu'}</b>
-            </div>
-          </div>
-
-          <div class="cam-vocab-grid">
-            ${words.map((item, idx) => {
-              const mediaSrc = this.mediaMode === 'gif' ? item.gifUrl : item.realPhoto;
-              const charName = (item.characterVoice || 'polly').toUpperCase();
-              return `
-                <div class="cam-vocab-card">
-                  <div class="cam-card-media-wrap">
-                    <img src="${mediaSrc}" alt="${item.word}" class="cam-vocab-img" loading="lazy" />
-                    <span class="cam-char-badge">${charName}</span>
-                    <button class="cam-speak-btn" data-word="${item.word}" data-char="${item.characterVoice || 'polly'}" title="Dinle">
-                      🔊
+        <section class="view-section active">
+          <div class="vocab-grid" id="vocab-cards-grid">
+            ${words.map(v => `
+              <div class="vocab-card">
+                <div class="vocab-media">
+                  <img src="${this.media === 'gif' ? v.gifUrl : v.realPhoto}" alt="${v.word}" loading="lazy" />
+                  <span class="media-tag">${this.media === 'gif' ? 'GIPHY HAREKETLİ' : 'GERÇEK FOTOĞRAF'}</span>
+                </div>
+                <div class="vocab-details">
+                  <h4>${v.word}</h4>
+                  <div class="tr-meaning">🇹🇷 ${v.turkish}</div>
+                  <p style="font-size:0.85rem; color:#64748b; margin-bottom:12px;">📖 ${v.meaning}</p>
+                  <div class="voice-bubble">
+                    <span><strong>${(v.characterVoice || 'polly').toUpperCase()}:</strong> "${v.voiceLine}"</span>
+                    <button class="btn btn-outline cam-speak-btn" data-phrase="${v.word}! ${v.voiceLine}" data-char="${v.characterVoice || 'polly'}">
+                      🔊 Dinle
                     </button>
                   </div>
-                  <div class="cam-card-body">
-                    <h3 class="cam-word-title">${item.word}</h3>
-                    <div class="cam-word-tr">🇹🇷 ${item.turkish}</div>
-                    <div class="cam-word-def">📖 ${item.meaning}</div>
-                    <div class="cam-char-quote">
-                      <i>💬 "${item.voiceLine || item.word}"</i>
-                      <button class="cam-quote-speak-btn" data-text="${item.voiceLine || item.word}" data-char="${item.characterVoice || 'polly'}">
-                        🗣️ Karakter Sesiyle Oku
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      `;
-    },
-
-    /* ============================================================
-       VIEW 2: BAAMBOOZLE 4-TEAM SMARTBOARD ARENA
-       ============================================================ */
-    renderBaamboozleView(unit) {
-      const currentTeamName = this.baam.teamNames[this.baam.turn % this.baam.teamsCount];
-      const remainingTiles = this.baam.tiles.filter(t => !t.done).length;
-
-      return `
-        <div class="cam-baam-arena">
-          <!-- TOP ARENA BAR: TEAMS & SCOREBOARD -->
-          <div class="cam-arena-header">
-            <div class="cam-team-selector">
-              <span>👥 Takım Sayısı:</span>
-              <button class="cam-team-btn ${this.baam.teamsCount === 2 ? 'active' : ''}" data-tcount="2">2 Takım</button>
-              <button class="cam-team-btn ${this.baam.teamsCount === 3 ? 'active' : ''}" data-tcount="3">3 Takım</button>
-              <button class="cam-team-btn ${this.baam.teamsCount === 4 ? 'active' : ''}" data-tcount="4">4 Takım</button>
-              <button class="cam-team-btn reset" id="cam-baam-reset">🔄 Oyunu Sıfırla</button>
-            </div>
-            <div class="cam-turn-indicator">
-              Sıradaki Takım: <b class="cam-active-team-name">${currentTeamName}</b>
-            </div>
-          </div>
-
-          <!-- SCOREBOARD CARDS -->
-          <div class="cam-scoreboard">
-            ${Array.from({ length: this.baam.teamsCount }).map((_, i) => {
-              const isTurn = (this.baam.turn % this.baam.teamsCount) === i;
-              return `
-                <div class="cam-team-card team-${i} ${isTurn ? 'is-turn' : ''}">
-                  <div class="cam-tc-title">${this.baam.teamNames[i]}</div>
-                  <div class="cam-tc-score">${this.baam.teamScores[i]} <small>PTS</small></div>
-                  ${isTurn ? '<div class="cam-tc-badge">Sıra Sende! 🔥</div>' : ''}
-                </div>
-              `;
-            }).join('')}
-          </div>
-
-          <!-- 16 TILES SMARTBOARD GRID -->
-          <div class="cam-tiles-grid">
-            ${this.baam.tiles.map((t, idx) => {
-              if (t.done) {
-                return `
-                  <div class="cam-tile done">
-                    <span class="cam-tile-check">✔</span>
-                    <span class="cam-tile-done-pts">${t.question.pts > 0 ? '+' : ''}${t.question.pts}</span>
-                  </div>
-                `;
-              }
-              return `
-                <button class="cam-tile openable" data-tileidx="${idx}">
-                  <span class="cam-tile-num">${t.idx}</span>
-                  <span class="cam-tile-sparkle">✨</span>
-                </button>
-              `;
-            }).join('')}
-          </div>
-
-          ${remainingTiles === 0 ? `
-            <div class="cam-game-over-banner">
-              <h2>🏆 OYUN BİTTİ! TEBRİKLER! 🏆</h2>
-              <p>Tüm kutular açıldı! Şampiyon takımı alkışlayalım!</p>
-              <button class="cam-btn-reset-big" id="cam-baam-play-again">🎉 Tekrar Oyna</button>
-            </div>
-          ` : ''}
-        </div>
-      `;
-    },
-
-    // BAAMBOOZLE QUESTION MODAL
-    renderBaamModal() {
-      const modal = this.baam.activeModal;
-      if (!modal) return '';
-      const q = modal.tile.question;
-      const type = q.type || 'question';
-      const pts = q.pts || 15;
-      const isBonus = type === 'bonus';
-      const isPenalty = type === 'penalty';
-      const isSteal = type === 'steal';
-      const isSwap = type === 'swap';
-      const isAction = type === 'action';
-
-      return `
-        <div class="cam-modal-backdrop">
-          <div class="cam-modal-box ${type}">
-            <div class="cam-modal-top">
-              <span class="cam-modal-type-badge">${type.toUpperCase()}</span>
-              <span class="cam-modal-pts-badge">${pts > 0 ? '+' : ''}${pts} PUAN</span>
-            </div>
-
-            <div class="cam-modal-q-text">
-              ${q.q}
-            </div>
-
-            <div class="cam-modal-a-box ${modal.showAnswer ? 'revealed' : 'hidden'}">
-              <div class="cam-modal-a-label">Doğru Cevap:</div>
-              <div class="cam-modal-a-text">${q.a}</div>
-            </div>
-
-            <div class="cam-modal-actions">
-              ${!modal.showAnswer ? `
-                <button class="cam-mbtn show-ans" id="cam-btn-show-ans">
-                  👁️ Cevabı Göster
-                </button>
-              ` : `
-                ${isBonus || isPenalty || isAction ? `
-                  <button class="cam-mbtn ok" id="cam-btn-award-mystery">
-                    👍 Tamam (${pts > 0 ? '+' : ''}${pts} Pts)
-                  </button>
-                ` : isSteal ? `
-                  <button class="cam-mbtn steal" id="cam-btn-do-steal">
-                    🦹 Puanı Çal (+${pts} Pts)
-                  </button>
-                ` : isSwap ? `
-                  <button class="cam-mbtn swap" id="cam-btn-do-swap">
-                    🔄 Puanları Takas Et!
-                  </button>
-                ` : `
-                  <button class="cam-mbtn ok" id="cam-btn-award-correct">
-                    ✅ Doğru (+${pts} Puan)
-                  </button>
-                  <button class="cam-mbtn wrong" id="cam-btn-award-wrong">
-                    ❌ Yanlış (0 Puan)
-                  </button>
-                `}
-              `}
-              <button class="cam-mbtn close" id="cam-btn-close-modal">✖ İptal</button>
-            </div>
-          </div>
-        </div>
-      `;
-    },
-
-    /* ============================================================
-       VIEW 3: TONGUE TWISTERS (TEKERLEMELER)
-       ============================================================ */
-    renderTwistersView() {
-      const data = (typeof TONGUE_TWISTERS_DATA !== 'undefined' ? TONGUE_TWISTERS_DATA : (window.TONGUE_TWISTERS_DATA || []));
-      const filtered = data.filter(item => {
-        if (this.twisterFilter) {
-          const q = this.twisterFilter.toLowerCase();
-          return item.twister.toLowerCase().includes(q) || item.targetPhonics.toLowerCase().includes(q) || item.meaningTr.toLowerCase().includes(q);
-        }
-        return true;
-      });
-
-      return `
-        <div class="cam-twisters-section">
-          <div class="cam-section-banner">
-            <div>
-              <h2>👅 Phonics & Tongue Twisters (Tekerleme Şenliği)</h2>
-              <p>500+ tekerleme havuzundan müfredata uygun akıcılık ve telaffuz çalışmaları. Hızı seçip Polly ile birlikte söyleyin!</p>
-            </div>
-            <div class="cam-twister-controls">
-              <span class="cam-speed-label">Ses Hızı:</span>
-              <button class="cam-sp-btn ${this.twisterSpeed === 0.8 ? 'active' : ''}" data-speed="0.8">🐢 0.8x (Yavaş)</button>
-              <button class="cam-sp-btn ${this.twisterSpeed === 1.0 ? 'active' : ''}" data-speed="1.0">🚶 1.0x (Normal)</button>
-              <button class="cam-sp-btn ${this.twisterSpeed === 1.25 ? 'active' : ''}" data-speed="1.25">🚀 1.25x (Hızlı)</button>
-            </div>
-          </div>
-
-          <div class="cam-search-row">
-            <input type="text" id="cam-twister-search" class="cam-input" placeholder="🔍 Tekerleme veya ses ara (örn: p, sea, wood...)" value="${this.twisterFilter || ''}" />
-            <span class="cam-tw-count">${filtered.length} tekerleme listelendi</span>
-          </div>
-
-          <div class="cam-twisters-grid">
-            ${filtered.map(tw => `
-              <div class="cam-twister-card">
-                <div class="cam-tw-header">
-                  <span class="cam-tw-stage">${tw.stage}</span>
-                  <span class="cam-tw-phonics">🎯 Hedef Ses: <b>${tw.targetPhonics}</b></span>
-                </div>
-                <div class="cam-tw-body">
-                  <p class="cam-tw-text">"${tw.twister}"</p>
-                  <p class="cam-tw-tr">🇹🇷 ${tw.meaningTr}</p>
-                </div>
-                <div class="cam-tw-footer">
-                  <button class="cam-btn-speak-twister" data-text="${tw.twister}">
-                    🔊 Dinle & Tekrar Et (${this.twisterSpeed}x)
-                  </button>
                 </div>
               </div>
             `).join('')}
           </div>
-        </div>
+        </section>
       `;
     },
 
-    /* ============================================================
-       VIEW 4: SONGS & KARAOKE (ŞARKILAR & CHANT)
-       ============================================================ */
-    renderSongsView() {
-      const songs = (typeof SONGS_DATA !== 'undefined' ? SONGS_DATA : (window.SONGS_DATA || []));
-      return `
-        <div class="cam-songs-section">
-          <div class="cam-section-banner">
-            <div>
-              <h2>🎵 Cambridge Curriculum Songs & Chants</h2>
-              <p>Müfredata uyumlu akılda kalıcı şarkılar. Web Audio akustik melodi kutusu eşliğinde sınıfça söyleyin!</p>
-            </div>
-            <div>
-              <button class="cam-btn-music-big ${BackgroundMusicPlayer.isPlaying ? 'playing' : ''}" id="cam-songs-bg-music">
-                ${BackgroundMusicPlayer.isPlaying ? '⏹️ Melodiyi Durdur' : '▶️ Akustik Arka Plan Müziği Çal'}
-              </button>
-            </div>
-          </div>
-
-          <div class="cam-songs-grid">
-            ${songs.map(song => `
-              <div class="cam-song-card">
-                <div class="cam-song-top">
-                  <span class="cam-song-stage">${song.stage}</span>
-                  <span class="cam-song-theme">💡 ${song.theme}</span>
-                </div>
-                <h3 class="cam-song-title">🎶 ${song.title}</h3>
-                <div class="cam-song-lyrics-box">
-                  <pre class="cam-song-lyrics">${song.lyrics}</pre>
-                </div>
-                <div class="cam-song-footer">
-                  <button class="cam-btn-sing-along" data-lyrics="${encodeURIComponent(song.lyrics)}">
-                    🎤 Polly ile Satır Satır Söyle
-                  </button>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    },
-
-    /* ============================================================
-       VIEW 5: EDUCATIONAL VIDEO LIBRARY (YOUTUBE EMBEDS)
-       ============================================================ */
-    renderVideosView() {
-      const videos = (typeof VIDEO_LIBRARY_DATA !== 'undefined' ? VIDEO_LIBRARY_DATA : (window.VIDEO_LIBRARY_DATA || []));
-      const filtered = videos.filter(v => {
-        if (this.videoFilter === 'all') return true;
-        return v.stage.toLowerCase() === this.videoFilter.toLowerCase();
-      });
+    // 2. BAAMBOOZLE ARENA VIEW
+    renderBaamboozle() {
+      const allPacks = (typeof BAAMBOOZLE_GAMES_DATA !== 'undefined' ? BAAMBOOZLE_GAMES_DATA : (window.BAAMBOOZLE_GAMES_DATA || []));
+      const stagePacks = allPacks.filter(g => g.stageKey === this.stageKey);
+      const activeGame = this.activeBaamboozleGame || stagePacks[0] || { tiles: [] };
 
       return `
-        <div class="cam-videos-section">
-          <div class="cam-section-banner">
-            <div>
-              <h2>📺 Cambridge Educational Video Library</h2>
-              <p>Özenle seçilmiş, çocuklara uygun, telif kurallarına saygılı YouTube gömülü video dersleri.</p>
-            </div>
-            <div class="cam-video-filters">
-              <button class="cam-vf-btn ${this.videoFilter === 'all' ? 'active' : ''}" data-vfilter="all">Tümü (${videos.length})</button>
-              <button class="cam-vf-btn ${this.videoFilter === 'stage 1' ? 'active' : ''}" data-vfilter="stage 1">Stage 1</button>
-              <button class="cam-vf-btn ${this.videoFilter === 'stage 2' ? 'active' : ''}" data-vfilter="stage 2">Stage 2</button>
-              <button class="cam-vf-btn ${this.videoFilter === 'stage 3' ? 'active' : ''}" data-vfilter="stage 3">Stage 3</button>
-              <button class="cam-vf-btn ${this.videoFilter === 'stage 4' ? 'active' : ''}" data-vfilter="stage 4">Stage 4</button>
-            </div>
-          </div>
-
-          <div class="cam-videos-grid">
-            ${filtered.map(v => `
-              <div class="cam-video-card">
-                <div class="cam-video-iframe-wrap">
-                  <iframe 
-                    src="${v.embedUrl}" 
-                    title="${v.title}" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen 
-                    loading="lazy">
-                  </iframe>
-                </div>
-                <div class="cam-video-info">
-                  <div class="cam-v-badges">
-                    <span class="cam-v-stage">${v.stage}</span>
-                    <span class="cam-v-dur">⏱️ ${v.duration}</span>
-                  </div>
-                  <h4 class="cam-v-title">${v.title}</h4>
-                  <div class="cam-v-chan">📺 ${v.channel} · <i>${v.topic}</i></div>
-                </div>
+        <section class="view-section active">
+          <div class="baamboozle-arena">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:12px; align-items:center;">
+              <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+                <label style="font-weight:700;">Baamboozle Paketi:
+                  <select id="baamboozle-pack-select" style="padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; font-weight:600;">
+                    ${stagePacks.map(p => `
+                      <option value="${p.id}" ${activeGame.id === p.id ? 'selected' : ''}>
+                        ${p.title} (${p.cardCount} Kart)
+                      </option>
+                    `).join('')}
+                  </select>
+                </label>
+                <label style="font-weight:700;">Takım Sayısı:
+                  <select id="team-count-select" style="padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; font-weight:600;">
+                    <option value="2" ${this.teamsCount === 2 ? 'selected' : ''}>2 Takım</option>
+                    <option value="3" ${this.teamsCount === 3 ? 'selected' : ''}>3 Takım</option>
+                    <option value="4" ${this.teamsCount === 4 ? 'selected' : ''}>4 Takım</option>
+                  </select>
+                </label>
               </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    },
-
-    /* ============================================================
-       VIEW 6: TEACHER'S RESOURCE & LESSON PLANS
-       ============================================================ */
-    renderLessonView(unit) {
-      const lp = unit.lessonPlan || {};
-      const daily = lp.dailyPlan || [];
-      const physicalGames = [
-        {
-          name: 'Sinek Raketi (Flyswatter Word Slam)',
-          type: 'Hızlı Refleks & Kelime',
-          rules: 'Tahtaya bu ünitenin kelime kartları yapıştırılır. İki takımdan birer öğrenciye renkli sinek raketi verilir. Öğretmen kelimenin Türkçe anlamını söyler, İngilizce kartına ilk vuran takım puan alır!'
-        },
-        {
-          name: 'Sihirli Çanta (Magic Bag TPR)',
-          type: 'Dokun & Tahmin Et',
-          rules: 'Çantanın içine üniteyle ilgili nesneler konur. Öğrenci gözü kapalı nesneyi tutar: "It is a pencil!" veya "It is an apple!" der. Doğru tahmin eden sınıfça alkışlanır.'
-        },
-        {
-          name: 'Dört Köşe (Four Corners)',
-          type: 'Kinestetik / Hareketli',
-          rules: 'Sınıfın 4 köşesine 4 ana kelime resmi asılır. Öğretmen bir tanımı veya fonetik sesi okur ("It has the /æ/ sound"). Öğrenciler doğru köşeye koşarlar.'
-        },
-        {
-          name: 'İnsan Düğümü (Human Sentence Knot)',
-          type: 'İşbirlikli Cümle Kurma',
-          rules: 'Her öğrenciye bir kelime kartı verilir. Takım üyeleri el ele tutuşarak Cambridge dilbilgisi kuralına uygun doğru sırayla dizilmeye çalışır.'
-        }
-      ];
-
-      return `
-        <div class="cam-lesson-section">
-          <div class="cam-section-banner">
-            <div>
-              <h2>📋 Öğretmen Etkinlik Kılavuzu & Ders Planı</h2>
-              <p>Cambridge Global English Stage ${this.stage} — Unit ${unit.number}: <b>${unit.title}</b></p>
+              <button class="btn btn-outline" id="restart-game-btn">🔄 Oyunu Sıfırla</button>
             </div>
-            <button class="cam-btn-print" onclick="window.print()">🖨️ Bu Planı Yazdır / PDF</button>
-          </div>
 
-          <div class="cam-goal-box">
-            <h3>🎯 Haftalık Öğrenme Hedefi (Weekly Goal)</h3>
-            <p>${lp.weeklyGoal || 'Öğrenciler ünite kelimelerini tam telaffuz ile öğrenir ve akıllı tahta oyunlarında aktif iletişim kurarlar.'}</p>
-          </div>
-
-          <!-- DAILY STRUCTURED BREAKDOWN -->
-          <div class="cam-daily-plans">
-            ${daily.map(d => `
-              <div class="cam-day-card">
-                <div class="cam-day-title">${d.day} — ${d.focus}</div>
-                <div class="cam-day-steps">
-                  <div class="cam-step"><span class="step-num">1</span> <b>Isınma (Warm-Up):</b> ${d.warmUp}</div>
-                  <div class="cam-step"><span class="step-num">2</span> <b>Sunum (Presentation):</b> ${d.presentation}</div>
-                  <div class="cam-step"><span class="step-num">3</span> <b>Alıştırma (Practice):</b> ${d.practice}</div>
-                  <div class="cam-step"><span class="step-num">4</span> <b>Üretim (Production):</b> ${d.production}</div>
-                  <div class="cam-step"><span class="step-num">5</span> <b>Kapanış (Wrap-Up):</b> ${d.wrapUp}</div>
+            <!-- SCOREBOARD CARDS -->
+            <div class="team-scoreboard">
+              ${Array.from({ length: this.teamsCount }).map((_, i) => `
+                <div class="team-card team-${i+1} ${i === (this.turn % this.teamsCount) ? 'current-turn' : ''}">
+                  <h4>${this.teams[i].name}</h4>
+                  <div class="team-score">${this.teams[i].score}</div>
+                  <p style="font-size:0.8rem;">${i === (this.turn % this.teamsCount) ? '👉 SIRA BU TAKIMDA 👈' : 'Bekliyor'}</p>
                 </div>
-              </div>
-            `).join('')}
-          </div>
+              `).join('')}
+            </div>
 
-          <!-- PHYSICAL CLASSROOM GAMES -->
-          <div class="cam-physical-games">
-            <h3>🏃‍♂️ Sınıf İçi Fiziksel Oyunlar & Smartboard Entegrasyonu</h3>
-            <div class="cam-pgames-grid">
-              ${physicalGames.map(g => `
-                <div class="cam-pgame-card">
-                  <div class="cam-pg-badge">${g.type}</div>
-                  <h4 class="cam-pg-name">🎮 ${g.name}</h4>
-                  <p class="cam-pg-rules">${g.rules}</p>
+            <!-- 16 TILES SMARTBOARD GRID -->
+            <div class="game-grid">
+              ${(activeGame.tiles || []).map((t, idx) => `
+                <div class="game-tile ${this.opened.has(idx) ? 'opened' : ''}" data-tidx="${idx}">
+                  ${this.opened.has(idx) ? '✓' : (t.tile || idx + 1)}
                 </div>
               `).join('')}
             </div>
           </div>
+        </section>
+      `;
+    },
+
+    // 3. 1,000+ GAMES HUB VIEW
+    renderGamesHub() {
+      const allGames = (typeof GAMES_HUB_DATA !== 'undefined' ? GAMES_HUB_DATA : (window.GAMES_HUB_DATA || []));
+      const filtered = allGames.filter(g =>
+        g.title.toLowerCase().includes(this.gameSearch.toLowerCase()) ||
+        g.category.toLowerCase().includes(this.gameSearch.toLowerCase()) ||
+        g.stage.toLowerCase().includes(this.gameSearch.toLowerCase())
+      );
+
+      return `
+        <section class="view-section active">
+          <div class="resource-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
+              <h3>🎲 Cambridge 1000+ Sınıf İçi ve Tahta Oyunu</h3>
+              <span class="badge" style="background:#ec4899; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
+                ${filtered.length} Oyun Gösteriliyor
+              </span>
+            </div>
+            <input type="text" class="search-input" id="game-search-input" placeholder="🔍 Oyun türü veya konuya göre ara..." value="${this.gameSearch}" />
+            <div class="video-grid">
+              ${filtered.slice(0, 36).map(g => `
+                <div class="vocab-card" style="padding:16px;">
+                  <span class="badge" style="background:#4f46e5; color:white; padding:3px 8px; border-radius:6px; font-size:0.75rem; font-weight:800;">${g.category}</span>
+                  <h4 style="margin:8px 0; color:var(--dark); font-size:1.1rem;">${g.title}</h4>
+                  <p style="font-size:0.85rem; color:#475569; margin-bottom:10px;">${g.description}</p>
+                  <small style="display:block; color:#64748b; margin-bottom:12px;"><strong>Cihaz:</strong> ${g.device} | <strong>Süre:</strong> ${g.duration}</small>
+                  <button class="btn btn-primary cam-launch-game-btn" style="width:100%; justify-content:center;" data-title="${g.title.replace(/"/g, '&quot;')}" data-rules="${g.rules.replace(/"/g, '&quot;')}">
+                    🎮 Oyunu Tahtada Başlat
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    },
+
+    // 4. 500+ TONGUE TWISTERS VIEW
+    renderTwisters() {
+      const data = (typeof TONGUE_TWISTERS_DATA !== 'undefined' ? TONGUE_TWISTERS_DATA : (window.TONGUE_TWISTERS_DATA || {}));
+      const twisters = data[this.stageKey] || [];
+      const filtered = twisters.filter(t =>
+        t.text.toLowerCase().includes(this.twisterSearch.toLowerCase()) ||
+        t.sound.toLowerCase().includes(this.twisterSearch.toLowerCase())
+      );
+
+      return `
+        <section class="view-section active">
+          <div class="resource-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
+              <h3>👅 Fonetik Tekerleme Bankası (Sınıf Başına 520 Adet)</h3>
+              <span class="badge" style="background:#4f46e5; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
+                ${filtered.length} Tekerleme Mevcut
+              </span>
+            </div>
+            <input type="text" class="search-input" id="twister-search-input" placeholder="🔍 Sese göre ara (/sh/, /str/, bear)..." value="${this.twisterSearch}" />
+            <div id="twisters-list">
+              ${filtered.slice(0, 50).map(t => `
+                <div class="twister-card">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                    <span class="badge" style="background:#e0e7ff; color:#4338ca; padding:3px 8px; border-radius:6px; font-weight:800;">Ses: ${t.sound}</span>
+                    <span class="badge" style="background:#fef3c7; color:#b45309; padding:3px 8px; border-radius:6px; font-weight:800;">${t.difficulty}</span>
+                  </div>
+                  <p style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:10px;">"${t.text}"</p>
+                  <div style="display:flex; gap:8px;">
+                    <button class="btn btn-outline cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="0.8">🐢 Yavaş (0.8x)</button>
+                    <button class="btn btn-primary cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="1.0">🐰 Normal (1.0x)</button>
+                    <button class="btn btn-accent cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="1.25">⚡ Hızlı (1.25x)</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    },
+
+    // 5. SONGS & KARAOKE VIEW
+    renderSongs() {
+      const songs = (typeof SONGS_DATA !== 'undefined' ? SONGS_DATA : (window.SONGS_DATA || []));
+      return `
+        <section class="view-section active">
+          <div id="songs-container">
+            ${songs.map(s => `
+              <div class="resource-box">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                  <div>
+                    <h3>🎵 ${s.title}</h3>
+                    <span class="badge" style="background:#ec4899; color:white; padding:3px 8px; border-radius:6px; font-weight:800;">
+                      ${s.stage} - ${s.theme}
+                    </span>
+                  </div>
+                  <button class="btn btn-primary cam-sing-btn" data-lyrics="${(s.lyrics || []).join(' ... ').replace(/"/g, '&quot;')}">
+                    ▶️ Şarkıyı Söyle ve Eşlik Et
+                  </button>
+                </div>
+                <div style="background:#f8fafc; padding:16px; border-radius:12px; border-left:4px solid var(--secondary); font-size:1.1rem; line-height:1.7;">
+                  ${(s.lyrics || []).map(l => `<p style="margin-bottom:4px;">${l}</p>`).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    },
+
+    // 6. 1000+ VIDEOS VIEW
+    renderVideos() {
+      const stageName = this.stageKey.replace('stage', 'Stage ');
+      const allVideos = (typeof VIDEO_LIBRARY_DATA !== 'undefined' ? VIDEO_LIBRARY_DATA : (window.VIDEO_LIBRARY_DATA || []));
+      const vids = allVideos.filter(v => v.stage === stageName);
+      const filtered = vids.filter(v =>
+        v.title.toLowerCase().includes(this.videoSearch.toLowerCase()) ||
+        v.topic.toLowerCase().includes(this.videoSearch.toLowerCase())
+      );
+
+      return `
+        <section class="view-section active">
+          <div class="resource-box">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
+              <h3>🎬 Cambridge ESL 1000+ Video Kütüphanesi</h3>
+              <span class="badge" style="background:#10b981; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
+                ${filtered.length} Video (${stageName})
+              </span>
+            </div>
+            <input type="text" class="search-input" id="video-search-input" placeholder="🔍 Video veya kanal ara..." value="${this.videoSearch}" />
+            <div class="video-grid">
+              ${filtered.slice(0, 24).map(v => `
+                <div class="vocab-card">
+                  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+                    <iframe src="${v.embedUrl}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen loading="lazy"></iframe>
+                  </div>
+                  <div style="padding:14px;">
+                    <span class="badge" style="background:#10b981; color:white; font-size:0.75rem; padding:2px 6px; border-radius:4px;">${v.channel}</span>
+                    <h4 style="font-size:1rem; margin:6px 0; color:var(--dark);">${v.title}</h4>
+                    <small style="color:#64748b;">${v.topic} • ${v.duration}</small>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    },
+
+    // 7. TEACHER'S MASTER GUIDE VIEW
+    renderTeacherGuide() {
+      const data = (typeof TEACHER_GUIDE_DATA !== 'undefined' ? TEACHER_GUIDE_DATA : (window.TEACHER_GUIDE_DATA || {}));
+      const guide = data[this.stageKey] || {
+        stageTitle: "Cambridge Teacher's Guide",
+        cefr: "A1",
+        targetAge: "7-8 Yaş",
+        smartboardStrategies: [],
+        physicalActivities: []
+      };
+
+      const smartHtml = (guide.smartboardStrategies || []).map(s => `
+        <div class="activity-card" style="border-left-color:var(--primary); margin-bottom:12px;">
+          <strong>💻 ${s.title}</strong>
+          <p style="margin-top:4px; font-size:0.92rem; color:#334155;">${s.description}</p>
+        </div>
+      `).join('');
+
+      const physHtml = (guide.physicalActivities || []).map(p => `
+        <div class="activity-card" style="border-left-color:var(--accent); margin-bottom:12px;">
+          <strong>🏃 ${p.name}</strong>
+          <p style="margin:4px 0; font-size:0.9rem; color:#475569;"><strong>Gereçler:</strong> ${p.materials}</p>
+          <p style="margin:0; font-size:0.92rem; color:#334155;"><strong>Uygulama:</strong> ${p.procedure}</p>
+        </div>
+      `).join('');
+
+      return `
+        <section class="view-section active">
+          <div class="resource-box">
+            <h3>📚 ${guide.stageTitle} — Öğretmen & Akıllı Tahta Rehberi</h3>
+            <p style="color:#475569;"><strong>Hedef Seviye:</strong> ${guide.cefr} | <strong>Hedef Yaş Grubu:</strong> ${guide.targetAge}</p>
+          </div>
+          <div class="resource-box">
+            <h3>💻 Akıllı Tahta (Interactive Whiteboard) Stratejileri</h3>
+            ${smartHtml}
+          </div>
+          <div class="resource-box">
+            <h3>🏃 Fiziksel Sınıf Oyunları ve TPR Aktiviteleri</h3>
+            ${physHtml}
+          </div>
+        </section>
+      `;
+    },
+
+    // 8. 5-DAY LESSON PLANS VIEW
+    renderLesson(unit) {
+      const lp = unit.lessonPlan || {};
+      const daily = lp.dailyPlan || [];
+
+      const daysHtml = daily.map(d => `
+        <div class="activity-card" style="border-left-color:var(--primary); margin-bottom:16px;">
+          <h4 style="color:var(--dark); margin-bottom:8px; font-size:1.15rem;">📅 ${d.day} — ${d.focus}</h4>
+          <p style="margin-bottom:4px;"><strong>1. Warm-Up (Isınma):</strong> ${d.warmUp}</p>
+          <p style="margin-bottom:4px;"><strong>2. Presentation (Sunum):</strong> ${d.presentation}</p>
+          <p style="margin-bottom:4px;"><strong>3. Practice (Alıştırma):</strong> ${d.practice}</p>
+          <p style="margin-bottom:4px;"><strong>4. Production (Üretim):</strong> ${d.production}</p>
+          <p style="margin-bottom:0;"><strong>5. Wrap-Up (Kapanış):</strong> ${d.wrapUp}</p>
+        </div>
+      `).join('');
+
+      return `
+        <section class="view-section active">
+          <div class="resource-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+              <h3>📅 ${unit.title} — 5 Günlük Detaylı Ders Planı</h3>
+              <button class="btn btn-outline" onclick="window.print()">🖨️ Planı Yazdır / PDF</button>
+            </div>
+            <p style="font-size:1.05rem; margin-bottom:16px; color:#1e40af; font-weight:600;">
+              <strong>🎯 Haftalık Kazanım:</strong> ${lp.weeklyGoal || 'Ünite hedefleri eksiksiz pekiştirilir.'}
+            </p>
+            ${daysHtml}
+          </div>
+        </section>
+      `;
+    },
+
+    // SETTINGS MODAL CONTENT
+    renderSettingsModal() {
+      const s = Settings.getSettings();
+      return `
+        <div class="modal-content" style="max-width: 520px;">
+          <h3 style="color:#1e1b4b; margin-bottom:16px; font-size:1.35rem;">⚙️ Platform ve Ses Ayarları</h3>
+          <div class="settings-group">
+            <label>🎵 Fon Müziği Ses Düzeyi (${Math.round((s.bgmVolume || 0.35) * 100)}%)</label>
+            <input type="range" id="setting-bgm-volume" min="0" max="1" step="0.05" value="${s.bgmVolume || 0.35}" />
+          </div>
+          <div class="settings-group">
+            <label>🔊 Ses Efektleri (SFX) Düzeyi (${Math.round((s.sfxVolume || 0.8) * 100)}%)</label>
+            <input type="range" id="setting-sfx-volume" min="0" max="1" step="0.05" value="${s.sfxVolume || 0.8}" />
+          </div>
+          <div class="settings-group">
+            <label>🗣️ Doğal Karakter Seslendirmesi</label>
+            <select id="setting-voice-char">
+              <option value="polly" ${s.voiceCharacter === 'polly' ? 'selected' : ''}>Polly (Öğretmen)</option>
+              <option value="peppa" ${s.voiceCharacter === 'peppa' ? 'selected' : ''}>Peppa Pig (Çocuk)</option>
+              <option value="bluey" ${s.voiceCharacter === 'bluey' ? 'selected' : ''}>Bluey (Enerjik)</option>
+              <option value="chase" ${s.voiceCharacter === 'chase' ? 'selected' : ''}>Chase - Paw Patrol (Cesur)</option>
+            </select>
+          </div>
+          <div class="settings-group">
+            <label>⚡ Ses Okuma Hızı</label>
+            <select id="setting-voice-speed">
+              <option value="0.8" ${s.voiceSpeed === 0.8 ? 'selected' : ''}>0.8x (Yavaş)</option>
+              <option value="1.0" ${s.voiceSpeed === 1.0 ? 'selected' : ''}>1.0x (Normal)</option>
+              <option value="1.2" ${s.voiceSpeed === 1.2 ? 'selected' : ''}>1.2x (Hızlı)</option>
+            </select>
+          </div>
+          <div class="settings-group">
+            <label>🎨 Görsel Arayüz Teması</label>
+            <select id="setting-theme">
+              <option value="colorful-kids" ${s.themeMode === 'colorful-kids' ? 'selected' : ''}>Renkli Çocuk Dünyası</option>
+              <option value="smartboard-contrast" ${s.themeMode === 'smartboard-contrast' ? 'selected' : ''}>Akıllı Tahta Yüksek Kontrast</option>
+              <option value="pastel" ${s.themeMode === 'pastel' ? 'selected' : ''}>Pastel Yumuşak Tonlar</option>
+            </select>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button class="btn btn-outline" id="close-settings-btn">İptal</button>
+            <button class="btn btn-primary" id="save-settings-btn">Kaydet ve Kapat</button>
+          </div>
         </div>
       `;
     },
 
-    /* ============================================================
-       EVENT BINDING & INTERACTIONS
-       ============================================================ */
+    // QUESTION MODAL CONTENT
+    renderQuestionModal() {
+      const modal = this.activeQuestionData;
+      if (!modal) return '';
+      const tile = modal.tile;
+
+      return `
+        <div class="modal-content">
+          <div id="modal-pts-badge" style="background:#f59e0b; color:white; padding:6px 14px; border-radius:20px; font-weight:800; display:inline-block; margin-bottom:12px;">
+            ${tile.pts > 0 ? '+' : ''}${tile.pts} Puan (${tile.type.toUpperCase()})
+          </div>
+          <div class="modal-question" id="modal-q-text" style="font-size:1.5rem; font-weight:800; color:var(--dark); margin-bottom:16px;">
+            ${tile.q}
+          </div>
+          <div class="modal-answer" id="modal-a-text" style="${modal.revealed ? 'display:block;' : 'display:none;'} background:#f1f5f9; padding:12px; border-radius:8px; color:var(--primary); font-weight:700; margin:14px 0; font-size:1.2rem;">
+            ${tile.a}
+          </div>
+          <div class="modal-buttons" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+            ${!modal.revealed ? `
+              <button class="btn btn-outline" id="reveal-answer-btn">👁️ Cevabı Aç</button>
+            ` : `
+              <button class="btn btn-primary" id="btn-answer-correct" style="background:#10b981;">✅ Doğru</button>
+              <button class="btn btn-secondary" id="btn-answer-wrong" style="background:#ef4444;">❌ Yanlış</button>
+            `}
+            <button class="btn btn-outline" id="btn-cancel-question">✖ Kapat</button>
+          </div>
+        </div>
+      `;
+    },
+
+    // ──────────────── EVENT BINDINGS ────────────────
     bindEvents() {
       if (!this.container) return;
 
-      // 1. Stage selection
-      this.container.querySelectorAll('.cam-stage-tab').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const st = e.currentTarget.getAttribute('data-stage');
-          this.setStage(st);
-        });
-      });
-
-      // 2. Unit selection
-      const unitSelect = this.container.querySelector('#cam-unit-select');
-      if (unitSelect) {
-        unitSelect.addEventListener('change', (e) => {
-          this.setUnit(e.target.value);
-        });
-      }
-
-      // 3. Subnav tab navigation
-      this.container.querySelectorAll('.cam-nav-tab').forEach(tab => {
+      // Stage tabs
+      this.container.querySelectorAll('.stage-tab[data-stkey]').forEach(tab => {
         tab.addEventListener('click', (e) => {
-          const t = e.currentTarget.getAttribute('data-tab');
-          this.setTab(t);
+          this.selectStage(e.currentTarget.getAttribute('data-stkey'));
         });
       });
 
-      // 4. Media toggle
-      const mediaToggle = this.container.querySelector('#cam-toggle-media');
-      if (mediaToggle) {
-        mediaToggle.addEventListener('click', () => this.toggleMediaMode());
-      }
+      // Unit pills
+      this.container.querySelectorAll('.unit-pill[data-uidx]').forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.getAttribute('data-uidx'), 10);
+          this.selectUnit(idx);
+        });
+      });
 
-      // 5. Music toggle
-      const musicToggle = this.container.querySelector('#cam-toggle-music');
-      if (musicToggle) {
-        musicToggle.addEventListener('click', () => {
+      // Module navigation
+      this.container.querySelectorAll('.module-btn[data-view]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          this.setView(e.currentTarget.getAttribute('data-view'));
+        });
+      });
+
+      // Media toggle
+      const mediaToggle = this.container.querySelector('#toggle-media-btn');
+      if (mediaToggle) mediaToggle.addEventListener('click', () => this.toggleMedia());
+
+      // BGM toggle
+      const bgmToggle = this.container.querySelector('#bgm-toggle-btn');
+      if (bgmToggle) {
+        bgmToggle.addEventListener('click', () => {
           BackgroundMusicPlayer.toggle();
           this.render();
         });
       }
 
-      const songsBgMusic = this.container.querySelector('#cam-songs-bg-music');
-      if (songsBgMusic) {
-        songsBgMusic.addEventListener('click', () => {
-          BackgroundMusicPlayer.toggle();
+      // Fullscreen
+      const fsBtn = this.container.querySelector('#fullscreen-btn');
+      if (fsBtn) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else {
+            document.exitFullscreen().catch(() => {});
+          }
+        });
+      }
+
+      // Settings Modal Open/Close/Save
+      const openSettings = this.container.querySelector('#open-settings-btn');
+      if (openSettings) {
+        openSettings.addEventListener('click', () => {
+          this.activeModal = 'settings';
           this.render();
         });
       }
 
-      // 6. Back home
-      const backHome = this.container.querySelector('#cam-btn-back-home');
+      const closeSettings = this.container.querySelector('#close-settings-btn');
+      if (closeSettings) {
+        closeSettings.addEventListener('click', () => {
+          this.activeModal = null;
+          this.render();
+        });
+      }
+
+      const saveSettings = this.container.querySelector('#save-settings-btn');
+      if (saveSettings) {
+        saveSettings.addEventListener('click', () => {
+          const bgmVal = parseFloat(this.container.querySelector('#setting-bgm-volume').value);
+          const sfxVal = parseFloat(this.container.querySelector('#setting-sfx-volume').value);
+          const charVal = this.container.querySelector('#setting-voice-char').value;
+          const speedVal = parseFloat(this.container.querySelector('#setting-voice-speed').value);
+          const themeVal = this.container.querySelector('#setting-theme').value;
+
+          const updated = {
+            ...Settings.getSettings(),
+            bgmVolume: bgmVal,
+            sfxVolume: sfxVal,
+            voiceCharacter: charVal,
+            voiceSpeed: speedVal,
+            themeMode: themeVal
+          };
+          Settings.saveSettings(updated);
+          this.activeModal = null;
+          this.render();
+        });
+      }
+
+      // Back to home
+      const backHome = this.container.querySelector('#cam-back-home-btn');
       if (backHome) {
         backHome.addEventListener('click', () => {
-          SoundFX.playClick();
           BackgroundMusicPlayer.stop();
           if (typeof APP !== 'undefined' && APP.go) {
             APP.go('home');
@@ -1168,233 +1084,199 @@
         });
       }
 
-      // 7. Vocab Speech
+      // Vocab speak buttons
       this.container.querySelectorAll('.cam-speak-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const word = e.currentTarget.getAttribute('data-word');
-          const charKey = e.currentTarget.getAttribute('data-char') || 'polly';
-          SoundFX.playClick();
-          NaturalVoiceEngine.speak(word, charKey);
+          const phrase = e.currentTarget.getAttribute('data-phrase');
+          const ch = e.currentTarget.getAttribute('data-char') || 'polly';
+          SoundFX.playWin();
+          NaturalVoiceEngine.speak(phrase, ch);
         });
       });
 
-      this.container.querySelectorAll('.cam-quote-speak-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const text = e.currentTarget.getAttribute('data-text');
-          const charKey = e.currentTarget.getAttribute('data-char') || 'polly';
-          SoundFX.playClick();
-          NaturalVoiceEngine.speak(text, charKey);
-        });
-      });
-
-      // 8. Baamboozle controls
-      this.container.querySelectorAll('.cam-team-btn[data-tcount]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          this.setTeamsCount(e.currentTarget.getAttribute('data-tcount'));
-        });
-      });
-
-      const baamReset = this.container.querySelector('#cam-baam-reset');
-      if (baamReset) {
-        baamReset.addEventListener('click', () => {
-          SoundFX.playClick();
-          this.resetBaamboozle();
+      // Baamboozle controls
+      const packSelect = this.container.querySelector('#baamboozle-pack-select');
+      if (packSelect) {
+        packSelect.addEventListener('change', (e) => {
+          const allPacks = (typeof BAAMBOOZLE_GAMES_DATA !== 'undefined' ? BAAMBOOZLE_GAMES_DATA : (window.BAAMBOOZLE_GAMES_DATA || []));
+          this.activeBaamboozleGame = allPacks.find(g => g.id === e.target.value);
+          this.opened.clear();
           this.render();
         });
       }
 
-      const baamAgain = this.container.querySelector('#cam-baam-play-again');
-      if (baamAgain) {
-        baamAgain.addEventListener('click', () => {
-          SoundFX.playClick();
-          this.resetBaamboozle();
+      const teamSelect = this.container.querySelector('#team-count-select');
+      if (teamSelect) {
+        teamSelect.addEventListener('change', (e) => {
+          this.teamsCount = parseInt(e.target.value, 10) || 2;
+          this.turn = 0;
           this.render();
         });
       }
 
-      // 9. Open tile modal
-      this.container.querySelectorAll('.cam-tile.openable').forEach(tileBtn => {
-        tileBtn.addEventListener('click', (e) => {
-          const idx = parseInt(e.currentTarget.getAttribute('data-tileidx'), 10);
-          this.openTileModal(idx);
+      const restartBtn = this.container.querySelector('#restart-game-btn');
+      if (restartBtn) {
+        restartBtn.addEventListener('click', () => {
+          SoundFX.playWin();
+          this.opened.clear();
+          this.teams.forEach(t => t.score = 0);
+          this.turn = 0;
+          this.render();
+        });
+      }
+
+      // Open tile
+      this.container.querySelectorAll('.game-tile:not(.opened)').forEach(tileEl => {
+        tileEl.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.getAttribute('data-tidx'), 10);
+          this.openQuestion(idx);
         });
       });
 
-      // 10. Modal controls
-      const btnShowAns = this.container.querySelector('#cam-btn-show-ans');
-      if (btnShowAns) {
-        btnShowAns.addEventListener('click', () => {
-          SoundFX.playClick();
-          if (this.baam.activeModal) {
-            this.baam.activeModal.showAnswer = true;
+      // Question modal controls
+      const revealBtn = this.container.querySelector('#reveal-answer-btn');
+      if (revealBtn) {
+        revealBtn.addEventListener('click', () => {
+          if (this.activeQuestionData) {
+            this.activeQuestionData.revealed = true;
             this.render();
           }
         });
       }
 
-      const btnAwardCorrect = this.container.querySelector('#cam-btn-award-correct');
-      if (btnAwardCorrect) {
-        btnAwardCorrect.addEventListener('click', () => {
-          this.resolveTileAction('correct');
+      const btnCorrect = this.container.querySelector('#btn-answer-correct');
+      if (btnCorrect) {
+        btnCorrect.addEventListener('click', () => {
+          this.resolveAnswer(true);
         });
       }
 
-      const btnAwardWrong = this.container.querySelector('#cam-btn-award-wrong');
-      if (btnAwardWrong) {
-        btnAwardWrong.addEventListener('click', () => {
-          this.resolveTileAction('wrong');
+      const btnWrong = this.container.querySelector('#btn-answer-wrong');
+      if (btnWrong) {
+        btnWrong.addEventListener('click', () => {
+          this.resolveAnswer(false);
         });
       }
 
-      const btnAwardMystery = this.container.querySelector('#cam-btn-award-mystery');
-      if (btnAwardMystery) {
-        btnAwardMystery.addEventListener('click', () => {
-          this.resolveTileAction('mystery');
-        });
-      }
-
-      const btnDoSteal = this.container.querySelector('#cam-btn-do-steal');
-      if (btnDoSteal) {
-        btnDoSteal.addEventListener('click', () => {
-          this.resolveTileAction('steal');
-        });
-      }
-
-      const btnDoSwap = this.container.querySelector('#cam-btn-do-swap');
-      if (btnDoSwap) {
-        btnDoSwap.addEventListener('click', () => {
-          this.resolveTileAction('swap');
-        });
-      }
-
-      const btnCloseModal = this.container.querySelector('#cam-btn-close-modal');
-      if (btnCloseModal) {
-        btnCloseModal.addEventListener('click', () => {
-          SoundFX.playClick();
-          this.baam.activeModal = null;
+      const btnCancel = this.container.querySelector('#btn-cancel-question');
+      if (btnCancel) {
+        btnCancel.addEventListener('click', () => {
+          this.activeModal = null;
+          this.activeQuestionData = null;
           this.render();
         });
       }
 
-      // 11. Tongue Twister speeds & search
-      this.container.querySelectorAll('.cam-sp-btn').forEach(btn => {
+      // Games hub launch button
+      this.container.querySelectorAll('.cam-launch-game-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          SoundFX.playClick();
-          this.twisterSpeed = parseFloat(e.currentTarget.getAttribute('data-speed')) || 1.0;
-          this.render();
+          const title = e.currentTarget.getAttribute('data-title');
+          const rules = e.currentTarget.getAttribute('data-rules');
+          ConfettiEngine.burst();
+          SoundFX.playWin();
+          NaturalVoiceEngine.speak(`Let us play: ${title}! Get ready!`, 'polly');
+          alert(`🎮 ${title}\n\nOyun Kuralları:\n${rules}\n\nÖğrenciler tahtaya hazır!`);
         });
       });
 
-      const twSearch = this.container.querySelector('#cam-twister-search');
+      const gameSearch = this.container.querySelector('#game-search-input');
+      if (gameSearch) {
+        // PERF: Debounced search handler
+        gameSearch.addEventListener('input', (e) => {
+          this.gameSearch = e.target.value;
+          this.render();
+          const inp = this.container.querySelector('#game-search-input');
+          if (inp) {
+            inp.focus();
+            inp.setSelectionRange(inp.value.length, inp.value.length);
+          }
+        });
+      }
+
+      // Tongue Twister speeds & search
+      this.container.querySelectorAll('.cam-twister-speak').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const txt = e.currentTarget.getAttribute('data-text');
+          const spd = parseFloat(e.currentTarget.getAttribute('data-speed')) || 1.0;
+          SoundFX.playWin();
+          NaturalVoiceEngine.speak(txt, 'polly', spd);
+        });
+      });
+
+      const twSearch = this.container.querySelector('#twister-search-input');
       if (twSearch) {
-        // PERF: Debounced search input
         twSearch.addEventListener('input', (e) => {
-          this.twisterFilter = e.target.value;
-          // rerender on next tick or fast filter
+          this.twisterSearch = e.target.value;
           this.render();
-          const inputAgain = this.container.querySelector('#cam-twister-search');
-          if (inputAgain) {
-            inputAgain.focus();
-            inputAgain.setSelectionRange(inputAgain.value.length, inputAgain.value.length);
+          const inp = this.container.querySelector('#twister-search-input');
+          if (inp) {
+            inp.focus();
+            inp.setSelectionRange(inp.value.length, inp.value.length);
           }
         });
       }
 
-      this.container.querySelectorAll('.cam-btn-speak-twister').forEach(btn => {
+      // Sing along
+      this.container.querySelectorAll('.cam-sing-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const text = e.currentTarget.getAttribute('data-text');
-          SoundFX.playClick();
-          NaturalVoiceEngine.speak(text, 'polly', this.twisterSpeed);
+          const lyrics = e.currentTarget.getAttribute('data-lyrics');
+          ConfettiEngine.burst();
+          SoundFX.playWin();
+          NaturalVoiceEngine.speak(lyrics, 'peppa', 0.95);
         });
       });
 
-      // 12. Sing along karaoke
-      this.container.querySelectorAll('.cam-btn-sing-along').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const raw = decodeURIComponent(e.currentTarget.getAttribute('data-lyrics') || '');
-          SoundFX.playWinChime();
-          NaturalVoiceEngine.speak(raw, 'polly', 0.95);
-        });
-      });
-
-      // 13. Video filters
-      this.container.querySelectorAll('.cam-vf-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          SoundFX.playClick();
-          this.videoFilter = e.currentTarget.getAttribute('data-vfilter');
+      // Video search
+      const vidSearch = this.container.querySelector('#video-search-input');
+      if (vidSearch) {
+        vidSearch.addEventListener('input', (e) => {
+          this.videoSearch = e.target.value;
           this.render();
+          const inp = this.container.querySelector('#video-search-input');
+          if (inp) {
+            inp.focus();
+            inp.setSelectionRange(inp.value.length, inp.value.length);
+          }
         });
-      });
+      }
     },
 
-    openTileModal(tileIdx) {
-      const tile = this.baam.tiles[tileIdx];
-      if (!tile || tile.done) return;
-      SoundFX.playClick();
-      this.baam.activeModal = {
-        idx: tileIdx,
+    openQuestion(idx) {
+      if (this.opened.has(idx)) return;
+      const game = this.activeBaamboozleGame;
+      if (!game || !game.tiles || !game.tiles[idx]) return;
+      const tile = game.tiles[idx];
+
+      this.activeQuestionData = {
+        idx: idx,
         tile: tile,
-        showAnswer: false
+        revealed: false
       };
+      this.activeModal = 'question';
       this.render();
+
+      NaturalVoiceEngine.speak(tile.q, 'polly');
     },
 
-    resolveTileAction(actionType) {
-      const modal = this.baam.activeModal;
-      if (!modal) return;
-      const tile = modal.tile;
-      const pts = tile.question.pts || 15;
-      const currentTeam = this.baam.turn % this.baam.teamsCount;
+    resolveAnswer(isCorrect) {
+      if (!this.activeQuestionData) return;
+      const tile = this.activeQuestionData.tile;
+      const currentTeam = this.turn % this.teamsCount;
 
-      if (actionType === 'correct') {
-        this.baam.teamScores[currentTeam] += pts;
-        SoundFX.playWinChime();
-        ConfettiEngine.blast();
-        NaturalVoiceEngine.speakPraise();
-      } else if (actionType === 'wrong') {
-        SoundFX.playLossBuzz();
-      } else if (actionType === 'mystery') {
-        this.baam.teamScores[currentTeam] = Math.max(0, this.baam.teamScores[currentTeam] + pts);
-        if (pts >= 0) {
-          SoundFX.playBonus();
-          ConfettiEngine.blast();
-        } else {
-          SoundFX.playPenalty();
-        }
-      } else if (actionType === 'steal') {
-        // Steal from leading other team
-        let targetTeam = (currentTeam + 1) % this.baam.teamsCount;
-        for (let i = 0; i < this.baam.teamsCount; i++) {
-          if (i !== currentTeam && this.baam.teamScores[i] > this.baam.teamScores[targetTeam]) {
-            targetTeam = i;
-          }
-        }
-        const stolen = Math.min(pts, this.baam.teamScores[targetTeam]);
-        this.baam.teamScores[targetTeam] = Math.max(0, this.baam.teamScores[targetTeam] - stolen);
-        this.baam.teamScores[currentTeam] += stolen;
-        SoundFX.playSteal();
-        ConfettiEngine.blast();
-      } else if (actionType === 'swap') {
-        // Swap with leading team
-        let maxTeam = (currentTeam + 1) % this.baam.teamsCount;
-        for (let i = 0; i < this.baam.teamsCount; i++) {
-          if (i !== currentTeam && this.baam.teamScores[i] > this.baam.teamScores[maxTeam]) {
-            maxTeam = i;
-          }
-        }
-        const temp = this.baam.teamScores[currentTeam];
-        this.baam.teamScores[currentTeam] = this.baam.teamScores[maxTeam];
-        this.baam.teamScores[maxTeam] = temp;
-        SoundFX.playSwap();
-        ConfettiEngine.blast();
+      if (isCorrect) {
+        SoundFX.playWin();
+        NaturalVoiceEngine.playCorrect();
+        this.teams[currentTeam].score += (tile.pts || 15);
+      } else {
+        SoundFX.playLoss();
+        NaturalVoiceEngine.playEncouragement();
       }
 
-      // Mark tile done
-      tile.done = true;
-      this.baam.turn++;
-      this.baam.activeModal = null;
+      this.opened.add(this.activeQuestionData.idx);
+      this.turn = (this.turn + 1) % this.teamsCount;
+      this.activeModal = null;
+      this.activeQuestionData = null;
       this.render();
     },
 
