@@ -468,7 +468,7 @@ const APP = {
     );
   },
 
-  /* ---------- 🎵 ŞARKI KÖŞESİ ---------- */
+  /* ---------- 🎵 ŞARKI & TEKERLEME KÖŞESİ ---------- */
   vSongs() {
     const st = this.songFilter.stage;
     const us = unitsOfStage(st);
@@ -479,8 +479,8 @@ const APP = {
       this.bar() +
       `
    <div class="unit-head songs" style="background:linear-gradient(120deg,#db2777,#f59e0b);color:#fff">
-     <span class="ue">🎵</span><div><h2 style="color:#fff">Şarkı & Chant Köşesi</h2>
-     <div class="sub" style="color:#ffe4e6">Toplam ${TOTALSONGS} şarkı & chant · ${SONGS.length} klasik + ${ALLCHANTS.length} ünite chant'i</div></div></div>
+     <span class="ue">🎵</span><div><h2 style="color:#fff">Songs & Rhymes · Şarkılar ve Tekerlemeler</h2>
+     <div class="sub" style="color:#ffe4e6">Children's Songs & Nursery Chants · Resimli & Müzikli Koleksiyon</div></div></div>
    <div class="song-tabs">
      ${STAGES.map(
        (s) =>
@@ -490,65 +490,89 @@ const APP = {
    <div class="word-wall">${us
      .map(
        (u) =>
-         `<span class="word-pill" data-sunit="${u.id}" style="${u.id === sel ? 'background:#fde68a;transform:scale(1.06);border-color:#f59e0b' : ''}">${u.emoji} ${u.tr}</span>`
+         `<span class="word-pill" data-sunit="${u.id}" style="${u.id === sel ? 'background:#fde68a;transform:scale(1.06);border-color:#f59e0b' : ''}">${u.emoji} ${u.title}</span>`
      )
      .join('')}</div>
-   <h3 style="margin:16px 0 8px">🎶 Klasik Şarkılar</h3>
+   <h3 style="margin:16px 0 8px">🎶 Sing-Along Songs (Çocuk Şarkıları)</h3>
    <div class="song-list">${
      classics.length
        ? classics
            .map(
              (s) => `
      <div class="song-item" data-song="${SONGS.indexOf(s)}"><span class="se">${s.e}</span>
-       <h4>${s.t}${(typeof SONGVID !== 'undefined' && SONGVID[SONGS.indexOf(s)]) ? ' <span class="badge gold" style="font-size:.68em">🎬 gerçek şarkı</span>' : ''}</h4><div class="tune">🎼 ${s.tune}</div></div>`
+       <h4>${esc(s.t)} <span class="badge gold" style="font-size:.68em">🎬 Gerçek Müzik</span></h4>
+       <div class="tune">🎼 ${esc(s.tune)}</div></div>`
            )
            .join('')
-       : '<div class="muted">Bu ünitede klasik şarkı yok — chant’lere göz at! 👇</div>'
+       : '<div class="muted">Bu ünitede tekerlemelere göz atın! 👇</div>'
    }</div>
-   <h3 style="margin:16px 0 8px">🗣️ Kelime Chant’leri <span class="badge">${chants.length}</span></h3>
+   <h3 style="margin:16px 0 8px">🗣️ Nursery Rhymes & Chants (Tekerlemeler) <span class="badge">${chants.length}</span></h3>
    <div class="song-list">${chants
      .map(
        (c) => `
      <div class="song-item" data-chant="${ALLCHANTS.indexOf(c)}"><span class="se">${c.e}</span>
-       <h4>${c.t}</h4><div class="tune">🥁 Ritmik chant</div></div>`
+       <h4>${esc(c.t)} <span class="badge purple" style="font-size:.68em">🥁 Tekerleme</span></h4>
+       <div class="tune">🥁 Rhythmic Rhyme</div></div>`
      )
      .join('')}</div>`
     );
   },
 
-  /* ---------- 🎼 ŞARKI OYNATICI ---------- */
+  /* ---------- 🎼 ŞARKI & TEKERLEME OYNATICI ---------- */
   vPlayer() {
     const s = this.playing;
     if (!s) return this.vSongs();
+    const v = typeof getSongVid === 'function' ? getSongVid(s) : null;
     return (
       this.bar() +
       `
    <div class="player">
-     <div class="big-emoji" style="font-size:72px">${s.e}</div>
-     <h2 style="margin:4px 0">${s.t}</h2>
-     <div class="row" style="display:flex;justify-content:center;gap:8px;margin:8px 0">
-       <span class="badge purple">🎼 ${s.tune}</span>
-       ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
+     <div class="big-emoji" style="font-size:68px">${s.e}</div>
+     <h2 style="margin:4px 0;font-size:1.6em;color:#0f172a">${esc(s.t)}</h2>
+     <div class="row" style="display:flex;justify-content:center;gap:8px;margin:8px 0;flex-wrap:wrap">
+       <span class="badge purple">🎼 ${esc(s.tune)}</span>
+       ${s.a ? `<span class="badge gold">🕺 ${esc(s.a)}</span>` : ''}
+       <span class="badge green">✨ Resimli & Müzikli</span>
      </div>
-     ${(() => {
-       const si = typeof SONGVID !== 'undefined' ? SONGS.indexOf(s) : -1,
-         v = si >= 0 ? SONGVID[si] : null;
-       return v
-         ? `<div class="lvideo" style="margin:14px auto 0"><iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)} — gerçek şarkı" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-       <div class="muted" style="margin:8px 0 2px">🎬 <b>Gerçek şarkı</b> — özgün müzik, gerçek söyleyiş · <a href="https://www.youtube.com/watch?v=${v}" target="_blank" rel="noopener" style="color:#2563eb;font-weight:700">▶ YouTube'da aç</a> (internet gerekir)</div>
-       <div class="muted" style="margin:2px 0 6px">🦜 Polly modu: sözleri ritimle söyler — internetsiz de çalışır (aşağıdaki ▶ ile)</div>`
-         : '';
-     })()}
-     <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
-      <div class="controls">
-        <button class="btn green pulse" id="pp">▶️ Başlat</button>
-        <button class="btn blue" id="pr">🔁 Baştan</button>
-        <button class="btn white" id="ps">🐢 Yavaş</button>
-        <button class="btn white" id="pm">🎵 Müzik: Açık</button>
-        <button class="btn white" id="pa">🛑 Dur</button>
-      </div>
-      <div class="muted" style="margin-top:10px">🎵 Gerçek melodi çalar · Polly satırları söyler — çocuklar birlikte söylesin! 🎤</div>
-    </div>`
+
+     ${
+       v
+         ? `<div class="song-video-theater">
+              <div class="video-theater-head">
+                <span class="video-live-badge">🎬 Gerçek Çocuk Şarkısı (Sing-Along Video)</span>
+                <span>Özgün Çocuk Müziği & Gerçek Söyleyiş 🎶</span>
+              </div>
+              <div class="lvideo" style="margin:0 auto">
+                <iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>`
+         : ''
+     }
+
+     <div class="lyrics" id="ly">
+       ${s.l
+         .map(
+           (l, i) => `
+         <div class="line" data-i="${i}">
+           <span class="line-pic-chips">${typeof songLinePics === 'function' ? songLinePics(l, s) : s.e}</span>
+           <span class="line-words">${esc(l)}</span>
+         </div>
+       `
+         )
+         .join('')}
+     </div>
+
+     <div class="controls">
+       <button class="btn green pulse" id="pp" style="font-weight:900">🎤 Melodiyle Karaoke Söyle</button>
+       <button class="btn blue" id="pr">🔁 Baştan Al</button>
+       <button class="btn white" id="ps">🐢 Yavaş Ritim</button>
+       <button class="btn white" id="pm">🎵 Müzik: Açık</button>
+       <button class="btn white" id="pa">🛑 Durdur</button>
+     </div>
+     <div class="song-footer-note">
+       🌟 <b>Resimlerle Şarkı & Tekerleme:</b> Yukarıdaki videodan gerçek müzikli çocuk şarkısını dinleyebilir, aşağıdaki butonla melodiyi başlatıp resimleri takip ederek sınıfta birlikte söyleyebilirsiniz! 🎤🎶
+     </div>
+   </div>`
     );
   },
 
@@ -1095,7 +1119,7 @@ const APP = {
     }
   },
 
-  /* ---------- Şarkı Oynatıcı ---------- */
+  /* ---------- Şarkı & Tekerleme Oynatıcı (Müzikle Uyumlu Söyleyiş) ---------- */
   mountPlayer() {
     const s = this.playing;
     if (!s) return;
@@ -1118,16 +1142,9 @@ const APP = {
       musStop();
       if (!music) return;
       if (mel) {
-        mus = MEDIA.playFile(mel, 0.8, true) || MEDIA.playFile(bt, 0.4, true);
+        mus = MEDIA.playFile(mel, 0.85, true) || MEDIA.playFile(bt, 0.5, true);
       } else {
-        mus = MEDIA.playFile(bt, 0.4, true);
-      }
-    };
-    const duck = (v) => {
-      if (mus) {
-        try {
-          mus.volume = v;
-        } catch (e) {}
+        mus = MEDIA.playFile(bt, 0.5, true);
       }
     };
     const stop = () => {
@@ -1143,7 +1160,9 @@ const APP = {
       if (!running) return;
       if (idx >= lines.length) {
         stop();
-        FX.mascotSay('Bravo! 🎉 Bir daha söyleyelim mi?');
+        FX.confetti(50);
+        MEDIA.fx('win');
+        FX.mascotSay('Bravo! 🎉 Harika söylediniz! / Sing again?');
         return;
       }
       lines.forEach((l) => l.classList.remove('active'));
@@ -1156,18 +1175,26 @@ const APP = {
           } catch (e) {}
         }
         FX.notes(innerWidth / 2, innerHeight - 160);
-        const txt = ln.textContent.replace(/[^\w\s'’,.!?-]/g, '').trim() || 'la la la';
-        duck(0.22);
-        MEDIA.speak(txt, slow ? 0.7 : 0.85, () => {
-          if (!running) return;
-          duck(0.8);
-          timer = setTimeout(() => {
-            idx++;
-            step();
-          }, 550);
-        });
+        MEDIA.fx('pop');
+        // Ritmik tempo: melodi kesilmeden çalar, çocuklar ve sınıf resimleri takip ederek birlikte söyler
+        const lineDur = slow ? 4200 : 2900;
+        timer = setTimeout(() => {
+          idx++;
+          step();
+        }, lineDur);
       }
     };
+
+    // Tıklanan satırı vurgulama ve neşeli efekt
+    lines.forEach((l) => {
+      l.addEventListener('click', () => {
+        lines.forEach((x) => x.classList.remove('active'));
+        l.classList.add('active');
+        MEDIA.fx('pop');
+        FX.confetti(12);
+        FX.notes(innerWidth / 2, innerHeight - 140);
+      });
+    });
 
     const pp = document.getElementById('pp');
     if (pp) {
@@ -1196,7 +1223,7 @@ const APP = {
     if (ps) {
       ps.onclick = (e) => {
         slow = !slow;
-        e.target.textContent = slow ? '🐇 Normal' : '🐢 Yavaş';
+        e.target.textContent = slow ? '🐇 Normal Ritim' : '🐢 Yavaş Ritim';
         MEDIA.fx('click');
       };
     }

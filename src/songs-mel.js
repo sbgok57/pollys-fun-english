@@ -84,3 +84,84 @@ const SONGVID = {
   49: 'x23rXZ9DYVg',
   50: 'y18u7L1Wk0w'
 };
+
+/* 🖼️ RESİMLİ ŞARKI & TEKERLEME DÜZENLEMESİ (Resimlerle Anlatım — Türkçe Çeviri Olmadan) */
+function songLinePics(text, song) {
+  if (!text) return '🎵';
+  const t = text.toLowerCase();
+  const pics = [];
+
+  if (/twinkle|star/i.test(t)) pics.push('✨', '⭐');
+  if (/diamond/i.test(t)) pics.push('💎');
+  if (/sky|world|high/i.test(t)) pics.push('🌌', '☁️');
+  if (/abc|alphabet|letter/i.test(t)) pics.push('🔤', '🔠');
+  if (/sing|song|music/i.test(t)) pics.push('🎤', '🎶');
+  if (/head/i.test(t)) pics.push('👦');
+  if (/shoulder/i.test(t)) pics.push('💪');
+  if (/knee/i.test(t)) pics.push('🦵');
+  if (/toe/i.test(t)) pics.push('🦶');
+  if (/eye/i.test(t)) pics.push('👀');
+  if (/ear/i.test(t)) pics.push('👂');
+  if (/mouth/i.test(t)) pics.push('👄');
+  if (/nose/i.test(t)) pics.push('👃');
+  if (/farm|macdonald/i.test(t)) pics.push('🚜', '🌾');
+  if (/cow|moo/i.test(t)) pics.push('🐄');
+  if (/sheep|baa|bo peep/i.test(t)) pics.push('🐑');
+  if (/duck|quack/i.test(t)) pics.push('🦆');
+  if (/pig|oink|hog/i.test(t)) pics.push('🐷');
+  if (/horse|neigh|pony/i.test(t)) pics.push('🐴');
+  if (/bus|wheel|drive/i.test(t)) pics.push('🚌', '🔄');
+  if (/round and round/i.test(t)) pics.push('🔄', '💨');
+  if (/town|city|market/i.test(t)) pics.push('🏙️', '🏪');
+  if (/happy|smile|joy/i.test(t)) pics.push('😊', '🎉');
+  if (/clap|hands/i.test(t)) pics.push('👏');
+  if (/stomp|feet/i.test(t)) pics.push('👣');
+  if (/boat|row/i.test(t)) pics.push('⛵', '🚣');
+  if (/stream|water|sea|river/i.test(t)) pics.push('🌊', '🐟');
+  if (/monkey|monkeys/i.test(t)) pics.push('🐒', '🛏️');
+  if (/bed/i.test(t)) pics.push('🛏️');
+  if (/doctor/i.test(t)) pics.push('🩺', '👨‍⚕️');
+  if (/bump|fell|fall|head/i.test(t)) pics.push('🤕', '💥');
+  if (/spider|incy|wincy|itsy/i.test(t)) pics.push('🕷️');
+  if (/rain|washed/i.test(t)) pics.push('🌧️', '💦');
+  if (/sun|sunshine/i.test(t)) pics.push('☀️', '🌻');
+  if (/bridge|london/i.test(t)) pics.push('🌉');
+  if (/bottle|bottles/i.test(t)) pics.push('🥤', '🟢');
+  if (/mountain|train|toot/i.test(t)) pics.push('🚂', '⛰️');
+  if (/clock|dock|mouse|mice/i.test(t)) pics.push('🕐', '🐭');
+  if (/queen|king/i.test(t)) pics.push('👑', '🏰');
+  if (/baby|lullaby|cradle/i.test(t)) pics.push('👶', '🌙');
+  if (/dance|jump|skip|lou/i.test(t)) pics.push('💃', '🦘');
+  if (/tea|kettle|polly/i.test(t)) pics.push('🫖', '🍵');
+  if (/pie|bird|blackbird/i.test(t)) pics.push('🥧', '🐦');
+  if (/bell|orange|lemon/i.test(t)) pics.push('🔔', '🍊', '🍋');
+  if (/super|strong|brave/i.test(t)) pics.push('🦸', '💪');
+  if (/rocket|blast|space/i.test(t)) pics.push('🚀', '🪐');
+  if (/bubble|pop/i.test(t)) pics.push('🫧', '💥');
+  if (/telephone|ring|call/i.test(t)) pics.push('☎️', '📞');
+  if (/freeze|wiggle/i.test(t)) pics.push('🕺', '❄️');
+  if (/tree|flower|nature/i.test(t)) pics.push('🌳', '🌸');
+  if (/color|red|blue|green|yellow/i.test(t)) pics.push('🎨', '🌈');
+  if (/food|fruit|apple|banana/i.test(t)) pics.push('🍎', '🍌');
+  if (/book|school|pencil|pen/i.test(t)) pics.push('📚', '✏️');
+
+  if (pics.length === 0) {
+    if (song && song.e) pics.push(song.e);
+    pics.push('🎶');
+  }
+  return [...new Set(pics)].slice(0, 3).join(' ');
+}
+
+/* 🎬 GERÇEK ÇOCUK ŞARKISI VİDEOSU BULUCU (Tüm şarkılar ve tekerlemeler için) */
+function getSongVid(s) {
+  if (!s) return null;
+  const si = typeof SONGS !== 'undefined' ? SONGS.indexOf(s) : -1;
+  if (si >= 0 && typeof SONGVID !== 'undefined' && SONGVID[si]) {
+    return SONGVID[si];
+  }
+  if (s.u && typeof LVID !== 'undefined' && LVID[s.u] && LVID[s.u].length) {
+    return LVID[s.u][0][0];
+  }
+  return 'yCjJyiqpAuU';
+}
+

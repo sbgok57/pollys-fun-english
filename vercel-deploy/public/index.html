@@ -487,32 +487,93 @@ body.s2 {
   border-radius: var(--radius-lg);
   padding: 24px;
   box-shadow: var(--shadow-md);
-  border: 3px solid #fbcfe8;
-  max-width: 680px;
+  border: 4px solid #fbcfe8;
+  max-width: 820px;
   margin: 0 auto;
   text-align: center;
 }
+.song-video-theater {
+  background: #0f172a;
+  border-radius: 20px;
+  padding: 12px;
+  margin: 16px auto;
+  border: 3px solid #f472b6;
+  box-shadow: 0 10px 25px rgba(219, 39, 119, 0.2);
+}
+.video-theater-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px 10px 10px;
+  color: #f8fafc;
+  font-size: 0.88em;
+  font-weight: 800;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.video-live-badge {
+  background: #ef4444;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.84em;
+  letter-spacing: 0.5px;
+}
 .lyrics {
-  background: #fafafa;
+  background: #faf5ff;
   border-radius: var(--radius-md);
   padding: 18px;
   margin: 18px 0;
-  max-height: 260px;
+  max-height: 340px;
   overflow-y: auto;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #e9d5ff;
 }
 .lyrics .line {
-  padding: 8px 12px;
+  padding: 10px 14px;
   font-size: 1.15em;
   font-weight: 800;
-  color: #475569;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+  color: #334155;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  text-align: left;
+  border: 2px solid transparent;
+  margin-bottom: 6px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.line-pic-chips {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 1.15em;
+  min-width: 52px;
+  text-align: center;
+  user-select: none;
+}
+.line-words {
+  flex: 1;
 }
 .lyrics .line.active {
-  background: #fdf2f8;
+  background: linear-gradient(90deg, #fdf2f8 0%, #ffffff 100%);
   color: #db2777;
-  transform: scale(1.04);
+  border-color: #f472b6;
+  transform: scale(1.02);
+  box-shadow: 0 4px 14px rgba(219, 39, 119, 0.15);
+}
+.song-footer-note {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: #1e40af;
+  font-size: 0.9em;
+  margin-top: 14px;
+  line-height: 1.5;
 }
 .player .controls {
   display: flex;
@@ -6599,6 +6660,87 @@ const SONGVID = {
   50: 'y18u7L1Wk0w'
 };
 
+/* 🖼️ RESİMLİ ŞARKI & TEKERLEME DÜZENLEMESİ (Resimlerle Anlatım — Türkçe Çeviri Olmadan) */
+function songLinePics(text, song) {
+  if (!text) return '🎵';
+  const t = text.toLowerCase();
+  const pics = [];
+
+  if (/twinkle|star/i.test(t)) pics.push('✨', '⭐');
+  if (/diamond/i.test(t)) pics.push('💎');
+  if (/sky|world|high/i.test(t)) pics.push('🌌', '☁️');
+  if (/abc|alphabet|letter/i.test(t)) pics.push('🔤', '🔠');
+  if (/sing|song|music/i.test(t)) pics.push('🎤', '🎶');
+  if (/head/i.test(t)) pics.push('👦');
+  if (/shoulder/i.test(t)) pics.push('💪');
+  if (/knee/i.test(t)) pics.push('🦵');
+  if (/toe/i.test(t)) pics.push('🦶');
+  if (/eye/i.test(t)) pics.push('👀');
+  if (/ear/i.test(t)) pics.push('👂');
+  if (/mouth/i.test(t)) pics.push('👄');
+  if (/nose/i.test(t)) pics.push('👃');
+  if (/farm|macdonald/i.test(t)) pics.push('🚜', '🌾');
+  if (/cow|moo/i.test(t)) pics.push('🐄');
+  if (/sheep|baa|bo peep/i.test(t)) pics.push('🐑');
+  if (/duck|quack/i.test(t)) pics.push('🦆');
+  if (/pig|oink|hog/i.test(t)) pics.push('🐷');
+  if (/horse|neigh|pony/i.test(t)) pics.push('🐴');
+  if (/bus|wheel|drive/i.test(t)) pics.push('🚌', '🔄');
+  if (/round and round/i.test(t)) pics.push('🔄', '💨');
+  if (/town|city|market/i.test(t)) pics.push('🏙️', '🏪');
+  if (/happy|smile|joy/i.test(t)) pics.push('😊', '🎉');
+  if (/clap|hands/i.test(t)) pics.push('👏');
+  if (/stomp|feet/i.test(t)) pics.push('👣');
+  if (/boat|row/i.test(t)) pics.push('⛵', '🚣');
+  if (/stream|water|sea|river/i.test(t)) pics.push('🌊', '🐟');
+  if (/monkey|monkeys/i.test(t)) pics.push('🐒', '🛏️');
+  if (/bed/i.test(t)) pics.push('🛏️');
+  if (/doctor/i.test(t)) pics.push('🩺', '👨‍⚕️');
+  if (/bump|fell|fall|head/i.test(t)) pics.push('🤕', '💥');
+  if (/spider|incy|wincy|itsy/i.test(t)) pics.push('🕷️');
+  if (/rain|washed/i.test(t)) pics.push('🌧️', '💦');
+  if (/sun|sunshine/i.test(t)) pics.push('☀️', '🌻');
+  if (/bridge|london/i.test(t)) pics.push('🌉');
+  if (/bottle|bottles/i.test(t)) pics.push('🥤', '🟢');
+  if (/mountain|train|toot/i.test(t)) pics.push('🚂', '⛰️');
+  if (/clock|dock|mouse|mice/i.test(t)) pics.push('🕐', '🐭');
+  if (/queen|king/i.test(t)) pics.push('👑', '🏰');
+  if (/baby|lullaby|cradle/i.test(t)) pics.push('👶', '🌙');
+  if (/dance|jump|skip|lou/i.test(t)) pics.push('💃', '🦘');
+  if (/tea|kettle|polly/i.test(t)) pics.push('🫖', '🍵');
+  if (/pie|bird|blackbird/i.test(t)) pics.push('🥧', '🐦');
+  if (/bell|orange|lemon/i.test(t)) pics.push('🔔', '🍊', '🍋');
+  if (/super|strong|brave/i.test(t)) pics.push('🦸', '💪');
+  if (/rocket|blast|space/i.test(t)) pics.push('🚀', '🪐');
+  if (/bubble|pop/i.test(t)) pics.push('🫧', '💥');
+  if (/telephone|ring|call/i.test(t)) pics.push('☎️', '📞');
+  if (/freeze|wiggle/i.test(t)) pics.push('🕺', '❄️');
+  if (/tree|flower|nature/i.test(t)) pics.push('🌳', '🌸');
+  if (/color|red|blue|green|yellow/i.test(t)) pics.push('🎨', '🌈');
+  if (/food|fruit|apple|banana/i.test(t)) pics.push('🍎', '🍌');
+  if (/book|school|pencil|pen/i.test(t)) pics.push('📚', '✏️');
+
+  if (pics.length === 0) {
+    if (song && song.e) pics.push(song.e);
+    pics.push('🎶');
+  }
+  return [...new Set(pics)].slice(0, 3).join(' ');
+}
+
+/* 🎬 GERÇEK ÇOCUK ŞARKISI VİDEOSU BULUCU (Tüm şarkılar ve tekerlemeler için) */
+function getSongVid(s) {
+  if (!s) return null;
+  const si = typeof SONGS !== 'undefined' ? SONGS.indexOf(s) : -1;
+  if (si >= 0 && typeof SONGVID !== 'undefined' && SONGVID[si]) {
+    return SONGVID[si];
+  }
+  if (s.u && typeof LVID !== 'undefined' && LVID[s.u] && LVID[s.u].length) {
+    return LVID[s.u][0][0];
+  }
+  return 'yCjJyiqpAuU';
+}
+
+
 /* ============================================================
    📚 KONU ANLATIMI (v4)
    Her ünite için: animasyonlu slaytlar (emoji sahne + İngilizce
@@ -11537,7 +11679,7 @@ const APP = {
     );
   },
 
-  /* ---------- 🎵 ŞARKI KÖŞESİ ---------- */
+  /* ---------- 🎵 ŞARKI & TEKERLEME KÖŞESİ ---------- */
   vSongs() {
     const st = this.songFilter.stage;
     const us = unitsOfStage(st);
@@ -11548,8 +11690,8 @@ const APP = {
       this.bar() +
       `
    <div class="unit-head songs" style="background:linear-gradient(120deg,#db2777,#f59e0b);color:#fff">
-     <span class="ue">🎵</span><div><h2 style="color:#fff">Şarkı & Chant Köşesi</h2>
-     <div class="sub" style="color:#ffe4e6">Toplam ${TOTALSONGS} şarkı & chant · ${SONGS.length} klasik + ${ALLCHANTS.length} ünite chant'i</div></div></div>
+     <span class="ue">🎵</span><div><h2 style="color:#fff">Songs & Rhymes · Şarkılar ve Tekerlemeler</h2>
+     <div class="sub" style="color:#ffe4e6">Children's Songs & Nursery Chants · Resimli & Müzikli Koleksiyon</div></div></div>
    <div class="song-tabs">
      ${STAGES.map(
        (s) =>
@@ -11559,65 +11701,89 @@ const APP = {
    <div class="word-wall">${us
      .map(
        (u) =>
-         `<span class="word-pill" data-sunit="${u.id}" style="${u.id === sel ? 'background:#fde68a;transform:scale(1.06);border-color:#f59e0b' : ''}">${u.emoji} ${u.tr}</span>`
+         `<span class="word-pill" data-sunit="${u.id}" style="${u.id === sel ? 'background:#fde68a;transform:scale(1.06);border-color:#f59e0b' : ''}">${u.emoji} ${u.title}</span>`
      )
      .join('')}</div>
-   <h3 style="margin:16px 0 8px">🎶 Klasik Şarkılar</h3>
+   <h3 style="margin:16px 0 8px">🎶 Sing-Along Songs (Çocuk Şarkıları)</h3>
    <div class="song-list">${
      classics.length
        ? classics
            .map(
              (s) => `
      <div class="song-item" data-song="${SONGS.indexOf(s)}"><span class="se">${s.e}</span>
-       <h4>${s.t}${(typeof SONGVID !== 'undefined' && SONGVID[SONGS.indexOf(s)]) ? ' <span class="badge gold" style="font-size:.68em">🎬 gerçek şarkı</span>' : ''}</h4><div class="tune">🎼 ${s.tune}</div></div>`
+       <h4>${esc(s.t)} <span class="badge gold" style="font-size:.68em">🎬 Gerçek Müzik</span></h4>
+       <div class="tune">🎼 ${esc(s.tune)}</div></div>`
            )
            .join('')
-       : '<div class="muted">Bu ünitede klasik şarkı yok — chant’lere göz at! 👇</div>'
+       : '<div class="muted">Bu ünitede tekerlemelere göz atın! 👇</div>'
    }</div>
-   <h3 style="margin:16px 0 8px">🗣️ Kelime Chant’leri <span class="badge">${chants.length}</span></h3>
+   <h3 style="margin:16px 0 8px">🗣️ Nursery Rhymes & Chants (Tekerlemeler) <span class="badge">${chants.length}</span></h3>
    <div class="song-list">${chants
      .map(
        (c) => `
      <div class="song-item" data-chant="${ALLCHANTS.indexOf(c)}"><span class="se">${c.e}</span>
-       <h4>${c.t}</h4><div class="tune">🥁 Ritmik chant</div></div>`
+       <h4>${esc(c.t)} <span class="badge purple" style="font-size:.68em">🥁 Tekerleme</span></h4>
+       <div class="tune">🥁 Rhythmic Rhyme</div></div>`
      )
      .join('')}</div>`
     );
   },
 
-  /* ---------- 🎼 ŞARKI OYNATICI ---------- */
+  /* ---------- 🎼 ŞARKI & TEKERLEME OYNATICI ---------- */
   vPlayer() {
     const s = this.playing;
     if (!s) return this.vSongs();
+    const v = typeof getSongVid === 'function' ? getSongVid(s) : null;
     return (
       this.bar() +
       `
    <div class="player">
-     <div class="big-emoji" style="font-size:72px">${s.e}</div>
-     <h2 style="margin:4px 0">${s.t}</h2>
-     <div class="row" style="display:flex;justify-content:center;gap:8px;margin:8px 0">
-       <span class="badge purple">🎼 ${s.tune}</span>
-       ${s.a ? `<span class="badge gold">🕺 ${s.a}</span>` : ''}
+     <div class="big-emoji" style="font-size:68px">${s.e}</div>
+     <h2 style="margin:4px 0;font-size:1.6em;color:#0f172a">${esc(s.t)}</h2>
+     <div class="row" style="display:flex;justify-content:center;gap:8px;margin:8px 0;flex-wrap:wrap">
+       <span class="badge purple">🎼 ${esc(s.tune)}</span>
+       ${s.a ? `<span class="badge gold">🕺 ${esc(s.a)}</span>` : ''}
+       <span class="badge green">✨ Resimli & Müzikli</span>
      </div>
-     ${(() => {
-       const si = typeof SONGVID !== 'undefined' ? SONGS.indexOf(s) : -1,
-         v = si >= 0 ? SONGVID[si] : null;
-       return v
-         ? `<div class="lvideo" style="margin:14px auto 0"><iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)} — gerçek şarkı" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-       <div class="muted" style="margin:8px 0 2px">🎬 <b>Gerçek şarkı</b> — özgün müzik, gerçek söyleyiş · <a href="https://www.youtube.com/watch?v=${v}" target="_blank" rel="noopener" style="color:#2563eb;font-weight:700">▶ YouTube'da aç</a> (internet gerekir)</div>
-       <div class="muted" style="margin:2px 0 6px">🦜 Polly modu: sözleri ritimle söyler — internetsiz de çalışır (aşağıdaki ▶ ile)</div>`
-         : '';
-     })()}
-     <div class="lyrics" id="ly">${s.l.map((l, i) => `<div class="line" data-i="${i}">${esc(l)}</div>`).join('')}</div>
-      <div class="controls">
-        <button class="btn green pulse" id="pp">▶️ Başlat</button>
-        <button class="btn blue" id="pr">🔁 Baştan</button>
-        <button class="btn white" id="ps">🐢 Yavaş</button>
-        <button class="btn white" id="pm">🎵 Müzik: Açık</button>
-        <button class="btn white" id="pa">🛑 Dur</button>
-      </div>
-      <div class="muted" style="margin-top:10px">🎵 Gerçek melodi çalar · Polly satırları söyler — çocuklar birlikte söylesin! 🎤</div>
-    </div>`
+
+     ${
+       v
+         ? `<div class="song-video-theater">
+              <div class="video-theater-head">
+                <span class="video-live-badge">🎬 Gerçek Çocuk Şarkısı (Sing-Along Video)</span>
+                <span>Özgün Çocuk Müziği & Gerçek Söyleyiş 🎶</span>
+              </div>
+              <div class="lvideo" style="margin:0 auto">
+                <iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>`
+         : ''
+     }
+
+     <div class="lyrics" id="ly">
+       ${s.l
+         .map(
+           (l, i) => `
+         <div class="line" data-i="${i}">
+           <span class="line-pic-chips">${typeof songLinePics === 'function' ? songLinePics(l, s) : s.e}</span>
+           <span class="line-words">${esc(l)}</span>
+         </div>
+       `
+         )
+         .join('')}
+     </div>
+
+     <div class="controls">
+       <button class="btn green pulse" id="pp" style="font-weight:900">🎤 Melodiyle Karaoke Söyle</button>
+       <button class="btn blue" id="pr">🔁 Baştan Al</button>
+       <button class="btn white" id="ps">🐢 Yavaş Ritim</button>
+       <button class="btn white" id="pm">🎵 Müzik: Açık</button>
+       <button class="btn white" id="pa">🛑 Durdur</button>
+     </div>
+     <div class="song-footer-note">
+       🌟 <b>Resimlerle Şarkı & Tekerleme:</b> Yukarıdaki videodan gerçek müzikli çocuk şarkısını dinleyebilir, aşağıdaki butonla melodiyi başlatıp resimleri takip ederek sınıfta birlikte söyleyebilirsiniz! 🎤🎶
+     </div>
+   </div>`
     );
   },
 
@@ -12164,7 +12330,7 @@ const APP = {
     }
   },
 
-  /* ---------- Şarkı Oynatıcı ---------- */
+  /* ---------- Şarkı & Tekerleme Oynatıcı (Müzikle Uyumlu Söyleyiş) ---------- */
   mountPlayer() {
     const s = this.playing;
     if (!s) return;
@@ -12187,16 +12353,9 @@ const APP = {
       musStop();
       if (!music) return;
       if (mel) {
-        mus = MEDIA.playFile(mel, 0.8, true) || MEDIA.playFile(bt, 0.4, true);
+        mus = MEDIA.playFile(mel, 0.85, true) || MEDIA.playFile(bt, 0.5, true);
       } else {
-        mus = MEDIA.playFile(bt, 0.4, true);
-      }
-    };
-    const duck = (v) => {
-      if (mus) {
-        try {
-          mus.volume = v;
-        } catch (e) {}
+        mus = MEDIA.playFile(bt, 0.5, true);
       }
     };
     const stop = () => {
@@ -12212,7 +12371,9 @@ const APP = {
       if (!running) return;
       if (idx >= lines.length) {
         stop();
-        FX.mascotSay('Bravo! 🎉 Bir daha söyleyelim mi?');
+        FX.confetti(50);
+        MEDIA.fx('win');
+        FX.mascotSay('Bravo! 🎉 Harika söylediniz! / Sing again?');
         return;
       }
       lines.forEach((l) => l.classList.remove('active'));
@@ -12225,18 +12386,26 @@ const APP = {
           } catch (e) {}
         }
         FX.notes(innerWidth / 2, innerHeight - 160);
-        const txt = ln.textContent.replace(/[^\w\s'’,.!?-]/g, '').trim() || 'la la la';
-        duck(0.22);
-        MEDIA.speak(txt, slow ? 0.7 : 0.85, () => {
-          if (!running) return;
-          duck(0.8);
-          timer = setTimeout(() => {
-            idx++;
-            step();
-          }, 550);
-        });
+        MEDIA.fx('pop');
+        // Ritmik tempo: melodi kesilmeden çalar, çocuklar ve sınıf resimleri takip ederek birlikte söyler
+        const lineDur = slow ? 4200 : 2900;
+        timer = setTimeout(() => {
+          idx++;
+          step();
+        }, lineDur);
       }
     };
+
+    // Tıklanan satırı vurgulama ve neşeli efekt
+    lines.forEach((l) => {
+      l.addEventListener('click', () => {
+        lines.forEach((x) => x.classList.remove('active'));
+        l.classList.add('active');
+        MEDIA.fx('pop');
+        FX.confetti(12);
+        FX.notes(innerWidth / 2, innerHeight - 140);
+      });
+    });
 
     const pp = document.getElementById('pp');
     if (pp) {
@@ -12265,7 +12434,7 @@ const APP = {
     if (ps) {
       ps.onclick = (e) => {
         slow = !slow;
-        e.target.textContent = slow ? '🐇 Normal' : '🐢 Yavaş';
+        e.target.textContent = slow ? '🐇 Normal Ritim' : '🐢 Yavaş Ritim';
         MEDIA.fx('click');
       };
     }
