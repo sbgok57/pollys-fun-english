@@ -234,19 +234,25 @@ const MEDIA = {
     } catch (e) {}
   },
   praise() {
-    this.fx('win');
-    const compliments = [
-      'Super!',
-      'Great job!',
-      'Well done!',
-      'Awesome!',
-      'Brilliant!',
-      'Fantastic!',
-      'Amazing!',
-      'Super work!'
+    const cheers = [
+      { char: 'mickey', quote: 'Hot dog! You did it, pal! Outstanding!', fx: 'win' },
+      { char: 'buzz', quote: 'To infinity and beyond! Brilliant work, Space Ranger!', fx: 'magic' },
+      { char: 'elsa', quote: 'Sparkling brilliance! Magical answer!', fx: 'magic' },
+      { char: 'woody', quote: 'Yee-haw! You are my favorite deputy! Great job!', fx: 'win' },
+      { char: 'olaf', quote: 'Warm hugs for that wonderful answer!', fx: 'pop' },
+      { char: 'bluey', quote: 'For real life?! Hooray! That was super duper!', fx: 'cheer' },
+      { char: 'peppa', quote: 'Brilliant! Splish splash, absolutely fantastic!', fx: 'pop' },
+      { char: 'chase', quote: 'Chase is on the case! Perfect solve, team!', fx: 'tada' },
+      { char: 'simba', quote: 'Roar! Hakuna Matata! You are the king of words!', fx: 'win' },
+      { char: 'polly', quote: 'Squawk! Superstar! You are learning so fast!', fx: 'win' }
     ];
-    const word = compliments[Math.floor(Math.random() * compliments.length)];
-    this.speak(word, 0.95);
+    const item = cheers[Math.floor(Math.random() * cheers.length)];
+    this.fx(item.fx);
+    if (typeof FX !== 'undefined' && FX.mascotSay) {
+      const prof = (this.disneyProfiles && this.disneyProfiles[item.char]) || {};
+      FX.mascotSay((prof.label || 'Mascot') + ': "' + item.quote + '"');
+    }
+    this.speakCharacter(item.char, item.quote, null, 0.95);
     return null;
   },
 
@@ -372,38 +378,63 @@ const MEDIA = {
     } catch (e) {}
   },
 
-  /* 🎙️ Disney Karakter Ses Profilleri (Perdeler ve Tempomuz Çocuklara Özel) */
+  /* 🎙️ Disney & Cartoon Character Profiles (Real Characters & Authentic Voice Lines) */
   disneyProfiles: {
-    mickey:   { pitch: 1.48, rate: 1.05, label: 'Mickey Mouse' },
-    donald:   { pitch: 1.35, rate: 1.18, label: 'Donald Duck' },
-    goofy:    { pitch: 0.74, rate: 0.85, label: 'Goofy' },
-    elsa:     { pitch: 1.25, rate: 0.94, label: 'Elsa' },
-    olaf:     { pitch: 1.42, rate: 1.10, label: 'Olaf' },
-    simba:    { pitch: 1.32, rate: 1.05, label: 'Simba' },
-    buzz:     { pitch: 0.85, rate: 0.98, label: 'Buzz Lightyear' },
-    woody:    { pitch: 1.08, rate: 1.02, label: 'Woody' },
-    stitch:   { pitch: 1.52, rate: 1.14, label: 'Stitch' },
-    pooh:     { pitch: 0.82, rate: 0.85, label: 'Winnie the Pooh' },
-    mcqueen:  { pitch: 1.12, rate: 1.18, label: 'Lightning McQueen' },
-    moana:    { pitch: 1.18, rate: 1.00, label: 'Moana' },
-    ariel:    { pitch: 1.28, rate: 0.96, label: 'Ariel' },
-    aladdin:  { pitch: 1.15, rate: 1.08, label: 'Aladdin & Genie' },
-    peterpan: { pitch: 1.30, rate: 1.08, label: 'Peter Pan' },
-    dory:     { pitch: 1.38, rate: 1.12, label: 'Dory & Nemo' },
-    judy:     { pitch: 1.24, rate: 1.08, label: 'Judy Hopps' },
-    baloo:    { pitch: 0.76, rate: 0.86, label: 'Baloo' },
-    incredibles: { pitch: 1.42, rate: 1.22, label: 'Dash' }
+    polly:    { pitch: 1.35, rate: 1.05, label: "Polly The Mascot", show: "Polly's Fun English", soundFx: 'win', quote: "Squawk! Hello pals! I am Polly! Welcome to Cambridge English fun!" },
+    mickey:   { pitch: 1.50, rate: 1.05, label: 'Mickey Mouse', show: 'Disney Mickey & Friends', soundFx: 'win', quote: "Hot dog! Oh boy, welcome to our English Clubhouse! Let's have fun together!" },
+    minnie:   { pitch: 1.45, rate: 1.02, label: 'Minnie Mouse', show: 'Disney Mickey & Friends', soundFx: 'magic', quote: "Yoo-hoo! Hello there! You are doing so wonderful today!" },
+    donald:   { pitch: 1.35, rate: 1.15, label: 'Donald Duck', show: 'Disney Mickey & Friends', soundFx: 'pop', quote: "Quack, quack! What's the big idea? Let's practice English words right now!" },
+    goofy:    { pitch: 0.74, rate: 0.85, label: 'Goofy', show: 'Disney Mickey & Friends', soundFx: 'boing', quote: "Gawrsh! A-hyuck! Learning English with friends is super duper fun!" },
+    elsa:     { pitch: 1.25, rate: 0.94, label: 'Elsa', show: 'Disney Frozen', soundFx: 'magic', quote: "The cold never bothered me anyway! Step into the magic of English!" },
+    anna:     { pitch: 1.28, rate: 1.04, label: 'Anna', show: 'Disney Frozen', soundFx: 'pop', quote: "For the first time in forever, we're having the best English lesson!" },
+    olaf:     { pitch: 1.42, rate: 1.10, label: 'Olaf', show: 'Disney Frozen', soundFx: 'pop', quote: "Hi! I'm Olaf, and I love warm hugs and sunny English words!" },
+    simba:    { pitch: 1.32, rate: 1.05, label: 'Simba', show: 'Disney The Lion King', soundFx: 'win', quote: "I just can't wait to be king of English words! Hakuna Matata!" },
+    buzz:     { pitch: 0.85, rate: 0.98, label: 'Buzz Lightyear', show: 'Pixar Toy Story', soundFx: 'whoosh', quote: "To infinity and beyond! Space Rangers, report for English mission!" },
+    woody:    { pitch: 1.08, rate: 1.02, label: 'Woody', show: 'Pixar Toy Story', soundFx: 'win', quote: "Reach for the sky, partner! You're my favorite deputy in class today!" },
+    stitch:   { pitch: 1.52, rate: 1.14, label: 'Stitch', show: 'Disney Lilo & Stitch', soundFx: 'zoom', quote: "Ih! Mega nala kweesta! English is fun! Ha-ha-ha!" },
+    pooh:     { pitch: 0.82, rate: 0.85, label: 'Winnie the Pooh', show: 'Disney Winnie the Pooh', soundFx: 'pop', quote: "Think, think, think... English words are sweeter than a pot of honey!" },
+    mcqueen:  { pitch: 1.12, rate: 1.18, label: 'Lightning McQueen', show: 'Pixar Cars', soundFx: 'race', quote: "Ka-chow! Speed into English with the fastest words on the track!" },
+    moana:    { pitch: 1.18, rate: 1.00, label: 'Moana', show: 'Disney Moana', soundFx: 'whoosh', quote: "I am Moana of Motunui! The ocean calls us to explore new words!" },
+    ariel:    { pitch: 1.28, rate: 0.96, label: 'Ariel', show: 'Disney The Little Mermaid', soundFx: 'magic', quote: "Under the sea, we discover treasures of words and magical songs!" },
+    aladdin:  { pitch: 1.15, rate: 1.08, label: 'Aladdin & Genie', show: 'Disney Aladdin', soundFx: 'magic', quote: "You ain't never had a friend like me! Let's make three English wishes!" },
+    peterpan: { pitch: 1.30, rate: 1.08, label: 'Peter Pan', show: 'Disney Peter Pan', soundFx: 'magic', quote: "All you need is faith, trust, and pixie dust! Never grow up!" },
+    dory:     { pitch: 1.38, rate: 1.12, label: 'Dory & Nemo', show: 'Disney Finding Nemo', soundFx: 'drip', quote: "Just keep swimming, just keep swimming! What do we do? We learn English!" },
+    judy:     { pitch: 1.24, rate: 1.08, label: 'Judy Hopps', show: 'Disney Zootopia', soundFx: 'tada', quote: "Ready to make the world a better place! Let's solve this English puzzle!" },
+    baloo:    { pitch: 0.76, rate: 0.86, label: 'Baloo', show: 'Disney The Jungle Book', soundFx: 'boing', quote: "Look for the bare necessities, the simple bare necessities of English!" },
+    dash:     { pitch: 1.42, rate: 1.22, label: 'Dash', show: 'Pixar The Incredibles', soundFx: 'zoom', quote: "Whoa, that was fast! Bet you can't say this word faster than me!" },
+    peppa:    { pitch: 1.38, rate: 1.05, label: 'Peppa Pig', show: 'Peppa Pig Official', soundFx: 'pop', quote: "I'm Peppa Pig! *snort* Splish splash, let's jump into learning!" },
+    bluey:    { pitch: 1.36, rate: 1.12, label: 'Bluey', show: 'Bluey Official', soundFx: 'cheer', quote: "For real life?! Hooray! This is going to be the best game ever!" },
+    chase:    { pitch: 1.10, rate: 1.05, label: 'Chase (PAW Patrol)', show: 'PAW Patrol Official', soundFx: 'tada', quote: "Chase is on the case! Paw Patrol is ready for English action, sir!" }
+  },
+
+  speakCharacter(charKey, text, cb, vol) {
+    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.polly || this.disneyProfiles.mickey;
+    if (prof.soundFx) this.fx(prof.soundFx);
+    this.tts(text, prof.rate || 1.0, cb, vol, prof.pitch || 1.0);
   },
 
   speakDisney(charKey, text, cb, vol) {
-    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.mickey;
-    this.tts(text, prof.rate, cb, vol, prof.pitch);
+    return this.speakCharacter(charKey, text, cb, vol);
   },
 
   welcomeGreeting(cb) {
     this.fx('win');
-    const msg = "Hiya pals! Welcome to Polly's Fun English! I am Mickey Mouse, and together with all our Disney friends, let us explore exciting games, songs, and Baamboozle together!";
-    this.speakDisney('mickey', msg, cb);
+    const msg = "Hiya pals! Welcome to Polly's Fun English! Together with all our Disney and cartoon friends, let us explore exciting games, songs, and Baamboozle!";
+    this.speakCharacter('mickey', msg, cb);
+  },
+
+  /* 🎶 Melodic Sing-Along Synthesizer (Harmonic Scale + Vocal Singing) */
+  singLine(text, tuneKey, cb) {
+    if (this.muted) { if (cb) cb(); return; }
+    this.init();
+    const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 523.25];
+    const words = String(text || '').split(/\s+/).filter(Boolean);
+    const count = Math.max(3, Math.min(words.length, 7));
+    for (let i = 0; i < count; i++) {
+      const freq = notes[i % notes.length];
+      this.tone(freq, i * 0.28, 0.35, 'triangle', 0.12);
+    }
+    this.tts(text, 0.88, cb, 0.95, 1.35);
   },
 
   /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ & DİSNEY DESTEĞİ */

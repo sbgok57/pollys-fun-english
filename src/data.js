@@ -5,19 +5,35 @@
 const STAGES = [
   {
     "id": "s1",
-    "name": "1. Sınıf",
+    "name": "Grade 1",
     "book": "Cambridge Global English 1",
     "emoji": "🟢",
     "cls": "s1",
-    "desc": "Starter + 9 ünite · Renkler, aile, okul, çiftlik"
+    "desc": "Starter + 9 Units · School, Family, Games, Making Things, Farm, Body, Transport, Water"
   },
   {
     "id": "s2",
-    "name": "2. Sınıf",
+    "name": "Grade 2",
     "book": "Cambridge Global English 2",
     "emoji": "🔵",
     "cls": "s2",
-    "desc": "9 ünite · Meslekler, hava, doğa, şehir, ölçüm"
+    "desc": "9 Units · Look Closer, City, Sports, Big Sky, Measuring, Minibeasts, Past & Present, Nature"
+  },
+  {
+    "id": "s3",
+    "name": "Grade 3",
+    "book": "Cambridge Global English 3",
+    "emoji": "🟣",
+    "cls": "s3",
+    "desc": "9 Units · Working Together, Communities, Desert, Inventions, Animals, Nutrition, Legends, Earth"
+  },
+  {
+    "id": "s4",
+    "name": "Grade 4",
+    "book": "Cambridge Global English 4",
+    "emoji": "🟠",
+    "cls": "s4",
+    "desc": "9 Units · Family Heritage, Space, Oceans, Inventions, Sports, History, Climate, Explorers"
   }
 ];
 
@@ -4521,15 +4537,78 @@ function cap(s) {
 
 function EWORDS(u) {
   if (!u || !u.w) return [];
-  return u.w.filter(w => w[1] && w[1].trim() !== '');
+  return u.w.filter(w => w[0] && String(w[0]).trim() !== '');
+}
+
+let _CURRICULUM_SETS_CACHE = null;
+
+function getCurriculumVirtualSets() {
+  if (_CURRICULUM_SETS_CACHE) return _CURRICULUM_SETS_CACHE;
+  if (typeof CURRICULUM_DATA === 'undefined') return [];
+  const list = [];
+  const stageMap = { stage1: 's1', stage2: 's2', stage3: 's3', stage4: 's4' };
+  const emojiPalette = ['🌟', '✨', '🎈', '🎯', '🎨', '🚀', '🌈', '🧩', '🏆', '💎', '🎪', '⚽', '🎒', '📚', '🌻', '🍎', '🐱', '🐶', '🚗', '✈️', '🎸', '🍦', '🦁', '🐻', '🐼', '🦊', '🐰', '🐸', '🐵', '🦄'];
+  
+  Object.keys(stageMap).forEach(stKey => {
+    const sId = stageMap[stKey];
+    const data = CURRICULUM_DATA[stKey];
+    if (!data || !data.units) return;
+    data.units.forEach((u, idx) => {
+      const canonicalId = sId + 'u' + (idx + 1);
+      const wList = (u.vocabulary || []).map((v, vIdx) => [
+        v.word,
+        emojiPalette[vIdx % emojiPalette.length] || '🌟',
+        v.meaning || v.turkish || v.word,
+        0
+      ]);
+      const sList = (u.vocabulary || []).slice(0, 6).map((v, sIdx) => [
+        v.exampleSentence || ('Look at the ' + v.word + '.'),
+        emojiPalette[sIdx % emojiPalette.length] || '🌟',
+        v.meaning ? ('Look: ' + v.meaning + '.') : ('Look at the ' + v.word + '.')
+      ]);
+      while (sList.length < 5) {
+        sList.push(['We love English!', '🌟', 'English is super fun!']);
+      }
+      list.push({
+        id: canonicalId,
+        altId: u.id,
+        stage: sId,
+        no: String(idx + 1),
+        title: u.title,
+        tr: u.theme || u.title,
+        emoji: sId === 's3' ? '🟣' : (sId === 's4' ? '🟠' : '📘'),
+        cats: [u.theme || 'Vocabulary', 'Phonics: ' + (u.phonics || ''), 'Grammar: ' + (u.grammar || '')],
+        w: wList,
+        s: sList,
+        lessonPlan: u.lessonPlan,
+        vocabulary: u.vocabulary,
+        grammar: u.grammar,
+        phonics: u.phonics
+      });
+    });
+  });
+  _CURRICULUM_SETS_CACHE = list;
+  return list;
 }
 
 function unitById(id) {
-  return ALLSETS.find(u => u.id === id) || null;
+  if (!id) return null;
+  let found = ALLSETS.find(u => u.id === id || (u.altId && u.altId === id));
+  if (found) return found;
+  const norm = id.replace(/^stage(\d)_u(\d+)/, 's$1u$2');
+  found = ALLSETS.find(u => u.id === norm || (u.altId && u.altId === norm));
+  if (found) return found;
+  
+  const vSets = getCurriculumVirtualSets();
+  found = vSets.find(u => u.id === id || u.altId === id || u.id === norm || u.altId === norm);
+  return found || null;
 }
 
 function unitsOfStage(stageId) {
-  return ALLSETS.filter(u => u.stage === stageId);
+  const fromAll = ALLSETS.filter(u => u.stage === stageId);
+  if (fromAll.length > 0) return fromAll;
+  const vSets = getCurriculumVirtualSets();
+  return vSets.filter(u => u.stage === stageId);
 }
 
 /* Kalıcı Hafıza & Durum Geçmişi (P0 Dayanıklılık / Anti-Crash Kalkanı) */

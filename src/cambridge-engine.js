@@ -389,10 +389,10 @@
     view: 'vocab', // 'vocab' | 'baamboozle' | 'games-hub' | 'twisters' | 'songs' | 'videos' | 'teacher-guide' | 'lesson'
     media: 'gif', // 'gif' | 'photo'
     teams: [
-      { name: 'Mavi Takım 🔵', score: 0 },
-      { name: 'Kırmızı Takım 🔴', score: 0 },
-      { name: 'Yeşil Takım 🟢', score: 0 },
-      { name: 'Sarı Takım 🟡', score: 0 }
+      { name: 'Team Blue 🔵', score: 0 },
+      { name: 'Team Red 🔴', score: 0 },
+      { name: 'Team Green 🟢', score: 0 },
+      { name: 'Team Yellow 🟡', score: 0 }
     ],
     teamsCount: 2,
     turn: 0,
@@ -490,48 +490,48 @@
               <div class="brand-logo anim-bounce">P</div>
               <div>
                 <h1>Polly's <span>Fun English</span></h1>
-                <small style="color:#64748b; font-weight:600;">Cambridge Global English 1-2-3-4 Akıllı Tahta Portalı</small>
+                <small style="color:#64748b; font-weight:600;">Cambridge Global English 1–4 Smartboard Platform (Second Edition)</small>
               </div>
             </div>
             <div class="nav-controls">
               <button class="btn btn-outline ${BackgroundMusicPlayer.isPlaying ? 'btn-accent' : ''}" id="bgm-toggle-btn">
-                ${BackgroundMusicPlayer.isPlaying ? '🎵 Tatlı Fon Müziği: AÇIK' : '🎵 Tatlı Fon Müziği: KAPALI'}
+                ${BackgroundMusicPlayer.isPlaying ? '🎵 Background Music: ON' : '🎵 Background Music: OFF'}
               </button>
-              <button class="btn btn-outline" id="fullscreen-btn">📺 Tam Ekran</button>
+              <button class="btn btn-outline" id="fullscreen-btn">📺 Fullscreen</button>
               <button class="btn btn-primary" id="toggle-media-btn">
-                ${this.media === 'gif' ? '📷 Fotoğraf Moduna Geç' : '🎬 GIPHY GIF Moduna Geç'}
+                ${this.media === 'gif' ? '📷 Switch to Real Photos' : '🎬 Switch to GIPHY GIFs'}
               </button>
-              <button class="btn btn-accent" id="open-settings-btn">⚙️ Ayarlar</button>
-              <button class="btn btn-secondary" id="cam-back-home-btn">🏠 Ana Sayfa</button>
+              <button class="btn btn-accent" id="open-settings-btn">⚙️ Settings</button>
+              <button class="btn btn-secondary" id="cam-back-home-btn">🏠 Home</button>
             </div>
           </header>
 
           <main class="main-container">
-            <!-- 2. 1, 2, 3 ve 4. SINIF SEÇİCİ TABS -->
+            <!-- 2. STAGE TABS (GRADES 1, 2, 3, 4) -->
             <section class="stage-selector" id="stage-tabs">
               <div class="stage-tab ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1">
-                <h3>🟢 1. Sınıf (Stage 1)</h3>
-                <p>Pre-A1 · Okul, aile, çiftlik, duyular, taşıtlar...</p>
+                <h3>🟢 Grade 1 (Stage 1)</h3>
+                <p>Pre-A1 · School, Family, Games, Farm, Body, Transport, Water</p>
               </div>
               <div class="stage-tab ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2">
-                <h3>🔵 2. Sınıf (Stage 2)</h3>
-                <p>A1 · Kitaplar, komşular, hava, ölçme, böcekler...</p>
+                <h3>🔵 Grade 2 (Stage 2)</h3>
+                <p>A1 · Look Closer, City, Sports, Big Sky, Measuring, Minibeasts</p>
               </div>
               <div class="stage-tab ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3">
-                <h3>🟣 3. Sınıf (Stage 3)</h3>
-                <p>A1+ · Takım çalışması, çöl, icatlar, mitoloji...</p>
+                <h3>🟣 Grade 3 (Stage 3)</h3>
+                <p>A1+ · Working Together, Communities, Desert, Inventions, Animals</p>
               </div>
               <div class="stage-tab ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4">
-                <h3>🟠 4. Sınıf (Stage 4)</h3>
-                <p>A2 · Uzay, mercan resifleri, teknoloji, liderlik...</p>
+                <h3>🟠 Grade 4 (Stage 4)</h3>
+                <p>A2 · Family Heritage, Space, Oceans, Inventions, Sports, Explorers</p>
               </div>
             </section>
 
-            <!-- 3. 1'DEN 9'A KADAR YATAY ÜNİTE SEÇİCİ ÇUBUĞU -->
+            <!-- 3. HORIZONTAL UNIT PILLS BAR (UNITS 1-9) -->
             <div class="unit-selector-bar" id="unit-pills-bar">
               ${(stage.units || []).map((u, idx) => `
                 <button class="unit-pill ${idx === this.unitIdx ? 'active' : ''}" data-uidx="${idx}">
-                  Ünite ${u.number}: ${u.title}
+                  Unit ${u.number}: ${u.title}
                 </button>
               `).join('')}
             </div>
@@ -540,24 +540,24 @@
             ${unit ? `
               <div style="background:white; border-radius:12px; padding:18px 24px; margin-bottom:20px; border-left:5px solid var(--primary); box-shadow:0 4px 10px rgba(0,0,0,0.05);">
                 <h2 style="color:var(--dark); font-size:1.4rem; margin-bottom:6px;">
-                  📘 ${stage.title} — ${unit.number}. Ünite: ${unit.title}
+                  📘 ${stage.title} — Unit ${unit.number}: ${unit.title}
                 </h2>
                 <p style="color:#475569; font-size:0.95rem; margin:0;">
-                  <strong>🎯 Tema:</strong> ${unit.theme} | <strong>📖 Gramer:</strong> ${unit.grammar} | <strong>🗣️ Fonetik:</strong> ${unit.phonics}
+                  <strong>🎯 Theme:</strong> ${unit.theme} | <strong>📖 Grammar:</strong> ${unit.grammar} | <strong>🗣️ Phonics:</strong> ${unit.phonics}
                 </p>
               </div>
             ` : ''}
 
-            <!-- 4. 8 MODÜL GEZİNME ÇUBUĞU (MODULE NAV) -->
+            <!-- 4. 8-MODULE NAVIGATION BAR -->
             <nav class="module-nav">
-              <button class="module-btn ${this.view === 'vocab' ? 'active' : ''}" data-view="vocab">✨ Hareketli Kelimeler</button>
-              <button class="module-btn ${this.view === 'baamboozle' ? 'active' : ''}" data-view="baamboozle">🎮 Baamboozle Arenası (216 Oyun)</button>
-              <button class="module-btn ${this.view === 'games-hub' ? 'active' : ''}" data-view="games-hub">🎲 1000+ Sınıf ve Tahta Oyunu</button>
-              <button class="module-btn ${this.view === 'twisters' ? 'active' : ''}" data-view="twisters">👅 500+ Tongue Twisters</button>
-              <button class="module-btn ${this.view === 'songs' ? 'active' : ''}" data-view="songs">🎵 Sing-Along Şarkılar</button>
-              <button class="module-btn ${this.view === 'videos' ? 'active' : ''}" data-view="videos">🎬 1000+ Eğitici Video Hub</button>
-              <button class="module-btn ${this.view === 'teacher-guide' ? 'active' : ''}" data-view="teacher-guide">📖 Öğretmen Akıllı Tahta Rehberi</button>
-              <button class="module-btn ${this.view === 'lesson' ? 'active' : ''}" data-view="lesson">📋 5 Günlük Ders Planları</button>
+              <button class="module-btn ${this.view === 'vocab' ? 'active' : ''}" data-view="vocab">✨ Animated Vocabulary</button>
+              <button class="module-btn ${this.view === 'baamboozle' ? 'active' : ''}" data-view="baamboozle">🎮 Baamboozle Arena (216 Packs)</button>
+              <button class="module-btn ${this.view === 'games-hub' ? 'active' : ''}" data-view="games-hub">🎲 Classroom Games Hub (1,080+ Games)</button>
+              <button class="module-btn ${this.view === 'twisters' ? 'active' : ''}" data-view="twisters">👅 Phonics Tongue Twisters (2,080 Twisters)</button>
+              <button class="module-btn ${this.view === 'songs' ? 'active' : ''}" data-view="songs">🎵 Sing-Along Songs & Melodies</button>
+              <button class="module-btn ${this.view === 'videos' ? 'active' : ''}" data-view="videos">🎬 Video Library (Songs & Cartoons)</button>
+              <button class="module-btn ${this.view === 'teacher-guide' ? 'active' : ''}" data-view="teacher-guide">📖 Teacher's Guide & Photocopiables</button>
+              <button class="module-btn ${this.view === 'lesson' ? 'active' : ''}" data-view="lesson">📋 2026-2027 Lesson Plans (36 Weeks)</button>
             </nav>
 
             <!-- 5. ACTIVE MODULE VIEW -->
@@ -582,7 +582,7 @@
 
     renderActiveView(unit) {
       if (!unit && this.view !== 'games-hub' && this.view !== 'twisters' && this.view !== 'songs' && this.view !== 'videos' && this.view !== 'teacher-guide') {
-        return `<div class="resource-box">Ünite yüklenemedi.</div>`;
+        return `<div class="resource-box">Unit could not be loaded.</div>`;
       }
       switch (this.view) {
         case 'vocab': return this.renderVocab(unit);
@@ -607,7 +607,7 @@
               <div class="vocab-card">
                 <div class="vocab-media">
                   <img src="${this.media === 'gif' ? v.gifUrl : v.realPhoto}" alt="${v.word}" loading="lazy" />
-                  <span class="media-tag">${this.media === 'gif' ? 'GIPHY HAREKETLİ' : 'GERÇEK FOTOĞRAF'}</span>
+                  <span class="media-tag">${this.media === 'gif' ? 'GIPHY ANIMATION' : 'REAL PHOTO'}</span>
                 </div>
                 <div class="vocab-details">
                   <h4>${v.word}</h4>
@@ -616,7 +616,7 @@
                   <div class="voice-bubble">
                     <span><strong>${(v.characterVoice || 'polly').toUpperCase()}:</strong> "${v.voiceLine}"</span>
                     <button class="btn btn-outline cam-speak-btn" data-phrase="${v.word}! ${v.voiceLine}" data-char="${v.characterVoice || 'polly'}">
-                      🔊 Dinle
+                      🔊 Listen
                     </button>
                   </div>
                 </div>
@@ -638,7 +638,7 @@
           <div class="baamboozle-arena">
             <div style="display:flex; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:12px; align-items:center;">
               <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-                <label style="font-weight:700;">Baamboozle Paketi:
+                <label style="font-weight:700;">Baamboozle Pack:
                   <select id="baamboozle-pack-select" style="padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; font-weight:600;">
                     ${stagePacks.map(p => `
                       <option value="${p.id}" ${activeGame.id === p.id ? 'selected' : ''}>
@@ -647,15 +647,15 @@
                     `).join('')}
                   </select>
                 </label>
-                <label style="font-weight:700;">Takım Sayısı:
+                <label style="font-weight:700;">Number of Teams:
                   <select id="team-count-select" style="padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; font-weight:600;">
-                    <option value="2" ${this.teamsCount === 2 ? 'selected' : ''}>2 Takım</option>
-                    <option value="3" ${this.teamsCount === 3 ? 'selected' : ''}>3 Takım</option>
-                    <option value="4" ${this.teamsCount === 4 ? 'selected' : ''}>4 Takım</option>
+                    <option value="2" ${this.teamsCount === 2 ? 'selected' : ''}>2 Teams</option>
+                    <option value="3" ${this.teamsCount === 3 ? 'selected' : ''}>3 Teams</option>
+                    <option value="4" ${this.teamsCount === 4 ? 'selected' : ''}>4 Teams</option>
                   </select>
                 </label>
               </div>
-              <button class="btn btn-outline" id="restart-game-btn">🔄 Oyunu Sıfırla</button>
+              <button class="btn btn-outline" id="restart-game-btn">🔄 Reset Game</button>
             </div>
 
             <!-- SCOREBOARD CARDS -->
@@ -664,7 +664,7 @@
                 <div class="team-card team-${i+1} ${i === (this.turn % this.teamsCount) ? 'current-turn' : ''}">
                   <h4>${this.teams[i].name}</h4>
                   <div class="team-score">${this.teams[i].score}</div>
-                  <p style="font-size:0.8rem;">${i === (this.turn % this.teamsCount) ? '👉 SIRA BU TAKIMDA 👈' : 'Bekliyor'}</p>
+                  <p style="font-size:0.8rem;">${i === (this.turn % this.teamsCount) ? '👉 YOUR TURN 👈' : 'Waiting'}</p>
                 </div>
               `).join('')}
             </div>
@@ -695,21 +695,21 @@
         <section class="view-section active">
           <div class="resource-box">
             <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
-              <h3>🎲 Cambridge 1000+ Sınıf İçi ve Tahta Oyunu</h3>
+              <h3>🎲 Cambridge Classroom & Smartboard Games Hub (1,080+ Games)</h3>
               <span class="badge" style="background:#ec4899; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
-                ${filtered.length} Oyun Gösteriliyor
+                ${filtered.length} Games Available
               </span>
             </div>
-            <input type="text" class="search-input" id="game-search-input" placeholder="🔍 Oyun türü veya konuya göre ara..." value="${this.gameSearch}" />
+            <input type="text" class="search-input" id="game-search-input" placeholder="🔍 Search games by category or topic..." value="${this.gameSearch}" />
             <div class="video-grid">
               ${filtered.slice(0, 36).map(g => `
                 <div class="vocab-card" style="padding:16px;">
                   <span class="badge" style="background:#4f46e5; color:white; padding:3px 8px; border-radius:6px; font-size:0.75rem; font-weight:800;">${g.category}</span>
                   <h4 style="margin:8px 0; color:var(--dark); font-size:1.1rem;">${g.title}</h4>
                   <p style="font-size:0.85rem; color:#475569; margin-bottom:10px;">${g.description}</p>
-                  <small style="display:block; color:#64748b; margin-bottom:12px;"><strong>Cihaz:</strong> ${g.device} | <strong>Süre:</strong> ${g.duration}</small>
+                  <small style="display:block; color:#64748b; margin-bottom:12px;"><strong>Device:</strong> ${g.device} | <strong>Duration:</strong> ${g.duration}</small>
                   <button class="btn btn-primary cam-launch-game-btn" style="width:100%; justify-content:center;" data-title="${g.title.replace(/"/g, '&quot;')}" data-rules="${g.rules.replace(/"/g, '&quot;')}">
-                    🎮 Oyunu Tahtada Başlat
+                    🎮 Launch Smartboard Arena
                   </button>
                 </div>
               `).join('')}
@@ -732,12 +732,12 @@
         <section class="view-section active">
           <div class="resource-box">
             <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
-              <h3>👅 Fonetik Tekerleme Bankası (Sınıf Başına 520 Adet)</h3>
+              <h3>👅 Phonics Tongue Twister Studio (520 Twisters per Grade)</h3>
               <span class="badge" style="background:#4f46e5; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
-                ${filtered.length} Tekerleme Mevcut
+                ${filtered.length} Twisters Available
               </span>
             </div>
-            <input type="text" class="search-input" id="twister-search-input" placeholder="🔍 Sese göre ara (/sh/, /str/, bear)..." value="${this.twisterSearch}" />
+            <input type="text" class="search-input" id="twister-search-input" placeholder="🔍 Search by target sound (/sh/, /p/, /th/, bear)..." value="${this.twisterSearch}" />
             <div id="twisters-list">
               ${filtered.slice(0, 50).map(t => `
                 <div class="twister-card">
@@ -747,9 +747,9 @@
                   </div>
                   <p style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:10px;">"${t.text}"</p>
                   <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="0.8">🐢 Yavaş (0.8x)</button>
+                    <button class="btn btn-outline cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="0.8">🐢 Slow (0.8x)</button>
                     <button class="btn btn-primary cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="1.0">🐰 Normal (1.0x)</button>
-                    <button class="btn btn-accent cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="1.25">⚡ Hızlı (1.25x)</button>
+                    <button class="btn btn-accent cam-twister-speak" style="padding:6px 12px; font-size:0.85rem;" data-text="${t.text.replace(/"/g, '&quot;')}" data-speed="1.25">⚡ Fast (1.25x)</button>
                   </div>
                 </div>
               `).join('')}
@@ -775,7 +775,7 @@
                     </span>
                   </div>
                   <button class="btn btn-primary cam-sing-btn" data-lyrics="${(s.lyrics || []).join(' ... ').replace(/"/g, '&quot;')}">
-                    ▶️ Şarkıyı Söyle ve Eşlik Et
+                    ▶️ Sing Along to the Song
                   </button>
                 </div>
                 <div style="background:#f8fafc; padding:16px; border-radius:12px; border-left:4px solid var(--secondary); font-size:1.1rem; line-height:1.7;">
@@ -802,12 +802,12 @@
         <section class="view-section active">
           <div class="resource-box">
             <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
-              <h3>🎬 Cambridge ESL 1000+ Video Kütüphanesi</h3>
+              <h3>🎬 Cambridge ESL 1000+ Video Library</h3>
               <span class="badge" style="background:#10b981; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
                 ${filtered.length} Video (${stageName})
               </span>
             </div>
-            <input type="text" class="search-input" id="video-search-input" placeholder="🔍 Video veya kanal ara..." value="${this.videoSearch}" />
+            <input type="text" class="search-input" id="video-search-input" placeholder="🔍 Search videos or channels..." value="${this.videoSearch}" />
             <div class="video-grid">
               ${filtered.slice(0, 24).map(v => `
                 <div class="vocab-card">
@@ -833,7 +833,7 @@
       const guide = data[this.stageKey] || {
         stageTitle: "Cambridge Teacher's Guide",
         cefr: "A1",
-        targetAge: "7-8 Yaş",
+        targetAge: "7-8 Years",
         smartboardStrategies: [],
         physicalActivities: []
       };
@@ -848,23 +848,23 @@
       const physHtml = (guide.physicalActivities || []).map(p => `
         <div class="activity-card" style="border-left-color:var(--accent); margin-bottom:12px;">
           <strong>🏃 ${p.name}</strong>
-          <p style="margin:4px 0; font-size:0.9rem; color:#475569;"><strong>Gereçler:</strong> ${p.materials}</p>
-          <p style="margin:0; font-size:0.92rem; color:#334155;"><strong>Uygulama:</strong> ${p.procedure}</p>
+          <p style="margin:4px 0; font-size:0.9rem; color:#475569;"><strong>Materials:</strong> ${p.materials}</p>
+          <p style="margin:0; font-size:0.92rem; color:#334155;"><strong>Procedure:</strong> ${p.procedure}</p>
         </div>
       `).join('');
 
       return `
         <section class="view-section active">
           <div class="resource-box">
-            <h3>📚 ${guide.stageTitle} — Öğretmen & Akıllı Tahta Rehberi</h3>
-            <p style="color:#475569;"><strong>Hedef Seviye:</strong> ${guide.cefr} | <strong>Hedef Yaş Grubu:</strong> ${guide.targetAge}</p>
+            <h3>📚 ${guide.stageTitle} — Teacher's Smartboard & Curriculum Guide</h3>
+            <p style="color:#475569;"><strong>Target Level:</strong> ${guide.cefr} | <strong>Target Age Group:</strong> ${guide.targetAge}</p>
           </div>
           <div class="resource-box">
-            <h3>💻 Akıllı Tahta (Interactive Whiteboard) Stratejileri</h3>
+            <h3>💻 Interactive Smartboard Strategies</h3>
             ${smartHtml}
           </div>
           <div class="resource-box">
-            <h3>🏃 Fiziksel Sınıf Oyunları ve TPR Aktiviteleri</h3>
+            <h3>🏃 Physical Classroom Games & TPR Activities</h3>
             ${physHtml}
           </div>
         </section>
@@ -879,11 +879,11 @@
       const daysHtml = daily.map(d => `
         <div class="activity-card" style="border-left-color:var(--primary); margin-bottom:16px;">
           <h4 style="color:var(--dark); margin-bottom:8px; font-size:1.15rem;">📅 ${d.day} — ${d.focus}</h4>
-          <p style="margin-bottom:4px;"><strong>1. Warm-Up (Isınma):</strong> ${d.warmUp}</p>
-          <p style="margin-bottom:4px;"><strong>2. Presentation (Sunum):</strong> ${d.presentation}</p>
-          <p style="margin-bottom:4px;"><strong>3. Practice (Alıştırma):</strong> ${d.practice}</p>
-          <p style="margin-bottom:4px;"><strong>4. Production (Üretim):</strong> ${d.production}</p>
-          <p style="margin-bottom:0;"><strong>5. Wrap-Up (Kapanış):</strong> ${d.wrapUp}</p>
+          <p style="margin-bottom:4px;"><strong>1. Warm-Up:</strong> ${d.warmUp}</p>
+          <p style="margin-bottom:4px;"><strong>2. Presentation:</strong> ${d.presentation}</p>
+          <p style="margin-bottom:4px;"><strong>3. Practice:</strong> ${d.practice}</p>
+          <p style="margin-bottom:4px;"><strong>4. Production:</strong> ${d.production}</p>
+          <p style="margin-bottom:0;"><strong>5. Wrap-Up:</strong> ${d.wrapUp}</p>
         </div>
       `).join('');
 
@@ -891,11 +891,11 @@
         <section class="view-section active">
           <div class="resource-box">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
-              <h3>📅 ${unit.title} — 5 Günlük Detaylı Ders Planı</h3>
-              <button class="btn btn-outline" onclick="window.print()">🖨️ Planı Yazdır / PDF</button>
+              <h3>📅 ${unit.title} — 5-Day Detailed Lesson Plan</h3>
+              <button class="btn btn-outline" onclick="window.print()">🖨️ Print Plan / Save PDF</button>
             </div>
             <p style="font-size:1.05rem; margin-bottom:16px; color:#1e40af; font-weight:600;">
-              <strong>🎯 Haftalık Kazanım:</strong> ${lp.weeklyGoal || 'Ünite hedefleri eksiksiz pekiştirilir.'}
+              <strong>🎯 Weekly Learning Objective:</strong> ${lp.weeklyGoal || 'Master core unit competencies.'}
             </p>
             ${daysHtml}
           </div>
@@ -903,48 +903,195 @@
       `;
     },
 
+    // SMARTBOARD GAME ARENA MODAL
+    openGameArena(title, rules, category) {
+      if (typeof document === 'undefined') return;
+      const existing = document.getElementById('sb-game-arena-overlay');
+      if (existing) existing.remove();
+
+      let redScore = 0, blueScore = 0, timerSec = 60, timerInt = null;
+
+      const d = document.createElement('div');
+      d.id = 'sb-game-arena-overlay';
+      d.className = 'modal-overlay active';
+      d.innerHTML = `
+        <div class="sb-arena-modal">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #e2e8f0;padding-bottom:12px;margin-bottom:14px;">
+            <span class="badge" style="background:#4f46e5;color:white;font-weight:800;padding:4px 10px;border-radius:8px;">${category || 'Classroom Game'}</span>
+            <h3 style="margin:0;font-size:1.3rem;color:#1e1b4b;">🎮 ${title}</h3>
+            <button class="btn white small" id="sb-arena-close-top" style="font-size:16px;padding:4px 10px;">❌</button>
+          </div>
+
+          <div style="background:#f8fafc;border-radius:14px;padding:14px 18px;margin-bottom:14px;border-left:4px solid #2563eb;text-align:left;">
+            <strong style="color:#1e3a8a;font-size:0.95rem;">📖 Classroom Instructions & TPR:</strong>
+            <p style="margin:6px 0 0 0;font-size:0.92rem;color:#334155;line-height:1.45;">${rules}</p>
+          </div>
+
+          <div class="sb-timer-wrap" id="sb-timer-val">01:00</div>
+          <div style="display:flex;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+            <button class="btn green small" id="sb-timer-start">▶️ Start Timer</button>
+            <button class="btn yellow small" id="sb-timer-pause">⏸️ Pause</button>
+            <button class="btn white small" id="sb-timer-reset">🔄 Reset (60s)</button>
+            <button class="btn purple small" id="sb-voice-rules">🔊 Read Rules</button>
+          </div>
+
+          <div class="sb-scoreboard">
+            <div class="sb-team-card red">
+              <div style="font-weight:900;font-size:1.1rem;">🔴 Team Red</div>
+              <div class="sb-team-score" id="sb-score-red">0</div>
+              <div style="display:flex;justify-content:center;gap:8px;">
+                <button class="btn white small" id="sb-red-plus" style="font-weight:900;font-size:1.1rem;padding:4px 16px;">+1</button>
+                <button class="btn white small" id="sb-red-minus" style="font-weight:900;font-size:1.1rem;padding:4px 16px;">-1</button>
+              </div>
+            </div>
+
+            <div class="sb-team-card blue">
+              <div style="font-weight:900;font-size:1.1rem;">🔵 Team Blue</div>
+              <div class="sb-team-score" id="sb-score-blue">0</div>
+              <div style="display:flex;justify-content:center;gap:8px;">
+                <button class="btn white small" id="sb-blue-plus" style="font-weight:900;font-size:1.1rem;padding:4px 16px;">+1</button>
+                <button class="btn white small" id="sb-blue-minus" style="font-weight:900;font-size:1.1rem;padding:4px 16px;">-1</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:10px;">
+            <button class="btn gold big" id="sb-launch-engine-btn" style="flex:1;font-weight:900;padding:12px 18px;">
+              🚀 Launch Interactive Game Engine for this Unit
+            </button>
+            <button class="btn white" id="sb-arena-done">✅ Finish Game</button>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(d);
+
+      const closeArena = () => {
+        clearInterval(timerInt);
+        d.remove();
+      };
+
+      const cTop = d.querySelector('#sb-arena-close-top');
+      if (cTop) cTop.onclick = closeArena;
+      const cDone = d.querySelector('#sb-arena-done');
+      if (cDone) cDone.onclick = closeArena;
+      d.onclick = (e) => { if (e.target === d) closeArena(); };
+
+      const timeEl = d.querySelector('#sb-timer-val');
+      const updateTimerDisplay = () => {
+        const m = Math.floor(timerSec / 60);
+        const s = timerSec % 60;
+        if (timeEl) timeEl.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      };
+
+      const btnStart = d.querySelector('#sb-timer-start');
+      if (btnStart) {
+        btnStart.onclick = () => {
+          clearInterval(timerInt);
+          timerInt = setInterval(() => {
+            if (timerSec > 0) {
+              timerSec--;
+              updateTimerDisplay();
+              if (timerSec === 0) {
+                clearInterval(timerInt);
+                SoundFX.playWin();
+                ConfettiEngine.burst();
+                NaturalVoiceEngine.speak("Time's up! Brilliant effort, teams!", 'polly');
+              }
+            }
+          }, 1000);
+        };
+      }
+
+      const btnPause = d.querySelector('#sb-timer-pause');
+      if (btnPause) {
+        btnPause.onclick = () => { clearInterval(timerInt); };
+      }
+
+      const btnReset = d.querySelector('#sb-timer-reset');
+      if (btnReset) {
+        btnReset.onclick = () => {
+          clearInterval(timerInt);
+          timerSec = 60;
+          updateTimerDisplay();
+        };
+      }
+
+      const btnVoice = d.querySelector('#sb-voice-rules');
+      if (btnVoice) {
+        btnVoice.onclick = () => {
+          NaturalVoiceEngine.speak(`Game instructions: ${rules}`, 'polly');
+        };
+      }
+
+      const redScEl = d.querySelector('#sb-score-red');
+      const blueScEl = d.querySelector('#sb-score-blue');
+
+      const rPlus = d.querySelector('#sb-red-plus');
+      if (rPlus) rPlus.onclick = () => { redScore++; if (redScEl) redScEl.textContent = redScore; SoundFX.playCorrect(); };
+      const rMinus = d.querySelector('#sb-red-minus');
+      if (rMinus) rMinus.onclick = () => { redScore = Math.max(0, redScore - 1); if (redScEl) redScEl.textContent = redScore; };
+
+      const bPlus = d.querySelector('#sb-blue-plus');
+      if (bPlus) bPlus.onclick = () => { blueScore++; if (blueScEl) blueScEl.textContent = blueScore; SoundFX.playCorrect(); };
+      const bMinus = d.querySelector('#sb-blue-minus');
+      if (bMinus) bMinus.onclick = () => { blueScore = Math.max(0, blueScore - 1); if (blueScEl) blueScEl.textContent = blueScore; };
+
+      const btnLaunch = d.querySelector('#sb-launch-engine-btn');
+      if (btnLaunch) {
+        btnLaunch.onclick = () => {
+          closeArena();
+          const u = this.getCurrentUnit();
+          const uId = u ? u.id : 's1u1';
+          if (typeof APP !== 'undefined' && APP.go) {
+            APP.go('game', { engineId: 'baamboozle', unitId: uId, lvIdx: 0 });
+          }
+        };
+      }
+    },
+
     // SETTINGS MODAL CONTENT
     renderSettingsModal() {
       const s = Settings.getSettings();
       return `
         <div class="modal-content" style="max-width: 520px;">
-          <h3 style="color:#1e1b4b; margin-bottom:16px; font-size:1.35rem;">⚙️ Platform ve Ses Ayarları</h3>
+          <h3 style="color:#1e1b4b; margin-bottom:16px; font-size:1.35rem;">⚙️ Platform & Audio Settings</h3>
           <div class="settings-group">
-            <label>🎵 Fon Müziği Ses Düzeyi (${Math.round((s.bgmVolume || 0.35) * 100)}%)</label>
+            <label>🎵 Background Music Volume (${Math.round((s.bgmVolume || 0.35) * 100)}%)</label>
             <input type="range" id="setting-bgm-volume" min="0" max="1" step="0.05" value="${s.bgmVolume || 0.35}" />
           </div>
           <div class="settings-group">
-            <label>🔊 Ses Efektleri (SFX) Düzeyi (${Math.round((s.sfxVolume || 0.8) * 100)}%)</label>
+            <label>🔊 Sound Effects (SFX) Volume (${Math.round((s.sfxVolume || 0.8) * 100)}%)</label>
             <input type="range" id="setting-sfx-volume" min="0" max="1" step="0.05" value="${s.sfxVolume || 0.8}" />
           </div>
           <div class="settings-group">
-            <label>🗣️ Doğal Karakter Seslendirmesi</label>
+            <label>🗣️ Character Voice Actor</label>
             <select id="setting-voice-char">
-              <option value="polly" ${s.voiceCharacter === 'polly' ? 'selected' : ''}>Polly (Öğretmen)</option>
-              <option value="peppa" ${s.voiceCharacter === 'peppa' ? 'selected' : ''}>Peppa Pig (Çocuk)</option>
-              <option value="bluey" ${s.voiceCharacter === 'bluey' ? 'selected' : ''}>Bluey (Enerjik)</option>
-              <option value="chase" ${s.voiceCharacter === 'chase' ? 'selected' : ''}>Chase - Paw Patrol (Cesur)</option>
+              <option value="polly" ${s.voiceCharacter === 'polly' ? 'selected' : ''}>Polly (Cheerful Mascot)</option>
+              <option value="peppa" ${s.voiceCharacter === 'peppa' ? 'selected' : ''}>Peppa Pig (Playful Child)</option>
+              <option value="bluey" ${s.voiceCharacter === 'bluey' ? 'selected' : ''}>Bluey (Energetic)</option>
+              <option value="chase" ${s.voiceCharacter === 'chase' ? 'selected' : ''}>Chase - PAW Patrol (Brave)</option>
             </select>
           </div>
           <div class="settings-group">
-            <label>⚡ Ses Okuma Hızı</label>
+            <label>⚡ Speech Speed (TTS)</label>
             <select id="setting-voice-speed">
-              <option value="0.8" ${s.voiceSpeed === 0.8 ? 'selected' : ''}>0.8x (Yavaş)</option>
-              <option value="1.0" ${s.voiceSpeed === 1.0 ? 'selected' : ''}>1.0x (Normal)</option>
-              <option value="1.2" ${s.voiceSpeed === 1.2 ? 'selected' : ''}>1.2x (Hızlı)</option>
+              <option value="0.8" ${s.voiceSpeed === 0.8 ? 'selected' : ''}>0.8x (Slow - Phonics Practice)</option>
+              <option value="1.0" ${s.voiceSpeed === 1.0 ? 'selected' : ''}>1.0x (Normal - Fluent)</option>
+              <option value="1.2" ${s.voiceSpeed === 1.2 ? 'selected' : ''}>1.2x (Fast - Fluency Challenge)</option>
             </select>
           </div>
           <div class="settings-group">
-            <label>🎨 Görsel Arayüz Teması</label>
+            <label>🎨 Visual Theme Mode</label>
             <select id="setting-theme">
-              <option value="colorful-kids" ${s.themeMode === 'colorful-kids' ? 'selected' : ''}>Renkli Çocuk Dünyası</option>
-              <option value="smartboard-contrast" ${s.themeMode === 'smartboard-contrast' ? 'selected' : ''}>Akıllı Tahta Yüksek Kontrast</option>
-              <option value="pastel" ${s.themeMode === 'pastel' ? 'selected' : ''}>Pastel Yumuşak Tonlar</option>
+              <option value="colorful-kids" ${s.themeMode === 'colorful-kids' ? 'selected' : ''}>Colorful Kids World</option>
+              <option value="smartboard-contrast" ${s.themeMode === 'smartboard-contrast' ? 'selected' : ''}>Smartboard High Contrast</option>
+              <option value="pastel" ${s.themeMode === 'pastel' ? 'selected' : ''}>Pastel Soft Colors</option>
             </select>
           </div>
           <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
-            <button class="btn btn-outline" id="close-settings-btn">İptal</button>
-            <button class="btn btn-primary" id="save-settings-btn">Kaydet ve Kapat</button>
+            <button class="btn btn-outline" id="close-settings-btn">Cancel</button>
+            <button class="btn btn-primary" id="save-settings-btn">Save & Close</button>
           </div>
         </div>
       `;
@@ -959,7 +1106,7 @@
       return `
         <div class="modal-content">
           <div id="modal-pts-badge" style="background:#f59e0b; color:white; padding:6px 14px; border-radius:20px; font-weight:800; display:inline-block; margin-bottom:12px;">
-            ${tile.pts > 0 ? '+' : ''}${tile.pts} Puan (${tile.type.toUpperCase()})
+            ${tile.pts > 0 ? '+' : ''}${tile.pts} Points (${tile.type.toUpperCase()})
           </div>
           <div class="modal-question" id="modal-q-text" style="font-size:1.5rem; font-weight:800; color:var(--dark); margin-bottom:16px;">
             ${tile.q}
@@ -969,12 +1116,12 @@
           </div>
           <div class="modal-buttons" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
             ${!modal.revealed ? `
-              <button class="btn btn-outline" id="reveal-answer-btn">👁️ Cevabı Aç</button>
+              <button class="btn btn-outline" id="reveal-answer-btn">👁️ Reveal Answer</button>
             ` : `
-              <button class="btn btn-primary" id="btn-answer-correct" style="background:#10b981;">✅ Doğru</button>
-              <button class="btn btn-secondary" id="btn-answer-wrong" style="background:#ef4444;">❌ Yanlış</button>
+              <button class="btn btn-primary" id="btn-answer-correct" style="background:#10b981;">✅ Correct (+${tile.pts})</button>
+              <button class="btn btn-secondary" id="btn-answer-wrong" style="background:#ef4444;">❌ Wrong / Pass</button>
             `}
-            <button class="btn btn-outline" id="btn-cancel-question">✖ Kapat</button>
+            <button class="btn btn-outline" id="btn-cancel-question">✖ Close</button>
           </div>
         </div>
       `;
@@ -1173,10 +1320,10 @@
         btn.addEventListener('click', (e) => {
           const title = e.currentTarget.getAttribute('data-title');
           const rules = e.currentTarget.getAttribute('data-rules');
+          const cat = e.currentTarget.getAttribute('data-cat') || 'Smartboard Game';
           ConfettiEngine.burst();
           SoundFX.playWin();
-          NaturalVoiceEngine.speak(`Let us play: ${title}! Get ready!`, 'polly');
-          alert(`🎮 ${title}\n\nOyun Kuralları:\n${rules}\n\nÖğrenciler tahtaya hazır!`);
+          this.openGameArena(title, rules, cat);
         });
       });
 
