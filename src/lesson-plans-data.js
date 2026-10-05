@@ -5661,3 +5661,193 @@ const LESSON_PLANS_DATA = {
 if (typeof window !== 'undefined') {
   window.LESSON_PLANS_DATA = LESSON_PLANS_DATA;
 }
+
+/* ════════════════════════════════════════════════════════════
+   🗓️ DYNAMIC REFLOW CALENDAR SCHEDULER & LESSON ENGINE
+   Automatically recalculates lesson dates skipping weekends,
+   persists edits to localStorage, and powers rich TPR & digital resources.
+   ════════════════════════════════════════════════════════════ */
+
+function formatLocalDate(d) {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function recalculateSchedule(lessons, startIndex, newStartDate, excludeWeekends = true) {
+  if (!lessons || startIndex < 0 || startIndex >= lessons.length) {
+    return lessons || [];
+  }
+  const parts = newStartDate.split('-');
+  const y = parseInt(parts[0], 10);
+  const m = parseInt(parts[1], 10) - 1;
+  const d = parseInt(parts[2], 10);
+  let currentDate = new Date(y, m, d);
+
+  const updated = lessons.map(item => ({
+    ...item,
+    curriculumReferences: { ...(item.curriculumReferences || {}) },
+    tpr: { ...(item.tpr || {}) },
+    digitalResources: (item.digitalResources || []).map(r => ({ ...r }))
+  }));
+
+  for (let i = startIndex; i < updated.length; i++) {
+    if (excludeWeekends) {
+      while (currentDate.getDay() === 0 || currentDate.getDay() === 6) {
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+    }
+    updated[i].date = formatLocalDate(currentDate);
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  return updated;
+}
+
+// Build initial 36-week LessonDay dataset from schedule
+function buildInitialLessonDays(stKey) {
+  const schedule = (LESSON_PLANS_DATA && LESSON_PLANS_DATA.schedule) || [];
+  const gradeNames = {
+    stage1: 'Global English 1',
+    stage2: 'Global English 2',
+    stage3: 'Global English 3',
+    stage4: 'Global English 4'
+  };
+  const gradeLabel = gradeNames[stKey] || 'Global English 1';
+  const list = [];
+
+  // Starting date: Monday, September 14, 2026
+  let curDate = new Date(2026, 8, 14);
+
+  schedule.forEach((w, wIdx) => {
+    // Skip weekends to reach Monday of each school week
+    while (curDate.getDay() === 0 || curDate.getDay() === 6) {
+      curDate.setDate(curDate.getDate() + 1);
+    }
+    const dateStr = formatLocalDate(curDate);
+    curDate.setDate(curDate.getDate() + 7); // Advance 1 week for next scheduled entry
+
+    const sp = (w.plansByStage && w.plansByStage[stKey]) || {};
+    const unitTitle = sp.unitTitle || `Unit ${w.unitNumber}`;
+
+    const lbPageMatch = (sp.learnersBook || '').match(/LB Pages\s*([0-9–\-]+)/i);
+    const wbPageMatch = (sp.workbook || '').match(/AB Pages\s*([0-9–\-]+)/i);
+
+    const tprText = sp.tpr || "Simon Says kinesthetic movement drill";
+    const tprParts = tprText.split(':');
+    const tprTitle = tprParts[0] ? tprParts[0].trim() : 'Classroom Movement Routine';
+    const tprAction = tprParts[1] ? tprParts[1].trim() : tprText;
+
+    const vocabList = sp.grammar 
+      ? sp.grammar.split(/[/,]/).map(s => s.trim()).filter(Boolean)
+      : ['listen', 'speak', 'point', 'say'];
+
+    list.push({
+      id: `${stKey}-w${w.week}`,
+      weekIndex: w.week,
+      date: dateStr,
+      academicYear: '2026-2027',
+      grade: gradeLabel,
+      unit: w.unitNumber,
+      lessonNumber: w.weekOfUnit,
+      topic: `${unitTitle} — ${w.subTheme}`,
+      subTheme: w.subTheme,
+      month: w.month,
+      curriculumReferences: {
+        learnersBookPages: lbPageMatch ? lbPageMatch[1] : `${10 + (w.unitNumber - 1) * 12}–${12 + (w.unitNumber - 1) * 12}`,
+        workbookPages: wbPageMatch ? wbPageMatch[1] : `${8 + (w.unitNumber - 1) * 10}–${10 + (w.unitNumber - 1) * 10}`,
+        teachersResourcePages: sp.teacherResource || `TR Section ${w.unitNumber}.${w.weekOfUnit} (p. ${22 + w.week * 2})`,
+        photocopiableId: sp.photocopiables || `Worksheet ${w.unitNumber}.${w.weekOfUnit}`
+      },
+      tpr: {
+        title: tprTitle,
+        targetVocab: vocabList,
+        physicalAction: tprAction,
+        detailedInstruction: (sp.dailyBreakdown && sp.dailyBreakdown[2] && sp.dailyBreakdown[2].activity) || tprText,
+        smartBoardPrompt: sp.smartboard || 'Display target vocabulary card on interactive board with 60-second countdown timer.'
+      },
+      digitalResources: [
+        {
+          id: `${stKey}-w${w.week}-yt`,
+          title: `${unitTitle} Sing-Along`,
+          type: 'youtube',
+          url: 'https://www.youtube-nocookie.com/embed/tVlcKp3bWH8'
+        },
+        {
+          id: `${stKey}-w${w.week}-tw`,
+          title: `${unitTitle} Phonics & Cutouts`,
+          type: 'twinkl',
+          url: `https://www.twinkl.com/search?q=${encodeURIComponent(unitTitle + ' primary esl')}`
+        },
+        {
+          id: `${stKey}-w${w.week}-bm`,
+          title: `${unitTitle} Mystery Team Arena`,
+          type: 'baamboozle',
+          url: `https://www.baamboozle.com/classic/search?q=${encodeURIComponent(unitTitle)}`
+        },
+        {
+          id: `${stKey}-w${w.week}-cv`,
+          title: `${unitTitle} Printable Poster`,
+          type: 'canva',
+          url: 'https://www.canva.com/templates/?query=primary-english-flashcards'
+        }
+      ],
+      isCompleted: false,
+      notes: sp.realia ? `Classroom Realia: ${sp.realia}` : ''
+    });
+  });
+
+  return list;
+}
+
+// Storage helpers
+LESSON_PLANS_DATA.getLessonDays = function(stKey = 'stage1') {
+  const storeKey = `polly_custom_lesson_schedule_${stKey}`;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem(storeKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    }
+  } catch (e) {}
+  return buildInitialLessonDays(stKey);
+};
+
+LESSON_PLANS_DATA.saveLessonDay = function(stKey, updatedLesson, autoReflow = true) {
+  let lessons = this.getLessonDays(stKey);
+  const idx = lessons.findIndex(l => l.id === updatedLesson.id);
+  if (idx === -1) return lessons;
+
+  lessons[idx] = updatedLesson;
+  if (autoReflow) {
+    lessons = recalculateSchedule(lessons, idx, updatedLesson.date, true);
+  }
+
+  const storeKey = `polly_custom_lesson_schedule_${stKey}`;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storeKey, JSON.stringify(lessons));
+    }
+  } catch (e) {}
+
+  return lessons;
+};
+
+LESSON_PLANS_DATA.resetToDefaults = function(stKey = 'stage1') {
+  const storeKey = `polly_custom_lesson_schedule_${stKey}`;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem(storeKey);
+    }
+  } catch (e) {}
+  return buildInitialLessonDays(stKey);
+};
+
+if (typeof window !== 'undefined') {
+  window.recalculateSchedule = recalculateSchedule;
+  window.formatLocalDate = formatLocalDate;
+}
+

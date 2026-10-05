@@ -3451,3 +3451,208 @@ body.theme-pastel {
   }
   .btn, .modal-overlay, #set-close-top { display: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   📅 DYNAMIC LESSON PLANNER & MULTI-CHARACTER STYLING
+   ══════════════════════════════════════════════════════════════ */
+.lp-grade-badge {
+  background: #ede9fe;
+  color: #6d28d9;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lp-cambridge-refs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+.lp-ref-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+}
+.lp-ref-item span.label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.lp-ref-item span.val {
+  font-weight: 600;
+  color: #1e293b;
+}
+.lp-tpr-toggle-btn {
+  background: #fef08a;
+  color: #854d0e;
+  border: 1.5px solid #facc15;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+}
+.lp-tpr-toggle-btn:hover {
+  background: #fde047;
+  transform: translateY(-1px);
+}
+.lp-tpr-detail-box {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 0.86rem;
+  color: #78350f;
+  animation: fadeIn 0.2s ease;
+}
+.lp-tpr-detail-box h5 {
+  margin: 0 0 6px 0;
+  font-size: 0.88rem;
+  color: #92400e;
+  font-weight: 800;
+}
+.lp-tpr-step-list {
+  padding-left: 20px;
+  margin: 6px 0;
+}
+.lp-tpr-step-list li {
+  margin-bottom: 4px;
+}
+.digital-res-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.digital-res-badge {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+  color: #ffffff !important;
+}
+.digital-res-badge:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.digital-res-badge.youtube { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.digital-res-badge.twinkl { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+.digital-res-badge.baamboozle { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.digital-res-badge.canva { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.digital-res-badge.interactive { background: linear-gradient(135deg, #10b981, #059669); }
+
+.lp-reflow-banner {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.lp-btn-action {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+.lp-btn-action:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+.lp-btn-action.edit-btn {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+.lp-btn-action.edit-btn:hover {
+  background: #dbeafe;
+}
+
+/* Edit Modal */
+.lp-edit-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.lp-edit-modal-box {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+  padding: 24px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.lp-form-group {
+  margin-bottom: 14px;
+}
+.lp-form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 4px;
+}
+.lp-form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  box-sizing: border-box;
+}
+.lp-form-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+.lp-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #334155;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}

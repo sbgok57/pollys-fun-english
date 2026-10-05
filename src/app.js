@@ -1142,7 +1142,8 @@ const APP = {
       const u = unitById(this.unitId);
       const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
       if (m) {
-        MEDIA.speakDisney(m.voiceKey || 'mickey', m.quoteEn);
+        // // SAFETY: Multi-character audio pipeline with fallback
+        MEDIA.playCharacterPhrase(m.voiceKey || 'mickey', 'greeting', m.quoteEn);
         FX.stars();
       }
     });
@@ -1151,7 +1152,8 @@ const APP = {
       const u = unitById(this.unitId);
       const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
       if (m) {
-        MEDIA.speakDisney(m.voiceKey || 'mickey', m.quoteEn);
+        // // SAFETY: Multi-character audio pipeline with fallback
+        MEDIA.playCharacterPhrase(m.voiceKey || 'mickey', 'praise', m.quoteEn);
         FX.stars();
       }
     });
@@ -2089,17 +2091,109 @@ const APP = {
     if (!data) return;
 
     let curStage = stageKey || 'stage1';
-    let curMode = 'weekly';
+    let curMode = 'daily';
     let selectedMonth = 'all';
     let searchQuery = '';
+    const expandedTPR = {};
 
     const d = document.createElement('div');
     d.id = 'lesson-plans-app-modal';
     d.className = 'modal-overlay active';
 
+    const openEditLessonModal = (lesson) => {
+      const existingEdit = document.getElementById('lp-edit-day-modal');
+      if (existingEdit) existingEdit.remove();
+
+      const em = document.createElement('div');
+      em.id = 'lp-edit-day-modal';
+      em.className = 'lp-edit-modal-overlay';
+      em.innerHTML = `
+        <div class="lp-edit-modal-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1.5px solid #e2e8f0;padding-bottom:10px;">
+            <h3 style="margin:0;color:#1e3a8a;font-size:1.2rem;">✏️ Edit Lesson: Day ${lesson.dayNumber} (${lesson.stage})</h3>
+            <button class="btn white small" id="lp-edit-modal-close" style="padding:4px 10px;">❌</button>
+          </div>
+          <form id="lp-edit-form">
+            <div class="lp-form-group">
+              <label>📅 Lesson Date (YYYY-MM-DD)</label>
+              <input type="date" id="lp-form-date" class="lp-form-input" value="${lesson.date}" required />
+            </div>
+            <div class="lp-form-group">
+              <label>🎯 Lesson Topic</label>
+              <input type="text" id="lp-form-topic" class="lp-form-input" value="${lesson.topic || ''}" required />
+            </div>
+            <div class="lp-form-group">
+              <label>📘 Learner's Book Pages</label>
+              <input type="text" id="lp-form-lb" class="lp-form-input" value="${(lesson.cambridgeRef && lesson.cambridgeRef.learnersBookPages) || ''}" />
+            </div>
+            <div class="lp-form-group">
+              <label>📓 Activity Book Pages</label>
+              <input type="text" id="lp-form-wb" class="lp-form-input" value="${(lesson.cambridgeRef && lesson.cambridgeRef.workbookPages) || ''}" />
+            </div>
+            <div class="lp-form-group">
+              <label>🍎 Teacher's Resource Pages</label>
+              <input type="text" id="lp-form-tr" class="lp-form-input" value="${(lesson.cambridgeRef && lesson.cambridgeRef.teachersResourcePages) || ''}" />
+            </div>
+            <div class="lp-form-group">
+              <label class="lp-checkbox-wrap">
+                <input type="checkbox" id="lp-form-reflow" checked />
+                <span><strong>Auto-Reflow Calendar:</strong> Automatically recalculate subsequent lesson dates skipping Saturdays and Sundays</span>
+              </label>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;">
+              <button type="button" class="btn white small" id="lp-form-cancel">Cancel</button>
+              <button type="submit" class="btn blue small" style="font-weight:800;">💾 Save & Update Schedule</button>
+            </div>
+          </form>
+        </div>
+      `;
+
+      document.body.appendChild(em);
+
+      const closeEdit = () => em.remove();
+      const closeBtn = em.querySelector('#lp-edit-modal-close');
+      if (closeBtn) closeBtn.onclick = closeEdit;
+      const cancelBtn = em.querySelector('#lp-form-cancel');
+      if (cancelBtn) cancelBtn.onclick = closeEdit;
+
+      const form = em.querySelector('#lp-edit-form');
+      if (form) {
+        form.onsubmit = (ev) => {
+          ev.preventDefault();
+          const newDate = em.querySelector('#lp-form-date').value;
+          const newTopic = em.querySelector('#lp-form-topic').value;
+          const newLb = em.querySelector('#lp-form-lb').value;
+          const newWb = em.querySelector('#lp-form-wb').value;
+          const newTr = em.querySelector('#lp-form-tr').value;
+          const autoReflow = em.querySelector('#lp-form-reflow').checked;
+
+          const updated = Object.assign({}, lesson, {
+            date: newDate,
+            topic: newTopic,
+            cambridgeRef: Object.assign({}, lesson.cambridgeRef || {}, {
+              learnersBookPages: newLb,
+              workbookPages: newWb,
+              teachersResourcePages: newTr
+            })
+          });
+
+          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.saveLessonDay) {
+            LESSON_PLANS_DATA.saveLessonDay(curStage, updated, autoReflow);
+          }
+
+          closeEdit();
+          renderPlans();
+          if (typeof FX !== 'undefined' && FX.toast) {
+            FX.toast(autoReflow ? '✅ Lesson saved and calendar reflowed!' : '✅ Lesson saved!');
+          }
+        };
+      }
+    };
+
     const renderPlans = () => {
       const schedule = data.schedule || [];
       const stInfo = (data.stages && data.stages[curStage]) || {};
+      const dailyLessons = (typeof data.getLessonDays === 'function') ? data.getLessonDays(curStage) : [];
 
       let filtered = schedule;
       if (selectedMonth !== 'all') {
@@ -2114,6 +2208,17 @@ const APP = {
                  (sp.grammar && sp.grammar.toLowerCase().includes(q)) ||
                  (sp.phonics && sp.phonics.toLowerCase().includes(q));
         });
+      }
+
+      let dailyFiltered = dailyLessons;
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        dailyFiltered = dailyLessons.filter(l =>
+          (l.topic && l.topic.toLowerCase().includes(q)) ||
+          (l.unitTitle && l.unitTitle.toLowerCase().includes(q)) ||
+          (l.date && l.date.includes(q)) ||
+          (l.tprActivity && l.tprActivity.title && l.tprActivity.title.toLowerCase().includes(q))
+        );
       }
 
       d.innerHTML = `
@@ -2170,7 +2275,94 @@ const APP = {
 
           <!-- PLANS CONTAINER -->
           <div id="lp-plans-list">
-            ${curMode === 'annual' ? `
+            ${curMode === 'daily' ? `
+              <div class="lp-reflow-banner">
+                <div>
+                  <strong>✨ Dynamic Reflow Calendar:</strong> All dates automatically skip weekends (Saturday & Sunday). You can customize topics, book pages, and dynamically reflow subsequent dates!
+                </div>
+                <button class="lp-btn-action" id="lp-reset-defaults-btn">
+                  🔄 Reset Defaults
+                </button>
+              </div>
+              <div id="lp-daily-cards-wrap">
+                ${dailyFiltered.map(l => `
+                  <div class="lp-week-card" style="border-left-color:#3b82f6;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+                      <div>
+                        <span class="lp-date-badge">📅 Day ${l.dayNumber} · ${l.date}</span>
+                        <span class="lp-grade-badge" style="margin-left:6px;">${l.stage} (${l.cefrLevel})</span>
+                        <h3 style="margin:6px 0 2px 0;font-size:1.2rem;color:#1e3a8a;">
+                          ${l.unitTitle} — <span style="color:#0f766e;">${l.topic}</span>
+                        </h3>
+                      </div>
+                      <div style="display:flex;gap:6px;">
+                        <button class="lp-btn-action edit-btn lp-edit-day-btn" data-lid="${l.id}">
+                          ✏️ Edit & Reflow
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Cambridge Curriculum References Grid -->
+                    <div class="lp-cambridge-refs">
+                      <div class="lp-ref-item">
+                        <span class="label">📘 Learner's Book</span>
+                        <span class="val">${(l.cambridgeRef && l.cambridgeRef.learnersBookPages) || '—'}</span>
+                      </div>
+                      <div class="lp-ref-item">
+                        <span class="label">📓 Activity Book</span>
+                        <span class="val">${(l.cambridgeRef && l.cambridgeRef.workbookPages) || '—'}</span>
+                      </div>
+                      <div class="lp-ref-item">
+                        <span class="label">🍎 Teacher's Resource</span>
+                        <span class="val">${(l.cambridgeRef && l.cambridgeRef.teachersResourcePages) || '—'}</span>
+                      </div>
+                      <div class="lp-ref-item">
+                        <span class="label">🌐 Digital Support</span>
+                        <span class="val">
+                          ${(l.cambridgeRef && l.cambridgeRef.digitalSupportUrl) ? `<a href="${l.cambridgeRef.digitalSupportUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:underline;">Digital Hub ↗</a>` : '—'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- TPR Kinesthetic Activity Accordion -->
+                    ${l.tprActivity ? `
+                      <div style="margin-top:8px;">
+                        <button class="lp-tpr-toggle-btn" data-tprid="${l.id}">
+                          🏃 TPR Activity: ${l.tprActivity.title} ${expandedTPR[l.id] ? '▲ Hide' : '▼ Details'}
+                        </button>
+                        ${expandedTPR[l.id] ? `
+                          <div class="lp-tpr-detail-box">
+                            <h5>🤸 Kinesthetic Walkthrough: ${l.tprActivity.title}</h5>
+                            ${(l.tprActivity.materials && l.tprActivity.materials.length) ? `<div><strong>🎒 Materials:</strong> ${l.tprActivity.materials.join(', ')}</div>` : ''}
+                            <div style="margin-top:6px;"><strong>📋 Instructions:</strong></div>
+                            <ol class="lp-tpr-step-list">
+                              ${(l.tprActivity.instructions || []).map(inst => `<li>${inst}</li>`).join('')}
+                            </ol>
+                          </div>
+                        ` : ''}
+                      </div>
+                    ` : ''}
+
+                    <!-- Clickable Digital Interactive Resources -->
+                    ${(l.digitalResources && l.digitalResources.length) ? `
+                      <div style="margin-top:10px;">
+                        <div style="font-size:0.75rem;font-weight:700;color:#64748b;text-transform:uppercase;margin-bottom:4px;">
+                          🔗 Digital & Interactive Resources:
+                        </div>
+                        <div class="digital-res-container">
+                          ${l.digitalResources.map(res => `
+                            <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="digital-res-badge ${res.type}" title="${res.title}">
+                              ${res.type === 'youtube' ? '▶️' : (res.type === 'twinkl' ? '⭐' : (res.type === 'baamboozle' ? '🧩' : (res.type === 'canva' ? '🎨' : '🌐')))}
+                              ${res.title} ↗
+                            </a>
+                          `).join('')}
+                        </div>
+                      </div>
+                    ` : ''}
+                  </div>
+                `).join('')}
+              </div>
+            ` : curMode === 'annual' ? `
               <div class="lp-week-card" style="border-left-color:#8b5cf6;">
                 <h3 style="margin:0 0 10px 0;color:#1e1b4b;">📜 Cambridge Global English ${curStage.replace('stage', 'Stage ')} Annual Curriculum Plan (2026–2027)</h3>
                 <p style="font-size:0.92rem;color:#475569;line-height:1.5;">
@@ -2264,21 +2456,6 @@ const APP = {
                       <strong style="margin-top:4px;display:inline-block">🏃 Physical TPR Movement Activities:</strong> ${sp.tpr}
                     </div>
 
-                    ${curMode === 'daily' ? `
-                      <!-- 40-MINUTE DAILY BREAKDOWN -->
-                      <div style="margin-top:14px;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:12px 16px;">
-                        <strong style="color:#4f46e5;font-size:0.95rem;display:block;margin-bottom:8px;">
-                          ⏱️ Daily 40-Minute Step-by-Step Lesson Breakdown:
-                        </strong>
-                        ${(sp.dailyBreakdown || []).map(step => `
-                          <div class="lp-daily-step">
-                            <span class="lp-daily-time">${step.time}</span>
-                            <span style="color:#334155;">${step.activity}</span>
-                          </div>
-                        `).join('')}
-                      </div>
-                    ` : ''}
-
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px;">
                       <button class="btn gold small lp-jump-cam" data-stk="${curStage}" data-uidx="${w.unitNumber - 1}" style="font-weight:900;">
                         🚀 Open Smartboard Activities for Unit ${w.unitNumber}
@@ -2316,6 +2493,39 @@ const APP = {
       d.querySelectorAll('.lp-mode-btn').forEach(btn => {
         btn.onclick = () => {
           curMode = btn.getAttribute('data-mode');
+          renderPlans();
+        };
+      });
+
+      // Bind Edit Day modal
+      d.querySelectorAll('.lp-edit-day-btn').forEach(btn => {
+        btn.onclick = () => {
+          const lid = btn.getAttribute('data-lid');
+          const days = (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.getLessonDays)
+            ? LESSON_PLANS_DATA.getLessonDays(curStage)
+            : [];
+          const lesson = days.find(x => x.id === lid);
+          if (lesson) openEditLessonModal(lesson);
+        };
+      });
+
+      // Bind Reset Defaults button
+      const resetBtn = d.querySelector('#lp-reset-defaults-btn');
+      if (resetBtn) {
+        resetBtn.onclick = () => {
+          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.resetToDefaults) {
+            LESSON_PLANS_DATA.resetToDefaults(curStage);
+            renderPlans();
+            if (typeof FX !== 'undefined' && FX.toast) FX.toast('🔄 Restored default curriculum days!');
+          }
+        };
+      }
+
+      // Bind TPR toggle buttons
+      d.querySelectorAll('.lp-tpr-toggle-btn').forEach(btn => {
+        btn.onclick = () => {
+          const tid = btn.getAttribute('data-tprid');
+          expandedTPR[tid] = !expandedTPR[tid];
           renderPlans();
         };
       });

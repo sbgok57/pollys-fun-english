@@ -11,9 +11,208 @@ const AVAILABLE_AUDIO = new Set([
   'mel-row', 'mel-ten', 'mel-twinkle', 'mel-wheels'
 ]);
 
+/* 🎙️ Multi-Character Voice & Audio Pipeline Bank */
+const CHARACTER_AUDIO_BANK = {
+  polly: {
+    id: 'polly',
+    name: 'Polly the Mascot',
+    gender: 'girl',
+    avatarUrl: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Squawk! Hello pals! I am Polly! Welcome to Cambridge English fun!", audioSrc: "audio/characters/polly/greeting.mp3", durationMs: 3800 },
+      praise: { text: "Super duper! You are a brilliant English superstar!", audioSrc: "audio/characters/polly/praise.mp3", durationMs: 3200 },
+      cheer: { text: "Hip hip hooray! Keep going, team!", audioSrc: "audio/characters/polly/cheer.mp3", durationMs: 2500 }
+    }
+  },
+  leo: {
+    id: 'leo',
+    name: 'Leo the Lion',
+    gender: 'boy',
+    avatarUrl: 'https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Roar! Hey there! I am Leo! Ready to explore and learn new words?", audioSrc: "audio/characters/leo/greeting.mp3", durationMs: 3600 },
+      praise: { text: "Mighty roar! You conquered this challenge!", audioSrc: "audio/characters/leo/praise.mp3", durationMs: 2800 },
+      cheer: { text: "Roar! Let us win together!", audioSrc: "audio/characters/leo/cheer.mp3", durationMs: 2500 }
+    }
+  },
+  mia: {
+    id: 'mia',
+    name: 'Mia the Cat',
+    gender: 'girl',
+    avatarUrl: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Purr! Hi everyone! I am Mia! Let's read, laugh, and play together!", audioSrc: "audio/characters/mia/greeting.mp3", durationMs: 3500 },
+      praise: { text: "Purr-fect pronunciation! Beautiful job!", audioSrc: "audio/characters/mia/praise.mp3", durationMs: 2600 },
+      cheer: { text: "Meow! Splendid teamwork!", audioSrc: "audio/characters/mia/cheer.mp3", durationMs: 2400 }
+    }
+  },
+  sam: {
+    id: 'sam',
+    name: 'Sam the Puppy',
+    gender: 'boy',
+    avatarUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Woof woof! Hello friends! I am Sam! Let's solve fun puzzles together!", audioSrc: "audio/characters/sam/greeting.mp3", durationMs: 3400 },
+      praise: { text: "Wagging tail! That was incredible!", audioSrc: "audio/characters/sam/praise.mp3", durationMs: 2400 },
+      cheer: { text: "Woof! High five, partner!", audioSrc: "audio/characters/sam/cheer.mp3", durationMs: 2200 }
+    }
+  },
+  mickey: {
+    id: 'mickey',
+    name: 'Mickey Mouse',
+    gender: 'boy',
+    avatarUrl: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Hot dog! Oh boy, welcome to our English Clubhouse! Let's have fun together!", audioSrc: "audio/characters/mickey/greeting.mp3", durationMs: 4200 },
+      praise: { text: "Oh boy! You did it, pal! Outstanding work!", audioSrc: "audio/characters/mickey/praise.mp3", durationMs: 3000 },
+      cheer: { text: "Hot dog, hot dog, hot diggity dog!", audioSrc: "audio/characters/mickey/cheer.mp3", durationMs: 2800 }
+    }
+  },
+  elsa: {
+    id: 'elsa',
+    name: 'Queen Elsa',
+    gender: 'girl',
+    avatarUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "The cold never bothered me anyway! Step into the magic of English!", audioSrc: "audio/characters/elsa/greeting.mp3", durationMs: 4000 },
+      praise: { text: "Sparkling brilliance! A truly magical answer!", audioSrc: "audio/characters/elsa/praise.mp3", durationMs: 3100 },
+      cheer: { text: "Let it go and shine bright!", audioSrc: "audio/characters/elsa/cheer.mp3", durationMs: 2500 }
+    }
+  },
+  buzz: {
+    id: 'buzz',
+    name: 'Buzz Lightyear',
+    gender: 'boy',
+    avatarUrl: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "To infinity and beyond! Space Rangers, report for English mission!", audioSrc: "audio/characters/buzz/greeting.mp3", durationMs: 4100 },
+      praise: { text: "Mission accomplished, Space Ranger! Stellar victory!", audioSrc: "audio/characters/buzz/praise.mp3", durationMs: 3200 },
+      cheer: { text: "To infinity and beyond!", audioSrc: "audio/characters/buzz/cheer.mp3", durationMs: 2600 }
+    }
+  },
+  woody: {
+    id: 'woody',
+    name: 'Woody',
+    gender: 'boy',
+    avatarUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Reach for the sky, partner! You're my favorite deputy in class today!", audioSrc: "audio/characters/woody/greeting.mp3", durationMs: 4000 },
+      praise: { text: "Yee-haw! That was sharp shooting on those words!", audioSrc: "audio/characters/woody/praise.mp3", durationMs: 3000 },
+      cheer: { text: "Ride like the wind, Bullseye!", audioSrc: "audio/characters/woody/cheer.mp3", durationMs: 2500 }
+    }
+  },
+  peppa: {
+    id: 'peppa',
+    name: 'Peppa Pig',
+    gender: 'girl',
+    avatarUrl: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "I'm Peppa Pig! *snort* Splish splash, let's jump into learning!", audioSrc: "audio/characters/peppa/greeting.mp3", durationMs: 3800 },
+      praise: { text: "Brilliant! Splish splash, absolutely fantastic!", audioSrc: "audio/characters/peppa/praise.mp3", durationMs: 2900 },
+      cheer: { text: "Hooray! Splish splash!", audioSrc: "audio/characters/peppa/cheer.mp3", durationMs: 2300 }
+    }
+  },
+  bluey: {
+    id: 'bluey',
+    name: 'Bluey',
+    gender: 'girl',
+    avatarUrl: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "For real life?! Hooray! This is going to be the best game ever!", audioSrc: "audio/characters/bluey/greeting.mp3", durationMs: 3900 },
+      praise: { text: "Hooray! That was super duper!", audioSrc: "audio/characters/bluey/praise.mp3", durationMs: 2700 },
+      cheer: { text: "For real life?! Hooray!", audioSrc: "audio/characters/bluey/cheer.mp3", durationMs: 2400 }
+    }
+  },
+  chase: {
+    id: 'chase',
+    name: 'Chase (PAW Patrol)',
+    gender: 'boy',
+    avatarUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&auto=format&fit=crop&q=80',
+    phrases: {
+      greeting: { text: "Chase is on the case! Paw Patrol is ready for English action, sir!", audioSrc: "audio/characters/chase/greeting.mp3", durationMs: 3900 },
+      praise: { text: "Chase is on the case! Perfect solve, team!", audioSrc: "audio/characters/chase/praise.mp3", durationMs: 2800 },
+      cheer: { text: "These paws uphold the laws!", audioSrc: "audio/characters/chase/cheer.mp3", durationMs: 2500 }
+    }
+  }
+};
+
+/* 🔊 CharacterSoundManager — Static Audio Engine with Fallback Mechanism */
+const CharacterSoundManager = {
+  currentAudio: null,
+
+  play(audioSrc, onEnd, fallbackText, charId) {
+    if (typeof MEDIA !== 'undefined' && MEDIA.muted) {
+      if (onEnd) onEnd();
+      return null;
+    }
+    this.stop();
+
+    try {
+      const audio = new Audio(audioSrc);
+      this.currentAudio = audio;
+
+      let ended = false;
+      const safeFinish = () => {
+        if (ended) return;
+        ended = true;
+        if (this.currentAudio === audio) this.currentAudio = null;
+        if (onEnd) onEnd();
+      };
+
+      audio.onended = safeFinish;
+
+      // // SAFETY: Fallback when static audio file is not available or blocked
+      audio.onerror = () => {
+        if (typeof MEDIA !== 'undefined' && fallbackText) {
+          MEDIA.speakCharacter(charId || 'polly', fallbackText, safeFinish);
+        } else {
+          safeFinish();
+        }
+      };
+
+      const pr = audio.play();
+      if (pr && pr.catch) {
+        pr.catch(() => {
+          if (typeof MEDIA !== 'undefined' && fallbackText) {
+            MEDIA.speakCharacter(charId || 'polly', fallbackText, safeFinish);
+          } else {
+            safeFinish();
+          }
+        });
+      }
+
+      return audio;
+    } catch (err) {
+      if (typeof MEDIA !== 'undefined' && fallbackText) {
+        MEDIA.speakCharacter(charId || 'polly', fallbackText, onEnd);
+      } else if (onEnd) {
+        onEnd();
+      }
+      return null;
+    }
+  },
+
+  stop() {
+    if (this.currentAudio) {
+      try {
+        this.currentAudio.pause();
+        this.currentAudio.currentTime = 0;
+      } catch (e) {}
+      this.currentAudio = null;
+    }
+  }
+};
+
+if (typeof window !== 'undefined') {
+  window.CharacterSoundManager = CharacterSoundManager;
+  window.CHARACTER_AUDIO_BANK = CHARACTER_AUDIO_BANK;
+}
+
 const MEDIA = {
   ctx: null,
   voice: null,
+  charManager: CharacterSoundManager,
+  charBank: CHARACTER_AUDIO_BANK,
   muted: false,
 
   init() {
@@ -252,7 +451,9 @@ const MEDIA = {
       const prof = (this.disneyProfiles && this.disneyProfiles[item.char]) || {};
       FX.mascotSay((prof.label || 'Mascot') + ': "' + item.quote + '"');
     }
-    this.speakCharacter(item.char, item.quote, null, 0.95);
+    // // SAFETY: Multi-Character Audio Pipeline with fallback to speakCharacter
+    const phraseAudio = `audio/characters/${item.char}/praise.mp3`;
+    CharacterSoundManager.play(phraseAudio, null, item.quote, item.char);
     return null;
   },
 
@@ -407,6 +608,17 @@ const MEDIA = {
     chase:    { pitch: 1.10, rate: 1.05, label: 'Chase (PAW Patrol)', show: 'PAW Patrol Official', soundFx: 'tada', quote: "Chase is on the case! Paw Patrol is ready for English action, sir!" }
   },
 
+  playCharacterPhrase(charKey, phraseKey = 'greeting', cb) {
+    const bank = CHARACTER_AUDIO_BANK[charKey] || CHARACTER_AUDIO_BANK.polly;
+    const phrase = (bank.phrases && bank.phrases[phraseKey]) || (bank.phrases && bank.phrases.greeting);
+    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.polly;
+    if (prof && prof.soundFx) this.fx(prof.soundFx);
+    if (phrase && phrase.audioSrc) {
+      return CharacterSoundManager.play(phrase.audioSrc, cb, phrase.text, charKey);
+    }
+    return this.speakCharacter(charKey, phrase ? phrase.text : "Hello!", cb);
+  },
+
   speakCharacter(charKey, text, cb, vol) {
     const prof = this.disneyProfiles[charKey] || this.disneyProfiles.polly || this.disneyProfiles.mickey;
     if (prof.soundFx) this.fx(prof.soundFx);
@@ -420,7 +632,7 @@ const MEDIA = {
   welcomeGreeting(cb) {
     this.fx('win');
     const msg = "Hiya pals! Welcome to Polly's Fun English! Together with all our Disney and cartoon friends, let us explore exciting games, songs, and Baamboozle!";
-    this.speakCharacter('mickey', msg, cb);
+    CharacterSoundManager.play('audio/characters/mickey/greeting.mp3', cb, msg, 'mickey');
   },
 
   /* 🎶 Melodic Sing-Along Synthesizer (Harmonic Scale + Vocal Singing) */
