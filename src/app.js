@@ -2092,6 +2092,7 @@ const APP = {
 
     let curStage = stageKey || 'stage1';
     let curMode = 'daily';
+    let curLang = 'en';
     let selectedMonth = 'all';
     let searchQuery = '';
     const expandedTPR = {};
@@ -2104,45 +2105,50 @@ const APP = {
       const existingEdit = document.getElementById('lp-edit-day-modal');
       if (existingEdit) existingEdit.remove();
 
+      const topicStr = (typeof lesson.topic === 'object' && lesson.topic) ? (lesson.topic[curLang] || lesson.topic.en || '') : (lesson.topic || '');
+      const lbStr = (lesson.references && lesson.references.learnersBook) || (lesson.cambridgeRef && lesson.cambridgeRef.learnersBookPages) || (lesson.curriculumReferences && lesson.curriculumReferences.learnersBookPages) || '';
+      const wbStr = (lesson.references && lesson.references.workbook) || (lesson.cambridgeRef && lesson.cambridgeRef.workbookPages) || (lesson.curriculumReferences && lesson.curriculumReferences.workbookPages) || '';
+      const trStr = (lesson.references && lesson.references.teachersResource) || (lesson.cambridgeRef && lesson.cambridgeRef.teachersResourcePages) || (lesson.curriculumReferences && lesson.curriculumReferences.teachersResourcePages) || '';
+
       const em = document.createElement('div');
       em.id = 'lp-edit-day-modal';
       em.className = 'lp-edit-modal-overlay';
       em.innerHTML = `
         <div class="lp-edit-modal-box">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1.5px solid #e2e8f0;padding-bottom:10px;">
-            <h3 style="margin:0;color:#1e3a8a;font-size:1.2rem;">✏️ Edit Lesson: Day ${lesson.dayNumber} (${lesson.stage})</h3>
+            <h3 style="margin:0;color:#1e3a8a;font-size:1.2rem;">✏️ ${curLang === 'en' ? 'Edit Lesson' : 'Dersi Düzenle'}: Day ${lesson.orderIndex || lesson.weekIndex || 1} (${lesson.grade || lesson.stage || ''})</h3>
             <button class="btn white small" id="lp-edit-modal-close" style="padding:4px 10px;">❌</button>
           </div>
           <form id="lp-edit-form">
             <div class="lp-form-group">
-              <label>📅 Lesson Date (YYYY-MM-DD)</label>
-              <input type="date" id="lp-form-date" class="lp-form-input" value="${lesson.date}" required />
+              <label>📅 ${curLang === 'en' ? 'Lesson Date (YYYY-MM-DD)' : 'Ders Tarihi (YYYY-AA-GG)'}</label>
+              <input type="date" id="lp-form-date" class="lp-form-input" value="${lesson.date || lesson.scheduledDate || ''}" required />
             </div>
             <div class="lp-form-group">
-              <label>🎯 Lesson Topic</label>
-              <input type="text" id="lp-form-topic" class="lp-form-input" value="${lesson.topic || ''}" required />
+              <label>🎯 ${curLang === 'en' ? 'Lesson Topic' : 'Ders Konusu'}</label>
+              <input type="text" id="lp-form-topic" class="lp-form-input" value="${topicStr}" required />
             </div>
             <div class="lp-form-group">
               <label>📘 Learner's Book Pages</label>
-              <input type="text" id="lp-form-lb" class="lp-form-input" value="${(lesson.cambridgeRef && lesson.cambridgeRef.learnersBookPages) || ''}" />
+              <input type="text" id="lp-form-lb" class="lp-form-input" value="${lbStr}" />
             </div>
             <div class="lp-form-group">
               <label>📓 Activity Book Pages</label>
-              <input type="text" id="lp-form-wb" class="lp-form-input" value="${(lesson.cambridgeRef && lesson.cambridgeRef.workbookPages) || ''}" />
+              <input type="text" id="lp-form-wb" class="lp-form-input" value="${wbStr}" />
             </div>
             <div class="lp-form-group">
               <label>🍎 Teacher's Resource Pages</label>
-              <input type="text" id="lp-form-tr" class="lp-form-input" value="${(lesson.cambridgeRef && lesson.cambridgeRef.teachersResourcePages) || ''}" />
+              <input type="text" id="lp-form-tr" class="lp-form-input" value="${trStr}" />
             </div>
             <div class="lp-form-group">
               <label class="lp-checkbox-wrap">
                 <input type="checkbox" id="lp-form-reflow" checked />
-                <span><strong>Auto-Reflow Calendar:</strong> Automatically recalculate subsequent lesson dates skipping Saturdays and Sundays</span>
+                <span><strong>Auto-Reflow Calendar:</strong> ${curLang === 'en' ? 'Automatically recalculate subsequent lesson dates skipping Saturdays and Sundays' : 'Sonraki tüm ders tarihlerini Cumartesi ve Pazar günlerini atlayarak otomatik kaydır'}</span>
               </label>
             </div>
             <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;">
-              <button type="button" class="btn white small" id="lp-form-cancel">Cancel</button>
-              <button type="submit" class="btn blue small" style="font-weight:800;">💾 Save & Update Schedule</button>
+              <button type="button" class="btn white small" id="lp-form-cancel">${curLang === 'en' ? 'Cancel' : 'İptal'}</button>
+              <button type="submit" class="btn blue small" style="font-weight:800;">💾 ${curLang === 'en' ? 'Save & Update Schedule' : 'Kaydet & Takvimi Güncelle'}</button>
             </div>
           </form>
         </div>
@@ -2167,14 +2173,32 @@ const APP = {
           const newTr = em.querySelector('#lp-form-tr').value;
           const autoReflow = em.querySelector('#lp-form-reflow').checked;
 
+          const updatedTopic = (typeof lesson.topic === 'object' && lesson.topic)
+            ? { ...lesson.topic, [curLang]: newTopic }
+            : newTopic;
+
           const updated = Object.assign({}, lesson, {
             date: newDate,
-            topic: newTopic,
-            cambridgeRef: Object.assign({}, lesson.cambridgeRef || {}, {
+            scheduledDate: newDate,
+            topic: updatedTopic,
+            references: {
+              ...(lesson.references || {}),
+              learnersBook: newLb,
+              workbook: newWb,
+              teachersResource: newTr
+            },
+            cambridgeRef: {
+              ...(lesson.cambridgeRef || {}),
               learnersBookPages: newLb,
               workbookPages: newWb,
               teachersResourcePages: newTr
-            })
+            },
+            curriculumReferences: {
+              ...(lesson.curriculumReferences || {}),
+              learnersBookPages: newLb,
+              workbookPages: newWb,
+              teachersResourcePages: newTr
+            }
           });
 
           if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.saveLessonDay) {
@@ -2213,12 +2237,13 @@ const APP = {
       let dailyFiltered = dailyLessons;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        dailyFiltered = dailyLessons.filter(l =>
-          (l.topic && l.topic.toLowerCase().includes(q)) ||
-          (l.unitTitle && l.unitTitle.toLowerCase().includes(q)) ||
-          (l.date && l.date.includes(q)) ||
-          (l.tprActivity && l.tprActivity.title && l.tprActivity.title.toLowerCase().includes(q))
-        );
+        dailyFiltered = dailyLessons.filter(l => {
+          const topStr = (typeof l.topic === 'object' && l.topic) ? ((l.topic.en || '') + ' ' + (l.topic.tr || '')).toLowerCase() : (l.topic || '').toLowerCase();
+          const unitStr = (l.unitTitle || '').toLowerCase();
+          const dStr = (l.date || l.scheduledDate || '');
+          const tprStr = (l.tpr && (l.tpr.title || l.tpr.physicalAction || '')) ? (l.tpr.title + ' ' + (l.tpr.physicalAction || '')).toLowerCase() : '';
+          return topStr.includes(q) || unitStr.includes(q) || dStr.includes(q) || tprStr.includes(q);
+        });
       }
 
       d.innerHTML = `
@@ -2233,7 +2258,12 @@ const APP = {
                 ${stInfo.book || "Cambridge Global English"} · 36 Weeks · Learner's Book + Workbook + Teacher's Resource + Photocopiables
               </div>
             </div>
-            <button class="btn white small" id="lp-close-top" style="font-size:18px;padding:4px 12px;">❌</button>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <button class="lp-lang-toggle-btn" id="lp-lang-toggle" title="Switch Language (English / Türkçe)">
+                ${curLang === 'en' ? '🇬🇧 EN' : '🇹🇷 TR'}
+              </button>
+              <button class="btn white small" id="lp-close-top" style="font-size:18px;padding:4px 12px;">❌</button>
+            </div>
           </div>
 
           <!-- STAGE SELECTOR TABS -->
@@ -2247,14 +2277,14 @@ const APP = {
           <!-- VIEW MODE TABS -->
           <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
-              <button class="btn small ${curMode === 'daily' ? 'green' : 'white'} lp-mode-btn" data-mode="daily">📅 Daily (40 Min)</button>
-              <button class="btn small ${curMode === 'weekly' ? 'green' : 'white'} lp-mode-btn" data-mode="weekly">📆 Weekly (36 Weeks)</button>
-              <button class="btn small ${curMode === 'monthly' ? 'green' : 'white'} lp-mode-btn" data-mode="monthly">🗓️ Monthly Breakdown</button>
-              <button class="btn small ${curMode === 'annual' ? 'green' : 'white'} lp-mode-btn" data-mode="annual">📜 Annual Curriculum</button>
+              <button class="btn small ${curMode === 'daily' ? 'green' : 'white'} lp-mode-btn" data-mode="daily">📅 ${curLang === 'en' ? 'Daily Planner (Rescheduling)' : 'Günlük Plan (Kelebek Takvimi)'}</button>
+              <button class="btn small ${curMode === 'weekly' ? 'green' : 'white'} lp-mode-btn" data-mode="weekly">📆 ${curLang === 'en' ? 'Weekly (36 Weeks)' : 'Haftalık (36 Hafta)'}</button>
+              <button class="btn small ${curMode === 'monthly' ? 'green' : 'white'} lp-mode-btn" data-mode="monthly">🗓️ ${curLang === 'en' ? 'Monthly' : 'Aylık Dağılım'}</button>
+              <button class="btn small ${curMode === 'annual' ? 'green' : 'white'} lp-mode-btn" data-mode="annual">📜 ${curLang === 'en' ? 'Annual Curriculum' : 'Yıllık Müfredat'}</button>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
               <select id="lp-month-select" style="padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;font-weight:700;font-size:0.85rem;">
-                <option value="all" ${selectedMonth==='all'?'selected':''}>All Months (Sept–June)</option>
+                <option value="all" ${selectedMonth==='all'?'selected':''}>${curLang === 'en' ? 'All Months (Sept–June)' : 'Tüm Aylar (Eylül–Haziran)'}</option>
                 <option value="september" ${selectedMonth==='september'?'selected':''}>September 2026</option>
                 <option value="october" ${selectedMonth==='october'?'selected':''}>October 2026</option>
                 <option value="november" ${selectedMonth==='november'?'selected':''}>November 2026</option>
@@ -2266,101 +2296,137 @@ const APP = {
                 <option value="may" ${selectedMonth==='may'?'selected':''}>May 2027</option>
                 <option value="june" ${selectedMonth==='june'?'selected':''}>June 2027</option>
               </select>
-              <button class="btn white small" id="lp-print-btn" title="Print this lesson plan">🖨️ Print</button>
-              <button class="btn white small" id="lp-copy-btn" title="Copy formatted plan">📋 Copy</button>
+              <button class="btn white small" id="lp-print-btn" title="Print this lesson plan">🖨️ ${curLang === 'en' ? 'Print' : 'Yazdır'}</button>
+              <button class="btn white small" id="lp-copy-btn" title="Copy formatted plan">📋 ${curLang === 'en' ? 'Copy' : 'Kopyala'}</button>
             </div>
           </div>
 
-          <input type="text" id="lp-search-input" class="search-input" placeholder="🔍 Search lesson plans by topic, grammar, phonics, or unit..." value="${searchQuery}" style="width:100%;margin-bottom:16px;" />
+          <input type="text" id="lp-search-input" class="search-input" placeholder="🔍 ${curLang === 'en' ? 'Search lesson plans by topic, grammar, phonics, or unit...' : 'Ders planlarında konu, dilbilgisi veya fonetik ara...'}" value="${searchQuery}" style="width:100%;margin-bottom:16px;" />
 
           <!-- PLANS CONTAINER -->
           <div id="lp-plans-list">
             ${curMode === 'daily' ? `
               <div class="lp-reflow-banner">
                 <div>
-                  <strong>✨ Dynamic Reflow Calendar:</strong> All dates automatically skip weekends (Saturday & Sunday). You can customize topics, book pages, and dynamically reflow subsequent dates!
+                  <strong>✨ ${curLang === 'en' ? 'Dynamic Butterfly-Effect Rescheduling:' : 'Dinamik Kelebek Etkisi Takvimleme:'}</strong>
+                  ${curLang === 'en' ? 'Marking "Done" pins completed lessons; clicking "Postpone" automatically shifts that lesson and all subsequent pending lessons to the next school day (weekends strictly skipped)!' : '"Yapıldı" butonu dersi sabitler; "Ertelendi" butonu dersi ve sonraki tüm planı bir sonraki iş gününe otomatik kaydırır (hafta sonları kesinlikle atlanır)!'}
                 </div>
                 <button class="lp-btn-action" id="lp-reset-defaults-btn">
-                  🔄 Reset Defaults
+                  🔄 ${curLang === 'en' ? 'Reset Defaults' : 'Varsayılanlara Sıfırla'}
                 </button>
               </div>
               <div id="lp-daily-cards-wrap">
-                ${dailyFiltered.map(l => `
-                  <div class="lp-week-card" style="border-left-color:#3b82f6;">
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
-                      <div>
-                        <span class="lp-date-badge">📅 Day ${l.dayNumber} · ${l.date}</span>
-                        <span class="lp-grade-badge" style="margin-left:6px;">${l.stage} (${l.cefrLevel})</span>
-                        <h3 style="margin:6px 0 2px 0;font-size:1.2rem;color:#1e3a8a;">
-                          ${l.unitTitle} — <span style="color:#0f766e;">${l.topic}</span>
-                        </h3>
-                      </div>
-                      <div style="display:flex;gap:6px;">
-                        <button class="lp-btn-action edit-btn lp-edit-day-btn" data-lid="${l.id}">
-                          ✏️ Edit & Reflow
-                        </button>
-                      </div>
-                    </div>
+                ${dailyFiltered.map(l => {
+                  const cardStatus = l.status || 'pending';
+                  const cardClass = cardStatus === 'completed' ? 'lp-card-completed' : (cardStatus === 'postponed' ? 'lp-card-postponed' : 'lp-card-pending');
+                  const topicStr = (typeof l.topic === 'object' && l.topic) ? (l.topic[curLang] || l.topic.en || '') : (l.topic || '');
+                  const lbVal = (l.references && l.references.learnersBook) || (l.cambridgeRef && l.cambridgeRef.learnersBookPages) || (l.curriculumReferences && l.curriculumReferences.learnersBookPages) || '—';
+                  const wbVal = (l.references && l.references.workbook) || (l.cambridgeRef && l.cambridgeRef.workbookPages) || (l.curriculumReferences && l.curriculumReferences.workbookPages) || '—';
+                  const trVal = (l.references && l.references.teachersResource) || (l.cambridgeRef && l.cambridgeRef.teachersResourcePages) || (l.curriculumReferences && l.curriculumReferences.teachersResourcePages) || '—';
+                  const mats = (l.materials && l.materials.length) ? l.materials : (l.digitalResources || []);
 
-                    <!-- Cambridge Curriculum References Grid -->
-                    <div class="lp-cambridge-refs">
-                      <div class="lp-ref-item">
-                        <span class="label">📘 Learner's Book</span>
-                        <span class="val">${(l.cambridgeRef && l.cambridgeRef.learnersBookPages) || '—'}</span>
-                      </div>
-                      <div class="lp-ref-item">
-                        <span class="label">📓 Activity Book</span>
-                        <span class="val">${(l.cambridgeRef && l.cambridgeRef.workbookPages) || '—'}</span>
-                      </div>
-                      <div class="lp-ref-item">
-                        <span class="label">🍎 Teacher's Resource</span>
-                        <span class="val">${(l.cambridgeRef && l.cambridgeRef.teachersResourcePages) || '—'}</span>
-                      </div>
-                      <div class="lp-ref-item">
-                        <span class="label">🌐 Digital Support</span>
-                        <span class="val">
-                          ${(l.cambridgeRef && l.cambridgeRef.digitalSupportUrl) ? `<a href="${l.cambridgeRef.digitalSupportUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:underline;">Digital Hub ↗</a>` : '—'}
-                        </span>
-                      </div>
-                    </div>
-
-                    <!-- TPR Kinesthetic Activity Accordion -->
-                    ${l.tprActivity ? `
-                      <div style="margin-top:8px;">
-                        <button class="lp-tpr-toggle-btn" data-tprid="${l.id}">
-                          🏃 TPR Activity: ${l.tprActivity.title} ${expandedTPR[l.id] ? '▲ Hide' : '▼ Details'}
-                        </button>
-                        ${expandedTPR[l.id] ? `
-                          <div class="lp-tpr-detail-box">
-                            <h5>🤸 Kinesthetic Walkthrough: ${l.tprActivity.title}</h5>
-                            ${(l.tprActivity.materials && l.tprActivity.materials.length) ? `<div><strong>🎒 Materials:</strong> ${l.tprActivity.materials.join(', ')}</div>` : ''}
-                            <div style="margin-top:6px;"><strong>📋 Instructions:</strong></div>
-                            <ol class="lp-tpr-step-list">
-                              ${(l.tprActivity.instructions || []).map(inst => `<li>${inst}</li>`).join('')}
-                            </ol>
+                  return `
+                    <div class="lp-week-card ${cardClass}">
+                      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+                        <div>
+                          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                            <span class="lp-date-badge">📅 Day ${l.orderIndex || l.weekIndex || 1} · ${l.date || l.scheduledDate || ''}</span>
+                            <span class="lp-grade-badge">${l.grade || l.stage || ''}</span>
+                            <span class="lp-status-badge ${cardStatus}">
+                              ${cardStatus === 'completed' ? (curLang === 'en' ? '✅ Completed' : '✅ Tamamlandı') : (cardStatus === 'postponed' ? (curLang === 'en' ? '⏭️ Postponed' : '⏭️ Ertelendi') : (curLang === 'en' ? '⏳ Scheduled' : '⏳ Planlandı'))}
+                            </span>
                           </div>
-                        ` : ''}
+                          <h3 style="margin:4px 0 2px 0;font-size:1.2rem;color:#1e3a8a;">
+                            ${l.unit ? 'Unit ' + l.unit + ': ' : ''}${topicStr}
+                          </h3>
+                        </div>
+                        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+                          <button class="lp-action-btn-done ${cardStatus === 'completed' ? 'active' : ''} lp-done-btn" data-lid="${l.id}">
+                            ✅ ${curLang === 'en' ? 'Done' : 'Yapıldı'}
+                          </button>
+                          <button class="lp-action-btn-postpone ${cardStatus === 'postponed' ? 'active' : ''} lp-postpone-btn" data-lid="${l.id}">
+                            ⏭️ ${curLang === 'en' ? 'Postpone' : 'Ertelendi'}
+                          </button>
+                          <button class="lp-btn-action edit-btn lp-edit-day-btn" data-lid="${l.id}">
+                            ✏️ ${curLang === 'en' ? 'Edit & Reflow' : 'Düzenle & Kaydır'}
+                          </button>
+                        </div>
                       </div>
-                    ` : ''}
 
-                    <!-- Clickable Digital Interactive Resources -->
-                    ${(l.digitalResources && l.digitalResources.length) ? `
-                      <div style="margin-top:10px;">
-                        <div style="font-size:0.75rem;font-weight:700;color:#64748b;text-transform:uppercase;margin-bottom:4px;">
-                          🔗 Digital & Interactive Resources:
+                      <!-- Learning Outcomes -->
+                      ${(l.outcomes && l.outcomes.length) ? `
+                        <div class="lp-outcomes-box">
+                          <strong>🎯 ${curLang === 'en' ? 'Target Outcomes' : 'Hedef Kazanımlar'}:</strong>
+                          <ul>
+                            ${l.outcomes.map(o => `<li>${(typeof o === 'object' && o) ? (o[curLang] || o.en) : o}</li>`).join('')}
+                          </ul>
                         </div>
-                        <div class="digital-res-container">
-                          ${l.digitalResources.map(res => `
-                            <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="digital-res-badge ${res.type}" title="${res.title}">
-                              ${res.type === 'youtube' ? '▶️' : (res.type === 'twinkl' ? '⭐' : (res.type === 'baamboozle' ? '🧩' : (res.type === 'canva' ? '🎨' : '🌐')))}
-                              ${res.title} ↗
-                            </a>
-                          `).join('')}
+                      ` : ''}
+
+                      <!-- Cambridge Curriculum References Grid -->
+                      <div class="lp-cambridge-refs">
+                        <div class="lp-ref-item">
+                          <span class="label">📘 Learner's Book</span>
+                          <span class="val">p. ${lbVal}</span>
+                        </div>
+                        <div class="lp-ref-item">
+                          <span class="label">📓 Activity Book</span>
+                          <span class="val">p. ${wbVal}</span>
+                        </div>
+                        <div class="lp-ref-item">
+                          <span class="label">🍎 Teacher's Guide</span>
+                          <span class="val">p. ${trVal}</span>
+                        </div>
+                        <div class="lp-ref-item">
+                          <span class="label">🌐 Digital Support</span>
+                          <span class="val">
+                            <a href="https://www.cambridge.org/globalenglish" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:underline;">Digital Hub ↗</a>
+                          </span>
                         </div>
                       </div>
-                    ` : ''}
-                  </div>
-                `).join('')}
+
+                      <!-- TPR Kinesthetic Activity Accordion -->
+                      ${l.tpr ? `
+                        <div style="margin-top:8px;">
+                          <button class="lp-tpr-toggle-btn" data-tprid="${l.id}">
+                            🏃 ${curLang === 'en' ? 'TPR Action Plan' : 'Fiziksel TPR Hareket Planı'}: ${l.tpr.title || ''} ${expandedTPR[l.id] ? '▲ ' + (curLang === 'en' ? 'Hide' : 'Gizle') : '▼ ' + (curLang === 'en' ? 'Show Details' : 'Detayları Gör')}
+                          </button>
+                          ${expandedTPR[l.id] ? `
+                            <div class="lp-tpr-detail-box">
+                              <h5>🤸 ${l.tpr.title || 'Kinesthetic TPR Walkthrough'}</h5>
+                              ${l.tpr.action ? `<div><strong>${curLang === 'en' ? 'Action / Movement:' : 'Eylem:'}</strong> ${(typeof l.tpr.action === 'object' && l.tpr.action) ? (l.tpr.action[curLang] || l.tpr.action.en) : (l.tpr.physicalAction || l.tpr.action)}</div>` : ''}
+                              ${l.tpr.teacherRole ? `<div><strong>${curLang === 'en' ? 'Teacher Role:' : 'Öğretmen Rolü:'}</strong> ${(typeof l.tpr.teacherRole === 'object' && l.tpr.teacherRole) ? (l.tpr.teacherRole[curLang] || l.tpr.teacherRole.en) : l.tpr.teacherRole}</div>` : ''}
+                              ${l.tpr.studentRole ? `<div><strong>${curLang === 'en' ? 'Student Role:' : 'Öğrenci Rolü:'}</strong> ${(typeof l.tpr.studentRole === 'object' && l.tpr.studentRole) ? (l.tpr.studentRole[curLang] || l.tpr.studentRole.en) : l.tpr.studentRole}</div>` : ''}
+                              ${(l.tpr.targetVocabulary || l.tpr.targetVocab || []).length ? `<div><strong>${curLang === 'en' ? 'Target Vocab:' : 'Hedef Kelimeler:'}</strong> ${(l.tpr.targetVocabulary || l.tpr.targetVocab).join(', ')}</div>` : ''}
+                              ${l.tpr.detailedInstruction ? `<div><strong>${curLang === 'en' ? 'Instructions:' : 'Yönergeler:'}</strong> ${l.tpr.detailedInstruction}</div>` : ''}
+                            </div>
+                          ` : ''}
+                        </div>
+                      ` : ''}
+
+                      <!-- Clickable Digital Interactive Resources -->
+                      ${mats.length ? `
+                        <div style="margin-top:10px;">
+                          <div style="font-size:0.75rem;font-weight:700;color:#64748b;text-transform:uppercase;margin-bottom:4px;">
+                            🖥️ ${curLang === 'en' ? 'Smart Board & Digital Materials' : 'Akıllı Tahta & Dijital Materyaller'}:
+                          </div>
+                          <div class="digital-res-container">
+                            ${mats.map(res => {
+                              const rName = res.name || res.title || 'Resource';
+                              const rType = (res.type || '').toLowerCase();
+                              const icon = rType === 'youtube' ? '🎥' : (rType === 'twinkl' ? '🦉' : (rType === 'baamboozle' ? '🎲' : (rType === 'canva' ? '🎨' : '🚀')));
+                              return `
+                                <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="digital-res-badge ${rType}" title="${rName}">
+                                  ${icon} ${rName} ↗
+                                </a>
+                              `;
+                            }).join('')}
+                          </div>
+                        </div>
+                      ` : ''}
+                    </div>
+                  `;
+                }).join('')}
               </div>
             ` : curMode === 'annual' ? `
               <div class="lp-week-card" style="border-left-color:#8b5cf6;">
@@ -2472,7 +2538,7 @@ const APP = {
 
           <div style="margin-top:20px;text-align:center;">
             <button class="btn green big" id="lp-close-bottom" style="min-width:200px;font-weight:900;">
-              ✅ Close Lesson Plans
+              ✅ ${curLang === 'en' ? 'Close Lesson Plans' : 'Ders Planlarını Kapat'}
             </button>
           </div>
         </div>
@@ -2482,6 +2548,15 @@ const APP = {
       if (cTop) cTop.onclick = () => d.remove();
       const cBottom = d.querySelector('#lp-close-bottom');
       if (cBottom) cBottom.onclick = () => d.remove();
+
+      // Language toggle
+      const langBtn = d.querySelector('#lp-lang-toggle');
+      if (langBtn) {
+        langBtn.onclick = () => {
+          curLang = (curLang === 'en' ? 'tr' : 'en');
+          renderPlans();
+        };
+      }
 
       d.querySelectorAll('.lp-st-btn').forEach(btn => {
         btn.onclick = () => {
@@ -2494,6 +2569,34 @@ const APP = {
         btn.onclick = () => {
           curMode = btn.getAttribute('data-mode');
           renderPlans();
+        };
+      });
+
+      // Done button
+      d.querySelectorAll('.lp-done-btn').forEach(btn => {
+        btn.onclick = () => {
+          const lid = btn.getAttribute('data-lid');
+          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.changeLessonStatus) {
+            LESSON_PLANS_DATA.changeLessonStatus(curStage, lid, 'completed');
+            renderPlans();
+            if (typeof FX !== 'undefined' && FX.toast) {
+              FX.toast(curLang === 'en' ? '✅ Lesson marked Done! Schedule reflowed.' : '✅ Ders Yapıldı olarak işaretlendi! Takvim güncellendi.');
+            }
+          }
+        };
+      });
+
+      // Postpone button
+      d.querySelectorAll('.lp-postpone-btn').forEach(btn => {
+        btn.onclick = () => {
+          const lid = btn.getAttribute('data-lid');
+          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.changeLessonStatus) {
+            LESSON_PLANS_DATA.changeLessonStatus(curStage, lid, 'postponed');
+            renderPlans();
+            if (typeof FX !== 'undefined' && FX.toast) {
+              FX.toast(curLang === 'en' ? '⏭️ Lesson postponed! Next working day reflowed.' : '⏭️ Ders ertelendi! Sonraki iş gününe kaydırıldı.');
+            }
+          }
         };
       });
 
@@ -2516,7 +2619,7 @@ const APP = {
           if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.resetToDefaults) {
             LESSON_PLANS_DATA.resetToDefaults(curStage);
             renderPlans();
-            if (typeof FX !== 'undefined' && FX.toast) FX.toast('🔄 Restored default curriculum days!');
+            if (typeof FX !== 'undefined' && FX.toast) FX.toast(curLang === 'en' ? '🔄 Restored default curriculum days!' : '🔄 Varsayılan müfredat günleri yüklendi!');
           }
         };
       }

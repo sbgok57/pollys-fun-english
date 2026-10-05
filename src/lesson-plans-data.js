@@ -5675,16 +5675,27 @@ function formatLocalDate(d) {
   return `${year}-${month}-${day}`;
 }
 
-function recalculateSchedule(lessons, startIndex, newStartDate, excludeWeekends = true) {
-  if (!lessons || startIndex < 0 || startIndex >= lessons.length) {
-    return lessons || [];
-  }
-  const parts = newStartDate.split('-');
+function parseLocalDate(dateStr) {
+  if (!dateStr) return new Date();
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return new Date();
   const y = parseInt(parts[0], 10);
   const m = parseInt(parts[1], 10) - 1;
   const d = parseInt(parts[2], 10);
-  let currentDate = new Date(y, m, d);
+  return new Date(y, m, d, 12, 0, 0);
+}
 
+function getNextWorkingDay(date) {
+  const nextDate = new Date(date);
+  nextDate.setDate(nextDate.getDate() + 1);
+  while (nextDate.getDay() === 0 || nextDate.getDay() === 6) {
+    nextDate.setDate(nextDate.getDate() + 1);
+  }
+  return nextDate;
+}
+
+function recalculateSchedule(lessons, startIndex = 0, newStartDate = null, excludeWeekends = true) {
+  if (!lessons || !Array.isArray(lessons)) return [];
   const updated = lessons.map(item => ({
     ...item,
     curriculumReferences: { ...(item.curriculumReferences || {}) },
@@ -5692,14 +5703,37 @@ function recalculateSchedule(lessons, startIndex, newStartDate, excludeWeekends 
     digitalResources: (item.digitalResources || []).map(r => ({ ...r }))
   }));
 
+  let currentSimulatedDate;
+  if (newStartDate) {
+    currentSimulatedDate = parseLocalDate(newStartDate);
+  } else if (updated[startIndex] && (updated[startIndex].date || updated[startIndex].scheduledDate)) {
+    currentSimulatedDate = parseLocalDate(updated[startIndex].date || updated[startIndex].scheduledDate);
+  } else {
+    currentSimulatedDate = new Date(2026, 8, 14, 12, 0, 0);
+  }
+
+  while (excludeWeekends && (currentSimulatedDate.getDay() === 0 || currentSimulatedDate.getDay() === 6)) {
+    currentSimulatedDate.setDate(currentSimulatedDate.getDate() + 1);
+  }
+
   for (let i = startIndex; i < updated.length; i++) {
+    const l = updated[i];
+    if (l.status === 'completed') {
+      if (l.completedDate) {
+        currentSimulatedDate = getNextWorkingDay(parseLocalDate(l.completedDate));
+      }
+      continue;
+    }
+
     if (excludeWeekends) {
-      while (currentDate.getDay() === 0 || currentDate.getDay() === 6) {
-        currentDate.setDate(currentDate.getDate() + 1);
+      while (currentSimulatedDate.getDay() === 0 || currentSimulatedDate.getDay() === 6) {
+        currentSimulatedDate.setDate(currentSimulatedDate.getDate() + 1);
       }
     }
-    updated[i].date = formatLocalDate(currentDate);
-    currentDate.setDate(currentDate.getDate() + 1);
+
+    l.date = formatLocalDate(currentSimulatedDate);
+    l.scheduledDate = l.date;
+    currentSimulatedDate = getNextWorkingDay(currentSimulatedDate);
   }
 
   return updated;
@@ -5718,7 +5752,7 @@ function buildInitialLessonDays(stKey) {
   const list = [];
 
   // Starting date: Monday, September 14, 2026
-  let curDate = new Date(2026, 8, 14);
+  let curDate = new Date(2026, 8, 14, 12, 0, 0);
 
   schedule.forEach((w, wIdx) => {
     // Skip weekends to reach Monday of each school week
@@ -5745,24 +5779,62 @@ function buildInitialLessonDays(stKey) {
 
     list.push({
       id: `${stKey}-w${w.week}`,
+      orderIndex: w.week,
       weekIndex: w.week,
       date: dateStr,
+      scheduledDate: dateStr,
+      completedDate: null,
+      status: 'pending',
       academicYear: '2026-2027',
       grade: gradeLabel,
       unit: w.unitNumber,
       lessonNumber: w.weekOfUnit,
-      topic: `${unitTitle} — ${w.subTheme}`,
+      topic: {
+        en: `${unitTitle} — ${w.subTheme}`,
+        tr: `${unitTitle} — ${w.subTheme} (Tema ${w.unitNumber})`
+      },
+      outcomes: [
+        {
+          en: `Target grammar: ${sp.grammar || 'Interactive dialog and sentence structures'}`,
+          tr: `Hedef dilbilgisi: ${sp.grammar || 'İnteraktif diyalog ve cümle kalıpları'}`
+        },
+        {
+          en: `Phonics focus: ${sp.phonics || 'Accurate pronunciation & phonemic awareness'}`,
+          tr: `Fonetik odak: ${sp.phonics || 'Doğru telaffuz ve ses farkındalığı'}`
+        }
+      ],
       subTheme: w.subTheme,
       month: w.month,
       curriculumReferences: {
         learnersBookPages: lbPageMatch ? lbPageMatch[1] : `${10 + (w.unitNumber - 1) * 12}–${12 + (w.unitNumber - 1) * 12}`,
         workbookPages: wbPageMatch ? wbPageMatch[1] : `${8 + (w.unitNumber - 1) * 10}–${10 + (w.unitNumber - 1) * 10}`,
         teachersResourcePages: sp.teacherResource || `TR Section ${w.unitNumber}.${w.weekOfUnit} (p. ${22 + w.week * 2})`,
-        photocopiableId: sp.photocopiables || `Worksheet ${w.unitNumber}.${w.weekOfUnit}`
+        photocopiableId: sp.photocopiables || `Worksheet ${w.unitNumber}.${w.weekOfUnit}`,
+        learnersBook: lbPageMatch ? lbPageMatch[1] : `${10 + (w.unitNumber - 1) * 12}–${12 + (w.unitNumber - 1) * 12}`,
+        workbook: wbPageMatch ? wbPageMatch[1] : `${8 + (w.unitNumber - 1) * 10}–${10 + (w.unitNumber - 1) * 10}`,
+        teachersResource: sp.teacherResource || `TR Section ${w.unitNumber}.${w.weekOfUnit} (p. ${22 + w.week * 2})`
+      },
+      references: {
+        learnersBook: lbPageMatch ? lbPageMatch[1] : `${10 + (w.unitNumber - 1) * 12}–${12 + (w.unitNumber - 1) * 12}`,
+        workbook: wbPageMatch ? wbPageMatch[1] : `${8 + (w.unitNumber - 1) * 10}–${10 + (w.unitNumber - 1) * 10}`,
+        teachersResource: sp.teacherResource || `TR Section ${w.unitNumber}.${w.weekOfUnit} (p. ${22 + w.week * 2})`
       },
       tpr: {
         title: tprTitle,
         targetVocab: vocabList,
+        targetVocabulary: vocabList,
+        action: {
+          en: tprAction,
+          tr: `${tprAction} (Sınıfta hareketli uygulama)`
+        },
+        teacherRole: {
+          en: `Models target movement and gives rhythmic verbal instructions for ${tprTitle}.`,
+          tr: `${tprTitle} için hareketi modeller ve ritmik sözlü yönergeler verir.`
+        },
+        studentRole: {
+          en: `Repeats target vocabulary aloud and performs physical action in unison.`,
+          tr: `Hedef kelimeleri koro halinde tekrarlar ve beden hareketini uygular.`
+        },
         physicalAction: tprAction,
         detailedInstruction: (sp.dailyBreakdown && sp.dailyBreakdown[2] && sp.dailyBreakdown[2].activity) || tprText,
         smartBoardPrompt: sp.smartboard || 'Display target vocabulary card on interactive board with 60-second countdown timer.'
@@ -5771,26 +5843,60 @@ function buildInitialLessonDays(stKey) {
         {
           id: `${stKey}-w${w.week}-yt`,
           title: `${unitTitle} Sing-Along`,
-          type: 'youtube',
-          url: 'https://www.youtube-nocookie.com/embed/tVlcKp3bWH8'
+          name: `${unitTitle} Sing-Along`,
+          type: 'YouTube',
+          url: 'https://www.youtube-nocookie.com/embed/tVlcKp3bWH8',
+          isInteractive: false
         },
         {
           id: `${stKey}-w${w.week}-tw`,
           title: `${unitTitle} Phonics & Cutouts`,
-          type: 'twinkl',
-          url: `https://www.twinkl.com/search?q=${encodeURIComponent(unitTitle + ' primary esl')}`
+          name: `${unitTitle} Phonics & Cutouts`,
+          type: 'Twinkl',
+          url: `https://www.twinkl.com/search?q=${encodeURIComponent(unitTitle + ' primary esl')}`,
+          isInteractive: false
         },
         {
           id: `${stKey}-w${w.week}-bm`,
           title: `${unitTitle} Mystery Team Arena`,
-          type: 'baamboozle',
-          url: `https://www.baamboozle.com/classic/search?q=${encodeURIComponent(unitTitle)}`
+          name: `${unitTitle} Mystery Team Arena`,
+          type: 'Baamboozle',
+          url: `https://www.baamboozle.com/classic/search?q=${encodeURIComponent(unitTitle)}`,
+          isInteractive: true
         },
         {
           id: `${stKey}-w${w.week}-cv`,
           title: `${unitTitle} Printable Poster`,
-          type: 'canva',
-          url: 'https://www.canva.com/templates/?query=primary-english-flashcards'
+          name: `${unitTitle} Printable Poster`,
+          type: 'Canva',
+          url: 'https://www.canva.com/templates/?query=primary-english-flashcards',
+          isInteractive: true
+        }
+      ],
+      materials: [
+        {
+          name: `${unitTitle} Mystery Team Arena`,
+          type: 'Baamboozle',
+          url: `https://www.baamboozle.com/classic/search?q=${encodeURIComponent(unitTitle)}`,
+          isInteractive: true
+        },
+        {
+          name: `${unitTitle} Phonics & Cutouts`,
+          type: 'Twinkl',
+          url: `https://www.twinkl.com/search?q=${encodeURIComponent(unitTitle + ' primary esl')}`,
+          isInteractive: false
+        },
+        {
+          name: `${unitTitle} Sing-Along`,
+          type: 'YouTube',
+          url: 'https://www.youtube-nocookie.com/embed/tVlcKp3bWH8',
+          isInteractive: false
+        },
+        {
+          name: `${unitTitle} Printable Poster`,
+          type: 'Canva',
+          url: 'https://www.canva.com/templates/?query=primary-english-flashcards',
+          isInteractive: true
         }
       ],
       isCompleted: false,
@@ -5836,6 +5942,43 @@ LESSON_PLANS_DATA.saveLessonDay = function(stKey, updatedLesson, autoReflow = tr
   return lessons;
 };
 
+LESSON_PLANS_DATA.changeLessonStatus = function(stKey, lessonId, newStatus) {
+  let lessons = this.getLessonDays(stKey);
+  const idx = lessons.findIndex(l => l.id === lessonId);
+  if (idx === -1) return lessons;
+
+  const todayStr = formatLocalDate(new Date());
+  lessons[idx].status = newStatus;
+
+  if (newStatus === 'completed') {
+    lessons[idx].completedDate = todayStr;
+    lessons[idx].isCompleted = true;
+    // Reschedule subsequent pending lessons starting from next working day
+    lessons = recalculateSchedule(lessons, idx + 1, formatLocalDate(getNextWorkingDay(new Date())), true);
+  } else if (newStatus === 'postponed') {
+    lessons[idx].completedDate = null;
+    lessons[idx].isCompleted = false;
+    // Butterfly effect: shift this lesson to next working day and shift everything after it
+    const nextDay = getNextWorkingDay(parseLocalDate(lessons[idx].date || todayStr));
+    lessons[idx].date = formatLocalDate(nextDay);
+    lessons[idx].scheduledDate = lessons[idx].date;
+    lessons = recalculateSchedule(lessons, idx, lessons[idx].date, true);
+  } else {
+    // pending
+    lessons[idx].completedDate = null;
+    lessons[idx].isCompleted = false;
+  }
+
+  const storeKey = `polly_custom_lesson_schedule_${stKey}`;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storeKey, JSON.stringify(lessons));
+    }
+  } catch (e) {}
+
+  return lessons;
+};
+
 LESSON_PLANS_DATA.resetToDefaults = function(stKey = 'stage1') {
   const storeKey = `polly_custom_lesson_schedule_${stKey}`;
   try {
@@ -5848,6 +5991,8 @@ LESSON_PLANS_DATA.resetToDefaults = function(stKey = 'stage1') {
 
 if (typeof window !== 'undefined') {
   window.recalculateSchedule = recalculateSchedule;
+  window.getNextWorkingDay = getNextWorkingDay;
   window.formatLocalDate = formatLocalDate;
+  window.parseLocalDate = parseLocalDate;
 }
 
