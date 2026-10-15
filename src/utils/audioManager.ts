@@ -1,89 +1,36 @@
 /**
- * CharacterSoundManager & Multi-Character Audio Pipeline
- * Provides robust audio playback with cross-browser fallback to speech synthesis / tone.
+ * CharacterSoundManager — facade over VoiceEngine with speech fallback.
  */
+import { VoiceEngine } from '../lib/audio/VoiceEngine';
 
 export class CharacterSoundManager {
-  private static currentAudio: HTMLAudioElement | null = null;
-  private static isMuted: boolean = false;
+  private static isMuted = false;
 
   static setMuted(muted: boolean) {
     this.isMuted = muted;
-    if (muted) {
-      this.stop();
-    }
+    if (muted) this.stop();
   }
 
   static stop() {
-    if (this.currentAudio) {
-      try {
-        this.currentAudio.pause();
-        this.currentAudio.currentTime = 0;
-      } catch (e) {}
-      this.currentAudio = null;
-    }
+    VoiceEngine.getInstance().stopCurrent();
   }
 
-  static play(
-    audioSrc: string,
-    onEnd?: () => void,
-    fallbackText?: string,
-    charId?: string
-  ): HTMLAudioElement | null {
-    if (this.isMuted) {
-      if (onEnd) onEnd();
-      return null;
-    }
+  static preload(audioSrc: string): Promise<boolean> {
+    return VoiceEngine.getInstance().preloadVoice(audioSrc);
+  }
 
-    this.stop();
+  static play(audioSrc: string, onEnd?: () => void, fallbackText?: string, charId?: string): void {
+    if (this.isMuted) { onEnd?.(); return; }
+    const engine = VoiceEngine.getInstance();
+    if (engine.playVoice(audioSrc, onEnd)) return;
 
-    try {
-      const audio = new Audio(audioSrc);
-      this.currentAudio = audio;
-
-      let hasFinished = false;
-      const safeEnd = () => {
-        if (hasFinished) return;
-        hasFinished = true;
-        if (this.currentAudio === audio) {
-          this.currentAudio = null;
-        }
-        if (onEnd) onEnd();
-      };
-
-      audio.onended = safeEnd;
-
-      // // SAFETY: Fallback mechanism when asset file is missing or blocked by autoplay policy
-      audio.onerror = () => {
-        console.warn(`[CharacterSoundManager] Asset missing: ${audioSrc}. Triggering speech fallback.`);
-        if (typeof window !== 'undefined' && (window as any).MEDIA && fallbackText) {
-          (window as any).MEDIA.speakCharacter(charId || 'polly', fallbackText, safeEnd);
-        } else {
-          safeEnd();
-        }
-      };
-
-      const playPromise = audio.play();
-      if (playPromise && playPromise.catch) {
-        playPromise.catch((err) => {
-          console.warn(`[CharacterSoundManager] Autoplay/playback restriction: ${err.message}`);
-          if (typeof window !== 'undefined' && (window as any).MEDIA && fallbackText) {
-            (window as any).MEDIA.speakCharacter(charId || 'polly', fallbackText, safeEnd);
-          } else {
-            safeEnd();
-          }
-        });
-      }
-
-      return audio;
-    } catch (err) {
-      console.error("[CharacterSoundManager] Audio instantiation error:", err);
-      if (typeof window !== 'undefined' && (window as any).MEDIA && fallbackText) {
-        (window as any).MEDIA.speakCharacter(charId || 'polly', fallbackText, onEnd);
-      } else if (onEnd) {
-        onEnd();
-      }
-      return null;
-    }
+    const token = engine.currentToken;
+    engine.preloadVoice(audioSrc).then((ok) => {
+      if (token !== engine.currentToken) return; // another voice was requested meanwhile
+      if (ok && engine.playVoice(audioSrc, onEnd)) return;
+      const media = typeof window !== 'undefined' ? (window as any).MEDIA : null;
+      if (media && fallbackText) media.speakCharacter(charId || 'polly', fallbackText, onEnd);
+      else onEnd?.();
+    });
   }
 }

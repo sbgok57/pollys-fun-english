@@ -11,6 +11,34 @@ js = '\n'.join((src / f).read_text(encoding='utf-8')
                          'lessons.js', 'voice-map.js', 'media.js',
                          'engines-a.js', 'engines-b.js', 'engines-c.js', 'cambridge-engine.js', 'app.js'])
 html = (src / 'shell.html').read_text(encoding='utf-8')
+
+# 🎙️ Character voice manifest: only real, unique recordings are exposed to VoiceEngine.
+# A clip that is byte-identical to another asset (e.g. a beat loop copied as a "voice")
+# is a placeholder and must never ship — it would play the wrong sound instead of speech.
+import hashlib
+voice_errors = []
+voice_ok = []
+_audio_root = root / 'audio'
+_char_root = _audio_root / 'characters'
+_md5 = lambda f: hashlib.md5(f.read_bytes()).hexdigest()
+_other_hashes = {_md5(f) for f in _audio_root.glob('*.mp3')} if _audio_root.exists() else set()
+_char_files = sorted(_char_root.rglob('*.mp3')) if _char_root.exists() else []
+_char_hashes = {}
+for f in _char_files:
+    _char_hashes.setdefault(_md5(f), []).append(f)
+for h, files in _char_hashes.items():
+    for f in files:
+        rel = f.relative_to(root).as_posix()
+        if f.stat().st_size < 2000:
+            voice_errors.append('karakter sesi çok küçük/bozuk: ' + rel)
+        elif h in _other_hashes:
+            voice_errors.append('karakter sesi başka bir dosyanın kopyası (yer tutucu): ' + rel)
+        elif len(files) > 1:
+            voice_errors.append('karakter sesi başka karakterle birebir aynı (yer tutucu): ' + rel)
+        else:
+            voice_ok.append(rel)
+js += '\nconst CHARACTER_VOICE_MANIFEST = new Set(' + json.dumps(sorted(voice_ok)) + ');\n'
+
 assert '</script' not in js, 'JS içinde </script> var!'
 out = html.replace('/*__CSS__*/', css).replace('//__JS__', js)
 
@@ -168,6 +196,8 @@ playfile_calls = set(re.findall(r'playFile\(["\x27]([^"\x27]+)["\x27]', out))
 for clip_name in playfile_calls:
     if not (vd / 'audio' / (clip_name + '.mp3')).exists() and clip_name != 'w-zztest':
         hatalar.append(f'404 Tehlikesi - Diskte olmayan playFile ses çağrısı: {clip_name}.mp3')
+
+hatalar.extend(voice_errors)
 
 if hatalar:
     print('!!! DOĞRULAMA HATALARI — PAKET KULLANILMAMALI:')

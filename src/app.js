@@ -3614,4 +3614,6 @@ if (typeof document !== 'undefined') {
     } catch (e) {}
   }
   FX.mascotSay("Hello! I'm Polly 🦜 Select a grade and let's play!", 4500);
+  // PERF: idle-time warm-up of verified character clips (no-op when none are verified)
+  try { CharacterSoundManager.warmUpBank(); } catch (e) {}
 }
