@@ -71,6 +71,7 @@ vd = root / 'vercel-deploy'
 shutil.rmtree(vd, ignore_errors=True)
 (vd / 'audio').mkdir(parents=True, exist_ok=True)
 (vd / 'images').mkdir(parents=True, exist_ok=True)
+(vd / '.gitignore').write_text('.vercel\n.env*\n', encoding='utf-8')
 (vd / 'index.html').write_text(out, encoding='utf-8')
 
 vjson_content = json.dumps({

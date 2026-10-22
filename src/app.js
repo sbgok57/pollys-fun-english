@@ -1666,7 +1666,7 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const humanVoices = MEDIA.getHumanVoices ? MEDIA.getHumanVoices() : [];
+    const classroomVoices = MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
 
     const getVoiceMeta = (v) => ({
@@ -1689,8 +1689,8 @@ const APP = {
         💡 Tap a voice to preview it. Available voices and sound quality vary by device.
       </div>
       <div class="vlist">${
-        humanVoices.length > 0
-          ? humanVoices
+        classroomVoices.length > 0
+          ? classroomVoices
               .map((v) => {
                 const meta = getVoiceMeta(v);
                 const isSelected = v.name === cur;

@@ -487,41 +487,41 @@ const MEDIA = {
     return null;
   },
 
-  /* 🚫 Robotik, mekanik, fısıltılı veya eski sistem seslerini filtreleme */
+  /* Filter novelty/demo voices. Browser voices are synthesized, not human recordings. */
   isRoboticVoice(v) {
     if (!v) return true;
     const name = String(v.name || '').toLowerCase();
     const lang = String(v.lang || '').toLowerCase();
     if (!/^en/i.test(lang)) return true;
-    const robotPattern = /(albert|fred|ralph|junior|kathy|victoria|vicki|bruce|bad news|good news|bahh|bells|boing|bubbles|cellos|deranged|hysterical|jester|organ|superstar|trinoids|whisper|wobble|zarvox|david|zira|mark|hazel|george|desktop|espeak|festival|mbrola|sample|compact|mechanical|robot)/i;
+    const robotPattern = /(bad news|good news|bahh|bells|boing|bubbles|cellos|deranged|hysterical|jester|organ|superstar|trinoids|whisper|wobble|zarvox|espeak|festival|mbrola|sample|compact|mechanical|robot)/i;
     return robotPattern.test(name);
   },
 
-  /* 🌟 Neşeli, doğal ve çocuklara uygun insan sesi puanlama motoru */
+  /* Prefer higher-quality English voices when the device exposes quality metadata. */
   getVoiceScore(v) {
     if (!v || this.isRoboticVoice(v)) return -1000;
     const name = String(v.name || '');
     const lang = String(v.lang || '');
     let score = 50;
 
-    // 🏆 En neşeli, doğal çocuk ve öğretmen sesleri (Polly için mükemmel insan sesleri)
-    if (/maisie/i.test(name)) score += 130; // Neşeli İngiliz çocuk sesi
-    else if (/ana\b/i.test(name) && /natural/i.test(name)) score += 125; // Neşeli ABD çocuk sesi
-    else if (/flo\b/i.test(name)) score += 120; // Canlı, neşeli Apple insan sesi
-    else if (/sandy\b/i.test(name)) score += 115; // Sıcak & neşeli Apple insan sesi
-    else if (/samantha\b/i.test(name)) score += 110; // Doğal ve neşeli Apple sesi
-    else if (/shelley\b/i.test(name)) score += 105; // Neşeli Apple sesi
-    else if (/serena\b/i.test(name)) score += 100; // Doğal İngiliz öğretmen sesi
-    else if (/sonia\b/i.test(name)) score += 96; // Güler yüzlü İngiliz sesi
-    else if (/libby\b/i.test(name)) score += 94; // Sevimli İngiliz sesi
-    else if (/jenny\b/i.test(name)) score += 92; // Doğal ve neşeli ABD sesi
-    else if (/aria\b/i.test(name)) score += 90; // Canlı ve neşeli ABD sesi
-    else if (/ava\b/i.test(name)) score += 88; // Doğal akıcı ses
-    else if (/zoe\b/i.test(name)) score += 86; // Canlı ve enerjik ses
-    else if (/karen\b/i.test(name)) score += 82; // Sıcak Avustralya sesi
-    else if (/moira\b/i.test(name)) score += 80; // Neşeli İrlanda sesi
-    else if (/daniel\b/i.test(name)) score += 78; // Net İngiliz sesi
-    else if (/eddy\b/i.test(name)) score += 74; // Genç & samimi ses
+    // Known enhanced voices are generally smoother; availability varies by device.
+    if (/maisie/i.test(name)) score += 130;
+    else if (/ana\b/i.test(name) && /natural/i.test(name)) score += 125;
+    else if (/flo\b/i.test(name)) score += 120;
+    else if (/sandy\b/i.test(name)) score += 115;
+    else if (/samantha\b/i.test(name)) score += 110;
+    else if (/shelley\b/i.test(name)) score += 105;
+    else if (/serena\b/i.test(name)) score += 100;
+    else if (/sonia\b/i.test(name)) score += 96;
+    else if (/libby\b/i.test(name)) score += 94;
+    else if (/jenny\b/i.test(name)) score += 92;
+    else if (/aria\b/i.test(name)) score += 90;
+    else if (/ava\b/i.test(name)) score += 88;
+    else if (/zoe\b/i.test(name)) score += 86;
+    else if (/karen\b/i.test(name)) score += 82;
+    else if (/moira\b/i.test(name)) score += 80;
+    else if (/daniel\b/i.test(name)) score += 78;
+    else if (/eddy\b/i.test(name)) score += 74;
 
     // Doğal/Nöral ses belirteçleri
     if (/online \(natural\)/i.test(name)) score += 60;
@@ -535,14 +535,15 @@ const MEDIA = {
     else if (/en[-_]US/i.test(lang)) score += 15;
     else if (/en[-_](AU|CA|IE|NZ)/i.test(lang)) score += 10;
 
-    // Kadın veya çocuk ses tonları ilkokul öğrencileri için daha neşeli ve samimi algılanır
-    if (/female|girl|child|kid/i.test(name)) score += 10;
+    // Prefer voices explicitly marked as enhanced/natural without assuming a gender.
+    if (v.default) score += 4;
+    if (v.localService === false) score += 2;
 
     return score;
   },
 
-  /* 🎙️ Mevcut insan seslerini listeleme (filtreli ve sıralı) */
-  getHumanVoices() {
+  /* English voices offered by this browser, sorted by available quality hints. */
+  getClassroomVoices() {
     try {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
       if (!synth || !synth.getVoices) return [];
@@ -574,11 +575,11 @@ const MEDIA = {
         }
       } catch (e) {}
 
-      // Sadece neşeli insan seslerini al ve puanlarına göre sırala
-      const humanVoices = this.getHumanVoices();
-      if (humanVoices.length > 0) {
-        this.voice = humanVoices[0];
-        return humanVoices[0];
+      // Use the best-scoring English voice available on this device.
+      const classroomVoices = this.getClassroomVoices();
+      if (classroomVoices.length > 0) {
+        this.voice = classroomVoices[0];
+        return classroomVoices[0];
       }
 
       // Güvenlik yedeği: robotik filtreyi geçen ilk İngilizce ses
@@ -596,6 +597,8 @@ const MEDIA = {
       return null;
     }
   },
+
+  getHumanVoices() { return this.getClassroomVoices(); },
   setVoice(name) {
     try {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
@@ -635,11 +638,20 @@ const MEDIA = {
       const freq = notes[i % notes.length];
       this.tone(freq, i * 0.28, 0.35, 'triangle', 0.12);
     }
-    this.tts(text, 0.88, cb, 0.95, 1.35);
+    this.tts(text, 0.88, cb, 0.95, 1.0);
   },
 
   /* Speech uses the selected browser voice; pitch is not manipulated. */
   speak(text, rate = 0.9, cb, vol, charKey = null) {
+    // Success feedback and the following answer are spoken as one line so the
+    // next game prompt cannot cancel the praise before children hear it.
+    if (typeof FX !== 'undefined' && FX._pendingPraise) {
+      if (FX._praiseTimer) clearTimeout(FX._praiseTimer);
+      const praise = FX._pendingPraise;
+      FX._pendingPraise = '';
+      FX._praiseTimer = null;
+      text = `${praise} ${String(text || '')}`.trim();
+    }
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
         const t = String(text || '');
@@ -779,6 +791,9 @@ const MEDIA = {
    ============================================================ */
 
 const FX = {
+  _pendingPraise: '',
+  _praiseTimer: null,
+  _praiseIndex: -1,
   confetti(count = 45) {
     const L = document.getElementById('fxlayer');
     if (!L) return;
@@ -836,9 +851,29 @@ const FX = {
     document.body.appendChild(flash);
     setTimeout(() => flash.remove(), 300);
     if (ok) {
-      const praise = 'Brilliant! You got it!';
+      const praiseLines = [
+        'Brilliant! You got it!',
+        'Fantastic! Great thinking!',
+        'Super work! Keep going!',
+        'Yes! That is right!',
+        'Amazing! You did it!',
+        'Wonderful! One more star!',
+        'Great job! High five!',
+        'Spot on! You are learning fast!'
+      ];
+      this._praiseIndex = (this._praiseIndex + 1 + Math.floor(Math.random() * (praiseLines.length - 1))) % praiseLines.length;
+      const praise = praiseLines[this._praiseIndex];
       this.mascotSay(praise, 1600);
-      if (typeof MEDIA !== 'undefined' && MEDIA.speak) MEDIA.speak(praise, 1.04);
+      if (typeof MEDIA !== 'undefined' && MEDIA.speak) {
+        if (this._praiseTimer) clearTimeout(this._praiseTimer);
+        this._pendingPraise = praise;
+        this._praiseTimer = setTimeout(() => {
+          const pending = this._pendingPraise;
+          this._pendingPraise = '';
+          this._praiseTimer = null;
+          if (pending) MEDIA.speak(pending, 1.02);
+        }, 220);
+      }
     }
   },
 
