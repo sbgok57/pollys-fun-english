@@ -573,27 +573,27 @@ const APP = {
     </div>
     <p class="curriculum-note"><strong>Cambridge Global English kullanıyorsanız:</strong> Etkinliklerin ünite ve sayfa eşleşmesini sınıfınızdaki Learner’s Book ve Workbook baskısından kontrol edin. Bu site bağımsız bir yardımcı kaynaktır; resmî Cambridge materyali değildir.</p>
     <div class="stage-cards">
-      <div class="stage-card s1" data-st="s1"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s1" data-st="s1"><span class="sc-emoji stage-art-pencil" role="img" aria-label="Pencil"></span>
         <h2>🟢 Grade 1</h2>
         <span class="badge green" style="margin-bottom:6px">Grade 1 · Stage 1</span>
         <p>Games and activities for early English learners.</p>
       </div>
-      <div class="stage-card s2" data-st="s2"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s2" data-st="s2"><span class="sc-emoji stage-art-book" role="img" aria-label="Book"></span>
         <h2>🔵 Grade 2</h2>
         <span class="badge blue" style="margin-bottom:6px">Grade 2 · Stage 2</span>
         <p>Games and activities for growing confidence in English.</p>
       </div>
-      <div class="stage-card s3" data-st="s3"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s3" data-st="s3"><span class="sc-emoji stage-art-explorer" role="img" aria-label="Explorer"></span>
         <h2>🟣 Grade 3</h2>
         <span class="badge purple" style="margin-bottom:6px">Grade 3 · Stage 3</span>
         <p>Games and activities for upper primary learners.</p>
       </div>
-      <div class="stage-card s4" data-st="s4"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s4" data-st="s4"><span class="sc-emoji stage-art-compass" role="img" aria-label="Compass"></span>
         <h2>🟠 Grade 4</h2>
         <span class="badge gold" style="margin-bottom:6px">Grade 4 · Stage 4</span>
         <p>Games and activities for upper primary learners.</p>
       </div>
-      <div class="stage-card songs" data-go="songs"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card songs" data-go="songs"><span class="sc-emoji stage-art-star" role="img" aria-label="Star"></span>
         <h2>🎶 Songs & Video Corner</h2>
         <span class="badge pink" style="margin-bottom:6px">Songs and videos</span>
         <p>Sing along, listen and practise classroom English.</p>
@@ -1667,7 +1667,8 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const classroomVoices = MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : []);
+    const classroomVoices = (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : (MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : []))
+      .filter((v) => /^en([_-]|$)/i.test(v.lang || ''));
     const previewVoices = typeof HIGGSFIELD_VOICE_PREVIEWS !== 'undefined' ? HIGGSFIELD_VOICE_PREVIEWS : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
 
@@ -1686,7 +1687,7 @@ const APP = {
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
         <div>
           <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a device voice</h3>
-          <div class="muted" style="font-size:0.88em">All voices offered by this device are listed. English voices are easiest to understand for English practice.</div>
+          <div class="muted" style="font-size:0.88em">${classroomVoices.length} non-robotic English voices on this device. Voice naturalness depends on the device.</div>
         </div>
       </div>
       <div class="voice-help-banner">

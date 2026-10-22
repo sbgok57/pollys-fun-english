@@ -3991,6 +3991,47 @@ body { background-attachment: fixed; }
 .hf-preview-controls select { min-width: 0; width: 100%; padding: 12px; border: 2px solid #d8cffa; border-radius: 13px; background: white; color: #241d3c; font: inherit; }
 @media (max-width: 560px) { .hf-preview-controls { grid-template-columns: 1fr; } }
 
+/* Bright, tactile classroom update. Pattern stays behind content so text remains clear. */
+body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,transparent 1.5px),radial-gradient(#9de1d3 1.5px,transparent 1.5px),linear-gradient(135deg,#fff8e9,#f8f0ff 48%,#e9fbff); background-size:28px 28px,34px 34px,100% 100%; background-position:0 0,14px 17px,0 0; background-attachment:fixed; }
+#app { background:transparent; }
+.topbar { border:3px solid white; border-radius:22px; background:linear-gradient(110deg,#fff 0 72%,#fff4c5 72%); box-shadow:0 7px 0 #d8c4f2,0 18px 35px #44306f20; }
+.brand { color:#422c87; font-weight:950; }
+.welcome-hero { position:relative; overflow:hidden; border:4px solid #fff; border-radius:36px; padding:clamp(20px,4vw,42px); background:radial-gradient(circle at 82% 18%,#ffe076 0 9%,transparent 9.5%),repeating-linear-gradient(135deg,#f7edff 0 14px,#fff7dc 14px 28px,#e9fbff 28px 42px); box-shadow:0 9px 0 #d4c1ed,0 22px 40px #39266b18; }
+.welcome-content { border-radius:28px; padding:clamp(18px,3vw,32px); background:#ffffffed; box-shadow:0 10px 24px #62409d1e; }
+.welcome-badge { background:#ffe36e; color:#4b3a00; border:2px solid white; box-shadow:0 3px 0 #eac14a; }
+.welcome-content h2 { color:#382270; font-size:clamp(2rem,4vw,3.4rem); line-height:1.05; }
+.welcome-content p { color:#354266; font-size:1.08rem; line-height:1.65; }
+.stage-cards { gap:22px; }
+.stage-card { position:relative; overflow:hidden; border:4px solid white!important; border-radius:30px; min-height:198px; box-shadow:0 8px 0 #45317b22,0 16px 30px #45317b15; }
+.stage-card::after { position:absolute; content:""; inset:0; pointer-events:none; opacity:.28; background-image:radial-gradient(#fff 2px,transparent 2.4px); background-size:22px 22px; mask-image:linear-gradient(135deg,black,transparent 58%); }
+.stage-card.s1 { background:linear-gradient(145deg,#ffef87,#ffbd68)!important; }
+.stage-card.s2 { background:linear-gradient(145deg,#9ce8dc,#5ec8ce)!important; }
+.stage-card.s3 { background:linear-gradient(145deg,#d8b8ff,#a896ff)!important; }
+.stage-card.s4 { background:linear-gradient(145deg,#ffb5c4,#ff8ea3)!important; }
+.stage-card.songs { background:linear-gradient(145deg,#ff9ed0,#ff70a8)!important; }
+.stage-card h2 { position:relative; z-index:1; color:#33215f; font-size:1.45rem; }
+.stage-card p { position:relative; z-index:1; color:#332e50; line-height:1.5; }
+.sc-emoji { position:relative; z-index:1; display:block; width:94px; height:94px; margin-bottom:8px; background-image:url('/images/vocabulary-atlas.png'); background-size:600% 300%; background-repeat:no-repeat; filter:drop-shadow(0 8px 5px #36214a42); }
+.stage-art-pencil { background-position:0 0; }
+.stage-art-book { background-position:100% 0; }
+.stage-art-explorer { background-position:0 100%; }
+.stage-art-compass { background-position:20% 100%; }
+.stage-art-star { background-position:100% 100%; }
+.vocab-grid { gap:22px; }
+.vocab-card { overflow:hidden; border:3px solid #fff; border-radius:28px; background:linear-gradient(145deg,#fff,#fff8df); box-shadow:0 8px 0 #7856bb20,0 18px 34px #49327718; }
+.vocab-card:nth-child(4n+2) { background:linear-gradient(145deg,#fff,#e8fbf6); }
+.vocab-card:nth-child(4n+3) { background:linear-gradient(145deg,#fff,#f5eaff); }
+.vocab-card:nth-child(4n+4) { background:linear-gradient(145deg,#fff,#e9f5ff); }
+.vocab-media { background-image:radial-gradient(#8c63d522 1.5px,transparent 1.6px),linear-gradient(135deg,#fff8dc,#eefbff); background-size:18px 18px,100% 100%; }
+.vocab-atlas-art { width:100%; height:clamp(180px,24vw,250px); background-image:url('/images/vocabulary-atlas.png'); background-size:600% 300%; background-repeat:no-repeat; background-position:var(--art-x) var(--art-y); }
+.vocab-no-art { min-height:210px; display:grid; place-items:center; color:#443080; font-size:1.7rem; font-weight:900; }
+.vocab-details h4 { color:#392477; font-size:1.55rem; }
+.tr-meaning { display:inline-flex; margin:4px 0 10px; padding:7px 12px; border-radius:999px; background:#fff0a9; color:#4b3b00; font-weight:850; }
+.voice-bubble { border-radius:18px; background:#fff; }
+.btn { border:2px solid #ffffffa8; border-radius:16px; }
+.hf-voice-preview { background:repeating-linear-gradient(135deg,#fff 0 16px,#f5efff 16px 32px); border-color:#d1b8f2; }
+@media(max-width:700px){.welcome-hero{border-radius:26px}.stage-card{min-height:165px}.sc-emoji{width:76px;height:76px}.vocab-atlas-art{height:210px}}
+
   </style>
 </head>
 <body>
@@ -78433,6 +78474,19 @@ const HIGGSFIELD_VOICE_PREVIEWS = [
 ];
 
 
+/* Locally bundled, exact-word 3D illustrations. Coordinates refer to the
+   six-column by three-row atlas in /images/vocabulary-atlas.png. */
+const VOCABULARY_ART = Object.freeze({
+  pencil: [0, 0], desk: [1, 0], chair: [2, 0], 'school bag': [3, 0], teacher: [4, 0], book: [5, 0],
+  mother: [0, 1], father: [1, 1], brother: [2, 1], sister: [3, 1], baby: [4, 1], grandma: [5, 1],
+  explorer: [0, 2], compass: [1, 2], notebook: [2, 2], magnifier: [3, 2], map: [4, 2], star: [5, 2]
+});
+function getVocabularyArt(word) {
+  const key = String(word || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  const position = VOCABULARY_ART[key];
+  return position ? { column: position[0], row: position[1] } : null;
+}
+
 /* ============================================================
    🔊 SES & GÖRSEL EFEKT MOTORU (Web Audio API + TTS + FX)
    Offline çalışır, harici dosya/CDN gerektirmez.
@@ -82150,9 +82204,10 @@ ENGINES.push(...ENGINES_C);
             ${words.map(v => `
               <div class="vocab-card">
                 <div class="vocab-media">
-                  <img src="${this.media === 'gif' ? v.gifUrl : v.realPhoto}" alt="${v.word}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';this.parentElement.querySelector('.media-tag').style.display='none'" />
-                  <div class="media-fallback" style="display:none" aria-hidden="true"><span>🖼️</span><strong>${v.word}</strong></div>
-                  <span class="media-tag">${this.media === 'gif' ? 'ANIMATION' : 'PHOTO'}</span>
+                  ${typeof getVocabularyArt === 'function' && getVocabularyArt(v.word)
+                    ? (() => { const pos = getVocabularyArt(v.word); return `<div class="vocab-atlas-art" role="img" aria-label="${v.word} — ${v.turkish}" style="--art-x:${pos.column * 20}%;--art-y:${pos.row * 50}%"></div>`; })()
+                    : `<div class="vocab-no-art"><span>${v.word}</span></div>`}
+                  <span class="media-tag">3D picture</span>
                 </div>
                 <div class="vocab-details">
                   <h4>${v.word}</h4>
@@ -83569,27 +83624,27 @@ const APP = {
     </div>
     <p class="curriculum-note"><strong>Cambridge Global English kullanıyorsanız:</strong> Etkinliklerin ünite ve sayfa eşleşmesini sınıfınızdaki Learner’s Book ve Workbook baskısından kontrol edin. Bu site bağımsız bir yardımcı kaynaktır; resmî Cambridge materyali değildir.</p>
     <div class="stage-cards">
-      <div class="stage-card s1" data-st="s1"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s1" data-st="s1"><span class="sc-emoji stage-art-pencil" role="img" aria-label="Pencil"></span>
         <h2>🟢 Grade 1</h2>
         <span class="badge green" style="margin-bottom:6px">Grade 1 · Stage 1</span>
         <p>Games and activities for early English learners.</p>
       </div>
-      <div class="stage-card s2" data-st="s2"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s2" data-st="s2"><span class="sc-emoji stage-art-book" role="img" aria-label="Book"></span>
         <h2>🔵 Grade 2</h2>
         <span class="badge blue" style="margin-bottom:6px">Grade 2 · Stage 2</span>
         <p>Games and activities for growing confidence in English.</p>
       </div>
-      <div class="stage-card s3" data-st="s3"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s3" data-st="s3"><span class="sc-emoji stage-art-explorer" role="img" aria-label="Explorer"></span>
         <h2>🟣 Grade 3</h2>
         <span class="badge purple" style="margin-bottom:6px">Grade 3 · Stage 3</span>
         <p>Games and activities for upper primary learners.</p>
       </div>
-      <div class="stage-card s4" data-st="s4"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card s4" data-st="s4"><span class="sc-emoji stage-art-compass" role="img" aria-label="Compass"></span>
         <h2>🟠 Grade 4</h2>
         <span class="badge gold" style="margin-bottom:6px">Grade 4 · Stage 4</span>
         <p>Games and activities for upper primary learners.</p>
       </div>
-      <div class="stage-card songs" data-go="songs"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
+      <div class="stage-card songs" data-go="songs"><span class="sc-emoji stage-art-star" role="img" aria-label="Star"></span>
         <h2>🎶 Songs & Video Corner</h2>
         <span class="badge pink" style="margin-bottom:6px">Songs and videos</span>
         <p>Sing along, listen and practise classroom English.</p>
@@ -84663,7 +84718,8 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const classroomVoices = MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : []);
+    const classroomVoices = (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : (MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : []))
+      .filter((v) => /^en([_-]|$)/i.test(v.lang || ''));
     const previewVoices = typeof HIGGSFIELD_VOICE_PREVIEWS !== 'undefined' ? HIGGSFIELD_VOICE_PREVIEWS : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
 
@@ -84682,7 +84738,7 @@ const APP = {
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
         <div>
           <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a device voice</h3>
-          <div class="muted" style="font-size:0.88em">All voices offered by this device are listed. English voices are easiest to understand for English practice.</div>
+          <div class="muted" style="font-size:0.88em">${classroomVoices.length} non-robotic English voices on this device. Voice naturalness depends on the device.</div>
         </div>
       </div>
       <div class="voice-help-banner">

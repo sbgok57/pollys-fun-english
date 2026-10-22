@@ -562,9 +562,10 @@
             ${words.map(v => `
               <div class="vocab-card">
                 <div class="vocab-media">
-                  <img src="${this.media === 'gif' ? v.gifUrl : v.realPhoto}" alt="${v.word}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';this.parentElement.querySelector('.media-tag').style.display='none'" />
-                  <div class="media-fallback" style="display:none" aria-hidden="true"><span>🖼️</span><strong>${v.word}</strong></div>
-                  <span class="media-tag">${this.media === 'gif' ? 'ANIMATION' : 'PHOTO'}</span>
+                  ${typeof getVocabularyArt === 'function' && getVocabularyArt(v.word)
+                    ? (() => { const pos = getVocabularyArt(v.word); return `<div class="vocab-atlas-art" role="img" aria-label="${v.word} — ${v.turkish}" style="--art-x:${pos.column * 20}%;--art-y:${pos.row * 50}%"></div>`; })()
+                    : `<div class="vocab-no-art"><span>${v.word}</span></div>`}
+                  <span class="media-tag">3D picture</span>
                 </div>
                 <div class="vocab-details">
                   <h4>${v.word}</h4>

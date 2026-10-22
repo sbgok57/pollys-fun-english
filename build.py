@@ -8,7 +8,7 @@ src = root / 'src'
 css = (src / 'styles.css').read_text(encoding='utf-8')
 js = '\n'.join((src / f).read_text(encoding='utf-8')
                for f in ['data.js', 'cambridge-data.js', 'lesson-plans-data.js', 'songs.js', 'songs-extra.js', 'songs-mel.js',
-                         'lessons.js', 'voice-map.js', 'higgsfield-voices.js', 'media.js',
+                         'lessons.js', 'voice-map.js', 'higgsfield-voices.js', 'vocab-art.js', 'media.js',
                          'engines-a.js', 'engines-b.js', 'engines-c.js', 'cambridge-engine.js', 'app.js'])
 html = (src / 'shell.html').read_text(encoding='utf-8')
 
