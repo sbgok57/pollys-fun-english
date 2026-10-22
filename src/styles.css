@@ -3937,3 +3937,36 @@ body.theme-pastel {
 .lp-outcomes-box li {
   margin-bottom: 2px;
 }
+
+/* Bright, tactile classroom refresh: dimensional mascot art replaces decorative emoji. */
+:root {
+  --primary: #7047d7;
+  --primary-hover: #5432b0;
+  --accent: #ff9d37;
+  --bg-gradient: radial-gradient(ellipse at 8% 8%, #fff1bf 0, transparent 28%), radial-gradient(ellipse at 93% 14%, #e9d8ff 0, transparent 30%), linear-gradient(135deg, #e9fbff, #fff4f8 55%, #f4ffe8);
+  --font-family: 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+}
+body { background-attachment: fixed; }
+.topbar { border: 2px solid #fff; background: rgba(255,255,255,.94); box-shadow: 0 8px 0 rgba(112,71,215,.09), 0 18px 42px rgba(66,45,120,.12); }
+.brand { color: #3c267d; }
+.brand-mascot { width: 38px; height: 38px; object-fit: contain; filter: drop-shadow(0 4px 4px #37275e33); }
+.hero { position: relative; overflow: hidden; border-radius: 34px; margin: 10px 0 18px; padding: 28px 18px 24px; background: radial-gradient(ellipse at 50% 115%, #ffda6a 0 16%, transparent 17%), linear-gradient(135deg,#fff 4%,#eafaff 48%,#fff0f6); box-shadow: inset 0 0 0 3px #fff, 0 16px 36px #684da31c; }
+.mascot { width: clamp(116px, 20vw, 176px); height: clamp(116px, 20vw, 176px); object-fit: contain; cursor: pointer; display: block; margin: 0 auto 8px; animation: mascotHop 3.5s infinite ease-in-out; filter: drop-shadow(0 12px 10px rgba(58,39,108,.22)); }
+.stage-cards { gap: 20px; }
+.stage-card { border-width: 0; border-radius: 30px; min-height: 180px; box-shadow: 0 8px 0 rgba(78,55,139,.11), 0 18px 30px rgba(59,43,93,.13), inset 0 3px 0 #fff; transition: transform .22s ease, box-shadow .22s ease; }
+.stage-card:hover { transform: translateY(-5px) rotate(-.35deg); box-shadow: 0 12px 0 rgba(78,55,139,.1),0 24px 36px rgba(59,43,93,.19),inset 0 3px 0 #fff; }
+.stage-card.s1 { background: radial-gradient(circle at 88% 5%,#fff2a8 0 11%,transparent 12%),linear-gradient(145deg,#fff,#dcffec)!important; }
+.stage-card.s2 { background: radial-gradient(circle at 88% 5%,#b8f3ff 0 11%,transparent 12%),linear-gradient(145deg,#fff,#dcefff)!important; }
+.stage-card.s3 { background: radial-gradient(circle at 88% 5%,#ffd5ed 0 11%,transparent 12%),linear-gradient(145deg,#fff,#f0e3ff)!important; }
+.stage-card.s4 { background: radial-gradient(circle at 88% 5%,#ffd5bb 0 11%,transparent 12%),linear-gradient(145deg,#fff,#ffe9dc)!important; }
+.stage-card.songs { background: linear-gradient(145deg,#fff,#ffe0f0)!important; }
+.sc-emoji { width: 70px; height: 70px; object-fit: contain; margin-bottom: 8px; filter: drop-shadow(0 7px 5px rgba(42,28,76,.2)); }
+.stage-card h2 { color: #38246f; letter-spacing: -.02em; }
+.stage-card p { color: #4e4b65; line-height: 1.55; }
+.btn { box-shadow: 0 5px 0 rgba(64,37,119,.16), 0 8px 16px rgba(57,35,104,.12); }
+.card,.unit-card,.cam-stage-tab,.vmbox { border-radius: 24px; box-shadow: 0 7px 0 rgba(89,65,139,.09),0 15px 28px rgba(63,49,107,.1); }
+.voice-modal-mascot { width: 54px; height: 54px; object-fit: contain; filter: drop-shadow(0 5px 4px #35226133); }
+.vitem { border-radius: 18px; }
+.flyby { width: 54px; height: 54px; }
+.flyby img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 7px 7px #38266044); }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }

@@ -542,6 +542,21 @@ const MEDIA = {
     return score;
   },
 
+  /* Every voice offered by this browser or operating system, sorted by classroom suitability. */
+  getAvailableVoices() {
+    try {
+      const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
+      if (!synth || !synth.getVoices) return [];
+      return (synth.getVoices() || []).slice().sort((a, b) => {
+        const aEnglish = /^en([_-]|$)/i.test(a.lang || '') ? 1 : 0;
+        const bEnglish = /^en([_-]|$)/i.test(b.lang || '') ? 1 : 0;
+        return bEnglish - aEnglish || this.getVoiceScore(b) - this.getVoiceScore(a) || a.name.localeCompare(b.name);
+      });
+    } catch (e) {
+      return [];
+    }
+  },
+
   /* English voices offered by this browser, sorted by available quality hints. */
   getClassroomVoices() {
     try {

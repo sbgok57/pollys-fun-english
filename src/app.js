@@ -509,6 +509,7 @@ const APP = {
       }
     }
     app.innerHTML = `<div class="screen">${icerik}</div>`;
+    removeDecorativeEmoji(app);
     try {
       this.bind();
     } catch (e) {
@@ -521,7 +522,7 @@ const APP = {
   bar(title) {
     return `<div class="topbar">
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Back</button>' : ''}
-      <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
+      <div class="brand"><img class="brand-mascot" src="/images/polly-3d-mascot.png" alt="" /> Polly’s Fun English</div><div class="spacer"></div>
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
       <button class="btn small white" id="top-plans-btn">📋 Lesson plans</button>
       <button class="btn small white" id="guide-top-btn">📖 Teacher guide</button>
@@ -566,33 +567,33 @@ const APP = {
     </div>
 
     <div class="hero">
-      <div class="mascot" id="mas">🦜</div>
+      <img class="mascot" id="mas" src="/images/polly-3d-mascot.png" alt="Polly the parrot" />
       <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
       <div class="tag">Play · learn · sing — classroom activities for Grades 1–4</div>
     </div>
     <p class="curriculum-note"><strong>Cambridge Global English kullanıyorsanız:</strong> Etkinliklerin ünite ve sayfa eşleşmesini sınıfınızdaki Learner’s Book ve Workbook baskısından kontrol edin. Bu site bağımsız bir yardımcı kaynaktır; resmî Cambridge materyali değildir.</p>
     <div class="stage-cards">
-      <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
+      <div class="stage-card s1" data-st="s1"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
         <h2>🟢 Grade 1</h2>
         <span class="badge green" style="margin-bottom:6px">Grade 1 · Stage 1</span>
         <p>Games and activities for early English learners.</p>
       </div>
-      <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
+      <div class="stage-card s2" data-st="s2"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
         <h2>🔵 Grade 2</h2>
         <span class="badge blue" style="margin-bottom:6px">Grade 2 · Stage 2</span>
         <p>Games and activities for growing confidence in English.</p>
       </div>
-      <div class="stage-card s3" data-st="s3"><span class="sc-emoji">🦁</span>
+      <div class="stage-card s3" data-st="s3"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
         <h2>🟣 Grade 3</h2>
         <span class="badge purple" style="margin-bottom:6px">Grade 3 · Stage 3</span>
         <p>Games and activities for upper primary learners.</p>
       </div>
-      <div class="stage-card s4" data-st="s4"><span class="sc-emoji">🌌</span>
+      <div class="stage-card s4" data-st="s4"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
         <h2>🟠 Grade 4</h2>
         <span class="badge gold" style="margin-bottom:6px">Grade 4 · Stage 4</span>
         <p>Games and activities for upper primary learners.</p>
       </div>
-      <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
+      <div class="stage-card songs" data-go="songs"><img class="sc-emoji" src="/images/polly-3d-mascot.png" alt="" />
         <h2>🎶 Songs & Video Corner</h2>
         <span class="badge pink" style="margin-bottom:6px">Songs and videos</span>
         <p>Sing along, listen and practise classroom English.</p>
@@ -1666,27 +1667,29 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const classroomVoices = MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : [];
+    const classroomVoices = MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : []);
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
 
     const getVoiceMeta = (v) => ({
       desc: 'Provided by your browser or operating system',
-      badge: (v.lang || '').toLowerCase().includes('gb') ? 'English · UK' : 'English voice',
-      icon: '🔊'
+      badge: /^en([_-]|$)/i.test(v.lang || '')
+        ? ((v.lang || '').toLowerCase().includes('gb') ? 'English · UK' : (v.lang || '').toLowerCase().includes('us') ? 'English · US' : 'English')
+        : (v.lang || 'Device voice'),
+      icon: ''
     });
 
     const d = document.createElement('div');
     d.id = 'vmodal';
     d.innerHTML = `<div class="vmbox voice-modal-box">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-        <span style="font-size:36px">🦜</span>
+        <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
         <div>
           <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a device voice</h3>
-          <div class="muted" style="font-size:0.88em">Available voices come from your browser or operating system. Sound quality and accent vary by device.</div>
+          <div class="muted" style="font-size:0.88em">All voices offered by this device are listed. English voices are easiest to understand for English practice.</div>
         </div>
       </div>
       <div class="voice-help-banner">
-        💡 Tap a voice to preview it. Available voices and sound quality vary by device.
+        Tap a voice to preview it. Voice quality and accent depend on the voices installed on this device.
       </div>
       <div class="vlist">${
         classroomVoices.length > 0
@@ -1709,10 +1712,10 @@ const APP = {
                 </div>`;
               })
               .join('')
-          : '<div class="vitem">Loading speech synthesis voices, please wait a moment...</div>'
+          : '<div class="vitem">Loading voices from this device…</div>'
       }</div>
       <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn green big" id="vmclose">✅ Use this device voice</button>
+        <button class="btn green big" id="vmclose">Use selected voice</button>
       </div>
     </div>`;
     document.body.appendChild(d);
@@ -3493,6 +3496,24 @@ if (typeof window !== 'undefined') {
 }
 
 /* ---------- DOKUNMA DALGASI & UÇAN SÜRPRİZLER ---------- */
+function removeDecorativeEmoji(root) {
+  if (!root || typeof document === 'undefined') return;
+  const emoji = /[\p{Extended_Pictographic}\uFE0F\u200D\u20E3]/gu;
+  const clean = (node) => {
+    if (node.nodeType === 3) {
+      const next = node.nodeValue.replace(emoji, '').replace(/\s{2,}/g, ' ');
+      if (next !== node.nodeValue) node.nodeValue = next;
+      return;
+    }
+    if (node.nodeType !== 1) return;
+    for (const attr of Array.from(node.attributes || [])) {
+      if (/^(aria-label|title|alt)$/i.test(attr.name)) node.setAttribute(attr.name, attr.value.replace(emoji, '').trim());
+    }
+    Array.from(node.childNodes || []).forEach(clean);
+  };
+  clean(root);
+}
+
 if (typeof document !== 'undefined') {
   document.addEventListener(
     'pointerdown',
@@ -3518,7 +3539,10 @@ setInterval(() => {
   if (L && Math.random() < 0.35 && L.querySelectorAll('.flyby').length < 2) {
     const b = document.createElement('span');
     b.className = 'flyby';
-    b.textContent = pick(['🕊️', '🦋', '🎈', '🦜', '🚀', '🐝', '🪁']);
+    const sprite = document.createElement('img');
+    sprite.src = '/images/polly-3d-mascot.png';
+    sprite.alt = '';
+    b.appendChild(sprite);
     const dur = 6 + Math.random() * 5;
     b.style.top = 8 + rnd(38) + 'vh';
     b.style.animationDuration = dur + 's';
@@ -3536,6 +3560,16 @@ if (typeof window !== 'undefined') {
 if (typeof document !== 'undefined') {
   APP.floaties();
   APP.render();
+  removeDecorativeEmoji(document.body);
+
+  // Keep dynamically opened game panels and dialogs emoji-free as well.
+  try {
+    const emojiObserver = new MutationObserver((records) => records.forEach((record) => {
+      if (record.type === 'characterData') removeDecorativeEmoji(record.target);
+      (record.addedNodes || []).forEach((node) => removeDecorativeEmoji(node));
+    }));
+    emojiObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
+  } catch (e) {}
 
   // // SAFETY: iOS Safari, Android Chrome ve Akıllı Tahtalarda ses ve sentezleyiciyi güvenle uyandır
   const warmAudio = () => {
