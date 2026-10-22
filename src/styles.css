@@ -3970,3 +3970,11 @@ body { background-attachment: fixed; }
 .flyby { width: 54px; height: 54px; }
 .flyby img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 7px 7px #38266044); }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+.hf-voice-preview { margin-top: 14px; padding: 14px 16px; border: 2px solid #ded5ff; border-radius: 18px; background: linear-gradient(145deg,#fbf9ff,#fff); }
+.hf-voice-preview summary { cursor: pointer; color: #4c318f; font-weight: 850; }
+.hf-voice-preview p { margin: 10px 0; line-height: 1.5; }
+.hf-preview-controls { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px; }
+.hf-preview-controls label { grid-column: 1 / -1; color: #44366c; font-weight: 750; }
+.hf-preview-controls select { min-width: 0; width: 100%; padding: 12px; border: 2px solid #d8cffa; border-radius: 13px; background: white; color: #241d3c; font: inherit; }
+@media (max-width: 560px) { .hf-preview-controls { grid-template-columns: 1fr; } }
