@@ -1668,6 +1668,7 @@ const APP = {
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
     const classroomVoices = MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : []);
+    const previewVoices = typeof HIGGSFIELD_VOICE_PREVIEWS !== 'undefined' ? HIGGSFIELD_VOICE_PREVIEWS : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
 
     const getVoiceMeta = (v) => ({
@@ -1714,11 +1715,32 @@ const APP = {
               .join('')
           : '<div class="vitem">Loading voices from this device…</div>'
       }</div>
+      <details class="hf-voice-preview">
+        <summary>Higgsfield voice samples (${previewVoices.length})</summary>
+        <p class="muted">AI voice samples for listening only. Playing a sample does not use generation credits. Making Polly speak new lesson text in one of these voices requires Higgsfield audio generation and uses credits.</p>
+        <div class="hf-preview-controls">
+          <label for="hf-voice-select">Choose a voice sample</label>
+          <select id="hf-voice-select"><option value="">Choose a sample</option>${previewVoices.map((v, i) => `<option value="${i}">${esc(v.name)}${v.gender ? ` · ${esc(v.gender)}` : ''}</option>`).join('')}</select>
+          <button class="btn purple" id="hf-voice-preview">Play sample</button>
+        </div>
+      </details>
       <div style="margin-top:14px;display:flex;justify-content:flex-end">
         <button class="btn green big" id="vmclose">Use selected voice</button>
       </div>
     </div>`;
     document.body.appendChild(d);
+    let previewAudio = null;
+    const previewButton = d.querySelector('#hf-voice-preview');
+    if (previewButton) previewButton.onclick = () => {
+      const index = Number(d.querySelector('#hf-voice-select').value);
+      const sample = previewVoices[index];
+      if (!sample || !sample.preview_url) { FX.toast('Choose a voice sample first.'); return; }
+      try {
+        if (previewAudio) { previewAudio.pause(); previewAudio.currentTime = 0; }
+        previewAudio = new Audio(sample.preview_url);
+        previewAudio.play().catch(() => FX.toast('This sample is not available right now.'));
+      } catch (e) { FX.toast('This sample is not available right now.'); }
+    };
     d.querySelectorAll('.vitem').forEach(
       (it) =>
         (it.onclick = () => {
@@ -1739,9 +1761,9 @@ const APP = {
         })
     );
     const vmclose = d.querySelector('#vmclose');
-    if (vmclose) vmclose.onclick = () => d.remove();
+    if (vmclose) vmclose.onclick = () => { if (previewAudio) previewAudio.pause(); d.remove(); };
     d.onclick = (e) => {
-      if (e.target === d) d.remove();
+      if (e.target === d) { if (previewAudio) previewAudio.pause(); d.remove(); }
     };
   },
 
