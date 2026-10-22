@@ -11,130 +11,8 @@ const AVAILABLE_AUDIO = new Set([
   'mel-row', 'mel-ten', 'mel-twinkle', 'mel-wheels'
 ]);
 
-/* 🎙️ Multi-Character Voice & Audio Pipeline Bank */
-const CHARACTER_AUDIO_BANK = {
-  polly: {
-    id: 'polly',
-    name: 'Polly the Mascot',
-    gender: 'girl',
-    avatarUrl: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Squawk! Hello pals! I am Polly! Welcome to Cambridge English fun!", audioSrc: "audio/characters/polly/greeting.mp3", durationMs: 3800 },
-      praise: { text: "Super duper! You are a brilliant English superstar!", audioSrc: "audio/characters/polly/praise.mp3", durationMs: 3200 },
-      cheer: { text: "Hip hip hooray! Keep going, team!", audioSrc: "audio/characters/polly/cheer.mp3", durationMs: 2500 }
-    }
-  },
-  leo: {
-    id: 'leo',
-    name: 'Leo the Lion',
-    gender: 'boy',
-    avatarUrl: 'https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Roar! Hey there! I am Leo! Ready to explore and learn new words?", audioSrc: "audio/characters/leo/greeting.mp3", durationMs: 3600 },
-      praise: { text: "Mighty roar! You conquered this challenge!", audioSrc: "audio/characters/leo/praise.mp3", durationMs: 2800 },
-      cheer: { text: "Roar! Let us win together!", audioSrc: "audio/characters/leo/cheer.mp3", durationMs: 2500 }
-    }
-  },
-  mia: {
-    id: 'mia',
-    name: 'Mia the Cat',
-    gender: 'girl',
-    avatarUrl: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Purr! Hi everyone! I am Mia! Let's read, laugh, and play together!", audioSrc: "audio/characters/mia/greeting.mp3", durationMs: 3500 },
-      praise: { text: "Purr-fect pronunciation! Beautiful job!", audioSrc: "audio/characters/mia/praise.mp3", durationMs: 2600 },
-      cheer: { text: "Meow! Splendid teamwork!", audioSrc: "audio/characters/mia/cheer.mp3", durationMs: 2400 }
-    }
-  },
-  sam: {
-    id: 'sam',
-    name: 'Sam the Puppy',
-    gender: 'boy',
-    avatarUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Woof woof! Hello friends! I am Sam! Let's solve fun puzzles together!", audioSrc: "audio/characters/sam/greeting.mp3", durationMs: 3400 },
-      praise: { text: "Wagging tail! That was incredible!", audioSrc: "audio/characters/sam/praise.mp3", durationMs: 2400 },
-      cheer: { text: "Woof! High five, partner!", audioSrc: "audio/characters/sam/cheer.mp3", durationMs: 2200 }
-    }
-  },
-  mickey: {
-    id: 'mickey',
-    name: 'Mickey Mouse',
-    gender: 'boy',
-    avatarUrl: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Hot dog! Oh boy, welcome to our English Clubhouse! Let's have fun together!", audioSrc: "audio/characters/mickey/greeting.mp3", durationMs: 4200 },
-      praise: { text: "Oh boy! You did it, pal! Outstanding work!", audioSrc: "audio/characters/mickey/praise.mp3", durationMs: 3000 },
-      cheer: { text: "Hot dog, hot dog, hot diggity dog!", audioSrc: "audio/characters/mickey/cheer.mp3", durationMs: 2800 }
-    }
-  },
-  elsa: {
-    id: 'elsa',
-    name: 'Queen Elsa',
-    gender: 'girl',
-    avatarUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "The cold never bothered me anyway! Step into the magic of English!", audioSrc: "audio/characters/elsa/greeting.mp3", durationMs: 4000 },
-      praise: { text: "Sparkling brilliance! A truly magical answer!", audioSrc: "audio/characters/elsa/praise.mp3", durationMs: 3100 },
-      cheer: { text: "Let it go and shine bright!", audioSrc: "audio/characters/elsa/cheer.mp3", durationMs: 2500 }
-    }
-  },
-  buzz: {
-    id: 'buzz',
-    name: 'Buzz Lightyear',
-    gender: 'boy',
-    avatarUrl: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "To infinity and beyond! Space Rangers, report for English mission!", audioSrc: "audio/characters/buzz/greeting.mp3", durationMs: 4100 },
-      praise: { text: "Mission accomplished, Space Ranger! Stellar victory!", audioSrc: "audio/characters/buzz/praise.mp3", durationMs: 3200 },
-      cheer: { text: "To infinity and beyond!", audioSrc: "audio/characters/buzz/cheer.mp3", durationMs: 2600 }
-    }
-  },
-  woody: {
-    id: 'woody',
-    name: 'Woody',
-    gender: 'boy',
-    avatarUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Reach for the sky, partner! You're my favorite deputy in class today!", audioSrc: "audio/characters/woody/greeting.mp3", durationMs: 4000 },
-      praise: { text: "Yee-haw! That was sharp shooting on those words!", audioSrc: "audio/characters/woody/praise.mp3", durationMs: 3000 },
-      cheer: { text: "Ride like the wind, Bullseye!", audioSrc: "audio/characters/woody/cheer.mp3", durationMs: 2500 }
-    }
-  },
-  peppa: {
-    id: 'peppa',
-    name: 'Peppa Pig',
-    gender: 'girl',
-    avatarUrl: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "I'm Peppa Pig! *snort* Splish splash, let's jump into learning!", audioSrc: "audio/characters/peppa/greeting.mp3", durationMs: 3800 },
-      praise: { text: "Brilliant! Splish splash, absolutely fantastic!", audioSrc: "audio/characters/peppa/praise.mp3", durationMs: 2900 },
-      cheer: { text: "Hooray! Splish splash!", audioSrc: "audio/characters/peppa/cheer.mp3", durationMs: 2300 }
-    }
-  },
-  bluey: {
-    id: 'bluey',
-    name: 'Bluey',
-    gender: 'girl',
-    avatarUrl: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "For real life?! Hooray! This is going to be the best game ever!", audioSrc: "audio/characters/bluey/greeting.mp3", durationMs: 3900 },
-      praise: { text: "Hooray! That was super duper!", audioSrc: "audio/characters/bluey/praise.mp3", durationMs: 2700 },
-      cheer: { text: "For real life?! Hooray!", audioSrc: "audio/characters/bluey/cheer.mp3", durationMs: 2400 }
-    }
-  },
-  chase: {
-    id: 'chase',
-    name: 'Chase (PAW Patrol)',
-    gender: 'boy',
-    avatarUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&auto=format&fit=crop&q=80',
-    phrases: {
-      greeting: { text: "Chase is on the case! Paw Patrol is ready for English action, sir!", audioSrc: "audio/characters/chase/greeting.mp3", durationMs: 3900 },
-      praise: { text: "Chase is on the case! Perfect solve, team!", audioSrc: "audio/characters/chase/praise.mp3", durationMs: 2800 },
-      cheer: { text: "These paws uphold the laws!", audioSrc: "audio/characters/chase/cheer.mp3", durationMs: 2500 }
-    }
-  }
-};
+/* No character recordings are bundled. Speech uses the voice selected in the browser. */
+const CHARACTER_AUDIO_BANK = Object.freeze({});
 
 /* ══════════════════════════════════════════════════════════════
    🎙️ VoiceEngine — Singleton Web Audio Buffer Engine
@@ -274,7 +152,7 @@ const VoiceEngine = (function () {
 
     function speakFallback(fallbackText, charId, onEnd) {
       if (typeof MEDIA !== 'undefined' && fallbackText) {
-        MEDIA.speakCharacter(charId || 'polly', fallbackText, onEnd);
+        MEDIA.speak(fallbackText, 0.9, onEnd);
       } else if (onEnd) {
         onEnd();
       }
@@ -369,18 +247,13 @@ const CharacterSoundManager = {
     return VoiceEngine.getInstance().preloadVoice(audioSrc);
   },
   warmUpBank() {
-    const urls = [];
-    Object.values(CHARACTER_AUDIO_BANK).forEach((c) => {
-      Object.values(c.phrases || {}).forEach((p) => { if (p && p.audioSrc) urls.push(p.audioSrc); });
-    });
-    VoiceEngine.getInstance().warmUp(urls);
+    // No verified character clips are bundled, so there is nothing to preload.
   }
 };
 
 if (typeof window !== 'undefined') {
   window.VoiceEngine = VoiceEngine;
   window.CharacterSoundManager = CharacterSoundManager;
-  window.CHARACTER_AUDIO_BANK = CHARACTER_AUDIO_BANK;
 }
 
 const MEDIA = {
@@ -608,27 +481,9 @@ const MEDIA = {
     } catch (e) {}
   },
   praise() {
-    const cheers = [
-      { char: 'mickey', quote: 'Hot dog! You did it, pal! Outstanding!', fx: 'win' },
-      { char: 'buzz', quote: 'To infinity and beyond! Brilliant work, Space Ranger!', fx: 'magic' },
-      { char: 'elsa', quote: 'Sparkling brilliance! Magical answer!', fx: 'magic' },
-      { char: 'woody', quote: 'Yee-haw! You are my favorite deputy! Great job!', fx: 'win' },
-      { char: 'olaf', quote: 'Warm hugs for that wonderful answer!', fx: 'pop' },
-      { char: 'bluey', quote: 'For real life?! Hooray! That was super duper!', fx: 'cheer' },
-      { char: 'peppa', quote: 'Brilliant! Splish splash, absolutely fantastic!', fx: 'pop' },
-      { char: 'chase', quote: 'Chase is on the case! Perfect solve, team!', fx: 'tada' },
-      { char: 'simba', quote: 'Roar! Hakuna Matata! You are the king of words!', fx: 'win' },
-      { char: 'polly', quote: 'Squawk! Superstar! You are learning so fast!', fx: 'win' }
-    ];
-    const item = cheers[Math.floor(Math.random() * cheers.length)];
-    this.fx(item.fx);
-    if (typeof FX !== 'undefined' && FX.mascotSay) {
-      const prof = (this.disneyProfiles && this.disneyProfiles[item.char]) || {};
-      FX.mascotSay((prof.label || 'Mascot') + ': "' + item.quote + '"');
-    }
-    // // SAFETY: Multi-Character Audio Pipeline with fallback to speakCharacter
-    const phraseAudio = `audio/characters/${item.char}/praise.mp3`;
-    CharacterSoundManager.play(phraseAudio, null, item.quote, item.char);
+    const quote = 'Brilliant work! Let’s keep practising.';
+    this.fx('win');
+    this.speak(quote, 0.95);
     return null;
   },
 
@@ -754,60 +609,19 @@ const MEDIA = {
     } catch (e) {}
   },
 
-  /* 🎙️ Disney & Cartoon Character Profiles (Real Characters & Authentic Voice Lines) */
-  disneyProfiles: {
-    polly:    { pitch: 1.35, rate: 1.05, label: "Polly The Mascot", show: "Polly's Fun English", soundFx: 'win', quote: "Squawk! Hello pals! I am Polly! Welcome to Cambridge English fun!" },
-    mickey:   { pitch: 1.50, rate: 1.05, label: 'Mickey Mouse', show: 'Disney Mickey & Friends', soundFx: 'win', quote: "Hot dog! Oh boy, welcome to our English Clubhouse! Let's have fun together!" },
-    minnie:   { pitch: 1.45, rate: 1.02, label: 'Minnie Mouse', show: 'Disney Mickey & Friends', soundFx: 'magic', quote: "Yoo-hoo! Hello there! You are doing so wonderful today!" },
-    donald:   { pitch: 1.35, rate: 1.15, label: 'Donald Duck', show: 'Disney Mickey & Friends', soundFx: 'pop', quote: "Quack, quack! What's the big idea? Let's practice English words right now!" },
-    goofy:    { pitch: 0.74, rate: 0.85, label: 'Goofy', show: 'Disney Mickey & Friends', soundFx: 'boing', quote: "Gawrsh! A-hyuck! Learning English with friends is super duper fun!" },
-    elsa:     { pitch: 1.25, rate: 0.94, label: 'Elsa', show: 'Disney Frozen', soundFx: 'magic', quote: "The cold never bothered me anyway! Step into the magic of English!" },
-    anna:     { pitch: 1.28, rate: 1.04, label: 'Anna', show: 'Disney Frozen', soundFx: 'pop', quote: "For the first time in forever, we're having the best English lesson!" },
-    olaf:     { pitch: 1.42, rate: 1.10, label: 'Olaf', show: 'Disney Frozen', soundFx: 'pop', quote: "Hi! I'm Olaf, and I love warm hugs and sunny English words!" },
-    simba:    { pitch: 1.32, rate: 1.05, label: 'Simba', show: 'Disney The Lion King', soundFx: 'win', quote: "I just can't wait to be king of English words! Hakuna Matata!" },
-    buzz:     { pitch: 0.85, rate: 0.98, label: 'Buzz Lightyear', show: 'Pixar Toy Story', soundFx: 'whoosh', quote: "To infinity and beyond! Space Rangers, report for English mission!" },
-    woody:    { pitch: 1.08, rate: 1.02, label: 'Woody', show: 'Pixar Toy Story', soundFx: 'win', quote: "Reach for the sky, partner! You're my favorite deputy in class today!" },
-    stitch:   { pitch: 1.52, rate: 1.14, label: 'Stitch', show: 'Disney Lilo & Stitch', soundFx: 'zoom', quote: "Ih! Mega nala kweesta! English is fun! Ha-ha-ha!" },
-    pooh:     { pitch: 0.82, rate: 0.85, label: 'Winnie the Pooh', show: 'Disney Winnie the Pooh', soundFx: 'pop', quote: "Think, think, think... English words are sweeter than a pot of honey!" },
-    mcqueen:  { pitch: 1.12, rate: 1.18, label: 'Lightning McQueen', show: 'Pixar Cars', soundFx: 'race', quote: "Ka-chow! Speed into English with the fastest words on the track!" },
-    moana:    { pitch: 1.18, rate: 1.00, label: 'Moana', show: 'Disney Moana', soundFx: 'whoosh', quote: "I am Moana of Motunui! The ocean calls us to explore new words!" },
-    ariel:    { pitch: 1.28, rate: 0.96, label: 'Ariel', show: 'Disney The Little Mermaid', soundFx: 'magic', quote: "Under the sea, we discover treasures of words and magical songs!" },
-    aladdin:  { pitch: 1.15, rate: 1.08, label: 'Aladdin & Genie', show: 'Disney Aladdin', soundFx: 'magic', quote: "You ain't never had a friend like me! Let's make three English wishes!" },
-    peterpan: { pitch: 1.30, rate: 1.08, label: 'Peter Pan', show: 'Disney Peter Pan', soundFx: 'magic', quote: "All you need is faith, trust, and pixie dust! Never grow up!" },
-    dory:     { pitch: 1.38, rate: 1.12, label: 'Dory & Nemo', show: 'Disney Finding Nemo', soundFx: 'drip', quote: "Just keep swimming, just keep swimming! What do we do? We learn English!" },
-    judy:     { pitch: 1.24, rate: 1.08, label: 'Judy Hopps', show: 'Disney Zootopia', soundFx: 'tada', quote: "Ready to make the world a better place! Let's solve this English puzzle!" },
-    baloo:    { pitch: 0.76, rate: 0.86, label: 'Baloo', show: 'Disney The Jungle Book', soundFx: 'boing', quote: "Look for the bare necessities, the simple bare necessities of English!" },
-    dash:     { pitch: 1.42, rate: 1.22, label: 'Dash', show: 'Pixar The Incredibles', soundFx: 'zoom', quote: "Whoa, that was fast! Bet you can't say this word faster than me!" },
-    peppa:    { pitch: 1.38, rate: 1.05, label: 'Peppa Pig', show: 'Peppa Pig Official', soundFx: 'pop', quote: "I'm Peppa Pig! *snort* Splish splash, let's jump into learning!" },
-    bluey:    { pitch: 1.36, rate: 1.12, label: 'Bluey', show: 'Bluey Official', soundFx: 'cheer', quote: "For real life?! Hooray! This is going to be the best game ever!" },
-    chase:    { pitch: 1.10, rate: 1.05, label: 'Chase (PAW Patrol)', show: 'PAW Patrol Official', soundFx: 'tada', quote: "Chase is on the case! Paw Patrol is ready for English action, sir!" }
-  },
-
+  /* Compatibility wrapper for older callers; character IDs do not alter the voice. */
   playCharacterPhrase(charKey, phraseKey = 'greeting', cb) {
-    const bank = CHARACTER_AUDIO_BANK[charKey] || CHARACTER_AUDIO_BANK.polly;
-    const phrase = (bank.phrases && bank.phrases[phraseKey]) || (bank.phrases && bank.phrases.greeting);
-    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.polly;
-    if (prof && prof.soundFx) this.fx(prof.soundFx);
-    if (phrase && phrase.audioSrc) {
-      return CharacterSoundManager.play(phrase.audioSrc, cb, phrase.text, charKey);
-    }
-    return this.speakCharacter(charKey, phrase ? phrase.text : "Hello!", cb);
+    const phrase = phraseKey === 'praise' ? 'Brilliant work! Let’s keep practising.' : 'Hello! Let’s practise English together.';
+    return this.speak(phrase, 0.95, cb);
   },
 
   speakCharacter(charKey, text, cb, vol) {
-    const prof = this.disneyProfiles[charKey] || this.disneyProfiles.polly || this.disneyProfiles.mickey;
-    if (prof.soundFx) this.fx(prof.soundFx);
-    this.tts(text, prof.rate || 1.0, cb, vol, prof.pitch || 1.0);
-  },
-
-  speakDisney(charKey, text, cb, vol) {
-    return this.speakCharacter(charKey, text, cb, vol);
+    return this.speak(text, 0.9, cb, vol);
   },
 
   welcomeGreeting(cb) {
     this.fx('win');
-    const msg = "Hiya pals! Welcome to Polly's Fun English! Together with all our Disney and cartoon friends, let us explore exciting games, songs, and Baamboozle!";
-    CharacterSoundManager.play('audio/characters/mickey/greeting.mp3', cb, msg, 'mickey');
+    this.speak("Hello everyone. Welcome to Polly's Fun English. Let's explore, play and practise together!", 0.95, cb);
   },
 
   /* 🎶 Melodic Sing-Along Synthesizer (Harmonic Scale + Vocal Singing) */
@@ -824,11 +638,8 @@ const MEDIA = {
     this.tts(text, 0.88, cb, 0.95, 1.35);
   },
 
-  /* 🎙️ ANA KONUŞMA — DOĞAL İNSAN SESİ & DİSNEY DESTEĞİ */
+  /* Speech uses the selected browser voice; pitch is not manipulated. */
   speak(text, rate = 0.9, cb, vol, charKey = null) {
-    if (charKey && this.disneyProfiles[charKey]) {
-      return this.speakDisney(charKey, text, cb, vol);
-    }
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
         const t = String(text || '');
@@ -876,7 +687,7 @@ const MEDIA = {
     this.tts(text, rate, cb, vol);
   },
 
-  /* 🎙️ Tarayıcı TTS — Neşeli, sıcak ve doğal insan sesleri */
+  /* Browser or operating-system speech synthesis; voice quality varies by device. */
   tts(text, rate = 0.9, cb, vol, customPitch = 1.0) {
     if (this.muted) {
       cb && cb();
@@ -1024,6 +835,11 @@ const FX = {
     flash.className = ok ? 'fb-flash ok' : 'fb-flash no';
     document.body.appendChild(flash);
     setTimeout(() => flash.remove(), 300);
+    if (ok) {
+      const praise = 'Brilliant! You got it!';
+      this.mascotSay(praise, 1600);
+      if (typeof MEDIA !== 'undefined' && MEDIA.speak) MEDIA.speak(praise, 1.04);
+    }
   },
 
   mascotSay(msg, dur = 3200) {

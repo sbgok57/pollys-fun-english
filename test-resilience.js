@@ -228,7 +228,8 @@ ENGINES.push(badEngine);
 try {
   APP.go('game', { stage: 's1', unitId: 's1u1', engineId: 'broken-engine', lvIdx: 0, restoredScore: 30 });
   const areaHtml = getOrCreate('garea').innerHTML;
-  assert(areaHtml.includes('Polly bir aksilik yakaladı ve çözdü'), 'Bozulan motorda güvenli kurtarma kartı gösterildi');
+  assert(areaHtml.includes('This activity stopped unexpectedly'), 'Bozulan motorda doğru kurtarma kartı gösterildi');
+  assert(areaHtml.includes('resume point was attempted'), 'Kurtarma kartı kayıt durumunu abartmadan açıklar');
   assert(areaHtml.includes('30 ⭐'), 'Önceden kazanılmış puanlar korundu');
 } catch (err) {
   assert(false, 'Motor hatası izolasyon kalkanını deldi: ' + err.message);

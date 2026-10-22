@@ -49,7 +49,7 @@ export const MOCK_GLOBAL_ENGLISH_CURRICULUM: LessonDay[] = [
       targetVocab: ['pencil', 'book', 'eraser', 'chair', 'desk'],
       physicalAction: 'Race to the interactive board or desk to gently tap the designated object with a flyswatter.',
       detailedInstruction: 'Divide class into Team Red and Team Blue. One player from each team stands 3 meters from the board. Teacher shouts: "PENCIL!" Players run forward and slap the correct flashcard. Team scores +1 point.',
-      smartBoardPrompt: 'Display 6 large real photos of pencil, book, eraser, desk.'
+      smartBoardPrompt: 'Display six clear pictures of a pencil, book, eraser and desk.'
     },
     digitalResources: [
       { id: 'res-5', title: 'School Supplies Song', type: 'youtube', url: 'https://www.youtube-nocookie.com/embed/AS5nhKzaOqo' },
@@ -157,7 +157,7 @@ export const MOCK_GLOBAL_ENGLISH_CURRICULUM: LessonDay[] = [
       targetVocab: ['swim', 'jump', 'dance', 'run', 'sing', 'hop'],
       physicalAction: 'Silent dramatic physical pantomime of action verbs for peers to guess.',
       detailedInstruction: 'Teacher whispers secret verb to volunteer: "dance". Student acts out ballet or hip-hop dancing silently. First student to shout "You can dance!" steps up to act out the next verb.',
-      smartBoardPrompt: 'Action verb GIPHY carousel + speed buzzer.'
+      smartBoardPrompt: 'Show an action picture carousel and use a short response timer.'
     },
     digitalResources: [
       { id: 'res-15', title: 'Action Verbs Action Song', type: 'youtube', url: 'https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8' },
@@ -262,7 +262,7 @@ export const MOCK_GLOBAL_ENGLISH_CURRICULUM: LessonDay[] = [
       targetVocab: ['I can', 'Look at me', 'bravo', 'clap', 'cheer'],
       physicalAction: 'Students step onto the front stage to show one simple talent (humming, drawing, jumping, balancing).',
       detailedInstruction: 'Each student presents: "I can balance on one foot for 5 seconds!" Student demonstrates while whole class counts to 5. Audience enthusiastically applauds: "Bravo! Fantastic!"',
-      smartBoardPrompt: 'Fanfare cheering sound effect + mascot Mickey cheer.'
+      smartBoardPrompt: 'Optional short fanfare sound effect before the next classroom activity.'
     },
     digitalResources: [
       { id: 'res-24', title: 'Talent Show Baamboozle Special', type: 'baamboozle', url: 'https://www.baamboozle.com/classic/search?q=talent+show' },

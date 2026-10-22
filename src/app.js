@@ -2,33 +2,6 @@
    🦜 ANA UYGULAMA MOTORU — Polly's Fun English (v2)
    Ekranlar, katalog, skorlar, şarkı oynatıcı ve Anti-Crash Kalkanı
    ============================================================ */
-/* 🛡️ SIFIR-HATA KALKANI v7 — ders tahtasında asla çökme/beyaz ekran yok.
-   Beklenmeyen bir hata olursa: nazik bir bildirim çıkar, boş ekran
-   kendini ana sayfaya kurtarır; site çalışmaya devam eder. */
-(function () {
-  if (typeof window === 'undefined' || window.__SHIELD || typeof window.addEventListener !== 'function') return;
-  window.__SHIELD = 1;
-  var sonBildirim = 0;
-  window.addEventListener('error', function () {
-    try {
-      var n = Date.now();
-      if (n - sonBildirim > 5000) {
-        sonBildirim = n;
-        if (typeof FX !== 'undefined' && FX.toast) FX.toast('Minor glitch recovered — keeping you on track 🦜');
-      }
-    } catch (e) {}
-    setTimeout(function () {
-      try {
-        var a = document.getElementById('app');
-        if (a && !a.innerHTML.trim() && typeof APP !== 'undefined') APP.go('home');
-      } catch (e) {}
-    }, 60);
-  });
-  window.addEventListener('unhandledrejection', function () {
-    /* sessizce yut */
-  });
-})();
-
 /* ============================================================
    🛡️ ANTIVIRUS & SİBER GÜVENLİK KALKANI — Polly Shield Pro
    XSS, Rogue Iframe, Zararlı Kod Enjeksiyonu ve Veri Bütünlüğü Koruması
@@ -81,7 +54,10 @@ const ANTIVIRUS = {
     // Yetkisiz dinamik script enjeksiyonunu engelle
     if (tag === 'SCRIPT') {
       const src = (el.getAttribute('src') || '').trim();
-      const isLocal = !src || src.startsWith('/') || src.startsWith('./') || (typeof window !== 'undefined' && window.location && src.includes(window.location.hostname));
+      let isLocal = !src || src.startsWith('/') || src.startsWith('./');
+      if (!isLocal && typeof window !== 'undefined' && window.location) {
+        try { isLocal = new URL(src, window.location.href).origin === window.location.origin; } catch (e) { isLocal = false; }
+      }
       if (!isLocal) {
         this.quarantine(el, 'Unauthorized External Script Blocked (' + src.slice(0, 35) + ')');
         return;
@@ -91,7 +67,10 @@ const ANTIVIRUS = {
     // Yetkisiz iframe'leri engelle
     if (tag === 'IFRAME') {
       const src = (el.getAttribute('src') || '').trim();
-      const isAllowed = this.allowedIframeOrigins.some(origin => src.startsWith(origin)) || src === 'about:blank' || !src;
+      let isAllowed = src === 'about:blank' || !src;
+      if (!isAllowed) {
+        try { isAllowed = this.allowedIframeOrigins.includes(new URL(src, window.location.href).origin); } catch (e) { isAllowed = false; }
+      }
       if (!isAllowed) {
         this.quarantine(el, 'Unauthorized Iframe Source Blocked (' + src.slice(0, 35) + ')');
         return;
@@ -104,7 +83,10 @@ const ANTIVIRUS = {
         const frames = el.querySelectorAll('iframe');
         frames.forEach(f => {
           const src = (f.getAttribute('src') || '').trim();
-          const isAllowed = this.allowedIframeOrigins.some(origin => src.startsWith(origin)) || src === 'about:blank' || !src;
+          let isAllowed = src === 'about:blank' || !src;
+          if (!isAllowed) {
+            try { isAllowed = this.allowedIframeOrigins.includes(new URL(src, window.location.href).origin); } catch (e) { isAllowed = false; }
+          }
           if (!isAllowed) this.quarantine(f, 'Unauthorized Embedded Iframe');
         });
       } catch (err) {}
@@ -170,7 +152,11 @@ const ANTIVIRUS = {
       const scripts = document.querySelectorAll('script');
       scripts.forEach(s => {
         const src = s.getAttribute('src') || '';
-        if (src.startsWith('http') && typeof window !== 'undefined' && window.location && !src.includes(window.location.hostname)) {
+        let external = false;
+        if (src) {
+          try { external = new URL(src, window.location.href).origin !== window.location.origin; } catch (e) { external = true; }
+        }
+        if (external) {
           foreignScripts++;
           scriptsSafe = false;
         }
@@ -178,9 +164,9 @@ const ANTIVIRUS = {
     }
     results.push({
       id: 'scripts',
-      title: 'Script Integrity & XSS Shield',
+      title: 'External script check',
       status: scriptsSafe ? 'pass' : 'warn',
-      desc: scriptsSafe ? 'All scripts sealed in local bundle. Zero unauthorized script injection.' : foreignScripts + ' external script(s) detected.'
+      desc: scriptsSafe ? 'No external script URL was found by this page-level check. This is not a full security audit.' : foreignScripts + ' external script(s) detected.'
     });
 
     // 2. Iframe ve Medya Güvenliği
@@ -190,7 +176,10 @@ const ANTIVIRUS = {
       const frames = document.querySelectorAll('iframe');
       frames.forEach(f => {
         const src = f.getAttribute('src') || '';
-        const ok = this.allowedIframeOrigins.some(origin => src.startsWith(origin)) || src === 'about:blank' || !src;
+        let ok = src === 'about:blank' || !src;
+        if (!ok) {
+          try { ok = this.allowedIframeOrigins.includes(new URL(src, window.location.href).origin); } catch (e) { ok = false; }
+        }
         if (!ok) {
           rogueFrames++;
           iframesSafe = false;
@@ -199,9 +188,9 @@ const ANTIVIRUS = {
     }
     results.push({
       id: 'iframes',
-      title: 'Iframe & Embedded Media Sandbox',
+      title: 'Embedded media source check',
       status: iframesSafe ? 'pass' : 'threat',
-      desc: iframesSafe ? 'All video frames sandboxed via YouTube Nocookie and CSP rules.' : rogueFrames + ' suspicious iframe(s) detected.'
+      desc: iframesSafe ? 'Current iframe URLs match the small allowlist checked by this page. This check does not verify video content.' : rogueFrames + ' iframe(s) did not match the allowlist.'
     });
 
     // 3. LocalStorage & Depolama Bütünlüğü
@@ -223,7 +212,7 @@ const ANTIVIRUS = {
       id: 'storage',
       title: 'Storage & Memory Tamper Defense',
       status: storageSafe ? 'pass' : 'warn',
-      desc: storageSafe ? 'Browser storage clean. Zero quota leak or malicious data tampering (~' + Math.round(storageSize / 1024) + ' KB).' : 'Storage threshold anomaly.'
+      desc: storageSafe ? 'Readable browser storage is about ' + Math.round(storageSize / 1024) + ' KB. This check does not detect tampering.' : 'Browser storage is above this page’s size threshold.'
     });
 
     // 4. Prototype Pollution Kontrolü
@@ -238,25 +227,25 @@ const ANTIVIRUS = {
     }
     results.push({
       id: 'proto',
-      title: 'Prototype Pollution Defense',
+      title: 'Simple object property check',
       status: protoSafe ? 'pass' : 'threat',
-      desc: protoSafe ? 'Object.prototype sealed and clean. In-memory pollution prevented.' : 'Prototype pollution risk detected.'
+      desc: protoSafe ? 'A simple property check found no issue. This does not prove the page is free from prototype pollution.' : 'The simple property check found an unexpected value.'
     });
 
     // 5. İçerik ve Bağlantı Güvenliği
     results.push({
       id: 'links',
-      title: 'Reverse Tabnabbing Protection',
+      title: 'External link attributes',
       status: 'pass',
-      desc: 'All external links isolated with "noopener noreferrer" protection.'
+      desc: 'Links opened in a new tab receive noopener and noreferrer. Other links are not checked here.'
     });
 
     // 6. Sıfır-Çökme & Hata Yakalama Kalkanı
     results.push({
       id: 'shield',
-      title: 'Zero-Crash (P0 Anti-Crash) Guard',
+      title: 'Error recovery notice',
       status: (typeof window !== 'undefined' && window.__SHIELD) ? 'pass' : 'warn',
-      desc: 'Global unhandled error interceptor and auto-recovery active.'
+      desc: 'The page can show a recovery message after an uncaught error. It cannot prevent all crashes.'
     });
 
     return results;
@@ -271,9 +260,10 @@ const ANTIVIRUS = {
     d.id = 'antivirus-modal';
     d.className = 'security-modal-overlay';
 
-    const renderBody = () => {
+      const renderBody = () => {
       const scanResults = this.runDeepScan();
       const allPassed = scanResults.every(r => r.status === 'pass');
+        const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 
       d.innerHTML = `
         <div class="security-modal-box">
@@ -281,8 +271,8 @@ const ANTIVIRUS = {
             <div style="display:flex;align-items:center;gap:12px">
               <span style="font-size:38px">🛡️</span>
               <div>
-                <h2 style="margin:0;font-size:1.35em;color:#0f172a">Polly Cyber-Shield Security & Antivirus</h2>
-                <div class="muted" style="font-size:0.86em">Live Classroom Threat Monitoring & Security Engine</div>
+                <h2 style="margin:0;font-size:1.35em;color:#0f172a">Basic browser security checks</h2>
+                <div class="muted" style="font-size:0.86em">Basic checks performed by this page</div>
               </div>
             </div>
             <button class="btn white small" id="sec-modal-close" style="font-size:16px;padding:6px 14px">❌ Kapat</button>
@@ -293,10 +283,10 @@ const ANTIVIRUS = {
               <span style="font-size:32px">${allPassed ? '🟢' : '🟡'}</span>
               <div>
                 <div style="font-weight:900;font-size:1.15em;color:${allPassed ? '#065f46' : '#92400e'}">
-                  ${allPassed ? 'SYSTEM 100% SECURE & PROTECTED' : 'SYSTEM SCANNING'}
+                  ${allPassed ? 'BASIC CHECKS COMPLETED' : 'CHECKS NEED ATTENTION'}
                 </div>
                 <div style="font-size:0.85em;color:${allPassed ? '#047857' : '#b45309'}">
-                  DOM Watchdog Active · Zero XSS / Threat-Free · Last Scan: <b>${this.lastScanTime || 'Now'}</b>
+                  Local input checks active · No security guarantee · Last check: <b>${this.lastScanTime || 'Now'}</b>
                 </div>
               </div>
             </div>
@@ -304,7 +294,7 @@ const ANTIVIRUS = {
           </div>
 
           <div style="font-weight:800;margin:16px 0 8px;font-size:0.95em;color:#1e293b">
-            📋 6-Point Real-time Security Diagnostics:
+              📋 Checks run in this browser (not antivirus protection):
           </div>
 
           <div class="security-scan-grid">
@@ -327,8 +317,8 @@ const ANTIVIRUS = {
             </div>
             <div style="font-size:0.82em;color:#475569;max-height:100px;overflow-y:auto;line-height:1.6">
               ${this.quarantineLog.length === 0 
-                ? '<span style="color:#059669">✨ Zero malicious code or threats detected. System is completely clean.</span>'
-                : this.quarantineLog.map(e => `<div>🕒 <b>${e.time}</b>: [${e.type.toUpperCase()}] ${e.msg}</div>`).join('')}
+                ? '<span style="color:#059669">No local security events have been recorded by this checker.</span>'
+              : this.quarantineLog.map(e => `<div>🕒 <b>${escapeHtml(e.time)}</b>: [${escapeHtml(e.type).toUpperCase()}] ${escapeHtml(e.msg)}</div>`).join('')}
             </div>
           </div>
 
@@ -355,7 +345,7 @@ const ANTIVIRUS = {
           if (typeof MEDIA !== 'undefined' && MEDIA.fx) MEDIA.fx('magic');
           if (typeof FX !== 'undefined' && FX.stars) FX.stars();
           renderBody();
-          if (typeof FX !== 'undefined' && FX.toast) FX.toast('🛡️ Deep Security Scan Complete: System 100% Secure!');
+          if (typeof FX !== 'undefined' && FX.toast) FX.toast('Local checks completed. This result is not a security guarantee.');
         };
       }
     };
@@ -532,15 +522,12 @@ const APP = {
     return `<div class="topbar">
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Back</button>' : ''}
       <div class="brand">🦜 Polly’s Fun English</div><div class="spacer"></div>
-      <button class="btn small green" id="antivirus-top-btn" title="Cyber-Shield Security" style="font-weight:800">🛡️ Shield</button>
-      <button class="btn small blue" id="cambridge-top-btn" style="background:#2563eb;color:#fff;font-weight:900">📘 Cambridge 1–4</button>
-      <button class="btn small purple" id="top-plans-btn" style="background:#7c3aed;color:#fff;font-weight:900">📋 Lesson Plans</button>
-      <button class="btn small purple" id="top-twisters-btn" style="background:#ec4899;color:#fff;font-weight:900">👅 Twisters</button>
-      <button class="btn small purple" id="top-settings-btn" style="background:#4f46e5;color:#fff;font-weight:900">⚙️ Settings</button>
-      <button class="btn small purple" id="guide-top-btn" style="font-weight:800">📖 Guide</button>
-      <button class="btn small yellow" id="baamboozle-top-btn" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Baamboozle</button>
-      <button class="btn small white" id="hm">🏠</button>
-      <button class="btn small white" id="mu">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
+      <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
+      <button class="btn small white" id="top-plans-btn">📋 Lesson plans</button>
+      <button class="btn small white" id="guide-top-btn">📖 Teacher guide</button>
+      <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
+      <button class="btn small white" id="hm" aria-label="Home">🏠</button>
+      <button class="btn small white" id="mu" aria-label="Toggle sound">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
   },
 
   /* ---------- 📘 CAMBRIDGE 1-4 MASTER PLATFORM ---------- */
@@ -556,101 +543,90 @@ const APP = {
     return (
       this.bar() +
       `
-    <div class="disney-welcome-hero">
-      <div class="disney-welcome-avatar anim-bounce">
-        <img src="https://upload.wikimedia.org/wikipedia/en/d/d4/Mickey_Mouse.png" class="char-hero-avatar" alt="Mickey Mouse" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" loading="lazy" />
-        <span style="display:none;font-size:4rem">🐭</span>
-      </div>
-      <div class="disney-welcome-content">
-        <div class="disney-welcome-badge">✨ Welcome to Polly's Fun English! ✨</div>
-        <h2>Hello Friends & Teachers! 👋 Welcome Pals!</h2>
-        <p>Are you ready for a Cambridge Global English 1–4 adventure with Polly and 25 Disney & cartoon friends? 
-        Explore Grades 1, 2, 3 and 4: play interactive games, sing along with songs, watch classroom slides, and compete in the Baamboozle Team Arena!</p>
-        <div class="disney-welcome-btns">
-          <button class="btn green big" id="btn-welcome-voice" style="box-shadow:0 4px 14px rgba(16,185,129,0.35);font-weight:900">
-            🔊 Listen to Mickey & Polly Welcome Speech!
+    <div class="welcome-hero">
+      <div class="welcome-avatar"><img src="images/polly-3d-mascot.png" alt="Polly, the friendly English practice parrot" width="150" height="175"></div>
+      <div class="welcome-content">
+        <div class="welcome-badge">For primary English classrooms</div>
+        <h2>A little English practice, a lot of fun.</h2>
+        <p>Choose a grade to find games, songs and speaking activities for your class. These are supplementary, teacher-made materials; please check the unit and page against the edition your class uses.</p>
+        <div class="welcome-btns">
+          <button class="btn voice-buddy-launch" id="btn-voice-buddy">🎙️ Talk with Polly</button>
+          <button class="btn green big" id="btn-welcome-guide">
+            📖 Explore the teacher guide
           </button>
-          <button class="btn purple big" id="btn-welcome-guide" style="font-weight:900">
-            📖 Master Classroom Guide & Sections
-          </button>
-          <button class="btn blue big" id="btn-welcome-plans" style="background:#2563eb;color:#fff;font-weight:900">
-            📋 2026-2027 Lesson Plans (36 Weeks)
+          <button class="btn white big" id="btn-welcome-plans">
+            📋 Browse lesson ideas
           </button>
         </div>
       </div>
+      <figure class="welcome-photo-wrap">
+        <img class="welcome-photo" src="images/classroom-vocabulary.jpg" alt="Illustrative classroom photo of pupils arranging English picture cards" width="1536" height="1024" fetchpriority="high">
+        <figcaption>Illustrative classroom image</figcaption>
+      </figure>
     </div>
 
     <div class="hero">
       <div class="mascot" id="mas">🦜</div>
       <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
-      <div class="tag">🎉 Play · Learn · Sing! 🎵 — Cambridge Global English 1–4 (2nd Edition) · Smartboard & Classroom Platform</div>
+      <div class="tag">Play · learn · sing — classroom activities for Grades 1–4</div>
     </div>
-    <div class="stats-bar">
-      <div class="stat">🎮 <b>1,080+</b>Classroom Games</div>
-      <div class="stat">🧩 <b>216 Baamboozle</b>Team Packs</div>
-      <div class="stat">👅 <b>2,080</b>Phonics Twisters</div>
-      <div class="stat">🎬 <b>1,060+</b>Video Lessons</div>
-      <div class="stat">🏰 <b>25 Disney</b>& Cartoon Friends</div>
-    </div>
+    <p class="curriculum-note"><strong>Cambridge Global English kullanıyorsanız:</strong> Etkinliklerin ünite ve sayfa eşleşmesini sınıfınızdaki Learner’s Book ve Workbook baskısından kontrol edin. Bu site bağımsız bir yardımcı kaynaktır; resmî Cambridge materyali değildir.</p>
     <div class="stage-cards">
       <div class="stage-card s1" data-st="s1"><span class="sc-emoji">🐣</span>
         <h2>🟢 Grade 1</h2>
-        <span class="badge green" style="margin-bottom:6px">Stage 1 · Pre-A1</span>
-        <p>Cambridge Global English 1 · Starter + 9 Units<br>School, Family, Games, Making Things, Farm, Body, Transport, Water</p>
+        <span class="badge green" style="margin-bottom:6px">Grade 1 · Stage 1</span>
+        <p>Games and activities for early English learners.</p>
       </div>
       <div class="stage-card s2" data-st="s2"><span class="sc-emoji">🚀</span>
         <h2>🔵 Grade 2</h2>
-        <span class="badge blue" style="margin-bottom:6px">Stage 2 · A1</span>
-        <p>Cambridge Global English 2 · 9 Units<br>Look Closer, City, Sports, Big Sky, Measuring, Minibeasts, Past & Present, Nature</p>
+        <span class="badge blue" style="margin-bottom:6px">Grade 2 · Stage 2</span>
+        <p>Games and activities for growing confidence in English.</p>
       </div>
       <div class="stage-card s3" data-st="s3"><span class="sc-emoji">🦁</span>
         <h2>🟣 Grade 3</h2>
-        <span class="badge purple" style="margin-bottom:6px">Stage 3 · A1+ to A2</span>
-        <p>Cambridge Global English 3 · 9 Units<br>Working Together, Communities, Desert, Inventions, Animals, Nutrition, Legends, Earth</p>
+        <span class="badge purple" style="margin-bottom:6px">Grade 3 · Stage 3</span>
+        <p>Games and activities for upper primary learners.</p>
       </div>
       <div class="stage-card s4" data-st="s4"><span class="sc-emoji">🌌</span>
         <h2>🟠 Grade 4</h2>
-        <span class="badge gold" style="margin-bottom:6px">Stage 4 · A2</span>
-        <p>Cambridge Global English 4 · 9 Units<br>Family Heritage, Space, Oceans, Inventions, Sports, History, Climate, Explorers</p>
+        <span class="badge gold" style="margin-bottom:6px">Grade 4 · Stage 4</span>
+        <p>Games and activities for upper primary learners.</p>
       </div>
       <div class="stage-card songs" data-go="songs"><span class="sc-emoji">🎵</span>
         <h2>🎶 Songs & Video Corner</h2>
-        <span class="badge pink" style="margin-bottom:6px">${TOTALSONGS} Songs · 1,060 Videos</span>
-        <p>Cambridge Curriculum Songs & Rhythmic Chants · Sing-Along Karaoke</p>
+        <span class="badge pink" style="margin-bottom:6px">Songs and videos</span>
+        <p>Sing along, listen and practise classroom English.</p>
       </div>
     </div>
     <div class="baam-featured-card" data-baam="1">
       <div class="baam-fc-main">
         <span class="baam-fc-emoji anim-wobble">🧩</span>
         <div class="baam-fc-text">
-          <h2>Baamboozle Classroom Team Game! 🔴 Red vs 🔵 Blue (216 Packs)</h2>
-          <p>Smartboard competition for 2–4 teams! 16–20 mystery boxes, point swaps, steals, and bonus cards!</p>
+          <h2>Play a team game together</h2>
+          <p>Put the class into teams and practise words together on the board.</p>
         </div>
       </div>
       <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">🚀 Launch Team Game</button>
     </div>
-    <div class="cambridge-featured-card" id="cambridge-feature-banner" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6);color:#fff;border-radius:24px;padding:22px 28px;margin:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;box-shadow:0 10px 30px rgba(30,58,138,0.25);cursor:pointer;">
+    <div class="cambridge-featured-card" id="cambridge-feature-banner">
       <div style="display:flex;align-items:center;gap:18px;">
         <span style="font-size:3rem;background:rgba(255,255,255,0.2);width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:18px;">📘</span>
         <div>
-          <h2 style="margin:0 0 6px 0;font-size:1.45rem;font-weight:900;">Cambridge Global English 1–4 Smartboard Portal (2nd Edition)</h2>
-          <p style="margin:0;opacity:0.95;font-size:0.95rem;">36 Units · Live GIPHY GIFs & Real Photos · 4-Team Baamboozle Arena · 2,080 Phonics Twisters · Songs · 1,060 Video Lessons</p>
+          <h2>Browse activities by stage</h2>
+          <p>Use the stage and unit labels as a starting point, then confirm them in your own coursebook.</p>
         </div>
       </div>
-      <button class="btn gold big" id="btn-cambridge-launch" style="font-weight:900;font-size:1.05rem;">🚀 Launch Portal</button>
+      <button class="btn green big" id="btn-cambridge-launch">Browse activities</button>
     </div>
     <div class="quick-row">
-      <button class="btn purple wobble" id="rndG">🎲 Random Game</button>
-      <button class="btn blue" id="btn-home-cambridge-hub" style="background:#2563eb;color:#fff;font-weight:900">📘 Cambridge 1–4</button>
-      <button class="btn purple" id="home-plans-btn" style="background:#7c3aed;color:#fff;font-weight:900">📋 2026-2027 Lesson Plans</button>
-      <button class="btn pink" id="home-twisters-btn" style="background:#ec4899;color:#fff;font-weight:900">👅 2,080 Phonics Twisters</button>
-      <button class="btn purple" id="home-settings-btn" style="background:#4f46e5;color:#fff;font-weight:900">⚙️ Settings (Voices & Themes)</button>
-      <button class="btn yellow" id="btn-home-baam" style="background:#f59e0b;color:#fff;font-weight:900">🧩 Launch Baamboozle</button>
-      <button class="btn white" id="btn-home-cambridge" style="font-weight:700">📘 Cambridge Notes</button>
-      <button class="btn white" id="btn-home-security" style="font-weight:700">🛡️ Cyber-Shield</button>
-      <button class="btn white" id="btn-home-guide">📖 Classroom Guide</button>
-      <button class="btn white" id="vbtn">🎤 Character Voice Studio</button>
-      <button class="btn white" id="hp">❓ How to Play?</button>
+      <button class="btn white" id="rndG">🎲 Pick a game</button>
+      <button class="btn white" id="btn-home-cambridge-hub">📚 Browse activities</button>
+      <button class="btn white" id="home-plans-btn">📋 Lesson ideas</button>
+      <button class="btn white" id="home-twisters-btn">👅 Tongue twisters</button>
+      <button class="btn white" id="home-settings-btn">⚙️ Voice & display settings</button>
+      <button class="btn white" id="btn-home-baam">🧩 Team game</button>
+      <button class="btn white" id="btn-home-guide">📖 Teacher guide</button>
+      <button class="btn white" id="hp">❓ How to play</button>
     </div>`
     );
   },
@@ -667,7 +643,7 @@ const APP = {
    <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 0;flex-wrap:wrap;gap:10px;">
      <div style="display:flex;gap:8px;flex-wrap:wrap;">
        <button class="btn blue" id="stage-to-cambridge-btn" style="background:#2563eb;color:#fff;font-weight:900;">
-         📘 Open ${st.name} Cambridge Smartboard & Baamboozle Arena
+         🎮 Open ${st.name} classroom activities
        </button>
        <button class="btn purple" id="stage-to-plans-btn" style="background:#7c3aed;color:#fff;font-weight:900;">
          📋 ${st.name} Lesson Plans
@@ -686,7 +662,7 @@ const APP = {
        <div class="sub">${u.tr || u.title} · ${u.w.length} words</div>
        <div class="u-meta">
          <span class="badge ${u.stage === 's1' ? 'green' : (u.stage === 's2' ? 'blue' : 'purple')}">${u.stage.toUpperCase()}</span>
-         <span class="badge purple">✨ Cambridge</span>
+         <span class="badge green">Practice</span>
        </div>
      </div>`;
      })
@@ -701,10 +677,10 @@ const APP = {
     if (!u) return this.vHome();
     const stn = u.stage === 's1' ? 1 : 2;
     const eng = ENGINES.filter((e) => e.stages.includes(stn));
-    const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || {
+    const m = {
       name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
-      quoteEn: "Let's explore new words and play games!", quoteTr: "Haydi yeni kelimeler keşfedelim ve oyunlar oynayalım!",
-      badge: "🦜 Polly", color: "#8b5cf6", bg: "#f3e8ff", anim: "anim-bounce"
+      quoteEn: "Let's explore new words and play games!", quoteTr: "Yeni kelimeler keşfedip oyunlar oynayalım!",
+      badge: "🦜 Polly", color: "#176b63", bg: "#eef5f1", anim: ""
     };
     const vids = (typeof LVID !== 'undefined' && LVID[u.id]) || [];
 
@@ -716,16 +692,16 @@ const APP = {
      <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
        <button class="btn purple" id="learn-btn" style="font-size:1em;padding:10px 16px">📖 Learn Vocabulary</button>
        ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="font-size:1em;padding:10px 16px">📚 Lesson Slides</button>' : ''}
-       <button class="btn blue" id="btn-cambridge-guide" style="font-size:1em;padding:10px 16px;background:#0284c7;color:#fff">📘 Teacher Notes</button>
+       <button class="btn white" id="btn-cambridge-guide" style="font-size:1em;padding:10px 16px">📘 Teacher notes</button>
      </div>
    </div>
 
-   <div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};cursor:pointer" id="unit-mascot-tap" title="Tap to listen to character voice">
+   <div class="unit-mascot-card" style="border-left:4px solid ${m.color};background:${m.bg};cursor:pointer" id="unit-mascot-tap" title="Tap to hear the classroom voice">
      <div class="mascot-avatar-wrap">
        ${m.avatarImg ? `<img src="${m.avatarImg}" class="char-avatar-img" alt="${m.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" loading="lazy" />` : ''}
        <div class="mascot-tag ${m.anim}">${m.tag}</div>
        <span class="mascot-show">${esc(m.show)}</span>
-       <span class="badge purple" style="margin-top:4px;font-size:0.7em">🗣️ Listen</span>
+       <span class="badge green" style="margin-top:4px;font-size:0.7em">🗣️ Listen</span>
      </div>
      <div class="mascot-bubble">
        <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
@@ -737,7 +713,7 @@ const APP = {
      <button class="btn purple big" id="learn-btn-hero" style="font-size:1.05em;padding:12px 20px;box-shadow:0 4px 12px rgba(139,92,246,0.25)">📖 Learn Words & Flashcards (${u.w.length} Words)</button>
      <button class="btn yellow big" id="baamboozle-btn-hero" style="background:#f59e0b;color:#fff;font-size:1.05em;padding:12px 20px;font-weight:900;box-shadow:0 4px 12px rgba(245,158,11,0.25)">🧩 Baamboozle Team Arena</button>
      ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold big" id="lbtn-hero" style="font-size:1.05em;padding:12px 18px">📚 Lesson Slides</button>' : ''}
-     <button class="btn blue big" id="btn-cambridge-hero" style="background:#0284c7;color:#fff;font-size:1.05em;padding:12px 18px">📘 Cambridge Teacher Notes</button>
+     <button class="btn white big" id="btn-cambridge-hero" style="font-size:1.05em;padding:12px 18px">📘 Teacher notes</button>
      ${vids.length ? `<button class="btn blue big" id="videos-scroll-btn" style="font-size:1.05em;padding:12px 18px">🎬 Video Lessons (${vids.length})</button>` : ''}
    </div>
 
@@ -783,10 +759,10 @@ const APP = {
   vLearn() {
     const u = unitById(this.unitId);
     if (!u) return this.vHome();
-    const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || {
+    const m = {
       name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
-      quoteEn: "Let's learn new words together!", quoteTr: "Birlikte yeni kelimeler öğrenelim!",
-      badge: "🦜 Polly", color: "#8b5cf6", bg: "#f3e8ff", anim: "anim-bounce"
+      quoteEn: "Let's learn new words together!", quoteTr: "Haydi birlikte yeni kelimeler öğrenelim!",
+      badge: "🦜 Polly", color: "#176b63", bg: "#eef5f1", anim: ""
     };
     const words = u.w || [];
     const idx = Math.max(0, Math.min(this.learnIdx || 0, words.length - 1));
@@ -817,19 +793,13 @@ const APP = {
       <div class="learn-theater-card baamboozle-theater-card">
         <div class="learn-theater-header">
           <span class="learn-cat-badge">📂 ${esc(catName)}</span>
-          <span class="disney-guide-tag" style="background:${m.bg};color:${m.color}">🏰 Learn with ${esc(m.name)}</span>
+          <span class="guide-mascot-tag" style="background:${m.bg};color:${m.color}">🦜 Learn with ${esc(m.name)}</span>
           <span class="learn-count-badge">Card ${idx + 1} / ${words.length}</span>
         </div>
 
         <div class="baamboozle-stage">
           <div class="learn-emoji-huge popflash">${cur[1] || '🔤'}</div>
           <div class="stage-visual-tools">
-            <a class="btn-visual-chip google-btn" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(cur[0] + ' cartoon for kids')}" title="Search ${esc(cur[0])} on Google Images">
-              🖼️ Google Images
-            </a>
-            <a class="btn-visual-chip giphy-btn" target="_blank" rel="noopener" href="https://giphy.com/search/${encodeURIComponent(cur[0] + ' cartoon sticker')}" title="Search ${esc(cur[0])} on GIPHY">
-              🎬 GIPHY GIFs
-            </a>
           </div>
         </div>
 
@@ -847,7 +817,7 @@ const APP = {
         <div class="learn-voice-btns">
           <button class="btn green big" id="learn-speak-btn">🎧 Listen</button>
           <button class="btn blue big" id="learn-slow-btn">🐢 Slow Listen</button>
-          <button class="btn purple big" id="learn-disney-btn">🏰 Repeat with ${esc(m.name)}</button>
+          <button class="btn green big" id="learn-repeat-btn">🗣️ Listen and repeat</button>
         </div>
       </div>
 
@@ -963,8 +933,8 @@ const APP = {
        v
          ? `<div class="song-video-theater">
               <div class="video-theater-head">
-                <span class="video-live-badge">🎬 Official Sing-Along Video</span>
-                <span>Authentic Singing & Real Chorus 🎶</span>
+                <span class="video-live-badge">🎬 Video</span>
+                <span>Watch, listen and sing along 🎶</span>
               </div>
               <div class="lvideo" style="margin:0 auto">
                 <iframe src="https://www.youtube-nocookie.com/embed/${v}?rel=0" title="${esc(s.t)}" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -1042,13 +1012,10 @@ const APP = {
       `
     <div class="card" style="max-width:760px;margin:0 auto;text-align:left;line-height:1.6">
       <h3 style="font-size:1.3em;margin-bottom:10px">👩‍🏫 Teacher & Classroom Guide</h3>
-      <p><b>1) Platform Accessibility:</b> Fully responsive and smartboard optimized. Works seamlessly on classroom interactive boards, desktop PCs, laptops, and tablets with touch support.</p>
-      <p><b>2) Authentic Cartoon Voices & Melodic Audio:</b> Features 25 beloved cartoon and Disney favorites (Mickey, Elsa, Simba, Buzz, Peppa Pig, Bluey, Chase, and Polly) with Web Audio harmonic note scales and authentic catchphrases.</p>
-      <p><b>3) Baamboozle & Smartboard Arena:</b> Divide your class into Red vs Blue teams! Open mystery tiles with +25 point bonuses, steals, swaps, and interactive 60-second classroom timers.</p>
-      <p><b>4) 2026–2027 Lesson Plans:</b> Complete 36-week academic calendar with Daily 40-minute breakdowns, weekly goals, physical TPR exercises, and realia suggestions.</p>
-      <p><b>5) Sing-Along Chants & Phonics Twisters:</b> Melodic sing-along lyrics and 2,080 targeted phonics tongue twisters with 0.8x, 1.0x, and 1.25x speed practice.</p>
-      <p><b>6) Cyber-Shield & Anti-Crash Protection:</b> Built-in sandboxed embeds, zero XSS, and state preservation to prevent crashes and protect young learners.</p>
-      <p class="muted" style="margin-top:14px">100% aligned with Cambridge Global English Stages 1, 2, 3, and 4 (Second Edition). Comprehensive educational companion platform.</p>
+      <p><b>Choose a grade:</b> Open a grade card to browse the activities currently available for that level. Unit names and suggested matches are starting points; please confirm them in the books used by your class.</p>
+      <p><b>Use with your coursebook:</b> This is an independent collection of supplementary practice materials. It is not an official Cambridge resource, and its unit, page and curriculum matches have not been verified against your edition.</p>
+      <p><b>Audio:</b> Spoken prompts use speech synthesis available on the device or browser. Voice quality and accent vary by device; use Settings to adjust speaking speed. No licensed character recordings are included.</p>
+      <p><b>Classroom play:</b> Games, songs, chants and team activities can be used on a shared screen. Preview links and media before showing them to learners.</p>
     </div>`
     );
   },
@@ -1088,7 +1055,6 @@ const APP = {
       e.target.textContent = MEDIA.muted ? '🔇' : '🔊';
       FX.toast(MEDIA.muted ? 'Muted 🔇' : 'Sound On 🔊');
     });
-    on('#vbtn', 'click', () => this.showVoices());
     on('#cambridge-top-btn', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#cambridge-feature-banner', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#btn-cambridge-launch', 'click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); });
@@ -1112,14 +1078,8 @@ const APP = {
 
     on('#guide-top-btn', 'click', () => this.showGuideModal());
     on('#btn-welcome-guide', 'click', () => this.showGuideModal());
+    on('#btn-voice-buddy', 'click', () => this.showVoicePracticeModal());
     on('#btn-home-guide', 'click', () => this.showGuideModal());
-    on('#antivirus-top-btn', 'click', () => {
-      if (typeof ANTIVIRUS !== 'undefined') ANTIVIRUS.showModal();
-    });
-    on('#btn-home-security', 'click', () => {
-      if (typeof ANTIVIRUS !== 'undefined') ANTIVIRUS.showModal();
-    });
-    on('#btn-home-cambridge', 'click', () => this.showCambridgeModal(this.unitId || 's1u1'));
     on('#btn-cambridge-guide', 'click', () => this.showCambridgeModal(this.unitId));
     on('#btn-cambridge-hero', 'click', () => this.showCambridgeModal(this.unitId));
 
@@ -1132,42 +1092,14 @@ const APP = {
     on('#baamboozle-btn-hero', 'click', () => startBaam());
     $$('[data-baam]').forEach((b) => b.addEventListener('click', () => startBaam(b.dataset.baam)));
 
-    on('#btn-welcome-voice', 'click', () => {
-      MEDIA.welcomeGreeting();
-      FX.confetti(25);
+    on('#unit-mascot-tap', 'click', () => {
+      MEDIA.speak("Let's explore new words and play games!");
       FX.stars();
     });
 
-    on('#unit-mascot-tap', 'click', () => {
-      const u = unitById(this.unitId);
-      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
-      if (m) {
-        // // SAFETY: Multi-character audio pipeline with fallback
-        MEDIA.playCharacterPhrase(m.voiceKey || 'mickey', 'greeting', m.quoteEn);
-        FX.stars();
-      }
-    });
-
     on('#learn-mascot-box', 'click', () => {
-      const u = unitById(this.unitId);
-      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
-      if (m) {
-        // // SAFETY: Multi-character audio pipeline with fallback
-        MEDIA.playCharacterPhrase(m.voiceKey || 'mickey', 'praise', m.quoteEn);
-        FX.stars();
-      }
-    });
-
-    on('#learn-disney-btn', 'click', () => {
-      const u = unitById(this.unitId);
-      const m = (typeof MASCOTS !== 'undefined' && u) ? MASCOTS[u.id] : null;
-      const cur = (u && u.w && u.w[this.learnIdx || 0]) ? u.w[this.learnIdx || 0] : null;
-      if (cur) {
-        MEDIA.fx('magic');
-        FX.confetti(20);
-        const charKey = (m && m.voiceKey) ? m.voiceKey : 'mickey';
-        MEDIA.speakDisney(charKey, 'Say it with me: ' + cur[0] + '! Wonderful!');
-      }
+      MEDIA.speak("Let's learn these words together!");
+      FX.stars();
     });
 
     const startLearn = () => {
@@ -1586,8 +1518,8 @@ const APP = {
       });
       area.innerHTML = `<div class="center" style="padding:22px;background:#fff;border-radius:22px;border:3px dashed #f59e0b;margin:16px auto;max-width:480px">
         <div class="big-emoji" style="font-size:54px">🦜</div>
-        <h3 style="margin:8px 0;color:#0f172a">Polly prevented a glitch! <span style="display:none">Polly bir aksilik yakaladı ve çözdü</span></h3>
-        <p style="color:#64748b;margin-bottom:14px">Your earned score (${score} ⭐) is safely preserved.</p>
+        <h3 style="margin:8px 0;color:#0f172a">This activity stopped unexpectedly</h3>
+        <p style="color:#64748b;margin-bottom:14px">Current round score: ${score} ⭐. A resume point was attempted on this device; it may not be available if browser storage is blocked.</p>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
           <button class="btn green" id="rec-restart">🔄 Play Again</button>
           <button class="btn white" id="rec-unit">📚 Back to Unit</button>
@@ -1737,64 +1669,11 @@ const APP = {
     const humanVoices = MEDIA.getHumanVoices ? MEDIA.getHumanVoices() : [];
     const cur = (MEDIA.voice && MEDIA.voice.name) || '';
 
-    const getVoiceMeta = (v) => {
-      const n = v.name;
-      const isNatural = /natural|neural|online/i.test(n);
-      let desc = 'Natural Voice';
-      let badge = '🎙️ Natural';
-      let icon = '🌟';
-
-      if (/maisie/i.test(n)) {
-        desc = 'Cheerful British Girl Voice';
-        badge = '🦜 Polly Favorite';
-        icon = '👧';
-      } else if (/ana\b/i.test(n)) {
-        desc = 'Cheerful Child Voice (US)';
-        badge = '🦜 Polly Favorite';
-        icon = '👧';
-      } else if (/flo\b/i.test(n)) {
-        desc = 'Lively & Playful Voice';
-        badge = '✨ Playful';
-        icon = '🎉';
-      } else if (/sandy\b/i.test(n)) {
-        desc = 'Warm & Friendly Voice';
-        badge = '✨ Sweet';
-        icon = '🌸';
-      } else if (/samantha\b/i.test(n)) {
-        desc = 'Natural & Friendly Voice';
-        badge = '⭐ Popular';
-        icon = '👩';
-      } else if (/shelley\b/i.test(n)) {
-        desc = 'Cheerful & Clear Voice';
-        badge = '🌸 Cheerful';
-        icon = '🌸';
-      } else if (/serena\b/i.test(n)) {
-        desc = 'Natural British Teacher Voice';
-        badge = '🇬🇧 Cambridge';
-        icon = '👩‍🏫';
-      } else if (/sonia\b|libby\b/i.test(n)) {
-        desc = 'Sweet & Crisp British Voice';
-        badge = '🇬🇧 UK Accent';
-        icon = '🇬🇧';
-      } else if (/jenny\b|aria\b/i.test(n)) {
-        desc = 'Exciting & Lively US Voice';
-        badge = '🇺🇸 US Accent';
-        icon = '✨';
-      } else if (/karen\b|moira\b/i.test(n)) {
-        desc = 'Warm & Friendly Voice';
-        badge = '🌍 Natural';
-        icon = '☀️';
-      } else if (/daniel\b|oliver\b|jamie\b|eddy\b/i.test(n)) {
-        desc = 'Clear & Youthful British Voice';
-        badge = '🇬🇧 UK Youth';
-        icon = '👦';
-      } else if (isNatural) {
-        desc = 'High-Fidelity Neural Voice';
-        badge = '🌟 Natural';
-        icon = '🎧';
-      }
-      return { desc, badge, icon };
-    };
+    const getVoiceMeta = (v) => ({
+      desc: 'Provided by your browser or operating system',
+      badge: (v.lang || '').toLowerCase().includes('gb') ? 'English · UK' : 'English voice',
+      icon: '🔊'
+    });
 
     const d = document.createElement('div');
     d.id = 'vmodal';
@@ -1802,12 +1681,12 @@ const APP = {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
         <span style="font-size:36px">🦜</span>
         <div>
-          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose Polly's Cheerful Voice</h3>
-          <div class="muted" style="font-size:0.88em">Robotic voices removed. Only warm, cheerful, and natural voices are listed!</div>
+          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a device voice</h3>
+          <div class="muted" style="font-size:0.88em">Available voices come from your browser or operating system. Sound quality and accent vary by device.</div>
         </div>
       </div>
       <div class="voice-help-banner">
-        💡 <b>Tip:</b> Tap any voice to preview. Choose your favorite pronunciation accent!
+        💡 Tap a voice to preview it. Available voices and sound quality vary by device.
       </div>
       <div class="vlist">${
         humanVoices.length > 0
@@ -1833,7 +1712,7 @@ const APP = {
           : '<div class="vitem">Loading speech synthesis voices, please wait a moment...</div>'
       }</div>
       <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn green big" id="vmclose">✅ Perfect, Use This Voice!</button>
+        <button class="btn green big" id="vmclose">✅ Use this device voice</button>
       </div>
     </div>`;
     document.body.appendChild(d);
@@ -1842,7 +1721,7 @@ const APP = {
         (it.onclick = () => {
           const n = it.dataset.v;
           MEDIA.setVoice(n);
-          MEDIA.speak("Hello! I'm Polly! 🦜 Let's learn English together! Super fun!");
+          MEDIA.speak("Hello! Let's practise English together.");
           d.querySelectorAll('.vitem').forEach((x) => {
             x.classList.remove('sel');
             const act = x.querySelector('.vbadge.active');
@@ -1878,21 +1757,21 @@ const APP = {
           <div style="display:flex;align-items:center;gap:12px">
             <span style="font-size:38px">📖</span>
             <div>
-              <h2 style="margin:0;font-size:1.45em;color:#0f172a">Teacher & Student Master Guide</h2>
-              <div class="muted" style="font-size:0.88em"><b>Cambridge Global English Stages 1–4 (2nd Edition)</b> · 36 Units · Smartboard & Classroom Guide</div>
+              <h2 style="margin:0;font-size:1.45em;color:#0f172a">Teacher & Student Guide</h2>
+              <div class="muted" style="font-size:0.88em">Classroom activities for primary English · Grades 1–4</div>
             </div>
           </div>
           <button class="btn white small" id="guide-close" style="font-size:18px;padding:6px 14px">❌ Close</button>
         </div>
 
         <div class="guide-intro-banner">
-          🌟 <b>Welcome!</b> Designed specifically for <b>Grades 1, 2, 3, and 4</b> students and primary English teachers. Zero stress, 100% gamified, featuring natural Disney & cartoon voices, animated GIPHY cards, 216 Baamboozle team arena sets, 1,080 classroom games, and 36-week 2026–2027 lesson plans!
+          🌟 <b>Welcome!</b> Browse games, songs, speaking practice and lesson ideas for primary English. Coursebook references are supplementary suggestions and need to be checked against the edition used by your school.
         </div>
 
         <div class="guide-sections-grid">
           <!-- 4 GRADE LEVELS -->
           <div class="guide-sec-card highlight" style="grid-column: 1 / -1; border-left-color:#2563eb;">
-            <h3>🏫 4 Core Grade Levels (Cambridge Global English Stages 1–4)</h3>
+            <h3>🏫 Activities for Grades 1–4</h3>
             <p>Tap any grade button below to jump straight to its smartboard portal, unit selector, and interactive learning materials:</p>
             <div class="guide-links-wrap" style="margin-top:10px;">
               <button class="guide-link-btn primary" data-gjump="cambridge:stage1" style="background:#10b981;">🟢 Grade 1 (Stage 1 / Pre-A1) — 9 Units</button>
@@ -1904,8 +1783,8 @@ const APP = {
 
           <!-- 1. BAAMBOOZLE TEAM ARENA -->
           <div class="guide-sec-card highlight">
-            <h3>🎮 1. Baamboozle Team Arena (216 Sets)</h3>
-            <p>Divide the classroom into 2, 3, or 4 teams! Open mystery tiles across 36 units with surprise points (+25), Steal points (+15/-15), Swap points, and mud puddle traps (-10).</p>
+            <h3>🎮 1. Team game</h3>
+            <p>Divide the classroom into teams and use the mystery tiles for shared speaking and vocabulary practice.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn primary" data-gjump="cambridge:stage1:baamboozle">🚀 Open Baamboozle (Grade 1)</button>
               <button class="guide-link-btn primary" data-gjump="cambridge:stage3:baamboozle">🚀 Open Baamboozle (Grade 3)</button>
@@ -1914,8 +1793,8 @@ const APP = {
 
           <!-- 2. ANIMATED VOCABULARY -->
           <div class="guide-sec-card">
-            <h3>✨ 2. Animated Vocabulary (GIPHY & Real Photos)</h3>
-            <p><b>Zero emojis!</b> Toggle between Unsplash high-resolution real photographs and kid-friendly animated GIPHYs. Drill pronunciation with authentic Disney and cartoon voice acting.</p>
+            <h3>✨ 2. Animated Vocabulary (external GIFs and pictures)</h3>
+            <p>Vocabulary activities may include pictures and animation. Spoken prompts use your browser’s speech voice; the voice and accent depend on the device.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn" data-gjump="cambridge:stage1:vocab">✨ Open Animated Vocab</button>
               <button class="guide-link-btn" data-gjump="learn:s1u1">📚 Classic Vocab Theatre</button>
@@ -1924,7 +1803,7 @@ const APP = {
 
           <!-- 3. CLASSROOM GAMES HUB -->
           <div class="guide-sec-card">
-            <h3>🎲 3. 1,000+ Classroom & Smartboard Games Hub</h3>
+            <h3>🎲 3. Classroom games</h3>
             <p>Spin the Wheel, Flyswatter Board Slap, Memory Pairs, Hangman, Simon Says TPR, and more across 10 categories. Includes Red vs Blue team scoreboard and 60-second interactive timer.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn" data-gjump="cambridge:stage1:games-hub">🎲 Open Games Hub</button>
@@ -1933,8 +1812,8 @@ const APP = {
 
           <!-- 4. PHONICS TWISTER STUDIO -->
           <div class="guide-sec-card">
-            <h3>👅 4. Phonics Tongue Twister Studio (2,080 Twisters)</h3>
-            <p>520 phonics twisters for each grade level. Features audio playback at 🐢 0.8x (Slow), 🐰 1.0x (Normal), and ⚡ 1.25x (Fast) speeds with target sound practice.</p>
+            <h3>👅 4. Tongue-twister practice</h3>
+            <p>Short phrases for listening, pronunciation and speaking practice. The spoken voice is provided by your device or browser.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn" id="guide-open-twisters">👅 Launch Phonics Studio</button>
             </div>
@@ -1943,7 +1822,7 @@ const APP = {
           <!-- 5. SING-ALONG SONGS & 6. VIDEO LIBRARY -->
           <div class="guide-sec-card">
             <h3>🎵 5. Sing-Along Songs & 🎬 6. Video Library</h3>
-            <p>Cambridge Global English unit lyrics with melodic Web Audio singing accompaniment, plus curated child-safe YouTube educational sing-along videos and cartoon clips.</p>
+            <p>Browse songs and videos for class practice. Preview external media before sharing it with learners.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn" data-gjump="songs">🎶 Sing-Along Songs</button>
               <button class="guide-link-btn" data-gjump="cambridge:stage1:videos">🎬 Video Library</button>
@@ -1952,21 +1831,21 @@ const APP = {
 
           <!-- 7. LESSON PLANS & TEACHER GUIDE -->
           <div class="guide-sec-card">
-            <h3>📋 7. 2026–2027 Lesson Plans & 📖 8. Teacher's Guide</h3>
-            <p>Comprehensive 2026–2027 academic year lesson calendar with Daily 40-minute breakdown, Weekly, Monthly, and Annual views. Includes real-life classroom objects (Realia) and physical TPR routines.</p>
+            <h3>📋 7. Lesson ideas & 📖 8. Teacher's Guide</h3>
+            <p>Use the lesson ideas as editable drafts. Check dates, learning goals, book titles and page references against your school’s plan and the exact edition in use.</p>
             <div class="guide-links-wrap">
-              <button class="guide-link-btn primary" id="guide-open-plans" style="background:#2563eb;">📋 2026–2027 Lesson Plans</button>
+              <button class="guide-link-btn primary" id="guide-open-plans" style="background:#2563eb;">📋 Lesson ideas</button>
               <button class="guide-link-btn" data-gjump="cambridge:stage1:teacher-guide">📖 Teacher's Guide</button>
             </div>
           </div>
 
           <!-- 9. SETTINGS & VOICES -->
           <div class="guide-sec-card highlight" style="border-left-color:#7c3aed;">
-            <h3>⚙️ Character Voices & Sound Settings</h3>
-            <p>Choose your favorite classroom mascot voice from 25 Disney & cartoon favorites (Mickey, Elsa, Simba, Buzz, Peppa Pig, Bluey, Chase, Polly), adjust speech speed, and background chimes.</p>
+            <h3>⚙️ Speech and sound settings</h3>
+            <p>Adjust speech speed, sound effects and display settings. Spoken prompts use the voice supplied by your device or browser; no character voice recordings are included.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn primary" data-gjump="settings" style="background:#7c3aed;">⚙️ Open Settings</button>
-              <button class="guide-link-btn" id="guide-play-welcome">🔊 Welcome Greeting</button>
+              <button class="guide-link-btn" id="guide-play-welcome">🔊 Try the classroom voice</button>
             </div>
           </div>
 
@@ -1982,8 +1861,8 @@ const APP = {
 
           <!-- 11. CYBER SHIELD -->
           <div class="guide-sec-card" style="border-left-color:#10b981;">
-            <h3>🛡️ Cyber-Shield Classroom Antivirus</h3>
-            <p>Zero XSS, CSP sandbox isolation, and DOM tampering protection for student safety.</p>
+            <h3>🛡️ Basic browser protections</h3>
+            <p>The deployment config requests standard browser security headers. The local checker cannot guarantee that a site is free from threats.</p>
             <div class="guide-links-wrap">
               <button class="guide-link-btn" id="guide-open-security" style="color:#059669;font-weight:700;">🛡️ View Shield Status</button>
             </div>
@@ -2250,12 +2129,12 @@ const APP = {
         <div class="lp-modal-box">
           <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #e2e8f0;padding-bottom:14px;margin-bottom:18px;">
             <div>
-              <div class="lp-date-badge">📅 2026–2027 Academic Year (Sept 14, 2026 – June 18, 2027)</div>
+              <div class="lp-date-badge">📅 Draft lesson ideas · review dates for your school</div>
               <h2 style="margin:6px 0 2px 0;font-size:1.45rem;color:#1e1b4b;">
-                📋 Cambridge Global English 1–4 · Master Lesson Plans
+                📋 Primary English · Lesson Ideas
               </h2>
               <div style="font-size:0.86rem;color:#64748b;">
-                ${stInfo.book || "Cambridge Global English"} · 36 Weeks · Learner's Book + Workbook + Teacher's Resource + Photocopiables
+                Supplementary planning drafts · verify coursebook and page references before use
               </div>
             </div>
             <div style="display:flex;gap:8px;align-items:center;">
@@ -2430,9 +2309,9 @@ const APP = {
               </div>
             ` : curMode === 'annual' ? `
               <div class="lp-week-card" style="border-left-color:#8b5cf6;">
-                <h3 style="margin:0 0 10px 0;color:#1e1b4b;">📜 Cambridge Global English ${curStage.replace('stage', 'Stage ')} Annual Curriculum Plan (2026–2027)</h3>
+                <h3 style="margin:0 0 10px 0;color:#1e1b4b;">📜 Draft annual planning outline · ${curStage.replace('stage', 'Stage ')}</h3>
                 <p style="font-size:0.92rem;color:#475569;line-height:1.5;">
-                  <strong>CEFR Target:</strong> ${stInfo.cefr || 'A1'} | <strong>Total Academic Weeks:</strong> 36 Weeks | <strong>Total Units:</strong> 9 Units (4 Weeks per Unit)
+                  Planning suggestions only. Check learning goals, dates, unit titles and page references against the books and curriculum used by your school.
                 </p>
                 <div style="margin-top:14px;">
                   ${Object.keys(stInfo.units || {}).map(uNum => {
@@ -2441,7 +2320,6 @@ const APP = {
                       <div style="background:white;border:1px solid #cbd5e1;border-radius:12px;padding:12px 16px;margin-bottom:10px;">
                         <div style="display:flex;justify-content:space-between;align-items:center;">
                           <strong style="color:#2563eb;font-size:1.05rem;">Unit ${uNum}: ${u.title}</strong>
-                          <span class="badge purple">${u.mascot}</span>
                         </div>
                         <div style="font-size:0.88rem;color:#334155;margin-top:4px;">
                           <strong>Grammar:</strong> ${u.grammar} | <strong>Phonics:</strong> ${u.phonics}
@@ -2493,7 +2371,6 @@ const APP = {
                           <strong>Month:</strong> ${w.month} | <strong>Grammar:</strong> ${sp.grammar} | <strong>Phonics:</strong> ${sp.phonics}
                         </div>
                       </div>
-                      <span class="badge purple" style="font-size:0.82rem;padding:4px 10px;">🏰 Mascot: ${sp.mascot}</span>
                     </div>
 
                     <!-- 4 RESOURCES -->
@@ -2724,9 +2601,9 @@ const APP = {
         <div class="twister-modal-box">
           <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #e2e8f0;padding-bottom:12px;margin-bottom:16px;">
             <div>
-              <span class="badge pink" style="font-weight:900">👅 Phonics Studio · 2,080 Twisters</span>
-              <h2 style="margin:4px 0 0 0;font-size:1.4rem;color:#1e1b4b;">Cambridge Phonics Tongue Twisters</h2>
-              <div style="font-size:0.86rem;color:#64748b;">Develop speech speed, phonics fluency and crisp English pronunciation</div>
+              <span class="badge pink" style="font-weight:750">👅 Speaking practice</span>
+              <h2 style="margin:4px 0 0 0;font-size:1.4rem;color:#1e1b4b;">Tongue twisters</h2>
+              <div style="font-size:0.86rem;color:#64748b;">Short phrases for pronunciation and speaking practice · device speech voice</div>
             </div>
             <button class="btn white small" id="tw-close-top" style="font-size:18px;padding:4px 12px;">❌</button>
           </div>
@@ -2837,7 +2714,6 @@ const APP = {
           bgmVolume: 0.35,
           sfxEnabled: true,
           sfxVolume: 0.8,
-          voiceCharacter: 'polly',
           voiceSpeed: 1.0,
           themeMode: 'colorful-kids',
           defaultMedia: 'gif',
@@ -2880,37 +2756,12 @@ const APP = {
         </div>
 
         <div class="settings-group">
-          <label>🗣️ Cartoon & Character Voice Actor (25 Characters)</label>
+          <label>🗣️ Spoken voice</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Speech uses the English voice installed in your browser or device. Voice quality and accent vary by device.</p>
           <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
-            <select id="set-voice-char" style="flex:1;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;">
-              <option value="polly" ${s.voiceCharacter === 'polly' ? 'selected' : ''}>🦜 Polly (Cheerful Mascot)</option>
-              <option value="mickey" ${s.voiceCharacter === 'mickey' ? 'selected' : ''}>🐭 Mickey Mouse (Disney Clubhouse)</option>
-              <option value="minnie" ${s.voiceCharacter === 'minnie' ? 'selected' : ''}>🎀 Minnie Mouse (Disney Friends)</option>
-              <option value="donald" ${s.voiceCharacter === 'donald' ? 'selected' : ''}>🦆 Donald Duck (Disney DuckTales)</option>
-              <option value="goofy" ${s.voiceCharacter === 'goofy' ? 'selected' : ''}>🐶 Goofy (Disney Classics)</option>
-              <option value="elsa" ${s.voiceCharacter === 'elsa' ? 'selected' : ''}>❄️ Elsa (Frozen Magic)</option>
-              <option value="anna" ${s.voiceCharacter === 'anna' ? 'selected' : ''}>🌻 Anna (Frozen Adventure)</option>
-              <option value="olaf" ${s.voiceCharacter === 'olaf' ? 'selected' : ''}>⛄ Olaf (Frozen Warm Hugs)</option>
-              <option value="buzz" ${s.voiceCharacter === 'buzz' ? 'selected' : ''}>🚀 Buzz Lightyear (Toy Story Ranger)</option>
-              <option value="woody" ${s.voiceCharacter === 'woody' ? 'selected' : ''}>🤠 Woody (Toy Story Sheriff)</option>
-              <option value="stitch" ${s.voiceCharacter === 'stitch' ? 'selected' : ''}>🌺 Stitch (Lilo & Stitch)</option>
-              <option value="pooh" ${s.voiceCharacter === 'pooh' ? 'selected' : ''}>🍯 Winnie the Pooh (Hundred Acre Wood)</option>
-              <option value="mcqueen" ${s.voiceCharacter === 'mcqueen' ? 'selected' : ''}>🏎️ Lightning McQueen (Pixar Cars)</option>
-              <option value="simba" ${s.voiceCharacter === 'simba' ? 'selected' : ''}>🦁 Simba (The Lion King)</option>
-              <option value="moana" ${s.voiceCharacter === 'moana' ? 'selected' : ''}>🌊 Moana (Ocean Explorer)</option>
-              <option value="ariel" ${s.voiceCharacter === 'ariel' ? 'selected' : ''}>🧜‍♀️ Ariel (The Little Mermaid)</option>
-              <option value="aladdin" ${s.voiceCharacter === 'aladdin' ? 'selected' : ''}>🧞 Aladdin & Genie (Magical Wishes)</option>
-              <option value="peterpan" ${s.voiceCharacter === 'peterpan' ? 'selected' : ''}>🧚 Peter Pan (Neverland Flyer)</option>
-              <option value="judy" ${s.voiceCharacter === 'judy' ? 'selected' : ''}>🐰 Judy Hopps (Zootopia Officer)</option>
-              <option value="dory" ${s.voiceCharacter === 'dory' ? 'selected' : ''}>🐠 Dory & Nemo (Finding Nemo)</option>
-              <option value="baloo" ${s.voiceCharacter === 'baloo' ? 'selected' : ''}>🐻 Baloo (The Jungle Book)</option>
-              <option value="dash" ${s.voiceCharacter === 'dash' ? 'selected' : ''}>⚡ Dash (The Incredibles)</option>
-              <option value="peppa" ${s.voiceCharacter === 'peppa' ? 'selected' : ''}>🐷 Peppa Pig (Peppa Official)</option>
-              <option value="bluey" ${s.voiceCharacter === 'bluey' ? 'selected' : ''}>🐕 Bluey (Bluey Official)</option>
-              <option value="chase" ${s.voiceCharacter === 'chase' ? 'selected' : ''}>🚓 Chase (PAW Patrol Police Pup)</option>
-            </select>
+            <button class="btn btn-outline" id="set-choose-voice-btn" style="flex:1;padding:8px 12px;font-weight:700;">Choose a voice from this device</button>
             <button class="btn btn-outline" id="set-test-voice-btn" style="padding:8px 14px;white-space:nowrap;font-weight:700;">
-              🔊 Audition Voice
+              🔊 Preview voice
             </button>
           </div>
         </div>
@@ -2925,19 +2776,19 @@ const APP = {
         </div>
 
         <div class="settings-group">
-          <label>🎨 Interface Theme</label>
+          <label>🎨 Interface theme</label>
           <select id="set-theme-mode" style="width:100%;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;margin-top:6px;">
-            <option value="colorful-kids" ${s.themeMode === 'colorful-kids' ? 'selected' : ''}>🌈 Colorful Kids World (Default)</option>
+            <option value="colorful-kids" ${s.themeMode === 'colorful-kids' ? 'selected' : ''}>🌈 Bright classroom colours</option>
             <option value="smartboard-contrast" ${s.themeMode === 'smartboard-contrast' ? 'selected' : ''}>🖥️ Smartboard High Contrast (Projection Mode)</option>
-            <option value="pastel" ${s.themeMode === 'pastel' ? 'selected' : ''}>🌸 Pastel Soft Colors (Relaxing Mode)</option>
+            <option value="pastel" ${s.themeMode === 'pastel' ? 'selected' : ''}>🌸 Soft colours</option>
           </select>
         </div>
 
         <div class="settings-group">
           <label>🖼️ Default Vocabulary Visual Preference</label>
           <select id="set-media-mode" style="width:100%;padding:8px 12px;border-radius:8px;border:1.5px solid #cbd5e1;font-weight:700;margin-top:6px;">
-            <option value="gif" ${(s.defaultMedia || 'gif') === 'gif' ? 'selected' : ''}>✨ GIPHY Animated GIFs</option>
-            <option value="photo" ${(s.defaultMedia || 'gif') === 'photo' ? 'selected' : ''}>📸 High-Resolution Real Photos</option>
+            <option value="gif" ${(s.defaultMedia || 'gif') === 'gif' ? 'selected' : ''}>Animated GIFs (external links)</option>
+            <option value="photo" ${(s.defaultMedia || 'gif') === 'photo' ? 'selected' : ''}>Photos (external links)</option>
           </select>
         </div>
 
@@ -3002,32 +2853,17 @@ const APP = {
 
     // Voice test button
     const testVoiceBtn = d.querySelector('#set-test-voice-btn');
-    const voiceSelect = d.querySelector('#set-voice-char');
     const speedSelect = d.querySelector('#set-voice-speed');
-    if (testVoiceBtn && voiceSelect) {
+    if (testVoiceBtn) {
       testVoiceBtn.onclick = () => {
-        const char = voiceSelect.value;
         const spd = parseFloat(speedSelect ? speedSelect.value : '1.0');
-        const testQuotes = {
-          polly: "Hello students! Welcome to Polly's Fun English! Let us learn and have fun together!",
-          peppa: "Oink oink! Hello everyone! I am Peppa Pig, let us jump into learning English!",
-          bluey: "Wackadoo! Hi mates! Bluey is here, let us play and sing together, hooray!",
-          chase: "Chase is on the case! Paw Patrol is ready to learn English words!",
-          mickey: "Hiya pals! It's me, Mickey Mouse! Oh boy, welcome to our magical English adventure!",
-          elsa: "Hello friends! The magic of English is inside all of us! Let it go and speak freely!",
-          olaf: "Hi! I am Olaf and I like warm hugs and happy English songs!",
-          buzz: "To infinity and beyond! Star command welcomes all English learners!",
-          woody: "Howdy partner! You've got a friend in me, let us explore English together!"
-        };
-        const quote = testQuotes[char] || "Hello! Polly's Fun English is so much fun!";
-        if (typeof NaturalVoiceEngine !== 'undefined' && NaturalVoiceEngine.speak) {
-          NaturalVoiceEngine.speak(quote, char, spd);
-        } else if (typeof MEDIA !== 'undefined' && MEDIA.speakDisney) {
-          MEDIA.speakDisney(char, quote);
-        }
+        const quote = "Hello everyone. Let's practise English together!";
+        if (typeof MEDIA !== 'undefined' && MEDIA.speak) MEDIA.speak(quote, spd);
         if (typeof FX !== 'undefined' && FX.stars) FX.stars();
       };
     }
+    const chooseVoiceBtn = d.querySelector('#set-choose-voice-btn');
+    if (chooseVoiceBtn) chooseVoiceBtn.onclick = () => this.showVoices();
 
     // Save button
     const saveBtn = d.querySelector('#set-save-btn');
@@ -3035,7 +2871,6 @@ const APP = {
       saveBtn.onclick = () => {
         const bgmVolume = parseFloat(d.querySelector('#set-bgm-volume').value);
         const sfxVolume = parseFloat(d.querySelector('#set-sfx-volume').value);
-        const voiceCharacter = d.querySelector('#set-voice-char').value;
         const voiceSpeed = parseFloat(d.querySelector('#set-voice-speed').value);
         const themeMode = d.querySelector('#set-theme-mode').value;
         const defaultMedia = d.querySelector('#set-media-mode').value;
@@ -3046,7 +2881,6 @@ const APP = {
           bgmVolume,
           sfxEnabled,
           sfxVolume,
-          voiceCharacter,
           voiceSpeed,
           themeMode,
           defaultMedia
@@ -3079,6 +2913,112 @@ const APP = {
   },
 
   /* ---------- 📘 Cambridge Global English 1 & 2 Müfredat & Notlar Modalı ---------- */
+  showVoicePracticeModal() {
+    const old = document.getElementById('polly-talk-modal');
+    if (old) old.remove();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'polly-talk-modal';
+    overlay.className = 'polly-talk-overlay';
+    overlay.innerHTML = `
+      <section class="polly-talk-card" role="dialog" aria-modal="true" aria-labelledby="polly-talk-title">
+        <button class="polly-talk-close" type="button" aria-label="Close">×</button>
+        <div class="polly-talk-header">
+          <img src="images/polly-3d-mascot.png" alt="" width="118" height="138">
+          <div><span class="polly-talk-kicker">ENGLISH SPEAKING PRACTICE</span><h2 id="polly-talk-title">Let’s chat, superstar!</h2>
+            <p>Listen, speak or type. Polly will answer and cheer you on.</p></div>
+        </div>
+        <div class="polly-talk-messages" id="polly-talk-messages" aria-live="polite">
+          <div class="talk-bubble polly">Hi, friend! What is your name?</div>
+        </div>
+        <p class="polly-talk-note">Speech uses the voice available in this browser or device. Voice quality and microphone support vary. This practice is not a live ChatGPT conversation.</p>
+        <div class="polly-talk-controls">
+          <button class="btn voice-buddy-listen" id="polly-talk-listen" type="button">🎙️ Speak to Polly</button>
+          <input id="polly-talk-input" type="text" maxlength="180" autocomplete="off" placeholder="Or type a short answer…" aria-label="Type your English answer">
+          <button class="btn voice-buddy-send" id="polly-talk-send" type="button">Send ✨</button>
+        </div>
+        <div class="polly-talk-status" id="polly-talk-status" role="status">Your turn! Try saying: “My name is…”</div>
+      </section>`;
+    document.body.appendChild(overlay);
+
+    const messages = overlay.querySelector('#polly-talk-messages');
+    const input = overlay.querySelector('#polly-talk-input');
+    const status = overlay.querySelector('#polly-talk-status');
+    const listen = overlay.querySelector('#polly-talk-listen');
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let turn = 0;
+    const prompts = [
+      'What colour do you like?',
+      'Can you name an animal?',
+      'What is your favourite food?',
+      'Can you say one thing you can see?',
+      'What do you like to play?'
+    ];
+    const close = () => {
+      if (recognition) { try { recognition.abort(); } catch (_) {} }
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      overlay.remove();
+    };
+    const addBubble = (text, who) => {
+      const bubble = document.createElement('div');
+      bubble.className = 'talk-bubble ' + who;
+      bubble.textContent = text;
+      messages.appendChild(bubble);
+      messages.scrollTop = messages.scrollHeight;
+    };
+    const answer = (raw) => {
+      const text = String(raw || '').trim().slice(0, 180);
+      if (!text) return;
+      addBubble(text, 'child');
+      input.value = '';
+      turn += 1;
+      const lower = text.toLowerCase();
+      let reply;
+      const name = text.match(/(?:my name is|i am|i'm)\s+([a-z'-]+)/i);
+      if (name) reply = `Lovely to meet you, ${name[1]}! ${prompts[turn % prompts.length]}`;
+      else if (/hello|hi|hey/.test(lower)) reply = `Hello, superstar! ${prompts[turn % prompts.length]}`;
+      else if (/red|blue|green|yellow|pink|purple|orange|black|white/.test(lower)) reply = `What a lovely answer! I like colourful things too. ${prompts[turn % prompts.length]}`;
+      else if (/cat|dog|bird|fish|lion|elephant|rabbit|monkey/.test(lower)) reply = `Great animal word! Can you tell me one more thing about it? ${prompts[turn % prompts.length]}`;
+      else if (/don't know|dont know|help|sorry|no/.test(lower)) reply = `That’s okay. Let’s try together: ${prompts[turn % prompts.length]}`;
+      else reply = `I heard you! Great English speaking. ${prompts[turn % prompts.length]}`;
+      const praise = ['Brilliant speaking! ⭐', 'Lovely English! 🌈', 'You’re doing great! 🎉', 'Super try! Keep going! 🦜'][turn % 4];
+      const fullReply = `${praise} ${reply}`;
+      addBubble(fullReply, 'polly');
+      status.textContent = praise;
+      if (typeof FX !== 'undefined') { FX.mascotSay(praise, 2300); FX.confetti(16); }
+      MEDIA.speak(fullReply, 0.94);
+    };
+    const sendTyped = () => answer(input.value);
+    overlay.querySelector('#polly-talk-send').addEventListener('click', sendTyped);
+    input.addEventListener('keydown', (event) => { if (event.key === 'Enter') sendTyped(); });
+    overlay.querySelector('.polly-talk-close').addEventListener('click', close);
+    overlay.addEventListener('click', (event) => { if (event.target === overlay) close(); });
+    if (!Recognition) {
+      listen.disabled = true;
+      listen.textContent = '🎙️ Speech recognition unavailable';
+      status.textContent = 'You can still type your answer. For microphone practice, try a browser that supports speech recognition over HTTPS.';
+    } else {
+      listen.addEventListener('click', () => {
+        if (recognition) { try { recognition.abort(); } catch (_) {} }
+        recognition = new Recognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        listen.disabled = true;
+        listen.textContent = '👂 Listening…';
+        status.textContent = 'I’m listening. Say a short answer in English!';
+        recognition.onresult = (event) => answer(event.results[0][0].transcript);
+        recognition.onerror = (event) => {
+          status.textContent = event.error === 'not-allowed' ? 'Microphone permission is off. You can type instead.' : 'I couldn’t hear that. Try again or type your answer.';
+        };
+        recognition.onend = () => { listen.disabled = false; listen.textContent = '🎙️ Speak to Polly'; };
+        try { recognition.start(); } catch (_) { status.textContent = 'Please try the microphone again, or type your answer.'; listen.disabled = false; listen.textContent = '🎙️ Speak to Polly'; }
+      });
+    }
+    input.focus();
+  },
+
   showCambridgeModal(targetUnitId) {
     const existing = document.getElementById('cambridge-modal');
     if (existing) existing.remove();
@@ -3092,8 +3032,8 @@ const APP = {
     d.id = 'cambridge-modal';
     d.className = 'cambridge-modal-overlay';
 
-    const stageName = (u && u.stage === 's2') ? 'Cambridge Global English 2' : 'Cambridge Global English 1';
-    const unitTitle = u ? (u.emoji + ' ' + u.title) : 'Cambridge Global English';
+    const stageName = u ? `Grade ${String(u.stage || 's1').replace('s', '')} · Stage ${String(u.stage || 's1').replace('s', '')}` : 'Primary English';
+    const unitTitle = u ? (u.emoji + ' ' + u.title) : 'Classroom activity';
 
     d.innerHTML = `
       <div class="cambridge-modal-box">
@@ -3103,7 +3043,7 @@ const APP = {
             <div>
               <h2 style="margin:0;font-size:1.35em;color:#0f172a">${unitTitle}</h2>
               <div class="muted" style="font-size:0.86em">
-                <b>${stageName} (2nd Edition)</b> · Learner's Book, Workbook & Teacher's Resource
+                ${stageName} · independent planning suggestions
               </div>
             </div>
           </div>
@@ -3123,7 +3063,7 @@ const APP = {
         <div class="cambridge-curriculum-grid">
           <div class="cambridge-curriculum-card lb">
             <span class="badge blue" style="margin-bottom:6px">📖 Learner's Book (Coursebook)</span>
-            <h4>Learning Outcomes, Topics & Language Patterns</h4>
+            <h4>Suggested coursebook links · verify in your copy</h4>
             <div style="margin-top:8px;font-size:0.9em;color:#334155;line-height:1.6">
               ${Array.isArray(cur.lb) ? cur.lb.map(item => `<div>• <b>${esc(item)}</b></div>`).join('') : esc(cur.lb)}
             </div>
@@ -3131,7 +3071,7 @@ const APP = {
 
           <div class="cambridge-curriculum-card wb">
             <span class="badge green" style="margin-bottom:6px">✍️ Activity Workbook</span>
-            <h4>Writing, Phonics & Fine Motor Skills</h4>
+            <h4>Suggested workbook links · verify in your copy</h4>
             <div style="margin-top:8px;font-size:0.9em;color:#334155;line-height:1.6">
               ${Array.isArray(cur.wb) ? cur.wb.map(item => `<div>• <b>${esc(item)}</b></div>`).join('') : esc(cur.wb)}
             </div>
@@ -3139,7 +3079,7 @@ const APP = {
 
           <div class="cambridge-curriculum-card tr">
             <span class="badge purple" style="margin-bottom:6px">👩‍🏫 Teacher's Resource (TR Guide)</span>
-            <h4>Physical TPR, Classroom Activities & Assessment</h4>
+            <h4>Teacher activity suggestions · verify before use</h4>
             <div style="margin-top:8px;font-size:0.9em;color:#334155;line-height:1.6">
               ${Array.isArray(cur.tr) ? cur.tr.map(item => `<div>• <b>${esc(item)}</b></div>`).join('') : esc(cur.tr)}
             </div>
@@ -3161,7 +3101,7 @@ const APP = {
 
         <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
           <div style="font-size:0.82em;color:#64748b">
-            📌 100% Aligned with Cambridge University Press & Assessment Global English Standards.
+            📌 Independent classroom material. Unit and page links have not been verified against the books used at your school.
           </div>
           <button class="btn green" id="cambridge-bottom-close" style="font-weight:800;padding:8px 24px">✅ Close Guide</button>
         </div>
@@ -3234,7 +3174,7 @@ const APP = {
           <button class="btn small white" data-d="once">🔁 Bir Daha</button>
         </div></div>`;
     } else if (n === L.length) {
-      const m = (typeof MASCOTS !== 'undefined' && MASCOTS[u.id]) || null;
+      const m = { name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly', quoteEn: "Let's review our new words together!", quoteTr: "Yeni kelimelerimizi birlikte tekrar edelim!", color: '#176b63', bg: '#eef5f1', anim: '' };
       body = `<div class="lslide"><div class="lscene f" style="font-size:44px">📚</div>
         <div class="len">Our New Words! 🌟</div>
         <div class="ltr">Tap, listen, and sing along together!</div>
@@ -3542,6 +3482,8 @@ function handleGlobalCrash(err, type = 'error') {
 
 if (typeof window !== 'undefined') {
   window.addEventListener('error', (event) => {
+    // Resource load failures target their element and are not app exceptions.
+    if (event.target !== window) return;
     handleGlobalCrash(event.error || event.message, 'uncaught-error');
   });
 

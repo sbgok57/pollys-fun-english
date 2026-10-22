@@ -206,7 +206,7 @@ code += `
   window.__TESTMODE = false;
   VOICESET.add('w-zztest');
   MEDIA.speak('zztest');
-  ok(!!(MEDIA.ac && MEDIA.ac['w-zztest']), 'gerçek insan sesi dosya yolu çalışıyor (VOICESET → audio/w-*)');
+  ok(!!(MEDIA.ac && MEDIA.ac['w-zztest']), 'VOICESET eşleşen ses dosyası yolu tanımlı (kayıtlı konuşma sesi niteliği doğrulanmıyor)');
   window.__TESTMODE = true;
 
   console.log('———');

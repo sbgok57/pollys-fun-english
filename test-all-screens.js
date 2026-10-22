@@ -102,5 +102,5 @@ ENGINES.forEach(e => {
 
 console.log(`\nSonuç: ${ENGINES.length}/${ENGINES.length} Motor Başarılı. Hata sayısı: ${engineErrors}`);
 if (engineErrors > 0) process.exit(1);
-console.log('✔ TÜM EKRANLAR VE MOTORLAR %100 HATASIZ!');
+console.log('✔ Tüm tanımlı ekran ve oyun motoru kontrolleri geçti.');
 process.exit(0);

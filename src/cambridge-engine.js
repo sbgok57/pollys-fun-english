@@ -1,15 +1,11 @@
 /* ============================================================
-   📘 CAMBRIDGE GLOBAL ENGLISH 1-4 V2 SMARTBOARD & LESSON ENGINE
+   Draft Grade 1–4 classroom activity portal
    ============================================================
    Features:
    - 4-Stage Selector (Stage 1 to Stage 4) with Large Tabs
    - 1-9 Horizontal Unit Selector Pills Bar for Instant Navigation
-   - 8 Core Modules (Vocab, Baamboozle, Games Hub, Twisters, Songs, Videos, Teacher's Guide, 5-Day Lesson Plans)
-   - Dual Media Toggle (GIPHY Animated GIFs vs Unsplash Real Photos)
-   - 216 Baamboozle Game Packs (36 units x 6 game modes)
-   - 1,040+ Classroom & Smartboard Games Hub with Search & Launch
-   - 2,080 Tongue Twisters Bank (520 per stage) with 0.8x, 1.0x, 1.25x speed
-   - Sing-Along Songs & Curated Video Library (1,050+ videos)
+   - Vocabulary, team games, classroom activities, tongue twisters, songs, videos, notes and lesson plans
+   - Book alignment and external media links are not verified against licensed course materials
    - Settings Modal (BGM, SFX volume sliders, Character Voice, Speed, Theme Switcher)
    - Themes: Colorful Kids, Smartboard High Contrast, Pastel Relaxing
    - Zero-Crash Hardened, P0 Stability & Safe Resource Disposal
@@ -44,7 +40,6 @@
       bgmVolume: 0.35,
       sfxEnabled: true,
       sfxVolume: 0.8,
-      voiceCharacter: "polly",
       voiceSpeed: 1.0,
       voicePitch: 1.35,
       defaultMedia: "gif",
@@ -312,70 +307,31 @@
   };
 
   /* ============================================================
-     5. 🗣️ NATURAL CHARACTER VOICE ENGINE
+     5. 🗣️ BROWSER SPEECH ENGINE
      ============================================================ */
   const NaturalVoiceEngine = {
     positive: [
-      { voice: "polly", phrase: "Brilliant job! You are a shining superstar!" },
-      { voice: "peppa", phrase: "Oinktastic! That is completely right, well done!" },
-      { voice: "chase", phrase: "Hooray! High paws, you nailed it perfectly!" },
-      { voice: "bluey", phrase: "Wackadoo! That was magnificent, high five!" }
+      { voice: "polly", phrase: "Brilliant work. You got it right!" }
     ],
     encouraging: [
-      { voice: "polly", phrase: "Super close! Take a deep breath, you can do it!" },
-      { voice: "peppa", phrase: "Never mind! Let us jump back in and try once more!" },
-      { voice: "chase", phrase: "Good effort team! Practice makes progress!" },
-      { voice: "bluey", phrase: "That was a wonderful try! Give it another go!" }
+      { voice: "polly", phrase: "Good try. Let's have another go!" }
     ],
 
     playCorrect() {
       ConfettiEngine.burst();
-      const s = Settings.getSettings();
-      const preferred = s.voiceCharacter || "polly";
-      const match = this.positive.find(p => p.voice === preferred) || this.positive[0];
-      this.speak(match.phrase, match.voice, 1.05);
+      this.speak(this.positive[0].phrase, null, 1.05);
     },
 
     playEncouragement() {
-      const s = Settings.getSettings();
-      const preferred = s.voiceCharacter || "polly";
-      const match = this.encouraging.find(p => p.voice === preferred) || this.encouraging[0];
-      this.speak(match.phrase, match.voice, 0.95);
+      this.speak(this.encouraging[0].phrase, null, 0.95);
     },
 
     speak(phrase, character, rateModifier = 1.0) {
-      if (typeof window === 'undefined' || !window.speechSynthesis) return;
-      try {
-        window.speechSynthesis.cancel();
-        const s = Settings.getSettings();
-        const utt = new SpeechSynthesisUtterance(String(phrase || '').replace(/[#*_`]/g, '').trim());
-        utt.lang = 'en-GB';
-
-        const baseSpeed = parseFloat(s.voiceSpeed || 1.0);
-        utt.rate = Math.max(0.6, Math.min(1.8, baseSpeed * (rateModifier || 1.0)));
-
-        const charKey = (character || s.voiceCharacter || 'polly').toLowerCase();
-        switch (charKey) {
-          case 'peppa': utt.pitch = 1.6; break;
-          case 'bluey': utt.pitch = 1.4; break;
-          case 'chase': utt.pitch = 1.2; break;
-          case 'polly':
-          default:
-            utt.pitch = parseFloat(s.voicePitch || 1.35);
-            break;
-        }
-
-        // Voice preference
-        const voices = window.speechSynthesis.getVoices() || [];
-        const gbVoice = voices.find(v => v.lang && (v.lang.includes('en-GB') || v.lang.includes('en_GB')));
-        const enVoice = voices.find(v => v.lang && v.lang.startsWith('en'));
-        if (gbVoice) utt.voice = gbVoice;
-        else if (enVoice) utt.voice = enVoice;
-
-        window.speechSynthesis.speak(utt);
-      } catch (err) {
-        console.warn('SpeechSynthesis error:', err);
-      }
+      if (typeof MEDIA === 'undefined' || !MEDIA.speak) return;
+      const settings = Settings.getSettings();
+      const baseSpeed = parseFloat(settings.voiceSpeed || 1.0);
+      const rate = Math.max(0.6, Math.min(1.4, baseSpeed * (rateModifier || 1.0)));
+      MEDIA.speak(String(phrase || '').replace(/[#*_`]/g, '').trim(), rate);
     }
   };
 
@@ -490,7 +446,7 @@
               <div class="brand-logo anim-bounce">P</div>
               <div>
                 <h1>Polly's <span>Fun English</span></h1>
-                <small style="color:#64748b; font-weight:600;">Cambridge Global English 1–4 Smartboard Platform (Second Edition)</small>
+                <small style="color:#64748b; font-weight:600;">Independent classroom activities · Check unit references in your coursebook</small>
               </div>
             </div>
             <div class="nav-controls">
@@ -499,7 +455,7 @@
               </button>
               <button class="btn btn-outline" id="fullscreen-btn">📺 Fullscreen</button>
               <button class="btn btn-primary" id="toggle-media-btn">
-                ${this.media === 'gif' ? '📷 Switch to Real Photos' : '🎬 Switch to GIPHY GIFs'}
+                ${this.media === 'gif' ? '📷 Switch to photos' : '🎬 Switch to animation'}
               </button>
               <button class="btn btn-accent" id="open-settings-btn">⚙️ Settings</button>
               <button class="btn btn-secondary" id="cam-back-home-btn">🏠 Home</button>
@@ -511,19 +467,19 @@
             <section class="stage-selector" id="stage-tabs">
               <div class="stage-tab ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1">
                 <h3>🟢 Grade 1 (Stage 1)</h3>
-                <p>Pre-A1 · School, Family, Games, Farm, Body, Transport, Water</p>
+                <p>Browse vocabulary, games and speaking practice.</p>
               </div>
               <div class="stage-tab ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2">
                 <h3>🔵 Grade 2 (Stage 2)</h3>
-                <p>A1 · Look Closer, City, Sports, Big Sky, Measuring, Minibeasts</p>
+                <p>Browse vocabulary, games and speaking practice.</p>
               </div>
               <div class="stage-tab ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3">
                 <h3>🟣 Grade 3 (Stage 3)</h3>
-                <p>A1+ · Working Together, Communities, Desert, Inventions, Animals</p>
+                <p>Browse vocabulary, games and speaking practice.</p>
               </div>
               <div class="stage-tab ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4">
                 <h3>🟠 Grade 4 (Stage 4)</h3>
-                <p>A2 · Family Heritage, Space, Oceans, Inventions, Sports, Explorers</p>
+                <p>Browse vocabulary, games and speaking practice.</p>
               </div>
             </section>
 
@@ -550,14 +506,14 @@
 
             <!-- 4. 8-MODULE NAVIGATION BAR -->
             <nav class="module-nav">
-              <button class="module-btn ${this.view === 'vocab' ? 'active' : ''}" data-view="vocab">✨ Animated Vocabulary</button>
-              <button class="module-btn ${this.view === 'baamboozle' ? 'active' : ''}" data-view="baamboozle">🎮 Baamboozle Arena (216 Packs)</button>
-              <button class="module-btn ${this.view === 'games-hub' ? 'active' : ''}" data-view="games-hub">🎲 Classroom Games Hub (1,080+ Games)</button>
-              <button class="module-btn ${this.view === 'twisters' ? 'active' : ''}" data-view="twisters">👅 Phonics Tongue Twisters (2,080 Twisters)</button>
+              <button class="module-btn ${this.view === 'vocab' ? 'active' : ''}" data-view="vocab">✨ Vocabulary</button>
+              <button class="module-btn ${this.view === 'baamboozle' ? 'active' : ''}" data-view="baamboozle">🎮 Team games</button>
+              <button class="module-btn ${this.view === 'games-hub' ? 'active' : ''}" data-view="games-hub">🎲 Classroom games</button>
+              <button class="module-btn ${this.view === 'twisters' ? 'active' : ''}" data-view="twisters">👅 Tongue twisters</button>
               <button class="module-btn ${this.view === 'songs' ? 'active' : ''}" data-view="songs">🎵 Sing-Along Songs & Melodies</button>
-              <button class="module-btn ${this.view === 'videos' ? 'active' : ''}" data-view="videos">🎬 Video Library (Songs & Cartoons)</button>
+              <button class="module-btn ${this.view === 'videos' ? 'active' : ''}" data-view="videos">🎬 Videos</button>
               <button class="module-btn ${this.view === 'teacher-guide' ? 'active' : ''}" data-view="teacher-guide">📖 Teacher's Guide & Photocopiables</button>
-              <button class="module-btn ${this.view === 'lesson' ? 'active' : ''}" data-view="lesson">📋 2026-2027 Lesson Plans (36 Weeks)</button>
+              <button class="module-btn ${this.view === 'lesson' ? 'active' : ''}" data-view="lesson">📋 Lesson ideas</button>
             </nav>
 
             <!-- 5. ACTIVE MODULE VIEW -->
@@ -606,17 +562,18 @@
             ${words.map(v => `
               <div class="vocab-card">
                 <div class="vocab-media">
-                  <img src="${this.media === 'gif' ? v.gifUrl : v.realPhoto}" alt="${v.word}" loading="lazy" />
-                  <span class="media-tag">${this.media === 'gif' ? 'GIPHY ANIMATION' : 'REAL PHOTO'}</span>
+                  <img src="${this.media === 'gif' ? v.gifUrl : v.realPhoto}" alt="${v.word}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';this.parentElement.querySelector('.media-tag').style.display='none'" />
+                  <div class="media-fallback" style="display:none" aria-hidden="true"><span>🖼️</span><strong>${v.word}</strong></div>
+                  <span class="media-tag">${this.media === 'gif' ? 'ANIMATION' : 'PHOTO'}</span>
                 </div>
                 <div class="vocab-details">
                   <h4>${v.word}</h4>
                   <div class="tr-meaning">🇹🇷 ${v.turkish}</div>
                   <p style="font-size:0.85rem; color:#64748b; margin-bottom:12px;">📖 ${v.meaning}</p>
                   <div class="voice-bubble">
-                    <span><strong>${(v.characterVoice || 'polly').toUpperCase()}:</strong> "${v.voiceLine}"</span>
-                    <button class="btn btn-outline cam-speak-btn" data-phrase="${v.word}! ${v.voiceLine}" data-char="${v.characterVoice || 'polly'}">
-                      🔊 Listen
+                    <span><strong>Listen and repeat:</strong> Hear the word in your device’s English voice.</span>
+                    <button class="btn btn-outline cam-speak-btn" data-phrase="${v.word}" data-char="polly">
+                      🔊 Hear word
                     </button>
                   </div>
                 </div>
@@ -695,7 +652,7 @@
         <section class="view-section active">
           <div class="resource-box">
             <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
-              <h3>🎲 Cambridge Classroom & Smartboard Games Hub (1,080+ Games)</h3>
+              <h3>🎲 Classroom games</h3>
               <span class="badge" style="background:#ec4899; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
                 ${filtered.length} Games Available
               </span>
@@ -802,11 +759,12 @@
         <section class="view-section active">
           <div class="resource-box">
             <div style="display:flex; justify-content:space-between; margin-bottom:16px; align-items:center; flex-wrap:wrap; gap:8px;">
-              <h3>🎬 Cambridge ESL 1000+ Video Library</h3>
+              <h3>🎬 Video library</h3>
               <span class="badge" style="background:#10b981; color:white; padding:4px 12px; border-radius:12px; font-weight:800;">
                 ${filtered.length} Video (${stageName})
               </span>
             </div>
+            <p class="muted">External video links may change. Preview each video before class.</p>
             <input type="text" class="search-input" id="video-search-input" placeholder="🔍 Search videos or channels..." value="${this.videoSearch}" />
             <div class="video-grid">
               ${filtered.slice(0, 24).map(v => `
@@ -831,7 +789,7 @@
     renderTeacherGuide() {
       const data = (typeof TEACHER_GUIDE_DATA !== 'undefined' ? TEACHER_GUIDE_DATA : (window.TEACHER_GUIDE_DATA || {}));
       const guide = data[this.stageKey] || {
-        stageTitle: "Cambridge Teacher's Guide",
+        stageTitle: "Draft teacher notes",
         cefr: "A1",
         targetAge: "7-8 Years",
         smartboardStrategies: [],
@@ -856,8 +814,8 @@
       return `
         <section class="view-section active">
           <div class="resource-box">
-            <h3>📚 ${guide.stageTitle} — Teacher's Smartboard & Curriculum Guide</h3>
-            <p style="color:#475569;"><strong>Target Level:</strong> ${guide.cefr} | <strong>Target Age Group:</strong> ${guide.targetAge}</p>
+              <h3>📚 ${guide.stageTitle} — Classroom notes</h3>
+              <p style="color:#475569;"><strong>Suggested level (unverified):</strong> ${guide.cefr} | <strong>Suggested age:</strong> ${guide.targetAge}</p>
           </div>
           <div class="resource-box">
             <h3>💻 Interactive Smartboard Strategies</h3>
@@ -895,7 +853,7 @@
               <button class="btn btn-outline" onclick="window.print()">🖨️ Print Plan / Save PDF</button>
             </div>
             <p style="font-size:1.05rem; margin-bottom:16px; color:#1e40af; font-weight:600;">
-              <strong>🎯 Weekly Learning Objective:</strong> ${lp.weeklyGoal || 'Master core unit competencies.'}
+              <strong>🎯 Weekly practice goal:</strong> ${lp.weeklyGoal || 'Practise this week’s language targets.'}
             </p>
             ${daysHtml}
           </div>
@@ -1065,13 +1023,9 @@
             <input type="range" id="setting-sfx-volume" min="0" max="1" step="0.05" value="${s.sfxVolume || 0.8}" />
           </div>
           <div class="settings-group">
-            <label>🗣️ Character Voice Actor</label>
-            <select id="setting-voice-char">
-              <option value="polly" ${s.voiceCharacter === 'polly' ? 'selected' : ''}>Polly (Cheerful Mascot)</option>
-              <option value="peppa" ${s.voiceCharacter === 'peppa' ? 'selected' : ''}>Peppa Pig (Playful Child)</option>
-              <option value="bluey" ${s.voiceCharacter === 'bluey' ? 'selected' : ''}>Bluey (Energetic)</option>
-              <option value="chase" ${s.voiceCharacter === 'chase' ? 'selected' : ''}>Chase - PAW Patrol (Brave)</option>
-            </select>
+            <label>🗣️ Spoken voice</label>
+            <p class="muted" style="font-size:.88rem">This uses the English speech voice available in your browser or device. Accent and sound quality vary by device.</p>
+            <button class="btn btn-outline" id="choose-device-voice">Choose a device voice</button>
           </div>
           <div class="settings-group">
             <label>⚡ Speech Speed (TTS)</label>
@@ -1196,11 +1150,16 @@
       }
 
       const saveSettings = this.container.querySelector('#save-settings-btn');
+      const chooseDeviceVoice = this.container.querySelector('#choose-device-voice');
+      if (chooseDeviceVoice) {
+        chooseDeviceVoice.addEventListener('click', () => {
+          if (typeof APP !== 'undefined' && APP.showVoices) APP.showVoices();
+        });
+      }
       if (saveSettings) {
         saveSettings.addEventListener('click', () => {
           const bgmVal = parseFloat(this.container.querySelector('#setting-bgm-volume').value);
           const sfxVal = parseFloat(this.container.querySelector('#setting-sfx-volume').value);
-          const charVal = this.container.querySelector('#setting-voice-char').value;
           const speedVal = parseFloat(this.container.querySelector('#setting-voice-speed').value);
           const themeVal = this.container.querySelector('#setting-theme').value;
 
@@ -1208,7 +1167,6 @@
             ...Settings.getSettings(),
             bgmVolume: bgmVal,
             sfxVolume: sfxVal,
-            voiceCharacter: charVal,
             voiceSpeed: speedVal,
             themeMode: themeVal
           };
@@ -1370,7 +1328,7 @@
           const lyrics = e.currentTarget.getAttribute('data-lyrics');
           ConfettiEngine.burst();
           SoundFX.playWin();
-          NaturalVoiceEngine.speak(lyrics, 'peppa', 0.95);
+          NaturalVoiceEngine.speak(lyrics, null, 0.95);
         });
       });
 

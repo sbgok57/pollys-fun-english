@@ -65,6 +65,7 @@ code += `
   console.log('TOPLAM ŞARKI & CHANT  :', TOTALSONGS);
   console.log('TOPLAM KELİME         :', totalWords);
   let hata = 0;
+  let tekrarEmojiSeti = 0;
   ALLSETS.forEach(u => {
     if(!u.cats || !u.cats.length){ console.log('✘ KATEGORİ YOK:', u.id); hata++; }
     if(!u.w || !u.w.length){ console.log('✘ KELİME YOK:', u.id); hata++; }
@@ -75,7 +76,10 @@ code += `
     });
     const em = u.w.map(t => t[1]).filter(Boolean);
     const dup = em.filter((e, i) => em.indexOf(e) !== i);
-    if(dup.length) console.log('⚠ EMOJİ TEKRAR (' + u.id + '):', [...new Set(dup)].join(' '));
+    if(dup.length) {
+      tekrarEmojiSeti++;
+      console.log('⚠ TEKRAR EDEN GÖRSEL SİMGESİ (' + u.id + '):', [...new Set(dup)].join(' '));
+    }
     if(!u.s || u.s.length < 5){ console.log('✘ CÜMLE AZ:', u.id, u.s && u.s.length); hata++; }
     u.s.forEach(s => { if(!s[0] || !s[1] || !s[2]){ console.log('✘ CÜMLE HATA:', u.id, JSON.stringify(s)); hata++; } });
   });
@@ -92,7 +96,9 @@ code += `
       if(!e.levels.every(l => l.n && l.c)){ console.log('✘ SEVİYE HATA:', e.id); hata++; }
     });
   });
-  console.log(hata ? ('!!! ' + hata + ' HATA BULUNDU') : '✔ VERİ TAMAMEN TEMİZ');
+  console.log(hata
+    ? ('!!! ' + hata + ' KRİTİK VERİ KONTROLÜ BAŞARISIZ')
+    : ('✔ Temel veri kontrolleri geçti; ' + tekrarEmojiSeti + ' ünitede tekrar eden simge var.'));
   if(hata > 0) process.exit(1);
 })();
 `;

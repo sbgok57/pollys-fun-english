@@ -1,7 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
-   🛡️ SIFIR HATA DOĞRULAMASI — ÜRETİLEN DOSYANIN TA KENDİSİNİ test eder
-   english-fun-zone.html'i yükler, ekranları simüle eder, hiç hata
-   çıkmadığını ve tüm seslerin + dağıtım paketinin TAM olduğunu kanıtlar.
+   Derlenmiş HTML'i yükler ve temel ekran akışlarını taklit eder.
+   Bu test çevrimiçi medya bağlantılarını veya müfredat eşleşmelerini doğrulamaz.
    ══════════════════════════════════════════════════════════════ */
 const fs = require('fs');
 const path = require('path');
@@ -14,7 +13,7 @@ const bad = (n) => {
   hata++;
 };
 
-console.log('════ 🛡️ SIFIR HATA v7 ÜRETİM DOĞRULAMASI ════');
+console.log('════ DERLENMİŞ SAYFA VE DAĞITIM DOSYASI KONTROLLERİ ════');
 
 /* ── 1) DOSYA BÜTÜNLÜĞÜ (string düzeyi) ── */
 if (!fs.existsSync('english-fun-zone.html')) {
@@ -202,7 +201,7 @@ try {
 
 console.log('———');
 if (hata === 0) {
-  console.log('★★★ SIFIR HATA: ÜRETİM DOSYASI + PAKET TAMAMEN DOĞRULANDI ★★★');
+  console.log('✔ Derlenmiş HTML ve dağıtım paketi kontrolleri geçti.');
   process.exit(0);
 } else {
   console.error('!!! ' + hata + ' HATA TESPİT EDİLDİ');

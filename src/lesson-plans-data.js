@@ -1,7 +1,7 @@
 /* ============================================================
-   📋 2026-2027 ACADEMIC YEAR LESSON PLANS & CURRICULUM DATA
-   Cambridge Global English 1, 2, 3 & 4 (Second Edition)
-   36 Weeks, Exact Calendar Dates, 4 Cambridge Resources,
+   Draft 2026-2027 classroom planning ideas
+   Coursebook mappings are suggestions and are not verified against source books
+   Calendar dates, book names and learning targets require teacher verification,
    Daily 40-Min Breakdown, TPR Physical Movement & Smartboard Links
    ============================================================ */
 
@@ -9,245 +9,209 @@ const LESSON_PLANS_DATA = {
   "stages": {
     "stage1": {
       "title": "Grade 1 (Stage 1 / Pre-A1)",
-      "book": "Cambridge Global English 1 (Second Edition)",
+      "book": "Draft mapping: Cambridge Global English 1 (Second Edition) — verify against your copy",
       "cefr": "Pre-A1",
       "units": {
         "1": {
           "title": "Welcome to School",
           "grammar": "What is this? It is a... / Stand up, sit down",
           "phonics": "/æ/, /b/, /p/, /t/",
-          "mascot": "Mickey Mouse"
         },
         "2": {
           "title": "Family Time",
           "grammar": "This is my (mother/father)... / Who is this?",
           "phonics": "/f/, /m/, /d/, short /e/",
-          "mascot": "Winnie the Pooh"
         },
         "3": {
           "title": "Fun & Games",
           "grammar": "I have got a... / Can you (hop/jump)?",
           "phonics": "/h/, /j/, /k/, short /i/",
-          "mascot": "Woody & Buzz"
         },
         "4": {
           "title": "Making Things",
           "grammar": "Let us make... / What color is it? It is (blue).",
           "phonics": "/c/, /g/, /m/, short /o/",
-          "mascot": "Pinocchio"
         },
         "5": {
           "title": "On the Farm",
           "grammar": "There is a / There are... / How many (cows)?",
           "phonics": "/d/, /h/, /f/, short /u/",
-          "mascot": "Disney Farm Friends"
         },
         "6": {
           "title": "My Body",
           "grammar": "Touch your (head/toes) / I have two eyes",
           "phonics": "/b/, /n/, /t/, /l/",
-          "mascot": "Olaf & Baymax"
         },
         "7": {
           "title": "Transportation",
           "grammar": "How do you go? / I go by (bus/car)",
           "phonics": "/v/, /w/, /y/, /z/",
-          "mascot": "Lightning McQueen"
         },
         "8": {
           "title": "Animals Around Us",
           "grammar": "It can / It cannot... / Big vs Small",
           "phonics": "/ch/, /sh/, /th/",
-          "mascot": "Simba & Timon"
         },
         "9": {
           "title": "Wonderful Water",
           "grammar": "Water is (clean/cold) / Do you like water?",
           "phonics": "/s/, /fl/, /dr/",
-          "mascot": "Ariel & Flounder"
         }
       }
     },
     "stage2": {
       "title": "Grade 2 (Stage 2 / A1)",
-      "book": "Cambridge Global English 2 (Second Edition)",
+      "book": "Draft mapping: Cambridge Global English 2 (Second Edition) — verify against your copy",
       "cefr": "A1",
       "units": {
         "1": {
           "title": "Look What I Can Do!",
           "grammar": "Can you...? Yes, I can / No, I can't",
           "phonics": "Long /eɪ/ (cake, rain, day)",
-          "mascot": "Donald Duck"
         },
         "2": {
           "title": "Look Closer",
           "grammar": "It has got... / What does it look like?",
           "phonics": "Long /iː/ (bee, leaf, happy)",
-          "mascot": "Judy Hopps"
         },
         "3": {
           "title": "The City",
           "grammar": "Where is the...? Next to / opposite / between",
           "phonics": "Long /aɪ/ (kite, light, sky)",
-          "mascot": "Chase (PAW Patrol)"
         },
         "4": {
           "title": "Great Days Out",
           "grammar": "Past simple was / were / We went to...",
           "phonics": "Long /oʊ/ (boat, bone, snow)",
-          "mascot": "Bluey"
         },
         "5": {
           "title": "Measuring Up",
           "grammar": "How tall? How long? / Longer than, taller than",
           "phonics": "Long /uː/ (moon, flute, blue)",
-          "mascot": "Buzz Lightyear"
         },
         "6": {
           "title": "Bugs & Minibeasts",
           "grammar": "They have six legs / Where do they live?",
           "phonics": "Consonant blends /st/, /sp/, /sk/",
-          "mascot": "Simba"
         },
         "7": {
           "title": "Past & Present",
           "grammar": "People used to... / Did they have cars?",
           "phonics": "Silent letters /k/ in knee, /w/ in write",
-          "mascot": "Hercules"
         },
         "8": {
           "title": "Home & Habitats",
           "grammar": "Comparative adjectives / This is cozier than...",
           "phonics": "R-controlled vowels /ar/, /or/",
-          "mascot": "Baloo"
         },
         "9": {
           "title": "Wonderful World",
           "grammar": "Superlative: The highest, the longest, the deepest",
           "phonics": "Diphthongs /aʊ/ and /ɔɪ/",
-          "mascot": "Peter Pan"
         }
       }
     },
     "stage3": {
       "title": "Grade 3 (Stage 3 / A1+)",
-      "book": "Cambridge Global English 3 (Second Edition)",
+      "book": "Draft mapping: Cambridge Global English 3 (Second Edition) — verify against your copy",
       "cefr": "A1+",
       "units": {
         "1": {
           "title": "Working Together",
           "grammar": "Must / Must not / Imperatives for teamwork",
           "phonics": "Compound words & prefix un-",
-          "mascot": "Incredibles"
         },
         "2": {
           "title": "Family & Communities",
           "grammar": "Past simple regular & irregular verbs",
           "phonics": "-ed endings: /t/, /d/, /ɪd/",
-          "mascot": "Moana"
         },
         "3": {
           "title": "Desert Life",
           "grammar": "Adaptation: It can survive because...",
           "phonics": "Vowel digraphs /ea/, /ee/",
-          "mascot": "Aladdin & Genie"
         },
         "4": {
           "title": "Craft & Inventions",
           "grammar": "Passive intro / Made of wood, plastic, glass",
           "phonics": "Silent gh (night, bright, thought)",
-          "mascot": "Pinocchio"
         },
         "5": {
           "title": "Animal Habitats",
           "grammar": "If conditionals (zero) / If it rains, plants grow",
           "phonics": "Word endings -ful and -less",
-          "mascot": "Simba"
         },
         "6": {
           "title": "Food & Nutrition",
           "grammar": "Countable vs Uncountable (Much / Many / Some / Any)",
           "phonics": "Soft c /s/ and soft g /dʒ/",
-          "mascot": "Peppa Pig"
         },
         "7": {
           "title": "Myths & Legends",
           "grammar": "Past continuous: What were they doing?",
           "phonics": "Consonant digraphs /ph/ and /gh/",
-          "mascot": "Peter Pan"
         },
         "8": {
           "title": "Earth & Ecosystems",
           "grammar": "Future with will / won't / going to",
           "phonics": "Homophones (sea/see, meet/meat)",
-          "mascot": "Ariel"
         },
         "9": {
           "title": "Adventure & Exploration",
           "grammar": "Have you ever...? Present perfect with ever/never",
           "phonics": "Stress in multi-syllable words",
-          "mascot": "Buzz Lightyear"
         }
       }
     },
     "stage4": {
       "title": "Grade 4 (Stage 4 / A2)",
-      "book": "Cambridge Global English 4 (Second Edition)",
+      "book": "Draft mapping: Cambridge Global English 4 (Second Edition) — verify against your copy",
       "cefr": "A2",
       "units": {
         "1": {
           "title": "Family Heritage & Past",
           "grammar": "Used to do / Past continuous vs past simple",
           "phonics": "Prefixes re-, dis-, pre-",
-          "mascot": "Woody"
         },
         "2": {
           "title": "Space & Solar System",
           "grammar": "Comparative & superlative adverbs (more quickly)",
           "phonics": "Greek roots: astro, bio, geo",
-          "mascot": "Buzz Lightyear"
         },
         "3": {
           "title": "Oceans & Marine Life",
           "grammar": "Passive voice: Whales are protected by laws",
           "phonics": "Suffixes -tion, -sion",
-          "mascot": "Dory & Nemo"
         },
         "4": {
           "title": "Great Inventions",
           "grammar": "Defining relative clauses: A gadget that solves...",
           "phonics": "Stress patterns in nouns vs verbs",
-          "mascot": "Judy Hopps"
         },
         "5": {
           "title": "World of Sports",
           "grammar": "Adverbs of frequency & degree (extremely, quite)",
           "phonics": "Irregular plurals & silent letters",
-          "mascot": "Dash"
         },
         "6": {
           "title": "History Detectives",
           "grammar": "Reported speech intro / Clues suggest that...",
           "phonics": "Latin roots: audi, scrib, vid",
-          "mascot": "Hercules"
         },
         "7": {
           "title": "Weather & Climate Change",
           "grammar": "First conditional: If we protect trees, we will...",
           "phonics": "Compound adjectives (eco-friendly)",
-          "mascot": "Elsa"
         },
         "8": {
           "title": "Great Explorers",
           "grammar": "Past perfect intro / Had discovered before...",
           "phonics": "Word formation & derivational suffixes",
-          "mascot": "Moana"
         },
         "9": {
           "title": "Robotics & The Future",
           "grammar": "Modals of deduction (might, could, must be)",
           "phonics": "Technology terms & blended sounds",
-          "mascot": "Polly"
         }
       }
     }
@@ -265,7 +229,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Welcome to School",
           "grammar": "What is this? It is a... / Stand up, sit down",
           "phonics": "/æ/, /b/, /p/, /t/",
-          "mascot": "Mickey Mouse",
           "learnersBook": "Cambridge Global English 1 LB Pages 10–12",
           "workbook": "Cambridge Global English 1 AB Pages 8–10",
           "teacherResource": "Teacher's Resource 1 Section 1.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -276,7 +239,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Mickey Mouse Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -300,7 +263,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look What I Can Do!",
           "grammar": "Can you...? Yes, I can / No, I can't",
           "phonics": "Long /eɪ/ (cake, rain, day)",
-          "mascot": "Donald Duck",
           "learnersBook": "Cambridge Global English 2 LB Pages 10–12",
           "workbook": "Cambridge Global English 2 AB Pages 8–10",
           "teacherResource": "Teacher's Resource 2 Section 1.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -311,7 +273,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Donald Duck Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -335,7 +297,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Working Together",
           "grammar": "Must / Must not / Imperatives for teamwork",
           "phonics": "Compound words & prefix un-",
-          "mascot": "Incredibles",
           "learnersBook": "Cambridge Global English 3 LB Pages 10–12",
           "workbook": "Cambridge Global English 3 AB Pages 8–10",
           "teacherResource": "Teacher's Resource 3 Section 1.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -346,7 +307,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Incredibles Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -370,7 +331,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Heritage & Past",
           "grammar": "Used to do / Past continuous vs past simple",
           "phonics": "Prefixes re-, dis-, pre-",
-          "mascot": "Woody",
           "learnersBook": "Cambridge Global English 4 LB Pages 10–12",
           "workbook": "Cambridge Global English 4 AB Pages 8–10",
           "teacherResource": "Teacher's Resource 4 Section 1.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -381,7 +341,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -415,7 +375,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Welcome to School",
           "grammar": "What is this? It is a... / Stand up, sit down",
           "phonics": "/æ/, /b/, /p/, /t/",
-          "mascot": "Mickey Mouse",
           "learnersBook": "Cambridge Global English 1 LB Pages 13–15",
           "workbook": "Cambridge Global English 1 AB Pages 11–13",
           "teacherResource": "Teacher's Resource 1 Section 1.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -426,7 +385,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Mickey Mouse Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -450,7 +409,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look What I Can Do!",
           "grammar": "Can you...? Yes, I can / No, I can't",
           "phonics": "Long /eɪ/ (cake, rain, day)",
-          "mascot": "Donald Duck",
           "learnersBook": "Cambridge Global English 2 LB Pages 13–15",
           "workbook": "Cambridge Global English 2 AB Pages 11–13",
           "teacherResource": "Teacher's Resource 2 Section 1.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -461,7 +419,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Donald Duck Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -485,7 +443,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Working Together",
           "grammar": "Must / Must not / Imperatives for teamwork",
           "phonics": "Compound words & prefix un-",
-          "mascot": "Incredibles",
           "learnersBook": "Cambridge Global English 3 LB Pages 13–15",
           "workbook": "Cambridge Global English 3 AB Pages 11–13",
           "teacherResource": "Teacher's Resource 3 Section 1.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -496,7 +453,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Incredibles Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -520,7 +477,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Heritage & Past",
           "grammar": "Used to do / Past continuous vs past simple",
           "phonics": "Prefixes re-, dis-, pre-",
-          "mascot": "Woody",
           "learnersBook": "Cambridge Global English 4 LB Pages 13–15",
           "workbook": "Cambridge Global English 4 AB Pages 11–13",
           "teacherResource": "Teacher's Resource 4 Section 1.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -531,7 +487,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -565,7 +521,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Welcome to School",
           "grammar": "What is this? It is a... / Stand up, sit down",
           "phonics": "/æ/, /b/, /p/, /t/",
-          "mascot": "Mickey Mouse",
           "learnersBook": "Cambridge Global English 1 LB Pages 16–18",
           "workbook": "Cambridge Global English 1 AB Pages 14–16",
           "teacherResource": "Teacher's Resource 1 Section 1.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -576,7 +531,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Mickey Mouse Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -600,7 +555,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look What I Can Do!",
           "grammar": "Can you...? Yes, I can / No, I can't",
           "phonics": "Long /eɪ/ (cake, rain, day)",
-          "mascot": "Donald Duck",
           "learnersBook": "Cambridge Global English 2 LB Pages 16–18",
           "workbook": "Cambridge Global English 2 AB Pages 14–16",
           "teacherResource": "Teacher's Resource 2 Section 1.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -611,7 +565,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Donald Duck Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -635,7 +589,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Working Together",
           "grammar": "Must / Must not / Imperatives for teamwork",
           "phonics": "Compound words & prefix un-",
-          "mascot": "Incredibles",
           "learnersBook": "Cambridge Global English 3 LB Pages 16–18",
           "workbook": "Cambridge Global English 3 AB Pages 14–16",
           "teacherResource": "Teacher's Resource 3 Section 1.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -646,7 +599,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Incredibles Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -670,7 +623,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Heritage & Past",
           "grammar": "Used to do / Past continuous vs past simple",
           "phonics": "Prefixes re-, dis-, pre-",
-          "mascot": "Woody",
           "learnersBook": "Cambridge Global English 4 LB Pages 16–18",
           "workbook": "Cambridge Global English 4 AB Pages 14–16",
           "teacherResource": "Teacher's Resource 4 Section 1.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -681,7 +633,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -715,7 +667,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Welcome to School",
           "grammar": "What is this? It is a... / Stand up, sit down",
           "phonics": "/æ/, /b/, /p/, /t/",
-          "mascot": "Mickey Mouse",
           "learnersBook": "Cambridge Global English 1 LB Pages 19–21",
           "workbook": "Cambridge Global English 1 AB Pages 17–19",
           "teacherResource": "Teacher's Resource 1 Section 1.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -726,7 +677,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Mickey Mouse Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -750,7 +701,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look What I Can Do!",
           "grammar": "Can you...? Yes, I can / No, I can't",
           "phonics": "Long /eɪ/ (cake, rain, day)",
-          "mascot": "Donald Duck",
           "learnersBook": "Cambridge Global English 2 LB Pages 19–21",
           "workbook": "Cambridge Global English 2 AB Pages 17–19",
           "teacherResource": "Teacher's Resource 2 Section 1.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -761,7 +711,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Donald Duck Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -785,7 +735,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Working Together",
           "grammar": "Must / Must not / Imperatives for teamwork",
           "phonics": "Compound words & prefix un-",
-          "mascot": "Incredibles",
           "learnersBook": "Cambridge Global English 3 LB Pages 19–21",
           "workbook": "Cambridge Global English 3 AB Pages 17–19",
           "teacherResource": "Teacher's Resource 3 Section 1.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -796,7 +745,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Incredibles Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -820,7 +769,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Heritage & Past",
           "grammar": "Used to do / Past continuous vs past simple",
           "phonics": "Prefixes re-, dis-, pre-",
-          "mascot": "Woody",
           "learnersBook": "Cambridge Global English 4 LB Pages 19–21",
           "workbook": "Cambridge Global English 4 AB Pages 17–19",
           "teacherResource": "Teacher's Resource 4 Section 1.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -831,7 +779,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -865,7 +813,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Time",
           "grammar": "This is my (mother/father)... / Who is this?",
           "phonics": "/f/, /m/, /d/, short /e/",
-          "mascot": "Winnie the Pooh",
           "learnersBook": "Cambridge Global English 1 LB Pages 24–26",
           "workbook": "Cambridge Global English 1 AB Pages 20–22",
           "teacherResource": "Teacher's Resource 1 Section 2.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -876,7 +823,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Winnie the Pooh Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -900,7 +847,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look Closer",
           "grammar": "It has got... / What does it look like?",
           "phonics": "Long /iː/ (bee, leaf, happy)",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 2 LB Pages 24–26",
           "workbook": "Cambridge Global English 2 AB Pages 20–22",
           "teacherResource": "Teacher's Resource 2 Section 2.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -911,7 +857,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -935,7 +881,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family & Communities",
           "grammar": "Past simple regular & irregular verbs",
           "phonics": "-ed endings: /t/, /d/, /ɪd/",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 3 LB Pages 24–26",
           "workbook": "Cambridge Global English 3 AB Pages 20–22",
           "teacherResource": "Teacher's Resource 3 Section 2.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -946,7 +891,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -970,7 +915,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Space & Solar System",
           "grammar": "Comparative & superlative adverbs (more quickly)",
           "phonics": "Greek roots: astro, bio, geo",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 4 LB Pages 24–26",
           "workbook": "Cambridge Global English 4 AB Pages 20–22",
           "teacherResource": "Teacher's Resource 4 Section 2.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -981,7 +925,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1015,7 +959,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Time",
           "grammar": "This is my (mother/father)... / Who is this?",
           "phonics": "/f/, /m/, /d/, short /e/",
-          "mascot": "Winnie the Pooh",
           "learnersBook": "Cambridge Global English 1 LB Pages 27–29",
           "workbook": "Cambridge Global English 1 AB Pages 23–25",
           "teacherResource": "Teacher's Resource 1 Section 2.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1026,7 +969,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Winnie the Pooh Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1050,7 +993,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look Closer",
           "grammar": "It has got... / What does it look like?",
           "phonics": "Long /iː/ (bee, leaf, happy)",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 2 LB Pages 27–29",
           "workbook": "Cambridge Global English 2 AB Pages 23–25",
           "teacherResource": "Teacher's Resource 2 Section 2.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1061,7 +1003,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1085,7 +1027,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family & Communities",
           "grammar": "Past simple regular & irregular verbs",
           "phonics": "-ed endings: /t/, /d/, /ɪd/",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 3 LB Pages 27–29",
           "workbook": "Cambridge Global English 3 AB Pages 23–25",
           "teacherResource": "Teacher's Resource 3 Section 2.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1096,7 +1037,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1120,7 +1061,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Space & Solar System",
           "grammar": "Comparative & superlative adverbs (more quickly)",
           "phonics": "Greek roots: astro, bio, geo",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 4 LB Pages 27–29",
           "workbook": "Cambridge Global English 4 AB Pages 23–25",
           "teacherResource": "Teacher's Resource 4 Section 2.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1131,7 +1071,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1165,7 +1105,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Time",
           "grammar": "This is my (mother/father)... / Who is this?",
           "phonics": "/f/, /m/, /d/, short /e/",
-          "mascot": "Winnie the Pooh",
           "learnersBook": "Cambridge Global English 1 LB Pages 30–32",
           "workbook": "Cambridge Global English 1 AB Pages 26–28",
           "teacherResource": "Teacher's Resource 1 Section 2.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1176,7 +1115,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Winnie the Pooh Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1200,7 +1139,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look Closer",
           "grammar": "It has got... / What does it look like?",
           "phonics": "Long /iː/ (bee, leaf, happy)",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 2 LB Pages 30–32",
           "workbook": "Cambridge Global English 2 AB Pages 26–28",
           "teacherResource": "Teacher's Resource 2 Section 2.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1211,7 +1149,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1235,7 +1173,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family & Communities",
           "grammar": "Past simple regular & irregular verbs",
           "phonics": "-ed endings: /t/, /d/, /ɪd/",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 3 LB Pages 30–32",
           "workbook": "Cambridge Global English 3 AB Pages 26–28",
           "teacherResource": "Teacher's Resource 3 Section 2.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1246,7 +1183,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1270,7 +1207,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Space & Solar System",
           "grammar": "Comparative & superlative adverbs (more quickly)",
           "phonics": "Greek roots: astro, bio, geo",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 4 LB Pages 30–32",
           "workbook": "Cambridge Global English 4 AB Pages 26–28",
           "teacherResource": "Teacher's Resource 4 Section 2.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1281,7 +1217,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1315,7 +1251,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family Time",
           "grammar": "This is my (mother/father)... / Who is this?",
           "phonics": "/f/, /m/, /d/, short /e/",
-          "mascot": "Winnie the Pooh",
           "learnersBook": "Cambridge Global English 1 LB Pages 33–35",
           "workbook": "Cambridge Global English 1 AB Pages 29–31",
           "teacherResource": "Teacher's Resource 1 Section 2.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1326,7 +1261,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Winnie the Pooh Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1350,7 +1285,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Look Closer",
           "grammar": "It has got... / What does it look like?",
           "phonics": "Long /iː/ (bee, leaf, happy)",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 2 LB Pages 33–35",
           "workbook": "Cambridge Global English 2 AB Pages 29–31",
           "teacherResource": "Teacher's Resource 2 Section 2.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1361,7 +1295,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1385,7 +1319,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Family & Communities",
           "grammar": "Past simple regular & irregular verbs",
           "phonics": "-ed endings: /t/, /d/, /ɪd/",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 3 LB Pages 33–35",
           "workbook": "Cambridge Global English 3 AB Pages 29–31",
           "teacherResource": "Teacher's Resource 3 Section 2.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1396,7 +1329,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1420,7 +1353,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Space & Solar System",
           "grammar": "Comparative & superlative adverbs (more quickly)",
           "phonics": "Greek roots: astro, bio, geo",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 4 LB Pages 33–35",
           "workbook": "Cambridge Global English 4 AB Pages 29–31",
           "teacherResource": "Teacher's Resource 4 Section 2.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1431,7 +1363,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1465,7 +1397,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Fun & Games",
           "grammar": "I have got a... / Can you (hop/jump)?",
           "phonics": "/h/, /j/, /k/, short /i/",
-          "mascot": "Woody & Buzz",
           "learnersBook": "Cambridge Global English 1 LB Pages 38–40",
           "workbook": "Cambridge Global English 1 AB Pages 32–34",
           "teacherResource": "Teacher's Resource 1 Section 3.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -1476,7 +1407,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody & Buzz Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1500,7 +1431,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "The City",
           "grammar": "Where is the...? Next to / opposite / between",
           "phonics": "Long /aɪ/ (kite, light, sky)",
-          "mascot": "Chase (PAW Patrol)",
           "learnersBook": "Cambridge Global English 2 LB Pages 38–40",
           "workbook": "Cambridge Global English 2 AB Pages 32–34",
           "teacherResource": "Teacher's Resource 2 Section 3.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -1511,7 +1441,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Chase (PAW Patrol) Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1535,7 +1465,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Desert Life",
           "grammar": "Adaptation: It can survive because...",
           "phonics": "Vowel digraphs /ea/, /ee/",
-          "mascot": "Aladdin & Genie",
           "learnersBook": "Cambridge Global English 3 LB Pages 38–40",
           "workbook": "Cambridge Global English 3 AB Pages 32–34",
           "teacherResource": "Teacher's Resource 3 Section 3.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -1546,7 +1475,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Aladdin & Genie Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1570,7 +1499,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Oceans & Marine Life",
           "grammar": "Passive voice: Whales are protected by laws",
           "phonics": "Suffixes -tion, -sion",
-          "mascot": "Dory & Nemo",
           "learnersBook": "Cambridge Global English 4 LB Pages 38–40",
           "workbook": "Cambridge Global English 4 AB Pages 32–34",
           "teacherResource": "Teacher's Resource 4 Section 3.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -1581,7 +1509,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dory & Nemo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1615,7 +1543,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Fun & Games",
           "grammar": "I have got a... / Can you (hop/jump)?",
           "phonics": "/h/, /j/, /k/, short /i/",
-          "mascot": "Woody & Buzz",
           "learnersBook": "Cambridge Global English 1 LB Pages 41–43",
           "workbook": "Cambridge Global English 1 AB Pages 35–37",
           "teacherResource": "Teacher's Resource 1 Section 3.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1626,7 +1553,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody & Buzz Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1650,7 +1577,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "The City",
           "grammar": "Where is the...? Next to / opposite / between",
           "phonics": "Long /aɪ/ (kite, light, sky)",
-          "mascot": "Chase (PAW Patrol)",
           "learnersBook": "Cambridge Global English 2 LB Pages 41–43",
           "workbook": "Cambridge Global English 2 AB Pages 35–37",
           "teacherResource": "Teacher's Resource 2 Section 3.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1661,7 +1587,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Chase (PAW Patrol) Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1685,7 +1611,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Desert Life",
           "grammar": "Adaptation: It can survive because...",
           "phonics": "Vowel digraphs /ea/, /ee/",
-          "mascot": "Aladdin & Genie",
           "learnersBook": "Cambridge Global English 3 LB Pages 41–43",
           "workbook": "Cambridge Global English 3 AB Pages 35–37",
           "teacherResource": "Teacher's Resource 3 Section 3.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1696,7 +1621,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Aladdin & Genie Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1720,7 +1645,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Oceans & Marine Life",
           "grammar": "Passive voice: Whales are protected by laws",
           "phonics": "Suffixes -tion, -sion",
-          "mascot": "Dory & Nemo",
           "learnersBook": "Cambridge Global English 4 LB Pages 41–43",
           "workbook": "Cambridge Global English 4 AB Pages 35–37",
           "teacherResource": "Teacher's Resource 4 Section 3.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -1731,7 +1655,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dory & Nemo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1765,7 +1689,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Fun & Games",
           "grammar": "I have got a... / Can you (hop/jump)?",
           "phonics": "/h/, /j/, /k/, short /i/",
-          "mascot": "Woody & Buzz",
           "learnersBook": "Cambridge Global English 1 LB Pages 44–46",
           "workbook": "Cambridge Global English 1 AB Pages 38–40",
           "teacherResource": "Teacher's Resource 1 Section 3.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1776,7 +1699,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody & Buzz Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1800,7 +1723,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "The City",
           "grammar": "Where is the...? Next to / opposite / between",
           "phonics": "Long /aɪ/ (kite, light, sky)",
-          "mascot": "Chase (PAW Patrol)",
           "learnersBook": "Cambridge Global English 2 LB Pages 44–46",
           "workbook": "Cambridge Global English 2 AB Pages 38–40",
           "teacherResource": "Teacher's Resource 2 Section 3.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1811,7 +1733,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Chase (PAW Patrol) Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1835,7 +1757,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Desert Life",
           "grammar": "Adaptation: It can survive because...",
           "phonics": "Vowel digraphs /ea/, /ee/",
-          "mascot": "Aladdin & Genie",
           "learnersBook": "Cambridge Global English 3 LB Pages 44–46",
           "workbook": "Cambridge Global English 3 AB Pages 38–40",
           "teacherResource": "Teacher's Resource 3 Section 3.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1846,7 +1767,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Aladdin & Genie Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1870,7 +1791,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Oceans & Marine Life",
           "grammar": "Passive voice: Whales are protected by laws",
           "phonics": "Suffixes -tion, -sion",
-          "mascot": "Dory & Nemo",
           "learnersBook": "Cambridge Global English 4 LB Pages 44–46",
           "workbook": "Cambridge Global English 4 AB Pages 38–40",
           "teacherResource": "Teacher's Resource 4 Section 3.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -1881,7 +1801,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dory & Nemo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1915,7 +1835,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Fun & Games",
           "grammar": "I have got a... / Can you (hop/jump)?",
           "phonics": "/h/, /j/, /k/, short /i/",
-          "mascot": "Woody & Buzz",
           "learnersBook": "Cambridge Global English 1 LB Pages 47–49",
           "workbook": "Cambridge Global English 1 AB Pages 41–43",
           "teacherResource": "Teacher's Resource 1 Section 3.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1926,7 +1845,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Woody & Buzz Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1950,7 +1869,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "The City",
           "grammar": "Where is the...? Next to / opposite / between",
           "phonics": "Long /aɪ/ (kite, light, sky)",
-          "mascot": "Chase (PAW Patrol)",
           "learnersBook": "Cambridge Global English 2 LB Pages 47–49",
           "workbook": "Cambridge Global English 2 AB Pages 41–43",
           "teacherResource": "Teacher's Resource 2 Section 3.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1961,7 +1879,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Chase (PAW Patrol) Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -1985,7 +1903,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Desert Life",
           "grammar": "Adaptation: It can survive because...",
           "phonics": "Vowel digraphs /ea/, /ee/",
-          "mascot": "Aladdin & Genie",
           "learnersBook": "Cambridge Global English 3 LB Pages 47–49",
           "workbook": "Cambridge Global English 3 AB Pages 41–43",
           "teacherResource": "Teacher's Resource 3 Section 3.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -1996,7 +1913,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Aladdin & Genie Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2020,7 +1937,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Oceans & Marine Life",
           "grammar": "Passive voice: Whales are protected by laws",
           "phonics": "Suffixes -tion, -sion",
-          "mascot": "Dory & Nemo",
           "learnersBook": "Cambridge Global English 4 LB Pages 47–49",
           "workbook": "Cambridge Global English 4 AB Pages 41–43",
           "teacherResource": "Teacher's Resource 4 Section 3.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -2031,7 +1947,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dory & Nemo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2065,7 +1981,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Making Things",
           "grammar": "Let us make... / What color is it? It is (blue).",
           "phonics": "/c/, /g/, /m/, short /o/",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 1 LB Pages 52–54",
           "workbook": "Cambridge Global English 1 AB Pages 44–46",
           "teacherResource": "Teacher's Resource 1 Section 4.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2076,7 +1991,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2100,7 +2015,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Days Out",
           "grammar": "Past simple was / were / We went to...",
           "phonics": "Long /oʊ/ (boat, bone, snow)",
-          "mascot": "Bluey",
           "learnersBook": "Cambridge Global English 2 LB Pages 52–54",
           "workbook": "Cambridge Global English 2 AB Pages 44–46",
           "teacherResource": "Teacher's Resource 2 Section 4.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2111,7 +2025,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Bluey Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2135,7 +2049,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Craft & Inventions",
           "grammar": "Passive intro / Made of wood, plastic, glass",
           "phonics": "Silent gh (night, bright, thought)",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 3 LB Pages 52–54",
           "workbook": "Cambridge Global English 3 AB Pages 44–46",
           "teacherResource": "Teacher's Resource 3 Section 4.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2146,7 +2059,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2170,7 +2083,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Inventions",
           "grammar": "Defining relative clauses: A gadget that solves...",
           "phonics": "Stress patterns in nouns vs verbs",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 4 LB Pages 52–54",
           "workbook": "Cambridge Global English 4 AB Pages 44–46",
           "teacherResource": "Teacher's Resource 4 Section 4.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2181,7 +2093,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2215,7 +2127,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Making Things",
           "grammar": "Let us make... / What color is it? It is (blue).",
           "phonics": "/c/, /g/, /m/, short /o/",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 1 LB Pages 55–57",
           "workbook": "Cambridge Global English 1 AB Pages 47–49",
           "teacherResource": "Teacher's Resource 1 Section 4.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2226,7 +2137,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2250,7 +2161,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Days Out",
           "grammar": "Past simple was / were / We went to...",
           "phonics": "Long /oʊ/ (boat, bone, snow)",
-          "mascot": "Bluey",
           "learnersBook": "Cambridge Global English 2 LB Pages 55–57",
           "workbook": "Cambridge Global English 2 AB Pages 47–49",
           "teacherResource": "Teacher's Resource 2 Section 4.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2261,7 +2171,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Bluey Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2285,7 +2195,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Craft & Inventions",
           "grammar": "Passive intro / Made of wood, plastic, glass",
           "phonics": "Silent gh (night, bright, thought)",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 3 LB Pages 55–57",
           "workbook": "Cambridge Global English 3 AB Pages 47–49",
           "teacherResource": "Teacher's Resource 3 Section 4.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2296,7 +2205,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2320,7 +2229,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Inventions",
           "grammar": "Defining relative clauses: A gadget that solves...",
           "phonics": "Stress patterns in nouns vs verbs",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 4 LB Pages 55–57",
           "workbook": "Cambridge Global English 4 AB Pages 47–49",
           "teacherResource": "Teacher's Resource 4 Section 4.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2331,7 +2239,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2365,7 +2273,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Making Things",
           "grammar": "Let us make... / What color is it? It is (blue).",
           "phonics": "/c/, /g/, /m/, short /o/",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 1 LB Pages 58–60",
           "workbook": "Cambridge Global English 1 AB Pages 50–52",
           "teacherResource": "Teacher's Resource 1 Section 4.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -2376,7 +2283,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2400,7 +2307,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Days Out",
           "grammar": "Past simple was / were / We went to...",
           "phonics": "Long /oʊ/ (boat, bone, snow)",
-          "mascot": "Bluey",
           "learnersBook": "Cambridge Global English 2 LB Pages 58–60",
           "workbook": "Cambridge Global English 2 AB Pages 50–52",
           "teacherResource": "Teacher's Resource 2 Section 4.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -2411,7 +2317,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Bluey Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2435,7 +2341,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Craft & Inventions",
           "grammar": "Passive intro / Made of wood, plastic, glass",
           "phonics": "Silent gh (night, bright, thought)",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 3 LB Pages 58–60",
           "workbook": "Cambridge Global English 3 AB Pages 50–52",
           "teacherResource": "Teacher's Resource 3 Section 4.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -2446,7 +2351,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2470,7 +2375,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Inventions",
           "grammar": "Defining relative clauses: A gadget that solves...",
           "phonics": "Stress patterns in nouns vs verbs",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 4 LB Pages 58–60",
           "workbook": "Cambridge Global English 4 AB Pages 50–52",
           "teacherResource": "Teacher's Resource 4 Section 4.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -2481,7 +2385,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2515,7 +2419,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Making Things",
           "grammar": "Let us make... / What color is it? It is (blue).",
           "phonics": "/c/, /g/, /m/, short /o/",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 1 LB Pages 61–63",
           "workbook": "Cambridge Global English 1 AB Pages 53–55",
           "teacherResource": "Teacher's Resource 1 Section 4.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -2526,7 +2429,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2550,7 +2453,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Days Out",
           "grammar": "Past simple was / were / We went to...",
           "phonics": "Long /oʊ/ (boat, bone, snow)",
-          "mascot": "Bluey",
           "learnersBook": "Cambridge Global English 2 LB Pages 61–63",
           "workbook": "Cambridge Global English 2 AB Pages 53–55",
           "teacherResource": "Teacher's Resource 2 Section 4.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -2561,7 +2463,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Bluey Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2585,7 +2487,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Craft & Inventions",
           "grammar": "Passive intro / Made of wood, plastic, glass",
           "phonics": "Silent gh (night, bright, thought)",
-          "mascot": "Pinocchio",
           "learnersBook": "Cambridge Global English 3 LB Pages 61–63",
           "workbook": "Cambridge Global English 3 AB Pages 53–55",
           "teacherResource": "Teacher's Resource 3 Section 4.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -2596,7 +2497,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Pinocchio Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2620,7 +2521,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Inventions",
           "grammar": "Defining relative clauses: A gadget that solves...",
           "phonics": "Stress patterns in nouns vs verbs",
-          "mascot": "Judy Hopps",
           "learnersBook": "Cambridge Global English 4 LB Pages 61–63",
           "workbook": "Cambridge Global English 4 AB Pages 53–55",
           "teacherResource": "Teacher's Resource 4 Section 4.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -2631,7 +2531,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Judy Hopps Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2665,7 +2565,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "On the Farm",
           "grammar": "There is a / There are... / How many (cows)?",
           "phonics": "/d/, /h/, /f/, short /u/",
-          "mascot": "Disney Farm Friends",
           "learnersBook": "Cambridge Global English 1 LB Pages 66–68",
           "workbook": "Cambridge Global English 1 AB Pages 56–58",
           "teacherResource": "Teacher's Resource 1 Section 5.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2676,7 +2575,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Disney Farm Friends Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2700,7 +2599,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Measuring Up",
           "grammar": "How tall? How long? / Longer than, taller than",
           "phonics": "Long /uː/ (moon, flute, blue)",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 2 LB Pages 66–68",
           "workbook": "Cambridge Global English 2 AB Pages 56–58",
           "teacherResource": "Teacher's Resource 2 Section 5.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2711,7 +2609,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2735,7 +2633,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animal Habitats",
           "grammar": "If conditionals (zero) / If it rains, plants grow",
           "phonics": "Word endings -ful and -less",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 3 LB Pages 66–68",
           "workbook": "Cambridge Global English 3 AB Pages 56–58",
           "teacherResource": "Teacher's Resource 3 Section 5.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2746,7 +2643,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2770,7 +2667,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "World of Sports",
           "grammar": "Adverbs of frequency & degree (extremely, quite)",
           "phonics": "Irregular plurals & silent letters",
-          "mascot": "Dash",
           "learnersBook": "Cambridge Global English 4 LB Pages 66–68",
           "workbook": "Cambridge Global English 4 AB Pages 56–58",
           "teacherResource": "Teacher's Resource 4 Section 5.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -2781,7 +2677,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dash Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2815,7 +2711,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "On the Farm",
           "grammar": "There is a / There are... / How many (cows)?",
           "phonics": "/d/, /h/, /f/, short /u/",
-          "mascot": "Disney Farm Friends",
           "learnersBook": "Cambridge Global English 1 LB Pages 69–71",
           "workbook": "Cambridge Global English 1 AB Pages 59–61",
           "teacherResource": "Teacher's Resource 1 Section 5.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2826,7 +2721,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Disney Farm Friends Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2850,7 +2745,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Measuring Up",
           "grammar": "How tall? How long? / Longer than, taller than",
           "phonics": "Long /uː/ (moon, flute, blue)",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 2 LB Pages 69–71",
           "workbook": "Cambridge Global English 2 AB Pages 59–61",
           "teacherResource": "Teacher's Resource 2 Section 5.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2861,7 +2755,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2885,7 +2779,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animal Habitats",
           "grammar": "If conditionals (zero) / If it rains, plants grow",
           "phonics": "Word endings -ful and -less",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 3 LB Pages 69–71",
           "workbook": "Cambridge Global English 3 AB Pages 59–61",
           "teacherResource": "Teacher's Resource 3 Section 5.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2896,7 +2789,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2920,7 +2813,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "World of Sports",
           "grammar": "Adverbs of frequency & degree (extremely, quite)",
           "phonics": "Irregular plurals & silent letters",
-          "mascot": "Dash",
           "learnersBook": "Cambridge Global English 4 LB Pages 69–71",
           "workbook": "Cambridge Global English 4 AB Pages 59–61",
           "teacherResource": "Teacher's Resource 4 Section 5.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -2931,7 +2823,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dash Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -2965,7 +2857,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "On the Farm",
           "grammar": "There is a / There are... / How many (cows)?",
           "phonics": "/d/, /h/, /f/, short /u/",
-          "mascot": "Disney Farm Friends",
           "learnersBook": "Cambridge Global English 1 LB Pages 72–74",
           "workbook": "Cambridge Global English 1 AB Pages 62–64",
           "teacherResource": "Teacher's Resource 1 Section 5.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -2976,7 +2867,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Disney Farm Friends Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3000,7 +2891,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Measuring Up",
           "grammar": "How tall? How long? / Longer than, taller than",
           "phonics": "Long /uː/ (moon, flute, blue)",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 2 LB Pages 72–74",
           "workbook": "Cambridge Global English 2 AB Pages 62–64",
           "teacherResource": "Teacher's Resource 2 Section 5.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3011,7 +2901,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3035,7 +2925,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animal Habitats",
           "grammar": "If conditionals (zero) / If it rains, plants grow",
           "phonics": "Word endings -ful and -less",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 3 LB Pages 72–74",
           "workbook": "Cambridge Global English 3 AB Pages 62–64",
           "teacherResource": "Teacher's Resource 3 Section 5.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3046,7 +2935,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3070,7 +2959,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "World of Sports",
           "grammar": "Adverbs of frequency & degree (extremely, quite)",
           "phonics": "Irregular plurals & silent letters",
-          "mascot": "Dash",
           "learnersBook": "Cambridge Global English 4 LB Pages 72–74",
           "workbook": "Cambridge Global English 4 AB Pages 62–64",
           "teacherResource": "Teacher's Resource 4 Section 5.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3081,7 +2969,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dash Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3115,7 +3003,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "On the Farm",
           "grammar": "There is a / There are... / How many (cows)?",
           "phonics": "/d/, /h/, /f/, short /u/",
-          "mascot": "Disney Farm Friends",
           "learnersBook": "Cambridge Global English 1 LB Pages 75–77",
           "workbook": "Cambridge Global English 1 AB Pages 65–67",
           "teacherResource": "Teacher's Resource 1 Section 5.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3126,7 +3013,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Disney Farm Friends Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3150,7 +3037,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Measuring Up",
           "grammar": "How tall? How long? / Longer than, taller than",
           "phonics": "Long /uː/ (moon, flute, blue)",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 2 LB Pages 75–77",
           "workbook": "Cambridge Global English 2 AB Pages 65–67",
           "teacherResource": "Teacher's Resource 2 Section 5.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3161,7 +3047,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3185,7 +3071,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animal Habitats",
           "grammar": "If conditionals (zero) / If it rains, plants grow",
           "phonics": "Word endings -ful and -less",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 3 LB Pages 75–77",
           "workbook": "Cambridge Global English 3 AB Pages 65–67",
           "teacherResource": "Teacher's Resource 3 Section 5.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3196,7 +3081,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3220,7 +3105,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "World of Sports",
           "grammar": "Adverbs of frequency & degree (extremely, quite)",
           "phonics": "Irregular plurals & silent letters",
-          "mascot": "Dash",
           "learnersBook": "Cambridge Global English 4 LB Pages 75–77",
           "workbook": "Cambridge Global English 4 AB Pages 65–67",
           "teacherResource": "Teacher's Resource 4 Section 5.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3231,7 +3115,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Dash Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3265,7 +3149,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "My Body",
           "grammar": "Touch your (head/toes) / I have two eyes",
           "phonics": "/b/, /n/, /t/, /l/",
-          "mascot": "Olaf & Baymax",
           "learnersBook": "Cambridge Global English 1 LB Pages 80–82",
           "workbook": "Cambridge Global English 1 AB Pages 68–70",
           "teacherResource": "Teacher's Resource 1 Section 6.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3276,7 +3159,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Olaf & Baymax Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3300,7 +3183,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Bugs & Minibeasts",
           "grammar": "They have six legs / Where do they live?",
           "phonics": "Consonant blends /st/, /sp/, /sk/",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 2 LB Pages 80–82",
           "workbook": "Cambridge Global English 2 AB Pages 68–70",
           "teacherResource": "Teacher's Resource 2 Section 6.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3311,7 +3193,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3335,7 +3217,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Food & Nutrition",
           "grammar": "Countable vs Uncountable (Much / Many / Some / Any)",
           "phonics": "Soft c /s/ and soft g /dʒ/",
-          "mascot": "Peppa Pig",
           "learnersBook": "Cambridge Global English 3 LB Pages 80–82",
           "workbook": "Cambridge Global English 3 AB Pages 68–70",
           "teacherResource": "Teacher's Resource 3 Section 6.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3346,7 +3227,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peppa Pig Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3370,7 +3251,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "History Detectives",
           "grammar": "Reported speech intro / Clues suggest that...",
           "phonics": "Latin roots: audi, scrib, vid",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 4 LB Pages 80–82",
           "workbook": "Cambridge Global English 4 AB Pages 68–70",
           "teacherResource": "Teacher's Resource 4 Section 6.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3381,7 +3261,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3415,7 +3295,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "My Body",
           "grammar": "Touch your (head/toes) / I have two eyes",
           "phonics": "/b/, /n/, /t/, /l/",
-          "mascot": "Olaf & Baymax",
           "learnersBook": "Cambridge Global English 1 LB Pages 83–85",
           "workbook": "Cambridge Global English 1 AB Pages 71–73",
           "teacherResource": "Teacher's Resource 1 Section 6.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -3426,7 +3305,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Olaf & Baymax Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3450,7 +3329,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Bugs & Minibeasts",
           "grammar": "They have six legs / Where do they live?",
           "phonics": "Consonant blends /st/, /sp/, /sk/",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 2 LB Pages 83–85",
           "workbook": "Cambridge Global English 2 AB Pages 71–73",
           "teacherResource": "Teacher's Resource 2 Section 6.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -3461,7 +3339,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3485,7 +3363,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Food & Nutrition",
           "grammar": "Countable vs Uncountable (Much / Many / Some / Any)",
           "phonics": "Soft c /s/ and soft g /dʒ/",
-          "mascot": "Peppa Pig",
           "learnersBook": "Cambridge Global English 3 LB Pages 83–85",
           "workbook": "Cambridge Global English 3 AB Pages 71–73",
           "teacherResource": "Teacher's Resource 3 Section 6.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -3496,7 +3373,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peppa Pig Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3520,7 +3397,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "History Detectives",
           "grammar": "Reported speech intro / Clues suggest that...",
           "phonics": "Latin roots: audi, scrib, vid",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 4 LB Pages 83–85",
           "workbook": "Cambridge Global English 4 AB Pages 71–73",
           "teacherResource": "Teacher's Resource 4 Section 6.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -3531,7 +3407,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3565,7 +3441,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "My Body",
           "grammar": "Touch your (head/toes) / I have two eyes",
           "phonics": "/b/, /n/, /t/, /l/",
-          "mascot": "Olaf & Baymax",
           "learnersBook": "Cambridge Global English 1 LB Pages 86–88",
           "workbook": "Cambridge Global English 1 AB Pages 74–76",
           "teacherResource": "Teacher's Resource 1 Section 6.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3576,7 +3451,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Olaf & Baymax Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3600,7 +3475,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Bugs & Minibeasts",
           "grammar": "They have six legs / Where do they live?",
           "phonics": "Consonant blends /st/, /sp/, /sk/",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 2 LB Pages 86–88",
           "workbook": "Cambridge Global English 2 AB Pages 74–76",
           "teacherResource": "Teacher's Resource 2 Section 6.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3611,7 +3485,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3635,7 +3509,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Food & Nutrition",
           "grammar": "Countable vs Uncountable (Much / Many / Some / Any)",
           "phonics": "Soft c /s/ and soft g /dʒ/",
-          "mascot": "Peppa Pig",
           "learnersBook": "Cambridge Global English 3 LB Pages 86–88",
           "workbook": "Cambridge Global English 3 AB Pages 74–76",
           "teacherResource": "Teacher's Resource 3 Section 6.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3646,7 +3519,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peppa Pig Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3670,7 +3543,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "History Detectives",
           "grammar": "Reported speech intro / Clues suggest that...",
           "phonics": "Latin roots: audi, scrib, vid",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 4 LB Pages 86–88",
           "workbook": "Cambridge Global English 4 AB Pages 74–76",
           "teacherResource": "Teacher's Resource 4 Section 6.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -3681,7 +3553,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3715,7 +3587,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "My Body",
           "grammar": "Touch your (head/toes) / I have two eyes",
           "phonics": "/b/, /n/, /t/, /l/",
-          "mascot": "Olaf & Baymax",
           "learnersBook": "Cambridge Global English 1 LB Pages 89–91",
           "workbook": "Cambridge Global English 1 AB Pages 77–79",
           "teacherResource": "Teacher's Resource 1 Section 6.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3726,7 +3597,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Olaf & Baymax Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3750,7 +3621,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Bugs & Minibeasts",
           "grammar": "They have six legs / Where do they live?",
           "phonics": "Consonant blends /st/, /sp/, /sk/",
-          "mascot": "Simba",
           "learnersBook": "Cambridge Global English 2 LB Pages 89–91",
           "workbook": "Cambridge Global English 2 AB Pages 77–79",
           "teacherResource": "Teacher's Resource 2 Section 6.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3761,7 +3631,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3785,7 +3655,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Food & Nutrition",
           "grammar": "Countable vs Uncountable (Much / Many / Some / Any)",
           "phonics": "Soft c /s/ and soft g /dʒ/",
-          "mascot": "Peppa Pig",
           "learnersBook": "Cambridge Global English 3 LB Pages 89–91",
           "workbook": "Cambridge Global English 3 AB Pages 77–79",
           "teacherResource": "Teacher's Resource 3 Section 6.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3796,7 +3665,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peppa Pig Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3820,7 +3689,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "History Detectives",
           "grammar": "Reported speech intro / Clues suggest that...",
           "phonics": "Latin roots: audi, scrib, vid",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 4 LB Pages 89–91",
           "workbook": "Cambridge Global English 4 AB Pages 77–79",
           "teacherResource": "Teacher's Resource 4 Section 6.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -3831,7 +3699,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3865,7 +3733,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Transportation",
           "grammar": "How do you go? / I go by (bus/car)",
           "phonics": "/v/, /w/, /y/, /z/",
-          "mascot": "Lightning McQueen",
           "learnersBook": "Cambridge Global English 1 LB Pages 94–96",
           "workbook": "Cambridge Global English 1 AB Pages 80–82",
           "teacherResource": "Teacher's Resource 1 Section 7.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3876,7 +3743,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Lightning McQueen Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3900,7 +3767,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Past & Present",
           "grammar": "People used to... / Did they have cars?",
           "phonics": "Silent letters /k/ in knee, /w/ in write",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 2 LB Pages 94–96",
           "workbook": "Cambridge Global English 2 AB Pages 80–82",
           "teacherResource": "Teacher's Resource 2 Section 7.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3911,7 +3777,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3935,7 +3801,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Myths & Legends",
           "grammar": "Past continuous: What were they doing?",
           "phonics": "Consonant digraphs /ph/ and /gh/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 3 LB Pages 94–96",
           "workbook": "Cambridge Global English 3 AB Pages 80–82",
           "teacherResource": "Teacher's Resource 3 Section 7.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3946,7 +3811,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -3970,7 +3835,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Weather & Climate Change",
           "grammar": "First conditional: If we protect trees, we will...",
           "phonics": "Compound adjectives (eco-friendly)",
-          "mascot": "Elsa",
           "learnersBook": "Cambridge Global English 4 LB Pages 94–96",
           "workbook": "Cambridge Global English 4 AB Pages 80–82",
           "teacherResource": "Teacher's Resource 4 Section 7.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -3981,7 +3845,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Elsa Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4015,7 +3879,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Transportation",
           "grammar": "How do you go? / I go by (bus/car)",
           "phonics": "/v/, /w/, /y/, /z/",
-          "mascot": "Lightning McQueen",
           "learnersBook": "Cambridge Global English 1 LB Pages 97–99",
           "workbook": "Cambridge Global English 1 AB Pages 83–85",
           "teacherResource": "Teacher's Resource 1 Section 7.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -4026,7 +3889,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Lightning McQueen Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4050,7 +3913,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Past & Present",
           "grammar": "People used to... / Did they have cars?",
           "phonics": "Silent letters /k/ in knee, /w/ in write",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 2 LB Pages 97–99",
           "workbook": "Cambridge Global English 2 AB Pages 83–85",
           "teacherResource": "Teacher's Resource 2 Section 7.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -4061,7 +3923,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4085,7 +3947,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Myths & Legends",
           "grammar": "Past continuous: What were they doing?",
           "phonics": "Consonant digraphs /ph/ and /gh/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 3 LB Pages 97–99",
           "workbook": "Cambridge Global English 3 AB Pages 83–85",
           "teacherResource": "Teacher's Resource 3 Section 7.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -4096,7 +3957,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4120,7 +3981,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Weather & Climate Change",
           "grammar": "First conditional: If we protect trees, we will...",
           "phonics": "Compound adjectives (eco-friendly)",
-          "mascot": "Elsa",
           "learnersBook": "Cambridge Global English 4 LB Pages 97–99",
           "workbook": "Cambridge Global English 4 AB Pages 83–85",
           "teacherResource": "Teacher's Resource 4 Section 7.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -4131,7 +3991,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Elsa Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4165,7 +4025,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Transportation",
           "grammar": "How do you go? / I go by (bus/car)",
           "phonics": "/v/, /w/, /y/, /z/",
-          "mascot": "Lightning McQueen",
           "learnersBook": "Cambridge Global English 1 LB Pages 100–102",
           "workbook": "Cambridge Global English 1 AB Pages 86–88",
           "teacherResource": "Teacher's Resource 1 Section 7.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -4176,7 +4035,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Lightning McQueen Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4200,7 +4059,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Past & Present",
           "grammar": "People used to... / Did they have cars?",
           "phonics": "Silent letters /k/ in knee, /w/ in write",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 2 LB Pages 100–102",
           "workbook": "Cambridge Global English 2 AB Pages 86–88",
           "teacherResource": "Teacher's Resource 2 Section 7.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -4211,7 +4069,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4235,7 +4093,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Myths & Legends",
           "grammar": "Past continuous: What were they doing?",
           "phonics": "Consonant digraphs /ph/ and /gh/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 3 LB Pages 100–102",
           "workbook": "Cambridge Global English 3 AB Pages 86–88",
           "teacherResource": "Teacher's Resource 3 Section 7.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -4246,7 +4103,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4270,7 +4127,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Weather & Climate Change",
           "grammar": "First conditional: If we protect trees, we will...",
           "phonics": "Compound adjectives (eco-friendly)",
-          "mascot": "Elsa",
           "learnersBook": "Cambridge Global English 4 LB Pages 100–102",
           "workbook": "Cambridge Global English 4 AB Pages 86–88",
           "teacherResource": "Teacher's Resource 4 Section 7.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -4281,7 +4137,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Elsa Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4315,7 +4171,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Transportation",
           "grammar": "How do you go? / I go by (bus/car)",
           "phonics": "/v/, /w/, /y/, /z/",
-          "mascot": "Lightning McQueen",
           "learnersBook": "Cambridge Global English 1 LB Pages 103–105",
           "workbook": "Cambridge Global English 1 AB Pages 89–91",
           "teacherResource": "Teacher's Resource 1 Section 7.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -4326,7 +4181,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Lightning McQueen Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4350,7 +4205,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Past & Present",
           "grammar": "People used to... / Did they have cars?",
           "phonics": "Silent letters /k/ in knee, /w/ in write",
-          "mascot": "Hercules",
           "learnersBook": "Cambridge Global English 2 LB Pages 103–105",
           "workbook": "Cambridge Global English 2 AB Pages 89–91",
           "teacherResource": "Teacher's Resource 2 Section 7.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -4361,7 +4215,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Hercules Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4385,7 +4239,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Myths & Legends",
           "grammar": "Past continuous: What were they doing?",
           "phonics": "Consonant digraphs /ph/ and /gh/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 3 LB Pages 103–105",
           "workbook": "Cambridge Global English 3 AB Pages 89–91",
           "teacherResource": "Teacher's Resource 3 Section 7.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -4396,7 +4249,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4420,7 +4273,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Weather & Climate Change",
           "grammar": "First conditional: If we protect trees, we will...",
           "phonics": "Compound adjectives (eco-friendly)",
-          "mascot": "Elsa",
           "learnersBook": "Cambridge Global English 4 LB Pages 103–105",
           "workbook": "Cambridge Global English 4 AB Pages 89–91",
           "teacherResource": "Teacher's Resource 4 Section 7.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -4431,7 +4283,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Elsa Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4465,18 +4317,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animals Around Us",
           "grammar": "It can / It cannot... / Big vs Small",
           "phonics": "/ch/, /sh/, /th/",
-          "mascot": "Simba & Timon",
           "learnersBook": "Cambridge Global English 1 LB Pages 108–110",
           "workbook": "Cambridge Global English 1 AB Pages 92–94",
           "teacherResource": "Teacher's Resource 1 Section 8.1 (Lesson 1): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.1 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba & Timon Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4500,18 +4351,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Home & Habitats",
           "grammar": "Comparative adjectives / This is cozier than...",
           "phonics": "R-controlled vowels /ar/, /or/",
-          "mascot": "Baloo",
           "learnersBook": "Cambridge Global English 2 LB Pages 108–110",
           "workbook": "Cambridge Global English 2 AB Pages 92–94",
           "teacherResource": "Teacher's Resource 2 Section 8.1 (Lesson 1): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.1 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Baloo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4535,18 +4385,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Earth & Ecosystems",
           "grammar": "Future with will / won't / going to",
           "phonics": "Homophones (sea/see, meet/meat)",
-          "mascot": "Ariel",
           "learnersBook": "Cambridge Global English 3 LB Pages 108–110",
           "workbook": "Cambridge Global English 3 AB Pages 92–94",
           "teacherResource": "Teacher's Resource 3 Section 8.1 (Lesson 1): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.1 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4570,18 +4419,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Explorers",
           "grammar": "Past perfect intro / Had discovered before...",
           "phonics": "Word formation & derivational suffixes",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 4 LB Pages 108–110",
           "workbook": "Cambridge Global English 4 AB Pages 92–94",
           "teacherResource": "Teacher's Resource 4 Section 8.1 (Lesson 1): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.1 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4615,18 +4463,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animals Around Us",
           "grammar": "It can / It cannot... / Big vs Small",
           "phonics": "/ch/, /sh/, /th/",
-          "mascot": "Simba & Timon",
           "learnersBook": "Cambridge Global English 1 LB Pages 111–113",
           "workbook": "Cambridge Global English 1 AB Pages 95–97",
           "teacherResource": "Teacher's Resource 1 Section 8.2 (Lesson 2): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.2 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba & Timon Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4650,18 +4497,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Home & Habitats",
           "grammar": "Comparative adjectives / This is cozier than...",
           "phonics": "R-controlled vowels /ar/, /or/",
-          "mascot": "Baloo",
           "learnersBook": "Cambridge Global English 2 LB Pages 111–113",
           "workbook": "Cambridge Global English 2 AB Pages 95–97",
           "teacherResource": "Teacher's Resource 2 Section 8.2 (Lesson 2): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.2 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Baloo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4685,18 +4531,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Earth & Ecosystems",
           "grammar": "Future with will / won't / going to",
           "phonics": "Homophones (sea/see, meet/meat)",
-          "mascot": "Ariel",
           "learnersBook": "Cambridge Global English 3 LB Pages 111–113",
           "workbook": "Cambridge Global English 3 AB Pages 95–97",
           "teacherResource": "Teacher's Resource 3 Section 8.2 (Lesson 2): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.2 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4720,18 +4565,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Explorers",
           "grammar": "Past perfect intro / Had discovered before...",
           "phonics": "Word formation & derivational suffixes",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 4 LB Pages 111–113",
           "workbook": "Cambridge Global English 4 AB Pages 95–97",
           "teacherResource": "Teacher's Resource 4 Section 8.2 (Lesson 2): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.2 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4765,18 +4609,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animals Around Us",
           "grammar": "It can / It cannot... / Big vs Small",
           "phonics": "/ch/, /sh/, /th/",
-          "mascot": "Simba & Timon",
           "learnersBook": "Cambridge Global English 1 LB Pages 114–116",
           "workbook": "Cambridge Global English 1 AB Pages 98–100",
           "teacherResource": "Teacher's Resource 1 Section 8.3 (Lesson 3): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.3 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba & Timon Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4800,18 +4643,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Home & Habitats",
           "grammar": "Comparative adjectives / This is cozier than...",
           "phonics": "R-controlled vowels /ar/, /or/",
-          "mascot": "Baloo",
           "learnersBook": "Cambridge Global English 2 LB Pages 114–116",
           "workbook": "Cambridge Global English 2 AB Pages 98–100",
           "teacherResource": "Teacher's Resource 2 Section 8.3 (Lesson 3): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.3 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Baloo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4835,18 +4677,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Earth & Ecosystems",
           "grammar": "Future with will / won't / going to",
           "phonics": "Homophones (sea/see, meet/meat)",
-          "mascot": "Ariel",
           "learnersBook": "Cambridge Global English 3 LB Pages 114–116",
           "workbook": "Cambridge Global English 3 AB Pages 98–100",
           "teacherResource": "Teacher's Resource 3 Section 8.3 (Lesson 3): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.3 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4870,18 +4711,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Explorers",
           "grammar": "Past perfect intro / Had discovered before...",
           "phonics": "Word formation & derivational suffixes",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 4 LB Pages 114–116",
           "workbook": "Cambridge Global English 4 AB Pages 98–100",
           "teacherResource": "Teacher's Resource 4 Section 8.3 (Lesson 3): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.3 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4915,18 +4755,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Animals Around Us",
           "grammar": "It can / It cannot... / Big vs Small",
           "phonics": "/ch/, /sh/, /th/",
-          "mascot": "Simba & Timon",
           "learnersBook": "Cambridge Global English 1 LB Pages 117–119",
           "workbook": "Cambridge Global English 1 AB Pages 101–103",
           "teacherResource": "Teacher's Resource 1 Section 8.4 (Lesson 4): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.4 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Simba & Timon Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4950,18 +4789,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Home & Habitats",
           "grammar": "Comparative adjectives / This is cozier than...",
           "phonics": "R-controlled vowels /ar/, /or/",
-          "mascot": "Baloo",
           "learnersBook": "Cambridge Global English 2 LB Pages 117–119",
           "workbook": "Cambridge Global English 2 AB Pages 101–103",
           "teacherResource": "Teacher's Resource 2 Section 8.4 (Lesson 4): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.4 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Baloo Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -4985,18 +4823,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Earth & Ecosystems",
           "grammar": "Future with will / won't / going to",
           "phonics": "Homophones (sea/see, meet/meat)",
-          "mascot": "Ariel",
           "learnersBook": "Cambridge Global English 3 LB Pages 117–119",
           "workbook": "Cambridge Global English 3 AB Pages 101–103",
           "teacherResource": "Teacher's Resource 3 Section 8.4 (Lesson 4): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.4 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5020,18 +4857,17 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Great Explorers",
           "grammar": "Past perfect intro / Had discovered before...",
           "phonics": "Word formation & derivational suffixes",
-          "mascot": "Moana",
           "learnersBook": "Cambridge Global English 4 LB Pages 117–119",
           "workbook": "Cambridge Global English 4 AB Pages 101–103",
           "teacherResource": "Teacher's Resource 4 Section 8.4 (Lesson 4): Differentiated Learning & Phonics Focus",
           "photocopiables": "Photocopiable Worksheet 8.4 & Speaking Flashcard Set 8",
-          "realia": "Wildlife flashcards, binoculars toy, puppet Simba, world map",
+          "realia": "Wildlife flashcards, binoculars toy, lion puppet, world map",
           "tpr": "Jungle Safari Crawl: Children tiptoe like leopards, hop like kangaroos, flap like eagles upon teacher command.",
           "smartboard": "Launch Unit 8 Animal Odd-One-Out & Video Theater",
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Moana Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5065,7 +4901,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful Water",
           "grammar": "Water is (clean/cold) / Do you like water?",
           "phonics": "/s/, /fl/, /dr/",
-          "mascot": "Ariel & Flounder",
           "learnersBook": "Cambridge Global English 1 LB Pages 122–124",
           "workbook": "Cambridge Global English 1 AB Pages 104–106",
           "teacherResource": "Teacher's Resource 1 Section 9.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -5076,7 +4911,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel & Flounder Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5100,7 +4935,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful World",
           "grammar": "Superlative: The highest, the longest, the deepest",
           "phonics": "Diphthongs /aʊ/ and /ɔɪ/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 2 LB Pages 122–124",
           "workbook": "Cambridge Global English 2 AB Pages 104–106",
           "teacherResource": "Teacher's Resource 2 Section 9.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -5111,7 +4945,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5135,7 +4969,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Adventure & Exploration",
           "grammar": "Have you ever...? Present perfect with ever/never",
           "phonics": "Stress in multi-syllable words",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 3 LB Pages 122–124",
           "workbook": "Cambridge Global English 3 AB Pages 104–106",
           "teacherResource": "Teacher's Resource 3 Section 9.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -5146,7 +4979,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5170,7 +5003,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Robotics & The Future",
           "grammar": "Modals of deduction (might, could, must be)",
           "phonics": "Technology terms & blended sounds",
-          "mascot": "Polly",
           "learnersBook": "Cambridge Global English 4 LB Pages 122–124",
           "workbook": "Cambridge Global English 4 AB Pages 104–106",
           "teacherResource": "Teacher's Resource 4 Section 9.1 (Lesson 1): Differentiated Learning & Phonics Focus",
@@ -5181,7 +5013,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Polly Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5215,7 +5047,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful Water",
           "grammar": "Water is (clean/cold) / Do you like water?",
           "phonics": "/s/, /fl/, /dr/",
-          "mascot": "Ariel & Flounder",
           "learnersBook": "Cambridge Global English 1 LB Pages 125–127",
           "workbook": "Cambridge Global English 1 AB Pages 107–109",
           "teacherResource": "Teacher's Resource 1 Section 9.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -5226,7 +5057,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel & Flounder Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5250,7 +5081,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful World",
           "grammar": "Superlative: The highest, the longest, the deepest",
           "phonics": "Diphthongs /aʊ/ and /ɔɪ/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 2 LB Pages 125–127",
           "workbook": "Cambridge Global English 2 AB Pages 107–109",
           "teacherResource": "Teacher's Resource 2 Section 9.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -5261,7 +5091,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5285,7 +5115,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Adventure & Exploration",
           "grammar": "Have you ever...? Present perfect with ever/never",
           "phonics": "Stress in multi-syllable words",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 3 LB Pages 125–127",
           "workbook": "Cambridge Global English 3 AB Pages 107–109",
           "teacherResource": "Teacher's Resource 3 Section 9.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -5296,7 +5125,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5320,7 +5149,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Robotics & The Future",
           "grammar": "Modals of deduction (might, could, must be)",
           "phonics": "Technology terms & blended sounds",
-          "mascot": "Polly",
           "learnersBook": "Cambridge Global English 4 LB Pages 125–127",
           "workbook": "Cambridge Global English 4 AB Pages 107–109",
           "teacherResource": "Teacher's Resource 4 Section 9.2 (Lesson 2): Differentiated Learning & Phonics Focus",
@@ -5331,7 +5159,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Polly Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5365,7 +5193,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful Water",
           "grammar": "Water is (clean/cold) / Do you like water?",
           "phonics": "/s/, /fl/, /dr/",
-          "mascot": "Ariel & Flounder",
           "learnersBook": "Cambridge Global English 1 LB Pages 128–130",
           "workbook": "Cambridge Global English 1 AB Pages 110–112",
           "teacherResource": "Teacher's Resource 1 Section 9.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -5376,7 +5203,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel & Flounder Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5400,7 +5227,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful World",
           "grammar": "Superlative: The highest, the longest, the deepest",
           "phonics": "Diphthongs /aʊ/ and /ɔɪ/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 2 LB Pages 128–130",
           "workbook": "Cambridge Global English 2 AB Pages 110–112",
           "teacherResource": "Teacher's Resource 2 Section 9.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -5411,7 +5237,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5435,7 +5261,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Adventure & Exploration",
           "grammar": "Have you ever...? Present perfect with ever/never",
           "phonics": "Stress in multi-syllable words",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 3 LB Pages 128–130",
           "workbook": "Cambridge Global English 3 AB Pages 110–112",
           "teacherResource": "Teacher's Resource 3 Section 9.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -5446,7 +5271,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5470,7 +5295,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Robotics & The Future",
           "grammar": "Modals of deduction (might, could, must be)",
           "phonics": "Technology terms & blended sounds",
-          "mascot": "Polly",
           "learnersBook": "Cambridge Global English 4 LB Pages 128–130",
           "workbook": "Cambridge Global English 4 AB Pages 110–112",
           "teacherResource": "Teacher's Resource 4 Section 9.3 (Lesson 3): Differentiated Learning & Phonics Focus",
@@ -5481,7 +5305,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Polly Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5515,7 +5339,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful Water",
           "grammar": "Water is (clean/cold) / Do you like water?",
           "phonics": "/s/, /fl/, /dr/",
-          "mascot": "Ariel & Flounder",
           "learnersBook": "Cambridge Global English 1 LB Pages 131–133",
           "workbook": "Cambridge Global English 1 AB Pages 113–115",
           "teacherResource": "Teacher's Resource 1 Section 9.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -5526,7 +5349,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Ariel & Flounder Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5550,7 +5373,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Wonderful World",
           "grammar": "Superlative: The highest, the longest, the deepest",
           "phonics": "Diphthongs /aʊ/ and /ɔɪ/",
-          "mascot": "Peter Pan",
           "learnersBook": "Cambridge Global English 2 LB Pages 131–133",
           "workbook": "Cambridge Global English 2 AB Pages 113–115",
           "teacherResource": "Teacher's Resource 2 Section 9.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -5561,7 +5383,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Peter Pan Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5585,7 +5407,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Adventure & Exploration",
           "grammar": "Have you ever...? Present perfect with ever/never",
           "phonics": "Stress in multi-syllable words",
-          "mascot": "Buzz Lightyear",
           "learnersBook": "Cambridge Global English 3 LB Pages 131–133",
           "workbook": "Cambridge Global English 3 AB Pages 113–115",
           "teacherResource": "Teacher's Resource 3 Section 9.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -5596,7 +5417,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Buzz Lightyear Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",
@@ -5620,7 +5441,6 @@ const LESSON_PLANS_DATA = {
           "unitTitle": "Robotics & The Future",
           "grammar": "Modals of deduction (might, could, must be)",
           "phonics": "Technology terms & blended sounds",
-          "mascot": "Polly",
           "learnersBook": "Cambridge Global English 4 LB Pages 131–133",
           "workbook": "Cambridge Global English 4 AB Pages 113–115",
           "teacherResource": "Teacher's Resource 4 Section 9.4 (Lesson 4): Differentiated Learning & Phonics Focus",
@@ -5631,7 +5451,7 @@ const LESSON_PLANS_DATA = {
           "dailyBreakdown": [
             {
               "time": "00–05 min",
-              "activity": "Warm-up & Polly Greeting: Audio catchphrase cheer + Simon Says movement."
+              "activity": "Warm-up: Greeting circle and Simon Says movement game."
             },
             {
               "time": "05–15 min",

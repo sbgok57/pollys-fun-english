@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Polly's Fun English — Cambridge Global English Stages 1–4</title>
-  <meta name="description" content="Primary School Cambridge Global English Stages 1-4 Interactive Smartboard Learning Platform">
-  <meta name="theme-color" content="#4f46e5">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Polly’s Fun English | Primary Classroom Activities</title>
+  <meta name="description" content="A friendly collection of English games, songs and classroom activities for primary learners in Grades 1–4.">
+  <meta name="theme-color" content="#f7f7f2">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦜%3C/text%3E%3C/svg%3E">
-  <script>
-  /* 🛡️ P0 ANTI-CRASH SHIELD v8 — Error containment & safe execution */
-  window.__EARLY = 0;
-  window.addEventListener('error', function() { window.__EARLY++; });
-  window.addEventListener('unhandledrejection', function() { window.__EARLY++; });
-  </script>
   <style>
+/* Keep the recovery notice hidden when this template is opened on its own. The app only reveals it after a real uncaught runtime error. */
+#crash-banner:not(.show) { display: none; }
 /*__CSS__*/
   </style>
 </head>
@@ -26,12 +22,12 @@
 
   <!-- Anti-Crash Recovery Banner (P0 Reliability) -->
   <div id="crash-banner" role="alert">
-    <div style="font-weight:900;font-size:1.1em;color:#991b1b;margin-bottom:4px">⚠️ Polly Prevented an Issue!</div>
-    <div id="crash-msg" style="font-size:0.88em;color:#475569;margin-bottom:10px">Don't worry! Your stars and progress are safely saved. You can resume right where you left off.</div>
+    <div style="font-weight:800;font-size:1.05em;color:#8f2e24;margin-bottom:4px">⚠️ An unexpected app error occurred</div>
+    <div id="crash-msg" style="font-size:0.9em;color:#475569;margin-bottom:10px">If a saved activity is available on this device, you can try to resume it. Progress is not saved online.</div>
     <pre id="crash-diag" class="crash-details"></pre>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-      <button class="btn small green" id="crash-resume">🔄 Resume Play</button>
-      <button class="btn small white" id="crash-home">🏠 Home</button>
+      <button class="btn small green" id="crash-resume">🔄 Try saved activity</button>
+      <button class="btn small white" id="crash-home">🏠 Return home</button>
       <button class="btn small white" id="crash-toggle-diag" style="font-size:0.75em;opacity:0.75">🔍 Details</button>
     </div>
   </div>

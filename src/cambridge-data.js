@@ -1,13 +1,12 @@
 /* ============================================================
-   📘 CAMBRIDGE GLOBAL ENGLISH 1-4 FULL V2 DATASET
-   36 Units, 216 Vocab Cards, 216 Baamboozle Game Packs,
-   1,040+ Games Hub, 2,080 Tongue Twisters, Songs & Video Library
+   Draft classroom activity data for Grades 1–4.
+   Coursebook and curriculum matches have not been verified against source books.
    ============================================================ */
 
 const CURRICULUM_DATA = {
   "stage1": {
     "title": "1. Sınıf (Stage 1 / Pre-A1)",
-    "description": "Cambridge Primary English: Okul, aile, oyunlar, çiftlik, duyular, taşıtlar ve su.",
+    "description": "Taslak İngilizce etkinlikleri: okul, aile, oyunlar, çiftlik, duyular, taşıtlar ve su. Belirli bir kitap baskısıyla karşılaştırılmadı.",
     "units": [
       {
         "id": "stage1_u1",
@@ -24,8 +23,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kurşun kalem",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Look at my shiny pencil!"
           },
           {
             "word": "Desk",
@@ -33,8 +30,6 @@ const CURRICULUM_DATA = {
             "turkish": "Okul sırası / Çalışma masası",
             "realPhoto": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Keep your desk clean and ready!"
           },
           {
             "word": "Chair",
@@ -42,8 +37,6 @@ const CURRICULUM_DATA = {
             "turkish": "Sandalye",
             "realPhoto": "https://images.unsplash.com/photo-1503602642458-232111445657?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Please sit nicely on your chair!"
           },
           {
             "word": "School Bag",
@@ -51,8 +44,6 @@ const CURRICULUM_DATA = {
             "turkish": "Okul çantası",
             "realPhoto": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Pack your school bag for an adventure!"
           },
           {
             "word": "Teacher",
@@ -60,8 +51,6 @@ const CURRICULUM_DATA = {
             "turkish": "Öğretmen",
             "realPhoto": "https://images.unsplash.com/photo-1580894732488-ea187b5a8e0e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26FPJGjhefSJuaR0Y/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Good morning teacher! Let us learn!"
           },
           {
             "word": "Book",
@@ -69,8 +58,6 @@ const CURRICULUM_DATA = {
             "turkish": "Ders kitabı",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Open your book to page one!"
           }
         ],
         "baamboozleQuestions": [
@@ -99,7 +86,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -129,13 +116,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -172,7 +159,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Welcome to School (Okul Yaşamı & Selamlaşma) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (What is this? It is a... / Stand up, sit down) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Welcome to School (Okul Yaşamı & Selamlaşma) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (What is this? It is a... / Stand up, sit down) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -249,8 +236,6 @@ const CURRICULUM_DATA = {
             "turkish": "Anne",
             "realPhoto": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Mummy Pig loves baking cookies!"
           },
           {
             "word": "Father",
@@ -258,8 +243,6 @@ const CURRICULUM_DATA = {
             "turkish": "Baba",
             "realPhoto": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Bandit Dad plays funny games!"
           },
           {
             "word": "Brother",
@@ -267,8 +250,6 @@ const CURRICULUM_DATA = {
             "turkish": "Erkek kardeş",
             "realPhoto": "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26FLdm964upq8108U/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "My brother builds tall towers!"
           },
           {
             "word": "Sister",
@@ -276,8 +257,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kız kardeş",
             "realPhoto": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Bingo is my cheerful sister!"
           },
           {
             "word": "Baby",
@@ -285,8 +264,6 @@ const CURRICULUM_DATA = {
             "turkish": "Bebek",
             "realPhoto": "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o6ZsU7C4QQca8CLjy/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "The baby smiles so sweetly!"
           },
           {
             "word": "Grandma",
@@ -294,8 +271,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyükanne",
             "realPhoto": "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lI4bYmcsPJX9Go/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Grandma gives warm cuddles!"
           }
         ],
         "baamboozleQuestions": [
@@ -324,7 +299,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -354,13 +329,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -397,7 +372,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Family Time (Aile Bireyleri & Ev) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (This is my... / He is / She is) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Family Time (Aile Bireyleri & Ev) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (This is my... / He is / She is) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -474,8 +449,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Oyuncaklar & Hareketler!"
           },
           {
             "word": "Compass",
@@ -483,8 +456,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -492,8 +463,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -501,8 +470,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -510,8 +477,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -519,8 +484,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -549,7 +512,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -579,13 +542,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -622,7 +585,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Fun and Games (Oyuncaklar & Hareketler) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Can / Can't / Jump, hop, skip) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Fun and Games (Oyuncaklar & Hareketler) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Can / Can't / Jump, hop, skip) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -699,8 +662,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Sanat, Şekiller & Renkler!"
           },
           {
             "word": "Compass",
@@ -708,8 +669,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -717,8 +676,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -726,8 +683,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -735,8 +690,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -744,8 +697,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -774,7 +725,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -804,13 +755,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -847,7 +798,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Making Things (Sanat, Şekiller & Renkler) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Plurals with -s / Shapes) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Making Things (Sanat, Şekiller & Renkler) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Plurals with -s / Shapes) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -924,8 +875,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Çiftlik Hayvanları!"
           },
           {
             "word": "Compass",
@@ -933,8 +882,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -942,8 +889,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -951,8 +896,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -960,8 +903,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -969,8 +910,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -999,7 +938,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -1029,13 +968,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -1072,7 +1011,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "On the Farm (Çiftlik Hayvanları) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (There is / There are / Animals) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "On the Farm (Çiftlik Hayvanları) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (There is / There are / Animals) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -1149,8 +1088,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Beş Duyu & Vücut!"
           },
           {
             "word": "Compass",
@@ -1158,8 +1095,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -1167,8 +1102,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -1176,8 +1109,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -1185,8 +1116,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -1194,8 +1123,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -1224,7 +1151,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -1254,13 +1181,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -1297,7 +1224,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "My Five Senses (Beş Duyu & Vücut) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (I can see/hear with my...) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "My Five Senses (Beş Duyu & Vücut) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (I can see/hear with my...) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -1374,8 +1301,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Ulaşım & Taşıtlar!"
           },
           {
             "word": "Compass",
@@ -1383,8 +1308,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -1392,8 +1315,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -1401,8 +1322,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -1410,8 +1329,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -1419,8 +1336,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -1449,7 +1364,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -1479,13 +1394,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -1522,7 +1437,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Let's Go! (Ulaşım & Taşıtlar) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (How do you go to school? By bus...) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Let's Go! (Ulaşım & Taşıtlar) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (How do you go to school? By bus...) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -1599,8 +1514,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Su, Yağmur & Deniz!"
           },
           {
             "word": "Compass",
@@ -1608,8 +1521,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -1617,8 +1528,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -1626,8 +1535,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -1635,8 +1542,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -1644,8 +1549,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -1674,7 +1577,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -1704,13 +1607,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -1747,7 +1650,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Wonderful Water (Su, Yağmur & Deniz) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (It is raining / Do you like water?) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Wonderful Water (Su, Yağmur & Deniz) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (It is raining / Do you like water?) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -1824,8 +1727,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Şehir Mekanları & Park!"
           },
           {
             "word": "Compass",
@@ -1833,8 +1734,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -1842,8 +1741,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -1851,8 +1748,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -1860,8 +1755,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -1869,8 +1762,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -1899,7 +1790,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -1929,13 +1820,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -1972,7 +1863,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "City Places (Şehir Mekanları & Park) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Where is the park? Next to / In front of) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "City Places (Şehir Mekanları & Park) ünitesi kazanımları (Pre-A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Where is the park? Next to / In front of) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -2038,7 +1929,7 @@ const CURRICULUM_DATA = {
   },
   "stage2": {
     "title": "2. Sınıf (Stage 2 / A1)",
-    "description": "Cambridge Primary English: Kitaplar, komşular, hava durumu, ölçümler, böcekler ve doğa.",
+    "description": "Taslak İngilizce etkinlikleri: kitaplar, komşular, hava durumu, ölçümler, böcekler ve doğa. Belirli bir kitap baskısıyla karşılaştırılmadı.",
     "units": [
       {
         "id": "stage2_u1",
@@ -2055,8 +1946,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Kitaplar & Hikayeler!"
           },
           {
             "word": "Compass",
@@ -2064,8 +1953,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -2073,8 +1960,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -2082,8 +1967,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -2091,8 +1974,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -2100,8 +1981,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -2130,7 +2009,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -2160,13 +2039,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -2203,7 +2082,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Look in a Book (Kitaplar & Hikayeler) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Have got / Haven't got) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Look in a Book (Kitaplar & Hikayeler) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Have got / Haven't got) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -2280,8 +2159,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Meslekler & Toplum!"
           },
           {
             "word": "Compass",
@@ -2289,8 +2166,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -2298,8 +2173,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -2307,8 +2180,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -2316,8 +2187,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -2325,8 +2194,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -2355,7 +2222,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -2385,13 +2252,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -2428,7 +2295,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Good Neighbours (Meslekler & Toplum) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Present simple 3rd person -s) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Good Neighbours (Meslekler & Toplum) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Present simple 3rd person -s) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -2505,8 +2372,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Spor & Yetenekler!"
           },
           {
             "word": "Compass",
@@ -2514,8 +2379,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -2523,8 +2386,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -2532,8 +2393,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -2541,8 +2400,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -2550,8 +2407,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -2580,7 +2435,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -2610,13 +2465,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -2653,7 +2508,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Ready, Steady, Go! (Spor & Yetenekler) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Can you swim? Yes, I can / Adverbs) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Ready, Steady, Go! (Spor & Yetenekler) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Can you swim? Yes, I can / Adverbs) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -2730,8 +2585,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Gökyüzü & Hava!"
           },
           {
             "word": "Compass",
@@ -2739,8 +2592,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -2748,8 +2599,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -2757,8 +2606,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -2766,8 +2613,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -2775,8 +2620,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -2805,7 +2648,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -2835,13 +2678,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -2878,7 +2721,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "The Big Sky (Gökyüzü & Hava) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Past simple was/were) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "The Big Sky (Gökyüzü & Hava) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Past simple was/were) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -2955,8 +2798,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Ölçümler & Sayılar!"
           },
           {
             "word": "Compass",
@@ -2964,8 +2805,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -2973,8 +2812,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -2982,8 +2819,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -2991,8 +2826,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -3000,8 +2833,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -3030,7 +2861,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -3060,13 +2891,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -3103,7 +2934,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Let's Count and Measure (Ölçümler & Sayılar) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Comparatives: taller, heavier) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Let's Count and Measure (Ölçümler & Sayılar) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Comparatives: taller, heavier) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -3180,8 +3011,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Böcekler & Minik Canlılar!"
           },
           {
             "word": "Compass",
@@ -3189,8 +3018,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -3198,8 +3025,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -3207,8 +3032,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -3216,8 +3039,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -3225,8 +3046,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -3255,7 +3074,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -3285,13 +3104,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -3328,7 +3147,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Bugs and Minibeasts (Böcekler & Minik Canlılar) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Has it got wings? Prepositions) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Bugs and Minibeasts (Böcekler & Minik Canlılar) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Has it got wings? Prepositions) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -3405,8 +3224,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Doğayı Koruma!"
           },
           {
             "word": "Compass",
@@ -3414,8 +3231,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -3423,8 +3238,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -3432,8 +3245,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -3441,8 +3252,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -3450,8 +3259,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -3480,7 +3287,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -3510,13 +3317,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -3553,7 +3360,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Our Green Earth (Doğayı Koruma) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Must / Mustn't for environment) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Our Green Earth (Doğayı Koruma) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Must / Mustn't for environment) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -3630,8 +3437,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Ev & Odalar!"
           },
           {
             "word": "Compass",
@@ -3639,8 +3444,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -3648,8 +3451,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -3657,8 +3458,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -3666,8 +3465,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -3675,8 +3472,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -3705,7 +3500,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -3735,13 +3530,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -3778,7 +3573,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Home, Sweet Home (Ev & Odalar) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (There was / There were) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Home, Sweet Home (Ev & Odalar) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (There was / There were) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -3855,8 +3650,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Şehir ve Kırsal!"
           },
           {
             "word": "Compass",
@@ -3864,8 +3657,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -3873,8 +3664,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -3882,8 +3671,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -3891,8 +3678,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -3900,8 +3685,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -3930,7 +3713,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -3960,13 +3743,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -4003,7 +3786,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Inside and Outside Cities (Şehir ve Kırsal) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Past simple regular (-ed)) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Inside and Outside Cities (Şehir ve Kırsal) ünitesi kazanımları (A1): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Past simple regular (-ed)) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -4069,7 +3852,7 @@ const CURRICULUM_DATA = {
   },
   "stage3": {
     "title": "3. Sınıf (Stage 3 / A1+ to A2)",
-    "description": "Cambridge Primary English: Takım çalışması, çöl ekosistemi, icatlar, efsaneler ve beslenme.",
+    "description": "Taslak İngilizce etkinlikleri: takım çalışması, çöl ekosistemi, icatlar, efsaneler ve beslenme. Belirli bir kitap baskısıyla karşılaştırılmadı.",
     "units": [
       {
         "id": "stage3_u1",
@@ -4086,8 +3869,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of İş Birliği & Kurallar!"
           },
           {
             "word": "Compass",
@@ -4095,8 +3876,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -4104,8 +3883,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -4113,8 +3890,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -4122,8 +3897,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -4131,8 +3904,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -4161,7 +3932,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -4191,13 +3962,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -4234,7 +4005,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Working Together (İş Birliği & Kurallar) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Present continuous / Modals) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Working Together (İş Birliği & Kurallar) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Present continuous / Modals) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -4311,8 +4082,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Gelenekler & Miras!"
           },
           {
             "word": "Compass",
@@ -4320,8 +4089,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -4329,8 +4096,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -4338,8 +4103,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -4347,8 +4110,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -4356,8 +4117,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -4386,7 +4145,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -4416,13 +4175,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -4459,7 +4218,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Family and Community (Gelenekler & Miras) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Past simple irregular verbs) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Family and Community (Gelenekler & Miras) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Past simple irregular verbs) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -4536,8 +4295,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Çöl Canlıları & İklim!"
           },
           {
             "word": "Compass",
@@ -4545,8 +4302,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -4554,8 +4309,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -4563,8 +4316,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -4572,8 +4323,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -4581,8 +4330,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -4611,7 +4358,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -4641,13 +4388,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -4684,7 +4431,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "The Desert (Çöl Canlıları & İklim) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Comparatives & Superlatives) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "The Desert (Çöl Canlıları & İklim) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Comparatives & Superlatives) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -4761,8 +4508,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Zanaat & Tasarım!"
           },
           {
             "word": "Compass",
@@ -4770,8 +4515,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -4779,8 +4522,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -4788,8 +4529,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -4797,8 +4536,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -4806,8 +4543,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -4836,7 +4571,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -4866,13 +4601,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -4909,7 +4644,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Look What We Can Make! (Zanaat & Tasarım) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Imperatives & Sıralama zarfları) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Look What We Can Make! (Zanaat & Tasarım) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Imperatives & Sıralama zarfları) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -4986,8 +4721,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Tehlikedeki Canlılar!"
           },
           {
             "word": "Compass",
@@ -4995,8 +4728,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -5004,8 +4735,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -5013,8 +4742,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -5022,8 +4749,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -5031,8 +4756,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -5061,7 +4784,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -5091,13 +4814,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -5134,7 +4857,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "The World of Animals (Tehlikedeki Canlılar) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Present simple vs continuous) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "The World of Animals (Tehlikedeki Canlılar) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Present simple vs continuous) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -5211,8 +4934,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Yemek Tarifleri & Beslenme!"
           },
           {
             "word": "Compass",
@@ -5220,8 +4941,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -5229,8 +4948,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -5238,8 +4955,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -5247,8 +4962,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -5256,8 +4969,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -5286,7 +4997,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -5316,13 +5027,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -5359,7 +5070,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Food and Fun (Yemek Tarifleri & Beslenme) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Countable & Uncountable nouns) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Food and Fun (Yemek Tarifleri & Beslenme) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Countable & Uncountable nouns) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -5436,8 +5147,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Mitoloji & Masallar!"
           },
           {
             "word": "Compass",
@@ -5445,8 +5154,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -5454,8 +5161,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -5463,8 +5168,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -5472,8 +5175,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -5481,8 +5182,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -5511,7 +5210,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -5541,13 +5240,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -5584,7 +5283,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Stories and Legends (Mitoloji & Masallar) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Past continuous zaman yapısı) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Stories and Legends (Mitoloji & Masallar) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Past continuous zaman yapısı) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -5661,8 +5360,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Nehirler ve Göller!"
           },
           {
             "word": "Compass",
@@ -5670,8 +5367,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -5679,8 +5374,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -5688,8 +5381,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -5697,8 +5388,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -5706,8 +5395,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -5736,7 +5423,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -5766,13 +5453,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -5809,7 +5496,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Wonderful Waterways (Nehirler ve Göller) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Passive voice giriş) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Wonderful Waterways (Nehirler ve Göller) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Passive voice giriş) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -5886,8 +5573,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Gezegenimiz & Doğa Olayları!"
           },
           {
             "word": "Compass",
@@ -5895,8 +5580,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -5904,8 +5587,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -5913,8 +5594,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -5922,8 +5601,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -5931,8 +5608,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -5961,7 +5636,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -5991,13 +5666,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -6034,7 +5709,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Planet Earth (Gezegenimiz & Doğa Olayları) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Future with going to) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Planet Earth (Gezegenimiz & Doğa Olayları) ünitesi kazanımları (A1+): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Future with going to) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -6100,7 +5775,7 @@ const CURRICULUM_DATA = {
   },
   "stage4": {
     "title": "4. Sınıf (Stage 4 / A2)",
-    "description": "Cambridge Primary English: Uzay yolculuğu, teknoloji, tarih, deniz biyolojisi ve liderlik.",
+    "description": "Taslak İngilizce etkinlikleri: uzay yolculuğu, teknoloji, tarih, deniz yaşamı ve liderlik. Belirli bir kitap baskısıyla karşılaştırılmadı.",
     "units": [
       {
         "id": "stage4_u1",
@@ -6117,8 +5792,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Ev Mimarisi & Geçmiş!"
           },
           {
             "word": "Compass",
@@ -6126,8 +5799,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -6135,8 +5806,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -6144,8 +5813,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -6153,8 +5820,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -6162,8 +5827,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -6192,7 +5855,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -6222,13 +5885,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -6265,7 +5928,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Family & Home (Ev Mimarisi & Geçmiş) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Used to / Past Simple) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Family & Home (Ev Mimarisi & Geçmiş) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Used to / Past Simple) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -6342,8 +6005,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Güneş Sistemi & Gezegenler!"
           },
           {
             "word": "Compass",
@@ -6351,8 +6012,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -6360,8 +6019,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -6369,8 +6026,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -6378,8 +6033,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -6387,8 +6040,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -6417,7 +6068,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -6447,13 +6098,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -6490,7 +6141,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Earth and Beyond (Güneş Sistemi & Gezegenler) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Future with will & going to) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Earth and Beyond (Güneş Sistemi & Gezegenler) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Future with will & going to) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -6567,8 +6218,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Mercan Resifleri & Okyanus!"
           },
           {
             "word": "Compass",
@@ -6576,8 +6225,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -6585,8 +6232,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -6594,8 +6239,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -6603,8 +6246,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -6612,8 +6253,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -6642,7 +6281,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -6672,13 +6311,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -6715,7 +6354,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Under the Sea (Mercan Resifleri & Okyanus) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Present perfect (Have you ever...?)) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Under the Sea (Mercan Resifleri & Okyanus) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Present perfect (Have you ever...?)) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -6792,8 +6431,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Adaptasyon & Vahşi Yaşam!"
           },
           {
             "word": "Compass",
@@ -6801,8 +6438,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -6810,8 +6445,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -6819,8 +6452,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -6828,8 +6459,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -6837,8 +6466,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -6867,7 +6494,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -6897,13 +6524,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -6940,7 +6567,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Amazing Animals (Adaptasyon & Vahşi Yaşam) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Modals of deduction (must, can't)) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Amazing Animals (Adaptasyon & Vahşi Yaşam) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Modals of deduction (must, can't)) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -7017,8 +6644,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Teknoloji & Mucitler!"
           },
           {
             "word": "Compass",
@@ -7026,8 +6651,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -7035,8 +6658,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -7044,8 +6665,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -7053,8 +6672,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -7062,8 +6679,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -7092,7 +6707,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -7122,13 +6737,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -7165,7 +6780,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Inventions and Gadgets (Teknoloji & Mucitler) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (First conditional (If you press...)) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Inventions and Gadgets (Teknoloji & Mucitler) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (First conditional (If you press...)) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -7242,8 +6857,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Olimpiyatlar & Sağlık!"
           },
           {
             "word": "Compass",
@@ -7251,8 +6864,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -7260,8 +6871,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -7269,8 +6878,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -7278,8 +6885,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -7287,8 +6892,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -7317,7 +6920,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -7347,13 +6950,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -7390,7 +6993,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "The World of Sport (Olimpiyatlar & Sağlık) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Relative clauses (who, which, that)) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "The World of Sport (Olimpiyatlar & Sağlık) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Relative clauses (who, which, that)) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -7467,8 +7070,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Piramitler & Antik Dünya!"
           },
           {
             "word": "Compass",
@@ -7476,8 +7077,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -7485,8 +7084,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -7494,8 +7091,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -7503,8 +7098,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -7512,8 +7105,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -7542,7 +7133,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -7572,13 +7163,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -7615,7 +7206,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Ancient Civilizations (Piramitler & Antik Dünya) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Past continuous vs Past simple) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Ancient Civilizations (Piramitler & Antik Dünya) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Past continuous vs Past simple) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -7692,8 +7283,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of İklim Değişikliği!"
           },
           {
             "word": "Compass",
@@ -7701,8 +7290,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -7710,8 +7297,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -7719,8 +7304,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -7728,8 +7311,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -7737,8 +7318,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -7767,7 +7346,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -7797,13 +7376,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -7840,7 +7419,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Weather and Climate (İklim Değişikliği) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Cause and effect (because, so)) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Weather and Climate (İklim Değişikliği) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Cause and effect (because, so)) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -7917,8 +7496,6 @@ const CURRICULUM_DATA = {
             "turkish": "Kaşif",
             "realPhoto": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "We are explorers of Kutup Kaşifleri & Liderlik!"
           },
           {
             "word": "Compass",
@@ -7926,8 +7503,6 @@ const CURRICULUM_DATA = {
             "turkish": "Pusula",
             "realPhoto": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Find the right path with your compass!"
           },
           {
             "word": "Notebook",
@@ -7935,8 +7510,6 @@ const CURRICULUM_DATA = {
             "turkish": "Not defteri",
             "realPhoto": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif",
-            "characterVoice": "peppa",
-            "voiceLine": "Write your ideas in the notebook!"
           },
           {
             "word": "Magnifier",
@@ -7944,8 +7517,6 @@ const CURRICULUM_DATA = {
             "turkish": "Büyüteç",
             "realPhoto": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif",
-            "characterVoice": "bluey",
-            "voiceLine": "Look closer at the tiny details!"
           },
           {
             "word": "Map",
@@ -7953,8 +7524,6 @@ const CURRICULUM_DATA = {
             "turkish": "Harita",
             "realPhoto": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif",
-            "characterVoice": "chase",
-            "voiceLine": "Follow the map to the treasure!"
           },
           {
             "word": "Star",
@@ -7962,8 +7531,6 @@ const CURRICULUM_DATA = {
             "turkish": "Yıldız",
             "realPhoto": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=600&auto=format&fit=crop&q=80",
             "gifUrl": "https://media.giphy.com/media/3o7btQ8jDTPGDpgc6I/giphy.gif",
-            "characterVoice": "polly",
-            "voiceLine": "Reach for the golden star!"
           }
         ],
         "baamboozleQuestions": [
@@ -7992,7 +7559,7 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
             "a": "10 puan kaybedildi!",
             "pts": -10,
             "type": "penalty"
@@ -8022,13 +7589,13 @@ const CURRICULUM_DATA = {
             "type": "question"
           },
           {
-            "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-            "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
             "pts": 10,
             "type": "action"
           },
           {
-            "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
             "a": "Gained 30 points!",
             "pts": 30,
             "type": "bonus"
@@ -8065,7 +7632,7 @@ const CURRICULUM_DATA = {
           }
         ],
         "lessonPlan": {
-          "weeklyGoal": "Planet Explorers (Kutup Kaşifleri & Liderlik) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, doğal sesli telaffuz eder, dilbilgisi kalıbını (Reported speech giriş) kavrar ve TPR komutlarını eksiksiz uygular.",
+          "weeklyGoal": "Planet Explorers (Kutup Kaşifleri & Liderlik) ünitesi kazanımları (A2): Öğrenciler hedeflenen 6 temel kelimeyi tanır, telaffuz çalışmaları yapar, dilbilgisi kalıbını (Reported speech giriş) kavrar ve TPR komutlarını eksiksiz uygular.",
           "dailyPlan": [
             {
               "day": "Pazartesi (1. Gün)",
@@ -8171,7 +7738,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8206,14 +7773,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -8294,7 +7861,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8329,14 +7896,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -8417,7 +7984,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8452,14 +8019,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -8540,7 +8107,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8575,14 +8142,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -8663,7 +8230,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8698,14 +8265,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -8786,7 +8353,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8821,14 +8388,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -8909,7 +8476,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -8944,14 +8511,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9032,7 +8599,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9067,14 +8634,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9155,7 +8722,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9190,14 +8757,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9278,7 +8845,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9313,14 +8880,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9401,7 +8968,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9436,14 +9003,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9524,7 +9091,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9559,14 +9126,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9647,7 +9214,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9682,14 +9249,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9770,7 +9337,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9805,14 +9372,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -9893,7 +9460,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -9928,14 +9495,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10016,7 +9583,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10051,14 +9618,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10139,7 +9706,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10174,14 +9741,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10262,7 +9829,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10297,14 +9864,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10385,7 +9952,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10420,14 +9987,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10508,7 +10075,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10543,14 +10110,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10631,7 +10198,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10666,14 +10233,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10754,7 +10321,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10789,14 +10356,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -10877,7 +10444,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -10912,14 +10479,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11000,7 +10567,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11035,14 +10602,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11123,7 +10690,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11158,14 +10725,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11246,7 +10813,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11281,14 +10848,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11369,7 +10936,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11404,14 +10971,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11492,7 +11059,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11527,14 +11094,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11615,7 +11182,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11650,14 +11217,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11738,7 +11305,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11773,14 +11340,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11861,7 +11428,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -11896,14 +11463,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -11984,7 +11551,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12019,14 +11586,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12107,7 +11674,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12142,14 +11709,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12230,7 +11797,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12265,14 +11832,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12353,7 +11920,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12388,14 +11955,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12476,7 +12043,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12511,14 +12078,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12599,7 +12166,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12634,14 +12201,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12722,7 +12289,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12757,14 +12324,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12845,7 +12412,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -12880,14 +12447,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -12968,7 +12535,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13003,14 +12570,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13091,7 +12658,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13126,14 +12693,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13214,7 +12781,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13249,14 +12816,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13337,7 +12904,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13372,14 +12939,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13460,7 +13027,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13495,14 +13062,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13583,7 +13150,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13618,14 +13185,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13706,7 +13273,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13741,14 +13308,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13829,7 +13396,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13864,14 +13431,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -13952,7 +13519,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -13987,14 +13554,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14075,7 +13642,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14110,14 +13677,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14198,7 +13765,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14233,14 +13800,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14321,7 +13888,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14356,14 +13923,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14444,7 +14011,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14479,14 +14046,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14567,7 +14134,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14602,14 +14169,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14690,7 +14257,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14725,14 +14292,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14813,7 +14380,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14848,14 +14415,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -14936,7 +14503,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -14971,14 +14538,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15059,7 +14626,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15094,14 +14661,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15182,7 +14749,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15217,14 +14784,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15305,7 +14872,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15340,14 +14907,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15428,7 +14995,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15463,14 +15030,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15551,7 +15118,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15586,14 +15153,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15674,7 +15241,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15709,14 +15276,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15797,7 +15364,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15832,14 +15399,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -15920,7 +15487,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -15955,14 +15522,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16043,7 +15610,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16078,14 +15645,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16166,7 +15733,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16201,14 +15768,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16289,7 +15856,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16324,14 +15891,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16412,7 +15979,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16447,14 +16014,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16535,7 +16102,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16570,14 +16137,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16658,7 +16225,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16693,14 +16260,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16781,7 +16348,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16816,14 +16383,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -16904,7 +16471,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -16939,14 +16506,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17027,7 +16594,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17062,14 +16629,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17150,7 +16717,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17185,14 +16752,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17273,7 +16840,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17308,14 +16875,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17396,7 +16963,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17431,14 +16998,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17519,7 +17086,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17554,14 +17121,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17642,7 +17209,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17677,14 +17244,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17765,7 +17332,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17800,14 +17367,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -17888,7 +17455,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -17923,14 +17490,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18011,7 +17578,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18046,14 +17613,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18134,7 +17701,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18169,14 +17736,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18257,7 +17824,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18292,14 +17859,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18380,7 +17947,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18415,14 +17982,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18503,7 +18070,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18538,14 +18105,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18626,7 +18193,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18661,14 +18228,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18749,7 +18316,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18784,14 +18351,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18872,7 +18439,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -18907,14 +18474,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -18995,7 +18562,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19030,14 +18597,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19118,7 +18685,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19153,14 +18720,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19241,7 +18808,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19276,14 +18843,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19364,7 +18931,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19399,14 +18966,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19487,7 +19054,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19522,14 +19089,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19610,7 +19177,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19645,14 +19212,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19733,7 +19300,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19768,14 +19335,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19856,7 +19423,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -19891,14 +19458,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -19979,7 +19546,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20014,14 +19581,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20102,7 +19669,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20137,14 +19704,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20225,7 +19792,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20260,14 +19827,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20348,7 +19915,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20383,14 +19950,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20471,7 +20038,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20506,14 +20073,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20594,7 +20161,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20629,14 +20196,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20717,7 +20284,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20752,14 +20319,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20840,7 +20407,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20875,14 +20442,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -20963,7 +20530,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -20998,14 +20565,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21086,7 +20653,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21121,14 +20688,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21209,7 +20776,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21244,14 +20811,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21332,7 +20899,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21367,14 +20934,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21455,7 +21022,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21490,14 +21057,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21578,7 +21145,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21613,14 +21180,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21701,7 +21268,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21736,14 +21303,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21824,7 +21391,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21859,14 +21426,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -21947,7 +21514,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -21982,14 +21549,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22070,7 +21637,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22105,14 +21672,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22193,7 +21760,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22228,14 +21795,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22316,7 +21883,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22351,14 +21918,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22439,7 +22006,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22474,14 +22041,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22562,7 +22129,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22597,14 +22164,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22685,7 +22252,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22720,14 +22287,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22808,7 +22375,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22843,14 +22410,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -22931,7 +22498,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -22966,14 +22533,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23054,7 +22621,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23089,14 +22656,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23177,7 +22744,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23212,14 +22779,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23300,7 +22867,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23335,14 +22902,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23423,7 +22990,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23458,14 +23025,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23546,7 +23113,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23581,14 +23148,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23669,7 +23236,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23704,14 +23271,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23792,7 +23359,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23827,14 +23394,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -23915,7 +23482,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -23950,14 +23517,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24038,7 +23605,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24073,14 +23640,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24161,7 +23728,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24196,14 +23763,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24284,7 +23851,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24319,14 +23886,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24407,7 +23974,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24442,14 +24009,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24530,7 +24097,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24565,14 +24132,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24653,7 +24220,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24688,14 +24255,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24776,7 +24343,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24811,14 +24378,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -24899,7 +24466,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -24934,14 +24501,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25022,7 +24589,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25057,14 +24624,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25145,7 +24712,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25180,14 +24747,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25268,7 +24835,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25303,14 +24870,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25391,7 +24958,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25426,14 +24993,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25514,7 +25081,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25549,14 +25116,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25637,7 +25204,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25672,14 +25239,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25760,7 +25327,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25795,14 +25362,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -25883,7 +25450,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -25918,14 +25485,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26006,7 +25573,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26041,14 +25608,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26129,7 +25696,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26164,14 +25731,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26252,7 +25819,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26287,14 +25854,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26375,7 +25942,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26410,14 +25977,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26498,7 +26065,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26533,14 +26100,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26621,7 +26188,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26656,14 +26223,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26744,7 +26311,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26779,14 +26346,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26867,7 +26434,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -26902,14 +26469,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -26990,7 +26557,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27025,14 +26592,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27113,7 +26680,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27148,14 +26715,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27236,7 +26803,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27271,14 +26838,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27359,7 +26926,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27394,14 +26961,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27482,7 +27049,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27517,14 +27084,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27605,7 +27172,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27640,14 +27207,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27728,7 +27295,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27763,14 +27330,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27851,7 +27418,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -27886,14 +27453,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -27974,7 +27541,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28009,14 +27576,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28097,7 +27664,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28132,14 +27699,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28220,7 +27787,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28255,14 +27822,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28343,7 +27910,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28378,14 +27945,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28466,7 +28033,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28501,14 +28068,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28589,7 +28156,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28624,14 +28191,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28712,7 +28279,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28747,14 +28314,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28835,7 +28402,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28870,14 +28437,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -28958,7 +28525,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -28993,14 +28560,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29081,7 +28648,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29116,14 +28683,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29204,7 +28771,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29239,14 +28806,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29327,7 +28894,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29362,14 +28929,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29450,7 +29017,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29485,14 +29052,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29573,7 +29140,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29608,14 +29175,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29696,7 +29263,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29731,14 +29298,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29819,7 +29386,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29854,14 +29421,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -29942,7 +29509,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -29977,14 +29544,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30065,7 +29632,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30100,14 +29667,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30188,7 +29755,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30223,14 +29790,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30311,7 +29878,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30346,14 +29913,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30434,7 +30001,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30469,14 +30036,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30557,7 +30124,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30592,14 +30159,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30680,7 +30247,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30715,14 +30282,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30803,7 +30370,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30838,14 +30405,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -30926,7 +30493,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -30961,14 +30528,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31049,7 +30616,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31084,14 +30651,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31172,7 +30739,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31207,14 +30774,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31295,7 +30862,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31330,14 +30897,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31418,7 +30985,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31453,14 +31020,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31541,7 +31108,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31576,14 +31143,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31664,7 +31231,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31699,14 +31266,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31787,7 +31354,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31822,14 +31389,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -31910,7 +31477,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -31945,14 +31512,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32033,7 +31600,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32068,14 +31635,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32156,7 +31723,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32191,14 +31758,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32279,7 +31846,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32314,14 +31881,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32402,7 +31969,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32437,14 +32004,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32525,7 +32092,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32560,14 +32127,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32648,7 +32215,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32683,14 +32250,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32771,7 +32338,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32806,14 +32373,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -32894,7 +32461,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -32929,14 +32496,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33017,7 +32584,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33052,14 +32619,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33140,7 +32707,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33175,14 +32742,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33263,7 +32830,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33298,14 +32865,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33386,7 +32953,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33421,14 +32988,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33509,7 +33076,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33544,14 +33111,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33632,7 +33199,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33667,14 +33234,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33755,7 +33322,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33790,14 +33357,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -33878,7 +33445,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -33913,14 +33480,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -34001,7 +33568,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -34036,14 +33603,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -34124,7 +33691,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -34159,14 +33726,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -34247,7 +33814,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -34282,14 +33849,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -34370,7 +33937,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+            "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -34405,14 +33972,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -34493,7 +34060,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+        "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -34528,14 +34095,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -34616,7 +34183,7 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 5,
-        "q": "OOPS! Peppa çamurlu su birikintisine bastı! 10 puan kaybettiniz.",
+        "q": "CEZA KARTI: 10 puan kaybettiniz.",
         "a": "10 puan kaybedildi!",
         "pts": -10,
         "type": "penalty"
@@ -34651,14 +34218,14 @@ const BAAMBOOZLE_GAMES_DATA = [
       },
       {
         "tile": 10,
-        "q": "CHASE CHALLENGE: Stand up and bark like brave Chase: Ruff ruff!",
-        "a": "Chase görevi başarıyla tamamlandı!",
+            "q": "HAREKET GÖREVİ: Bir hayvanı hareketlerle anlatın.",
+            "a": "Hareket görevi tamamlandı!",
         "pts": 10,
         "type": "action"
       },
       {
         "tile": 11,
-        "q": "GALAXY BONUS: Bluey awards 30 points to your team!",
+            "q": "BONUS KARTI: Takımınız 30 puan kazandı!",
         "a": "Gained 30 points!",
         "pts": 30,
         "type": "bonus"
@@ -61181,7 +60748,7 @@ const SONGS_DATA = [
       "Muddy little puddles on the ground!",
       "Put your yellow boots on, jump up high,",
       "Splish splash splosh under the sky!",
-      "Peppa loves jumping, we love to run,",
+      "We love to jump and run together,",
       "Splashing in the rain is super fun!"
     ]
   },
@@ -61308,2328 +60875,6 @@ const VIDEO_LIBRARY_DATA = [
     "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
   },
   {
-    "id": "vid_8",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 8: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_9",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 9: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_10",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 10: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_11",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 11: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_12",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 12: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_13",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 13: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_14",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 14: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_15",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 15: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_16",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 16: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_17",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 17: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_18",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 18: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_19",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 19: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_20",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 20: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_21",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 21: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_22",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 22: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_23",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 23: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_24",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 24: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_25",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 25: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_26",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 26: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_27",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 27: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_28",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 28: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_29",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 29: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_30",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 30: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_31",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 31: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_32",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 32: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_33",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 33: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_34",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 34: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_35",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 35: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_36",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 36: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_37",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 37: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_38",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 38: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_39",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 39: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_40",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 40: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_41",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 41: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_42",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 42: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_43",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 43: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_44",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 44: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_45",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 45: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_46",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 46: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_47",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 47: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_48",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 48: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_49",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 49: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_50",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 50: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_51",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 51: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_52",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 52: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_53",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 53: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_54",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 54: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_55",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 55: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_56",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 56: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_57",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 57: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_58",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 58: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_59",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 59: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_60",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 60: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_61",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 61: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_62",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 62: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_63",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 63: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_64",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 64: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_65",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 65: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_66",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 66: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_67",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 67: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_68",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 68: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_69",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 69: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_70",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 70: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_71",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 71: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_72",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 72: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_73",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 73: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_74",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 74: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_75",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 75: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_76",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 76: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_77",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 77: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_78",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 78: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_79",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 79: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_80",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 80: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_81",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 81: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_82",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 82: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_83",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 83: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_84",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 84: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_85",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 85: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_86",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 86: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_87",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 87: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_88",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 88: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_89",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 89: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_90",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 90: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_91",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 91: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_92",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 92: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_93",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 93: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_94",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 94: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_95",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 95: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_96",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 96: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_97",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 97: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_98",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 98: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_99",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 99: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_100",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 100: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_101",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 101: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_102",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 102: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_103",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 103: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_104",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 104: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_105",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 105: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_106",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 106: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_107",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 107: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_108",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 108: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_109",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 109: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_110",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 110: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_111",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 111: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_112",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 112: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_113",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 113: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_114",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 114: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_115",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 115: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_116",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 116: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_117",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 117: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_118",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 118: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_119",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 119: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_120",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 120: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_121",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 121: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_122",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 122: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_123",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 123: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_124",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 124: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_125",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 125: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_126",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 126: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_127",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 127: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_128",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 128: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_129",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 129: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_130",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 130: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_131",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 131: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_132",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 132: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_133",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 133: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_134",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 134: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_135",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 135: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_136",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 136: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_137",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 137: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_138",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 138: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_139",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 139: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_140",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 140: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_141",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 141: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_142",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 142: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_143",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 143: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_144",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 144: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_145",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 145: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_146",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 146: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_147",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 147: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_148",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 148: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_149",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 149: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_150",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 150: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_151",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 151: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_152",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 152: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_153",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 153: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_154",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 154: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_155",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 155: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_156",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 156: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_157",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 157: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_158",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 158: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_159",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 159: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_160",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 160: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_161",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 161: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_162",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 162: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_163",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 163: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_164",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 164: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_165",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 165: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_166",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 166: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_167",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 167: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_168",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 168: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_169",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 169: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_170",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 170: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_171",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 171: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_172",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 172: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_173",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 173: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_174",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 174: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_175",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 175: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_176",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 176: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_177",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 177: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_178",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 178: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_179",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 179: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_180",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 180: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_181",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 181: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_182",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 182: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_183",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 183: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_184",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 184: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_185",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 185: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_186",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 186: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_187",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 187: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_188",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 188: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_189",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 189: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_190",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 190: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_191",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 191: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_192",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 192: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_193",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 193: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_194",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 194: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_195",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 195: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_196",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 196: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_197",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 197: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_198",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 198: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_199",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 199: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_200",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 200: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_201",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 201: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_202",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 202: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_203",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 203: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_204",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 204: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_205",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 205: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_206",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 206: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_207",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 207: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_208",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 208: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_209",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 209: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_210",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 210: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_211",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 211: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_212",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 212: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_213",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 213: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_214",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 214: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_215",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 215: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_216",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 216: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_217",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 217: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_218",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 218: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_219",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 219: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_220",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 220: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_221",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 221: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_222",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 222: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_223",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 223: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_224",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 224: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_225",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 225: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_226",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 226: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_227",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 227: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_228",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 228: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_229",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 229: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_230",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 230: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_231",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 231: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_232",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 232: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_233",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 233: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_234",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 234: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_235",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 235: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_236",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 236: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_237",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 237: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_238",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 238: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_239",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 239: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_240",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 240: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_241",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 241: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_242",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 242: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_243",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 243: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_244",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 244: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_245",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 245: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_246",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 246: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_247",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 247: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_248",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 248: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_249",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 249: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_250",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 250: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_251",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 251: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_252",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 252: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_253",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 253: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_254",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 254: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_255",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 255: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_256",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 256: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_257",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 257: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_258",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 258: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_259",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 259: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_260",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 260: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_261",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 261: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_262",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 262: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_263",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 263: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_264",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 264: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_265",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 265: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
     "id": "vid_266",
     "stage": "Stage 2",
     "title": "Stage 2 Video 1: Classroom English Essentials",
@@ -63691,2328 +60936,6 @@ const VIDEO_LIBRARY_DATA = [
     "channel": "Cambridge English",
     "duration": "5:16",
     "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_273",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 8: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_274",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 9: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_275",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 10: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_276",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 11: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_277",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 12: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_278",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 13: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_279",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 14: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_280",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 15: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_281",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 16: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_282",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 17: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_283",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 18: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_284",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 19: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_285",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 20: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_286",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 21: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_287",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 22: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_288",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 23: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_289",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 24: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_290",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 25: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_291",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 26: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_292",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 27: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_293",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 28: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_294",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 29: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_295",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 30: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_296",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 31: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_297",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 32: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_298",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 33: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_299",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 34: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_300",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 35: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_301",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 36: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_302",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 37: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_303",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 38: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_304",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 39: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_305",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 40: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_306",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 41: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_307",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 42: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_308",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 43: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_309",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 44: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_310",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 45: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_311",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 46: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_312",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 47: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_313",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 48: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_314",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 49: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_315",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 50: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_316",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 51: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_317",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 52: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_318",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 53: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_319",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 54: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_320",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 55: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_321",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 56: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_322",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 57: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_323",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 58: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_324",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 59: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_325",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 60: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_326",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 61: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_327",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 62: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_328",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 63: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_329",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 64: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_330",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 65: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_331",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 66: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_332",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 67: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_333",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 68: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_334",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 69: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_335",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 70: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_336",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 71: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_337",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 72: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_338",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 73: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_339",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 74: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_340",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 75: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_341",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 76: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_342",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 77: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_343",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 78: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_344",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 79: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_345",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 80: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_346",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 81: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_347",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 82: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_348",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 83: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_349",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 84: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_350",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 85: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_351",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 86: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_352",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 87: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_353",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 88: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_354",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 89: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_355",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 90: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_356",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 91: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_357",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 92: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_358",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 93: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_359",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 94: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_360",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 95: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_361",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 96: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_362",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 97: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_363",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 98: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_364",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 99: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_365",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 100: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_366",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 101: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_367",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 102: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_368",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 103: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_369",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 104: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_370",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 105: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_371",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 106: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_372",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 107: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_373",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 108: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_374",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 109: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_375",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 110: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_376",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 111: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_377",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 112: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_378",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 113: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_379",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 114: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_380",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 115: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_381",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 116: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_382",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 117: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_383",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 118: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_384",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 119: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_385",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 120: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_386",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 121: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_387",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 122: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_388",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 123: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_389",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 124: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_390",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 125: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_391",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 126: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_392",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 127: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_393",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 128: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_394",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 129: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_395",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 130: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_396",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 131: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_397",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 132: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_398",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 133: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_399",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 134: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_400",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 135: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_401",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 136: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_402",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 137: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_403",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 138: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_404",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 139: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_405",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 140: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_406",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 141: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_407",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 142: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_408",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 143: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_409",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 144: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_410",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 145: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_411",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 146: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_412",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 147: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_413",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 148: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_414",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 149: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_415",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 150: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_416",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 151: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_417",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 152: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_418",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 153: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_419",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 154: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_420",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 155: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_421",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 156: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_422",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 157: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_423",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 158: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_424",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 159: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_425",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 160: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_426",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 161: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_427",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 162: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_428",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 163: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_429",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 164: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_430",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 165: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_431",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 166: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_432",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 167: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_433",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 168: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_434",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 169: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_435",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 170: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_436",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 171: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_437",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 172: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_438",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 173: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_439",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 174: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_440",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 175: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_441",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 176: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_442",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 177: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_443",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 178: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_444",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 179: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_445",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 180: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_446",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 181: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_447",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 182: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_448",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 183: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_449",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 184: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_450",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 185: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_451",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 186: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_452",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 187: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_453",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 188: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_454",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 189: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_455",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 190: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_456",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 191: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_457",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 192: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_458",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 193: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_459",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 194: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_460",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 195: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_461",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 196: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_462",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 197: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_463",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 198: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_464",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 199: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_465",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 200: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_466",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 201: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_467",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 202: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_468",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 203: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_469",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 204: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_470",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 205: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_471",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 206: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_472",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 207: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_473",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 208: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_474",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 209: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_475",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 210: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_476",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 211: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_477",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 212: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_478",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 213: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_479",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 214: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_480",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 215: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_481",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 216: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_482",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 217: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_483",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 218: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_484",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 219: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_485",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 220: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_486",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 221: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_487",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 222: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_488",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 223: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_489",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 224: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_490",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 225: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_491",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 226: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_492",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 227: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_493",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 228: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_494",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 229: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_495",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 230: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_496",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 231: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_497",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 232: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_498",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 233: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_499",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 234: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_500",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 235: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_501",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 236: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_502",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 237: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_503",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 238: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_504",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 239: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_505",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 240: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_506",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 241: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_507",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 242: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_508",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 243: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_509",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 244: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_510",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 245: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_511",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 246: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_512",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 247: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_513",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 248: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_514",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 249: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_515",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 250: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_516",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 251: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_517",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 252: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_518",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 253: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_519",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 254: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_520",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 255: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_521",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 256: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_522",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 257: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_523",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 258: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_524",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 259: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_525",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 260: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_526",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 261: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_527",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 262: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_528",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 263: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_529",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 264: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_530",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 265: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
   },
   {
     "id": "vid_531",
@@ -66078,2328 +61001,6 @@ const VIDEO_LIBRARY_DATA = [
     "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
   },
   {
-    "id": "vid_538",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 8: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_539",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 9: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_540",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 10: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_541",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 11: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_542",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 12: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_543",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 13: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_544",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 14: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_545",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 15: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_546",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 16: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_547",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 17: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_548",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 18: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_549",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 19: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_550",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 20: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_551",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 21: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_552",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 22: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_553",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 23: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_554",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 24: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_555",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 25: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_556",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 26: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_557",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 27: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_558",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 28: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_559",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 29: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_560",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 30: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_561",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 31: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_562",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 32: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_563",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 33: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_564",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 34: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_565",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 35: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_566",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 36: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_567",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 37: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_568",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 38: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_569",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 39: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_570",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 40: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_571",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 41: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_572",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 42: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_573",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 43: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_574",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 44: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_575",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 45: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_576",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 46: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_577",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 47: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_578",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 48: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_579",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 49: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_580",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 50: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_581",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 51: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_582",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 52: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_583",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 53: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_584",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 54: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_585",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 55: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_586",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 56: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_587",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 57: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_588",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 58: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_589",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 59: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_590",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 60: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_591",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 61: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_592",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 62: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_593",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 63: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_594",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 64: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_595",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 65: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_596",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 66: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_597",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 67: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_598",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 68: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_599",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 69: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_600",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 70: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_601",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 71: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_602",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 72: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_603",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 73: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_604",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 74: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_605",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 75: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_606",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 76: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_607",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 77: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_608",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 78: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_609",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 79: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_610",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 80: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_611",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 81: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_612",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 82: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_613",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 83: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_614",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 84: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_615",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 85: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_616",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 86: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_617",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 87: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_618",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 88: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_619",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 89: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_620",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 90: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_621",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 91: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_622",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 92: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_623",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 93: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_624",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 94: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_625",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 95: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_626",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 96: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_627",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 97: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_628",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 98: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_629",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 99: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_630",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 100: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_631",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 101: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_632",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 102: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_633",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 103: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_634",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 104: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_635",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 105: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_636",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 106: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_637",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 107: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_638",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 108: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_639",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 109: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_640",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 110: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_641",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 111: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_642",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 112: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_643",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 113: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_644",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 114: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_645",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 115: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_646",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 116: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_647",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 117: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_648",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 118: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_649",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 119: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_650",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 120: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_651",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 121: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_652",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 122: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_653",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 123: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_654",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 124: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_655",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 125: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_656",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 126: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_657",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 127: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_658",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 128: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_659",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 129: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_660",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 130: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_661",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 131: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_662",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 132: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_663",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 133: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_664",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 134: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_665",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 135: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_666",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 136: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_667",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 137: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_668",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 138: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_669",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 139: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_670",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 140: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_671",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 141: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_672",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 142: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_673",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 143: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_674",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 144: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_675",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 145: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_676",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 146: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_677",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 147: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_678",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 148: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_679",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 149: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_680",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 150: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_681",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 151: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_682",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 152: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_683",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 153: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_684",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 154: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_685",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 155: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_686",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 156: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_687",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 157: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_688",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 158: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_689",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 159: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_690",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 160: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_691",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 161: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_692",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 162: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_693",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 163: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_694",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 164: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_695",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 165: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_696",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 166: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_697",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 167: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_698",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 168: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_699",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 169: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_700",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 170: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_701",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 171: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_702",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 172: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_703",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 173: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_704",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 174: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_705",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 175: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_706",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 176: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_707",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 177: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_708",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 178: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_709",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 179: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_710",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 180: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_711",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 181: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_712",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 182: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_713",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 183: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_714",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 184: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_715",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 185: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_716",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 186: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_717",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 187: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_718",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 188: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_719",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 189: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_720",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 190: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_721",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 191: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_722",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 192: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_723",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 193: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_724",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 194: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_725",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 195: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_726",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 196: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_727",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 197: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_728",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 198: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_729",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 199: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_730",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 200: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_731",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 201: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_732",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 202: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_733",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 203: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_734",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 204: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_735",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 205: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_736",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 206: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_737",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 207: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_738",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 208: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_739",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 209: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_740",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 210: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_741",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 211: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_742",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 212: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_743",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 213: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_744",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 214: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_745",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 215: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_746",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 216: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_747",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 217: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_748",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 218: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_749",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 219: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_750",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 220: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_751",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 221: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_752",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 222: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_753",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 223: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_754",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 224: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_755",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 225: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_756",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 226: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_757",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 227: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_758",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 228: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_759",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 229: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_760",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 230: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_761",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 231: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_762",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 232: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_763",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 233: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_764",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 234: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_765",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 235: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_766",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 236: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_767",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 237: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_768",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 238: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_769",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 239: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_770",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 240: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_771",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 241: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_772",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 242: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_773",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 243: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_774",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 244: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_775",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 245: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_776",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 246: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_777",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 247: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_778",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 248: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_779",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 249: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_780",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 250: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_781",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 251: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_782",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 252: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_783",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 253: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_784",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 254: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_785",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 255: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_786",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 256: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_787",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 257: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_788",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 258: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_789",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 259: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_790",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 260: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_791",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 261: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_792",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 262: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_793",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 263: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_794",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 264: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_795",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 265: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
     "id": "vid_796",
     "stage": "Stage 4",
     "title": "Stage 4 Video 1: Classroom English Essentials",
@@ -68461,2328 +61062,6 @@ const VIDEO_LIBRARY_DATA = [
     "channel": "Cambridge English",
     "duration": "5:16",
     "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_803",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 8: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_804",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 9: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_805",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 10: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_806",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 11: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_807",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 12: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_808",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 13: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_809",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 14: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_810",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 15: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_811",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 16: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_812",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 17: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_813",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 18: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_814",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 19: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_815",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 20: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_816",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 21: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_817",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 22: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_818",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 23: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_819",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 24: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_820",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 25: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_821",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 26: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_822",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 27: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_823",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 28: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_824",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 29: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_825",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 30: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_826",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 31: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_827",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 32: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_828",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 33: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_829",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 34: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_830",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 35: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_831",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 36: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_832",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 37: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_833",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 38: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_834",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 39: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_835",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 40: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_836",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 41: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_837",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 42: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_838",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 43: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_839",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 44: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_840",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 45: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_841",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 46: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_842",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 47: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_843",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 48: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_844",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 49: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_845",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 50: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_846",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 51: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_847",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 52: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_848",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 53: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_849",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 54: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_850",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 55: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_851",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 56: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_852",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 57: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_853",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 58: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_854",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 59: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_855",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 60: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_856",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 61: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_857",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 62: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_858",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 63: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_859",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 64: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_860",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 65: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_861",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 66: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_862",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 67: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_863",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 68: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_864",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 69: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_865",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 70: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_866",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 71: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_867",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 72: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_868",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 73: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_869",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 74: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_870",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 75: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_871",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 76: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_872",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 77: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_873",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 78: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_874",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 79: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_875",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 80: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_876",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 81: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_877",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 82: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_878",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 83: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_879",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 84: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_880",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 85: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_881",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 86: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_882",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 87: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_883",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 88: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_884",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 89: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_885",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 90: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_886",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 91: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_887",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 92: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_888",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 93: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_889",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 94: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_890",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 95: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_891",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 96: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_892",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 97: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_893",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 98: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_894",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 99: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_895",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 100: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_896",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 101: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_897",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 102: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_898",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 103: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_899",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 104: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_900",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 105: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_901",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 106: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_902",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 107: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_903",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 108: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_904",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 109: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_905",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 110: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_906",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 111: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_907",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 112: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_908",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 113: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_909",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 114: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_910",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 115: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_911",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 116: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_912",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 117: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_913",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 118: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_914",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 119: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_915",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 120: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_916",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 121: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_917",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 122: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_918",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 123: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_919",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 124: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_920",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 125: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_921",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 126: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_922",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 127: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_923",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 128: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_924",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 129: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_925",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 130: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_926",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 131: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_927",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 132: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_928",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 133: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_929",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 134: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_930",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 135: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_931",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 136: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_932",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 137: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_933",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 138: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_934",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 139: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_935",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 140: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_936",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 141: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_937",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 142: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_938",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 143: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_939",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 144: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_940",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 145: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_941",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 146: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_942",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 147: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_943",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 148: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_944",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 149: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_945",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 150: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_946",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 151: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_947",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 152: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_948",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 153: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_949",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 154: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_950",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 155: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_951",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 156: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_952",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 157: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_953",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 158: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_954",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 159: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_955",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 160: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_956",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 161: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_957",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 162: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_958",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 163: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_959",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 164: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_960",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 165: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_961",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 166: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_962",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 167: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_963",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 168: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_964",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 169: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_965",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 170: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_966",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 171: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_967",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 172: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_968",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 173: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_969",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 174: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_970",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 175: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_971",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 176: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_972",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 177: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_973",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 178: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_974",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 179: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_975",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 180: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_976",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 181: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_977",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 182: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_978",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 183: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_979",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 184: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_980",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 185: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_981",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 186: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_982",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 187: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_983",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 188: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_984",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 189: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_985",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 190: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_986",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 191: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_987",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 192: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_988",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 193: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_989",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 194: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_990",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 195: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_991",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 196: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_992",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 197: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_993",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 198: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_994",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 199: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_995",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 200: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_996",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 201: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_997",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 202: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_998",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 203: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_999",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 204: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1000",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 205: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1001",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 206: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1002",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 207: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1003",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 208: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1004",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 209: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1005",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 210: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1006",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 211: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1007",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 212: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1008",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 213: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1009",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 214: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1010",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 215: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1011",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 216: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1012",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 217: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1013",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 218: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1014",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 219: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1015",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 220: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1016",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 221: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1017",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 222: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1018",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 223: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1019",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 224: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1020",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 225: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1021",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 226: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "4:35",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1022",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 227: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "5:36",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1023",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 228: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "6:37",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1024",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 229: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "3:38",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1025",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 230: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "4:39",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1026",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 231: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "5:40",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1027",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 232: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "6:41",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1028",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 233: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "3:42",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1029",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 234: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "4:43",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1030",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 235: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "5:44",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1031",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 236: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "British Council Kids",
-    "duration": "6:45",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1032",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 237: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Cambridge English",
-    "duration": "3:46",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1033",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 238: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Super Simple Songs",
-    "duration": "4:47",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1034",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 239: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "National Geographic Kids",
-    "duration": "5:48",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1035",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 240: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "SciShow Kids",
-    "duration": "6:49",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1036",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 241: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1037",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 242: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1038",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 243: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1039",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 244: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1040",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 245: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1041",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 246: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1042",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 247: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1043",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 248: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Super Simple Songs",
-    "duration": "6:17",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1044",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 249: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "National Geographic Kids",
-    "duration": "3:18",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1045",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 250: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "SciShow Kids",
-    "duration": "4:19",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1046",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 251: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "British Council Kids",
-    "duration": "5:20",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1047",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 252: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Cambridge English",
-    "duration": "6:21",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1048",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 253: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Super Simple Songs",
-    "duration": "3:22",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1049",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 254: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "National Geographic Kids",
-    "duration": "4:23",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1050",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 255: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "SciShow Kids",
-    "duration": "5:24",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1051",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 256: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "British Council Kids",
-    "duration": "6:25",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1052",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 257: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Cambridge English",
-    "duration": "3:26",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1053",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 258: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "Super Simple Songs",
-    "duration": "4:27",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_1054",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 259: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "National Geographic Kids",
-    "duration": "5:28",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_1055",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 260: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "SciShow Kids",
-    "duration": "6:29",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_1056",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 261: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "British Council Kids",
-    "duration": "3:30",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_1057",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 262: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "Cambridge English",
-    "duration": "4:31",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_1058",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 263: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "Super Simple Songs",
-    "duration": "5:32",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_1059",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 264: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "National Geographic Kids",
-    "duration": "6:33",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_1060",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 265: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "SciShow Kids",
-    "duration": "3:34",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
   }
 ];
 
@@ -70793,8 +61072,8 @@ const TEACHER_GUIDE_DATA = {
     "targetAge": "6-7 Yaş",
     "smartboardStrategies": [
       {
-        "title": "Görsel Dokunma & İkili Medya (GIF / Gerçek Fotoğraf)",
-        "description": "Öğrencileri tahtaya çağırarak kelime kartlarına dokunmalarını sağlayın. GIPHY hareketli GIF'leri dikkat toplarken, Unsplash gerçek fotoğrafları kelimenin gerçek dünyadaki karşılığını öğretir."
+        "title": "Görsel kartlarla kelime pratiği",
+        "description": "Öğrencileri tahtaya çağırarak kelime kartlarına dokunmalarını sağlayın. Üçüncü taraf görsel bağlantılarını dersten önce kontrol edin."
       },
       {
         "title": "Baamboozle Takım Yarışması",
@@ -70915,7 +61194,6 @@ class SettingsManager {
     bgmVolume: 0.35,
     sfxEnabled: true,
     sfxVolume: 0.8,
-    voiceCharacter: "polly",
     voiceSpeed: 1.0,
     voicePitch: 1.35,
     defaultMedia: "gif",

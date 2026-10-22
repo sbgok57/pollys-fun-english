@@ -1,22 +1,21 @@
-# 🦜 Polly’s Fun English (v2)
+# 🦜 Polly’s Fun English
 
-**Cambridge Global English 1 & 2 (Second Edition)** müfredatına uygun, ilkokul 1 ve 2. sınıf öğrencileri için tasarlanmış web tabanlı eğitsel oyun ve şarkı platformu.
+İlkokul İngilizce dersleri için oyunlar, şarkılar ve sınıf içi etkinlikler içeren bir yardımcı web uygulaması. Cambridge Global English 1–4 Second Edition ile ünite/sayfa eşleşmeleri bu depodaki kitap dosyalarına karşı doğrulanmadı. Uygulama bağımsızdır; resmî Cambridge materyali değildir. Etkinlikleri sınıfta kullanmadan önce kendi Learner’s Book ve Workbook baskınızla karşılaştırın.
 
 ---
 
 ## 🌟 Özellikler
 
-- 📚 **25 Ünite Seti**: 1. ve 2. Sınıf tüm ünite ve dönem tekrarları.
-- 🕹️ **24 Farklı Oyun Motoru**: Flaş Kartlar, Kelime Eşleştirme, Balon Patlatma, Hafıza, Dinle ve Bul, Hecele ve Yaz, Kelime Çarkı, Hızlı Cevap, Kategoriye Ayır, Bingo, Takım Yarışı, Köstebek Vurmaca, Cümle Kurma, Kelime Arama, Farklı Olanı Bul, Polly ile Tekrar, Resim Yapboz, Kelime Treni, Sıra Hafızası, Kelime Yağmuru, İlk Harf, Cümle Tamamla, Yarış Pisti, Say ve Bas.
-- 🎵 **330 Şarkı & Chant**: 30 klasik çocuk şarkısı + 300 kelime chant'i.
-- 🔊 **Web Audio API**: 17 özel yerel ses efekti, harici ses dosyası gerektirmez, tamamen çevrimdışı çalışır.
-- 🛡️ **Anti-Crash & Kurtarma Kalkanı**: Otomatik durum kaydı ve tek tıkla oturum kurtarma.
+- 📚 Sınıflara göre düzenlenmiş kelime, oyun, şarkı ve öğretmen etkinlikleri.
+- 🕹️ Eşleştirme, hafıza, dinleme, kelime ve takım oyunu türleri.
+- 🔊 Konuşma sentezi cihazın veya tarayıcının sağladığı sese dayanır; ses kalitesi ve aksan cihazdan cihaza değişir. Lisanslı çizgi film karakteri sesleri içermez.
+- 📖 Ders planları ve kitap eşleşmeleri taslak niteliğindedir; okulun yıllık planı ve kullanılan kitap baskısıyla kontrol edilmelidir.
 
 ---
 
 ## 🚀 Dağıtım (Deployment)
 
-Bu proje Vercel veya herhangi bir statik barındırma sağlayıcısında sıfır yapılandırmayla çalışır:
+Bu proje Vercel veya herhangi bir statik barındırma sağlayıcısında çalışacak şekilde hazırlanmıştır:
 - **Build Command**: `python3 build.py` (veya doğrudan derlenmiş `index.html` servis edilir)
 - **Output Directory**: `.`
-- **Routes / 404 Prevention**: `vercel.json` SPA yönlendirmeleri ile tüm rotalar `/index.html` dosyasına iletilir.
+- Derleme betiği, kaynak HTML/CSS/JS dosyalarından dağıtım HTML'lerini üretir. Yalnızca bu proje klasörüne çıktı yazar.

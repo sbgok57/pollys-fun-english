@@ -47,7 +47,7 @@ function makeEnv({ manifest = [], fetchPlan = {} } = {}) {
   vm.runInContext(
     'const CHARACTER_VOICE_MANIFEST = new Set(' + JSON.stringify(manifest) + ');\n' + src +
     '\n;this.__VE = VoiceEngine; this.__CSM = CharacterSoundManager; this.__MEDIA = MEDIA;', ctx);
-  ctx.__MEDIA.speakCharacter = (id, text, cb) => { log.spoken.push(text); if (cb) cb(); };
+  ctx.__MEDIA.speak = (text, rate, cb) => { log.spoken.push(text); if (typeof rate === 'function') rate(); else if (cb) cb(); };
   return { VE: ctx.__VE.getInstance(), CSM: ctx.__CSM, MEDIA: ctx.__MEDIA, log };
 }
 

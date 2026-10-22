@@ -25,7 +25,6 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
-  user-select: none;
 }
 
 button, .btn, .card, .unit-card, .word-pill, .lword, .lqopt, .opt, .match-card, .drag-pill {
@@ -1317,8 +1316,8 @@ body.s2 {
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
 }
 
-/* ═══ 🏰 DİSNEY MASKOT & HOŞ GELDİN HERO ═══ */
-.disney-welcome-hero {
+/* ═══ HOŞ GELDİN / ANA SAYFA ═══ */
+.welcome-hero {
   background: linear-gradient(135deg, #fef08a 0%, #fed7aa 50%, #fbcfe8 100%);
   border: 4px solid #f59e0b;
   border-radius: 24px;
@@ -1329,7 +1328,7 @@ body.s2 {
   gap: 20px;
   box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
 }
-.disney-welcome-avatar {
+.welcome-avatar {
   font-size: 3.8em;
   background: #ffffff;
   width: 90px;
@@ -1342,18 +1341,18 @@ body.s2 {
   flex-shrink: 0;
   border: 3px solid #f59e0b;
 }
-.disney-welcome-content h2 {
+.welcome-content h2 {
   font-size: 1.6em;
   color: #1e1b4b;
   margin: 4px 0 8px;
 }
-.disney-welcome-content p {
+.welcome-content p {
   color: #334155;
   font-size: 1em;
   line-height: 1.5;
   margin-bottom: 14px;
 }
-.disney-welcome-badge {
+.welcome-badge {
   display: inline-block;
   background: #8b5cf6;
   color: #ffffff;
@@ -1362,10 +1361,154 @@ body.s2 {
   padding: 4px 12px;
   border-radius: 12px;
 }
-.disney-welcome-btns {
+.welcome-btns {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+/* Calm, classroom-first visual treatment for the landing page. */
+:root {
+  --primary: #176b63;
+  --primary-hover: #12574f;
+  --accent: #d98c36;
+  --bg-gradient: #f7f7f2;
+  --card-bg: #fff;
+  --text-main: #263238;
+  --text-muted: #5c6b70;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 4px rgba(25, 49, 45, .08);
+  --shadow-md: 0 5px 18px rgba(25, 49, 45, .08);
+  --shadow-float: 0 8px 24px rgba(25, 49, 45, .10);
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+body { background: #f7f7f2; color: #263238; line-height: 1.55; }
+body.s1, body.s2 { background: #f7f7f2; }
+#app { max-width: 1120px; padding: 16px 22px 48px; }
+.topbar {
+  position: sticky; top: 8px; z-index: 30; flex-wrap: wrap;
+  border: 1px solid #e1e7e2; border-radius: 14px; padding: 10px 14px;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+}
+.topbar .brand { color: #174f4a; font-size: 1.05rem; }
+.topbar .btn { box-shadow: none; border-width: 1px; font-weight: 650; }
+.topbar .btn:hover { transform: none; background: #eef5f2; }
+.hero { padding: 10px 10px 16px; }
+.hero .mascot { animation: none; filter: none; font-size: 54px; }
+.hero .brand { color: #174f4a !important; font-size: clamp(28px, 5vw, 42px) !important; }
+.tag { color: #536b67; font-size: 1.02rem; font-weight: 550; }
+.welcome-hero {
+  background: #fff; border: 1px solid #e2e8e3; border-left: 5px solid #3b8b7e;
+  border-radius: 14px; padding: clamp(20px, 4vw, 32px); gap: 20px;
+  box-shadow: 0 3px 14px rgba(27, 57, 50, .06);
+}
+.welcome-avatar { width: 76px; height: 76px; border: 0; background: #edf5f1; box-shadow: none; font-size: 2.7rem; }
+.welcome-content h2 { color: #243b38; font-size: clamp(1.35rem, 2.8vw, 1.8rem); font-weight: 720; }
+.welcome-content { flex: 1; min-width: 220px; }
+.welcome-content p { color: #53615f; max-width: 760px; }
+.welcome-photo-wrap { flex: 0 1 34%; min-width: 230px; max-width: 360px; margin: 0; }
+.welcome-photo { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; }
+.welcome-photo-wrap figcaption { margin-top: 5px; color: #64746e; text-align: right; font-size: .75rem; }
+.welcome-badge { background: #edf5f1; color: #28665d; border-radius: 6px; font-size: .82rem; padding: 5px 10px; }
+.welcome-btns { gap: 8px; }
+.btn { border-radius: 9px; box-shadow: none; font-weight: 650; transition: background-color .15s, border-color .15s; }
+.btn:hover { transform: none; }
+.btn:active { transform: translateY(1px); box-shadow: none; }
+.btn.green, .btn.blue, .btn.purple, .btn.pink, .btn.yellow, .btn.gold {
+  background: #176b63; color: #fff; box-shadow: none;
+}
+.btn.green:hover, .btn.blue:hover, .btn.purple:hover, .btn.pink:hover, .btn.yellow:hover, .btn.gold:hover { background: #12574f; }
+.btn.white { border: 1px solid #d7e0dc; color: #314440; }
+.curriculum-note {
+  margin: 4px 0 18px; padding: 13px 16px; border: 1px solid #dbe7df;
+  border-radius: 10px; background: #eef5f0; color: #40534d; font-size: .94rem;
+}
+.stage-cards { gap: 14px; }
+.stage-card {
+  border: 1px solid #e1e7e2 !important; border-top: 3px solid #88b5a8 !important;
+  border-radius: 13px; background: #fff !important; box-shadow: 0 2px 10px rgba(30, 55, 48, .045);
+  transition: border-color .15s, box-shadow .15s;
+}
+.stage-card:hover { transform: none; box-shadow: 0 5px 16px rgba(30, 55, 48, .09); border-color: #9dbeb2 !important; }
+.stage-card h2 { font-weight: 700; color: #2e403c; }
+.stage-card p { font-weight: 450; color: #5e6d68; line-height: 1.5; }
+.sc-emoji { filter: none; }
+.baam-featured-card, .cambridge-featured-card {
+  border: 1px solid #e1e7e2; border-radius: 14px; background: #fff;
+  box-shadow: 0 2px 10px rgba(30, 55, 48, .045); color: #263b37;
+}
+.baam-featured-card:hover { transform: none; box-shadow: 0 5px 16px rgba(30, 55, 48, .09); }
+.cambridge-featured-card { padding: 20px 24px; margin: 18px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; cursor: pointer; }
+.cambridge-featured-card h2 { margin: 0 0 6px; font-size: 1.25rem; font-weight: 700; }
+.cambridge-featured-card p { margin: 0; color: #586965; font-size: .95rem; }
+.cambridge-featured-card > div > span { background: #edf5f1 !important; border-radius: 12px !important; }
+.quick-row { gap: 8px; }
+.quick-row .btn { border: 1px solid #d7e0dc; background: white; color: #314440; }
+
+/* Bright, picture-led classroom theme. The cartoon artwork uses character illustrations, not abstract shape substitutes. */
+:root {
+  --primary: #5751cf;
+  --primary-hover: #433cab;
+  --accent: #ff9f43;
+  --bg-gradient: #fff8ec;
+  --text-main: #26344d;
+  --text-muted: #5e6880;
+}
+body { background: linear-gradient(145deg, #fff9ec 0%, #f1f8ff 48%, #fff0f3 100%); color: #283650; }
+.topbar { border-color: #e5ddff; background: rgba(255,255,255,.97); box-shadow: 0 5px 18px rgba(77, 70, 170, .08); }
+.topbar .brand, .hero .brand { color: #5147c9 !important; }
+.welcome-hero { background: linear-gradient(115deg, #fff0b9 0%, #ffe5ec 47%, #dff6ff 100%); border: 1px solid #f4d6a2; border-left: 0; box-shadow: 0 10px 26px rgba(125, 88, 66, .10); }
+.welcome-avatar { width: 142px; height: 156px; flex: 0 0 142px; background: transparent; overflow: visible; }
+.welcome-avatar img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 7px rgba(56, 54, 83, .14)); animation: polly-float 3.2s ease-in-out infinite; }
+@keyframes polly-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-7px) rotate(2deg); } }
+.welcome-content h2 { color: #4036a4; }
+.welcome-badge { display: inline-block; background: #fff; color: #a3468d; border: 1px solid #ffd1df; }
+.welcome-photo { border: 3px solid rgba(255,255,255,.92); box-shadow: 0 7px 18px rgba(70, 61, 110, .16); }
+.stage-card.s1 { background: linear-gradient(155deg,#fff 40%,#ffe6bd)!important; border-top-color:#ffab45!important; }
+.stage-card.s2 { background: linear-gradient(155deg,#fff 40%,#d9f3ff)!important; border-top-color:#44addb!important; }
+.stage-card.s3 { background: linear-gradient(155deg,#fff 40%,#eee3ff)!important; border-top-color:#9b74df!important; }
+.stage-card.s4 { background: linear-gradient(155deg,#fff 40%,#ffe0e2)!important; border-top-color:#ef7182!important; }
+.btn.green { background:#1d9b72; } .btn.blue { background:#348aca; } .btn.purple { background:#8059cb; }
+.btn.pink { background:#e25588; } .btn.yellow,.btn.gold { background:#e69328; }
+.btn.green:hover { background:#157b5a; } .btn.blue:hover { background:#2674aa; }
+.btn.purple:hover { background:#6845ae; } .btn.pink:hover { background:#c63d70; }
+.voice-buddy-launch,.voice-buddy-listen,.voice-buddy-send { border:0; color:#fff; font-weight:800; background:linear-gradient(135deg,#8059dc,#e35591 55%,#ff9f43); box-shadow:0 6px 16px rgba(145,75,158,.22); }
+.voice-buddy-launch { font-size:1.05rem; padding:13px 18px; }
+.voice-buddy-launch:hover,.voice-buddy-listen:hover,.voice-buddy-send:hover { filter:brightness(.96); }
+.polly-talk-overlay { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:18px; background:rgba(32,34,75,.55); backdrop-filter:blur(7px); }
+.polly-talk-card { position:relative; width:min(720px,100%); max-height:min(88dvh,850px); overflow:auto; padding:clamp(18px,4vw,30px); border:3px solid #fff; border-radius:26px; background:linear-gradient(155deg,#fff7d7,#ffe6f0 54%,#e5f7ff); box-shadow:0 22px 70px rgba(27,26,72,.28); }
+.polly-talk-close { position:absolute; right:14px; top:10px; width:42px; height:42px; border:0; border-radius:50%; background:#fff; color:#5749bc; font-size:30px; cursor:pointer; }
+.polly-talk-header { display:flex; align-items:center; gap:14px; padding-right:36px; }
+.polly-talk-header img { width:clamp(74px,18vw,118px); height:auto; object-fit:contain; }
+.polly-talk-kicker { color:#b14b8a; font-size:.74rem; font-weight:900; letter-spacing:.11em; }
+.polly-talk-header h2 { margin:4px 0; color:#5141b4; font-size:clamp(1.35rem,4vw,2rem); }
+.polly-talk-header p { margin:0; color:#4e5872; }
+.polly-talk-messages { display:flex; flex-direction:column; gap:10px; min-height:150px; max-height:34dvh; overflow:auto; margin:16px 0 8px; padding:14px; border:1px solid #efd6e9; border-radius:18px; background:rgba(255,255,255,.7); }
+.talk-bubble { width:fit-content; max-width:88%; padding:11px 15px; border-radius:18px; line-height:1.45; box-shadow:0 3px 8px rgba(59,52,100,.08); }
+.talk-bubble.polly { align-self:flex-start; background:#fff; color:#493d9e; border:1px solid #e1d8ff; }
+.talk-bubble.child { align-self:flex-end; background:#d8f5e8; color:#165f49; border:1px solid #afe6ce; }
+.polly-talk-note { margin:9px 0; color:#626b7b; font-size:.78rem; line-height:1.45; }
+.polly-talk-controls { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:8px; }
+.polly-talk-controls input { min-width:0; padding:11px 13px; border:2px solid #dcd5ff; border-radius:12px; font:inherit; }
+.polly-talk-status { min-height:24px; margin-top:10px; color:#793e91; font-weight:750; }
+@media(max-width:600px) {
+  .welcome-avatar { width:82px; height:98px; flex-basis:82px; }
+  .polly-talk-controls { grid-template-columns:1fr 1fr; }
+  .polly-talk-controls input { grid-column:1/-1; grid-row:1; }
+  .polly-talk-controls button:first-child { grid-column:1; }
+  .polly-talk-controls button:last-child { grid-column:2; }
+}
+@media(prefers-reduced-motion:reduce) { .welcome-avatar img { animation:none; } }
+@media (max-width: 700px) {
+  #app { padding: 10px 12px 32px; }
+  .topbar { position: static; border-radius: 12px; gap: 6px; }
+  .topbar .spacer { display: none; }
+  .topbar .brand { width: 100%; margin-bottom: 4px; }
+  .welcome-hero { align-items: flex-start; flex-wrap: wrap; }
+  .welcome-avatar { width: 56px; height: 56px; font-size: 2rem; }
+  .welcome-photo-wrap { flex-basis: 100%; max-width: none; margin-left: 76px; }
 }
 
 /* ═══ 🧩 BAAMBOOZLE OYUN MOTORU STILLERI ═══ */
@@ -1522,7 +1665,7 @@ body.s2 {
   width: 100%;
   margin-bottom: 12px;
 }
-.disney-guide-tag {
+.guide-mascot-tag {
   font-size: 0.85em;
   font-weight: 800;
   padding: 4px 12px;
@@ -3032,6 +3175,19 @@ body.theme-pastel {
   height: 100%;
   object-fit: cover;
 }
+
+.media-fallback {
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: #334155;
+  background: #f1f5f2;
+  font-size: 1.25rem;
+}
+.media-fallback span { font-size: 2rem; }
 
 .media-tag {
   position: absolute;

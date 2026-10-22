@@ -1,7 +1,7 @@
 const fs = require('fs');
 const vm = require('vm');
 
-console.log('════ 📘 CAMBRIDGE V2 KAPSAMLI ENTEGRASYON VE DAYANIKLILIK TESTİ ════');
+console.log('════ TASLAK ETKİNLİK PORTALI — YAPI VE ETKİLEŞİM TESTİ ════');
 
 // Mock browser environment
 const mkEl = (tag = 'div') => {
@@ -98,7 +98,7 @@ for (const k of Object.keys(mockWindow)) {
 let errors = 0;
 
 // 1. Data Integrity Tests
-console.log('\n[1] Müfredat Veri Bütünlüğü (CURRICULUM_DATA):');
+console.log('\n[1] Taslak etkinlik veri yapısı (kitap eşleşmesi doğrulaması değildir):');
 const stages = ['stage1', 'stage2', 'stage3', 'stage4'];
 let totalUnits = 0;
 let totalVocab = 0;
@@ -121,8 +121,8 @@ stages.forEach(stKey => {
       } else {
         totalVocab += u.vocabulary.length;
         u.vocabulary.forEach(v => {
-          if (!v.gifUrl || !v.realPhoto) {
-            console.error(`  ✘ HATA: ${v.word} için gifUrl veya realPhoto eksik!`);
+          if (!/^https:\/\//.test(v.gifUrl || '') || !/^https:\/\//.test(v.realPhoto || '')) {
+            console.error(`  ✘ HATA: ${v.word} için geçerli https görsel adresi eksik!`);
             errors++;
           }
         });
@@ -130,7 +130,7 @@ stages.forEach(stKey => {
     });
   }
 });
-console.log(`  ✔ 4 Kademe, ${totalUnits} Ünite ve ${totalVocab} Kelime Çifti (GIPHY GIF + Unsplash Gerçek Fotoğraf) eksiksiz doğrulandı.`);
+console.log(`  ✔ ${totalUnits} taslak ünite ve ${totalVocab} kelime kaydında görsel adresleri tanımlı (adreslerin içerik/doğruluk kontrolü yapılmadı).`);
 
 // 2. Baamboozle Game Packs
 console.log('\n[2] Baamboozle Takım Oyun Paketleri (BAAMBOOZLE_GAMES_DATA):');
@@ -175,22 +175,24 @@ stages.forEach(stKey => {
 console.log(`  ✔ Toplam ${totalTwisters} Phonics tekerleme (Kademe başına ~520 adet) doğrulandı.`);
 
 // 5. Video Kütüphanesi ve Şarkılar
-console.log('\n[5] Video Kütüphanesi & Müfredat Şarkıları:');
-if (!Array.isArray(VIDEO_LIBRARY_DATA) || VIDEO_LIBRARY_DATA.length < 1000) {
-  console.error(`  ✘ HATA: Video kütüphanesinde 1000'den az video var! (Bulunan: ${VIDEO_LIBRARY_DATA.length})`);
+console.log('\n[5] Video ve şarkı veri kayıtları:');
+const videoKeys = new Set((VIDEO_LIBRARY_DATA || []).map(v => `${v.stage}|${v.embedUrl}`));
+const requiredVideoStages = ['Stage 1', 'Stage 2', 'Stage 3', 'Stage 4'];
+if (!Array.isArray(VIDEO_LIBRARY_DATA) || VIDEO_LIBRARY_DATA.length === 0 || videoKeys.size !== VIDEO_LIBRARY_DATA.length || requiredVideoStages.some(stage => !VIDEO_LIBRARY_DATA.some(v => v.stage === stage))) {
+  console.error(`  ✘ HATA: Video bağlantıları boş, tekrarlı veya bir sınıf seviyesi eksik! (Kayıt: ${VIDEO_LIBRARY_DATA ? VIDEO_LIBRARY_DATA.length : 0}, benzersiz: ${videoKeys.size})`);
   errors++;
 } else {
-  console.log(`  ✔ Toplam ${VIDEO_LIBRARY_DATA.length} küratörlü eğitim videosu hazır.`);
+    console.log(`  ✔ ${VIDEO_LIBRARY_DATA.length} benzersiz sınıf/video kaydı (çevrimiçi içerik ve uygunluk doğrulanmadı).`);
 }
 if (!Array.isArray(SONGS_DATA) || SONGS_DATA.length < 6) {
   console.error(`  ✘ HATA: Şarkı sayısı 6'dan az!`);
   errors++;
 } else {
-  console.log(`  ✔ ${SONGS_DATA.length} Cambridge müfredat şarkısı ve şarkı sözleri hazır.`);
+  console.log(`  ✔ ${SONGS_DATA.length} şarkı kaydı tanımlı.`);
 }
 
 // 6. Engine Lifecycle & Settings Tests
-console.log('\n[6] Cambridge Motor ve Ayarlar Testi:');
+console.log('\n[6] Portal motoru ve ayarlar testi:');
 try {
   const engine = global.CAMBRIDGE_ENGINE || mockWindow.CAMBRIDGE_ENGINE;
   if (!engine) {
@@ -243,17 +245,16 @@ try {
     const testSettings = {
       bgmVolume: 0.5,
       sfxVolume: 0.9,
-      voiceCharacter: 'bluey',
       voiceSpeed: 1.2,
       themeMode: 'smartboard-contrast'
     };
     settingsMgr.saveSettings(testSettings);
     const loaded = settingsMgr.getSettings();
-    if (loaded.themeMode !== 'smartboard-contrast' || loaded.voiceCharacter !== 'bluey') {
+    if (loaded.themeMode !== 'smartboard-contrast' || loaded.voiceSpeed !== 1.2) {
       console.error('  ✘ HATA: Ayarlar kaydedilip okunamadı!');
       errors++;
     } else {
-      console.log('  ✔ Ayarlar ve Akıllı Tahta yüksek kontrast teması başarıyla uygulandı.');
+      console.log('  ✔ Konuşma hızı ve yüksek kontrast ayarı kaydedildi.');
     }
   }
 
@@ -279,6 +280,6 @@ if (errors > 0) {
   console.error(`\n❌ TOPLAM ${errors} HATA BULUNDU!`);
   process.exit(1);
 } else {
-  console.log('\n★★★ CAMBRIDGE V2 SMARTBOARD PLATFORMU %100 HATASIZ VE TESTLERDEN GEÇTİ ★★★');
+  console.log('\n✔ Taslak portal veri yapısı ve etkileşim kontrolleri geçti; müfredat eşleşmesi bu testin kapsamı dışındadır.');
   process.exit(0);
 }

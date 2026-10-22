@@ -1,39 +1,33 @@
-# 🚀 Vercel'e Yükleme Rehberi — Polly's Fun English (v6)
+# Vercel yayına alma — Polly’s Fun English
 
-Bu rehber, Polly's Fun English oyun sitemizi ücretsiz olarak Vercel'e yükleyip
-`https://proje-adiniz.vercel.app` şeklinde anında çalışır bir adres elde etmenizi sağlar.
+Bu proje statik bir web uygulamasıdır. GitHub deposu Vercel’e bağlandığında `main` dalına gönderilen değişiklikler otomatik dağıtılabilir. Vercel takımında proje oluşturma izni gerekir.
 
 ## 📁 Klasör Yapısı (vercel-deploy)
 ```text
 vercel-deploy/
-├── index.html            ← oyunun tamamı (tek dosya, ~215 KB)
-├── audio/                ← 🎵 Polly'nin sesleri + müzik kutusu melodileri & ritimler (18 mp3)
-├── public/
-│   └── index.html        ← aynı dosya (Vercel "public" ayarı kullanıyorsa diye)
-└── vercel.json           ← temiz statik yönlendirme ayarı
+├── index.html            ← derlenmiş uygulama
+├── audio/                ← 18 yerel şarkı ve ritim dosyası
+├── images/               ← yerel görseller (şu anda yok)
+└── vercel.json           ← güvenlik başlıkları ve statik dağıtım ayarları
 ```
 
 ## 📤 Yöntem 1: GitHub ile Otomatik Dağıtım (Önerilen)
-1. [vercel.com](https://vercel.com/) sayfasına gidin ve giriş yapın.
-2. Sağ üstteki **"Add New..."** butonundan **"Project"** seçin.
-3. Repository listesinden statik dağıtım depomuzu bulun: **polly-fun-english** ve yanındaki **"Import"** butonuna basın.
-4. Ayarlar ekranında:
+1. Vercel’de **sbgok57/pollys-fun-english** deposunu projeye bağlayın.
+2. Ayarlar ekranında:
    - **Framework Preset**: Other
-   - **Root Directory**: (Boş bırakın)
+   - **Root Directory**: `vercel-deploy`
    - **Build Command**: (Boş / Kapalı)
    - **Output Directory**: (Boş / Kapalı)
-5. **"Deploy"** butonuna basın. 15-30 saniye içinde siteniz yayında olacaktır!
+3. İlk dağıtımı tamamlayın. Sonrasında `main` dalına gönderilen değişiklikler otomatik dağıtılır.
 
 ## ⚡ Yöntem 2: Netlify Drop (En Pratik Alternatif)
-1. [app.netlify.com/drop](https://app.netlify.com/drop) adresini açın.
-2. Masaüstündeki `vercel-deploy` klasörünü komple tarayıcıya sürükleyip bırakın.
-3. Hiçbir ayar yapmadan 5 saniye içinde herkese açık ücretsiz HTTPS adresiniz hazır olur!
+Vercel erişimi sağlanana kadar `vercel-deploy` klasörü yerel önizleme/yedek dağıtım paketi olarak kullanılabilir.
 
 ## 💻 Yöntem 3: Vercel CLI ile Doğrudan Yükleme
 Masaüstündeki klasörden tek komutla yüklemek isterseniz:
 ```bash
-cd ~/Desktop/vercel-deploy
-npx vercel --prod
+cd "~/Desktop/Antigravity/Games For Primary School"
+npx vercel --cwd vercel-deploy --prod
 ```
 
 ---
@@ -43,11 +37,11 @@ npx vercel --prod
 Site sınıfta tahtada çalışmadan önce şu 5 adımı yapın:
 
 1. **Sayfa açılıyor mu?** Ana sayfada 3 büyük kart görünüyor mu? (1. Sınıf / 2. Sınıf / Şarkı Köşesi)
-2. **Ses geliyor mu?** Herhangi bir kelimeye dokunun — Polly'nin sesi duyulmalı.
+2. **Ses geliyor mu?** Şarkı köşesinde yerel bir şarkıyı açın. Konuşma sesi cihazın/tarayıcının sentez sesine bağlıdır.
 3. **Ders açılıyor mu?** Bir üniteye girin → "📚 Konu Anlatımı" → İleri tuşu birkaç kez.
 4. **Video slaytı:** İnternet varsa video kutusu görünür; yoksa nazik bir uyarı gösterir (dersin geri kalanı çalışır).
-5. **Hata olursa:** Site asla çökmez — küçük bir aksaklık bildirimi çıkar ve kendini ana sayfaya kurtarır. En kötü ihtimalle F5 (yenile).
+5. **Hata olursa:** Hata kartındaki ayrıntıları kaydedin; tarayıcıyı yenileyip aynı etkinliği tekrar açın.
 
-> 🛡️ **Sıfır-hata güvencesi:** Tüm ekranlar, 24 oyun motoru, şarkı ve ders slaytları derleme ve test aşamasında simüle edilip %100 doğrulanmıştır.
-> Dersten önce çalıştırmak isterseniz: `python3 build.py && npm test`
+> Kitap/ünite eşleşmeleri ve üçüncü taraf görsel/video bağlantıları kaynak kitaplara veya canlı ağa karşı doğrulanmış değildir. Sınıf öncesinde kullandığınız kitap ve okul planıyla karşılaştırın.
+> Yerel derleme ve kontroller: `python3 build.py` ardından `npm test`.
 

@@ -1,12 +1,12 @@
 /* ============================================================
-   📚 VERİ BANKASI — Cambridge Global English 1 & 2 (25 Ünite)
+   Draft grade-level English activities and word practice data
    ============================================================ */
 
 const STAGES = [
   {
     "id": "s1",
     "name": "Grade 1",
-    "book": "Cambridge Global English 1",
+    "book": "Supplementary English practice · compare with your coursebook",
     "emoji": "🟢",
     "cls": "s1",
     "desc": "Starter + 9 Units · School, Family, Games, Making Things, Farm, Body, Transport, Water"
@@ -14,7 +14,7 @@ const STAGES = [
   {
     "id": "s2",
     "name": "Grade 2",
-    "book": "Cambridge Global English 2",
+    "book": "Supplementary English practice · compare with your coursebook",
     "emoji": "🔵",
     "cls": "s2",
     "desc": "9 Units · Look Closer, City, Sports, Big Sky, Measuring, Minibeasts, Past & Present, Nature"
@@ -22,7 +22,7 @@ const STAGES = [
   {
     "id": "s3",
     "name": "Grade 3",
-    "book": "Cambridge Global English 3",
+    "book": "Supplementary English practice · compare with your coursebook",
     "emoji": "🟣",
     "cls": "s3",
     "desc": "9 Units · Working Together, Communities, Desert, Inventions, Animals, Nutrition, Legends, Earth"
@@ -30,7 +30,7 @@ const STAGES = [
   {
     "id": "s4",
     "name": "Grade 4",
-    "book": "Cambridge Global English 4",
+    "book": "Supplementary English practice · compare with your coursebook",
     "emoji": "🟠",
     "cls": "s4",
     "desc": "9 Units · Family Heritage, Space, Oceans, Inventions, Sports, History, Climate, Explorers"

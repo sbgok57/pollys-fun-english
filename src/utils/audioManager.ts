@@ -29,7 +29,7 @@ export class CharacterSoundManager {
       if (token !== engine.currentToken) return; // another voice was requested meanwhile
       if (ok && engine.playVoice(audioSrc, onEnd)) return;
       const media = typeof window !== 'undefined' ? (window as any).MEDIA : null;
-      if (media && fallbackText) media.speakCharacter(charId || 'polly', fallbackText, onEnd);
+      if (media && fallbackText) media.speak(fallbackText, 0.9, onEnd);
       else onEnd?.();
     });
   }
