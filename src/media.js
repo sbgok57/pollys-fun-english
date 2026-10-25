@@ -350,6 +350,11 @@ const MEDIA = {
   },
 
   fx(name) {
+    // Every answer gets the same clear, English text + speech feedback across
+    // game engines. A short duplicate guard keeps legacy engine callbacks from
+    // repeating the line twice.
+    if (name === 'correct' && typeof FX !== 'undefined' && FX.fb) FX.fb(true);
+    if (name === 'wrong' && typeof FX !== 'undefined' && FX.fb) FX.fb(false);
     if (this.muted) return;
     this.init();
     const T = (f, d, l, tp = 'sine', gn = 0.1) => this.tone(f, d, l, tp, gn);
@@ -367,8 +372,9 @@ const MEDIA = {
         T(783.99, 0.16, 0.22, 'triangle', 0.14);
         break;
       case 'wrong':
-        T(220, 0, 0.12, 'sawtooth', 0.1);
-        T(185, 0.12, 0.25, 'sawtooth', 0.1);
+        // Soft, non-punitive cue: an invitation to try again, not a buzzer.
+        T(392, 0, 0.12, 'sine', 0.08);
+        T(330, 0.12, 0.16, 'sine', 0.07);
         break;
       case 'hop':
         this.slide(300, 700, 0.08, 'sine', 0.12);
@@ -660,12 +666,12 @@ const MEDIA = {
   speak(text, rate = 0.9, cb, vol, charKey = null) {
     // Success feedback and the following answer are spoken as one line so the
     // next game prompt cannot cancel the praise before children hear it.
-    if (typeof FX !== 'undefined' && FX._pendingPraise) {
-      if (FX._praiseTimer) clearTimeout(FX._praiseTimer);
-      const praise = FX._pendingPraise;
-      FX._pendingPraise = '';
-      FX._praiseTimer = null;
-      text = `${praise} ${String(text || '')}`.trim();
+    if (typeof FX !== 'undefined' && FX._pendingFeedback) {
+      if (FX._feedbackTimer) clearTimeout(FX._feedbackTimer);
+      const feedback = FX._pendingFeedback;
+      FX._pendingFeedback = '';
+      FX._feedbackTimer = null;
+      text = `${feedback} ${String(text || '')}`.trim();
     }
     try {
       if (!(typeof window !== 'undefined' && window.__TESTMODE)) {
@@ -806,8 +812,10 @@ const MEDIA = {
    ============================================================ */
 
 const FX = {
-  _pendingPraise: '',
-  _praiseTimer: null,
+  _feedbackTimer: null,
+  _pendingFeedback: '',
+  _lastFeedbackKind: '',
+  _lastFeedbackAt: 0,
   _praiseIndex: -1,
   confetti(count = 45) {
     const L = document.getElementById('fxlayer');
@@ -861,12 +869,17 @@ const FX = {
   },
 
   fb(ok) {
+    const kind = ok ? 'correct' : 'try-again';
+    const now = Date.now();
+    if (this._lastFeedbackKind === kind && now - this._lastFeedbackAt < 320) return;
+    this._lastFeedbackKind = kind;
+    this._lastFeedbackAt = now;
     const flash = document.createElement('div');
     flash.className = ok ? 'fb-flash ok' : 'fb-flash no';
     document.body.appendChild(flash);
     setTimeout(() => flash.remove(), 300);
-    if (ok) {
-      const praiseLines = [
+    {
+      const praiseLines = ok ? [
         'Brilliant! You got it!',
         'Fantastic! Great thinking!',
         'Super work! Keep going!',
@@ -875,19 +888,23 @@ const FX = {
         'Wonderful! One more star!',
         'Great job! High five!',
         'Spot on! You are learning fast!'
+      ] : [
+        'Not quite yet. Would you like to try once more? You can do it!',
+        'Good try! Take another look. You have got this!',
+        'That one was tricky. Try again when you are ready!',
+        'Keep going! Every try helps you learn!'
       ];
-      this._praiseIndex = (this._praiseIndex + 1 + Math.floor(Math.random() * (praiseLines.length - 1))) % praiseLines.length;
-      const praise = praiseLines[this._praiseIndex];
-      this.mascotSay(praise, 1600);
+      const line = praiseLines[Math.floor(Math.random() * praiseLines.length)];
+      this.mascotSay(line, ok ? 1900 : 2600);
       if (typeof MEDIA !== 'undefined' && MEDIA.speak) {
-        if (this._praiseTimer) clearTimeout(this._praiseTimer);
-        this._pendingPraise = praise;
-        this._praiseTimer = setTimeout(() => {
-          const pending = this._pendingPraise;
-          this._pendingPraise = '';
-          this._praiseTimer = null;
-          if (pending) MEDIA.speak(pending, 1.02);
-        }, 220);
+        if (this._feedbackTimer) clearTimeout(this._feedbackTimer);
+        this._pendingFeedback = line;
+        this._feedbackTimer = setTimeout(() => {
+          const pending = this._pendingFeedback;
+          this._pendingFeedback = '';
+          this._feedbackTimer = null;
+          if (pending && !MEDIA.muted) MEDIA.speak(pending, ok ? 1.02 : 0.96);
+        }, 260);
       }
     }
   },

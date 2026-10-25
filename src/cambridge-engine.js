@@ -1024,9 +1024,9 @@
             <input type="range" id="setting-sfx-volume" min="0" max="1" step="0.05" value="${s.sfxVolume || 0.8}" />
           </div>
           <div class="settings-group">
-            <label>🗣️ Spoken voice</label>
-            <p class="muted" style="font-size:.88rem">This uses the English speech voice available in your browser or device. Accent and sound quality vary by device.</p>
-            <button class="btn btn-outline" id="choose-device-voice">Choose a device voice</button>
+            <label>Higgsfield voice samples</label>
+            <p class="muted" style="font-size:.88rem">Choose and preview from Higgsfield samples. Lesson read-aloud still uses the browser voice; a sample cannot read new lesson text.</p>
+            <button class="btn btn-outline" id="choose-device-voice">Choose a Higgsfield sample</button>
           </div>
           <div class="settings-group">
             <label>⚡ Speech Speed (TTS)</label>

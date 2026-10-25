@@ -4012,6 +4012,23 @@ body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,
 .vocab-card:nth-child(4n+4) { background:linear-gradient(145deg,#fff,#e9f5ff); }
 .vocab-media { background-image:radial-gradient(#8c63d522 1.5px,transparent 1.6px),linear-gradient(135deg,#fff8dc,#eefbff); background-size:18px 18px,100% 100%; }
 .vocab-atlas-art { width:100%; height:clamp(180px,24vw,250px); background-image:url('/images/vocabulary-atlas.png'); background-size:600% 300%; background-repeat:no-repeat; background-position:var(--art-x) var(--art-y); }
+.flashcard-art,.learn-picture {
+  width:min(100%,620px); height:clamp(250px,42vw,420px); margin:14px auto 18px;
+  border:8px solid #fff; border-radius:34px; background-color:#fffaf0;
+  background-image:url('/images/vocabulary-atlas.png'); background-size:600% 300%;
+  background-repeat:no-repeat; background-position:var(--art-x) var(--art-y);
+  box-shadow:0 9px 0 #513b8421,0 20px 38px #41306424,inset 0 3px 8px #fff;
+  transform:perspective(850px) rotateX(1.5deg); transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease;
+}
+.flash-card:hover .flashcard-art,.learn-theater-card:hover .learn-picture { transform:perspective(850px) rotateX(0) translateY(-3px) scale(1.01); box-shadow:0 12px 0 #513b841c,0 25px 42px #41306428,inset 0 3px 8px #fff; }
+.flashcard-art-missing,.learn-picture-missing {
+  width:min(100%,620px); min-height:250px; margin:14px auto 18px; border:4px dashed #c7b9e7;
+  border-radius:30px; display:grid; place-items:center; background:radial-gradient(circle at 50% 25%,#fff 0 15%,#f5efff 75%);
+  color:#49347d; font-size:clamp(2rem,6vw,4rem); font-weight:900; text-align:center; padding:24px;
+}
+.memory-art { display:block; width:100%; height:100%; min-height:72px; background-image:url('/images/vocabulary-atlas.png'); background-size:600% 300%; background-repeat:no-repeat; background-position:var(--art-x) var(--art-y); }
+.memory-art-missing { display:block; font-size:.45em; font-weight:850; color:#49347d; }
+@media(prefers-reduced-motion:reduce){.flashcard-art,.learn-picture{transition:none;transform:none}}
 .vocab-no-art { min-height:210px; display:grid; place-items:center; color:#443080; font-size:1.7rem; font-weight:900; }
 .vocab-details h4 { color:#392477; font-size:1.55rem; }
 .tr-meaning { display:inline-flex; margin:4px 0 10px; padding:7px 12px; border-radius:999px; background:#fff0a9; color:#4b3b00; font-weight:850; }

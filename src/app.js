@@ -524,8 +524,6 @@ const APP = {
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Back</button>' : ''}
       <div class="brand"><img class="brand-mascot" src="/images/polly-3d-mascot.png" alt="" /> Polly’s Fun English</div><div class="spacer"></div>
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
-      <button class="btn small white" id="top-plans-btn">📋 Lesson plans</button>
-      <button class="btn small white" id="guide-top-btn">📖 Teacher guide</button>
       <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
       <button class="btn small white" id="hm" aria-label="Home">🏠</button>
       <button class="btn small white" id="mu" aria-label="Toggle sound">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
@@ -549,15 +547,10 @@ const APP = {
       <div class="welcome-content">
         <div class="welcome-badge">For primary English classrooms</div>
         <h2>A little English practice, a lot of fun.</h2>
-        <p>Choose a grade to find games, songs and speaking activities for your class. These are supplementary, teacher-made materials; please check the unit and page against the edition your class uses.</p>
+        <p>Choose a grade, meet friendly characters, and practise English through quick games, songs, and speaking missions.</p>
         <div class="welcome-btns">
           <button class="btn voice-buddy-launch" id="btn-voice-buddy">🎙️ Talk with Polly</button>
-          <button class="btn green big" id="btn-welcome-guide">
-            📖 Explore the teacher guide
-          </button>
-          <button class="btn white big" id="btn-welcome-plans">
-            📋 Browse lesson ideas
-          </button>
+          <button class="btn green big" id="btn-cambridge-launch">Choose a game</button>
         </div>
       </div>
       <figure class="welcome-photo-wrap">
@@ -622,11 +615,9 @@ const APP = {
     <div class="quick-row">
       <button class="btn white" id="rndG">🎲 Pick a game</button>
       <button class="btn white" id="btn-home-cambridge-hub">📚 Browse activities</button>
-      <button class="btn white" id="home-plans-btn">📋 Lesson ideas</button>
       <button class="btn white" id="home-twisters-btn">👅 Tongue twisters</button>
       <button class="btn white" id="home-settings-btn">⚙️ Voice & display settings</button>
       <button class="btn white" id="btn-home-baam">🧩 Team game</button>
-      <button class="btn white" id="btn-home-guide">📖 Teacher guide</button>
       <button class="btn white" id="hp">❓ How to play</button>
     </div>`
     );
@@ -645,9 +636,6 @@ const APP = {
      <div style="display:flex;gap:8px;flex-wrap:wrap;">
        <button class="btn blue" id="stage-to-cambridge-btn" style="background:#2563eb;color:#fff;font-weight:900;">
          🎮 Open ${st.name} classroom activities
-       </button>
-       <button class="btn purple" id="stage-to-plans-btn" style="background:#7c3aed;color:#fff;font-weight:900;">
-         📋 ${st.name} Lesson Plans
        </button>
        <button class="btn pink" id="stage-to-twisters-btn" style="background:#ec4899;color:#fff;font-weight:900;">
          👅 ${st.name} Twisters
@@ -713,8 +701,6 @@ const APP = {
    <div class="unit-actions-row">
      <button class="btn purple big" id="learn-btn-hero" style="font-size:1.05em;padding:12px 20px;box-shadow:0 4px 12px rgba(139,92,246,0.25)">📖 Learn Words & Flashcards (${u.w.length} Words)</button>
      <button class="btn yellow big" id="baamboozle-btn-hero" style="background:#f59e0b;color:#fff;font-size:1.05em;padding:12px 20px;font-weight:900;box-shadow:0 4px 12px rgba(245,158,11,0.25)">🧩 Baamboozle Team Arena</button>
-     ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold big" id="lbtn-hero" style="font-size:1.05em;padding:12px 18px">📚 Lesson Slides</button>' : ''}
-     <button class="btn white big" id="btn-cambridge-hero" style="font-size:1.05em;padding:12px 18px">📘 Teacher notes</button>
      ${vids.length ? `<button class="btn blue big" id="videos-scroll-btn" style="font-size:1.05em;padding:12px 18px">🎬 Video Lessons (${vids.length})</button>` : ''}
    </div>
 
@@ -767,15 +753,16 @@ const APP = {
     };
     const words = u.w || [];
     const idx = Math.max(0, Math.min(this.learnIdx || 0, words.length - 1));
-    const cur = words[idx] || words[0] || ['word', '🔤', 'kelime', 0];
+    const cur = words[idx] || words[0] || ['word', '', '', 0];
+    const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(cur[0]) : null;
     const catName = (u.cats && u.cats[cur[3]]) || 'Kelime';
 
     return (
       this.bar() +
       `
-    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
-      <div><h2>${u.title} · Vocabulary Theater</h2>
-      <div class="sub">${u.tr || u.title} · Card ${idx + 1} / ${words.length}</div></div>
+      <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
+      <div><h2>${u.title} · Word Studio</h2>
+      <div class="sub">Card ${idx + 1} / ${words.length}</div></div>
       <button class="btn white" id="lback" style="margin-left:auto;font-size:1em;padding:10px 16px">🔙 Back to Unit</button>
     </div>
 
@@ -787,7 +774,6 @@ const APP = {
         </div>
         <div class="mascot-bubble">
           <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
-          <div class="mascot-quote-tr">${esc(m.quoteTr)}</div>
         </div>
       </div>
 
@@ -799,13 +785,12 @@ const APP = {
         </div>
 
         <div class="baamboozle-stage">
-          <div class="learn-emoji-huge popflash">${cur[1] || '🔤'}</div>
+          ${art ? `<div class="learn-picture popflash" role="img" aria-label="${esc(cur[0])}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></div>` : `<div class="learn-picture-missing" role="img" aria-label="Picture coming soon"><span>${esc(cur[0])}</span></div>`}
           <div class="stage-visual-tools">
           </div>
         </div>
 
         <div class="learn-word-en">${esc(cur[0])}</div>
-        <div class="learn-word-tr">${esc(cur[2])}</div>
 
         <div class="learn-mascot-cheer" style="border-left-color:${m.color};cursor:pointer" id="learn-mascot-box" title="Listen to mascot quote">
           <span class="mascot-tag ${m.anim}">${m.tag}</span>
@@ -832,7 +817,7 @@ const APP = {
       <div class="word-wall" style="width:100%">${words
         .map(
           (w, i) =>
-            `<span class="word-pill ${i === idx ? 'active' : ''}" data-wi="${i}" style="cursor:pointer;${i === idx ? 'border-color:#8b5cf6;background:#f3e8ff;' : ''}"><span class="pe">${w[1] || '🔤'}</span>${esc(w[0])} <small class="muted">(${esc(w[2])})</small></span>`
+            `<span class="word-pill ${i === idx ? 'active' : ''}" data-wi="${i}" style="cursor:pointer;${i === idx ? 'border-color:#8b5cf6;background:#f3e8ff;' : ''}">${esc(w[0])}</span>`
         )
         .join('')}</div>
     </div>`
@@ -1667,18 +1652,10 @@ const APP = {
 
   /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
   showVoices() {
-    const classroomVoices = (MEDIA.getClassroomVoices ? MEDIA.getClassroomVoices() : (MEDIA.getAvailableVoices ? MEDIA.getAvailableVoices() : []))
-      .filter((v) => /^en([_-]|$)/i.test(v.lang || ''));
     const previewVoices = typeof HIGGSFIELD_VOICE_PREVIEWS !== 'undefined' ? HIGGSFIELD_VOICE_PREVIEWS : [];
-    const cur = (MEDIA.voice && MEDIA.voice.name) || '';
-
-    const getVoiceMeta = (v) => ({
-      desc: 'Provided by your browser or operating system',
-      badge: /^en([_-]|$)/i.test(v.lang || '')
-        ? ((v.lang || '').toLowerCase().includes('gb') ? 'English · UK' : (v.lang || '').toLowerCase().includes('us') ? 'English · US' : 'English')
-        : (v.lang || 'Device voice'),
-      icon: ''
-    });
+    const selectedVoiceId = store.get('higgsfieldVoiceId') || '';
+    const selectedSample = previewVoices.find((v) => v.voice_id === selectedVoiceId);
+    const selectedIndex = selectedSample ? previewVoices.indexOf(selectedSample) : -1;
 
     const d = document.createElement('div');
     d.id = 'vmodal';
@@ -1686,55 +1663,28 @@ const APP = {
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
         <div>
-          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a device voice</h3>
-          <div class="muted" style="font-size:0.88em">${classroomVoices.length} non-robotic English voices on this device. Voice naturalness depends on the device.</div>
+          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a Higgsfield voice sample</h3>
+          <div class="muted" style="font-size:0.88em">Choose and preview from ${previewVoices.length} Higgsfield samples.</div>
         </div>
       </div>
       <div class="voice-help-banner">
-        Tap a voice to preview it. Voice quality and accent depend on the voices installed on this device.
+        Select a sample, then play it. Your selection is saved on this device for quick access.
       </div>
-      <div class="vlist">${
-        classroomVoices.length > 0
-          ? classroomVoices
-              .map((v) => {
-                const meta = getVoiceMeta(v);
-                const isSelected = v.name === cur;
-                return `<div class="vitem ${isSelected ? 'sel' : ''}" data-v="${esc(v.name)}">
-                  <div class="vitem-main">
-                    <span class="vitem-icon">${meta.icon}</span>
-                    <div class="vitem-info">
-                      <div class="vitem-name">${esc(v.name)}</div>
-                      <div class="vitem-desc">${meta.desc} · <span class="muted">${v.lang}</span></div>
-                    </div>
-                  </div>
-                  <div class="vitem-badges">
-                    <span class="vbadge">${meta.badge}</span>
-                    ${isSelected ? '<span class="vbadge active">✔ Active</span>' : ''}
-                  </div>
-                </div>`;
-              })
-              .join('')
-          : '<div class="vitem">Loading voices from this device…</div>'
-      }</div>
-      <details class="hf-voice-preview">
-        <summary>Higgsfield voice samples (${previewVoices.length})</summary>
-        <p class="muted">AI voice samples for listening only. Playing a sample does not use generation credits. Making Polly speak new lesson text in one of these voices requires Higgsfield audio generation and uses credits.</p>
-        <div class="hf-preview-controls">
-          <label for="hf-voice-select">Choose a voice sample</label>
-          <select id="hf-voice-select"><option value="">Choose a sample</option>${previewVoices.map((v, i) => `<option value="${i}">${esc(v.name)}${v.gender ? ` · ${esc(v.gender)}` : ''}</option>`).join('')}</select>
-          <button class="btn purple" id="hf-voice-preview">Play sample</button>
-        </div>
-      </details>
+      <div class="hf-preview-controls">
+        <label for="hf-voice-select">Higgsfield voice samples</label>
+        <select id="hf-voice-select"><option value="">Choose a sample</option>${previewVoices.map((v, i) => `<option value="${i}" ${i === selectedIndex ? 'selected' : ''}>${esc(v.name)}${v.gender ? ` · ${esc(v.gender)}` : ''}</option>`).join('')}</select>
+        <button class="btn purple" id="hf-voice-preview">Play sample</button>
+      </div>
+      <p class="muted hf-voice-note">These are AI-generated preview recordings. They do not replace the browser voice used to read lesson text; generating new speech in a Higgsfield voice requires a separate credit-based service.</p>
       <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn green big" id="vmclose">Use selected voice</button>
+        <button class="btn green big" id="vmclose">Save sample choice</button>
       </div>
     </div>`;
     document.body.appendChild(d);
     let previewAudio = null;
-    const previewButton = d.querySelector('#hf-voice-preview');
-    if (previewButton) previewButton.onclick = () => {
-      const index = Number(d.querySelector('#hf-voice-select').value);
-      const sample = previewVoices[index];
+    const sampleSelect = d.querySelector('#hf-voice-select');
+    const playSelectedSample = () => {
+      const sample = previewVoices[Number(sampleSelect.value)];
       if (!sample || !sample.preview_url) { FX.toast('Choose a voice sample first.'); return; }
       try {
         if (previewAudio) { previewAudio.pause(); previewAudio.currentTime = 0; }
@@ -1742,27 +1692,17 @@ const APP = {
         previewAudio.play().catch(() => FX.toast('This sample is not available right now.'));
       } catch (e) { FX.toast('This sample is not available right now.'); }
     };
-    d.querySelectorAll('.vitem').forEach(
-      (it) =>
-        (it.onclick = () => {
-          const n = it.dataset.v;
-          MEDIA.setVoice(n);
-          MEDIA.speak("Hello! Let's practise English together.");
-          d.querySelectorAll('.vitem').forEach((x) => {
-            x.classList.remove('sel');
-            const act = x.querySelector('.vbadge.active');
-            if (act) act.remove();
-          });
-          it.classList.add('sel');
-          const badgesEl = it.querySelector('.vitem-badges');
-          if (badgesEl && !badgesEl.querySelector('.active')) {
-            badgesEl.insertAdjacentHTML('beforeend', '<span class="vbadge active">✔ Active</span>');
-          }
-          FX.toast('✔ ' + n + ' selected!');
-        })
-    );
+    const previewButton = d.querySelector('#hf-voice-preview');
+    if (previewButton) previewButton.onclick = playSelectedSample;
     const vmclose = d.querySelector('#vmclose');
-    if (vmclose) vmclose.onclick = () => { if (previewAudio) previewAudio.pause(); d.remove(); };
+    if (vmclose) vmclose.onclick = () => {
+      const sample = previewVoices[Number(sampleSelect.value)];
+      if (!sample || !sample.voice_id) { FX.toast('Choose a Higgsfield sample first.'); return; }
+      store.set('higgsfieldVoiceId', sample.voice_id);
+      if (previewAudio) previewAudio.pause();
+      d.remove();
+      FX.toast(`${sample.name} sample choice saved on this device.`);
+    };
     d.onclick = (e) => {
       if (e.target === d) { if (previewAudio) previewAudio.pause(); d.remove(); }
     };
@@ -2782,13 +2722,10 @@ const APP = {
         </div>
 
         <div class="settings-group">
-          <label>🗣️ Spoken voice</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Speech uses the English voice installed in your browser or device. Voice quality and accent vary by device.</p>
+          <label>Higgsfield voice samples</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose and preview a Higgsfield sample. Lesson read-aloud still uses the browser voice; a short sample cannot read new lesson text.</p>
           <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
-            <button class="btn btn-outline" id="set-choose-voice-btn" style="flex:1;padding:8px 12px;font-weight:700;">Choose a voice from this device</button>
-            <button class="btn btn-outline" id="set-test-voice-btn" style="padding:8px 14px;white-space:nowrap;font-weight:700;">
-              🔊 Preview voice
-            </button>
+            <button class="btn btn-outline" id="set-choose-voice-btn" style="flex:1;padding:8px 12px;font-weight:700;">Choose a Higgsfield sample</button>
           </div>
         </div>
 

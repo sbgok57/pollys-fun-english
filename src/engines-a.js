@@ -27,13 +27,15 @@ const ENGINES_A = [
         }
         api.progress(idx + 1, total);
         const w = pool[idx];
+        const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(w[0]) : null;
         api.root.innerHTML = `
           <div class="center">
             <div class="card flash-card" id="fc">
-              <div class="big-emoji popflash">${w[1] || '🔤'}</div>
+              ${art
+                ? `<div class="flashcard-art" role="img" aria-label="${esc(w[0])}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></div>`
+                : `<div class="flashcard-art-missing" role="img" aria-label="Picture coming soon"><span>${esc(w[0])}</span></div>`}
               <div class="pw" style="font-size:1.8em">${esc(w[0])}</div>
-              <div class="muted tr-hint" style="display:none;font-size:1.2em;color:#1e293b;font-weight:700">${esc(w[2])}</div>
-              <div class="muted" style="margin-top:6px">👆 Dokun: Türkçe anlamını gör!</div>
+              <div class="muted" style="margin-top:6px">Look, listen, and say the word.</div>
             </div>
             <div class="row" style="margin-top:16px">
               <button class="btn blue" id="spk">🔊 Telaffuz</button>
@@ -43,14 +45,9 @@ const ENGINES_A = [
 
         MEDIA.speak(w[0]);
         const fc = api.root.querySelector('#fc');
-        const tr = api.root.querySelector('.tr-hint');
         fc.onclick = () => {
-          if (tr.style.display === 'none') {
-            tr.style.display = 'block';
-            MEDIA.fx('pop');
-          } else {
-            tr.style.display = 'none';
-          }
+          fc.classList.toggle('flashcard-flip');
+          MEDIA.fx('pop');
         };
         api.root.querySelector('#spk').onclick = () => MEDIA.speak(w[0]);
         api.root.querySelector('#nxt').onclick = () => {
@@ -242,7 +239,7 @@ const ENGINES_A = [
       const deck = [];
       selected.forEach(w => {
         deck.push({ id: w[0], t: 'word', content: w[0], w });
-        deck.push({ id: w[0], t: 'emoji', content: w[1], w });
+        deck.push({ id: w[0], t: 'image', content: w[0], w });
       });
       const cards = shuffle(deck);
       let f1 = null, f2 = null, lock = false, pairsFound = 0;
@@ -254,7 +251,7 @@ const ENGINES_A = [
             ${cards.map((c, i) => `
               <div class="opt memory-card" data-idx="${i}" style="height:100px;font-size:2em;display:flex;align-items:center;justify-content:center;background:#e0e7ff;border:4px solid #818cf8;border-radius:16px;cursor:pointer">
                 <span class="card-back">❓</span>
-                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : `<div style="text-align:center">${c.content}<div style="font-size:0.35em;font-weight:700;color:#64748b">${esc(c.w[2])}</div></div>`}</span>
+                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : (() => { const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(c.content) : null; return art ? `<span class="memory-art" role="img" aria-label="${esc(c.content)}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></span>` : `<span class="memory-art-missing">${esc(c.content)}</span>`; })()}</span>
               </div>`).join('')}
           </div>
         </div>`;
