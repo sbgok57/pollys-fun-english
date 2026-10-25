@@ -11,7 +11,13 @@ const VOCABULARY_IMAGE = Object.freeze({
   apple: 'images/vocabulary/apple.png', bus: 'images/vocabulary/bus.png',
   cat: 'images/vocabulary/cat.png', bicycle: 'images/vocabulary/bicycle.png',
   car: 'images/vocabulary/car.png', boat: 'images/vocabulary/boat.png',
-  tree: 'images/vocabulary/tree.png', bee: 'images/vocabulary/bee.png'
+  tree: 'images/vocabulary/tree.png', bee: 'images/vocabulary/bee.png',
+  ruler: 'images/vocabulary/ruler.png', scissors: 'images/vocabulary/scissors.png',
+  table: 'images/vocabulary/table.png', computer: 'images/vocabulary/computer.png',
+  whiteboard: 'images/vocabulary/whiteboard.png', crayons: 'images/vocabulary/crayons.png',
+  clock: 'images/vocabulary/clock.png', backpack: 'images/vocabulary/backpack.png',
+  ball: 'images/vocabulary/ball.png', flowers: 'images/vocabulary/flowers.png',
+  rabbit: 'images/vocabulary/rabbit.png', duck: 'images/vocabulary/duck.png'
 });
 function getVocabularyArt(word) {
   const key = String(word || '').trim().toLowerCase().replace(/\s+/g, ' ');
