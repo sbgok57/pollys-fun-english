@@ -389,6 +389,8 @@ const APP = {
   playing: null,
   cleanups: [],
   currentScore: 0,
+  storyGrade: 'all',
+  storySearch: '',
 
   /* ---------- Navigasyon & Durum Yönetimi ---------- */
   go(scr, p = {}) {
@@ -488,6 +490,7 @@ const APP = {
       lesson: () => this.vLesson(),
       game: () => this.vGame(),
       songs: () => this.vSongs(),
+      stories: () => this.vStories(),
       player: () => this.vPlayer(),
       scores: () => this.vScores(),
       help: () => this.vHelp()
@@ -592,6 +595,15 @@ const APP = {
         <p>Sing along, listen and practise classroom English.</p>
       </div>
     </div>
+    <section class="story-feature-card">
+      <div class="story-feature-copy">
+        <span class="story-feature-kicker">READ · LISTEN · SPEAK</span>
+        <h2>Stories for curious English learners</h2>
+        <p>Explore 200 short stories, hear the text, learn useful words, and answer a friendly question.</p>
+        <button class="btn purple big" id="btn-stories">Open the story library</button>
+      </div>
+      <img src="/images/stories-world.png" alt="Children and a parrot explore a sunny park with a book and a ball" width="1536" height="1024" loading="lazy">
+    </section>
     <div class="baam-featured-card" data-baam="1">
       <div class="baam-fc-main">
         <span class="baam-fc-emoji anim-wobble">🧩</span>
@@ -621,6 +633,65 @@ const APP = {
       <button class="btn white" id="hp">❓ How to play</button>
     </div>`
     );
+  },
+
+  vStories() {
+    const done = store.get('stories_read') || [];
+    const q = String(this.storySearch || '').trim().toLowerCase();
+    const stories = STORIES_200.filter((story) =>
+      (this.storyGrade === 'all' || story.grade === Number(this.storyGrade)) &&
+      (!q || `${story.title} ${story.text} ${story.words.join(' ')}`.toLowerCase().includes(q))
+    );
+    return `${this.bar('Story Library')}
+      <section class="stories-page">
+        <header class="stories-hero">
+          <img src="/images/stories-world.png" alt="Three children and a parrot explore a sunny park" width="1536" height="1024">
+          <div class="stories-hero-copy"><span>POLLY’S STORY WORLD</span><h1>Read a little. Imagine a lot.</h1><p>Short English stories with useful words, listening practice, and one question to think about.</p><b>${done.length} of 200 stories read on this device</b></div>
+        </header>
+        <div class="stories-tools">
+          <label>Grade <select id="stories-grade"><option value="all" ${this.storyGrade === 'all' ? 'selected' : ''}>All grades</option>${[1,2,3,4].map(g=>`<option value="${g}" ${this.storyGrade === String(g) ? 'selected' : ''}>Grade ${g}</option>`).join('')}</select></label>
+          <label class="story-search-label">Find a story <input id="stories-search" type="search" value="${esc(this.storySearch)}" placeholder="Search words or story titles"></label>
+          <span class="story-count">${stories.length} stories</span>
+        </div>
+        <div class="story-grid">${stories.map((story) => `<article class="story-card ${done.includes(story.id) ? 'is-read' : ''}">
+          <span class="story-grade">Grade ${story.grade}</span><h2>${esc(story.title)}</h2><p>${esc(story.text.split('. ').slice(0,2).join('. '))}.</p>
+          <button class="btn story-open-btn" data-story-open="${story.id}">${done.includes(story.id) ? 'Read again' : 'Open story'}</button>
+          ${done.includes(story.id) ? '<span class="story-read-state">Read on this device</span>' : ''}
+        </article>`).join('') || '<p class="story-empty">No stories match. Try another search.</p>'}</div>
+      </section>`;
+  },
+
+  openStory(story) {
+    const previous = document.getElementById('story-reader-modal');
+    if (previous) previous.remove();
+    const overlay = document.createElement('div');
+    overlay.id = 'story-reader-modal';
+    overlay.className = 'story-reader-overlay';
+    overlay.innerHTML = `<section class="story-reader" role="dialog" aria-modal="true" aria-labelledby="story-reader-title">
+      <button type="button" class="story-reader-close" aria-label="Close story">Close</button>
+      <span class="story-grade">Grade ${story.grade}</span><h2 id="story-reader-title" tabindex="-1">${esc(story.title)}</h2>
+      <p class="story-reader-text">${esc(story.text)}</p>
+      <h3>Useful words</h3><div class="story-word-list">${story.words.map(word=>`<span>${esc(word)}</span>`).join('')}</div>
+      <h3>Think and answer</h3><p>${esc(story.question)}</p>
+      <label class="story-answer-label">Your answer <input id="story-answer" type="text" maxlength="180" placeholder="Write a short answer in English"></label>
+      <p class="story-audio-note">Story read-aloud uses the browser voice on this device. Higgsfield samples are short previews and cannot narrate this story without paid voice generation.</p>
+      <div class="story-reader-actions"><button class="btn purple" id="story-listen">Listen to story</button><button class="btn green" id="story-finish">Finish story</button></div>
+      <p class="story-feedback" id="story-feedback" aria-live="polite"></p>
+    </section>`;
+    document.body.appendChild(overlay);
+    const feedback = overlay.querySelector('#story-feedback');
+    const close = () => { MEDIA.stopSpeak(); overlay.remove(); this.render(); };
+    overlay.querySelector('.story-reader-close').addEventListener('click', close);
+    overlay.addEventListener('click', (event) => { if (event.target === overlay) close(); });
+    overlay.querySelector('#story-listen').addEventListener('click', () => MEDIA.speak(story.text, 0.9));
+    overlay.querySelector('#story-finish').addEventListener('click', () => {
+      const read = store.get('stories_read') || [];
+      if (!read.includes(story.id)) store.set('stories_read', [...read, story.id].slice(-200));
+      feedback.textContent = 'Wonderful reading! You finished the story. Keep exploring!';
+      if (typeof FX !== 'undefined') FX.mascotSay(feedback.textContent, 2300);
+      MEDIA.speak(feedback.textContent, 0.96);
+    });
+    overlay.querySelector('#story-reader-title').focus();
   },
 
   /* ---------- 📚 ÜNİTE LİSTESİ ---------- */
@@ -1016,6 +1087,7 @@ const APP = {
     };
     const backMap = {
       cambridge: 'home',
+      stories: 'home',
       learn: 'unit',
       lesson: 'unit',
       game: 'unit',
@@ -1047,10 +1119,6 @@ const APP = {
     on('#btn-home-cambridge-hub', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#top-settings-btn', 'click', () => this.showSettingsModal());
     on('#home-settings-btn', 'click', () => this.showSettingsModal());
-    on('#top-plans-btn', 'click', () => this.showLessonPlansModal());
-    on('#home-plans-btn', 'click', () => this.showLessonPlansModal());
-    on('#btn-welcome-plans', 'click', () => this.showLessonPlansModal());
-    on('#stage-to-plans-btn', 'click', () => this.showLessonPlansModal(this.stage === 's1' ? 'stage1' : (this.stage === 's2' ? 'stage2' : (this.stage === 's3' ? 'stage3' : 'stage4'))));
     on('#top-twisters-btn', 'click', () => this.showTwistersModal());
     on('#home-twisters-btn', 'click', () => this.showTwistersModal());
     on('#stage-to-twisters-btn', 'click', () => this.showTwistersModal(this.stage === 's1' ? 'stage1' : (this.stage === 's2' ? 'stage2' : (this.stage === 's3' ? 'stage3' : 'stage4'))));
@@ -1065,6 +1133,26 @@ const APP = {
     on('#guide-top-btn', 'click', () => this.showGuideModal());
     on('#btn-welcome-guide', 'click', () => this.showGuideModal());
     on('#btn-voice-buddy', 'click', () => this.showVoicePracticeModal());
+    on('#btn-stories', 'click', () => this.go('stories'));
+    const storyGrade = document.getElementById('stories-grade');
+    if (storyGrade) storyGrade.addEventListener('change', () => { this.storyGrade = storyGrade.value; this.render(); });
+    const storySearch = document.getElementById('stories-search');
+    if (storySearch) storySearch.addEventListener('input', () => {
+      this.storySearch = storySearch.value;
+      const q = this.storySearch.trim().toLowerCase();
+      let visible = 0;
+      document.querySelectorAll('.story-card').forEach((card) => {
+        const show = !q || card.textContent.toLowerCase().includes(q);
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      const count = document.querySelector('.story-count');
+      if (count) count.textContent = `${visible} stories`;
+    });
+    document.querySelectorAll('[data-story-open]').forEach((button) => button.addEventListener('click', () => {
+      const story = STORIES_200.find((item) => item.id === button.dataset.storyOpen);
+      if (story) this.openStory(story);
+    }));
     on('#btn-home-guide', 'click', () => this.showGuideModal());
     on('#btn-cambridge-guide', 'click', () => this.showCambridgeModal(this.unitId));
     on('#btn-cambridge-hero', 'click', () => this.showCambridgeModal(this.unitId));
@@ -1795,17 +1883,7 @@ const APP = {
             </div>
           </div>
 
-          <!-- 7. LESSON PLANS & TEACHER GUIDE -->
-          <div class="guide-sec-card">
-            <h3>📋 7. Lesson ideas & 📖 8. Teacher's Guide</h3>
-            <p>Use the lesson ideas as editable drafts. Check dates, learning goals, book titles and page references against your school’s plan and the exact edition in use.</p>
-            <div class="guide-links-wrap">
-              <button class="guide-link-btn primary" id="guide-open-plans" style="background:#2563eb;">📋 Lesson ideas</button>
-              <button class="guide-link-btn" data-gjump="cambridge:stage1:teacher-guide">📖 Teacher's Guide</button>
-            </div>
-          </div>
-
-          <!-- 9. SETTINGS & VOICES -->
+          <!-- 7. SETTINGS & VOICES -->
           <div class="guide-sec-card highlight" style="border-left-color:#7c3aed;">
             <h3>⚙️ Speech and sound settings</h3>
             <p>Adjust speech speed, sound effects and display settings. Spoken prompts use the voice supplied by your device or browser; no character voice recordings are included.</p>
@@ -1875,14 +1953,6 @@ const APP = {
       };
     }
 
-    const pPlans = d.querySelector('#guide-open-plans');
-    if (pPlans) {
-      pPlans.onclick = () => {
-        d.remove();
-        this.showLessonPlansModal();
-      };
-    }
-
     const pTwist = d.querySelector('#guide-open-twisters');
     if (pTwist) {
       pTwist.onclick = () => {
@@ -1925,617 +1995,6 @@ const APP = {
         }
       };
     });
-  },
-
-  /* ---------- 📋 2026-2027 Academic Year Lesson Plans Modal ---------- */
-  showLessonPlansModal(stageKey = 'stage1') {
-    const existing = document.getElementById('lesson-plans-app-modal');
-    if (existing) existing.remove();
-
-    const data = (typeof LESSON_PLANS_DATA !== 'undefined' ? LESSON_PLANS_DATA : (window.LESSON_PLANS_DATA || null));
-    if (!data) return;
-
-    let curStage = stageKey || 'stage1';
-    let curMode = 'daily';
-    let curLang = 'en';
-    let selectedMonth = 'all';
-    let searchQuery = '';
-    const expandedTPR = {};
-
-    const d = document.createElement('div');
-    d.id = 'lesson-plans-app-modal';
-    d.className = 'modal-overlay active';
-
-    const openEditLessonModal = (lesson) => {
-      const existingEdit = document.getElementById('lp-edit-day-modal');
-      if (existingEdit) existingEdit.remove();
-
-      const topicStr = (typeof lesson.topic === 'object' && lesson.topic) ? (lesson.topic[curLang] || lesson.topic.en || '') : (lesson.topic || '');
-      const lbStr = (lesson.references && lesson.references.learnersBook) || (lesson.cambridgeRef && lesson.cambridgeRef.learnersBookPages) || (lesson.curriculumReferences && lesson.curriculumReferences.learnersBookPages) || '';
-      const wbStr = (lesson.references && lesson.references.workbook) || (lesson.cambridgeRef && lesson.cambridgeRef.workbookPages) || (lesson.curriculumReferences && lesson.curriculumReferences.workbookPages) || '';
-      const trStr = (lesson.references && lesson.references.teachersResource) || (lesson.cambridgeRef && lesson.cambridgeRef.teachersResourcePages) || (lesson.curriculumReferences && lesson.curriculumReferences.teachersResourcePages) || '';
-
-      const em = document.createElement('div');
-      em.id = 'lp-edit-day-modal';
-      em.className = 'lp-edit-modal-overlay';
-      em.innerHTML = `
-        <div class="lp-edit-modal-box">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1.5px solid #e2e8f0;padding-bottom:10px;">
-            <h3 style="margin:0;color:#1e3a8a;font-size:1.2rem;">✏️ ${curLang === 'en' ? 'Edit Lesson' : 'Dersi Düzenle'}: Day ${lesson.orderIndex || lesson.weekIndex || 1} (${lesson.grade || lesson.stage || ''})</h3>
-            <button class="btn white small" id="lp-edit-modal-close" style="padding:4px 10px;">❌</button>
-          </div>
-          <form id="lp-edit-form">
-            <div class="lp-form-group">
-              <label>📅 ${curLang === 'en' ? 'Lesson Date (YYYY-MM-DD)' : 'Ders Tarihi (YYYY-AA-GG)'}</label>
-              <input type="date" id="lp-form-date" class="lp-form-input" value="${lesson.date || lesson.scheduledDate || ''}" required />
-            </div>
-            <div class="lp-form-group">
-              <label>🎯 ${curLang === 'en' ? 'Lesson Topic' : 'Ders Konusu'}</label>
-              <input type="text" id="lp-form-topic" class="lp-form-input" value="${topicStr}" required />
-            </div>
-            <div class="lp-form-group">
-              <label>📘 Learner's Book Pages</label>
-              <input type="text" id="lp-form-lb" class="lp-form-input" value="${lbStr}" />
-            </div>
-            <div class="lp-form-group">
-              <label>📓 Activity Book Pages</label>
-              <input type="text" id="lp-form-wb" class="lp-form-input" value="${wbStr}" />
-            </div>
-            <div class="lp-form-group">
-              <label>🍎 Teacher's Resource Pages</label>
-              <input type="text" id="lp-form-tr" class="lp-form-input" value="${trStr}" />
-            </div>
-            <div class="lp-form-group">
-              <label class="lp-checkbox-wrap">
-                <input type="checkbox" id="lp-form-reflow" checked />
-                <span><strong>Auto-Reflow Calendar:</strong> ${curLang === 'en' ? 'Automatically recalculate subsequent lesson dates skipping Saturdays and Sundays' : 'Sonraki tüm ders tarihlerini Cumartesi ve Pazar günlerini atlayarak otomatik kaydır'}</span>
-              </label>
-            </div>
-            <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px;">
-              <button type="button" class="btn white small" id="lp-form-cancel">${curLang === 'en' ? 'Cancel' : 'İptal'}</button>
-              <button type="submit" class="btn blue small" style="font-weight:800;">💾 ${curLang === 'en' ? 'Save & Update Schedule' : 'Kaydet & Takvimi Güncelle'}</button>
-            </div>
-          </form>
-        </div>
-      `;
-
-      document.body.appendChild(em);
-
-      const closeEdit = () => em.remove();
-      const closeBtn = em.querySelector('#lp-edit-modal-close');
-      if (closeBtn) closeBtn.onclick = closeEdit;
-      const cancelBtn = em.querySelector('#lp-form-cancel');
-      if (cancelBtn) cancelBtn.onclick = closeEdit;
-
-      const form = em.querySelector('#lp-edit-form');
-      if (form) {
-        form.onsubmit = (ev) => {
-          ev.preventDefault();
-          const newDate = em.querySelector('#lp-form-date').value;
-          const newTopic = em.querySelector('#lp-form-topic').value;
-          const newLb = em.querySelector('#lp-form-lb').value;
-          const newWb = em.querySelector('#lp-form-wb').value;
-          const newTr = em.querySelector('#lp-form-tr').value;
-          const autoReflow = em.querySelector('#lp-form-reflow').checked;
-
-          const updatedTopic = (typeof lesson.topic === 'object' && lesson.topic)
-            ? { ...lesson.topic, [curLang]: newTopic }
-            : newTopic;
-
-          const updated = Object.assign({}, lesson, {
-            date: newDate,
-            scheduledDate: newDate,
-            topic: updatedTopic,
-            references: {
-              ...(lesson.references || {}),
-              learnersBook: newLb,
-              workbook: newWb,
-              teachersResource: newTr
-            },
-            cambridgeRef: {
-              ...(lesson.cambridgeRef || {}),
-              learnersBookPages: newLb,
-              workbookPages: newWb,
-              teachersResourcePages: newTr
-            },
-            curriculumReferences: {
-              ...(lesson.curriculumReferences || {}),
-              learnersBookPages: newLb,
-              workbookPages: newWb,
-              teachersResourcePages: newTr
-            }
-          });
-
-          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.saveLessonDay) {
-            LESSON_PLANS_DATA.saveLessonDay(curStage, updated, autoReflow);
-          }
-
-          closeEdit();
-          renderPlans();
-          if (typeof FX !== 'undefined' && FX.toast) {
-            FX.toast(autoReflow ? '✅ Lesson saved and calendar reflowed!' : '✅ Lesson saved!');
-          }
-        };
-      }
-    };
-
-    const renderPlans = () => {
-      const schedule = data.schedule || [];
-      const stInfo = (data.stages && data.stages[curStage]) || {};
-      const dailyLessons = (typeof data.getLessonDays === 'function') ? data.getLessonDays(curStage) : [];
-
-      let filtered = schedule;
-      if (selectedMonth !== 'all') {
-        filtered = filtered.filter(w => w.month.toLowerCase().includes(selectedMonth.toLowerCase()));
-      }
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        filtered = filtered.filter(w => {
-          const sp = (w.plansByStage && w.plansByStage[curStage]) || {};
-          return w.subTheme.toLowerCase().includes(q) ||
-                 (sp.unitTitle && sp.unitTitle.toLowerCase().includes(q)) ||
-                 (sp.grammar && sp.grammar.toLowerCase().includes(q)) ||
-                 (sp.phonics && sp.phonics.toLowerCase().includes(q));
-        });
-      }
-
-      let dailyFiltered = dailyLessons;
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        dailyFiltered = dailyLessons.filter(l => {
-          const topStr = (typeof l.topic === 'object' && l.topic) ? ((l.topic.en || '') + ' ' + (l.topic.tr || '')).toLowerCase() : (l.topic || '').toLowerCase();
-          const unitStr = (l.unitTitle || '').toLowerCase();
-          const dStr = (l.date || l.scheduledDate || '');
-          const tprStr = (l.tpr && (l.tpr.title || l.tpr.physicalAction || '')) ? (l.tpr.title + ' ' + (l.tpr.physicalAction || '')).toLowerCase() : '';
-          return topStr.includes(q) || unitStr.includes(q) || dStr.includes(q) || tprStr.includes(q);
-        });
-      }
-
-      d.innerHTML = `
-        <div class="lp-modal-box">
-          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #e2e8f0;padding-bottom:14px;margin-bottom:18px;">
-            <div>
-              <div class="lp-date-badge">📅 Draft lesson ideas · review dates for your school</div>
-              <h2 style="margin:6px 0 2px 0;font-size:1.45rem;color:#1e1b4b;">
-                📋 Primary English · Lesson Ideas
-              </h2>
-              <div style="font-size:0.86rem;color:#64748b;">
-                Supplementary planning drafts · verify coursebook and page references before use
-              </div>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <button class="lp-lang-toggle-btn" id="lp-lang-toggle" title="Switch Language (English / Türkçe)">
-                ${curLang === 'en' ? '🇬🇧 EN' : '🇹🇷 TR'}
-              </button>
-              <button class="btn white small" id="lp-close-top" style="font-size:18px;padding:4px 12px;">❌</button>
-            </div>
-          </div>
-
-          <!-- STAGE SELECTOR TABS -->
-          <div class="cam-stage-tabs" style="grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
-            <button class="btn small ${curStage === 'stage1' ? 'blue' : 'white'} lp-st-btn" data-st="stage1" style="font-weight:800">🟢 Grade 1 (Pre-A1)</button>
-            <button class="btn small ${curStage === 'stage2' ? 'blue' : 'white'} lp-st-btn" data-st="stage2" style="font-weight:800">🔵 Grade 2 (A1)</button>
-            <button class="btn small ${curStage === 'stage3' ? 'blue' : 'white'} lp-st-btn" data-st="stage3" style="font-weight:800">🟣 Grade 3 (A1+)</button>
-            <button class="btn small ${curStage === 'stage4' ? 'blue' : 'white'} lp-st-btn" data-st="stage4" style="font-weight:800">🟠 Grade 4 (A2)</button>
-          </div>
-
-          <!-- VIEW MODE TABS -->
-          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
-            <div style="display:flex;gap:6px;flex-wrap:wrap;">
-              <button class="btn small ${curMode === 'daily' ? 'green' : 'white'} lp-mode-btn" data-mode="daily">📅 ${curLang === 'en' ? 'Daily Planner (Rescheduling)' : 'Günlük Plan (Kelebek Takvimi)'}</button>
-              <button class="btn small ${curMode === 'weekly' ? 'green' : 'white'} lp-mode-btn" data-mode="weekly">📆 ${curLang === 'en' ? 'Weekly (36 Weeks)' : 'Haftalık (36 Hafta)'}</button>
-              <button class="btn small ${curMode === 'monthly' ? 'green' : 'white'} lp-mode-btn" data-mode="monthly">🗓️ ${curLang === 'en' ? 'Monthly' : 'Aylık Dağılım'}</button>
-              <button class="btn small ${curMode === 'annual' ? 'green' : 'white'} lp-mode-btn" data-mode="annual">📜 ${curLang === 'en' ? 'Annual Curriculum' : 'Yıllık Müfredat'}</button>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <select id="lp-month-select" style="padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;font-weight:700;font-size:0.85rem;">
-                <option value="all" ${selectedMonth==='all'?'selected':''}>${curLang === 'en' ? 'All Months (Sept–June)' : 'Tüm Aylar (Eylül–Haziran)'}</option>
-                <option value="september" ${selectedMonth==='september'?'selected':''}>September 2026</option>
-                <option value="october" ${selectedMonth==='october'?'selected':''}>October 2026</option>
-                <option value="november" ${selectedMonth==='november'?'selected':''}>November 2026</option>
-                <option value="december" ${selectedMonth==='december'?'selected':''}>December 2026</option>
-                <option value="january" ${selectedMonth==='january'?'selected':''}>January 2027</option>
-                <option value="february" ${selectedMonth==='february'?'selected':''}>February 2027</option>
-                <option value="march" ${selectedMonth==='march'?'selected':''}>March 2027</option>
-                <option value="april" ${selectedMonth==='april'?'selected':''}>April 2027</option>
-                <option value="may" ${selectedMonth==='may'?'selected':''}>May 2027</option>
-                <option value="june" ${selectedMonth==='june'?'selected':''}>June 2027</option>
-              </select>
-              <button class="btn white small" id="lp-print-btn" title="Print this lesson plan">🖨️ ${curLang === 'en' ? 'Print' : 'Yazdır'}</button>
-              <button class="btn white small" id="lp-copy-btn" title="Copy formatted plan">📋 ${curLang === 'en' ? 'Copy' : 'Kopyala'}</button>
-            </div>
-          </div>
-
-          <input type="text" id="lp-search-input" class="search-input" placeholder="🔍 ${curLang === 'en' ? 'Search lesson plans by topic, grammar, phonics, or unit...' : 'Ders planlarında konu, dilbilgisi veya fonetik ara...'}" value="${searchQuery}" style="width:100%;margin-bottom:16px;" />
-
-          <!-- PLANS CONTAINER -->
-          <div id="lp-plans-list">
-            ${curMode === 'daily' ? `
-              <div class="lp-reflow-banner">
-                <div>
-                  <strong>✨ ${curLang === 'en' ? 'Dynamic Butterfly-Effect Rescheduling:' : 'Dinamik Kelebek Etkisi Takvimleme:'}</strong>
-                  ${curLang === 'en' ? 'Marking "Done" pins completed lessons; clicking "Postpone" automatically shifts that lesson and all subsequent pending lessons to the next school day (weekends strictly skipped)!' : '"Yapıldı" butonu dersi sabitler; "Ertelendi" butonu dersi ve sonraki tüm planı bir sonraki iş gününe otomatik kaydırır (hafta sonları kesinlikle atlanır)!'}
-                </div>
-                <button class="lp-btn-action" id="lp-reset-defaults-btn">
-                  🔄 ${curLang === 'en' ? 'Reset Defaults' : 'Varsayılanlara Sıfırla'}
-                </button>
-              </div>
-              <div id="lp-daily-cards-wrap">
-                ${dailyFiltered.map(l => {
-                  const cardStatus = l.status || 'pending';
-                  const cardClass = cardStatus === 'completed' ? 'lp-card-completed' : (cardStatus === 'postponed' ? 'lp-card-postponed' : 'lp-card-pending');
-                  const topicStr = (typeof l.topic === 'object' && l.topic) ? (l.topic[curLang] || l.topic.en || '') : (l.topic || '');
-                  const lbVal = (l.references && l.references.learnersBook) || (l.cambridgeRef && l.cambridgeRef.learnersBookPages) || (l.curriculumReferences && l.curriculumReferences.learnersBookPages) || '—';
-                  const wbVal = (l.references && l.references.workbook) || (l.cambridgeRef && l.cambridgeRef.workbookPages) || (l.curriculumReferences && l.curriculumReferences.workbookPages) || '—';
-                  const trVal = (l.references && l.references.teachersResource) || (l.cambridgeRef && l.cambridgeRef.teachersResourcePages) || (l.curriculumReferences && l.curriculumReferences.teachersResourcePages) || '—';
-                  const mats = (l.materials && l.materials.length) ? l.materials : (l.digitalResources || []);
-
-                  return `
-                    <div class="lp-week-card ${cardClass}">
-                      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
-                        <div>
-                          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
-                            <span class="lp-date-badge">📅 Day ${l.orderIndex || l.weekIndex || 1} · ${l.date || l.scheduledDate || ''}</span>
-                            <span class="lp-grade-badge">${l.grade || l.stage || ''}</span>
-                            <span class="lp-status-badge ${cardStatus}">
-                              ${cardStatus === 'completed' ? (curLang === 'en' ? '✅ Completed' : '✅ Tamamlandı') : (cardStatus === 'postponed' ? (curLang === 'en' ? '⏭️ Postponed' : '⏭️ Ertelendi') : (curLang === 'en' ? '⏳ Scheduled' : '⏳ Planlandı'))}
-                            </span>
-                          </div>
-                          <h3 style="margin:4px 0 2px 0;font-size:1.2rem;color:#1e3a8a;">
-                            ${l.unit ? 'Unit ' + l.unit + ': ' : ''}${topicStr}
-                          </h3>
-                        </div>
-                        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-                          <button class="lp-action-btn-done ${cardStatus === 'completed' ? 'active' : ''} lp-done-btn" data-lid="${l.id}">
-                            ✅ ${curLang === 'en' ? 'Done' : 'Yapıldı'}
-                          </button>
-                          <button class="lp-action-btn-postpone ${cardStatus === 'postponed' ? 'active' : ''} lp-postpone-btn" data-lid="${l.id}">
-                            ⏭️ ${curLang === 'en' ? 'Postpone' : 'Ertelendi'}
-                          </button>
-                          <button class="lp-btn-action edit-btn lp-edit-day-btn" data-lid="${l.id}">
-                            ✏️ ${curLang === 'en' ? 'Edit & Reflow' : 'Düzenle & Kaydır'}
-                          </button>
-                        </div>
-                      </div>
-
-                      <!-- Learning Outcomes -->
-                      ${(l.outcomes && l.outcomes.length) ? `
-                        <div class="lp-outcomes-box">
-                          <strong>🎯 ${curLang === 'en' ? 'Target Outcomes' : 'Hedef Kazanımlar'}:</strong>
-                          <ul>
-                            ${l.outcomes.map(o => `<li>${(typeof o === 'object' && o) ? (o[curLang] || o.en) : o}</li>`).join('')}
-                          </ul>
-                        </div>
-                      ` : ''}
-
-                      <!-- Cambridge Curriculum References Grid -->
-                      <div class="lp-cambridge-refs">
-                        <div class="lp-ref-item">
-                          <span class="label">📘 Learner's Book</span>
-                          <span class="val">p. ${lbVal}</span>
-                        </div>
-                        <div class="lp-ref-item">
-                          <span class="label">📓 Activity Book</span>
-                          <span class="val">p. ${wbVal}</span>
-                        </div>
-                        <div class="lp-ref-item">
-                          <span class="label">🍎 Teacher's Guide</span>
-                          <span class="val">p. ${trVal}</span>
-                        </div>
-                        <div class="lp-ref-item">
-                          <span class="label">🌐 Digital Support</span>
-                          <span class="val">
-                            <a href="https://www.cambridge.org/globalenglish" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:underline;">Digital Hub ↗</a>
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- TPR Kinesthetic Activity Accordion -->
-                      ${l.tpr ? `
-                        <div style="margin-top:8px;">
-                          <button class="lp-tpr-toggle-btn" data-tprid="${l.id}">
-                            🏃 ${curLang === 'en' ? 'TPR Action Plan' : 'Fiziksel TPR Hareket Planı'}: ${l.tpr.title || ''} ${expandedTPR[l.id] ? '▲ ' + (curLang === 'en' ? 'Hide' : 'Gizle') : '▼ ' + (curLang === 'en' ? 'Show Details' : 'Detayları Gör')}
-                          </button>
-                          ${expandedTPR[l.id] ? `
-                            <div class="lp-tpr-detail-box">
-                              <h5>🤸 ${l.tpr.title || 'Kinesthetic TPR Walkthrough'}</h5>
-                              ${l.tpr.action ? `<div><strong>${curLang === 'en' ? 'Action / Movement:' : 'Eylem:'}</strong> ${(typeof l.tpr.action === 'object' && l.tpr.action) ? (l.tpr.action[curLang] || l.tpr.action.en) : (l.tpr.physicalAction || l.tpr.action)}</div>` : ''}
-                              ${l.tpr.teacherRole ? `<div><strong>${curLang === 'en' ? 'Teacher Role:' : 'Öğretmen Rolü:'}</strong> ${(typeof l.tpr.teacherRole === 'object' && l.tpr.teacherRole) ? (l.tpr.teacherRole[curLang] || l.tpr.teacherRole.en) : l.tpr.teacherRole}</div>` : ''}
-                              ${l.tpr.studentRole ? `<div><strong>${curLang === 'en' ? 'Student Role:' : 'Öğrenci Rolü:'}</strong> ${(typeof l.tpr.studentRole === 'object' && l.tpr.studentRole) ? (l.tpr.studentRole[curLang] || l.tpr.studentRole.en) : l.tpr.studentRole}</div>` : ''}
-                              ${(l.tpr.targetVocabulary || l.tpr.targetVocab || []).length ? `<div><strong>${curLang === 'en' ? 'Target Vocab:' : 'Hedef Kelimeler:'}</strong> ${(l.tpr.targetVocabulary || l.tpr.targetVocab).join(', ')}</div>` : ''}
-                              ${l.tpr.detailedInstruction ? `<div><strong>${curLang === 'en' ? 'Instructions:' : 'Yönergeler:'}</strong> ${l.tpr.detailedInstruction}</div>` : ''}
-                            </div>
-                          ` : ''}
-                        </div>
-                      ` : ''}
-
-                      <!-- Clickable Digital Interactive Resources -->
-                      ${mats.length ? `
-                        <div style="margin-top:10px;">
-                          <div style="font-size:0.75rem;font-weight:700;color:#64748b;text-transform:uppercase;margin-bottom:4px;">
-                            🖥️ ${curLang === 'en' ? 'Smart Board & Digital Materials' : 'Akıllı Tahta & Dijital Materyaller'}:
-                          </div>
-                          <div class="digital-res-container">
-                            ${mats.map(res => {
-                              const rName = res.name || res.title || 'Resource';
-                              const rType = (res.type || '').toLowerCase();
-                              const icon = rType === 'youtube' ? '🎥' : (rType === 'twinkl' ? '🦉' : (rType === 'baamboozle' ? '🎲' : (rType === 'canva' ? '🎨' : '🚀')));
-                              return `
-                                <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="digital-res-badge ${rType}" title="${rName}">
-                                  ${icon} ${rName} ↗
-                                </a>
-                              `;
-                            }).join('')}
-                          </div>
-                        </div>
-                      ` : ''}
-                    </div>
-                  `;
-                }).join('')}
-              </div>
-            ` : curMode === 'annual' ? `
-              <div class="lp-week-card" style="border-left-color:#8b5cf6;">
-                <h3 style="margin:0 0 10px 0;color:#1e1b4b;">📜 Draft annual planning outline · ${curStage.replace('stage', 'Stage ')}</h3>
-                <p style="font-size:0.92rem;color:#475569;line-height:1.5;">
-                  Planning suggestions only. Check learning goals, dates, unit titles and page references against the books and curriculum used by your school.
-                </p>
-                <div style="margin-top:14px;">
-                  ${Object.keys(stInfo.units || {}).map(uNum => {
-                    const u = stInfo.units[uNum];
-                    return `
-                      <div style="background:white;border:1px solid #cbd5e1;border-radius:12px;padding:12px 16px;margin-bottom:10px;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                          <strong style="color:#2563eb;font-size:1.05rem;">Unit ${uNum}: ${u.title}</strong>
-                        </div>
-                        <div style="font-size:0.88rem;color:#334155;margin-top:4px;">
-                          <strong>Grammar:</strong> ${u.grammar} | <strong>Phonics:</strong> ${u.phonics}
-                        </div>
-                      </div>
-                    `;
-                  }).join('')}
-                </div>
-              </div>
-            ` : curMode === 'monthly' ? `
-              <div>
-                ${['September 2026', 'October 2026', 'November 2026', 'December 2026', 'January 2027', 'February 2027', 'March 2027', 'April 2027', 'May 2027', 'June 2027'].map((mName, mIdx) => {
-                  const mWeeks = schedule.filter(w => w.month === mName);
-                  if (!mWeeks.length) return '';
-                  return `
-                    <div class="lp-week-card" style="border-left-color:#059669;margin-bottom:14px;">
-                      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                        <h4 style="margin:0;font-size:1.15rem;color:#065f46;">🗓️ Month ${mIdx + 1}: ${mName}</h4>
-                        <span class="badge green">${mWeeks.length} Weeks</span>
-                      </div>
-                      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
-                        ${mWeeks.map(w => {
-                          const p = (w.plansByStage && w.plansByStage[curStage]) || {};
-                          return `
-                            <div style="background:white;border:1px solid #cbd5e1;border-radius:10px;padding:10px;">
-                              <div class="lp-date-badge">${w.dates}</div>
-                              <div style="font-weight:800;color:#1e293b;margin:6px 0 2px 0;">Week ${w.week}: ${p.unitTitle || w.subTheme}</div>
-                              <small style="color:#64748b;">${p.grammar || ''}</small>
-                            </div>
-                          `;
-                        }).join('')}
-                      </div>
-                    </div>
-                  `;
-                }).join('')}
-              </div>
-            ` : `
-              ${filtered.map(w => {
-                const sp = (w.plansByStage && w.plansByStage[curStage]) || {};
-                return `
-                  <div class="lp-week-card">
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
-                      <div>
-                        <span class="lp-date-badge">🗓️ Week ${w.week} · ${w.dates}</span>
-                        <h3 style="margin:6px 0 2px 0;font-size:1.2rem;color:#1e3a8a;">
-                          Unit ${w.unitNumber}: ${sp.unitTitle || 'Unit'} — ${w.subTheme}
-                        </h3>
-                        <div style="font-size:0.86rem;color:#64748b;">
-                          <strong>Month:</strong> ${w.month} | <strong>Grammar:</strong> ${sp.grammar} | <strong>Phonics:</strong> ${sp.phonics}
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- 4 RESOURCES -->
-                    <div class="lp-resource-grid">
-                      <div class="lp-resource-chip lb">
-                        <strong>📘 Learner's Book (LB)</strong>
-                        ${sp.learnersBook || 'Unit Readings & Speaking'}
-                      </div>
-                      <div class="lp-resource-chip ab">
-                        <strong>📓 Activity Book (AB)</strong>
-                        ${sp.workbook || 'Workbook Drills & Tracing'}
-                      </div>
-                      <div class="lp-resource-chip tr">
-                        <strong>🍎 Teacher's Resource (TR)</strong>
-                        ${sp.teacherResource || 'Differentiated Learning & Phonics'}
-                      </div>
-                      <div class="lp-resource-chip pc">
-                        <strong>✂️ Photocopiables (PC)</strong>
-                        ${sp.photocopiables || 'Worksheets & Craft Cutouts'}
-                      </div>
-                    </div>
-
-                    <!-- REALIA & TPR -->
-                    <div class="lp-tpr-box">
-                      <strong>🎒 Classroom Realia / Physical Materials:</strong> ${sp.realia}<br>
-                      <strong style="margin-top:4px;display:inline-block">🏃 Physical TPR Movement Activities:</strong> ${sp.tpr}
-                    </div>
-
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px;">
-                      <button class="btn gold small lp-jump-cam" data-stk="${curStage}" data-uidx="${w.unitNumber - 1}" style="font-weight:900;">
-                        🚀 Open Smartboard Activities for Unit ${w.unitNumber}
-                      </button>
-                      <button class="btn yellow small lp-jump-baam" data-uid="${curStage.replace('stage', 's') + 'u' + w.unitNumber}" style="font-weight:900;">
-                        🧩 Launch Unit ${w.unitNumber} Baamboozle Pack
-                      </button>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
-            `}
-          </div>
-
-          <div style="margin-top:20px;text-align:center;">
-            <button class="btn green big" id="lp-close-bottom" style="min-width:200px;font-weight:900;">
-              ✅ ${curLang === 'en' ? 'Close Lesson Plans' : 'Ders Planlarını Kapat'}
-            </button>
-          </div>
-        </div>
-      `;
-
-      const cTop = d.querySelector('#lp-close-top');
-      if (cTop) cTop.onclick = () => d.remove();
-      const cBottom = d.querySelector('#lp-close-bottom');
-      if (cBottom) cBottom.onclick = () => d.remove();
-
-      // Language toggle
-      const langBtn = d.querySelector('#lp-lang-toggle');
-      if (langBtn) {
-        langBtn.onclick = () => {
-          curLang = (curLang === 'en' ? 'tr' : 'en');
-          renderPlans();
-        };
-      }
-
-      d.querySelectorAll('.lp-st-btn').forEach(btn => {
-        btn.onclick = () => {
-          curStage = btn.getAttribute('data-st');
-          renderPlans();
-        };
-      });
-
-      d.querySelectorAll('.lp-mode-btn').forEach(btn => {
-        btn.onclick = () => {
-          curMode = btn.getAttribute('data-mode');
-          renderPlans();
-        };
-      });
-
-      // Done button
-      d.querySelectorAll('.lp-done-btn').forEach(btn => {
-        btn.onclick = () => {
-          const lid = btn.getAttribute('data-lid');
-          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.changeLessonStatus) {
-            LESSON_PLANS_DATA.changeLessonStatus(curStage, lid, 'completed');
-            renderPlans();
-            if (typeof FX !== 'undefined' && FX.toast) {
-              FX.toast(curLang === 'en' ? '✅ Lesson marked Done! Schedule reflowed.' : '✅ Ders Yapıldı olarak işaretlendi! Takvim güncellendi.');
-            }
-          }
-        };
-      });
-
-      // Postpone button
-      d.querySelectorAll('.lp-postpone-btn').forEach(btn => {
-        btn.onclick = () => {
-          const lid = btn.getAttribute('data-lid');
-          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.changeLessonStatus) {
-            LESSON_PLANS_DATA.changeLessonStatus(curStage, lid, 'postponed');
-            renderPlans();
-            if (typeof FX !== 'undefined' && FX.toast) {
-              FX.toast(curLang === 'en' ? '⏭️ Lesson postponed! Next working day reflowed.' : '⏭️ Ders ertelendi! Sonraki iş gününe kaydırıldı.');
-            }
-          }
-        };
-      });
-
-      // Bind Edit Day modal
-      d.querySelectorAll('.lp-edit-day-btn').forEach(btn => {
-        btn.onclick = () => {
-          const lid = btn.getAttribute('data-lid');
-          const days = (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.getLessonDays)
-            ? LESSON_PLANS_DATA.getLessonDays(curStage)
-            : [];
-          const lesson = days.find(x => x.id === lid);
-          if (lesson) openEditLessonModal(lesson);
-        };
-      });
-
-      // Bind Reset Defaults button
-      const resetBtn = d.querySelector('#lp-reset-defaults-btn');
-      if (resetBtn) {
-        resetBtn.onclick = () => {
-          if (typeof LESSON_PLANS_DATA !== 'undefined' && LESSON_PLANS_DATA.resetToDefaults) {
-            LESSON_PLANS_DATA.resetToDefaults(curStage);
-            renderPlans();
-            if (typeof FX !== 'undefined' && FX.toast) FX.toast(curLang === 'en' ? '🔄 Restored default curriculum days!' : '🔄 Varsayılan müfredat günleri yüklendi!');
-          }
-        };
-      }
-
-      // Bind TPR toggle buttons
-      d.querySelectorAll('.lp-tpr-toggle-btn').forEach(btn => {
-        btn.onclick = () => {
-          const tid = btn.getAttribute('data-tprid');
-          expandedTPR[tid] = !expandedTPR[tid];
-          renderPlans();
-        };
-      });
-
-      const mSelect = d.querySelector('#lp-month-select');
-      if (mSelect) {
-        mSelect.onchange = (e) => {
-          selectedMonth = e.target.value;
-          renderPlans();
-        };
-      }
-
-      const sInput = d.querySelector('#lp-search-input');
-      if (sInput) {
-        sInput.oninput = (e) => {
-          searchQuery = e.target.value;
-          renderPlans();
-          const inp = d.querySelector('#lp-search-input');
-          if (inp) {
-            inp.focus();
-            inp.setSelectionRange(inp.value.length, inp.value.length);
-          }
-        };
-      }
-
-      const pBtn = d.querySelector('#lp-print-btn');
-      if (pBtn) pBtn.onclick = () => window.print();
-
-      const cpBtn = d.querySelector('#lp-copy-btn');
-      if (cpBtn) {
-        cpBtn.onclick = () => {
-          try {
-            const txt = d.querySelector('#lp-plans-list').innerText;
-            navigator.clipboard.writeText(txt);
-            if (typeof FX !== 'undefined' && FX.toast) FX.toast('📋 Lesson plan copied to clipboard!');
-          } catch (e) {}
-        };
-      }
-
-      d.querySelectorAll('.lp-jump-cam').forEach(btn => {
-        btn.onclick = () => {
-          const stk = btn.getAttribute('data-stk');
-          const uidx = parseInt(btn.getAttribute('data-uidx'), 10);
-          d.remove();
-          if (typeof CAMBRIDGE_ENGINE !== 'undefined') {
-            CAMBRIDGE_ENGINE.stageKey = stk;
-            CAMBRIDGE_ENGINE.unitIdx = uidx;
-            CAMBRIDGE_ENGINE.view = 'vocab';
-          }
-          this.go('cambridge');
-        };
-      });
-
-      d.querySelectorAll('.lp-jump-baam').forEach(btn => {
-        btn.onclick = () => {
-          const uid = btn.getAttribute('data-uid');
-          d.remove();
-          this.go('game', { engineId: 'baamboozle', unitId: uid, lvIdx: 0 });
-        };
-      });
-    };
-
-    renderPlans();
-    document.body.appendChild(d);
   },
 
   /* ---------- 👅 Phonics Tongue Twister Studio Modal ---------- */
@@ -2876,9 +2335,17 @@ const APP = {
   },
 
   /* ---------- 📘 Cambridge Global English 1 & 2 Müfredat & Notlar Modalı ---------- */
-  showVoicePracticeModal() {
+  showVoicePracticeModal(missionTitle = 'Meet a friend') {
     const old = document.getElementById('polly-talk-modal');
     if (old) old.remove();
+    const missionCatalog = {
+      'At school': { model: 'Can I borrow a pencil, please?', words: 'pencil · please · thank you', first: 'You are in class. What do you need?', questions: ['What is in your school bag?', 'Who is your teacher?', 'What do you like to read?'] },
+      'At the park': { model: 'Would you like to play with me?', words: 'park · ball · play', first: 'You meet a friend at the park. What can you say?', questions: ['What can you see in the park?', 'Which game do you like?', 'What colour is your ball?'] },
+      'At the bakery': { model: 'I would like an apple, please.', words: 'apple · bread · please', first: 'You are choosing a snack. What would you like?', questions: ['What food do you like?', 'Would you like bread or an apple?', 'How can you say thank you?'] },
+      'At the zoo': { model: 'I can see a tall giraffe.', words: 'animal · see · tall', first: 'You are visiting the zoo. What animal can you see?', questions: ['Which animal is your favourite?', 'Is it big or small?', 'What can the animal do?'] },
+      'Meet a friend': { model: 'Hello! My name is Mia.', words: 'hello · name · friend', first: 'Hi, friend! What is your name?', questions: ['What colour do you like?', 'Can you name an animal?', 'What is your favourite food?'] }
+    };
+    const mission = missionCatalog[missionTitle] || missionCatalog['Meet a friend'];
 
     const overlay = document.createElement('div');
     overlay.id = 'polly-talk-modal';
@@ -2888,13 +2355,15 @@ const APP = {
         <button class="polly-talk-close" type="button" aria-label="Close">×</button>
         <div class="polly-talk-header">
           <img src="images/polly-3d-mascot.png" alt="" width="118" height="138">
-          <div><span class="polly-talk-kicker">ENGLISH SPEAKING PRACTICE</span><h2 id="polly-talk-title">Let’s chat, superstar!</h2>
-            <p>Listen, speak or type. Polly will answer and cheer you on.</p></div>
+          <div><span class="polly-talk-kicker">SPEAKING MISSION · ${esc(missionTitle.toUpperCase())}</span><h2 id="polly-talk-title">Let’s practise together!</h2>
+            <p>Learn useful words, try a sentence, then talk in a familiar place.</p></div>
         </div>
+        <div class="speaking-steps"><span class="active">1 · Words</span><span>2 · Sentence</span><span>3 · Dialogue</span></div>
+        <div class="mission-model"><b>Useful words</b><p>${esc(mission.words)}</p><b>Try this sentence</b><p>${esc(mission.model)}</p><button class="btn btn-outline" id="mission-hear-model" type="button">Hear sentence</button></div>
         <div class="polly-talk-messages" id="polly-talk-messages" aria-live="polite">
-          <div class="talk-bubble polly">Hi, friend! What is your name?</div>
+          <div class="talk-bubble polly">${esc(mission.first)}</div>
         </div>
-        <p class="polly-talk-note">Speech uses the voice available in this browser or device. Voice quality and microphone support vary. This practice is not a live ChatGPT conversation.</p>
+        <p class="polly-talk-note">The microphone and read-aloud use browser services. Higgsfield samples are previews only; live speech in that voice requires paid generation and is off in this free, no-credit mode.</p>
         <div class="polly-talk-controls">
           <button class="btn voice-buddy-listen" id="polly-talk-listen" type="button">🎙️ Speak to Polly</button>
           <input id="polly-talk-input" type="text" maxlength="180" autocomplete="off" placeholder="Or type a short answer…" aria-label="Type your English answer">
@@ -2911,13 +2380,6 @@ const APP = {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     let turn = 0;
-    const prompts = [
-      'What colour do you like?',
-      'Can you name an animal?',
-      'What is your favourite food?',
-      'Can you say one thing you can see?',
-      'What do you like to play?'
-    ];
     const close = () => {
       if (recognition) { try { recognition.abort(); } catch (_) {} }
       if (window.speechSynthesis) window.speechSynthesis.cancel();
@@ -2937,14 +2399,15 @@ const APP = {
       input.value = '';
       turn += 1;
       const lower = text.toLowerCase();
+      const nextQuestion = mission.questions[(turn - 1) % mission.questions.length];
       let reply;
       const name = text.match(/(?:my name is|i am|i'm)\s+([a-z'-]+)/i);
-      if (name) reply = `Lovely to meet you, ${name[1]}! ${prompts[turn % prompts.length]}`;
-      else if (/hello|hi|hey/.test(lower)) reply = `Hello, superstar! ${prompts[turn % prompts.length]}`;
-      else if (/red|blue|green|yellow|pink|purple|orange|black|white/.test(lower)) reply = `What a lovely answer! I like colourful things too. ${prompts[turn % prompts.length]}`;
-      else if (/cat|dog|bird|fish|lion|elephant|rabbit|monkey/.test(lower)) reply = `Great animal word! Can you tell me one more thing about it? ${prompts[turn % prompts.length]}`;
-      else if (/don't know|dont know|help|sorry|no/.test(lower)) reply = `That’s okay. Let’s try together: ${prompts[turn % prompts.length]}`;
-      else reply = `I heard you! Great English speaking. ${prompts[turn % prompts.length]}`;
+      if (name) reply = `Lovely to meet you, ${name[1]}! ${nextQuestion}`;
+      else if (/hello|hi|hey/.test(lower)) reply = `Hello, superstar! ${nextQuestion}`;
+      else if (/red|blue|green|yellow|pink|purple|orange|black|white/.test(lower)) reply = `What a lovely answer! I like colourful things too. ${nextQuestion}`;
+      else if (/cat|dog|bird|fish|lion|elephant|rabbit|monkey/.test(lower)) reply = `Great animal word! ${nextQuestion}`;
+      else if (/don't know|dont know|help|sorry|no/.test(lower)) reply = `That’s okay. Let’s try together: ${mission.model}`;
+      else reply = `I heard you! Great English speaking. ${nextQuestion}`;
       const praise = ['Brilliant speaking! ⭐', 'Lovely English! 🌈', 'You’re doing great! 🎉', 'Super try! Keep going! 🦜'][turn % 4];
       const fullReply = `${praise} ${reply}`;
       addBubble(fullReply, 'polly');
@@ -2953,6 +2416,7 @@ const APP = {
       MEDIA.speak(fullReply, 0.94);
     };
     const sendTyped = () => answer(input.value);
+    overlay.querySelector('#mission-hear-model').addEventListener('click', () => MEDIA.speak(mission.model, 0.9));
     overlay.querySelector('#polly-talk-send').addEventListener('click', sendTyped);
     input.addEventListener('keydown', (event) => { if (event.key === 'Enter') sendTyped(); });
     overlay.querySelector('.polly-talk-close').addEventListener('click', close);

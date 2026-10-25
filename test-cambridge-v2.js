@@ -222,11 +222,11 @@ try {
   }
 
   // Test module view switching
-  const views = ['vocab', 'baamboozle', 'games-hub', 'twisters', 'songs', 'videos', 'teacher-guide', 'lesson'];
+  const views = ['vocab', 'baamboozle', 'games-hub', 'twisters', 'songs', 'videos', 'speaking'];
   views.forEach(v => {
     engine.setView(v);
   });
-  console.log('  ✔ 8 İnteraktif Modülün tümü (vocab, baamboozle, games-hub, twisters, songs, videos, teacher-guide, lesson) hatasız render edildi.');
+  console.log('  ✔ 7 öğrenci modülü (vocab, baamboozle, games-hub, twisters, songs, videos, speaking) hatasız render edildi.');
 
   // Test Baamboozle gameplay
   engine.setView('baamboozle');

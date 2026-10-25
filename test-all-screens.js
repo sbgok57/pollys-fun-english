@@ -51,7 +51,7 @@ const vm = require("vm");
 scriptMatches.forEach(m => vm.runInThisContext(m[1]));
 
 console.log('Testing APP screens...');
-const screens = ['home', 'cambridge', 'scores', 'help'];
+const screens = ['home', 'cambridge', 'scores', 'help', 'stories'];
 screens.forEach(s => {
   APP.go(s);
   console.log(`✔ Ekran render başarılı: ${s}`);
@@ -70,6 +70,14 @@ console.log('✔ Ünite detay ekranı render edildi: s1u1');
 console.log('Testing Songs screen...');
 APP.go('songs');
 console.log('✔ Şarkı köşesi render edildi');
+
+if (!Array.isArray(STORIES_200) || STORIES_200.length !== 200 || new Set(STORIES_200.map(s => s.id)).size !== 200) {
+  throw new Error('Story library must contain 200 uniquely identified stories.');
+}
+if (STORIES_200.some(s => ![1, 2, 3, 4].includes(s.grade) || !s.text || !s.question)) {
+  throw new Error('Story records need a grade, English text, and a comprehension prompt.');
+}
+console.log('✔ 200 unique grade-tagged English stories with questions loaded');
 
 console.log(`Testing Game Engine Init for all ${ENGINES.length} engines on Unit s1u1...`);
 let engineErrors = 0;

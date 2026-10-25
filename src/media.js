@@ -895,7 +895,7 @@ const FX = {
         'Keep going! Every try helps you learn!'
       ];
       const line = praiseLines[Math.floor(Math.random() * praiseLines.length)];
-      this.mascotSay(line, ok ? 1900 : 2600);
+      this.mascotSay(line, ok ? 2300 : 2600);
       if (typeof MEDIA !== 'undefined' && MEDIA.speak) {
         if (this._feedbackTimer) clearTimeout(this._feedbackTimer);
         this._pendingFeedback = line;

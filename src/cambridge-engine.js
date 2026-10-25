@@ -4,7 +4,7 @@
    Features:
    - 4-Stage Selector (Stage 1 to Stage 4) with Large Tabs
    - 1-9 Horizontal Unit Selector Pills Bar for Instant Navigation
-   - Vocabulary, team games, classroom activities, tongue twisters, songs, videos, notes and lesson plans
+   - Vocabulary, team games, classroom activities, speaking practice, tongue twisters, songs and videos
    - Book alignment and external media links are not verified against licensed course materials
    - Settings Modal (BGM, SFX volume sliders, Character Voice, Speed, Theme Switcher)
    - Themes: Colorful Kids, Smartboard High Contrast, Pastel Relaxing
@@ -342,7 +342,7 @@
     container: null,
     stageKey: 'stage1',
     unitIdx: 0,
-    view: 'vocab', // 'vocab' | 'baamboozle' | 'games-hub' | 'twisters' | 'songs' | 'videos' | 'teacher-guide' | 'lesson'
+    view: 'vocab', // student-facing activity views
     media: 'gif', // 'gif' | 'photo'
     teams: [
       { name: 'Team Blue 🔵', score: 0 },
@@ -512,8 +512,7 @@
               <button class="module-btn ${this.view === 'twisters' ? 'active' : ''}" data-view="twisters">👅 Tongue twisters</button>
               <button class="module-btn ${this.view === 'songs' ? 'active' : ''}" data-view="songs">🎵 Sing-Along Songs & Melodies</button>
               <button class="module-btn ${this.view === 'videos' ? 'active' : ''}" data-view="videos">🎬 Videos</button>
-              <button class="module-btn ${this.view === 'teacher-guide' ? 'active' : ''}" data-view="teacher-guide">📖 Teacher's Guide & Photocopiables</button>
-              <button class="module-btn ${this.view === 'lesson' ? 'active' : ''}" data-view="lesson">📋 Lesson ideas</button>
+              <button class="module-btn ${this.view === 'speaking' ? 'active' : ''}" data-view="speaking">Speaking missions</button>
             </nav>
 
             <!-- 5. ACTIVE MODULE VIEW -->
@@ -537,7 +536,7 @@
     },
 
     renderActiveView(unit) {
-      if (!unit && this.view !== 'games-hub' && this.view !== 'twisters' && this.view !== 'songs' && this.view !== 'videos' && this.view !== 'teacher-guide') {
+      if (!unit && this.view !== 'games-hub' && this.view !== 'twisters' && this.view !== 'songs' && this.view !== 'videos' && this.view !== 'speaking') {
         return `<div class="resource-box">Unit could not be loaded.</div>`;
       }
       switch (this.view) {
@@ -547,10 +546,24 @@
         case 'twisters': return this.renderTwisters();
         case 'songs': return this.renderSongs();
         case 'videos': return this.renderVideos();
-        case 'teacher-guide': return this.renderTeacherGuide();
-        case 'lesson': return this.renderLesson(unit);
+        case 'speaking': return this.renderSpeaking();
         default: return this.renderVocab(unit);
       }
+    },
+
+    // 1. VOCABULARY VIEW
+    renderSpeaking() {
+      const unit = this.getCurrentUnit();
+      return `<section class="view-section active speaking-missions-view">
+        <div class="speaking-missions-heading"><span class="story-feature-kicker">WORDS → SENTENCES → DIALOGUE</span><h2>Practice English for real moments</h2><p>Start with useful words, build a short sentence, then try a friendly conversation in a familiar place.</p></div>
+        <div class="speaking-mission-grid">${[
+          ['At school', 'Meet a classmate, ask for a pencil, and say thank you.'],
+          ['At the park', 'Invite a friend to play and talk about what you can see.'],
+          ['At the bakery', 'Choose a snack and make a polite request.'],
+          ['At the zoo', 'Describe an animal and ask a curious question.']
+        ].map(([title, description]) => `<article class="speaking-mission-card"><h3>${title}</h3><p>${description}</p><button type="button" class="btn purple" data-speaking-mission="${title}">Start speaking mission</button></article>`).join('')}</div>
+        <p class="story-audio-note">Speech recognition and read-aloud depend on browser and device support. Higgsfield samples in Settings are previews; new conversation speech requires paid generation, so these missions do not spend Higgsfield credits.</p>
+      </section>`;
     },
 
     // 1. VOCABULARY VIEW
@@ -1105,6 +1118,12 @@
       this.container.querySelectorAll('.module-btn[data-view]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           this.setView(e.currentTarget.getAttribute('data-view'));
+        });
+      });
+
+      this.container.querySelectorAll('[data-speaking-mission]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (typeof APP !== 'undefined' && APP.showVoicePracticeModal) APP.showVoicePracticeModal(btn.dataset.speakingMission);
         });
       });
 
