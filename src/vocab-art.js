@@ -5,8 +5,17 @@ const VOCABULARY_ART = Object.freeze({
   mother: [0, 1], father: [1, 1], brother: [2, 1], sister: [3, 1], baby: [4, 1], grandma: [5, 1],
   explorer: [0, 2], compass: [1, 2], notebook: [2, 2], magnifier: [3, 2], map: [4, 2], star: [5, 2]
 });
+/* Independently generated illustrations are added here only after the
+   depicted object has been checked against the exact vocabulary word. */
+const VOCABULARY_IMAGE = Object.freeze({
+  apple: 'images/vocabulary/apple.png', bus: 'images/vocabulary/bus.png',
+  cat: 'images/vocabulary/cat.png', bicycle: 'images/vocabulary/bicycle.png',
+  car: 'images/vocabulary/car.png', boat: 'images/vocabulary/boat.png',
+  tree: 'images/vocabulary/tree.png', bee: 'images/vocabulary/bee.png'
+});
 function getVocabularyArt(word) {
   const key = String(word || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  if (VOCABULARY_IMAGE[key]) return { src: VOCABULARY_IMAGE[key] };
   const position = VOCABULARY_ART[key];
   return position ? { column: position[0], row: position[1] } : null;
 }

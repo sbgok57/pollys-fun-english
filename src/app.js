@@ -856,7 +856,7 @@ const APP = {
         </div>
 
         <div class="baamboozle-stage">
-          ${art ? `<div class="learn-picture popflash" role="img" aria-label="${esc(cur[0])}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></div>` : `<div class="learn-picture-missing" role="img" aria-label="Picture coming soon"><span>${esc(cur[0])}</span></div>`}
+          ${art ? (art.src ? `<img class="learn-picture popflash" src="${art.src}" alt="${esc(cur[0])}" loading="lazy">` : `<div class="learn-picture popflash" role="img" aria-label="${esc(cur[0])}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></div>`) : `<div class="learn-picture-missing" role="img" aria-label="Picture coming soon"><span>${esc(cur[0])}</span></div>`}
           <div class="stage-visual-tools">
           </div>
         </div>

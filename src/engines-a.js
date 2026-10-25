@@ -32,7 +32,7 @@ const ENGINES_A = [
           <div class="center">
             <div class="card flash-card" id="fc">
               ${art
-                ? `<div class="flashcard-art" role="img" aria-label="${esc(w[0])}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></div>`
+                ? (art.src ? `<img class="flashcard-art-image" src="${art.src}" alt="${esc(w[0])}" loading="lazy">` : `<div class="flashcard-art" role="img" aria-label="${esc(w[0])}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></div>`)
                 : `<div class="flashcard-art-missing" role="img" aria-label="Picture coming soon"><span>${esc(w[0])}</span></div>`}
               <div class="pw" style="font-size:1.8em">${esc(w[0])}</div>
               <div class="muted" style="margin-top:6px">Look, listen, and say the word.</div>
@@ -251,7 +251,7 @@ const ENGINES_A = [
             ${cards.map((c, i) => `
               <div class="opt memory-card" data-idx="${i}" style="height:100px;font-size:2em;display:flex;align-items:center;justify-content:center;background:#e0e7ff;border:4px solid #818cf8;border-radius:16px;cursor:pointer">
                 <span class="card-back">❓</span>
-                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : (() => { const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(c.content) : null; return art ? `<span class="memory-art" role="img" aria-label="${esc(c.content)}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></span>` : `<span class="memory-art-missing">${esc(c.content)}</span>`; })()}</span>
+                <span class="card-front" style="display:none">${c.t === 'word' ? `<span style="font-size:0.5em;font-weight:900">${esc(c.content)}</span>` : (() => { const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(c.content) : null; return art ? (art.src ? `<img class="memory-art-image" src="${art.src}" alt="${esc(c.content)}" loading="lazy">` : `<span class="memory-art" role="img" aria-label="${esc(c.content)}" style="--art-x:${art.column * 20}%;--art-y:${art.row * 50}%"></span>`) : `<span class="memory-art-missing">${esc(c.content)}</span>`; })()}</span>
               </div>`).join('')}
           </div>
         </div>`;

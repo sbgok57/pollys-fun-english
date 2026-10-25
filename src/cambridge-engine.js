@@ -576,7 +576,7 @@
               <div class="vocab-card">
                 <div class="vocab-media">
                   ${typeof getVocabularyArt === 'function' && getVocabularyArt(v.word)
-                    ? (() => { const pos = getVocabularyArt(v.word); return `<div class="vocab-atlas-art" role="img" aria-label="${v.word} — ${v.turkish}" style="--art-x:${pos.column * 20}%;--art-y:${pos.row * 50}%"></div>`; })()
+                    ? (() => { const pos = getVocabularyArt(v.word); return pos.src ? `<img class="vocab-image-art" src="${pos.src}" alt="${v.word}" loading="lazy">` : `<div class="vocab-atlas-art" role="img" aria-label="${v.word}" style="--art-x:${pos.column * 20}%;--art-y:${pos.row * 50}%"></div>`; })()
                     : `<div class="vocab-no-art"><span>${v.word}</span></div>`}
                   <span class="media-tag">3D picture</span>
                 </div>

@@ -136,7 +136,7 @@ for f in (vd / 'images').glob('*.jpg'):
 
 # d) MP3 sayıları kontrolü
 n_mp3 = len(list((vd / 'audio').glob('*.mp3')))
-n_img = len(list((vd / 'images').glob('*.jpg')))
+n_img = sum(1 for f in (vd / 'images').rglob('*') if f.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp'})
 if n_mp3 < 18:
     hatalar.append('mp3 sayısı beklenenden az: %d (en az 18 melodi olmalı)' % n_mp3)
 
@@ -157,6 +157,12 @@ unbundled_imgs = re.findall(r'src=["\x27](images/[^"\x27]+)["\x27]', out)
 for img_path in unbundled_imgs:
     if not (vd / img_path).exists():
         hatalar.append(f'404 Tehlikesi - Diskte olmayan görsel referansı: {img_path}')
+
+# h) Kelime görsel manifestindeki doğrudan dosyalar da dağıtım paketinde bulunmalı.
+art_manifest = (src / 'vocab-art.js').read_text(encoding='utf-8')
+for img_path in re.findall(r"['\"](images/vocabulary/[^'\"]+\.(?:png|webp|jpg))['\"]", art_manifest):
+    if not (vd / img_path).exists():
+        hatalar.append(f'Kelime görseli pakette yok: {img_path}')
 
 playfile_calls = set(re.findall(r'playFile\(["\x27]([^"\x27]+)["\x27]', out))
 for clip_name in playfile_calls:
