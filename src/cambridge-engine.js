@@ -582,8 +582,7 @@
                 </div>
                 <div class="vocab-details">
                   <h4>${v.word}</h4>
-                  <div class="tr-meaning">🇹🇷 ${v.turkish}</div>
-                  <p style="font-size:0.85rem; color:#64748b; margin-bottom:12px;">📖 ${v.meaning}</p>
+                  <p class="vocab-definition">${v.meaning}</p>
                   <div class="voice-bubble">
                     <span><strong>Listen and repeat:</strong> Hear the word in your device’s English voice.</span>
                     <button class="btn btn-outline cam-speak-btn" data-phrase="${v.word}" data-char="polly">

@@ -916,6 +916,8 @@ const FX = {
       b = document.createElement('div');
       b.id = 'mas-bubble';
       b.className = 'mascot-bubble';
+      b.setAttribute('role', 'status');
+      b.setAttribute('aria-live', 'polite');
       document.body.appendChild(b);
     }
     b.textContent = msg;
@@ -932,6 +934,9 @@ const FX = {
       t = document.createElement('div');
       t.id = 'app-toast';
       t.className = 'app-toast';
+      t.setAttribute('role', 'status');
+      t.setAttribute('aria-live', 'polite');
+      t.setAttribute('aria-atomic', 'true');
       document.body.appendChild(t);
     }
     t.textContent = msg;

@@ -379,6 +379,12 @@ const PRAISE = [
   'Keep going!'
 ];
 
+function soundIconSvg(muted) {
+  return muted
+    ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 5 6m0-6-5 6"/></svg>'
+    : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>';
+}
+
 const APP = {
   scr: 'home',
   stage: null,
@@ -529,7 +535,7 @@ const APP = {
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
       <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
       <button class="btn small white" id="hm" aria-label="Home">🏠</button>
-      <button class="btn small white" id="mu" aria-label="Toggle sound">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
+      <button class="btn small white sound-toggle" id="mu" aria-label="${MEDIA.muted ? 'Turn sound on' : 'Mute sound'}" title="${MEDIA.muted ? 'Sound muted' : 'Sound on'}">${soundIconSvg(MEDIA.muted)}</button></div>`;
   },
 
   /* ---------- 📘 CAMBRIDGE 1-4 MASTER PLATFORM ---------- */
@@ -1110,8 +1116,11 @@ const APP = {
     });
     on('#mu', 'click', (e) => {
       MEDIA.toggleMute();
-      e.target.textContent = MEDIA.muted ? '🔇' : '🔊';
-      FX.toast(MEDIA.muted ? 'Muted 🔇' : 'Sound On 🔊');
+      const button = e.currentTarget;
+      button.innerHTML = soundIconSvg(MEDIA.muted);
+      button.setAttribute('aria-label', MEDIA.muted ? 'Turn sound on' : 'Mute sound');
+      button.title = MEDIA.muted ? 'Sound muted' : 'Sound on';
+      FX.toast(MEDIA.muted ? 'Sound muted' : 'Sound on');
     });
     on('#cambridge-top-btn', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#cambridge-feature-banner', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
@@ -1747,6 +1756,10 @@ const APP = {
 
     const d = document.createElement('div');
     d.id = 'vmodal';
+    d.setAttribute('role', 'dialog');
+    d.setAttribute('aria-modal', 'true');
+    d.setAttribute('aria-label', 'Choose a Higgsfield voice sample');
+    d.style.zIndex = '120000';
     d.innerHTML = `<div class="vmbox voice-modal-box">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
@@ -1771,6 +1784,7 @@ const APP = {
     document.body.appendChild(d);
     let previewAudio = null;
     const sampleSelect = d.querySelector('#hf-voice-select');
+    requestAnimationFrame(() => sampleSelect && sampleSelect.focus({ preventScroll: true }));
     const playSelectedSample = () => {
       const sample = previewVoices[Number(sampleSelect.value)];
       if (!sample || !sample.preview_url) { FX.toast('Choose a voice sample first.'); return; }
@@ -1793,6 +1807,9 @@ const APP = {
     };
     d.onclick = (e) => {
       if (e.target === d) { if (previewAudio) previewAudio.pause(); d.remove(); }
+    };
+    d.onkeydown = (e) => {
+      if (e.key === 'Escape') { if (previewAudio) previewAudio.pause(); d.remove(); }
     };
   },
 

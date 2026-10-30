@@ -713,21 +713,31 @@ body.s2 {
 
 .app-toast {
   position: fixed;
-  bottom: 24px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(30px);
-  background: #1e293b;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: var(--radius-full);
-  font-weight: 800;
-  box-shadow: var(--shadow-md);
+  transform: translate(-50%, calc(-50% + 18px)) scale(.94);
+  max-width: min(88vw, 460px);
+  padding: 16px 24px;
+  border: 3px solid #ffcf52;
+  border-radius: 24px;
+  background: linear-gradient(145deg,#fff,#fff9e9 58%,#f2ecff);
+  color: #30254e;
+  font-weight: 900;
+  font-size: clamp(1rem,2vw,1.2rem);
+  text-align: center;
+  box-shadow: 0 10px 0 #4d3a8420,0 24px 60px #20143735;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.25s;
-  z-index: 160;
+  transition: opacity .18s ease,transform .22s cubic-bezier(.2,.9,.3,1.25);
+  z-index: 60000;
 }
-.app-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.app-toast.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+.app-toast::before { content:"✦"; display:block; color:#ffab24; font-size:1.35rem; line-height:1; margin-bottom:5px; }
+.mascot-bubble { top:50%; bottom:auto; z-index:60001; max-width:min(88vw,460px); transform:translate(-50%,calc(-50% + 18px)) scale(.94); text-align:center; }
+.mascot-bubble.show { opacity:1; transform:translate(-50%,-50%) scale(1); animation:feedbackPop .24s cubic-bezier(.2,.9,.3,1.25); }
+@keyframes feedbackPop { from { opacity:0; transform:translate(-50%,-50%) scale(.82); } to { opacity:1; transform:translate(-50%,-50%) scale(1); } }
+.sound-toggle svg { width:22px; height:22px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.vocab-definition { margin:4px 12px 12px; color:#51486d; font-size:.9rem; line-height:1.45; text-align:center; }
 
 /* ---------- v2 YENİ ANİMASYONLAR & OYUNLAR ---------- */
 .ripple {
@@ -72714,7 +72724,10 @@ const VOCABULARY_IMAGE = Object.freeze({
   whiteboard: 'images/vocabulary/whiteboard.png', crayons: 'images/vocabulary/crayons.png',
   clock: 'images/vocabulary/clock.png', backpack: 'images/vocabulary/backpack.png',
   ball: 'images/vocabulary/ball.png', flowers: 'images/vocabulary/flowers.png',
-  rabbit: 'images/vocabulary/rabbit.png', duck: 'images/vocabulary/duck.png'
+  rabbit: 'images/vocabulary/rabbit.png', duck: 'images/vocabulary/duck.png',
+  cow: 'images/vocabulary/cow.png', goat: 'images/vocabulary/goat.png', hen: 'images/vocabulary/hen.png',
+  chick: 'images/vocabulary/chick.png', lamb: 'images/vocabulary/lamb.png', puppy: 'images/vocabulary/puppy.png',
+  carrot: 'images/vocabulary/carrot.png', pepper: 'images/vocabulary/pepper.png', onion: 'images/vocabulary/onion.png'
 });
 function getVocabularyArt(word) {
   const key = String(word || '').trim().toLowerCase().replace(/\s+/g, ' ');
@@ -73694,6 +73707,8 @@ const FX = {
       b = document.createElement('div');
       b.id = 'mas-bubble';
       b.className = 'mascot-bubble';
+      b.setAttribute('role', 'status');
+      b.setAttribute('aria-live', 'polite');
       document.body.appendChild(b);
     }
     b.textContent = msg;
@@ -73710,6 +73725,9 @@ const FX = {
       t = document.createElement('div');
       t.id = 'app-toast';
       t.className = 'app-toast';
+      t.setAttribute('role', 'status');
+      t.setAttribute('aria-live', 'polite');
+      t.setAttribute('aria-atomic', 'true');
       document.body.appendChild(t);
     }
     t.textContent = msg;
@@ -76527,8 +76545,7 @@ ENGINES.push(...ENGINES_C);
                 </div>
                 <div class="vocab-details">
                   <h4>${v.word}</h4>
-                  <div class="tr-meaning">🇹🇷 ${v.turkish}</div>
-                  <p style="font-size:0.85rem; color:#64748b; margin-bottom:12px;">📖 ${v.meaning}</p>
+                  <p class="vocab-definition">${v.meaning}</p>
                   <div class="voice-bubble">
                     <span><strong>Listen and repeat:</strong> Hear the word in your device’s English voice.</span>
                     <button class="btn btn-outline cam-speak-btn" data-phrase="${v.word}" data-char="polly">
@@ -77752,6 +77769,12 @@ const PRAISE = [
   'Keep going!'
 ];
 
+function soundIconSvg(muted) {
+  return muted
+    ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m17 9 5 6m0-6-5 6"/></svg>'
+    : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg>';
+}
+
 const APP = {
   scr: 'home',
   stage: null,
@@ -77902,7 +77925,7 @@ const APP = {
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
       <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
       <button class="btn small white" id="hm" aria-label="Home">🏠</button>
-      <button class="btn small white" id="mu" aria-label="Toggle sound">${MEDIA.muted ? '🔇' : '🔊'}</button></div>`;
+      <button class="btn small white sound-toggle" id="mu" aria-label="${MEDIA.muted ? 'Turn sound on' : 'Mute sound'}" title="${MEDIA.muted ? 'Sound muted' : 'Sound on'}">${soundIconSvg(MEDIA.muted)}</button></div>`;
   },
 
   /* ---------- 📘 CAMBRIDGE 1-4 MASTER PLATFORM ---------- */
@@ -78483,8 +78506,11 @@ const APP = {
     });
     on('#mu', 'click', (e) => {
       MEDIA.toggleMute();
-      e.target.textContent = MEDIA.muted ? '🔇' : '🔊';
-      FX.toast(MEDIA.muted ? 'Muted 🔇' : 'Sound On 🔊');
+      const button = e.currentTarget;
+      button.innerHTML = soundIconSvg(MEDIA.muted);
+      button.setAttribute('aria-label', MEDIA.muted ? 'Turn sound on' : 'Mute sound');
+      button.title = MEDIA.muted ? 'Sound muted' : 'Sound on';
+      FX.toast(MEDIA.muted ? 'Sound muted' : 'Sound on');
     });
     on('#cambridge-top-btn', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#cambridge-feature-banner', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
@@ -79120,6 +79146,10 @@ const APP = {
 
     const d = document.createElement('div');
     d.id = 'vmodal';
+    d.setAttribute('role', 'dialog');
+    d.setAttribute('aria-modal', 'true');
+    d.setAttribute('aria-label', 'Choose a Higgsfield voice sample');
+    d.style.zIndex = '120000';
     d.innerHTML = `<div class="vmbox voice-modal-box">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
@@ -79144,6 +79174,7 @@ const APP = {
     document.body.appendChild(d);
     let previewAudio = null;
     const sampleSelect = d.querySelector('#hf-voice-select');
+    requestAnimationFrame(() => sampleSelect && sampleSelect.focus({ preventScroll: true }));
     const playSelectedSample = () => {
       const sample = previewVoices[Number(sampleSelect.value)];
       if (!sample || !sample.preview_url) { FX.toast('Choose a voice sample first.'); return; }
@@ -79166,6 +79197,9 @@ const APP = {
     };
     d.onclick = (e) => {
       if (e.target === d) { if (previewAudio) previewAudio.pause(); d.remove(); }
+    };
+    d.onkeydown = (e) => {
+      if (e.key === 'Escape') { if (previewAudio) previewAudio.pause(); d.remove(); }
     };
   },
 
