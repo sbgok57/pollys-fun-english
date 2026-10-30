@@ -562,7 +562,7 @@
           ['At the bakery', 'Choose a snack and make a polite request.'],
           ['At the zoo', 'Describe an animal and ask a curious question.']
         ].map(([title, description]) => `<article class="speaking-mission-card"><h3>${title}</h3><p>${description}</p><button type="button" class="btn purple" data-speaking-mission="${title}">Start speaking mission</button></article>`).join('')}</div>
-        <p class="story-audio-note">Speech recognition and read-aloud depend on browser and device support. Higgsfield samples in Settings are previews; new conversation speech requires paid generation, so these missions do not spend Higgsfield credits.</p>
+        <p class="story-audio-note">Speech recognition and read-aloud depend on your browser and device. Lesson text is spoken with the English reading voice selected in Sound and Display settings.</p>
       </section>`;
     },
 
@@ -1036,9 +1036,9 @@
             <input type="range" id="setting-sfx-volume" min="0" max="1" step="0.05" value="${s.sfxVolume || 0.8}" />
           </div>
           <div class="settings-group">
-            <label>Higgsfield voice samples</label>
-            <p class="muted" style="font-size:.88rem">Choose and preview from Higgsfield samples. Lesson read-aloud still uses the browser voice; a sample cannot read new lesson text.</p>
-            <button class="btn btn-outline" id="choose-device-voice">Choose a Higgsfield sample</button>
+            <label>Higgsfield voice sample previews</label>
+            <p class="muted" style="font-size:.88rem">These are short preview clips. Lesson and game text use the reading voice selected in Sound and Display settings.</p>
+            <button class="btn btn-outline" id="choose-device-voice">Listen to Higgsfield samples</button>
           </div>
           <div class="settings-group">
             <label>⚡ Speech Speed (TTS)</label>

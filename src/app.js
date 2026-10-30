@@ -551,92 +551,79 @@ const APP = {
     return (
       this.bar() +
       `
-    <div class="welcome-hero">
+    <section class="welcome-hero kids-home-hero">
       <div class="welcome-avatar"><img src="images/polly-3d-mascot.png" alt="Polly, the friendly English practice parrot" width="150" height="175"></div>
       <div class="welcome-content">
-        <div class="welcome-badge">For primary English classrooms</div>
-        <h2>A little English practice, a lot of fun.</h2>
-        <p>Choose a grade, meet friendly characters, and practise English through quick games, songs, and speaking missions.</p>
+        <div class="welcome-badge">PLAY · SPEAK · DISCOVER</div>
+        <h1>English is an adventure!</h1>
+        <p>Pick your grade and jump into colourful games, stories, songs, and speaking missions with Polly.</p>
         <div class="welcome-btns">
-          <button class="btn voice-buddy-launch" id="btn-voice-buddy">🎙️ Talk with Polly</button>
-          <button class="btn green big" id="btn-cambridge-launch">Choose a game</button>
+          <button class="btn voice-buddy-launch" id="btn-voice-buddy">Talk with Polly</button>
+          <button class="btn green big" id="btn-cambridge-launch">Choose your game</button>
         </div>
       </div>
-      <figure class="welcome-photo-wrap">
-        <img class="welcome-photo" src="images/classroom-vocabulary.jpg" alt="Illustrative classroom photo of pupils arranging English picture cards" width="1536" height="1024" fetchpriority="high">
-        <figcaption>Illustrative classroom image</figcaption>
+      <figure class="welcome-photo-wrap kids-hero-art">
+        <img class="welcome-photo" src="/images/stories-world.png" alt="Polly and children explore an English story world" width="1536" height="1024" fetchpriority="high">
+        <span class="hero-art-sticker hero-art-book" aria-hidden="true"><img src="/images/vocabulary/book.png" alt=""></span>
+        <span class="hero-art-sticker hero-art-pencil" aria-hidden="true"><img src="/images/vocabulary/pencil.png" alt=""></span>
       </figure>
-    </div>
+    </section>
 
-    <div class="hero">
-      <img class="mascot" id="mas" src="/images/polly-3d-mascot.png" alt="Polly the parrot" />
-      <h1 class="brand" style="font-size:clamp(30px,6vw,54px);justify-content:center">Polly’s Fun English</h1>
-      <div class="tag">Play · learn · sing — classroom activities for Grades 1–4</div>
-    </div>
-    <p class="curriculum-note"><strong>Cambridge Global English kullanıyorsanız:</strong> Etkinliklerin ünite ve sayfa eşleşmesini sınıfınızdaki Learner’s Book ve Workbook baskısından kontrol edin. Bu site bağımsız bir yardımcı kaynaktır; resmî Cambridge materyali değildir.</p>
-    <div class="stage-cards">
-      <div class="stage-card s1" data-st="s1"><span class="sc-emoji stage-art-pencil" role="img" aria-label="Pencil"></span>
-        <h2>🟢 Grade 1</h2>
-        <span class="badge green" style="margin-bottom:6px">Grade 1 · Stage 1</span>
-        <p>Games and activities for early English learners.</p>
+    <section class="home-grade-section" aria-labelledby="home-grade-title">
+      <header class="home-section-heading"><span>YOUR NEXT MISSION</span><h2 id="home-grade-title">Choose your grade</h2><p>Every level has its own games, words, and little wins.</p></header>
+      <div class="stage-cards">
+      <button class="stage-card s1" data-st="s1" type="button"><span class="sc-emoji stage-art-pencil" role="img" aria-label="Pencil"></span>
+        <h2>Grade 1</h2><span class="badge green">START HERE</span><p>First words, friendly games, and lots of practice.</p><span class="stage-card-go">Let’s play</span>
+      </button>
+      <button class="stage-card s2" data-st="s2" type="button"><span class="sc-emoji stage-art-book" role="img" aria-label="Book"></span>
+        <h2>Grade 2</h2><span class="badge blue">KEEP GOING</span><p>Build new words and grow your English confidence.</p><span class="stage-card-go">Let’s play</span>
+      </button>
+      <button class="stage-card s3" data-st="s3" type="button"><span class="sc-emoji stage-art-explorer" role="img" aria-label="Explorer"></span>
+        <h2>Grade 3</h2><span class="badge purple">EXPLORE MORE</span><p>Discover useful English through curious challenges.</p><span class="stage-card-go">Let’s play</span>
+      </button>
+      <button class="stage-card s4" data-st="s4" type="button"><span class="sc-emoji stage-art-compass" role="img" aria-label="Compass"></span>
+        <h2>Grade 4</h2><span class="badge gold">LEVEL UP</span><p>Use your English in bigger games and conversations.</p><span class="stage-card-go">Let’s play</span>
+      </button>
       </div>
-      <div class="stage-card s2" data-st="s2"><span class="sc-emoji stage-art-book" role="img" aria-label="Book"></span>
-        <h2>🔵 Grade 2</h2>
-        <span class="badge blue" style="margin-bottom:6px">Grade 2 · Stage 2</span>
-        <p>Games and activities for growing confidence in English.</p>
-      </div>
-      <div class="stage-card s3" data-st="s3"><span class="sc-emoji stage-art-explorer" role="img" aria-label="Explorer"></span>
-        <h2>🟣 Grade 3</h2>
-        <span class="badge purple" style="margin-bottom:6px">Grade 3 · Stage 3</span>
-        <p>Games and activities for upper primary learners.</p>
-      </div>
-      <div class="stage-card s4" data-st="s4"><span class="sc-emoji stage-art-compass" role="img" aria-label="Compass"></span>
-        <h2>🟠 Grade 4</h2>
-        <span class="badge gold" style="margin-bottom:6px">Grade 4 · Stage 4</span>
-        <p>Games and activities for upper primary learners.</p>
-      </div>
-      <div class="stage-card songs" data-go="songs"><span class="sc-emoji stage-art-star" role="img" aria-label="Star"></span>
-        <h2>🎶 Songs & Video Corner</h2>
-        <span class="badge pink" style="margin-bottom:6px">Songs and videos</span>
-        <p>Sing along, listen and practise classroom English.</p>
-      </div>
-    </div>
+    </section>
+
+    <p class="curriculum-note"><strong>Using Cambridge Global English?</strong> Check unit and page matches against the edition in your classroom. Polly’s Fun English is an independent practice resource.</p>
     <section class="story-feature-card">
       <div class="story-feature-copy">
-        <span class="story-feature-kicker">READ · LISTEN · SPEAK</span>
-        <h2>Stories for curious English learners</h2>
-        <p>Explore 200 short stories, hear the text, learn useful words, and answer a friendly question.</p>
-        <button class="btn purple big" id="btn-stories">Open the story library</button>
+        <span class="story-feature-kicker">A STORY FOR EVERY LITTLE EXPLORER</span>
+        <h2>Read, listen, imagine</h2>
+        <p>Explore 200 short English stories, discover useful words, and answer a friendly question.</p>
+        <button class="btn purple big" id="btn-stories">Explore the story world</button>
       </div>
       <img src="/images/stories-world.png" alt="Children and a parrot explore a sunny park with a book and a ball" width="1536" height="1024" loading="lazy">
     </section>
     <div class="baam-featured-card" data-baam="1">
       <div class="baam-fc-main">
-        <span class="baam-fc-emoji anim-wobble">🧩</span>
+        <span class="baam-fc-emoji anim-wobble" aria-hidden="true">✦</span>
         <div class="baam-fc-text">
-          <h2>Play a team game together</h2>
+          <h2>Bring the whole class into the game</h2>
           <p>Put the class into teams and practise words together on the board.</p>
         </div>
       </div>
-      <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">🚀 Launch Team Game</button>
+      <button class="btn gold big" id="baamboozle-btn-hero" style="font-weight:900">Launch team game</button>
     </div>
     <div class="cambridge-featured-card" id="cambridge-feature-banner">
       <div style="display:flex;align-items:center;gap:18px;">
-        <span style="font-size:3rem;background:rgba(255,255,255,0.2);width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:18px;">📘</span>
+        <span class="curriculum-feature-art" aria-hidden="true"><img src="/images/vocabulary/book.png" alt=""></span>
         <div>
-          <h2>Browse activities by stage</h2>
-          <p>Use the stage and unit labels as a starting point, then confirm them in your own coursebook.</p>
+          <h2>Find a game by unit</h2>
+          <p>Choose a grade and explore activities by stage and unit.</p>
         </div>
       </div>
       <button class="btn green big" id="btn-cambridge-launch">Browse activities</button>
     </div>
-    <div class="quick-row">
-      <button class="btn white" id="rndG">🎲 Pick a game</button>
-      <button class="btn white" id="btn-home-cambridge-hub">📚 Browse activities</button>
-      <button class="btn white" id="home-twisters-btn">👅 Tongue twisters</button>
-      <button class="btn white" id="home-settings-btn">⚙️ Voice & display settings</button>
-      <button class="btn white" id="btn-home-baam">🧩 Team game</button>
-      <button class="btn white" id="hp">❓ How to play</button>
+    <div class="quick-row kids-quick-row">
+      <button class="btn white" id="rndG">Pick a surprise game</button>
+      <button class="btn white" id="btn-home-cambridge-hub">Browse all activities</button>
+      <button class="btn white" id="home-twisters-btn">Try a tongue twister</button>
+      <button class="btn white" id="home-settings-btn">Sound and display</button>
+      <button class="btn white" id="btn-home-baam">Team game</button>
+      <button class="btn white" id="hp">How to play</button>
     </div>`
     );
   },
@@ -680,7 +667,7 @@ const APP = {
       <h3>Useful words</h3><div class="story-word-list">${story.words.map(word=>`<span>${esc(word)}</span>`).join('')}</div>
       <h3>Think and answer</h3><p>${esc(story.question)}</p>
       <label class="story-answer-label">Your answer <input id="story-answer" type="text" maxlength="180" placeholder="Write a short answer in English"></label>
-      <p class="story-audio-note">Story read-aloud uses the browser voice on this device. Higgsfield samples are short previews and cannot narrate this story without paid voice generation.</p>
+      <p class="story-audio-note">This story uses the English reading voice selected in Sound and Display settings.</p>
       <div class="story-reader-actions"><button class="btn purple" id="story-listen">Listen to story</button><button class="btn green" id="story-finish">Finish story</button></div>
       <p class="story-feedback" id="story-feedback" aria-live="polite"></p>
     </section>`;
@@ -1124,7 +1111,7 @@ const APP = {
     });
     on('#cambridge-top-btn', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#cambridge-feature-banner', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
-    on('#btn-cambridge-launch', 'click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); });
+    document.querySelectorAll('#btn-cambridge-launch').forEach((button) => button.addEventListener('click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); }));
     on('#btn-home-cambridge-hub', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#top-settings-btn', 'click', () => this.showSettingsModal());
     on('#home-settings-btn', 'click', () => this.showSettingsModal());
@@ -1172,7 +1159,7 @@ const APP = {
     };
     on('#baamboozle-top-btn', 'click', () => startBaam());
     on('#btn-home-baam', 'click', () => startBaam());
-    on('#baamboozle-btn-hero', 'click', () => startBaam());
+    document.querySelectorAll('#baamboozle-btn-hero').forEach((button) => button.addEventListener('click', () => startBaam()));
     $$('[data-baam]').forEach((b) => b.addEventListener('click', () => startBaam(b.dataset.baam)));
 
     on('#unit-mascot-tap', 'click', () => {
@@ -1765,20 +1752,20 @@ const APP = {
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
         <div>
           <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a Higgsfield voice sample</h3>
-          <div class="muted" style="font-size:0.88em">Choose and preview from ${previewVoices.length} Higgsfield samples.</div>
+        <div class="muted" style="font-size:0.88em">Listen to ${previewVoices.length} Higgsfield voice samples.</div>
         </div>
       </div>
       <div class="voice-help-banner">
-        Select a sample, then play it. Your selection is saved on this device for quick access.
+        Choose a clip to preview. Your selection is saved so you can find that sample again.
       </div>
       <div class="hf-preview-controls">
         <label for="hf-voice-select">Higgsfield voice samples</label>
         <select id="hf-voice-select"><option value="">Choose a sample</option>${previewVoices.map((v, i) => `<option value="${i}" ${i === selectedIndex ? 'selected' : ''}>${esc(v.name)}${v.gender ? ` · ${esc(v.gender)}` : ''}</option>`).join('')}</select>
         <button class="btn purple" id="hf-voice-preview">Play sample</button>
       </div>
-      <p class="muted hf-voice-note">These are AI-generated preview recordings. They do not replace the browser voice used to read lesson text; generating new speech in a Higgsfield voice requires a separate credit-based service.</p>
+      <p class="muted hf-voice-note">These clips are voice samples. For lesson, game, feedback, and story read-aloud, choose the reading voice available on this device in Sound and Display settings.</p>
       <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn green big" id="vmclose">Save sample choice</button>
+        <button class="btn green big" id="vmclose">Save preview choice</button>
       </div>
     </div>`;
     document.body.appendChild(d);
@@ -1803,7 +1790,7 @@ const APP = {
       store.set('higgsfieldVoiceId', sample.voice_id);
       if (previewAudio) previewAudio.pause();
       d.remove();
-      FX.toast(`${sample.name} sample choice saved on this device.`);
+      FX.toast(`${sample.name} preview saved on this device.`);
     };
     d.onclick = (e) => {
       if (e.target === d) { if (previewAudio) previewAudio.pause(); d.remove(); }
@@ -2162,6 +2149,14 @@ const APP = {
           confettiEnabled: true
         };
 
+    const deviceVoices = (typeof MEDIA !== 'undefined' && MEDIA.getClassroomVoices)
+      ? MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''))
+      : [];
+    const savedDeviceVoice = store.get('voice') || (MEDIA.voice && MEDIA.voice.name) || '';
+    const deviceVoiceOptions = deviceVoices.length
+      ? deviceVoices.map((voice) => `<option value="${esc(voice.name)}" ${voice.name === savedDeviceVoice ? 'selected' : ''}>${esc(voice.name)}${voice.lang ? ` (${esc(voice.lang)})` : ''}</option>`).join('')
+      : '<option value="">No English reading voices found on this device</option>';
+
     d.innerHTML = `
       <div class="modal-content" style="max-width:540px;text-align:left;position:relative;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:2px solid #e2e8f0;padding-bottom:12px;">
@@ -2197,11 +2192,20 @@ const APP = {
           </div>
         </div>
 
+        <div class="settings-group reading-voice-settings">
+          <label for="set-reading-voice">Reading voice for all spoken text</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English voice available on this device. It is used for words, games, feedback, and stories.</p>
+          <select id="set-reading-voice" ${deviceVoices.length ? '' : 'disabled'} style="width:100%;padding:10px 12px;border-radius:12px;border:2px solid #cbd5e1;font-weight:700;">
+            ${deviceVoiceOptions}
+          </select>
+          <button class="btn btn-outline" id="set-test-voice-btn" type="button" ${deviceVoices.length ? '' : 'disabled'} style="margin-top:8px">Play reading voice</button>
+        </div>
+
         <div class="settings-group">
-          <label>Higgsfield voice samples</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose and preview a Higgsfield sample. Lesson read-aloud still uses the browser voice; a short sample cannot read new lesson text.</p>
+          <label>Higgsfield voice sample previews</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">These are short preview clips only. The reading voice selected above reads lesson, game, feedback, and story text.</p>
           <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
-            <button class="btn btn-outline" id="set-choose-voice-btn" style="flex:1;padding:8px 12px;font-weight:700;">Choose a Higgsfield sample</button>
+            <button class="btn btn-outline" id="set-choose-voice-btn" type="button" style="flex:1;padding:8px 12px;font-weight:700;">Listen to Higgsfield samples</button>
           </div>
         </div>
 
@@ -2295,6 +2299,8 @@ const APP = {
     const speedSelect = d.querySelector('#set-voice-speed');
     if (testVoiceBtn) {
       testVoiceBtn.onclick = () => {
+        const selectedVoice = d.querySelector('#set-reading-voice')?.value;
+        if (selectedVoice && typeof MEDIA !== 'undefined' && MEDIA.setVoice) MEDIA.setVoice(selectedVoice);
         const spd = parseFloat(speedSelect ? speedSelect.value : '1.0');
         const quote = "Hello everyone. Let's practise English together!";
         if (typeof MEDIA !== 'undefined' && MEDIA.speak) MEDIA.speak(quote, spd);
@@ -2311,8 +2317,11 @@ const APP = {
         const bgmVolume = parseFloat(d.querySelector('#set-bgm-volume').value);
         const sfxVolume = parseFloat(d.querySelector('#set-sfx-volume').value);
         const voiceSpeed = parseFloat(d.querySelector('#set-voice-speed').value);
+        const readingVoice = d.querySelector('#set-reading-voice')?.value;
         const themeMode = d.querySelector('#set-theme-mode').value;
         const defaultMedia = d.querySelector('#set-media-mode').value;
+
+        if (readingVoice && typeof MEDIA !== 'undefined' && MEDIA.setVoice) MEDIA.setVoice(readingVoice);
 
         const updated = {
           ...s,
@@ -2380,7 +2389,7 @@ const APP = {
         <div class="polly-talk-messages" id="polly-talk-messages" aria-live="polite">
           <div class="talk-bubble polly">${esc(mission.first)}</div>
         </div>
-        <p class="polly-talk-note">The microphone and read-aloud use browser services. Higgsfield samples are previews only; live speech in that voice requires paid generation and is off in this free, no-credit mode.</p>
+        <p class="polly-talk-note">Polly listens with your browser’s microphone and speaks with the English reading voice chosen in Sound and Display settings. If a microphone is unavailable, type your answer.</p>
         <div class="polly-talk-controls">
           <button class="btn voice-buddy-listen" id="polly-talk-listen" type="button">🎙️ Speak to Polly</button>
           <input id="polly-talk-input" type="text" maxlength="180" autocomplete="off" placeholder="Or type a short answer…" aria-label="Type your English answer">
