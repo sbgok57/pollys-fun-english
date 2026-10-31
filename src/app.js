@@ -3130,7 +3130,7 @@ if (typeof document !== 'undefined') {
       initVoices();
     } catch (e) {}
   }
-  FX.mascotSay("Hello! I'm Polly 🦜 Select a grade and let's play!", 4500);
+  FX.mascotSay("Hello! I'm Polly. Select a grade and let's play!", 2600);
   // PERF: idle-time warm-up of verified character clips (no-op when none are verified)
   try { CharacterSoundManager.warmUpBank(); } catch (e) {}
 }

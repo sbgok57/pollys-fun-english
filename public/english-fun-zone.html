@@ -744,6 +744,9 @@ body.s2 {
 .app-toast::before { content:"✦"; display:block; color:#ffab24; font-size:1.35rem; line-height:1; margin-bottom:5px; }
 .mascot-bubble { top:50%; bottom:auto; z-index:60001; max-width:min(88vw,460px); transform:translate(-50%,calc(-50% + 18px)) scale(.94); text-align:center; }
 .mascot-bubble.show { opacity:1; transform:translate(-50%,-50%) scale(1); animation:feedbackPop .24s cubic-bezier(.2,.9,.3,1.25); }
+.mascot-bubble.mascot-welcome { top:auto; bottom:max(16px,env(safe-area-inset-bottom)); }
+.mascot-bubble.mascot-welcome.show { transform:translate(-50%,0) scale(1); animation:welcomePop .24s cubic-bezier(.2,.9,.3,1.25); }
+@keyframes welcomePop { from { opacity:0; transform:translate(-50%,12px) scale(.94); } to { opacity:1; transform:translate(-50%,0) scale(1); } }
 @keyframes feedbackPop { from { opacity:0; transform:translate(-50%,-50%) scale(.82); } to { opacity:1; transform:translate(-50%,-50%) scale(1); } }
 .sound-toggle svg { width:22px; height:22px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 .vocab-definition { margin:4px 12px 12px; color:#51486d; font-size:.9rem; line-height:1.45; text-align:center; }
@@ -73940,6 +73943,7 @@ const FX = {
       document.body.appendChild(b);
     }
     b.textContent = msg;
+    b.classList.toggle('mascot-welcome', /^\s*Hello! I'm Polly\b/.test(String(msg || '')));
     b.classList.add('show');
     if (this._mt) clearTimeout(this._mt);
     this._mt = setTimeout(() => {
@@ -81038,7 +81042,7 @@ if (typeof document !== 'undefined') {
       initVoices();
     } catch (e) {}
   }
-  FX.mascotSay("Hello! I'm Polly 🦜 Select a grade and let's play!", 4500);
+  FX.mascotSay("Hello! I'm Polly. Select a grade and let's play!", 2600);
   // PERF: idle-time warm-up of verified character clips (no-op when none are verified)
   try { CharacterSoundManager.warmUpBank(); } catch (e) {}
 }

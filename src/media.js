@@ -950,6 +950,7 @@ const FX = {
       document.body.appendChild(b);
     }
     b.textContent = msg;
+    b.classList.toggle('mascot-welcome', /^\s*Hello! I'm Polly\b/.test(String(msg || '')));
     b.classList.add('show');
     if (this._mt) clearTimeout(this._mt);
     this._mt = setTimeout(() => {
