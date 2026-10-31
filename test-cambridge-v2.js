@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const vm = require('vm');
 
 console.log('════ TASLAK ETKİNLİK PORTALI — YAPI VE ETKİLEŞİM TESTİ ════');
@@ -202,6 +203,26 @@ try {
   const container = mkEl();
   engine.init(container);
   console.log('  ✔ CAMBRIDGE_ENGINE.init() başarıyla çalıştı.');
+
+  const stageCards = [...container.innerHTML.matchAll(/<button type="button" class="stage-tab ([^"]+)" data-stkey="(stage[1-4])" aria-pressed="(?:true|false)">([\s\S]*?)<\/button>/g)];
+  const stageArtPaths = stageCards.flatMap(([, , , markup]) => [...markup.matchAll(/src="(\/images\/vocabulary\/[^\"]+)"/g)].map(([, src]) => src));
+  if (stageCards.length !== 4 || stageArtPaths.length !== 4 || stageArtPaths.some(src => !fs.existsSync(path.join('public', src.slice(1))))) {
+    console.error('  ✘ HATA: Sınıf seçimi dört erişilebilir düğme ve dört yerel görsel içermeli!');
+    errors++;
+  } else {
+    console.log('  ✔ Dört sınıf seçici erişilebilir düğme olarak, ayrı ve mevcut görsellerle render edildi.');
+  }
+
+  engine.setView('games-hub');
+  const gamesMarkup = container.innerHTML;
+  const gameCardCount = (gamesMarkup.match(/class="game-hub-card /g) || []).length;
+  if (!gamesMarkup.includes('class="game-hub-grid"') || !gamesMarkup.includes('game-hub-search') || gameCardCount !== 36) {
+    console.error(`  ✘ HATA: Oyun merkezi büyük kart ızgarası, erişilebilir arama ve 36 kartı render etmedi! (Bulunan: ${gameCardCount})`);
+    errors++;
+  } else {
+    console.log('  ✔ Oyun merkezi 36 büyütülmüş kategori kartı ve tam genişlikli aramayla render edildi.');
+  }
+  engine.setView('vocab');
 
   // Test stage switching
   engine.selectStage('stage3');

@@ -4167,6 +4167,58 @@ body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,
 @media(max-width:650px){.account-form{grid-template-columns:1fr}.account-inline-form{grid-template-columns:1fr}.account-stat-grid{grid-template-columns:1fr}.account-grade-fields{grid-template-columns:1fr}.account-person{align-items:flex-start}}
 
 /* Appearance themes retain readable contrast across every app route. */
+.stage-selector { gap:16px; }
+.stage-selector .stage-tab {
+  position:relative; isolation:isolate; display:grid; grid-template-columns:92px minmax(0,1fr); align-items:center; gap:14px;
+  min-width:0; min-height:150px; padding:18px; overflow:hidden; border:3px solid #fff; border-radius:26px;
+  text-align:left; color:#302850; box-shadow:0 6px 0 #46327620,0 12px 24px #46327614;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.stage-selector .stage-tab::after { position:absolute; z-index:-1; inset:0; content:""; opacity:.3; pointer-events:none; background-image:radial-gradient(#fff 2px,transparent 2.6px); background-size:22px 22px; mask-image:linear-gradient(135deg,black,transparent 64%); }
+.stage-selector .stage-tab.grade-1 { background:linear-gradient(135deg,#ffe889,#ffbc70); }
+.stage-selector .stage-tab.grade-2 { background:linear-gradient(135deg,#9ce8dc,#62cbd0); }
+.stage-selector .stage-tab.grade-3 { background:linear-gradient(135deg,#dfc3ff,#aa9bff); }
+.stage-selector .stage-tab.grade-4 { background:linear-gradient(135deg,#ffc0cb,#ff92aa); }
+.stage-selector .stage-tab img { display:block; width:88px; height:88px; object-fit:contain; filter:drop-shadow(0 8px 6px #3c2b5c35); transition:transform .25s ease; }
+.stage-selector .stage-tab:hover { transform:translateY(-4px); box-shadow:0 9px 0 #46327620,0 18px 30px #46327620; }
+.stage-selector .stage-tab:hover img { transform:translateY(-3px) rotate(-4deg) scale(1.06); }
+.stage-selector .stage-tab.active { border-color:#fff; outline:3px solid #6246c5; outline-offset:2px; box-shadow:0 7px 0 #46327624,0 16px 28px #46327625; }
+.stage-tab-copy { display:grid; gap:5px; min-width:0; }
+.stage-tab-copy h3 { margin:0; color:#302255; font-size:clamp(1.2rem,1.7vw,1.55rem); font-weight:950; }
+.stage-tab-copy small { color:#392d5c; font-size:.83rem; font-weight:850; }
+.stage-tab-copy > span { color:#393750; font-size:.9rem; line-height:1.4; }
+.stage-tab:focus-visible { outline:4px solid #302255; outline-offset:4px; }
+@media(max-width:850px) { .stage-selector { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:540px) { .stage-selector { grid-template-columns:1fr; gap:12px; } .stage-selector .stage-tab { grid-template-columns:76px minmax(0,1fr); min-height:120px; padding:14px; border-radius:22px; } .stage-selector .stage-tab img { width:72px; height:72px; } }
+@media(prefers-reduced-motion:reduce) { .stage-selector .stage-tab,.stage-selector .stage-tab img { transition:none!important; } .stage-selector .stage-tab:hover,.stage-selector .stage-tab:hover img { transform:none; } }
+
+/* Larger, category-specific activity cards for classroom screens and young learners. */
+.game-hub-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:20px; }
+.game-hub-search { display:block; width:100%; min-height:52px; box-sizing:border-box; margin:12px 0 20px; padding:12px 16px; border:2px solid #d8cffa; border-radius:16px; background:#fff; color:#242238; font:inherit; font-size:1rem; }
+.game-hub-search:focus-visible { outline:3px solid #6246c5; outline-offset:2px; }
+.game-hub-card { display:grid; grid-template-rows:144px 1fr; min-width:0; min-height:420px; overflow:hidden; border:3px solid #fff; border-radius:26px; background:linear-gradient(145deg,#fff,#f5f0ff); box-shadow:0 7px 0 #45317b1c,0 14px 28px #49327712; transition:transform .2s ease,box-shadow .2s ease; }
+.game-hub-card:hover { transform:translateY(-4px); box-shadow:0 10px 0 #45317b1c,0 20px 34px #4932771c; }
+.game-hub-art { display:grid; place-items:center; min-width:0; overflow:hidden; background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#c9f4e8,#b9e7ff); }
+.game-hub-art img { width:clamp(112px,12vw,142px); height:clamp(112px,12vw,142px); object-fit:contain; filter:drop-shadow(0 9px 7px #30225535); }
+.game-hub-card.flyswatter .game-hub-art { background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#ffeda8,#ffd27d); }
+.game-hub-card.memory-match .game-hub-art { background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#b7e8ff,#b8d6ff); }
+.game-hub-card.word-hunt .game-hub-art,.game-hub-card.word-scramble .game-hub-art { background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#ffd1e7,#f5c8ff); }
+.game-hub-card.true-false .game-hub-art,.game-hub-card.simon-says .game-hub-art { background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#c8f4ca,#9de2bb); }
+.game-hub-card.bingo .game-hub-art,.game-hub-card.team-relay .game-hub-art { background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#ffd8bd,#ffb6a2); }
+.game-hub-card.sentence-train .game-hub-art { background:radial-gradient(circle at 50% 45%,#fff9 0 38%,transparent 39%),linear-gradient(135deg,#b8f1ed,#9bd7e9); }
+.game-hub-copy { display:flex; flex-direction:column; align-items:flex-start; min-width:0; padding:20px; }
+.game-hub-category { display:inline-flex; align-items:center; min-height:30px; padding:5px 11px; border-radius:20px; background:#eee7ff; color:#432a8c; font-size:.86rem; font-weight:900; line-height:1.25; }
+.game-hub-copy h4 { margin:12px 0 7px; color:#302255; font-size:clamp(1.15rem,1.5vw,1.35rem); line-height:1.3; }
+.game-hub-copy p { margin:0 0 12px; color:#3e4058; font-size:1rem; line-height:1.55; }
+.game-hub-copy small { display:block; margin:0 0 18px; color:#4c4d63; font-size:.9rem; line-height:1.7; }
+.game-hub-copy .cam-launch-game-btn { width:100%; min-height:52px; justify-content:center; margin-top:auto; font-size:1rem; }
+.game-hub-card:focus-within { outline:3px solid #6246c5; outline-offset:3px; }
+.game-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr)); gap:18px; }
+.game-tile { min-height:148px; height:auto; border-radius:22px; font-size:clamp(2.5rem,4vw,3.3rem); box-shadow:0 7px 0 #37258135,0 12px 22px #27195e25; }
+.game-tile:hover { transform:translateY(-4px) scale(1.02); }
+@media(max-width:680px) { .game-hub-grid { grid-template-columns:1fr; gap:16px; } .game-hub-card { grid-template-rows:128px 1fr; min-height:390px; } .game-hub-art img { width:116px; height:116px; } .game-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .game-tile { min-height:132px; } }
+@media(prefers-reduced-motion:reduce) { .game-hub-card,.game-tile { transition:none!important; } .game-hub-card:hover,.game-tile:hover { transform:none; } }
+
 body.theme-colorful-kids {
   --text-main: #1f2937;
   --text-muted: #475569;
@@ -76597,22 +76649,22 @@ ENGINES.push(...ENGINES_C);
           <main class="main-container">
             <!-- 2. STAGE TABS (GRADES 1, 2, 3, 4) -->
             <section class="stage-selector" id="stage-tabs">
-              <div class="stage-tab ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1">
-                <h3>🟢 Grade 1 (Stage 1)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
-              <div class="stage-tab ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2">
-                <h3>🔵 Grade 2 (Stage 2)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
-              <div class="stage-tab ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3">
-                <h3>🟣 Grade 3 (Stage 3)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
-              <div class="stage-tab ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4">
-                <h3>🟠 Grade 4 (Stage 4)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
+              <button type="button" class="stage-tab grade-1 ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1" aria-pressed="${this.stageKey === 'stage1'}">
+                <img src="/images/vocabulary/pencil.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 1</h3><small>Stage 1 · First steps</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
+              <button type="button" class="stage-tab grade-2 ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2" aria-pressed="${this.stageKey === 'stage2'}">
+                <img src="/images/vocabulary/family.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 2</h3><small>Stage 2 · Growing skills</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
+              <button type="button" class="stage-tab grade-3 ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3" aria-pressed="${this.stageKey === 'stage3'}">
+                <img src="/images/vocabulary/computer.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 3</h3><small>Stage 3 · New discoveries</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
+              <button type="button" class="stage-tab grade-4 ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4" aria-pressed="${this.stageKey === 'stage4'}">
+                <img src="/images/vocabulary/planet.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 4</h3><small>Stage 4 · Big ideas</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
             </section>
 
             <!-- 3. HORIZONTAL UNIT PILLS BAR (UNITS 1-9) -->
@@ -76787,6 +76839,18 @@ ENGINES.push(...ENGINES_C);
     // 3. 1,000+ GAMES HUB VIEW
     renderGamesHub() {
       const allGames = (typeof GAMES_HUB_DATA !== 'undefined' ? GAMES_HUB_DATA : (window.GAMES_HUB_DATA || []));
+      const gameArtwork = [
+        ['spin-wheel', /spin wheel/i, '/images/vocabulary/rainbow.png'],
+        ['flyswatter', /flyswatter/i, '/images/vocabulary/bee.png'],
+        ['memory-match', /memory match/i, '/images/vocabulary/book.png'],
+        ['word-hunt', /hangman|kelime avı/i, '/images/vocabulary/pencil.png'],
+        ['true-false', /true.?false|doğru/i, '/images/vocabulary/whiteboard.png'],
+        ['simon-says', /simon says/i, '/images/vocabulary/boy.png'],
+        ['word-scramble', /scramble/i, '/images/vocabulary/crayons.png'],
+        ['bingo', /bingo/i, '/images/vocabulary/ball.png'],
+        ['team-relay', /relay/i, '/images/vocabulary/bicycle.png'],
+        ['sentence-train', /sentence train/i, '/images/vocabulary/bus.png']
+      ];
       const filtered = allGames.filter(g =>
         g.title.toLowerCase().includes(this.gameSearch.toLowerCase()) ||
         g.category.toLowerCase().includes(this.gameSearch.toLowerCase()) ||
@@ -76802,18 +76866,21 @@ ENGINES.push(...ENGINES_C);
                 ${filtered.length} Games Available
               </span>
             </div>
-            <input type="text" class="search-input" id="game-search-input" placeholder="🔍 Search games by category or topic..." value="${this.gameSearch}" />
-            <div class="video-grid">
+            <input type="search" class="search-input game-hub-search" id="game-search-input" aria-label="Search classroom games" placeholder="Search games by category or topic..." value="${this.gameSearch}" />
+            <div class="game-hub-grid">
               ${filtered.slice(0, 36).map(g => `
-                <div class="vocab-card" style="padding:16px;">
-                  <span class="badge" style="background:#4f46e5; color:white; padding:3px 8px; border-radius:6px; font-size:0.75rem; font-weight:800;">${g.category}</span>
-                  <h4 style="margin:8px 0; color:var(--dark); font-size:1.1rem;">${g.title}</h4>
-                  <p style="font-size:0.85rem; color:#475569; margin-bottom:10px;">${g.description}</p>
-                  <small style="display:block; color:#64748b; margin-bottom:12px;"><strong>Device:</strong> ${g.device} | <strong>Duration:</strong> ${g.duration}</small>
-                  <button class="btn btn-primary cam-launch-game-btn" style="width:100%; justify-content:center;" data-title="${g.title.replace(/"/g, '&quot;')}" data-rules="${g.rules.replace(/"/g, '&quot;')}">
-                    🎮 Launch Smartboard Arena
-                  </button>
-                </div>
+                ${(() => { const art = gameArtwork.find(([, pattern]) => pattern.test(g.category)); const [artClass, , artSrc] = art || ['classroom-game', /$^/, '/images/vocabulary/book.png']; return `<article class="game-hub-card ${artClass}">
+                  <div class="game-hub-art"><img src="${artSrc}" alt="" loading="lazy" decoding="async"></div>
+                  <div class="game-hub-copy">
+                    <span class="game-hub-category">${g.category}</span>
+                    <h4>${g.title}</h4>
+                    <p>${g.description}</p>
+                    <small><strong>Device:</strong> ${g.device}<br><strong>Duration:</strong> ${g.duration}</small>
+                    <button class="btn btn-primary cam-launch-game-btn" data-title="${g.title.replace(/"/g, '&quot;')}" data-rules="${g.rules.replace(/"/g, '&quot;')}">
+                      Launch Smartboard Arena
+                    </button>
+                  </div>
+                </article>`; })()}
               `).join('')}
             </div>
           </div>

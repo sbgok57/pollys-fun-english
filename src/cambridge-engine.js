@@ -465,22 +465,22 @@
           <main class="main-container">
             <!-- 2. STAGE TABS (GRADES 1, 2, 3, 4) -->
             <section class="stage-selector" id="stage-tabs">
-              <div class="stage-tab ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1">
-                <h3>🟢 Grade 1 (Stage 1)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
-              <div class="stage-tab ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2">
-                <h3>🔵 Grade 2 (Stage 2)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
-              <div class="stage-tab ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3">
-                <h3>🟣 Grade 3 (Stage 3)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
-              <div class="stage-tab ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4">
-                <h3>🟠 Grade 4 (Stage 4)</h3>
-                <p>Browse vocabulary, games and speaking practice.</p>
-              </div>
+              <button type="button" class="stage-tab grade-1 ${this.stageKey === 'stage1' ? 'active' : ''}" data-stkey="stage1" aria-pressed="${this.stageKey === 'stage1'}">
+                <img src="/images/vocabulary/pencil.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 1</h3><small>Stage 1 · First steps</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
+              <button type="button" class="stage-tab grade-2 ${this.stageKey === 'stage2' ? 'active' : ''}" data-stkey="stage2" aria-pressed="${this.stageKey === 'stage2'}">
+                <img src="/images/vocabulary/family.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 2</h3><small>Stage 2 · Growing skills</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
+              <button type="button" class="stage-tab grade-3 ${this.stageKey === 'stage3' ? 'active' : ''}" data-stkey="stage3" aria-pressed="${this.stageKey === 'stage3'}">
+                <img src="/images/vocabulary/computer.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 3</h3><small>Stage 3 · New discoveries</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
+              <button type="button" class="stage-tab grade-4 ${this.stageKey === 'stage4' ? 'active' : ''}" data-stkey="stage4" aria-pressed="${this.stageKey === 'stage4'}">
+                <img src="/images/vocabulary/planet.png" alt="" loading="lazy" decoding="async">
+                <span class="stage-tab-copy"><h3>Grade 4</h3><small>Stage 4 · Big ideas</small><span>Browse vocabulary, games and speaking practice.</span></span>
+              </button>
             </section>
 
             <!-- 3. HORIZONTAL UNIT PILLS BAR (UNITS 1-9) -->
@@ -655,6 +655,18 @@
     // 3. 1,000+ GAMES HUB VIEW
     renderGamesHub() {
       const allGames = (typeof GAMES_HUB_DATA !== 'undefined' ? GAMES_HUB_DATA : (window.GAMES_HUB_DATA || []));
+      const gameArtwork = [
+        ['spin-wheel', /spin wheel/i, '/images/vocabulary/rainbow.png'],
+        ['flyswatter', /flyswatter/i, '/images/vocabulary/bee.png'],
+        ['memory-match', /memory match/i, '/images/vocabulary/book.png'],
+        ['word-hunt', /hangman|kelime avı/i, '/images/vocabulary/pencil.png'],
+        ['true-false', /true.?false|doğru/i, '/images/vocabulary/whiteboard.png'],
+        ['simon-says', /simon says/i, '/images/vocabulary/boy.png'],
+        ['word-scramble', /scramble/i, '/images/vocabulary/crayons.png'],
+        ['bingo', /bingo/i, '/images/vocabulary/ball.png'],
+        ['team-relay', /relay/i, '/images/vocabulary/bicycle.png'],
+        ['sentence-train', /sentence train/i, '/images/vocabulary/bus.png']
+      ];
       const filtered = allGames.filter(g =>
         g.title.toLowerCase().includes(this.gameSearch.toLowerCase()) ||
         g.category.toLowerCase().includes(this.gameSearch.toLowerCase()) ||
@@ -670,18 +682,21 @@
                 ${filtered.length} Games Available
               </span>
             </div>
-            <input type="text" class="search-input" id="game-search-input" placeholder="🔍 Search games by category or topic..." value="${this.gameSearch}" />
-            <div class="video-grid">
+            <input type="search" class="search-input game-hub-search" id="game-search-input" aria-label="Search classroom games" placeholder="Search games by category or topic..." value="${this.gameSearch}" />
+            <div class="game-hub-grid">
               ${filtered.slice(0, 36).map(g => `
-                <div class="vocab-card" style="padding:16px;">
-                  <span class="badge" style="background:#4f46e5; color:white; padding:3px 8px; border-radius:6px; font-size:0.75rem; font-weight:800;">${g.category}</span>
-                  <h4 style="margin:8px 0; color:var(--dark); font-size:1.1rem;">${g.title}</h4>
-                  <p style="font-size:0.85rem; color:#475569; margin-bottom:10px;">${g.description}</p>
-                  <small style="display:block; color:#64748b; margin-bottom:12px;"><strong>Device:</strong> ${g.device} | <strong>Duration:</strong> ${g.duration}</small>
-                  <button class="btn btn-primary cam-launch-game-btn" style="width:100%; justify-content:center;" data-title="${g.title.replace(/"/g, '&quot;')}" data-rules="${g.rules.replace(/"/g, '&quot;')}">
-                    🎮 Launch Smartboard Arena
-                  </button>
-                </div>
+                ${(() => { const art = gameArtwork.find(([, pattern]) => pattern.test(g.category)); const [artClass, , artSrc] = art || ['classroom-game', /$^/, '/images/vocabulary/book.png']; return `<article class="game-hub-card ${artClass}">
+                  <div class="game-hub-art"><img src="${artSrc}" alt="" loading="lazy" decoding="async"></div>
+                  <div class="game-hub-copy">
+                    <span class="game-hub-category">${g.category}</span>
+                    <h4>${g.title}</h4>
+                    <p>${g.description}</p>
+                    <small><strong>Device:</strong> ${g.device}<br><strong>Duration:</strong> ${g.duration}</small>
+                    <button class="btn btn-primary cam-launch-game-btn" data-title="${g.title.replace(/"/g, '&quot;')}" data-rules="${g.rules.replace(/"/g, '&quot;')}">
+                      Launch Smartboard Arena
+                    </button>
+                  </div>
+                </article>`; })()}
               `).join('')}
             </div>
           </div>
