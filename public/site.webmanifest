@@ -1,0 +1,16 @@
+{
+  "id": "/",
+  "name": "Polly’s Fun English",
+  "short_name": "Polly English",
+  "description": "English games, stories and speaking practice for primary learners.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff9ed",
+  "theme_color": "#7047d7",
+  "icons": [
+    { "src": "/images/polly-app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/images/polly-app-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

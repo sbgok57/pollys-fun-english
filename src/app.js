@@ -571,6 +571,7 @@ const APP = {
         <h1>English is an adventure!</h1>
         <p>Pick your grade and jump into colourful games, stories, songs, and speaking missions with Polly.</p>
         <div class="welcome-btns">
+          <button class="btn white" id="home-welcome-voice" type="button" aria-label="Hear Polly’s English welcome">Hear Polly welcome</button>
           <button class="btn voice-buddy-launch" id="btn-voice-buddy">Talk with Polly</button>
           <button class="btn green big" id="btn-cambridge-launch">Choose your game</button>
         </div>
@@ -1151,6 +1152,7 @@ const APP = {
     on('#guide-top-btn', 'click', () => this.showGuideModal());
     on('#btn-welcome-guide', 'click', () => this.showGuideModal());
     on('#btn-voice-buddy', 'click', () => this.showVoicePracticeModal());
+    on('#home-welcome-voice', 'click', () => MEDIA.welcomeGreeting());
     on('#btn-stories', 'click', () => this.go('stories'));
     const storyGrade = document.getElementById('stories-grade');
     if (storyGrade) storyGrade.addEventListener('change', () => { this.storyGrade = storyGrade.value; this.render(); });
