@@ -9,7 +9,8 @@ css = (src / 'styles.css').read_text(encoding='utf-8')
 js = '\n'.join((src / f).read_text(encoding='utf-8')
                for f in ['data.js', 'cambridge-data.js', 'songs.js', 'songs-extra.js', 'songs-mel.js',
                          'lessons.js', 'voice-map.js', 'higgsfield-voices.js', 'vocab-art.js', 'stories-data.js', 'media.js',
-                         'engines-a.js', 'engines-b.js', 'engines-c.js', 'cambridge-engine.js', 'app.js'])
+                         'engines-a.js', 'engines-b.js', 'engines-c.js', 'cambridge-engine.js',
+                         'supabase-config.js', 'polly-accounts.js', 'app.js'])
 html = (src / 'shell.html').read_text(encoding='utf-8')
 
 # 🎙️ Character voice manifest: only real, unique recordings are exposed to VoiceEngine.
@@ -90,8 +91,8 @@ vjson_content = json.dumps({
                 {"key": "X-Frame-Options", "value": "DENY"},
                 {"key": "X-XSS-Protection", "value": "1; mode=block"},
                 {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-                {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"},
-                {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://www.youtube-nocookie.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; media-src 'self' data: blob: https:; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self';"}
+                {"key": "Permissions-Policy", "value": "camera=(), microphone=(self), geolocation=(), payment=(), usb=()"},
+                {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://www.youtube-nocookie.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; media-src 'self' data: blob: https:; connect-src 'self' https://naqzmcllhkdzpwpunfkx.supabase.co; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self';"}
             ]
         }
     ]

@@ -121,7 +121,7 @@ const ENGINES_B = [
             </div>
             <div class="prompt-box">
               <span class="pe">${w[1]}</span>
-              <div class="pw">${esc(w[0])} (${esc(w[2])})</div>
+              <div class="pw">${esc(w[0])}</div>
               <button class="btn small blue" id="spk">🔊 Dinle</button>
             </div>
             <div class="opt-grid">
@@ -393,7 +393,7 @@ const ENGINES_B = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${words[currentIdx][1]}</span>
-              <div class="pw">Ara: <b style="color:#7c3aed">${esc(displayWord)}</b> (${esc(words[currentIdx][2])})</div>
+              <div class="pw">Find: <b style="color:#7c3aed">${esc(displayWord)}</b></div>
               <div class="pw" id="srch-status" style="font-size:1.3em;letter-spacing:4px;color:#2563eb">_ _ _</div>
             </div>
             <div class="grid-search" id="gs" style="display:grid;grid-template-columns:repeat(${cfg.grid},1fr);gap:8px;max-width:320px;margin:14px auto">
@@ -474,7 +474,6 @@ const ENGINES_B = [
                 <div class="opt" data-odd="${o === oddWord ? 1 : 0}">
                   <span class="oe">${o[1] || '🔤'}</span>
                   <span class="ow">${esc(o[0])}</span>
-                  <span class="muted" style="font-size:0.85em">${esc(o[2])}</span>
                 </div>`).join('')}
             </div>
           </div>`;
@@ -532,7 +531,6 @@ const ENGINES_B = [
             <div class="card" style="max-width:380px;margin:0 auto;text-align:center">
               <div class="big-emoji popflash">${w[1]}</div>
               <div class="pw" style="font-size:2em">${esc(w[0])}</div>
-              <div class="muted" style="font-size:1.2em;color:#2563eb;font-weight:700">${esc(w[2])}</div>
               <div class="row" style="margin-top:14px;justify-content:center">
                 <button class="btn blue" id="spk">🔊 Dinle</button>
                 <button class="btn green" id="rep">🗣️ Söyledim!</button>
@@ -599,9 +597,9 @@ const ENGINES_B = [
         const opts = shuffle([w, ...others]);
 
         qArea.innerHTML = `
-          <div class="prompt-box"><div class="pw"><b>${esc(w[0])}</b> ne demek?</div></div>
+          <div class="prompt-box"><div class="pw">Choose the matching picture.</div></div>
           <div class="opt-grid">
-            ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[2])}</span></div>`).join('')}
+            ${opts.map(o => `<div class="opt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[0])}</span></div>`).join('')}
           </div>`;
 
         MEDIA.speak(w[0]);
@@ -665,7 +663,7 @@ const ENGINES_B = [
             <div class="opt-grid">
               ${opts.map(o => `
                 <div class="opt txt" data-ok="${o === w ? 1 : 0}">
-                  <span class="ow">${esc(o[2])}</span>
+                  <span class="ow">${esc(o[0])}</span>
                 </div>`).join('')}
             </div>
           </div>`;

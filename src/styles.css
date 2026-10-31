@@ -4126,3 +4126,49 @@ body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,
   .kids-quick-row .btn { width:100%; }
 }
 @media(prefers-reduced-motion:reduce) { .stage-card,.stage-card-go { transition:none!important; } }
+
+/* Account, class, and saved-progress panels */
+.polly-account-overlay{position:fixed;inset:0;z-index:30000;display:grid;place-items:center;padding:16px;background:#18132ab8;backdrop-filter:blur(7px)}
+.polly-account-panel{position:relative;width:min(860px,100%);max-height:min(90vh,920px);overflow:auto;padding:clamp(20px,4vw,36px);border:4px solid #fff;border-radius:30px;background:linear-gradient(145deg,#fff,#fff9e9 55%,#f0f5ff);box-shadow:0 24px 80px #100a2b66;color:#202238}
+.polly-account-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border:0;border-radius:14px;background:#eee8ff;color:#33215f;font-size:26px;font-weight:850;cursor:pointer}
+.polly-account-heading{padding-right:42px}.polly-account-heading>span{color:#7047d7;font-size:.75rem;font-weight:950;letter-spacing:.1em}.polly-account-heading h2{margin:7px 0;color:#30215f;font-size:clamp(1.7rem,4vw,2.4rem)}.polly-account-heading p{margin:5px 0;color:#4b4960;line-height:1.5;overflow-wrap:anywhere}
+.account-tabs{display:flex;gap:8px;margin:20px 0 14px}.account-tabs button{min-height:42px;padding:8px 15px;border:2px solid #ddd4f5;border-radius:14px;background:#fff;color:#44366c;font:inherit;font-weight:850;cursor:pointer}.account-tabs button.active{border-color:#7654ce;background:#eee8ff;color:#392477}
+.account-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.account-form>label{display:grid;gap:6px;color:#34275b;font-weight:800}.account-form input,.account-form select,.account-inline-form input{width:100%;min-width:0;min-height:44px;padding:9px 11px;border:2px solid #d9d1ec;border-radius:12px;background:#fff;color:#242238;font:inherit}.account-grade-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.account-grade-fields label{display:grid;gap:6px;color:#34275b;font-weight:800}.account-consent{grid-column:1/-1;grid-template-columns:20px 1fr!important;align-items:start;color:#414057!important;font-size:.9rem;line-height:1.45}.account-consent input{width:18px;min-height:18px;margin:2px 0}.account-form [data-account-error],.account-error{grid-column:1/-1;padding:12px;border:1px solid #ef9c9c;border-radius:12px;background:#fff0f0;color:#8a1c1c;line-height:1.45}.account-form [hidden]{display:none}.account-form>.btn{grid-column:1/-1;min-height:48px}.account-note{grid-column:1/-1;margin:0;color:#55536a;font-size:.88rem;line-height:1.5}.account-success,.account-status-card,.account-class-card{margin:12px 0;padding:16px;border:2px solid #e1d9f1;border-radius:18px;background:#ffffffd9}.account-status-card{border-color:#efd995;background:#fff8db}.account-class-card h3,.account-badges h3{margin:0 0 12px;color:#38246f}.account-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.account-stat-grid>div{display:grid;gap:4px;padding:14px;border:2px solid white;border-radius:17px;background:linear-gradient(145deg,#f1eaff,#e9f8ff);text-align:center}.account-stat-grid b{color:#392477;font-size:1.6rem}.account-stat-grid span{color:#4e4b65;font-size:.85rem;font-weight:750}.account-list{display:grid;gap:8px}.account-person{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:11px 13px;border:1px solid #e7e1f1;border-radius:13px;background:#fff}.account-person>div{display:grid;gap:3px;min-width:0}.account-person small{color:#55536a;overflow-wrap:anywhere}.account-inline-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:8px;margin:10px 0}.account-signout{margin-top:12px}.account-badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px}.account-badge{display:grid;justify-items:center;gap:6px;padding:12px;border:1px solid #e4dcf2;border-radius:14px;background:#fff;text-align:center;color:#34275b}.account-badge-art{width:48px;height:48px;border-radius:15px;background:radial-gradient(circle at 35% 28%,#fff 0 9%,transparent 10%),linear-gradient(140deg,#ffda6b,#f39ad4 48%,#82d6e8);box-shadow:0 4px 9px #44306f30}.account-badge b{font-size:.8rem}
+@media(max-width:650px){.account-form{grid-template-columns:1fr}.account-inline-form{grid-template-columns:1fr}.account-stat-grid{grid-template-columns:1fr}.account-grade-fields{grid-template-columns:1fr}.account-person{align-items:flex-start}}
+
+/* Appearance themes retain readable contrast across every app route. */
+body.theme-colorful-kids {
+  --text-main: #1f2937;
+  --text-muted: #475569;
+  --dark: #24204f;
+  color: #1f2937;
+}
+body.theme-pastel {
+  --text-main: #202238;
+  --text-muted: #45445e;
+  --dark: #25213f;
+  color: #202238;
+  background: linear-gradient(145deg, #fff 0%, #f7f1ff 50%, #eef8ff 100%);
+}
+body.theme-smartboard-contrast {
+  --text-main: #111827;
+  --text-muted: #374151;
+  --dark: #111827;
+  color: #111827;
+  background: #f8fafc;
+}
+body.theme-colorful-kids .muted,
+body.theme-pastel .muted,
+body.theme-smartboard-contrast .muted,
+body.theme-colorful-kids .sub,
+body.theme-pastel .sub,
+body.theme-smartboard-contrast .sub { color: var(--text-muted); }
+body.theme-colorful-kids input,
+body.theme-colorful-kids select,
+body.theme-colorful-kids textarea,
+body.theme-pastel input,
+body.theme-pastel select,
+body.theme-pastel textarea,
+body.theme-smartboard-contrast input,
+body.theme-smartboard-contrast select,
+body.theme-smartboard-contrast textarea { background-color:#fff; color:#1f2937; }

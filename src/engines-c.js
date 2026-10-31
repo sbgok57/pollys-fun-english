@@ -269,7 +269,6 @@ const ENGINES_C=[
         const curWord = pool[wordIdx];
         const wordText = String(curWord[0] || '').toUpperCase();
         const wordEmoji = curWord[1] || '✍️';
-        const wordTr = curWord[2] || '';
 
         const isLetterMode = cfg.mode === 'letter';
         const activeChar = isLetterMode ? (wordText[letterIdx] || wordText[0]) : wordText;
@@ -283,7 +282,6 @@ const ENGINES_C=[
                 <span class="emoji">${wordEmoji}</span>
                 <div>
                   <span style="font-size:1.15em;letter-spacing:1px">${esc(curWord[0])}</span>
-                  <span class="muted" style="font-size:0.75em;margin-left:6px">(${esc(wordTr)})</span>
                   ${isLetterMode ? `<span class="badge purple" style="margin-left:8px">Harf ${letterIdx + 1}/${wordText.length}: <b>${activeChar}</b></span>` : ''}
                 </div>
               </div>
@@ -716,12 +714,10 @@ const ENGINES_C=[
               </div>
               <div class="bb-stage-prompt" id="bb-prompt">
                 <div class="pw" style="font-size:1.5em;color:#1e293b">Bu kelimenin İngilizcesi nedir? 🗣️</div>
-                <div class="muted" style="margin-top:6px;font-size:1.15em;font-weight:700">${esc(w[2])}</div>
               </div>
 
               <div id="bb-answer-revealed" style="display:none;margin:12px 0 16px">
                 <div class="pw" style="font-size:2.2em;color:#7c3aed;font-weight:900">${esc(w[0])}</div>
-                <div style="font-size:1.3em;color:#059669;font-weight:700">(${esc(w[2])})</div>
                 <button class="btn small blue" id="bb-spk-btn" style="margin-top:8px">🔊 Telaffuz Dinle</button>
               </div>
 

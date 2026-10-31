@@ -484,9 +484,21 @@ const APP = {
   render() {
     const app = document.getElementById('app');
     if (!app) return;
-    document.body.className = this.stage
+    const stageClass = this.stage
       ? (STAGES.find((s) => s.id === this.stage) || {}).cls || ''
       : '';
+    document.body.classList.remove('s1', 's2', 's3', 's4');
+    if (stageClass) document.body.classList.add(stageClass);
+    const knownThemes = ['theme-colorful-kids', 'theme-smartboard-contrast', 'theme-pastel'];
+    document.body.classList.remove(...knownThemes);
+    let savedTheme = 'colorful-kids';
+    try {
+      const settings = typeof SettingsManager !== 'undefined' && SettingsManager.getSettings
+        ? SettingsManager.getSettings()
+        : JSON.parse(localStorage.getItem('pollys_fun_english_settings') || '{}');
+      if (settings && ['colorful-kids', 'smartboard-contrast', 'pastel'].includes(settings.themeMode)) savedTheme = settings.themeMode;
+    } catch (_) {}
+    document.body.classList.add(`theme-${savedTheme}`);
     const R = {
       home: () => this.vHome(),
       cambridge: () => this.vCambridge(),
@@ -533,6 +545,7 @@ const APP = {
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Back</button>' : ''}
       <div class="brand"><img class="brand-mascot" src="/images/polly-3d-mascot.png" alt="" /> Polly’s Fun English</div><div class="spacer"></div>
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
+      <button class="btn small white" id="account-top-btn">Account</button>
       <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
       <button class="btn small white" id="hm" aria-label="Home">🏠</button>
       <button class="btn small white sound-toggle" id="mu" aria-label="${MEDIA.muted ? 'Turn sound on' : 'Mute sound'}" title="${MEDIA.muted ? 'Sound muted' : 'Sound on'}">${soundIconSvg(MEDIA.muted)}</button></div>`;
@@ -583,6 +596,9 @@ const APP = {
       </button>
       <button class="stage-card s4" data-st="s4" type="button"><span class="sc-emoji stage-art-compass" role="img" aria-label="Compass"></span>
         <h2>Grade 4</h2><span class="badge gold">LEVEL UP</span><p>Use your English in bigger games and conversations.</p><span class="stage-card-go">Let’s play</span>
+      </button>
+      <button class="stage-card songs" data-go="songs" type="button"><span class="sc-emoji stage-art-star" role="img" aria-label="Music"></span>
+        <h2>Songs & listening</h2><span class="badge pink">LISTEN AND SING</span><p>Play a rhythm, hear a story, and join a familiar song.</p><span class="stage-card-go">Open the music room</span>
       </button>
       </div>
     </section>
@@ -673,6 +689,7 @@ const APP = {
     </section>`;
     document.body.appendChild(overlay);
     const feedback = overlay.querySelector('#story-feedback');
+    let storyProgressSaved = false;
     const close = () => { MEDIA.stopSpeak(); overlay.remove(); this.render(); };
     overlay.querySelector('.story-reader-close').addEventListener('click', close);
     overlay.addEventListener('click', (event) => { if (event.target === overlay) close(); });
@@ -680,6 +697,11 @@ const APP = {
     overlay.querySelector('#story-finish').addEventListener('click', () => {
       const read = store.get('stories_read') || [];
       if (!read.includes(story.id)) store.set('stories_read', [...read, story.id].slice(-200));
+      if (!storyProgressSaved && window.PollyAccounts) {
+        storyProgressSaved = true;
+        window.PollyAccounts.recordProgress({ activity_type: 'story', activity_id: story.id, score: 1, max_score: 1, earned_stars: 1, duration_seconds: 0 })
+          .catch((error) => console.warn('Online story progress was not saved; local progress remains available.', error));
+      }
       feedback.textContent = 'Wonderful reading! You finished the story. Keep exploring!';
       if (typeof FX !== 'undefined') FX.mascotSay(feedback.textContent, 2300);
       MEDIA.speak(feedback.textContent, 0.96);
@@ -712,7 +734,7 @@ const APP = {
        return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
        <span class="ue">${u.emoji}</span>
        <h3>${u.title}</h3>
-       <div class="sub">${u.tr || u.title} · ${u.w.length} words</div>
+       <div class="sub">${u.w.length} English words</div>
        <div class="u-meta">
          <span class="badge ${u.stage === 's1' ? 'green' : (u.stage === 's2' ? 'blue' : 'purple')}">${u.stage.toUpperCase()}</span>
          <span class="badge green">Practice</span>
@@ -732,7 +754,7 @@ const APP = {
     const eng = ENGINES.filter((e) => e.stages.includes(stn));
     const m = {
       name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
-      quoteEn: "Let's explore new words and play games!", quoteTr: "Yeni kelimeler keşfedip oyunlar oynayalım!",
+      quoteEn: "Let's explore new words and play games!",
       badge: "🦜 Polly", color: "#176b63", bg: "#eef5f1", anim: ""
     };
     const vids = (typeof LVID !== 'undefined' && LVID[u.id]) || [];
@@ -741,7 +763,7 @@ const APP = {
       this.bar() +
       `
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
-     <div><h2>${u.title}</h2><div class="sub">${u.tr || u.title} · ${u.w.length} words · ${u.cats.length} categories</div></div>
+     <div><h2>${u.title}</h2><div class="sub">${u.w.length} words · ${u.cats.length} categories</div></div>
      <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
        <button class="btn purple" id="learn-btn" style="font-size:1em;padding:10px 16px">📖 Learn Vocabulary</button>
        ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="font-size:1em;padding:10px 16px">📚 Lesson Slides</button>' : ''}
@@ -758,7 +780,6 @@ const APP = {
      </div>
      <div class="mascot-bubble">
        <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
-       <div class="mascot-quote-tr">${esc(m.quoteTr || m.quoteEn)}</div>
      </div>
    </div>
 
@@ -772,7 +793,7 @@ const APP = {
    <div class="word-wall">${u.w
      .map(
        (w) =>
-         `<span class="word-pill" data-w="${esc(w[0])}" data-tr="${esc(w[2])}" data-em="${w[1] || '🔤'}"><span class="pe">${w[1] || '🔤'}</span><strong>${esc(w[0])}</strong> <small class="muted" style="font-weight:600;opacity:0.85">(${esc(w[2])})</small></span>`
+         `<span class="word-pill" data-w="${esc(w[0])}" data-em="${w[1] || ''}"><span class="pe" aria-hidden="true">${w[1] || ''}</span><strong>${esc(w[0])}</strong></span>`
      )
      .join('')}</div>
 
@@ -812,14 +833,14 @@ const APP = {
     if (!u) return this.vHome();
     const m = {
       name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
-      quoteEn: "Let's learn new words together!", quoteTr: "Haydi birlikte yeni kelimeler öğrenelim!",
+      quoteEn: "Let's learn new words together!",
       badge: "🦜 Polly", color: "#176b63", bg: "#eef5f1", anim: ""
     };
     const words = u.w || [];
     const idx = Math.max(0, Math.min(this.learnIdx || 0, words.length - 1));
     const cur = words[idx] || words[0] || ['word', '', '', 0];
     const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(cur[0]) : null;
-    const catName = (u.cats && u.cats[cur[3]]) || 'Kelime';
+    const catName = (u.cats && u.cats[cur[3]]) || 'Words';
 
     return (
       this.bar() +
@@ -1046,7 +1067,7 @@ const APP = {
    ${
      rows
        .map(
-         (r) => `<tr><td>${r.e.e} ${r.e.t}</td><td>${r.u.emoji} ${esc(r.u.tr)}</td>
+         (r) => `<tr><td>${r.e.e} ${r.e.t}</td><td>${r.u.emoji} ${esc(r.u.title)}</td>
      <td>${r.e.levels[r.lv] ? r.e.levels[r.lv].n : '1'}</td><td><b>${r.s}</b></td><td>${'⭐'.repeat(r.st)}</td></tr>`
        )
        .join('') ||
@@ -1114,6 +1135,7 @@ const APP = {
     document.querySelectorAll('#btn-cambridge-launch').forEach((button) => button.addEventListener('click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); }));
     on('#btn-home-cambridge-hub', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#top-settings-btn', 'click', () => this.showSettingsModal());
+    on('#account-top-btn', 'click', () => window.PollyAccounts && window.PollyAccounts.open());
     on('#home-settings-btn', 'click', () => this.showSettingsModal());
     on('#top-twisters-btn', 'click', () => this.showTwistersModal());
     on('#home-twisters-btn', 'click', () => this.showTwistersModal());
@@ -1359,15 +1381,12 @@ const APP = {
     $$('.word-pill[data-w]').forEach((p) =>
       p.addEventListener('click', () => {
         const w = p.dataset.w;
-        const tr = p.dataset.tr;
         const em = p.dataset.em || '🔤';
         MEDIA.speak(w);
         p.classList.add('lit');
         setTimeout(() => p.classList.remove('lit'), 800);
-        if (tr) {
-          FX.toast(`${em} ${w} = ${tr}`);
-          FX.mascotSay(`${em} <b>${w}</b>: ${tr}`);
-        }
+        FX.toast(`${w}!`);
+        FX.mascotSay(`<b>${w}</b>`);
         FX.notes(innerWidth / 2, innerHeight - 140);
       })
     );
@@ -1460,6 +1479,7 @@ const APP = {
       e = ENGINES.find((x) => x.id === this.engineId);
     if (!u || !e) return;
     const self = this;
+    const gameStartedAt = Date.now();
     let score = this.restoredScore || 0;
     this.currentScore = score;
 
@@ -1542,6 +1562,11 @@ const APP = {
         MEDIA.stopSpeak();
         const pct = res.max ? res.score / res.max : 1;
         const st = pct >= 0.85 ? 3 : pct >= 0.55 ? 2 : 1;
+        if (window.PollyAccounts) window.PollyAccounts.recordProgress({
+          activity_type: 'game', activity_id: e.id, unit_id: u.id,
+          score: res.score, max_score: res.max, earned_stars: st,
+          duration_seconds: Math.floor((Date.now() - gameStartedAt) / 1000)
+        }).catch((error) => console.warn('Online progress was not saved; local progress remains available.', error));
         const key = e.id + '|' + u.id + '|' + self.lvIdx,
           b = store.get('best') || {};
         if (!b[key] || b[key].s < res.score) {
@@ -2153,9 +2178,11 @@ const APP = {
       ? MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''))
       : [];
     const savedDeviceVoice = store.get('voice') || (MEDIA.voice && MEDIA.voice.name) || '';
+    const voiceKey = (voice) => `${voice.name}::${voice.lang || ''}`;
+    const savedVoice = deviceVoices.find((voice) => voiceKey(voice) === savedDeviceVoice || voice.name === savedDeviceVoice);
     const deviceVoiceOptions = deviceVoices.length
-      ? deviceVoices.map((voice) => `<option value="${esc(voice.name)}" ${voice.name === savedDeviceVoice ? 'selected' : ''}>${esc(voice.name)}${voice.lang ? ` (${esc(voice.lang)})` : ''}</option>`).join('')
-      : '<option value="">No English reading voices found on this device</option>';
+      ? deviceVoices.map((voice) => `<option value="${esc(voiceKey(voice))}" ${voice === savedVoice ? 'selected' : ''}>${esc(voice.name)} · ${esc(MEDIA.getEnglishLocaleLabel ? MEDIA.getEnglishLocaleLabel(voice.lang) : (voice.lang || 'English'))}</option>`).join('')
+      : '<option value="">Loading English voices from this device…</option>';
 
     d.innerHTML = `
       <div class="modal-content" style="max-width:540px;text-align:left;position:relative;">
@@ -2194,7 +2221,7 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label for="set-reading-voice">Reading voice for all spoken text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English voice available on this device. It is used for words, games, feedback, and stories.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose from English voice locales offered by this device. A locale is not a verified speaker accent, gender, or naturalness rating.</p>
           <select id="set-reading-voice" ${deviceVoices.length ? '' : 'disabled'} style="width:100%;padding:10px 12px;border-radius:12px;border:2px solid #cbd5e1;font-weight:700;">
             ${deviceVoiceOptions}
           </select>
@@ -2246,7 +2273,12 @@ const APP = {
 
     document.body.appendChild(d);
 
+    let voiceListChangeHandler = null;
     const close = () => {
+      if (voiceListChangeHandler && typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.removeEventListener('voiceschanged', voiceListChangeHandler);
+        voiceListChangeHandler = null;
+      }
       if (typeof MEDIA !== 'undefined' && MEDIA.fx) MEDIA.fx('click');
       d.remove();
     };
@@ -2297,6 +2329,47 @@ const APP = {
     // Voice test button
     const testVoiceBtn = d.querySelector('#set-test-voice-btn');
     const speedSelect = d.querySelector('#set-voice-speed');
+    const voiceSelect = d.querySelector('#set-reading-voice');
+    const refreshVoiceOptions = () => {
+      if (!voiceSelect || !MEDIA.getClassroomVoices) return;
+      const freshVoices = MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''));
+      const previouslySelected = voiceSelect.value || (savedVoice ? voiceKey(savedVoice) : '');
+      voiceSelect.replaceChildren();
+      if (!freshVoices.length) {
+        const empty = document.createElement('option');
+        empty.value = '';
+        empty.textContent = 'No English voices are available on this device';
+        voiceSelect.appendChild(empty);
+        voiceSelect.disabled = true;
+        if (testVoiceBtn) testVoiceBtn.disabled = true;
+        return;
+      }
+      const groups = new Map();
+      freshVoices.forEach((voice) => {
+        const label = MEDIA.getEnglishLocaleLabel ? MEDIA.getEnglishLocaleLabel(voice.lang) : (voice.lang || 'English');
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push(voice);
+      });
+      groups.forEach((voices, label) => {
+        const group = document.createElement('optgroup');
+        group.label = label;
+        voices.forEach((voice) => {
+          const option = document.createElement('option');
+          option.value = voiceKey(voice);
+          option.textContent = `${voice.name} (${voice.lang || 'en'})`;
+          group.appendChild(option);
+        });
+        voiceSelect.appendChild(group);
+      });
+      voiceSelect.disabled = false;
+      if (testVoiceBtn) testVoiceBtn.disabled = false;
+      if ([...voiceSelect.options].some((option) => option.value === previouslySelected)) voiceSelect.value = previouslySelected;
+    };
+    refreshVoiceOptions();
+    if (typeof window !== 'undefined' && window.speechSynthesis?.addEventListener) {
+      voiceListChangeHandler = refreshVoiceOptions;
+      window.speechSynthesis.addEventListener('voiceschanged', voiceListChangeHandler);
+    }
     if (testVoiceBtn) {
       testVoiceBtn.onclick = () => {
         const selectedVoice = d.querySelector('#set-reading-voice')?.value;
@@ -2389,7 +2462,7 @@ const APP = {
         <div class="polly-talk-messages" id="polly-talk-messages" aria-live="polite">
           <div class="talk-bubble polly">${esc(mission.first)}</div>
         </div>
-        <p class="polly-talk-note">Polly listens with your browser’s microphone and speaks with the English reading voice chosen in Sound and Display settings. If a microphone is unavailable, type your answer.</p>
+        <p class="polly-talk-note">Tap “Speak to Polly” when you are ready. Your browser may ask once for microphone access and can remember your choice. Polly never starts listening automatically. If a microphone is unavailable or permission is declined, type your answer.</p>
         <div class="polly-talk-controls">
           <button class="btn voice-buddy-listen" id="polly-talk-listen" type="button">🎙️ Speak to Polly</button>
           <input id="polly-talk-input" type="text" maxlength="180" autocomplete="off" placeholder="Or type a short answer…" aria-label="Type your English answer">
@@ -2406,9 +2479,19 @@ const APP = {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     let turn = 0;
+    let progressSaved = false;
     const close = () => {
       if (recognition) { try { recognition.abort(); } catch (_) {} }
       if (window.speechSynthesis) window.speechSynthesis.cancel();
+      if (!progressSaved && turn > 0 && window.PollyAccounts) {
+        progressSaved = true;
+        window.PollyAccounts.recordProgress({
+          activity_type: 'speaking',
+          activity_id: 'speaking-' + missionTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+          score: Math.min(turn, 3), max_score: 3, earned_stars: turn >= 3 ? 3 : turn >= 2 ? 2 : 1,
+          duration_seconds: 0
+        }).catch((error) => console.warn('Online speaking progress was not saved.', error));
+      }
       overlay.remove();
     };
     const addBubble = (text, who) => {
@@ -2611,7 +2694,7 @@ const APP = {
     if (n < L.length) {
       const s = L[n];
       body = `<div class="lslide"><div class="lscene f">${s[0]}</div>
-        <div class="len">${esc(s[1])}</div><div class="ltr">${esc(s[2])}</div>
+        <div class="len">${esc(s[1])}</div>
         <div class="lbtns">
           <button class="btn green" id="lL">🎧 Dinle</button>
           <button class="btn blue" id="lS">🐢 Listen Slowly</button>
@@ -2627,15 +2710,15 @@ const APP = {
           <button class="btn small white" data-d="once">🔁 Bir Daha</button>
         </div></div>`;
     } else if (n === L.length) {
-      const m = { name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly', quoteEn: "Let's review our new words together!", quoteTr: "Yeni kelimelerimizi birlikte tekrar edelim!", color: '#176b63', bg: '#eef5f1', anim: '' };
+      const m = { name: 'Polly', show: "Polly's Fun English", tag: 'Polly', quoteEn: "Let's review our new words together!", color: '#176b63', bg: '#eef5f1', anim: '' };
       body = `<div class="lslide"><div class="lscene f" style="font-size:44px">📚</div>
         <div class="len">Our New Words! 🌟</div>
         <div class="ltr">Tap, listen, and sing along together!</div>
-        ${m ? `<div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};margin:14px auto;max-width:580px;text-align:left"><div class="mascot-avatar-wrap"><span class="mascot-tag ${m.anim}">${m.tag}</span><span class="mascot-show">${esc(m.show)}</span></div><div class="mascot-bubble"><div class="mascot-quote-en">"${esc(m.quoteEn)}"</div><div class="mascot-quote-tr">${esc(m.quoteTr)}</div></div></div>` : ''}
+        ${m ? `<div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};margin:14px auto;max-width:580px;text-align:left"><div class="mascot-avatar-wrap"><span class="mascot-tag ${m.anim}">${m.tag}</span><span class="mascot-show">${esc(m.show)}</span></div><div class="mascot-bubble"><div class="mascot-quote-en">"${esc(m.quoteEn)}"</div></div></div>` : ''}
         <div class="lwords">${u.w
           .map(
             (w, i) =>
-              `<button class="lword" data-i="${i}"><span class="lwe">${w[1] || '🔤'}</span><b>${esc(w[0])}</b><span class="lwt">${esc(w[2])}</span></button>`
+              `<button class="lword" data-i="${i}"><span class="lwe" aria-hidden="true">${w[1] || ''}</span><b>${esc(w[0])}</b></button>`
           )
           .join('')}</div></div>`;
     } else if (n === L.length + 1) {
@@ -2677,7 +2760,7 @@ const APP = {
       `
     <div class="lesson">
       <div class="lhead ${u.stage}"><span class="ue">${u.emoji}</span>
-        <div><h2>${u.title} · Ders</h2><div class="sub">${u.tr} · Slayt ${n + 1} / ${total}</div></div>
+        <div><h2>${u.title} · Lesson</h2><div class="sub">Slide ${n + 1} / ${total}</div></div>
         <div class="lhero"><span class="badge ${u.stage === 's1' ? 'purple' : 'gold'}" style="font-size:13px;padding:4px 10px">Unit ${u.id.replace(/^[s12]+[u]/i, '')}</span></div>
       </div>
       <div class="lbody g${n % 6}">${body}</div>

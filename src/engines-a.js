@@ -89,7 +89,7 @@ const ENGINES_A = [
               ${words.map(w => `<div class="opt txt" data-w="${esc(w[0])}"><span class="ow">${esc(w[0])}</span></div>`).join('')}
             </div>
             <div class="col" id="me">
-              ${emojis.map(w => `<div class="opt" data-w="${esc(w[0])}"><span class="oe">${w[1]}</span><span class="muted">${esc(w[2])}</span></div>`).join('')}
+              ${emojis.map(w => `<div class="opt" data-w="${esc(w[0])}"><span class="oe">${w[1]}</span><span class="ow">${esc(w[0])}</span></div>`).join('')}
             </div>
           </div>
         </div>`;
@@ -423,7 +423,6 @@ const ENGINES_A = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${w[1]}</span>
-              <div class="pw" style="font-size:1.2em;color:#4b5563">${esc(w[2])}</div>
               <div class="spell-box" id="sb" style="display:flex;gap:8px;justify-content:center;margin:12px 0">
                 ${target.split('').map(() => `<span class="spell-slot" style="display:inline-block;width:38px;height:46px;border-bottom:4px solid #6366f1;font-size:2em;font-weight:900;text-align:center"></span>`).join('')}
               </div>
@@ -532,7 +531,7 @@ const ENGINES_A = [
             </div>
             <div class="opt-grid">
               ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}">
-                <span class="ow" style="font-size:1.3em">${esc(o[2])}</span></div>`).join('')}
+                <span class="ow" style="font-size:1.3em">${esc(o[0])}</span></div>`).join('')}
             </div>
           </div>`;
 
@@ -601,7 +600,7 @@ const ENGINES_A = [
             <div class="big-emoji">${w[1]}</div>
             <div class="pw" style="font-size:1.5em">${esc(w[0])}</div>
             <div class="opt-grid">
-              ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[2])}</span></div>`).join('')}
+              ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[0])}</span></div>`).join('')}
             </div>
           </div>`;
 
@@ -673,8 +672,8 @@ const ENGINES_A = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${w[1] || '🔤'}</span>
-              <div class="pw" style="font-size:1.6em"><b>${esc(w[0])}</b> (${esc(w[2])})</div>
-              <div class="muted">Hangi kategoriye ait?</div>
+              <div class="pw" style="font-size:1.6em"><b>${esc(w[0])}</b></div>
+              <div class="muted">Choose the matching category.</div>
             </div>
             <div class="opt-grid">
               ${cats.map((cat, i) => `

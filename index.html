@@ -4139,6 +4139,52 @@ body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,
 }
 @media(prefers-reduced-motion:reduce) { .stage-card,.stage-card-go { transition:none!important; } }
 
+/* Account, class, and saved-progress panels */
+.polly-account-overlay{position:fixed;inset:0;z-index:30000;display:grid;place-items:center;padding:16px;background:#18132ab8;backdrop-filter:blur(7px)}
+.polly-account-panel{position:relative;width:min(860px,100%);max-height:min(90vh,920px);overflow:auto;padding:clamp(20px,4vw,36px);border:4px solid #fff;border-radius:30px;background:linear-gradient(145deg,#fff,#fff9e9 55%,#f0f5ff);box-shadow:0 24px 80px #100a2b66;color:#202238}
+.polly-account-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border:0;border-radius:14px;background:#eee8ff;color:#33215f;font-size:26px;font-weight:850;cursor:pointer}
+.polly-account-heading{padding-right:42px}.polly-account-heading>span{color:#7047d7;font-size:.75rem;font-weight:950;letter-spacing:.1em}.polly-account-heading h2{margin:7px 0;color:#30215f;font-size:clamp(1.7rem,4vw,2.4rem)}.polly-account-heading p{margin:5px 0;color:#4b4960;line-height:1.5;overflow-wrap:anywhere}
+.account-tabs{display:flex;gap:8px;margin:20px 0 14px}.account-tabs button{min-height:42px;padding:8px 15px;border:2px solid #ddd4f5;border-radius:14px;background:#fff;color:#44366c;font:inherit;font-weight:850;cursor:pointer}.account-tabs button.active{border-color:#7654ce;background:#eee8ff;color:#392477}
+.account-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.account-form>label{display:grid;gap:6px;color:#34275b;font-weight:800}.account-form input,.account-form select,.account-inline-form input{width:100%;min-width:0;min-height:44px;padding:9px 11px;border:2px solid #d9d1ec;border-radius:12px;background:#fff;color:#242238;font:inherit}.account-grade-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.account-grade-fields label{display:grid;gap:6px;color:#34275b;font-weight:800}.account-consent{grid-column:1/-1;grid-template-columns:20px 1fr!important;align-items:start;color:#414057!important;font-size:.9rem;line-height:1.45}.account-consent input{width:18px;min-height:18px;margin:2px 0}.account-form [data-account-error],.account-error{grid-column:1/-1;padding:12px;border:1px solid #ef9c9c;border-radius:12px;background:#fff0f0;color:#8a1c1c;line-height:1.45}.account-form [hidden]{display:none}.account-form>.btn{grid-column:1/-1;min-height:48px}.account-note{grid-column:1/-1;margin:0;color:#55536a;font-size:.88rem;line-height:1.5}.account-success,.account-status-card,.account-class-card{margin:12px 0;padding:16px;border:2px solid #e1d9f1;border-radius:18px;background:#ffffffd9}.account-status-card{border-color:#efd995;background:#fff8db}.account-class-card h3,.account-badges h3{margin:0 0 12px;color:#38246f}.account-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.account-stat-grid>div{display:grid;gap:4px;padding:14px;border:2px solid white;border-radius:17px;background:linear-gradient(145deg,#f1eaff,#e9f8ff);text-align:center}.account-stat-grid b{color:#392477;font-size:1.6rem}.account-stat-grid span{color:#4e4b65;font-size:.85rem;font-weight:750}.account-list{display:grid;gap:8px}.account-person{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:11px 13px;border:1px solid #e7e1f1;border-radius:13px;background:#fff}.account-person>div{display:grid;gap:3px;min-width:0}.account-person small{color:#55536a;overflow-wrap:anywhere}.account-inline-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:8px;margin:10px 0}.account-signout{margin-top:12px}.account-badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px}.account-badge{display:grid;justify-items:center;gap:6px;padding:12px;border:1px solid #e4dcf2;border-radius:14px;background:#fff;text-align:center;color:#34275b}.account-badge-art{width:48px;height:48px;border-radius:15px;background:radial-gradient(circle at 35% 28%,#fff 0 9%,transparent 10%),linear-gradient(140deg,#ffda6b,#f39ad4 48%,#82d6e8);box-shadow:0 4px 9px #44306f30}.account-badge b{font-size:.8rem}
+@media(max-width:650px){.account-form{grid-template-columns:1fr}.account-inline-form{grid-template-columns:1fr}.account-stat-grid{grid-template-columns:1fr}.account-grade-fields{grid-template-columns:1fr}.account-person{align-items:flex-start}}
+
+/* Appearance themes retain readable contrast across every app route. */
+body.theme-colorful-kids {
+  --text-main: #1f2937;
+  --text-muted: #475569;
+  --dark: #24204f;
+  color: #1f2937;
+}
+body.theme-pastel {
+  --text-main: #202238;
+  --text-muted: #45445e;
+  --dark: #25213f;
+  color: #202238;
+  background: linear-gradient(145deg, #fff 0%, #f7f1ff 50%, #eef8ff 100%);
+}
+body.theme-smartboard-contrast {
+  --text-main: #111827;
+  --text-muted: #374151;
+  --dark: #111827;
+  color: #111827;
+  background: #f8fafc;
+}
+body.theme-colorful-kids .muted,
+body.theme-pastel .muted,
+body.theme-smartboard-contrast .muted,
+body.theme-colorful-kids .sub,
+body.theme-pastel .sub,
+body.theme-smartboard-contrast .sub { color: var(--text-muted); }
+body.theme-colorful-kids input,
+body.theme-colorful-kids select,
+body.theme-colorful-kids textarea,
+body.theme-pastel input,
+body.theme-pastel select,
+body.theme-pastel textarea,
+body.theme-smartboard-contrast input,
+body.theme-smartboard-contrast select,
+body.theme-smartboard-contrast textarea { background-color:#fff; color:#1f2937; }
+
   </style>
 </head>
 <body>
@@ -73437,6 +73483,28 @@ const MEDIA = {
     }
   },
 
+  /* A voice locale identifies its language/region setting, not a verified human accent or gender. */
+  getEnglishLocaleLabel(lang) {
+    const code = String(lang || '').replace(/_/g, '-').toLowerCase();
+    const labels = {
+      'en-gb': 'English · United Kingdom',
+      'en-us': 'English · United States',
+      'en-au': 'English · Australia',
+      'en-ca': 'English · Canada',
+      'en-ie': 'English · Ireland',
+      'en-nz': 'English · New Zealand',
+      'en-in': 'English · India',
+      'en-za': 'English · South Africa',
+      'en-ph': 'English · Philippines',
+      'en-sg': 'English · Singapore'
+    };
+    return labels[code] || (code ? `English · ${String(lang).toUpperCase()}` : 'English · Region unspecified');
+  },
+
+  voiceKey(v) {
+    return v ? `${v.name}::${v.lang || ''}` : '';
+  },
+
   /* English voices offered by this browser, sorted by available quality hints. */
   getClassroomVoices() {
     try {
@@ -73462,7 +73530,10 @@ const MEDIA = {
       try {
         const saved = store.get('voice');
         if (saved) {
-          const match = vs.find((v) => v.name === saved && !this.isRoboticVoice(v));
+          const separator = String(saved).lastIndexOf('::');
+          const savedName = separator >= 0 ? String(saved).slice(0, separator) : String(saved);
+          const savedLang = separator >= 0 ? String(saved).slice(separator + 2) : '';
+          const match = vs.find((v) => v.name === savedName && (!savedLang || (v.lang || '') === savedLang) && !this.isRoboticVoice(v));
           if (match) {
             this.voice = match;
             return match;
@@ -73499,10 +73570,14 @@ const MEDIA = {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
       if (!synth) return;
       const vs = synth.getVoices ? synth.getVoices() : [];
-      const v = vs.find((x) => x.name === name);
+      const token = String(name || '');
+      const separator = token.lastIndexOf('::');
+      const voiceName = separator >= 0 ? token.slice(0, separator) : token;
+      const voiceLang = separator >= 0 ? token.slice(separator + 2) : '';
+      const v = vs.find((x) => x.name === voiceName && (!voiceLang || (x.lang || '') === voiceLang));
       if (v) {
         this.voice = v;
-        store.set('voice', name);
+        store.set('voice', this.voiceKey(v));
       }
     } catch (e) {}
   },
@@ -73913,7 +73988,7 @@ const ENGINES_A = [
               ${words.map(w => `<div class="opt txt" data-w="${esc(w[0])}"><span class="ow">${esc(w[0])}</span></div>`).join('')}
             </div>
             <div class="col" id="me">
-              ${emojis.map(w => `<div class="opt" data-w="${esc(w[0])}"><span class="oe">${w[1]}</span><span class="muted">${esc(w[2])}</span></div>`).join('')}
+              ${emojis.map(w => `<div class="opt" data-w="${esc(w[0])}"><span class="oe">${w[1]}</span><span class="ow">${esc(w[0])}</span></div>`).join('')}
             </div>
           </div>
         </div>`;
@@ -74247,7 +74322,6 @@ const ENGINES_A = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${w[1]}</span>
-              <div class="pw" style="font-size:1.2em;color:#4b5563">${esc(w[2])}</div>
               <div class="spell-box" id="sb" style="display:flex;gap:8px;justify-content:center;margin:12px 0">
                 ${target.split('').map(() => `<span class="spell-slot" style="display:inline-block;width:38px;height:46px;border-bottom:4px solid #6366f1;font-size:2em;font-weight:900;text-align:center"></span>`).join('')}
               </div>
@@ -74356,7 +74430,7 @@ const ENGINES_A = [
             </div>
             <div class="opt-grid">
               ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}">
-                <span class="ow" style="font-size:1.3em">${esc(o[2])}</span></div>`).join('')}
+                <span class="ow" style="font-size:1.3em">${esc(o[0])}</span></div>`).join('')}
             </div>
           </div>`;
 
@@ -74425,7 +74499,7 @@ const ENGINES_A = [
             <div class="big-emoji">${w[1]}</div>
             <div class="pw" style="font-size:1.5em">${esc(w[0])}</div>
             <div class="opt-grid">
-              ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[2])}</span></div>`).join('')}
+              ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[0])}</span></div>`).join('')}
             </div>
           </div>`;
 
@@ -74497,8 +74571,8 @@ const ENGINES_A = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${w[1] || '🔤'}</span>
-              <div class="pw" style="font-size:1.6em"><b>${esc(w[0])}</b> (${esc(w[2])})</div>
-              <div class="muted">Hangi kategoriye ait?</div>
+              <div class="pw" style="font-size:1.6em"><b>${esc(w[0])}</b></div>
+              <div class="muted">Choose the matching category.</div>
             </div>
             <div class="opt-grid">
               ${cats.map((cat, i) => `
@@ -74662,7 +74736,7 @@ const ENGINES_B = [
             </div>
             <div class="prompt-box">
               <span class="pe">${w[1]}</span>
-              <div class="pw">${esc(w[0])} (${esc(w[2])})</div>
+              <div class="pw">${esc(w[0])}</div>
               <button class="btn small blue" id="spk">🔊 Dinle</button>
             </div>
             <div class="opt-grid">
@@ -74934,7 +75008,7 @@ const ENGINES_B = [
           <div class="center">
             <div class="prompt-box">
               <span class="pe">${words[currentIdx][1]}</span>
-              <div class="pw">Ara: <b style="color:#7c3aed">${esc(displayWord)}</b> (${esc(words[currentIdx][2])})</div>
+              <div class="pw">Find: <b style="color:#7c3aed">${esc(displayWord)}</b></div>
               <div class="pw" id="srch-status" style="font-size:1.3em;letter-spacing:4px;color:#2563eb">_ _ _</div>
             </div>
             <div class="grid-search" id="gs" style="display:grid;grid-template-columns:repeat(${cfg.grid},1fr);gap:8px;max-width:320px;margin:14px auto">
@@ -75015,7 +75089,6 @@ const ENGINES_B = [
                 <div class="opt" data-odd="${o === oddWord ? 1 : 0}">
                   <span class="oe">${o[1] || '🔤'}</span>
                   <span class="ow">${esc(o[0])}</span>
-                  <span class="muted" style="font-size:0.85em">${esc(o[2])}</span>
                 </div>`).join('')}
             </div>
           </div>`;
@@ -75073,7 +75146,6 @@ const ENGINES_B = [
             <div class="card" style="max-width:380px;margin:0 auto;text-align:center">
               <div class="big-emoji popflash">${w[1]}</div>
               <div class="pw" style="font-size:2em">${esc(w[0])}</div>
-              <div class="muted" style="font-size:1.2em;color:#2563eb;font-weight:700">${esc(w[2])}</div>
               <div class="row" style="margin-top:14px;justify-content:center">
                 <button class="btn blue" id="spk">🔊 Dinle</button>
                 <button class="btn green" id="rep">🗣️ Söyledim!</button>
@@ -75140,9 +75212,9 @@ const ENGINES_B = [
         const opts = shuffle([w, ...others]);
 
         qArea.innerHTML = `
-          <div class="prompt-box"><div class="pw"><b>${esc(w[0])}</b> ne demek?</div></div>
+          <div class="prompt-box"><div class="pw">Choose the matching picture.</div></div>
           <div class="opt-grid">
-            ${opts.map(o => `<div class="opt txt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[2])}</span></div>`).join('')}
+            ${opts.map(o => `<div class="opt" data-ok="${o === w ? 1 : 0}"><span class="ow">${esc(o[0])}</span></div>`).join('')}
           </div>`;
 
         MEDIA.speak(w[0]);
@@ -75206,7 +75278,7 @@ const ENGINES_B = [
             <div class="opt-grid">
               ${opts.map(o => `
                 <div class="opt txt" data-ok="${o === w ? 1 : 0}">
-                  <span class="ow">${esc(o[2])}</span>
+                  <span class="ow">${esc(o[0])}</span>
                 </div>`).join('')}
             </div>
           </div>`;
@@ -75512,7 +75584,6 @@ const ENGINES_C=[
         const curWord = pool[wordIdx];
         const wordText = String(curWord[0] || '').toUpperCase();
         const wordEmoji = curWord[1] || '✍️';
-        const wordTr = curWord[2] || '';
 
         const isLetterMode = cfg.mode === 'letter';
         const activeChar = isLetterMode ? (wordText[letterIdx] || wordText[0]) : wordText;
@@ -75526,7 +75597,6 @@ const ENGINES_C=[
                 <span class="emoji">${wordEmoji}</span>
                 <div>
                   <span style="font-size:1.15em;letter-spacing:1px">${esc(curWord[0])}</span>
-                  <span class="muted" style="font-size:0.75em;margin-left:6px">(${esc(wordTr)})</span>
                   ${isLetterMode ? `<span class="badge purple" style="margin-left:8px">Harf ${letterIdx + 1}/${wordText.length}: <b>${activeChar}</b></span>` : ''}
                 </div>
               </div>
@@ -75959,12 +76029,10 @@ const ENGINES_C=[
               </div>
               <div class="bb-stage-prompt" id="bb-prompt">
                 <div class="pw" style="font-size:1.5em;color:#1e293b">Bu kelimenin İngilizcesi nedir? 🗣️</div>
-                <div class="muted" style="margin-top:6px;font-size:1.15em;font-weight:700">${esc(w[2])}</div>
               </div>
 
               <div id="bb-answer-revealed" style="display:none;margin:12px 0 16px">
                 <div class="pw" style="font-size:2.2em;color:#7c3aed;font-weight:900">${esc(w[0])}</div>
-                <div style="font-size:1.3em;color:#059669;font-weight:700">(${esc(w[2])})</div>
                 <button class="btn small blue" id="bb-spk-btn" style="margin-top:8px">🔊 Telaffuz Dinle</button>
               </div>
 
@@ -77471,6 +77539,288 @@ ENGINES.push(...ENGINES_C);
   }
 })();
 
+/* Supabase publishable client settings. This key is intentionally public; RLS is the security boundary. */
+const POLLY_SUPABASE_CONFIG = Object.freeze({
+  url: 'https://naqzmcllhkdzpwpunfkx.supabase.co',
+  publishableKey: 'sb_publishable_edr-TknGjxyA0vtQYfW7rw_WKT7xtom'
+});
+
+/* Minimal same-origin Supabase Auth/PostgREST client. No service-role key is used in the browser. */
+const PollyAccounts = (() => {
+  const config = typeof POLLY_SUPABASE_CONFIG === 'undefined' ? null : POLLY_SUPABASE_CONFIG;
+  const storageKey = 'polly.auth.session.v1';
+  let session = null;
+  let profile = null;
+
+  const safeStorage = {
+    read() { try { return JSON.parse(sessionStorage.getItem(storageKey) || 'null'); } catch (_) { return null; } },
+    write(value) { try { value ? sessionStorage.setItem(storageKey, JSON.stringify(value)) : sessionStorage.removeItem(storageKey); } catch (_) {} }
+  };
+  session = safeStorage.read();
+
+  async function request(path, { method = 'GET', body, headers = {} } = {}) {
+    if (!config) throw new Error('Account service is not configured.');
+    const auth = session && session.access_token ? session.access_token : config.publishableKey;
+    const response = await fetch(config.url + path, {
+      method,
+      headers: {
+        apikey: config.publishableKey,
+        Authorization: 'Bearer ' + auth,
+        'Content-Type': 'application/json',
+        ...headers
+      },
+      body: body === undefined ? undefined : JSON.stringify(body)
+    });
+    const text = await response.text();
+    let payload = null;
+    try { payload = text ? JSON.parse(text) : null; } catch (_) { payload = { message: text }; }
+    if (!response.ok) {
+      const message = payload && (payload.msg || payload.message || payload.error_description || payload.error);
+      throw new Error(message || 'The account request could not be completed.');
+    }
+    return payload;
+  }
+
+  async function refreshIfNeeded() {
+    if (!session || !session.refresh_token) return;
+    if (Number(session.expires_at || 0) - Math.floor(Date.now() / 1000) > 60) return;
+    const next = await request('/auth/v1/token?grant_type=refresh_token', { method: 'POST', body: { refresh_token: session.refresh_token } });
+    session = { ...next, expires_at: next.expires_at || Math.floor(Date.now() / 1000) + Number(next.expires_in || 3600) };
+    safeStorage.write(session);
+  }
+
+  async function signIn(email, password) {
+    const next = await request('/auth/v1/token?grant_type=password', { method: 'POST', body: { email: email.trim(), password } });
+    session = { ...next, expires_at: next.expires_at || Math.floor(Date.now() / 1000) + Number(next.expires_in || 3600) };
+    safeStorage.write(session);
+    await loadProfile();
+    return profile;
+  }
+
+  async function signUp(fields) {
+    const result = await request('/auth/v1/signup', {
+      method: 'POST',
+      body: {
+        email: fields.email.trim(),
+        password: fields.password,
+        data: {
+          display_name: fields.displayName.trim(),
+          requested_role: fields.role,
+          school_name: fields.school.trim(),
+          grade: fields.grade,
+          section: fields.section.trim()
+        }
+      }
+    });
+    if (result && result.access_token) {
+      session = { ...result, expires_at: result.expires_at || Math.floor(Date.now() / 1000) + Number(result.expires_in || 3600) };
+      safeStorage.write(session);
+      await loadProfile();
+    }
+    return result;
+  }
+
+  async function loadProfile() {
+    if (!session || !session.user || !session.user.id) return null;
+    await refreshIfNeeded();
+    const rows = await request('/rest/v1/profiles?select=id,email,display_name,role,school_name,grade,section,created_at&id=eq.' + encodeURIComponent(session.user.id));
+    profile = Array.isArray(rows) ? rows[0] || null : null;
+    return profile;
+  }
+
+  async function rest(path, options = {}) {
+    if (!session) throw new Error('Sign in to use your account.');
+    await refreshIfNeeded();
+    return request('/rest/v1/' + path, options);
+  }
+
+  async function signOut() {
+    try { if (session) await request('/auth/v1/logout', { method: 'POST' }); } catch (_) {}
+    session = null;
+    profile = null;
+    safeStorage.write(null);
+  }
+
+  async function recordProgress(event) {
+    if (!session || !profile || profile.role !== 'student') return;
+    const row = {
+      activity_type: event.activity_type,
+      activity_id: String(event.activity_id || 'activity').slice(0, 100),
+      unit_id: event.unit_id || null,
+      grade: profile.grade || null,
+      score: Math.max(0, Math.min(100000, Math.round(event.score || 0))),
+      max_score: Math.max(0, Math.min(100000, Math.round(event.max_score || 0))),
+      earned_stars: Math.max(0, Math.min(5, Math.round(event.earned_stars || 0))),
+      duration_seconds: Math.max(0, Math.min(86400, Math.round(event.duration_seconds || 0)))
+    };
+    return rest('progress_events', { method: 'POST', body: row, headers: { Prefer: 'return=minimal' } });
+  }
+
+  function esc(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  }
+  function makeOverlay() {
+    const old = document.getElementById('polly-account-overlay');
+    if (old) old.remove();
+    const overlay = document.createElement('div');
+    overlay.id = 'polly-account-overlay';
+    overlay.className = 'polly-account-overlay';
+    overlay.innerHTML = '<section class="polly-account-panel" role="dialog" aria-modal="true" aria-labelledby="polly-account-title"><button class="polly-account-close" type="button" aria-label="Close account panel">×</button><div id="polly-account-content"></div></section>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('.polly-account-close').onclick = () => overlay.remove();
+    overlay.onclick = (event) => { if (event.target === overlay) overlay.remove(); };
+    return { overlay, content: overlay.querySelector('#polly-account-content') };
+  }
+
+  function showError(container, error) {
+    const box = container.querySelector('[data-account-error]');
+    if (box) { box.hidden = false; box.textContent = error && error.message || 'Something went wrong. Please try again.'; }
+  }
+
+  async function open() {
+    const { content } = makeOverlay();
+    content.innerHTML = '<div class="polly-account-heading"><span>POLLY LEARNER ACCOUNTS</span><h2 id="polly-account-title">Your learning space</h2><p>Save your progress and keep your class information together.</p></div><div class="account-tabs"><button type="button" data-tab="signin" class="active">Sign in</button><button type="button" data-tab="signup">Create account</button></div><div class="account-form-slot"></div>';
+    try {
+      if (session) {
+        await loadProfile();
+        if (profile) return renderDashboard(content);
+      }
+    } catch (_) { await signOut(); }
+    const slot = content.querySelector('.account-form-slot');
+    const errorHtml = '<div class="account-error" data-account-error hidden role="alert"></div>';
+    const bindSignIn = () => {
+      slot.innerHTML = '<form class="account-form" id="polly-signin-form"><label>Email<input name="email" type="email" autocomplete="email" required maxlength="254"></label><label>Password<input name="password" type="password" autocomplete="current-password" required minlength="8"></label>' + errorHtml + '<button class="btn purple" type="submit">Sign in</button><p class="account-note">Use the email address registered to your account.</p></form>';
+      slot.querySelector('form').onsubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const button = form.querySelector('[type=submit]');
+        button.disabled = true; button.textContent = 'Signing in…';
+        try {
+          await signIn(form.elements.namedItem('email').value, form.elements.namedItem('password').value);
+          if (profile) renderDashboard(content);
+          else throw new Error('Your profile is not ready. Please contact the administrator.');
+        } catch (error) { showError(form, error); button.disabled = false; button.textContent = 'Sign in'; }
+      };
+    };
+    const bindSignUp = () => {
+      slot.innerHTML = '<form class="account-form" id="polly-signup-form"><label>Your name<input name="displayName" autocomplete="name" required minlength="2" maxlength="80"></label><label>Email<input name="email" type="email" autocomplete="email" required maxlength="254"></label><label>Password<input name="password" type="password" autocomplete="new-password" required minlength="8"></label><label>Account type<select name="role"><option value="student">Student</option><option value="teacher">Teacher</option></select></label><label>School<input name="school" autocomplete="organization" required maxlength="120"></label><div class="account-grade-fields"><label>Grade<select name="grade" required><option value="">Choose a grade</option><option value="1">Grade 1</option><option value="2">Grade 2</option><option value="3">Grade 3</option><option value="4">Grade 4</option></select></label><label>Class / section<input name="section" required maxlength="24" placeholder="For example, 2A"></label></div><label class="account-consent"><input name="consent" type="checkbox" required><span>I confirm I have school or guardian permission to create and use this learner account. Student accounts remain pending until the administrator approves them.</span></label>' + errorHtml + '<button class="btn purple" type="submit">Create account</button><p class="account-note">Never enter a password shared with another service. We store progress events, not microphone recordings or transcripts.</p></form>';
+      const form = slot.querySelector('form');
+      const role = form.querySelector('[name=role]');
+      form.onsubmit = async (event) => {
+        event.preventDefault();
+        const button = form.querySelector('[type=submit]');
+        button.disabled = true; button.textContent = 'Creating account…';
+        try {
+          const result = await signUp({
+            displayName: form.elements.namedItem('displayName').value,
+            email: form.elements.namedItem('email').value,
+            password: form.elements.namedItem('password').value,
+            role: role.value,
+            school: form.elements.namedItem('school').value,
+            grade: Number(form.elements.namedItem('grade').value),
+            section: form.elements.namedItem('section').value
+          });
+          if (profile) renderDashboard(content);
+          else {
+            slot.innerHTML = '<div class="account-success" role="status"><h3>Check your email</h3><p>If email confirmation is enabled, confirm your address, then sign in. Your account is pending admin approval.</p></div>';
+          }
+        } catch (error) { showError(form, error); button.disabled = false; button.textContent = 'Create account'; }
+      };
+      form.querySelector('[name=consent]').required = true;
+    };
+    const tabs = content.querySelectorAll('[data-tab]');
+    const tab = (name) => {
+      tabs.forEach((button) => button.classList.toggle('active', button.dataset.tab === name));
+      name === 'signup' ? bindSignUp() : bindSignIn();
+    };
+    tabs.forEach((button) => button.onclick = () => tab(button.dataset.tab));
+    bindSignIn();
+  }
+
+  async function renderDashboard(container) {
+    const p = profile || await loadProfile();
+    if (!p) return;
+    container.innerHTML = '<div class="polly-account-heading"><span>YOUR POLLY PROFILE</span><h2 id="polly-account-title">' + esc(p.display_name) + '</h2><p>' + esc(p.email) + ' · ' + esc(p.role.replace('_', ' ')) + '</p><p>' + esc(p.school_name || 'School not set') + (p.grade ? ' · Grade ' + esc(p.grade) : '') + (p.section ? ' · ' + esc(p.section) : '') + '</p></div><div class="account-dashboard" aria-live="polite"><div class="account-loading">Loading your saved progress…</div></div><button class="btn white account-signout" type="button">Sign out</button>';
+    container.querySelector('.account-signout').onclick = async () => { await signOut(); open(); };
+    const dashboard = container.querySelector('.account-dashboard');
+    try {
+      if (p.role === 'student_pending' || p.role === 'teacher_pending') {
+        dashboard.innerHTML = '<section class="account-status-card"><h3>Account awaiting approval</h3><p>Your account is pending. You can explore the activities on this device; online progress starts after the administrator approves your account.</p></section>';
+        return;
+      }
+      if (p.role === 'admin') {
+        const rows = await rest('profiles?select=id,email,display_name,role,school_name,grade,section,created_at&order=created_at.desc');
+        const adminEvents = await rest('progress_events?select=student_id,activity_type,activity_id,unit_id,score,max_score,earned_stars,completed_at&order=completed_at.desc&limit=200');
+        const people = Object.fromEntries(rows.map((row) => [row.id, row]));
+        dashboard.innerHTML = '<h3>Administrator · Accounts</h3><div class="account-list">' + rows.map((row) => '<article class="account-person"><div><b>' + esc(row.display_name) + '</b><small>' + esc(row.email) + '</small><small>' + esc(row.role) + ' · ' + esc(row.school_name || 'No school') + (row.grade ? ' · Grade ' + esc(row.grade) : '') + (row.section ? ' · ' + esc(row.section) : '') + '</small></div>' + (row.role.endsWith('_pending') ? '<button type="button" class="btn green account-approve" data-id="' + esc(row.id) + '" data-role="' + esc(row.role) + '">Approve</button>' : '') + '</article>').join('') + '</div><section class="account-class-card"><h3>Latest student progress · ' + adminEvents.length + '</h3><div class="account-list">' + adminEvents.map((row) => '<article class="account-person"><div><b>' + esc(people[row.student_id]?.display_name || 'Student') + ' · ' + esc(people[row.student_id]?.email || '') + '</b><small>' + esc(row.activity_type) + ' · ' + esc(row.activity_id) + (row.unit_id ? ' · ' + esc(row.unit_id) : '') + '</small><small>Score ' + esc(row.score) + '/' + esc(row.max_score) + ' · ' + esc(row.earned_stars) + ' stars · ' + esc(new Date(row.completed_at).toLocaleDateString()) + '</small></div></article>').join('') + '</div></section>';
+        dashboard.querySelectorAll('.account-approve').forEach((button) => {
+          button.onclick = async () => {
+            const isStudent = button.dataset.role === 'student_pending';
+            if (isStudent && !window.confirm('Confirm that the school or guardian permission has already been recorded outside Polly, then approve this student?')) return;
+            button.disabled = true;
+            try {
+              await rest('rpc/approve_polly_profile', { method: 'POST', body: { target_profile: button.dataset.id, record_guardian_consent: isStudent } });
+              await renderDashboard(container);
+            } catch (error) { window.alert(error.message); button.disabled = false; }
+          };
+        });
+        return;
+      }
+      const events = await rest('progress_events?select=activity_type,activity_id,unit_id,score,max_score,earned_stars,completed_at&order=completed_at.desc&limit=40');
+      const badges = await rest('badge_awards?select=awarded_at,badge:badge_catalog(code,title,description,visual_key)&order=awarded_at.desc&limit=100');
+      let classBox = '';
+      if (p.role === 'teacher') {
+        const classes = await rest('classrooms?select=id,grade,section,school_name,invite_code&order=created_at.desc');
+        classBox = '<section class="account-class-card"><h3>Your classrooms</h3><form id="account-class-form" class="account-inline-form"><input name="grade" type="number" min="1" max="4" required placeholder="Grade 1–4"><input name="section" maxlength="24" required placeholder="Section"><input name="school" maxlength="120" required placeholder="School"><button class="btn purple" type="submit">Create classroom</button></form><div class="account-list">' + classes.map((c) => '<article class="account-person"><b>' + esc(c.school_name) + ' · Grade ' + esc(c.grade) + ' · ' + esc(c.section) + '</b><span>Join code: <strong>' + esc(c.invite_code) + '</strong></span></article>').join('') + '</div></section>';
+        const students = await rest('profiles?select=id,email,display_name,school_name,grade,section,role&role=eq.student&order=display_name.asc');
+        classBox += '<section class="account-class-card"><h3>Approved students in your classrooms</h3><div class="account-list">' + students.map((student) => '<article class="account-person"><b>' + esc(student.display_name) + '</b><small>' + esc(student.school_name || '') + ' · Grade ' + esc(student.grade || '') + ' · ' + esc(student.section || '') + '</small><small>' + esc(student.email) + '</small></article>').join('') + '</div></section>';
+        const classEvents = await rest('progress_events?select=student_id,activity_type,activity_id,unit_id,score,max_score,earned_stars,completed_at&order=completed_at.desc&limit=200');
+        const studentById = Object.fromEntries(students.map((student) => [student.id, student]));
+        classBox += '<section class="account-class-card"><h3>Recent class progress</h3><div class="account-list">' + classEvents.map((row) => '<article class="account-person"><div><b>' + esc(studentById[row.student_id]?.display_name || 'Student') + ' · ' + esc(studentById[row.student_id]?.email || '') + '</b><small>' + esc(row.activity_type) + ' · ' + esc(row.activity_id) + (row.unit_id ? ' · ' + esc(row.unit_id) : '') + '</small><small>Score ' + esc(row.score) + '/' + esc(row.max_score) + ' · ' + esc(row.earned_stars) + ' stars · ' + esc(new Date(row.completed_at).toLocaleDateString()) + '</small></div></article>').join('') + '</div></section>';
+      }
+      if (p.role === 'student') {
+        classBox = '<section class="account-class-card"><h3>Join your classroom</h3><form id="account-join-form" class="account-inline-form"><input name="code" required maxlength="10" placeholder="Class join code"><button class="btn purple" type="submit">Join class</button></form></section>';
+      }
+      const summary = events.reduce((acc, row) => {
+        acc.count += 1; acc.stars += Number(row.earned_stars || 0);
+        if (row.max_score > 0) { acc.score += Number(row.score); acc.max += Number(row.max_score); }
+        return acc;
+      }, { count: 0, stars: 0, score: 0, max: 0 });
+      dashboard.innerHTML = '<div class="account-stat-grid"><div><b>' + summary.count + '</b><span>Saved activities</span></div><div><b>' + summary.stars + '</b><span>Stars earned</span></div><div><b>' + (summary.max ? Math.round(summary.score / summary.max * 100) + '%' : '—') + '</b><span>Recent accuracy</span></div></div>' + classBox + '<section class="account-class-card"><h3>Recent learning</h3><div class="account-list">' + events.map((row) => '<article class="account-person"><b>' + esc(row.activity_type) + ' · ' + esc(row.activity_id) + '</b><small>' + esc(row.unit_id || '') + ' · ' + esc(row.score) + '/' + esc(row.max_score) + ' · ' + esc(row.earned_stars) + ' stars</small><small>' + esc(new Date(row.completed_at).toLocaleDateString()) + '</small></article>').join('') + '</div></section><section class="account-badges"><h3>Earned badges · ' + badges.length + '</h3><div class="account-badge-grid">' + badges.map((item) => '<article class="account-badge" data-visual="' + esc(item.badge.visual_key) + '"><span class="account-badge-art" aria-hidden="true"></span><b>' + esc(item.badge.title) + '</b></article>').join('') + '</div></section>';
+      const classForm = dashboard.querySelector('#account-class-form');
+      if (classForm) classForm.onsubmit = async (event) => {
+        event.preventDefault();
+        const submit = classForm.querySelector('[type=submit]'); submit.disabled = true;
+        try {
+          await rest('classrooms', { method: 'POST', body: { teacher_id: session.user.id, school_name: classForm.elements.namedItem('school').value, grade: Number(classForm.elements.namedItem('grade').value), section: classForm.elements.namedItem('section').value }, headers: { Prefer: 'return=minimal' } });
+          await renderDashboard(container);
+        } catch (error) { window.alert(error.message); submit.disabled = false; }
+      };
+      const joinForm = dashboard.querySelector('#account-join-form');
+      if (joinForm) joinForm.onsubmit = async (event) => {
+        event.preventDefault();
+        const submit = joinForm.querySelector('[type=submit]'); submit.disabled = true;
+        try {
+          await rest('rpc/join_polly_class', { method: 'POST', body: { invite: joinForm.elements.namedItem('code').value } });
+          window.alert('You joined your classroom.'); await renderDashboard(container);
+        } catch (error) { window.alert(error.message); submit.disabled = false; }
+      };
+    } catch (error) {
+      dashboard.innerHTML = '<div class="account-error" role="alert">' + esc(error.message) + '</div>';
+    }
+  }
+
+  return {
+    isSignedIn: () => !!session,
+    currentProfile: () => profile,
+    open,
+    recordProgress,
+    initialize() { if (session) refreshIfNeeded().catch(() => signOut()); }
+  };
+})();
+if (typeof window !== 'undefined') window.PollyAccounts = PollyAccounts;
+if (typeof window !== 'undefined') PollyAccounts.initialize();
+
 /* ============================================================
    🦜 ANA UYGULAMA MOTORU — Polly's Fun English (v2)
    Ekranlar, katalog, skorlar, şarkı oynatıcı ve Anti-Crash Kalkanı
@@ -77957,9 +78307,21 @@ const APP = {
   render() {
     const app = document.getElementById('app');
     if (!app) return;
-    document.body.className = this.stage
+    const stageClass = this.stage
       ? (STAGES.find((s) => s.id === this.stage) || {}).cls || ''
       : '';
+    document.body.classList.remove('s1', 's2', 's3', 's4');
+    if (stageClass) document.body.classList.add(stageClass);
+    const knownThemes = ['theme-colorful-kids', 'theme-smartboard-contrast', 'theme-pastel'];
+    document.body.classList.remove(...knownThemes);
+    let savedTheme = 'colorful-kids';
+    try {
+      const settings = typeof SettingsManager !== 'undefined' && SettingsManager.getSettings
+        ? SettingsManager.getSettings()
+        : JSON.parse(localStorage.getItem('pollys_fun_english_settings') || '{}');
+      if (settings && ['colorful-kids', 'smartboard-contrast', 'pastel'].includes(settings.themeMode)) savedTheme = settings.themeMode;
+    } catch (_) {}
+    document.body.classList.add(`theme-${savedTheme}`);
     const R = {
       home: () => this.vHome(),
       cambridge: () => this.vCambridge(),
@@ -78006,6 +78368,7 @@ const APP = {
       ${this.scr !== 'home' ? '<button class="btn small white" id="bk">⬅️ Back</button>' : ''}
       <div class="brand"><img class="brand-mascot" src="/images/polly-3d-mascot.png" alt="" /> Polly’s Fun English</div><div class="spacer"></div>
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
+      <button class="btn small white" id="account-top-btn">Account</button>
       <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
       <button class="btn small white" id="hm" aria-label="Home">🏠</button>
       <button class="btn small white sound-toggle" id="mu" aria-label="${MEDIA.muted ? 'Turn sound on' : 'Mute sound'}" title="${MEDIA.muted ? 'Sound muted' : 'Sound on'}">${soundIconSvg(MEDIA.muted)}</button></div>`;
@@ -78056,6 +78419,9 @@ const APP = {
       </button>
       <button class="stage-card s4" data-st="s4" type="button"><span class="sc-emoji stage-art-compass" role="img" aria-label="Compass"></span>
         <h2>Grade 4</h2><span class="badge gold">LEVEL UP</span><p>Use your English in bigger games and conversations.</p><span class="stage-card-go">Let’s play</span>
+      </button>
+      <button class="stage-card songs" data-go="songs" type="button"><span class="sc-emoji stage-art-star" role="img" aria-label="Music"></span>
+        <h2>Songs & listening</h2><span class="badge pink">LISTEN AND SING</span><p>Play a rhythm, hear a story, and join a familiar song.</p><span class="stage-card-go">Open the music room</span>
       </button>
       </div>
     </section>
@@ -78146,6 +78512,7 @@ const APP = {
     </section>`;
     document.body.appendChild(overlay);
     const feedback = overlay.querySelector('#story-feedback');
+    let storyProgressSaved = false;
     const close = () => { MEDIA.stopSpeak(); overlay.remove(); this.render(); };
     overlay.querySelector('.story-reader-close').addEventListener('click', close);
     overlay.addEventListener('click', (event) => { if (event.target === overlay) close(); });
@@ -78153,6 +78520,11 @@ const APP = {
     overlay.querySelector('#story-finish').addEventListener('click', () => {
       const read = store.get('stories_read') || [];
       if (!read.includes(story.id)) store.set('stories_read', [...read, story.id].slice(-200));
+      if (!storyProgressSaved && window.PollyAccounts) {
+        storyProgressSaved = true;
+        window.PollyAccounts.recordProgress({ activity_type: 'story', activity_id: story.id, score: 1, max_score: 1, earned_stars: 1, duration_seconds: 0 })
+          .catch((error) => console.warn('Online story progress was not saved; local progress remains available.', error));
+      }
       feedback.textContent = 'Wonderful reading! You finished the story. Keep exploring!';
       if (typeof FX !== 'undefined') FX.mascotSay(feedback.textContent, 2300);
       MEDIA.speak(feedback.textContent, 0.96);
@@ -78185,7 +78557,7 @@ const APP = {
        return `<div class="card unit-card ${u.stage}" data-u="${u.id}">
        <span class="ue">${u.emoji}</span>
        <h3>${u.title}</h3>
-       <div class="sub">${u.tr || u.title} · ${u.w.length} words</div>
+       <div class="sub">${u.w.length} English words</div>
        <div class="u-meta">
          <span class="badge ${u.stage === 's1' ? 'green' : (u.stage === 's2' ? 'blue' : 'purple')}">${u.stage.toUpperCase()}</span>
          <span class="badge green">Practice</span>
@@ -78205,7 +78577,7 @@ const APP = {
     const eng = ENGINES.filter((e) => e.stages.includes(stn));
     const m = {
       name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
-      quoteEn: "Let's explore new words and play games!", quoteTr: "Yeni kelimeler keşfedip oyunlar oynayalım!",
+      quoteEn: "Let's explore new words and play games!",
       badge: "🦜 Polly", color: "#176b63", bg: "#eef5f1", anim: ""
     };
     const vids = (typeof LVID !== 'undefined' && LVID[u.id]) || [];
@@ -78214,7 +78586,7 @@ const APP = {
       this.bar() +
       `
    <div class="unit-head ${u.stage}"><span class="ue">${u.emoji}</span>
-     <div><h2>${u.title}</h2><div class="sub">${u.tr || u.title} · ${u.w.length} words · ${u.cats.length} categories</div></div>
+     <div><h2>${u.title}</h2><div class="sub">${u.w.length} words · ${u.cats.length} categories</div></div>
      <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
        <button class="btn purple" id="learn-btn" style="font-size:1em;padding:10px 16px">📖 Learn Vocabulary</button>
        ${typeof LESSONS !== 'undefined' && LESSONS[u.id] ? '<button class="btn gold" id="lbtn" style="font-size:1em;padding:10px 16px">📚 Lesson Slides</button>' : ''}
@@ -78231,7 +78603,6 @@ const APP = {
      </div>
      <div class="mascot-bubble">
        <div class="mascot-quote-en">"${esc(m.quoteEn)}"</div>
-       <div class="mascot-quote-tr">${esc(m.quoteTr || m.quoteEn)}</div>
      </div>
    </div>
 
@@ -78245,7 +78616,7 @@ const APP = {
    <div class="word-wall">${u.w
      .map(
        (w) =>
-         `<span class="word-pill" data-w="${esc(w[0])}" data-tr="${esc(w[2])}" data-em="${w[1] || '🔤'}"><span class="pe">${w[1] || '🔤'}</span><strong>${esc(w[0])}</strong> <small class="muted" style="font-weight:600;opacity:0.85">(${esc(w[2])})</small></span>`
+         `<span class="word-pill" data-w="${esc(w[0])}" data-em="${w[1] || ''}"><span class="pe" aria-hidden="true">${w[1] || ''}</span><strong>${esc(w[0])}</strong></span>`
      )
      .join('')}</div>
 
@@ -78285,14 +78656,14 @@ const APP = {
     if (!u) return this.vHome();
     const m = {
       name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly',
-      quoteEn: "Let's learn new words together!", quoteTr: "Haydi birlikte yeni kelimeler öğrenelim!",
+      quoteEn: "Let's learn new words together!",
       badge: "🦜 Polly", color: "#176b63", bg: "#eef5f1", anim: ""
     };
     const words = u.w || [];
     const idx = Math.max(0, Math.min(this.learnIdx || 0, words.length - 1));
     const cur = words[idx] || words[0] || ['word', '', '', 0];
     const art = typeof getVocabularyArt === 'function' ? getVocabularyArt(cur[0]) : null;
-    const catName = (u.cats && u.cats[cur[3]]) || 'Kelime';
+    const catName = (u.cats && u.cats[cur[3]]) || 'Words';
 
     return (
       this.bar() +
@@ -78519,7 +78890,7 @@ const APP = {
    ${
      rows
        .map(
-         (r) => `<tr><td>${r.e.e} ${r.e.t}</td><td>${r.u.emoji} ${esc(r.u.tr)}</td>
+         (r) => `<tr><td>${r.e.e} ${r.e.t}</td><td>${r.u.emoji} ${esc(r.u.title)}</td>
      <td>${r.e.levels[r.lv] ? r.e.levels[r.lv].n : '1'}</td><td><b>${r.s}</b></td><td>${'⭐'.repeat(r.st)}</td></tr>`
        )
        .join('') ||
@@ -78587,6 +78958,7 @@ const APP = {
     document.querySelectorAll('#btn-cambridge-launch').forEach((button) => button.addEventListener('click', (e) => { e.stopPropagation(); MEDIA.fx('click'); this.go('cambridge'); }));
     on('#btn-home-cambridge-hub', 'click', () => { MEDIA.fx('click'); this.go('cambridge'); });
     on('#top-settings-btn', 'click', () => this.showSettingsModal());
+    on('#account-top-btn', 'click', () => window.PollyAccounts && window.PollyAccounts.open());
     on('#home-settings-btn', 'click', () => this.showSettingsModal());
     on('#top-twisters-btn', 'click', () => this.showTwistersModal());
     on('#home-twisters-btn', 'click', () => this.showTwistersModal());
@@ -78832,15 +79204,12 @@ const APP = {
     $$('.word-pill[data-w]').forEach((p) =>
       p.addEventListener('click', () => {
         const w = p.dataset.w;
-        const tr = p.dataset.tr;
         const em = p.dataset.em || '🔤';
         MEDIA.speak(w);
         p.classList.add('lit');
         setTimeout(() => p.classList.remove('lit'), 800);
-        if (tr) {
-          FX.toast(`${em} ${w} = ${tr}`);
-          FX.mascotSay(`${em} <b>${w}</b>: ${tr}`);
-        }
+        FX.toast(`${w}!`);
+        FX.mascotSay(`<b>${w}</b>`);
         FX.notes(innerWidth / 2, innerHeight - 140);
       })
     );
@@ -78933,6 +79302,7 @@ const APP = {
       e = ENGINES.find((x) => x.id === this.engineId);
     if (!u || !e) return;
     const self = this;
+    const gameStartedAt = Date.now();
     let score = this.restoredScore || 0;
     this.currentScore = score;
 
@@ -79015,6 +79385,11 @@ const APP = {
         MEDIA.stopSpeak();
         const pct = res.max ? res.score / res.max : 1;
         const st = pct >= 0.85 ? 3 : pct >= 0.55 ? 2 : 1;
+        if (window.PollyAccounts) window.PollyAccounts.recordProgress({
+          activity_type: 'game', activity_id: e.id, unit_id: u.id,
+          score: res.score, max_score: res.max, earned_stars: st,
+          duration_seconds: Math.floor((Date.now() - gameStartedAt) / 1000)
+        }).catch((error) => console.warn('Online progress was not saved; local progress remains available.', error));
         const key = e.id + '|' + u.id + '|' + self.lvIdx,
           b = store.get('best') || {};
         if (!b[key] || b[key].s < res.score) {
@@ -79626,9 +80001,11 @@ const APP = {
       ? MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''))
       : [];
     const savedDeviceVoice = store.get('voice') || (MEDIA.voice && MEDIA.voice.name) || '';
+    const voiceKey = (voice) => `${voice.name}::${voice.lang || ''}`;
+    const savedVoice = deviceVoices.find((voice) => voiceKey(voice) === savedDeviceVoice || voice.name === savedDeviceVoice);
     const deviceVoiceOptions = deviceVoices.length
-      ? deviceVoices.map((voice) => `<option value="${esc(voice.name)}" ${voice.name === savedDeviceVoice ? 'selected' : ''}>${esc(voice.name)}${voice.lang ? ` (${esc(voice.lang)})` : ''}</option>`).join('')
-      : '<option value="">No English reading voices found on this device</option>';
+      ? deviceVoices.map((voice) => `<option value="${esc(voiceKey(voice))}" ${voice === savedVoice ? 'selected' : ''}>${esc(voice.name)} · ${esc(MEDIA.getEnglishLocaleLabel ? MEDIA.getEnglishLocaleLabel(voice.lang) : (voice.lang || 'English'))}</option>`).join('')
+      : '<option value="">Loading English voices from this device…</option>';
 
     d.innerHTML = `
       <div class="modal-content" style="max-width:540px;text-align:left;position:relative;">
@@ -79667,7 +80044,7 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label for="set-reading-voice">Reading voice for all spoken text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English voice available on this device. It is used for words, games, feedback, and stories.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose from English voice locales offered by this device. A locale is not a verified speaker accent, gender, or naturalness rating.</p>
           <select id="set-reading-voice" ${deviceVoices.length ? '' : 'disabled'} style="width:100%;padding:10px 12px;border-radius:12px;border:2px solid #cbd5e1;font-weight:700;">
             ${deviceVoiceOptions}
           </select>
@@ -79719,7 +80096,12 @@ const APP = {
 
     document.body.appendChild(d);
 
+    let voiceListChangeHandler = null;
     const close = () => {
+      if (voiceListChangeHandler && typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.removeEventListener('voiceschanged', voiceListChangeHandler);
+        voiceListChangeHandler = null;
+      }
       if (typeof MEDIA !== 'undefined' && MEDIA.fx) MEDIA.fx('click');
       d.remove();
     };
@@ -79770,6 +80152,47 @@ const APP = {
     // Voice test button
     const testVoiceBtn = d.querySelector('#set-test-voice-btn');
     const speedSelect = d.querySelector('#set-voice-speed');
+    const voiceSelect = d.querySelector('#set-reading-voice');
+    const refreshVoiceOptions = () => {
+      if (!voiceSelect || !MEDIA.getClassroomVoices) return;
+      const freshVoices = MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''));
+      const previouslySelected = voiceSelect.value || (savedVoice ? voiceKey(savedVoice) : '');
+      voiceSelect.replaceChildren();
+      if (!freshVoices.length) {
+        const empty = document.createElement('option');
+        empty.value = '';
+        empty.textContent = 'No English voices are available on this device';
+        voiceSelect.appendChild(empty);
+        voiceSelect.disabled = true;
+        if (testVoiceBtn) testVoiceBtn.disabled = true;
+        return;
+      }
+      const groups = new Map();
+      freshVoices.forEach((voice) => {
+        const label = MEDIA.getEnglishLocaleLabel ? MEDIA.getEnglishLocaleLabel(voice.lang) : (voice.lang || 'English');
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push(voice);
+      });
+      groups.forEach((voices, label) => {
+        const group = document.createElement('optgroup');
+        group.label = label;
+        voices.forEach((voice) => {
+          const option = document.createElement('option');
+          option.value = voiceKey(voice);
+          option.textContent = `${voice.name} (${voice.lang || 'en'})`;
+          group.appendChild(option);
+        });
+        voiceSelect.appendChild(group);
+      });
+      voiceSelect.disabled = false;
+      if (testVoiceBtn) testVoiceBtn.disabled = false;
+      if ([...voiceSelect.options].some((option) => option.value === previouslySelected)) voiceSelect.value = previouslySelected;
+    };
+    refreshVoiceOptions();
+    if (typeof window !== 'undefined' && window.speechSynthesis?.addEventListener) {
+      voiceListChangeHandler = refreshVoiceOptions;
+      window.speechSynthesis.addEventListener('voiceschanged', voiceListChangeHandler);
+    }
     if (testVoiceBtn) {
       testVoiceBtn.onclick = () => {
         const selectedVoice = d.querySelector('#set-reading-voice')?.value;
@@ -79862,7 +80285,7 @@ const APP = {
         <div class="polly-talk-messages" id="polly-talk-messages" aria-live="polite">
           <div class="talk-bubble polly">${esc(mission.first)}</div>
         </div>
-        <p class="polly-talk-note">Polly listens with your browser’s microphone and speaks with the English reading voice chosen in Sound and Display settings. If a microphone is unavailable, type your answer.</p>
+        <p class="polly-talk-note">Tap “Speak to Polly” when you are ready. Your browser may ask once for microphone access and can remember your choice. Polly never starts listening automatically. If a microphone is unavailable or permission is declined, type your answer.</p>
         <div class="polly-talk-controls">
           <button class="btn voice-buddy-listen" id="polly-talk-listen" type="button">🎙️ Speak to Polly</button>
           <input id="polly-talk-input" type="text" maxlength="180" autocomplete="off" placeholder="Or type a short answer…" aria-label="Type your English answer">
@@ -79879,9 +80302,19 @@ const APP = {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     let turn = 0;
+    let progressSaved = false;
     const close = () => {
       if (recognition) { try { recognition.abort(); } catch (_) {} }
       if (window.speechSynthesis) window.speechSynthesis.cancel();
+      if (!progressSaved && turn > 0 && window.PollyAccounts) {
+        progressSaved = true;
+        window.PollyAccounts.recordProgress({
+          activity_type: 'speaking',
+          activity_id: 'speaking-' + missionTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+          score: Math.min(turn, 3), max_score: 3, earned_stars: turn >= 3 ? 3 : turn >= 2 ? 2 : 1,
+          duration_seconds: 0
+        }).catch((error) => console.warn('Online speaking progress was not saved.', error));
+      }
       overlay.remove();
     };
     const addBubble = (text, who) => {
@@ -80084,7 +80517,7 @@ const APP = {
     if (n < L.length) {
       const s = L[n];
       body = `<div class="lslide"><div class="lscene f">${s[0]}</div>
-        <div class="len">${esc(s[1])}</div><div class="ltr">${esc(s[2])}</div>
+        <div class="len">${esc(s[1])}</div>
         <div class="lbtns">
           <button class="btn green" id="lL">🎧 Dinle</button>
           <button class="btn blue" id="lS">🐢 Listen Slowly</button>
@@ -80100,15 +80533,15 @@ const APP = {
           <button class="btn small white" data-d="once">🔁 Bir Daha</button>
         </div></div>`;
     } else if (n === L.length) {
-      const m = { name: 'Polly', show: "Polly's Fun English", tag: '🦜 Polly', quoteEn: "Let's review our new words together!", quoteTr: "Yeni kelimelerimizi birlikte tekrar edelim!", color: '#176b63', bg: '#eef5f1', anim: '' };
+      const m = { name: 'Polly', show: "Polly's Fun English", tag: 'Polly', quoteEn: "Let's review our new words together!", color: '#176b63', bg: '#eef5f1', anim: '' };
       body = `<div class="lslide"><div class="lscene f" style="font-size:44px">📚</div>
         <div class="len">Our New Words! 🌟</div>
         <div class="ltr">Tap, listen, and sing along together!</div>
-        ${m ? `<div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};margin:14px auto;max-width:580px;text-align:left"><div class="mascot-avatar-wrap"><span class="mascot-tag ${m.anim}">${m.tag}</span><span class="mascot-show">${esc(m.show)}</span></div><div class="mascot-bubble"><div class="mascot-quote-en">"${esc(m.quoteEn)}"</div><div class="mascot-quote-tr">${esc(m.quoteTr)}</div></div></div>` : ''}
+        ${m ? `<div class="unit-mascot-card" style="border-left:6px solid ${m.color};background:${m.bg};margin:14px auto;max-width:580px;text-align:left"><div class="mascot-avatar-wrap"><span class="mascot-tag ${m.anim}">${m.tag}</span><span class="mascot-show">${esc(m.show)}</span></div><div class="mascot-bubble"><div class="mascot-quote-en">"${esc(m.quoteEn)}"</div></div></div>` : ''}
         <div class="lwords">${u.w
           .map(
             (w, i) =>
-              `<button class="lword" data-i="${i}"><span class="lwe">${w[1] || '🔤'}</span><b>${esc(w[0])}</b><span class="lwt">${esc(w[2])}</span></button>`
+              `<button class="lword" data-i="${i}"><span class="lwe" aria-hidden="true">${w[1] || ''}</span><b>${esc(w[0])}</b></button>`
           )
           .join('')}</div></div>`;
     } else if (n === L.length + 1) {
@@ -80150,7 +80583,7 @@ const APP = {
       `
     <div class="lesson">
       <div class="lhead ${u.stage}"><span class="ue">${u.emoji}</span>
-        <div><h2>${u.title} · Ders</h2><div class="sub">${u.tr} · Slayt ${n + 1} / ${total}</div></div>
+        <div><h2>${u.title} · Lesson</h2><div class="sub">Slide ${n + 1} / ${total}</div></div>
         <div class="lhero"><span class="badge ${u.stage === 's1' ? 'purple' : 'gold'}" style="font-size:13px;padding:4px 10px">Unit ${u.id.replace(/^[s12]+[u]/i, '')}</span></div>
       </div>
       <div class="lbody g${n % 6}">${body}</div>

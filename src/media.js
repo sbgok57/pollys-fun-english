@@ -563,6 +563,28 @@ const MEDIA = {
     }
   },
 
+  /* A voice locale identifies its language/region setting, not a verified human accent or gender. */
+  getEnglishLocaleLabel(lang) {
+    const code = String(lang || '').replace(/_/g, '-').toLowerCase();
+    const labels = {
+      'en-gb': 'English · United Kingdom',
+      'en-us': 'English · United States',
+      'en-au': 'English · Australia',
+      'en-ca': 'English · Canada',
+      'en-ie': 'English · Ireland',
+      'en-nz': 'English · New Zealand',
+      'en-in': 'English · India',
+      'en-za': 'English · South Africa',
+      'en-ph': 'English · Philippines',
+      'en-sg': 'English · Singapore'
+    };
+    return labels[code] || (code ? `English · ${String(lang).toUpperCase()}` : 'English · Region unspecified');
+  },
+
+  voiceKey(v) {
+    return v ? `${v.name}::${v.lang || ''}` : '';
+  },
+
   /* English voices offered by this browser, sorted by available quality hints. */
   getClassroomVoices() {
     try {
@@ -588,7 +610,10 @@ const MEDIA = {
       try {
         const saved = store.get('voice');
         if (saved) {
-          const match = vs.find((v) => v.name === saved && !this.isRoboticVoice(v));
+          const separator = String(saved).lastIndexOf('::');
+          const savedName = separator >= 0 ? String(saved).slice(0, separator) : String(saved);
+          const savedLang = separator >= 0 ? String(saved).slice(separator + 2) : '';
+          const match = vs.find((v) => v.name === savedName && (!savedLang || (v.lang || '') === savedLang) && !this.isRoboticVoice(v));
           if (match) {
             this.voice = match;
             return match;
@@ -625,10 +650,14 @@ const MEDIA = {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
       if (!synth) return;
       const vs = synth.getVoices ? synth.getVoices() : [];
-      const v = vs.find((x) => x.name === name);
+      const token = String(name || '');
+      const separator = token.lastIndexOf('::');
+      const voiceName = separator >= 0 ? token.slice(0, separator) : token;
+      const voiceLang = separator >= 0 ? token.slice(separator + 2) : '';
+      const v = vs.find((x) => x.name === voiceName && (!voiceLang || (x.lang || '') === voiceLang));
       if (v) {
         this.voice = v;
-        store.set('voice', name);
+        store.set('voice', this.voiceKey(v));
       }
     } catch (e) {}
   },
