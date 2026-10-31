@@ -575,6 +575,7 @@ const APP = {
           <button class="btn voice-buddy-launch" id="btn-voice-buddy">Talk with Polly</button>
           <button class="btn green big" id="btn-cambridge-launch">Choose your game</button>
         </div>
+        <p class="home-welcome-note">Hi! I'm Polly. Tap “Hear Polly welcome” and I'll say hello.</p>
       </div>
       <figure class="welcome-photo-wrap kids-hero-art">
         <img class="welcome-photo" src="/images/stories-world.png" alt="Polly and children explore an English story world" width="1536" height="1024" fetchpriority="high">
@@ -3130,7 +3131,6 @@ if (typeof document !== 'undefined') {
       initVoices();
     } catch (e) {}
   }
-  FX.mascotSay("Hello! I'm Polly. Select a grade and let's play!", 2600);
   // PERF: idle-time warm-up of verified character clips (no-op when none are verified)
   try { CharacterSoundManager.warmUpBank(); } catch (e) {}
 }
