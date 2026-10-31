@@ -547,7 +547,7 @@ const APP = {
       <button class="btn small white" id="cambridge-top-btn">📚 Activities</button>
       <button class="btn small white" id="account-top-btn">Account</button>
       <button class="btn small white" id="top-settings-btn">⚙️ Settings</button>
-      <button class="btn small white" id="hm" aria-label="Home">🏠</button>
+      <button class="btn small white icon-button" id="hm" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg></button>
       <button class="btn small white sound-toggle" id="mu" aria-label="${MEDIA.muted ? 'Turn sound on' : 'Mute sound'}" title="${MEDIA.muted ? 'Sound muted' : 'Sound on'}">${soundIconSvg(MEDIA.muted)}</button></div>`;
   },
 
@@ -1773,12 +1773,13 @@ const APP = {
     d.setAttribute('aria-label', 'Choose a Higgsfield voice sample');
     d.style.zIndex = '120000';
     d.innerHTML = `<div class="vmbox voice-modal-box">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+      <div class="voice-modal-heading">
         <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
         <div>
           <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a Higgsfield voice sample</h3>
         <div class="muted" style="font-size:0.88em">Listen to ${previewVoices.length} Higgsfield voice samples.</div>
         </div>
+        <button class="voice-modal-close" id="hf-voice-close" type="button" aria-label="Close voice samples" title="Close">×</button>
       </div>
       <div class="voice-help-banner">
         Choose a clip to preview. Your selection is saved so you can find that sample again.
@@ -1788,9 +1789,9 @@ const APP = {
         <select id="hf-voice-select"><option value="">Choose a sample</option>${previewVoices.map((v, i) => `<option value="${i}" ${i === selectedIndex ? 'selected' : ''}>${esc(v.name)}${v.gender ? ` · ${esc(v.gender)}` : ''}</option>`).join('')}</select>
         <button class="btn purple" id="hf-voice-preview">Play sample</button>
       </div>
-      <p class="muted hf-voice-note">These clips are voice samples. For lesson, game, feedback, and story read-aloud, choose the reading voice available on this device in Sound and Display settings.</p>
+      <p class="muted hf-voice-note">Samples are preview recordings only. They cannot read lesson, game, feedback, or story text. Spoken text uses the English voice selected on this device in Sound and Display settings.</p>
       <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn green big" id="vmclose">Save preview choice</button>
+        <button class="btn green big" id="vmclose">Save sample choice</button>
       </div>
     </div>`;
     document.body.appendChild(d);
@@ -1808,20 +1809,25 @@ const APP = {
     };
     const previewButton = d.querySelector('#hf-voice-preview');
     if (previewButton) previewButton.onclick = playSelectedSample;
+    const closeVoiceModal = () => {
+      if (previewAudio) { previewAudio.pause(); previewAudio.currentTime = 0; }
+      d.remove();
+    };
+    const closeButton = d.querySelector('#hf-voice-close');
+    if (closeButton) closeButton.onclick = closeVoiceModal;
     const vmclose = d.querySelector('#vmclose');
     if (vmclose) vmclose.onclick = () => {
       const sample = previewVoices[Number(sampleSelect.value)];
       if (!sample || !sample.voice_id) { FX.toast('Choose a Higgsfield sample first.'); return; }
       store.set('higgsfieldVoiceId', sample.voice_id);
-      if (previewAudio) previewAudio.pause();
-      d.remove();
+      closeVoiceModal();
       FX.toast(`${sample.name} preview saved on this device.`);
     };
     d.onclick = (e) => {
-      if (e.target === d) { if (previewAudio) previewAudio.pause(); d.remove(); }
+      if (e.target === d) closeVoiceModal();
     };
     d.onkeydown = (e) => {
-      if (e.key === 'Escape') { if (previewAudio) previewAudio.pause(); d.remove(); }
+      if (e.key === 'Escape') closeVoiceModal();
     };
   },
 
@@ -2190,7 +2196,7 @@ const APP = {
           <h3 style="margin:0;font-size:1.35rem;color:#1e1b4b;display:flex;align-items:center;gap:10px;">
             <span>⚙️</span> Platform, Audio & Theme Settings
           </h3>
-          <button class="btn white small" id="set-close-top" style="font-size:16px;padding:4px 10px;">❌</button>
+          <button class="btn white small icon-button modal-close-button" id="set-close-top" type="button" aria-label="Close settings" title="Close">×</button>
         </div>
 
         <div class="settings-group">
@@ -2221,7 +2227,7 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label for="set-reading-voice">Reading voice for all spoken text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose from English voice locales offered by this device. A locale is not a verified speaker accent, gender, or naturalness rating.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English reading voice installed on this device.</p>
           <select id="set-reading-voice" ${deviceVoices.length ? '' : 'disabled'} style="width:100%;padding:10px 12px;border-radius:12px;border:2px solid #cbd5e1;font-weight:700;">
             ${deviceVoiceOptions}
           </select>
@@ -2230,7 +2236,7 @@ const APP = {
 
         <div class="settings-group">
           <label>Higgsfield voice sample previews</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">These are short preview clips only. The reading voice selected above reads lesson, game, feedback, and story text.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose and replay Higgsfield sample recordings. They are separate from the device voice used to read app text.</p>
           <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
             <button class="btn btn-outline" id="set-choose-voice-btn" type="button" style="flex:1;padding:8px 12px;font-weight:700;">Listen to Higgsfield samples</button>
           </div>

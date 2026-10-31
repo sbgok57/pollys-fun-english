@@ -67,6 +67,10 @@ if img_src.exists():
     shutil.rmtree(pub_img, ignore_errors=True)
     shutil.copytree(img_src, pub_img)
 
+manifest_src = root / 'site.webmanifest'
+if manifest_src.exists():
+    shutil.copy2(manifest_src, public_dir / manifest_src.name)
+
 # 3. Rebuild the deployment package from the current source and local assets.
 vd = root / 'vercel-deploy'
 shutil.rmtree(vd, ignore_errors=True)
@@ -74,6 +78,8 @@ shutil.rmtree(vd, ignore_errors=True)
 (vd / 'images').mkdir(parents=True, exist_ok=True)
 (vd / '.gitignore').write_text('.vercel\n.env*\n', encoding='utf-8')
 (vd / 'index.html').write_text(out, encoding='utf-8')
+if manifest_src.exists():
+    shutil.copy2(manifest_src, vd / manifest_src.name)
 
 vjson_content = json.dumps({
     "cleanUrls": True,

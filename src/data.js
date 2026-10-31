@@ -3684,7 +3684,7 @@ const ALLSETS = [
       ],
       [
         "stairs",
-        "🪜",
+        "↗️",
         "merdivenler",
         0
       ],

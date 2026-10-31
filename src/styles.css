@@ -107,6 +107,9 @@ body.s2 {
   margin-bottom: 16px;
   border: 2px solid #e2e8f0;
 }
+.icon-button { display:inline-flex;align-items:center;justify-content:center;min-width:42px;min-height:42px;padding:8px; }
+.icon-button svg { width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round; }
+.modal-close-button { font-size:27px!important;line-height:1;padding:3px 9px!important; }
 
 .brand {
   font-weight: 900;
@@ -617,6 +620,10 @@ body.s2 {
 }
 .score-table {
   width: 100%;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
   border-collapse: collapse;
   background: #ffffff;
   border-radius: var(--radius-md);
@@ -878,6 +885,11 @@ body.s2 {
 /* ============ v3: 🎤 Ses seçim modalı ============ */
 #vmodal{position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s;padding:12px}
 .vmbox{background:#fff;border-radius:24px;padding:20px 20px 16px;max-width:580px;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.35);border:3px solid #f3e8ff}
+.voice-modal-heading { display:flex;align-items:center;gap:12px;margin:0 0 10px; }
+.voice-modal-heading > div { min-width:0;flex:1; }
+.voice-modal-close { flex:0 0 42px;width:42px;height:42px;border:0;border-radius:50%;background:#f1edff;color:#3b286e;font:500 30px/1 system-ui;cursor:pointer; }
+.voice-modal-close:hover { background:#e3dcff; }
+.voice-modal-close:focus-visible,.icon-button:focus-visible { outline:3px solid #5b46d6;outline-offset:2px; }
 .vmbox h3{margin:0 0 4px;color:#6b21a8}
 .voice-help-banner{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af;border-radius:14px;padding:10px 12px;font-size:0.88em;margin-bottom:12px;line-height:1.4}
 .vlist{overflow-y:auto;overflow-x:hidden;margin:4px 0 12px;border:2.5px dashed #e9d5ff;border-radius:16px;background:#faf5ff;max-height:46vh;padding:4px}
@@ -3331,6 +3343,7 @@ body.theme-pastel {
   display: none;
   align-items: center;
   justify-content: center;
+  padding: 12px;
   z-index: 99999;
 }
 .modal-overlay.active { display: flex; }
@@ -3340,6 +3353,9 @@ body.theme-pastel {
   border-radius: var(--radius-lg);
   max-width: 650px;
   width: 90%;
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 30px;
   text-align: center;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
