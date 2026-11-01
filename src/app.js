@@ -2148,6 +2148,7 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label>Free read-aloud for app text</label>
+          <p><a href="/voice-library.html" style="font-weight:750;color:#6742c3">ElevenLabs · My Voices — sync and choose saved voices</a></p>
           <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English voice installed on this device. The selected voice is used for lessons, games, feedback, and stories. Voice quality and choices vary by device.</p>
           <label for="set-reading-voice" style="display:block;margin:8px 0 4px">English voice on this device</label>
           <select id="set-reading-voice" style="width:100%;padding:9px 12px;border:1.5px solid #cbd5e1;border-radius:10px;font:inherit" aria-describedby="reading-voice-help"><option value="">Loading available voices…</option></select>

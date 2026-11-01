@@ -115,6 +115,13 @@ if img_src.exists():
     shutil.rmtree(vd / 'images', ignore_errors=True)
     shutil.copytree(img_src, vd / 'images')
 
+for name in ['voice-library.html', 'voice-library.js']:
+    for folder in [public_dir, vd]:
+        shutil.copy2(root / name, folder / name)
+for name in ['api', 'lib']:
+    if (root / name).exists():
+        shutil.copytree(root / name, vd / name, dirs_exist_ok=True)
+
 print(f'OK → vercel-deploy/index.html + vercel.json + audio + images')
 
 # ── 🛡️ TAM DOĞRULAMA: her varlık referansı diskte VAR MI? ──

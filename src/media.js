@@ -287,16 +287,17 @@ const MEDIA = {
       clearTimeout(timer);
       if (token !== this._remoteTtsToken) return;
       this._remoteSpeechEnabled = false;
+      if (this._elevenLabsVoiceId) { this._elevenLabsRetryAfter = Date.now() + 60000; if (typeof FX !== 'undefined' && FX.toast) FX.toast('ElevenLabs is unavailable. Using the device voice for now.'); }
       this._remoteTtsAbort = null;
       this._remoteTtsAudio = null;
       this.revokeRemoteTtsUrl();
       this.tts(text, rate, cb, vol);
     };
-    fetch('/api/narakeet-tts', {
+    fetch(this._elevenLabsVoiceId ? '/api/elevenlabs' : '/api/narakeet-tts', {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json', 'Accept': 'audio/mpeg' },
-      body: JSON.stringify({ text, rate }),
+      body: JSON.stringify({ text, rate, voiceId: this._elevenLabsVoiceId || undefined }),
       signal: controller ? controller.signal : undefined
     }).then((response) => {
       if (!response.ok) throw new Error('remote-tts-unavailable');
@@ -842,6 +843,13 @@ const MEDIA = {
   tts(text, rate = 0.9, cb, vol, customPitch = 1.0) {
     if (this.muted) {
       cb && cb();
+      return;
+    }
+    let savedElevenVoice = '';
+    try { savedElevenVoice = window.localStorage.getItem('elevenlabs-voice-id') || ''; } catch (e) {}
+    this._elevenLabsVoiceId = savedElevenVoice;
+    if (savedElevenVoice && Date.now() >= (this._elevenLabsRetryAfter || 0) && !(typeof window !== 'undefined' && window.__TESTMODE)) {
+      this.playRemoteTts(String(text || ''), rate, cb, vol);
       return;
     }
     if (this._remoteSpeechEnabled && !(typeof window !== 'undefined' && window.__TESTMODE)) {
