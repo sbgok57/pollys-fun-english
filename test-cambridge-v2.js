@@ -179,11 +179,12 @@ console.log(`  ✔ Toplam ${totalTwisters} Phonics tekerleme (Kademe başına ~5
 console.log('\n[5] Video ve şarkı veri kayıtları:');
 const videoKeys = new Set((VIDEO_LIBRARY_DATA || []).map(v => `${v.stage}|${v.embedUrl}`));
 const requiredVideoStages = ['Stage 1', 'Stage 2', 'Stage 3', 'Stage 4'];
-if (!Array.isArray(VIDEO_LIBRARY_DATA) || VIDEO_LIBRARY_DATA.length === 0 || videoKeys.size !== VIDEO_LIBRARY_DATA.length || requiredVideoStages.some(stage => !VIDEO_LIBRARY_DATA.some(v => v.stage === stage))) {
+const distinctVideoUrls = new Set((VIDEO_LIBRARY_DATA || []).map(v => v.embedUrl));
+if (!Array.isArray(VIDEO_LIBRARY_DATA) || VIDEO_LIBRARY_DATA.length !== 4 || videoKeys.size !== VIDEO_LIBRARY_DATA.length || distinctVideoUrls.size !== 1 || requiredVideoStages.some(stage => !VIDEO_LIBRARY_DATA.some(v => v.stage === stage)) || VIDEO_LIBRARY_DATA.some(v => v.title !== 'Action Songs for kids' || v.channel !== 'The Singing Walrus - English Songs For Kids')) {
   console.error(`  ✘ HATA: Video bağlantıları boş, tekrarlı veya bir sınıf seviyesi eksik! (Kayıt: ${VIDEO_LIBRARY_DATA ? VIDEO_LIBRARY_DATA.length : 0}, benzersiz: ${videoKeys.size})`);
   errors++;
 } else {
-    console.log(`  ✔ ${VIDEO_LIBRARY_DATA.length} benzersiz sınıf/video kaydı (çevrimiçi içerik ve uygunluk doğrulanmadı).`);
+    console.log(`  ✔ One active video source is consistently listed for all four grades; duplicate and unverified source links were removed.`);
 }
 if (!Array.isArray(SONGS_DATA) || SONGS_DATA.length < 6) {
   console.error(`  ✘ HATA: Şarkı sayısı 6'dan az!`);

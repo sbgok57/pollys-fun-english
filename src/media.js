@@ -683,6 +683,21 @@ const MEDIA = {
       const vs = synth.getVoices() || [];
       if (!vs.length) return null;
 
+      // Keep the learner's device-specific English voice selection across screens and visits.
+      try {
+        const savedKey = store && store.get ? store.get('voice') : '';
+        if (savedKey) {
+          const separator = String(savedKey).lastIndexOf('::');
+          const savedName = separator >= 0 ? String(savedKey).slice(0, separator) : String(savedKey);
+          const savedLang = separator >= 0 ? String(savedKey).slice(separator + 2) : '';
+          const savedVoice = vs.find((voice) => voice.name === savedName && (!savedLang || (voice.lang || '') === savedLang));
+          if (savedVoice && /^en([_-]|$)/i.test(savedVoice.lang || '')) {
+            this.voice = savedVoice;
+            return savedVoice;
+          }
+        }
+      } catch (e) {}
+
       // Use the best-scoring English voice available on this device.
       const classroomVoices = this.getClassroomVoices();
       if (classroomVoices.length > 0) {

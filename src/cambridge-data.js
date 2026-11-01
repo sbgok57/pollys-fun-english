@@ -60812,258 +60812,42 @@ const SONGS_DATA = [
 
 const VIDEO_LIBRARY_DATA = [
   {
-    "id": "vid_1",
+    "id": "verified_action_song_1",
     "stage": "Stage 1",
-    "title": "Stage 1 Video 1: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_2",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 2: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_3",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 3: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_4",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 4: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_5",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 5: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
+    "title": "Action Songs for kids",
+    "topic": "Action songs",
+    "channel": "The Singing Walrus - English Songs For Kids",
+    "duration": "",
     "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
   },
   {
-    "id": "vid_6",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 6: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_7",
-    "stage": "Stage 1",
-    "title": "Stage 1 Video 7: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_266",
+    "id": "verified_action_song_2",
     "stage": "Stage 2",
-    "title": "Stage 2 Video 1: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_267",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 2: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_268",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 3: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_269",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 4: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_270",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 5: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
+    "title": "Action Songs for kids",
+    "topic": "Action songs",
+    "channel": "The Singing Walrus - English Songs For Kids",
+    "duration": "",
     "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
   },
   {
-    "id": "vid_271",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 6: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_272",
-    "stage": "Stage 2",
-    "title": "Stage 2 Video 7: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_531",
+    "id": "verified_action_song_3",
     "stage": "Stage 3",
-    "title": "Stage 3 Video 1: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_532",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 2: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_533",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 3: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_534",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 4: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_535",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 5: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
+    "title": "Action Songs for kids",
+    "topic": "Action songs",
+    "channel": "The Singing Walrus - English Songs For Kids",
+    "duration": "",
     "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
   },
   {
-    "id": "vid_536",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 6: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_537",
-    "stage": "Stage 3",
-    "title": "Stage 3 Video 7: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
-  },
-  {
-    "id": "vid_796",
+    "id": "verified_action_song_4",
     "stage": "Stage 4",
-    "title": "Stage 4 Video 1: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "British Council Kids",
-    "duration": "3:10",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/P3sF1B8K7-g"
-  },
-  {
-    "id": "vid_797",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 2: Phonics & Rhymes Essentials",
-    "topic": "Phonics & Rhymes",
-    "channel": "Cambridge English",
-    "duration": "4:11",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/F41RzNky57g"
-  },
-  {
-    "id": "vid_798",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 3: Storytelling Essentials",
-    "topic": "Storytelling",
-    "channel": "Super Simple Songs",
-    "duration": "5:12",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/iI_x_bYp324"
-  },
-  {
-    "id": "vid_799",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 4: Nature & Animals Essentials",
-    "topic": "Nature & Animals",
-    "channel": "National Geographic Kids",
-    "duration": "6:13",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/6iO2Uq_W8nI"
-  },
-  {
-    "id": "vid_800",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 5: Science Exploration Essentials",
-    "topic": "Science Exploration",
-    "channel": "SciShow Kids",
-    "duration": "3:14",
+    "title": "Action Songs for kids",
+    "topic": "Action songs",
+    "channel": "The Singing Walrus - English Songs For Kids",
+    "duration": "",
     "embedUrl": "https://www.youtube-nocookie.com/embed/dUXk8Nc5qQ8"
-  },
-  {
-    "id": "vid_801",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 6: World Geography Essentials",
-    "topic": "World Geography",
-    "channel": "British Council Kids",
-    "duration": "4:15",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/DR-cfepAzCE"
-  },
-  {
-    "id": "vid_802",
-    "stage": "Stage 4",
-    "title": "Stage 4 Video 7: Classroom English Essentials",
-    "topic": "Classroom English",
-    "channel": "Cambridge English",
-    "duration": "5:16",
-    "embedUrl": "https://www.youtube-nocookie.com/embed/e13ETZ8T5Y0"
   }
-];
+];;
 
 const TEACHER_GUIDE_DATA = {
   "stage1": {

@@ -790,7 +790,7 @@
                 ${filtered.length} Video (${stageName})
               </span>
             </div>
-            <p class="muted">External video links may change. Preview each video before class.</p>
+            <p class="muted">This short song video is available for this grade. Preview it before class in case the source changes.</p>
             <input type="text" class="search-input" id="video-search-input" placeholder="🔍 Search videos or channels..." value="${this.videoSearch}" />
             <div class="video-grid">
               ${filtered.slice(0, 24).map(v => `
@@ -801,7 +801,7 @@
                   <div style="padding:14px;">
                     <span class="badge" style="background:#10b981; color:white; font-size:0.75rem; padding:2px 6px; border-radius:4px;">${v.channel}</span>
                     <h4 style="font-size:1rem; margin:6px 0; color:var(--dark);">${v.title}</h4>
-                    <small style="color:#64748b;">${v.topic} • ${v.duration}</small>
+                    <small style="color:#64748b;">${v.topic}${v.duration ? ` • ${v.duration}` : ''}</small>
                   </div>
                 </div>
               `).join('')}

@@ -2148,7 +2148,19 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label>Free read-aloud for app text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Free browser/device speech is used by default. Available English voices and sound quality vary by device. An optional cloud reading voice works only if the site administrator configures a provider.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English voice installed on this device. The selected voice is used for lessons, games, feedback, and stories. Voice quality and choices vary by device.</p>
+          <label for="set-reading-voice" style="display:block;margin:8px 0 4px">English voice on this device</label>
+          <select id="set-reading-voice" style="width:100%;padding:9px 12px;border:1.5px solid #cbd5e1;border-radius:10px;font:inherit" aria-describedby="reading-voice-help"><option value="">Loading available voices…</option></select>
+          <p class="muted" id="reading-voice-help" style="font-size:.82em;margin:5px 0">These are device voices, not recordings of human speakers. Choose a voice and play the samples to check how it sounds.</p>
+          <label for="set-reading-sample" style="display:block;margin:8px 0 4px">Choose a reading sample</label>
+          <select id="set-reading-sample" style="width:100%;padding:9px 12px;border:1.5px solid #cbd5e1;border-radius:10px;font:inherit">
+            <option value="welcome">A warm hello</option>
+            <option value="story">A little story</option>
+            <option value="classroom">A classroom direction</option>
+            <option value="phonics">A phonics rhythm</option>
+            <option value="encouragement">A cheerful kind message</option>
+          </select>
+          <p class="muted" style="font-size:.82em;margin:5px 0">Every sample uses the selected voice and the same speech system as the rest of the site. It is not a separate voice recording.</p>
           <button class="btn btn-outline" id="set-test-tts-btn" type="button" style="margin-top:4px">Hear a reading sample</button>
         </div>
 
@@ -2189,8 +2201,10 @@ const APP = {
 
     document.body.appendChild(d);
 
+    let voiceChangeHandler = null;
     const close = () => {
       if (typeof MEDIA !== 'undefined' && MEDIA.fx) MEDIA.fx('click');
+      if (voiceChangeHandler && window.speechSynthesis) window.speechSynthesis.removeEventListener?.('voiceschanged', voiceChangeHandler);
       d.remove();
     };
 
@@ -2240,8 +2254,47 @@ const APP = {
     const testTtsBtn = d.querySelector('#set-test-tts-btn');
     if (testTtsBtn) testTtsBtn.onclick = () => {
       const speed = parseFloat(d.querySelector('#set-voice-speed')?.value || '1');
-      MEDIA.tts("Hello! Let's learn and play English together!", 0.9 * speed);
+      const samples = {
+        welcome: "Hello, explorers! I'm so happy you're here. Let's learn and play English together!",
+        story: "Milo found a little red kite. The wind carried it high above the green park.",
+        classroom: "Look, listen, and get ready. Can you find a blue pencil on your desk?",
+        phonics: "B says buh, buh, ball. Let's say the sound slowly, then try it once more!",
+        encouragement: "That was a lovely try! Take a little breath, have another go, and enjoy learning!"
+      };
+      const sample = samples[d.querySelector('#set-reading-sample')?.value] || samples.welcome;
+      MEDIA.tts(sample, 0.9 * speed);
     };
+
+    const voiceSelect = d.querySelector('#set-reading-voice');
+    if (voiceSelect && typeof MEDIA !== 'undefined') {
+      const fillVoiceOptions = () => {
+        const voices = MEDIA.getAvailableVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''));
+        const savedVoice = store.get('voice') || (MEDIA.voice ? MEDIA.voiceKey(MEDIA.voice) : '');
+        voiceSelect.replaceChildren();
+        if (!voices.length) {
+          const option = document.createElement('option');
+          option.value = '';
+          option.textContent = 'No English device voices are available';
+          voiceSelect.appendChild(option);
+          voiceSelect.disabled = true;
+          return;
+        }
+        voiceSelect.disabled = false;
+        voices.forEach((voice) => {
+          const option = document.createElement('option');
+          option.value = MEDIA.voiceKey(voice);
+          option.textContent = `${voice.name} · ${MEDIA.getEnglishLocaleLabel(voice.lang)}`;
+          voiceSelect.appendChild(option);
+        });
+        const selectedVoice = voices.some((voice) => MEDIA.voiceKey(voice) === savedVoice) ? savedVoice : MEDIA.voiceKey(voices[0]);
+        voiceSelect.value = selectedVoice;
+        MEDIA.setVoice(selectedVoice);
+      };
+      fillVoiceOptions();
+      voiceSelect.addEventListener('change', () => MEDIA.setVoice(voiceSelect.value));
+      voiceChangeHandler = fillVoiceOptions;
+      window.speechSynthesis?.addEventListener?.('voiceschanged', voiceChangeHandler);
+    }
 
     // Save button
     const saveBtn = d.querySelector('#set-save-btn');
@@ -2314,8 +2367,8 @@ const APP = {
           <div><span class="polly-talk-kicker">SPEAKING MISSION · ${esc(missionTitle.toUpperCase())}</span><h2 id="polly-talk-title">Let’s practise together!</h2>
             <p>Learn useful words, try a sentence, then talk in a familiar place.</p></div>
         </div>
-        <div class="speaking-steps"><span class="active">1 · Words</span><span>2 · Sentence</span><span>3 · Dialogue</span></div>
-        <div class="mission-model"><b>Useful words</b><p>${esc(mission.words)}</p><b>Try this sentence</b><p>${esc(mission.model)}</p><button class="btn btn-outline" id="mission-hear-model" type="button">Hear sentence</button></div>
+        <div class="speaking-steps" role="group" aria-label="Speaking mission steps"><button type="button" class="active" data-talk-step="0" aria-pressed="true">1 · Words</button><button type="button" data-talk-step="1" aria-pressed="false">2 · Sentence</button><button type="button" data-talk-step="2" aria-pressed="false">3 · Dialogue</button></div>
+        <div class="mission-model" id="mission-step-panel" aria-live="polite"><b id="mission-step-title">Useful words</b><p id="mission-step-copy">${esc(mission.words)}</p><button class="btn btn-outline" id="mission-hear-model" type="button">Hear these words</button></div>
         <div class="polly-talk-messages" id="polly-talk-messages" aria-live="polite">
           <div class="talk-bubble polly">${esc(mission.first)}</div>
         </div>
@@ -2336,6 +2389,8 @@ const APP = {
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     let turn = 0;
+    let activeStep = 0;
+    let speakingStartedAt = Date.now();
     let progressSaved = false;
     const close = () => {
       if (recognition) { try { recognition.abort(); } catch (_) {} }
@@ -2346,7 +2401,7 @@ const APP = {
           activity_type: 'speaking',
           activity_id: 'speaking-' + missionTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
           score: Math.min(turn, 3), max_score: 3, earned_stars: turn >= 3 ? 3 : turn >= 2 ? 2 : 1,
-          duration_seconds: 0
+          duration_seconds: Math.max(1, Math.round((Date.now() - speakingStartedAt) / 1000))
         }).catch((error) => console.warn('Online speaking progress was not saved.', error));
       }
       overlay.remove();
@@ -2358,7 +2413,25 @@ const APP = {
       messages.appendChild(bubble);
       messages.scrollTop = messages.scrollHeight;
     };
-    const answer = (raw) => {
+    const stepContent = [
+      { title: 'Useful words', copy: mission.words, hear: mission.words },
+      { title: 'Build a sentence', copy: mission.model, hear: mission.model },
+      { title: 'Your turn in the conversation', copy: mission.questions[0], hear: mission.questions[0] }
+    ];
+    const setStep = (index) => {
+      activeStep = Math.max(0, Math.min(2, index));
+      const content = stepContent[activeStep];
+      overlay.querySelector('#mission-step-title').textContent = content.title;
+      overlay.querySelector('#mission-step-copy').textContent = content.copy;
+      overlay.querySelector('#mission-hear-model').textContent = activeStep === 0 ? 'Hear these words' : activeStep === 1 ? 'Hear the sentence' : 'Hear the question';
+      overlay.querySelectorAll('[data-talk-step]').forEach((button) => {
+        const selected = Number(button.dataset.talkStep) === activeStep;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+    };
+    overlay.querySelectorAll('[data-talk-step]').forEach((button) => button.addEventListener('click', () => setStep(Number(button.dataset.talkStep))));
+    const answer = (raw, source = 'typed', confidence = null) => {
       const text = String(raw || '').trim().slice(0, 180);
       if (!text) return;
       addBubble(text, 'child');
@@ -2374,15 +2447,18 @@ const APP = {
       else if (/cat|dog|bird|fish|lion|elephant|rabbit|monkey/.test(lower)) reply = `Great animal word! ${nextQuestion}`;
       else if (/don't know|dont know|help|sorry|no/.test(lower)) reply = `That’s okay. Let’s try together: ${mission.model}`;
       else reply = `I heard you! Great English speaking. ${nextQuestion}`;
-      const praise = ['Brilliant speaking! ⭐', 'Lovely English! 🌈', 'You’re doing great! 🎉', 'Super try! Keep going! 🦜'][turn % 4];
-      const fullReply = `${praise} ${reply}`;
+      const praise = ['Thanks for having a go!', 'Lovely effort! Keep going!', 'You are practising so well!', 'Great job joining the conversation!'][turn % 4];
+      const heardNote = source === 'speech' ? ' I caught your words.' : ' Thanks for sharing your answer.';
+      const retry = source === 'speech' && Number.isFinite(confidence) && confidence < 0.35 ? ' I did not catch every word clearly, so let’s try that once more.' : '';
+      const fullReply = `${praise}${heardNote}${retry} ${reply}`;
       addBubble(fullReply, 'polly');
       status.textContent = praise;
       if (typeof FX !== 'undefined') { FX.mascotSay(praise, 2300); FX.confetti(16); }
       MEDIA.speak(fullReply, 0.94);
+      if (activeStep < 2) setStep(activeStep + 1);
     };
     const sendTyped = () => answer(input.value);
-    overlay.querySelector('#mission-hear-model').addEventListener('click', () => MEDIA.speak(mission.model, 0.9));
+    overlay.querySelector('#mission-hear-model').addEventListener('click', () => MEDIA.speak(stepContent[activeStep].hear, 0.9));
     overlay.querySelector('#polly-talk-send').addEventListener('click', sendTyped);
     input.addEventListener('keydown', (event) => { if (event.key === 'Enter') sendTyped(); });
     overlay.querySelector('.polly-talk-close').addEventListener('click', close);
@@ -2401,7 +2477,7 @@ const APP = {
         listen.disabled = true;
         listen.textContent = '👂 Listening…';
         status.textContent = 'I’m listening. Say a short answer in English!';
-        recognition.onresult = (event) => answer(event.results[0][0].transcript);
+        recognition.onresult = (event) => answer(event.results[0][0].transcript, 'speech', event.results[0][0].confidence);
         recognition.onerror = (event) => {
           status.textContent = event.error === 'not-allowed' ? 'Microphone permission is off. You can type instead.' : 'I couldn’t hear that. Try again or type your answer.';
         };
