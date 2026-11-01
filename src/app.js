@@ -685,7 +685,7 @@ const APP = {
       <h3>Useful words</h3><div class="story-word-list">${story.words.map(word=>`<span>${esc(word)}</span>`).join('')}</div>
       <h3>Think and answer</h3><p>${esc(story.question)}</p>
       <label class="story-answer-label">Your answer <input id="story-answer" type="text" maxlength="180" placeholder="Write a short answer in English"></label>
-      <p class="story-audio-note">This story uses the English reading voice selected in Sound and Display settings.</p>
+      <p class="story-audio-note">This story is read aloud by the English voice available in your browser or device settings.</p>
       <div class="story-reader-actions"><button class="btn purple" id="story-listen">Listen to story</button><button class="btn green" id="story-finish">Finish story</button></div>
       <p class="story-feedback" id="story-feedback" aria-live="polite"></p>
     </section>`;
@@ -1762,78 +1762,6 @@ const APP = {
     }
   },
 
-  /* ---------- 🎤 Polly Ses Seçimi Modalı ---------- */
-  showVoices() {
-    const previewVoices = typeof HIGGSFIELD_VOICE_PREVIEWS !== 'undefined' ? HIGGSFIELD_VOICE_PREVIEWS : [];
-    const selectedVoiceId = store.get('higgsfieldVoiceId') || '';
-    const selectedSample = previewVoices.find((v) => v.voice_id === selectedVoiceId);
-    const selectedIndex = selectedSample ? previewVoices.indexOf(selectedSample) : -1;
-
-    const d = document.createElement('div');
-    d.id = 'vmodal';
-    d.setAttribute('role', 'dialog');
-    d.setAttribute('aria-modal', 'true');
-    d.setAttribute('aria-label', 'Choose a Higgsfield voice sample');
-    d.style.zIndex = '120000';
-    d.innerHTML = `<div class="vmbox voice-modal-box">
-      <div class="voice-modal-heading">
-        <img class="voice-modal-mascot" src="/images/polly-3d-mascot.png" alt="Polly" />
-        <div>
-          <h3 style="margin:0;font-size:1.3em;color:#0f172a">Choose a Higgsfield voice sample</h3>
-        <div class="muted" style="font-size:0.88em">Listen to ${previewVoices.length} Higgsfield voice samples.</div>
-        </div>
-        <button class="voice-modal-close" id="hf-voice-close" type="button" aria-label="Close voice samples" title="Close">×</button>
-      </div>
-      <div class="voice-help-banner">
-        Choose a clip to preview. Your selection is saved so you can find that sample again.
-      </div>
-      <div class="hf-preview-controls">
-        <label for="hf-voice-select">Higgsfield voice samples</label>
-        <select id="hf-voice-select"><option value="">Choose a sample</option>${previewVoices.map((v, i) => `<option value="${i}" ${i === selectedIndex ? 'selected' : ''}>${esc(v.name)}${v.gender ? ` · ${esc(v.gender)}` : ''}</option>`).join('')}</select>
-        <button class="btn purple" id="hf-voice-preview">Play sample</button>
-      </div>
-      <p class="muted hf-voice-note">Samples are preview recordings only. They cannot read lesson, game, feedback, or story text. Spoken text uses the English voice selected on this device in Sound and Display settings.</p>
-      <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn green big" id="vmclose">Save sample choice</button>
-      </div>
-    </div>`;
-    document.body.appendChild(d);
-    let previewAudio = null;
-    const sampleSelect = d.querySelector('#hf-voice-select');
-    requestAnimationFrame(() => sampleSelect && sampleSelect.focus({ preventScroll: true }));
-    const playSelectedSample = () => {
-      const sample = previewVoices[Number(sampleSelect.value)];
-      if (!sample || !sample.preview_url) { FX.toast('Choose a voice sample first.'); return; }
-      try {
-        if (previewAudio) { previewAudio.pause(); previewAudio.currentTime = 0; }
-        previewAudio = new Audio(sample.preview_url);
-        previewAudio.play().catch(() => FX.toast('This sample is not available right now.'));
-      } catch (e) { FX.toast('This sample is not available right now.'); }
-    };
-    const previewButton = d.querySelector('#hf-voice-preview');
-    if (previewButton) previewButton.onclick = playSelectedSample;
-    const closeVoiceModal = () => {
-      if (previewAudio) { previewAudio.pause(); previewAudio.currentTime = 0; }
-      d.remove();
-    };
-    const closeButton = d.querySelector('#hf-voice-close');
-    if (closeButton) closeButton.onclick = closeVoiceModal;
-    const vmclose = d.querySelector('#vmclose');
-    if (vmclose) vmclose.onclick = () => {
-      const sample = previewVoices[Number(sampleSelect.value)];
-      if (!sample || !sample.voice_id) { FX.toast('Choose a Higgsfield sample first.'); return; }
-      store.set('higgsfieldVoiceId', sample.voice_id);
-      closeVoiceModal();
-      FX.toast(`${sample.name} preview saved on this device.`);
-    };
-    d.onclick = (e) => {
-      if (e.target === d) closeVoiceModal();
-    };
-    d.onkeydown = (e) => {
-      if (e.key === 'Escape') closeVoiceModal();
-    };
-  },
-
   /* ---------- 📖 Öğretmen & Öğrenci Kullanma Kılavuzu Modalı ---------- */
   showGuideModal() {
     const existing = document.getElementById('guide-modal');
@@ -2220,16 +2148,8 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label>Free read-aloud for app text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lessons, games, feedback and stories use the built-in speech engine on this device. Voice availability and sound quality depend on the device. Higgsfield clips below are previews only.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lessons, games, feedback and stories use the free speech engine built into this browser or device. Available English voices and sound quality vary by device.</p>
           <button class="btn btn-outline" id="set-test-tts-btn" type="button" style="margin-top:4px">Hear a reading sample</button>
-        </div>
-
-        <div class="settings-group">
-          <label>Higgsfield voice sample previews</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose and replay a sample recording. This saves your preview choice; it does not change the voice reading app text.</p>
-          <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
-            <button class="btn btn-outline" id="set-choose-voice-btn" type="button" style="flex:1;padding:8px 12px;font-weight:700;">Listen to Higgsfield samples</button>
-          </div>
         </div>
 
         <div class="settings-group">
@@ -2317,8 +2237,6 @@ const APP = {
       };
     }
 
-    const chooseVoiceBtn = d.querySelector('#set-choose-voice-btn');
-    if (chooseVoiceBtn) chooseVoiceBtn.onclick = () => this.showVoices();
     const testTtsBtn = d.querySelector('#set-test-tts-btn');
     if (testTtsBtn) testTtsBtn.onclick = () => {
       const speed = parseFloat(d.querySelector('#set-voice-speed')?.value || '1');

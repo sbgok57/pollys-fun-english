@@ -882,27 +882,8 @@ body.s2 {
 }
 .crash-details.show { display: block; }
 
-/* ============ v3: 🎤 Ses seçim modalı ============ */
-#vmodal{position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:9999;display:flex;align-items:center;justify-content:center;animation:popIn .18s;padding:12px}
-.vmbox{background:#fff;border-radius:24px;padding:20px 20px 16px;max-width:580px;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(0,0,0,.35);border:3px solid #f3e8ff}
-.voice-modal-heading { display:flex;align-items:center;gap:12px;margin:0 0 10px; }
-.voice-modal-heading > div { min-width:0;flex:1; }
-.voice-modal-close { flex:0 0 42px;width:42px;height:42px;border:0;border-radius:50%;background:#f1edff;color:#3b286e;font:500 30px/1 system-ui;cursor:pointer; }
-.voice-modal-close:hover { background:#e3dcff; }
-.voice-modal-close:focus-visible,.icon-button:focus-visible { outline:3px solid #5b46d6;outline-offset:2px; }
-.vmbox h3{margin:0 0 4px;color:#6b21a8}
-.voice-help-banner{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af;border-radius:14px;padding:10px 12px;font-size:0.88em;margin-bottom:12px;line-height:1.4}
-.vlist{overflow-y:auto;overflow-x:hidden;margin:4px 0 12px;border:2.5px dashed #e9d5ff;border-radius:16px;background:#faf5ff;max-height:46vh;padding:4px}
-.vitem{padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:12px;transition:all .18s ease;margin-bottom:3px}
-.vitem:last-child{border-bottom:none;margin-bottom:0}
-.vitem:hover{background:#fef9c3;transform:translateX(3px)}
-.vitem.sel{background:#dcfce7;border:2px solid #22c55e;box-shadow:0 3px 10px rgba(34,197,94,.18)}
-.vitem-main{display:flex;align-items:center;gap:12px;text-align:left;flex:1;min-width:0}
-.vitem-icon{font-size:24px;line-height:1;flex-shrink:0}
-.vitem-info{display:flex;flex-direction:column;min-width:0}
-.vitem-name{font-size:0.95em;color:#0f172a;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vitem-desc{font-size:0.82em;color:#64748b;font-weight:500}
-.vitem-badges{display:flex;align-items:center;gap:6px;flex-shrink:0}
+/* Shared keyboard focus treatment for icon controls. */
+.icon-button:focus-visible { outline:3px solid #5b46d6;outline-offset:2px; }
 .vbadge{font-size:0.75em;padding:4px 8px;border-radius:10px;background:#e2e8f0;color:#334155;font-weight:700;white-space:nowrap}
 .vbadge.active{background:#22c55e;color:#fff;box-shadow:0 2px 6px rgba(34,197,94,.3)}
 
@@ -3990,20 +3971,11 @@ body { background-attachment: fixed; }
 .stage-card h2 { color: #38246f; letter-spacing: -.02em; }
 .stage-card p { color: #4e4b65; line-height: 1.55; }
 .btn { box-shadow: 0 5px 0 rgba(64,37,119,.16), 0 8px 16px rgba(57,35,104,.12); }
-.card,.unit-card,.cam-stage-tab,.vmbox { border-radius: 24px; box-shadow: 0 7px 0 rgba(89,65,139,.09),0 15px 28px rgba(63,49,107,.1); }
-.voice-modal-mascot { width: 54px; height: 54px; object-fit: contain; filter: drop-shadow(0 5px 4px #35226133); }
-.vitem { border-radius: 18px; }
+.card,.unit-card,.cam-stage-tab { border-radius: 24px; box-shadow: 0 7px 0 rgba(89,65,139,.09),0 15px 28px rgba(63,49,107,.1); }
 .flyby { width: 54px; height: 54px; }
 .flyby img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 7px 7px #38266044); }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 
-.hf-voice-preview { margin-top: 14px; padding: 14px 16px; border: 2px solid #ded5ff; border-radius: 18px; background: linear-gradient(145deg,#fbf9ff,#fff); }
-.hf-voice-preview summary { cursor: pointer; color: #4c318f; font-weight: 850; }
-.hf-voice-preview p { margin: 10px 0; line-height: 1.5; }
-.hf-preview-controls { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px; }
-.hf-preview-controls label { grid-column: 1 / -1; color: #44366c; font-weight: 750; }
-.hf-preview-controls select { min-width: 0; width: 100%; padding: 12px; border: 2px solid #d8cffa; border-radius: 13px; background: white; color: #241d3c; font: inherit; }
-@media (max-width: 560px) { .hf-preview-controls { grid-template-columns: 1fr; } }
 
 /* Bright, tactile classroom update. Pattern stays behind content so text remains clear. */
 body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,transparent 1.5px),radial-gradient(#9de1d3 1.5px,transparent 1.5px),linear-gradient(135deg,#fff8e9,#f8f0ff 48%,#e9fbff); background-size:28px 28px,34px 34px,100% 100%; background-position:0 0,14px 17px,0 0; background-attachment:fixed; }
@@ -4083,7 +4055,6 @@ body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,
 .tr-meaning { display:inline-flex; margin:4px 0 10px; padding:7px 12px; border-radius:999px; background:#fff0a9; color:#4b3b00; font-weight:850; }
 .voice-bubble { border-radius:18px; background:#fff; }
 .btn { border:2px solid #ffffffa8; border-radius:16px; }
-.hf-voice-preview { background:repeating-linear-gradient(135deg,#fff 0 16px,#f5efff 16px 32px); border-color:#d1b8f2; }
 @media(max-width:700px){.welcome-hero{border-radius:26px}.stage-card{min-height:165px}.sc-emoji{width:76px;height:76px}.vocab-atlas-art{height:210px}}
 
 /* Home refresh: clearer grade choices, larger story art, and comfortable touch targets. */

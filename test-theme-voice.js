@@ -37,7 +37,7 @@ setTimeout(() => {
     check(window.document.querySelector('.stage-card.songs'), 'songs route remains available after theme changes');
     window.eval('APP.showSettingsModal()');
     check(!window.document.querySelector('#set-reading-voice') && !window.document.querySelector('#set-test-voice-btn'), 'settings no longer offers a device voice picker or misleading reading voice test');
-    check(window.document.querySelector('.reading-voice-settings')?.textContent.includes('built-in speech engine on this device'), 'settings identify the free built-in read-aloud engine');
+    check(window.document.querySelector('.reading-voice-settings')?.textContent.includes('free speech engine built into this browser or device'), 'settings identify the free browser/device read-aloud engine');
     check(window.document.querySelector('#set-test-tts-btn'), 'settings provide a user-triggered read-aloud test');
     let demoRate = 0;
     window.eval('window.__originalMediaTts = MEDIA.tts; MEDIA.tts = (text, rate) => { window.__ttsDemo = { text, rate }; }');
@@ -46,12 +46,11 @@ setTimeout(() => {
     demoRate = window.__ttsDemo?.rate || 0;
     check(demoRate === 1.08, 'read-aloud test uses the chosen speech speed');
     window.eval('MEDIA.tts = window.__originalMediaTts');
-    check(window.document.querySelector('#set-choose-voice-btn'), 'Higgsfield sample chooser remains available');
+    check(!window.document.querySelector('#set-choose-voice-btn') && !window.document.querySelector('#choose-device-voice'), 'settings no longer show a preview-only voice chooser');
     window.document.querySelector('#set-close-top')?.click();
-    window.eval('APP.showVoices()');
-    check(window.document.querySelector('#hf-voice-select') && window.document.querySelector('#hf-voice-preview'), 'Higgsfield recordings remain available as replayable previews');
-    check(window.document.querySelector('.hf-voice-note')?.textContent.includes('cannot read lesson'), 'sample modal clarifies that previews do not read lesson text');
-    window.document.querySelector('#vmclose')?.click();
+    check(typeof window.eval('APP.showVoices') === 'undefined', 'preview-only Higgsfield modal code is removed');
+    check(!window.document.body.textContent.includes('Listen to Higgsfield samples'), 'preview-only Higgsfield copy is absent from rendered settings');
+    check(!fs.readFileSync('english-fun-zone.html', 'utf8').includes('HIGGSFIELD_VOICE_PREVIEWS'), 'preview recordings are excluded from the built site');
     const savedPrefs = JSON.parse(window.localStorage.getItem('pollys_fun_english_settings') || '{}');
     window.localStorage.setItem('pollys_fun_english_settings', JSON.stringify({ ...savedPrefs, voiceSpeed: 1.2 }));
     window.eval("SettingsManager.saveSettings({ ...SettingsManager.getSettings(), voiceSpeed: 1.2 })");
