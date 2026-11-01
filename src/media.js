@@ -257,6 +257,83 @@ if (typeof window !== 'undefined') {
 }
 
 const MEDIA = {
+  /* Optional server-side neural TTS. The endpoint stays off until Vercel env is explicitly enabled. */
+  _remoteSpeechEnabled: false,
+  _remoteTtsAudio: null,
+  _remoteTtsAbort: null,
+  _remoteTtsObjectUrl: null,
+  _remoteTtsToken: 0,
+  async refreshRemoteTtsStatus() {
+    try {
+      if (typeof fetch !== 'function') return false;
+      const response = await fetch('/api/narakeet-tts', { method: 'GET', cache: 'no-store', credentials: 'same-origin' });
+      const status = response.ok ? await response.json() : null;
+      this._remoteSpeechEnabled = !!(status && status.enabled === true);
+    } catch (e) {
+      this._remoteSpeechEnabled = false;
+    }
+    return this._remoteSpeechEnabled;
+  },
+  playRemoteTts(text, rate = 0.9, cb, vol) {
+    this.stopSpeak();
+    const token = this._remoteTtsToken;
+    const controller = typeof AbortController === 'function' ? new AbortController() : null;
+    this._remoteTtsAbort = controller;
+    const timer = setTimeout(() => controller && controller.abort(), 30000);
+    let recovered = false;
+    const fallback = () => {
+      if (recovered) return;
+      recovered = true;
+      clearTimeout(timer);
+      if (token !== this._remoteTtsToken) return;
+      this._remoteSpeechEnabled = false;
+      this._remoteTtsAbort = null;
+      this._remoteTtsAudio = null;
+      this.revokeRemoteTtsUrl();
+      this.tts(text, rate, cb, vol);
+    };
+    fetch('/api/narakeet-tts', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'audio/mpeg' },
+      body: JSON.stringify({ text, rate }),
+      signal: controller ? controller.signal : undefined
+    }).then((response) => {
+      if (!response.ok) throw new Error('remote-tts-unavailable');
+      return response.blob();
+    }).then((blob) => {
+      clearTimeout(timer);
+      if (token !== this._remoteTtsToken) return;
+      if (!blob || !blob.size || (blob.type && !/^audio\//i.test(blob.type))) throw new Error('invalid-tts-audio');
+      const url = URL.createObjectURL(blob);
+      this._remoteTtsObjectUrl = url;
+      const audio = new Audio(url);
+      this._remoteTtsAudio = audio;
+      audio.playbackRate = Math.max(0.75, Math.min(1.25, Number(rate) || 0.9));
+      if (vol != null) audio.volume = Math.max(0, Math.min(1, Number(vol)));
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        if (token === this._remoteTtsToken) {
+          this._remoteTtsAudio = null;
+          this._remoteTtsAbort = null;
+          this.revokeRemoteTtsUrl();
+        }
+        if (cb) cb();
+      };
+      audio.onended = finish;
+      audio.onerror = fallback;
+      const playPromise = audio.play();
+      if (playPromise && playPromise.catch) playPromise.catch(fallback);
+    }).catch(fallback);
+  },
+  revokeRemoteTtsUrl() {
+    if (this._remoteTtsObjectUrl && typeof URL !== 'undefined' && URL.revokeObjectURL) {
+      try { URL.revokeObjectURL(this._remoteTtsObjectUrl); } catch (e) {}
+    }
+    this._remoteTtsObjectUrl = null;
+  },
   ctx: null,
   voice: null,
   charManager: CharacterSoundManager,
@@ -752,6 +829,10 @@ const MEDIA = {
       cb && cb();
       return;
     }
+    if (this._remoteSpeechEnabled && !(typeof window !== 'undefined' && window.__TESTMODE)) {
+      this.playRemoteTts(String(text || ''), rate, cb, vol);
+      return;
+    }
     try {
       const synth = typeof window !== 'undefined' ? window.speechSynthesis : null;
       if (!synth) {
@@ -793,6 +874,16 @@ const MEDIA = {
   },
 
   stopSpeak() {
+    this._remoteTtsToken += 1;
+    if (this._remoteTtsAbort) {
+      try { this._remoteTtsAbort.abort(); } catch (e) {}
+      this._remoteTtsAbort = null;
+    }
+    if (this._remoteTtsAudio) {
+      try { this._remoteTtsAudio.pause(); this._remoteTtsAudio.currentTime = 0; } catch (e) {}
+      this._remoteTtsAudio = null;
+    }
+    this.revokeRemoteTtsUrl();
     try {
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
@@ -831,6 +922,13 @@ const MEDIA = {
     }
   }
 };
+
+// Safe default: a Vercel endpoint without its server-side enable flag and API key stays off.
+if (typeof document !== 'undefined') {
+  const loadTtsProviderStatus = () => MEDIA.refreshRemoteTtsStatus();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadTtsProviderStatus, { once: true });
+  else loadTtsProviderStatus();
+}
 
 /* ============================================================
    ✨ GÖRSEL EFEKT SİSTEMİ (Parçacık, Rozet, Bildirimler)

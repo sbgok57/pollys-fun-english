@@ -1050,7 +1050,7 @@
           </div>
           <div class="settings-group reading-voice-settings">
             <label>Free read-aloud for app text</label>
-            <p class="muted" style="font-size:.88rem">The browser or device speech engine reads lesson, game and feedback text. Its voice and sound quality depend on this device.</p>
+            <p class="muted" style="font-size:.88rem">Free browser/device speech is used by default. Available English voices vary by device. A cloud reading voice works only if the site administrator configures a provider.</p>
             <button class="btn btn-outline" id="setting-test-tts-btn" type="button">Hear a reading sample</button>
           </div>
           <div class="settings-group">

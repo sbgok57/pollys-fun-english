@@ -37,7 +37,7 @@ setTimeout(() => {
     check(window.document.querySelector('.stage-card.songs'), 'songs route remains available after theme changes');
     window.eval('APP.showSettingsModal()');
     check(!window.document.querySelector('#set-reading-voice') && !window.document.querySelector('#set-test-voice-btn'), 'settings no longer offers a device voice picker or misleading reading voice test');
-    check(window.document.querySelector('.reading-voice-settings')?.textContent.includes('free speech engine built into this browser or device'), 'settings identify the free browser/device read-aloud engine');
+    check(window.document.querySelector('.reading-voice-settings')?.textContent.includes('Free browser/device speech is used by default'), 'settings describe the free default and optional cloud voice accurately');
     check(window.document.querySelector('#set-test-tts-btn'), 'settings provide a user-triggered read-aloud test');
     let demoRate = 0;
     window.eval('window.__originalMediaTts = MEDIA.tts; MEDIA.tts = (text, rate) => { window.__ttsDemo = { text, rate }; }');

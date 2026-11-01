@@ -2148,7 +2148,7 @@ const APP = {
 
         <div class="settings-group reading-voice-settings">
           <label>Free read-aloud for app text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lessons, games, feedback and stories use the free speech engine built into this browser or device. Available English voices and sound quality vary by device.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Free browser/device speech is used by default. Available English voices and sound quality vary by device. An optional cloud reading voice works only if the site administrator configures a provider.</p>
           <button class="btn btn-outline" id="set-test-tts-btn" type="button" style="margin-top:4px">Hear a reading sample</button>
         </div>
 
