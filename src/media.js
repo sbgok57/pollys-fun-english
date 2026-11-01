@@ -606,21 +606,6 @@ const MEDIA = {
       const vs = synth.getVoices() || [];
       if (!vs.length) return null;
 
-      // Kullanıcı daha önce geçerli bir ses seçtiyse onu koru
-      try {
-        const saved = store.get('voice');
-        if (saved) {
-          const separator = String(saved).lastIndexOf('::');
-          const savedName = separator >= 0 ? String(saved).slice(0, separator) : String(saved);
-          const savedLang = separator >= 0 ? String(saved).slice(separator + 2) : '';
-          const match = vs.find((v) => v.name === savedName && (!savedLang || (v.lang || '') === savedLang) && !this.isRoboticVoice(v));
-          if (match) {
-            this.voice = match;
-            return match;
-          }
-        }
-      } catch (e) {}
-
       // Use the best-scoring English voice available on this device.
       const classroomVoices = this.getClassroomVoices();
       if (classroomVoices.length > 0) {

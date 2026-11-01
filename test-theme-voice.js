@@ -35,6 +35,15 @@ setTimeout(() => {
     check(window.eval("MEDIA.getEnglishLocaleLabel('en')") === 'English · EN', 'unspecified English region remains explicitly unverified');
 
     check(window.document.querySelector('.stage-card.songs'), 'songs route remains available after theme changes');
+    window.eval('APP.showSettingsModal()');
+    check(!window.document.querySelector('#set-reading-voice') && !window.document.querySelector('#set-test-voice-btn'), 'settings no longer offers a device voice picker or misleading reading voice test');
+    check(window.document.querySelector('.reading-voice-settings')?.textContent.includes('browser voice on this device'), 'settings clearly identify the current browser speech voice');
+    check(window.document.querySelector('#set-choose-voice-btn'), 'Higgsfield sample chooser remains available');
+    window.document.querySelector('#set-close-top')?.click();
+    window.eval('APP.showVoices()');
+    check(window.document.querySelector('#hf-voice-select') && window.document.querySelector('#hf-voice-preview'), 'Higgsfield recordings remain available as replayable previews');
+    check(window.document.querySelector('.hf-voice-note')?.textContent.includes('cannot read lesson'), 'sample modal clarifies that previews do not read lesson text');
+    window.document.querySelector('#vmclose')?.click();
     const policy = JSON.parse(fs.readFileSync('vercel.json', 'utf8')).headers
       .find((entry) => entry.source === '/(.*)').headers
       .find((entry) => entry.key === 'Permissions-Policy').value;

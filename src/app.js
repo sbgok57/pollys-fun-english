@@ -2183,16 +2183,6 @@ const APP = {
           confettiEnabled: true
         };
 
-    const deviceVoices = (typeof MEDIA !== 'undefined' && MEDIA.getClassroomVoices)
-      ? MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''))
-      : [];
-    const savedDeviceVoice = store.get('voice') || (MEDIA.voice && MEDIA.voice.name) || '';
-    const voiceKey = (voice) => `${voice.name}::${voice.lang || ''}`;
-    const savedVoice = deviceVoices.find((voice) => voiceKey(voice) === savedDeviceVoice || voice.name === savedDeviceVoice);
-    const deviceVoiceOptions = deviceVoices.length
-      ? deviceVoices.map((voice) => `<option value="${esc(voiceKey(voice))}" ${voice === savedVoice ? 'selected' : ''}>${esc(voice.name)} · ${esc(MEDIA.getEnglishLocaleLabel ? MEDIA.getEnglishLocaleLabel(voice.lang) : (voice.lang || 'English'))}</option>`).join('')
-      : '<option value="">Loading English voices from this device…</option>';
-
     d.innerHTML = `
       <div class="modal-content" style="max-width:540px;text-align:left;position:relative;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;border-bottom:2px solid #e2e8f0;padding-bottom:12px;">
@@ -2229,17 +2219,13 @@ const APP = {
         </div>
 
         <div class="settings-group reading-voice-settings">
-          <label for="set-reading-voice">Reading voice for all spoken text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose an English reading voice installed on this device.</p>
-          <select id="set-reading-voice" ${deviceVoices.length ? '' : 'disabled'} style="width:100%;padding:10px 12px;border-radius:12px;border:2px solid #cbd5e1;font-weight:700;">
-            ${deviceVoiceOptions}
-          </select>
-          <button class="btn btn-outline" id="set-test-voice-btn" type="button" ${deviceVoices.length ? '' : 'disabled'} style="margin-top:8px">Play reading voice</button>
+          <label>Spoken text</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lesson, game, feedback and story text is read by the browser voice on this device. Higgsfield clips below are previews only and cannot read app text.</p>
         </div>
 
         <div class="settings-group">
           <label>Higgsfield voice sample previews</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose and replay Higgsfield sample recordings. They are separate from the device voice used to read app text.</p>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Choose and replay a sample recording. This saves your preview choice; it does not change the voice reading app text.</p>
           <div style="display:flex;gap:10px;align-items:center;margin-top:6px;">
             <button class="btn btn-outline" id="set-choose-voice-btn" type="button" style="flex:1;padding:8px 12px;font-weight:700;">Listen to Higgsfield samples</button>
           </div>
@@ -2282,12 +2268,7 @@ const APP = {
 
     document.body.appendChild(d);
 
-    let voiceListChangeHandler = null;
     const close = () => {
-      if (voiceListChangeHandler && typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.removeEventListener('voiceschanged', voiceListChangeHandler);
-        voiceListChangeHandler = null;
-      }
       if (typeof MEDIA !== 'undefined' && MEDIA.fx) MEDIA.fx('click');
       d.remove();
     };
@@ -2335,60 +2316,6 @@ const APP = {
       };
     }
 
-    // Voice test button
-    const testVoiceBtn = d.querySelector('#set-test-voice-btn');
-    const speedSelect = d.querySelector('#set-voice-speed');
-    const voiceSelect = d.querySelector('#set-reading-voice');
-    const refreshVoiceOptions = () => {
-      if (!voiceSelect || !MEDIA.getClassroomVoices) return;
-      const freshVoices = MEDIA.getClassroomVoices().filter((voice) => /^en([_-]|$)/i.test(voice.lang || ''));
-      const previouslySelected = voiceSelect.value || (savedVoice ? voiceKey(savedVoice) : '');
-      voiceSelect.replaceChildren();
-      if (!freshVoices.length) {
-        const empty = document.createElement('option');
-        empty.value = '';
-        empty.textContent = 'No English voices are available on this device';
-        voiceSelect.appendChild(empty);
-        voiceSelect.disabled = true;
-        if (testVoiceBtn) testVoiceBtn.disabled = true;
-        return;
-      }
-      const groups = new Map();
-      freshVoices.forEach((voice) => {
-        const label = MEDIA.getEnglishLocaleLabel ? MEDIA.getEnglishLocaleLabel(voice.lang) : (voice.lang || 'English');
-        if (!groups.has(label)) groups.set(label, []);
-        groups.get(label).push(voice);
-      });
-      groups.forEach((voices, label) => {
-        const group = document.createElement('optgroup');
-        group.label = label;
-        voices.forEach((voice) => {
-          const option = document.createElement('option');
-          option.value = voiceKey(voice);
-          option.textContent = `${voice.name} (${voice.lang || 'en'})`;
-          group.appendChild(option);
-        });
-        voiceSelect.appendChild(group);
-      });
-      voiceSelect.disabled = false;
-      if (testVoiceBtn) testVoiceBtn.disabled = false;
-      if ([...voiceSelect.options].some((option) => option.value === previouslySelected)) voiceSelect.value = previouslySelected;
-    };
-    refreshVoiceOptions();
-    if (typeof window !== 'undefined' && window.speechSynthesis?.addEventListener) {
-      voiceListChangeHandler = refreshVoiceOptions;
-      window.speechSynthesis.addEventListener('voiceschanged', voiceListChangeHandler);
-    }
-    if (testVoiceBtn) {
-      testVoiceBtn.onclick = () => {
-        const selectedVoice = d.querySelector('#set-reading-voice')?.value;
-        if (selectedVoice && typeof MEDIA !== 'undefined' && MEDIA.setVoice) MEDIA.setVoice(selectedVoice);
-        const spd = parseFloat(speedSelect ? speedSelect.value : '1.0');
-        const quote = "Hello everyone. Let's practise English together!";
-        if (typeof MEDIA !== 'undefined' && MEDIA.speak) MEDIA.speak(quote, spd);
-        if (typeof FX !== 'undefined' && FX.stars) FX.stars();
-      };
-    }
     const chooseVoiceBtn = d.querySelector('#set-choose-voice-btn');
     if (chooseVoiceBtn) chooseVoiceBtn.onclick = () => this.showVoices();
 
@@ -2399,11 +2326,8 @@ const APP = {
         const bgmVolume = parseFloat(d.querySelector('#set-bgm-volume').value);
         const sfxVolume = parseFloat(d.querySelector('#set-sfx-volume').value);
         const voiceSpeed = parseFloat(d.querySelector('#set-voice-speed').value);
-        const readingVoice = d.querySelector('#set-reading-voice')?.value;
         const themeMode = d.querySelector('#set-theme-mode').value;
         const defaultMedia = d.querySelector('#set-media-mode').value;
-
-        if (readingVoice && typeof MEDIA !== 'undefined' && MEDIA.setVoice) MEDIA.setVoice(readingVoice);
 
         const updated = {
           ...s,

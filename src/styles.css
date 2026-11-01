@@ -4121,9 +4121,6 @@ body { background-color:#fff9ed; background-image:radial-gradient(#ffbd58 1.5px,
 .kids-quick-row { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:24px 0 40px; }
 .kids-quick-row .btn { min-height:46px; }
 .reading-voice-settings { padding:16px; border:2px solid #ccefe1; border-radius:18px; background:linear-gradient(135deg,#f0fff6,#f4f0ff); }
-#set-reading-voice { min-height:46px; background:white; color:#29203e; font:inherit; }
-#set-reading-voice:disabled { color:#777; }
-#set-test-voice-btn { min-height:42px; }
 @media(max-width:950px) {
   .kids-home-hero { grid-template-columns:100px minmax(0,1fr); }
   .kids-hero-art { grid-column:1/-1; width:100%; max-height:380px; aspect-ratio:2.05; }
