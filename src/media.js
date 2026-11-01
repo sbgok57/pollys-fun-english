@@ -678,6 +678,18 @@ const MEDIA = {
 
   /* Speech uses the selected browser voice; pitch is not manipulated. */
   speak(text, rate = 0.9, cb, vol, charKey = null) {
+    // Apply the shared speech speed to every text-to-speech read across the app.
+    // Pre-recorded clips keep their original tempo; the multiplier affects only speech synthesis.
+    let speechRate = rate;
+    try {
+      const configuredSpeed = typeof SettingsManager !== 'undefined' && SettingsManager.getSettings
+        ? Number(SettingsManager.getSettings().voiceSpeed)
+        : 1;
+      const multiplier = [0.8, 1, 1.2].includes(configuredSpeed) ? configuredSpeed : 1;
+      speechRate = Math.max(0.75, Math.min(1.25, (Number(rate) || 0.9) * multiplier));
+    } catch (e) {
+      speechRate = rate;
+    }
     // Success feedback and the following answer are spoken as one line so the
     // next game prompt cannot cancel the praise before children hear it.
     if (typeof FX !== 'undefined' && FX._pendingFeedback) {
@@ -707,7 +719,7 @@ const MEDIA = {
               if (done) return;
               done = true;
               if (to) clearTimeout(to);
-              this.tts(text, rate, cb, vol);
+              this.tts(text, speechRate, cb, vol);
             };
             const fin = () => {
               if (done) return;
@@ -731,7 +743,7 @@ const MEDIA = {
         }
       }
     } catch (e) {}
-    this.tts(text, rate, cb, vol);
+    this.tts(text, speechRate, cb, vol);
   },
 
   /* Browser or operating-system speech synthesis; voice quality varies by device. */

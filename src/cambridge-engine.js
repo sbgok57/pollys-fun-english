@@ -328,9 +328,7 @@
 
     speak(phrase, character, rateModifier = 1.0) {
       if (typeof MEDIA === 'undefined' || !MEDIA.speak) return;
-      const settings = Settings.getSettings();
-      const baseSpeed = parseFloat(settings.voiceSpeed || 1.0);
-      const rate = Math.max(0.6, Math.min(1.4, baseSpeed * (rateModifier || 1.0)));
+      const rate = Math.max(0.6, Math.min(1.4, rateModifier || 1.0));
       MEDIA.speak(String(phrase || '').replace(/[#*_`]/g, '').trim(), rate);
     }
   };
@@ -1052,8 +1050,13 @@
           </div>
           <div class="settings-group">
             <label>Higgsfield voice sample previews</label>
-            <p class="muted" style="font-size:.88rem">These are short preview clips. Lesson and game text use the reading voice selected in Sound and Display settings.</p>
+            <p class="muted" style="font-size:.88rem">These are short preview clips. Lesson and game text use the free built-in reading engine on this device.</p>
             <button class="btn btn-outline" id="choose-device-voice">Listen to Higgsfield samples</button>
+          </div>
+          <div class="settings-group reading-voice-settings">
+            <label>Free read-aloud for app text</label>
+            <p class="muted" style="font-size:.88rem">The browser or device speech engine reads lesson, game and feedback text. Its voice and sound quality depend on this device.</p>
+            <button class="btn btn-outline" id="setting-test-tts-btn" type="button">Hear a reading sample</button>
           </div>
           <div class="settings-group">
             <label>⚡ Speech Speed (TTS)</label>
@@ -1189,6 +1192,10 @@
         chooseDeviceVoice.addEventListener('click', () => {
           if (typeof APP !== 'undefined' && APP.showVoices) APP.showVoices();
         });
+      }
+      const testTts = this.container.querySelector('#setting-test-tts-btn');
+      if (testTts) {
+        testTts.addEventListener('click', () => MEDIA.speak("Hello! Let's practise English together!", 0.9));
       }
       if (saveSettings) {
         saveSettings.addEventListener('click', () => {

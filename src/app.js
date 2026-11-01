@@ -2219,8 +2219,9 @@ const APP = {
         </div>
 
         <div class="settings-group reading-voice-settings">
-          <label>Spoken text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lesson, game, feedback and story text is read by the browser voice on this device. Higgsfield clips below are previews only and cannot read app text.</p>
+          <label>Free read-aloud for app text</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lessons, games, feedback and stories use the built-in speech engine on this device. Voice availability and sound quality depend on the device. Higgsfield clips below are previews only.</p>
+          <button class="btn btn-outline" id="set-test-tts-btn" type="button" style="margin-top:4px">Hear a reading sample</button>
         </div>
 
         <div class="settings-group">
@@ -2318,6 +2319,11 @@ const APP = {
 
     const chooseVoiceBtn = d.querySelector('#set-choose-voice-btn');
     if (chooseVoiceBtn) chooseVoiceBtn.onclick = () => this.showVoices();
+    const testTtsBtn = d.querySelector('#set-test-tts-btn');
+    if (testTtsBtn) testTtsBtn.onclick = () => {
+      const speed = parseFloat(d.querySelector('#set-voice-speed')?.value || '1');
+      MEDIA.tts("Hello! Let's learn and play English together!", 0.9 * speed);
+    };
 
     // Save button
     const saveBtn = d.querySelector('#set-save-btn');

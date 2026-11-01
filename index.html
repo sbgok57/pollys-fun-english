@@ -73666,6 +73666,18 @@ const MEDIA = {
 
   /* Speech uses the selected browser voice; pitch is not manipulated. */
   speak(text, rate = 0.9, cb, vol, charKey = null) {
+    // Apply the shared speech speed to every text-to-speech read across the app.
+    // Pre-recorded clips keep their original tempo; the multiplier affects only speech synthesis.
+    let speechRate = rate;
+    try {
+      const configuredSpeed = typeof SettingsManager !== 'undefined' && SettingsManager.getSettings
+        ? Number(SettingsManager.getSettings().voiceSpeed)
+        : 1;
+      const multiplier = [0.8, 1, 1.2].includes(configuredSpeed) ? configuredSpeed : 1;
+      speechRate = Math.max(0.75, Math.min(1.25, (Number(rate) || 0.9) * multiplier));
+    } catch (e) {
+      speechRate = rate;
+    }
     // Success feedback and the following answer are spoken as one line so the
     // next game prompt cannot cancel the praise before children hear it.
     if (typeof FX !== 'undefined' && FX._pendingFeedback) {
@@ -73695,7 +73707,7 @@ const MEDIA = {
               if (done) return;
               done = true;
               if (to) clearTimeout(to);
-              this.tts(text, rate, cb, vol);
+              this.tts(text, speechRate, cb, vol);
             };
             const fin = () => {
               if (done) return;
@@ -73719,7 +73731,7 @@ const MEDIA = {
         }
       }
     } catch (e) {}
-    this.tts(text, rate, cb, vol);
+    this.tts(text, speechRate, cb, vol);
   },
 
   /* Browser or operating-system speech synthesis; voice quality varies by device. */
@@ -76495,9 +76507,7 @@ ENGINES.push(...ENGINES_C);
 
     speak(phrase, character, rateModifier = 1.0) {
       if (typeof MEDIA === 'undefined' || !MEDIA.speak) return;
-      const settings = Settings.getSettings();
-      const baseSpeed = parseFloat(settings.voiceSpeed || 1.0);
-      const rate = Math.max(0.6, Math.min(1.4, baseSpeed * (rateModifier || 1.0)));
+      const rate = Math.max(0.6, Math.min(1.4, rateModifier || 1.0));
       MEDIA.speak(String(phrase || '').replace(/[#*_`]/g, '').trim(), rate);
     }
   };
@@ -77219,8 +77229,13 @@ ENGINES.push(...ENGINES_C);
           </div>
           <div class="settings-group">
             <label>Higgsfield voice sample previews</label>
-            <p class="muted" style="font-size:.88rem">These are short preview clips. Lesson and game text use the reading voice selected in Sound and Display settings.</p>
+            <p class="muted" style="font-size:.88rem">These are short preview clips. Lesson and game text use the free built-in reading engine on this device.</p>
             <button class="btn btn-outline" id="choose-device-voice">Listen to Higgsfield samples</button>
+          </div>
+          <div class="settings-group reading-voice-settings">
+            <label>Free read-aloud for app text</label>
+            <p class="muted" style="font-size:.88rem">The browser or device speech engine reads lesson, game and feedback text. Its voice and sound quality depend on this device.</p>
+            <button class="btn btn-outline" id="setting-test-tts-btn" type="button">Hear a reading sample</button>
           </div>
           <div class="settings-group">
             <label>⚡ Speech Speed (TTS)</label>
@@ -77356,6 +77371,10 @@ ENGINES.push(...ENGINES_C);
         chooseDeviceVoice.addEventListener('click', () => {
           if (typeof APP !== 'undefined' && APP.showVoices) APP.showVoices();
         });
+      }
+      const testTts = this.container.querySelector('#setting-test-tts-btn');
+      if (testTts) {
+        testTts.addEventListener('click', () => MEDIA.speak("Hello! Let's practise English together!", 0.9));
       }
       if (saveSettings) {
         saveSettings.addEventListener('click', () => {
@@ -80110,8 +80129,9 @@ const APP = {
         </div>
 
         <div class="settings-group reading-voice-settings">
-          <label>Spoken text</label>
-          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lesson, game, feedback and story text is read by the browser voice on this device. Higgsfield clips below are previews only and cannot read app text.</p>
+          <label>Free read-aloud for app text</label>
+          <p class="muted" style="font-size:.9em;margin:4px 0 8px">Lessons, games, feedback and stories use the built-in speech engine on this device. Voice availability and sound quality depend on the device. Higgsfield clips below are previews only.</p>
+          <button class="btn btn-outline" id="set-test-tts-btn" type="button" style="margin-top:4px">Hear a reading sample</button>
         </div>
 
         <div class="settings-group">
@@ -80209,6 +80229,11 @@ const APP = {
 
     const chooseVoiceBtn = d.querySelector('#set-choose-voice-btn');
     if (chooseVoiceBtn) chooseVoiceBtn.onclick = () => this.showVoices();
+    const testTtsBtn = d.querySelector('#set-test-tts-btn');
+    if (testTtsBtn) testTtsBtn.onclick = () => {
+      const speed = parseFloat(d.querySelector('#set-voice-speed')?.value || '1');
+      MEDIA.tts("Hello! Let's learn and play English together!", 0.9 * speed);
+    };
 
     // Save button
     const saveBtn = d.querySelector('#set-save-btn');
