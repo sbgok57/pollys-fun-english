@@ -20,9 +20,9 @@ test('saved voices paginate, deduplicate, sanitize metadata and refresh deletion
   res = await handle(new Request('https://example.test/api/elevenlabs?refresh=1')); data = await res.json(); assert.deepEqual(data.voices.map(v=>v.id),['b']);
 });
 test('provider permission errors do not expose provider bodies or keys', async () => {
-  for (const status of [401,403,429,500]) {
+  for (const status of [401,402,403,429,500]) {
     const handle = createElevenLabsService({getKey:()=>'test-secret',fetchImpl:async()=>new Response('private-provider-body',{status})});
-    const res=await handle(new Request('https://example.test/api/elevenlabs')); assert.ok(res.status>=400);
+    const res=await handle(new Request('https://example.test/api/elevenlabs')); assert.ok(res.status>=400); if(status===402) assert.equal(res.status,402);
     const body=await res.text(); assert.ok(!body.includes('test-secret'));assert.ok(!body.includes('private-provider-body'));
   }
 });
